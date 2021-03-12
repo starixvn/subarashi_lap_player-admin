@@ -1,0 +1,89 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PlayerDetail _renderTabList - should match snapshot 1`] = `
+<div>
+  <li
+    className="tab"
+    key="test1"
+  >
+    <a
+      className=""
+      href="test1/action1?systemType=0"
+      onClick={[Function]}
+    >
+      Test 1
+    </a>
+  </li>
+  <li
+    className="tab"
+    key="test2"
+  >
+    <a
+      className=""
+      href="test1/action2?systemType=1"
+      onClick={[Function]}
+    >
+      Test 2
+    </a>
+  </li>
+  <li
+    className="tab"
+    key="test3"
+  >
+    <a
+      className=""
+      href="test2/action2?systemType=0"
+      onClick={[Function]}
+    >
+      Test 3
+    </a>
+  </li>
+</div>
+`;
+
+exports[`PlayerDetail _renderTabList - should match snapshot 2`] = `
+<div>
+  <li
+    className="tab"
+    key="test1"
+  >
+    <a
+      className=""
+      href="test1/action1?systemType=0"
+      onClick={[Function]}
+    >
+      Test 1
+    </a>
+  </li>
+  <li
+    className="tab"
+    key="test2"
+  >
+    <a
+      className=""
+      href="test1/action2?systemType=1"
+      onClick={[Function]}
+    >
+      Test 2
+    </a>
+  </li>
+  <li
+    className="tab"
+    key="test3"
+  >
+    <a
+      className=""
+      href="test2/action2?systemType=0"
+      onClick={[Function]}
+    >
+      Test 3
+    </a>
+  </li>
+</div>
+`;
+
+exports[`PlayerDetail render data is correct - match snapshot 1`] = `
+<div
+  className="wrapper"
+/>
+`;

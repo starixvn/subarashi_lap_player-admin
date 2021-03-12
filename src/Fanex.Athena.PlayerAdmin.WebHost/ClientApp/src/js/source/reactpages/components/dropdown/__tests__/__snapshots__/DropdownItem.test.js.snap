@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DropdownItem render with default props - render snapshot correctly 1`] = `
+<button
+  className="dropdown-item"
+  disabled={false}
+>
+  Button Text
+</button>
+`;
+
+exports[`DropdownItem render with specific props - render snapshot correctly 1`] = `
+<div
+  className="dropdown-item custom-class active"
+  disabled={false}
+  onClick={[MockFunction]}
+>
+  Button Text
+</div>
+`;
+
+exports[`DropdownItem render with tag is button and has onClick function in props - render snapshot with specific type is button 1`] = `
+<button
+  className="dropdown-item"
+  disabled={false}
+  onClick={[MockFunction]}
+  type="button"
+>
+  Button Text
+</button>
+`;

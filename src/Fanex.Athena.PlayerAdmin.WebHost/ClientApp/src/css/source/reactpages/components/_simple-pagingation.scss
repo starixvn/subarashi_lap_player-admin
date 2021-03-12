@@ -1,0 +1,39 @@
+﻿$btnPrimaryColor: #6c757d;
+$btnBorderColor: #8a8f94;
+
+.simple-pagingation-container {
+    padding: 10px;
+    text-align: center;
+
+    .btn-move {
+        display: inline-block;
+        background-color: transparent;
+        border: 1px solid transparent;
+        padding: 3px;
+        font-size: 11px;
+        border-radius: 1px;
+        transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        color: $btnPrimaryColor;
+        border-color: $btnBorderColor;
+        cursor: pointer;
+
+        &:hover {
+            color: #fff;
+            background-color: $btnPrimaryColor;
+            border-color: $btnPrimaryColor;
+        }
+
+        &:disabled {
+            border: none;
+            cursor: default;
+        }
+    }
+
+    .btn-prev {
+        margin-right: 5px;
+    }
+
+    .btn-next {
+        margin-left: 5px;
+    }
+}

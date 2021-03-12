@@ -1,0 +1,182 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AdvancedSearch render with initial state - should match snapshot 1`] = `
+<Fragment>
+  <div
+    className="col-12 col-md-3 col-sm-3 col-lg-2 col-xl-2"
+  >
+    <div
+      className="form-group"
+    >
+      <label
+        className="label-text"
+      >
+        Currency
+      </label>
+      <t
+        dataSource={
+          Array [
+            Object {
+              "Id": 20,
+              "Status": false,
+              "Value": "UUS",
+            },
+            Object {
+              "Id": 9,
+              "Status": false,
+              "Value": "AUD",
+            },
+          ]
+        }
+        hasAllOption={true}
+        hasSearchBox={false}
+        id="currency"
+        keyField="Id"
+        language="en-US"
+        onChange={[Function]}
+        statusField="Status"
+        valueField="Value"
+      />
+    </div>
+  </div>
+  <div
+    className="col-12 col-md-3 col-sm-3 col-lg-2 col-xl-2"
+  >
+    <div
+      className="form-group"
+    >
+      <label
+        className="label-text"
+      >
+        OddsGroup
+      </label>
+      <t
+        dataSource={
+          Array [
+            Object {
+              "Id": "A",
+              "Status": true,
+              "Value": "A",
+            },
+            Object {
+              "Id": "B",
+              "Status": true,
+              "Value": "B",
+            },
+            Object {
+              "Id": "C",
+              "Status": true,
+              "Value": "C",
+            },
+            Object {
+              "Id": "D",
+              "Status": true,
+              "Value": "D",
+            },
+            Object {
+              "Id": "E",
+              "Status": true,
+              "Value": "E",
+            },
+            Object {
+              "Id": "F",
+              "Status": true,
+              "Value": "F",
+            },
+          ]
+        }
+        hasAllOption={true}
+        hasSearchBox={false}
+        id="oddsGroup"
+        keyField="Id"
+        language="en-US"
+        onChange={[Function]}
+        statusField="Status"
+        valueField="Value"
+      />
+    </div>
+  </div>
+  <div
+    className="col-12 col-md-3 col-sm-3 col-lg-2 col-xl-2"
+  >
+    <div
+      className="form-group"
+    >
+      <label
+        className="label-text"
+      >
+        SpecialLevel
+      </label>
+      <t
+        dataSource={
+          Array [
+            Object {
+              "Id": "0",
+              "Status": true,
+              "Value": "None",
+            },
+            Object {
+              "Id": "1",
+              "Status": true,
+              "Value": "1",
+            },
+            Object {
+              "Id": "2",
+              "Status": true,
+              "Value": "2",
+            },
+            Object {
+              "Id": "3",
+              "Status": true,
+              "Value": "3",
+            },
+            Object {
+              "Id": "4",
+              "Status": true,
+              "Value": "4",
+            },
+            Object {
+              "Id": "5",
+              "Status": true,
+              "Value": "5",
+            },
+            Object {
+              "Id": "6",
+              "Status": true,
+              "Value": "6",
+            },
+            Object {
+              "Id": "7",
+              "Status": true,
+              "Value": "7",
+            },
+            Object {
+              "Id": "8",
+              "Status": true,
+              "Value": "8",
+            },
+            Object {
+              "Id": "9",
+              "Status": true,
+              "Value": "9",
+            },
+            Object {
+              "Id": "10",
+              "Status": true,
+              "Value": "10",
+            },
+          ]
+        }
+        hasAllOption={true}
+        hasSearchBox={false}
+        id="specialLevel"
+        keyField="Id"
+        language="en-US"
+        onChange={[Function]}
+        statusField="Status"
+        valueField="Value"
+      />
+    </div>
+  </div>
+</Fragment>
+`;

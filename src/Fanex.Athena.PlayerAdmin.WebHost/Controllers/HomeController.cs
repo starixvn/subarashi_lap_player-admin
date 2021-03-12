@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Diagnostics;
+using System.Linq;
 
 namespace Fanex.Athena.PlayerAdmin.WebHost.Controllers
 {
@@ -22,9 +23,36 @@ namespace Fanex.Athena.PlayerAdmin.WebHost.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+
+        [AllowAnonymous]
+        public IActionResult Menu()
         {
             return View();
+        }
+
+
+        [Authorize(AuthenticationSchemes = "Cookies")]
+        public JsonResult Info()
+        {
+            var user = HttpContext.User;
+            return new JsonResult(new
+            {
+                sub = user.Claims.FirstOrDefault(_ => _.Type == "sub")?.Value,
+                name = user.Identity.Name,
+                claims = user.Claims.Select(_ => new { type = _.Type, value = _.Value })
+            });
+        }
+
+        [Authorize(AuthenticationSchemes = "Cookies", Roles = "")]
+        public JsonResult InfoNoRole()
+        {
+            var user = HttpContext.User;
+            return new JsonResult(new
+            {
+                sub = user.Claims.FirstOrDefault(_ => _.Type == "sub")?.Value,
+                name = user.Identity.Name,
+                claims = user.Claims.Select(_ => new { type = _.Type, value = _.Value })
+            });
         }
 
         [AllowAnonymous]

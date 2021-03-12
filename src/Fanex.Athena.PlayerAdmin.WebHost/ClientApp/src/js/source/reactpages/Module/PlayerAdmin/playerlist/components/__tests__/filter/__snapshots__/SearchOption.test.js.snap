@@ -1,0 +1,341 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchOption handleClose - isOpen should be false - match snapshot 1`] = `
+<DropdownButton
+  buttonLabel={
+    <i
+      className="material-icons"
+    >
+      settings
+    </i>
+  }
+  className="search-option"
+  isOpen={true}
+  onClose={[Function]}
+  onToggle={[Function]}
+  toggleButton={
+    Object {
+      "className": "toggle-outline toggle-outline-light",
+    }
+  }
+>
+  <DropdownItem
+    disabled={false}
+    tag="div"
+  >
+    <label
+      className="selection-item"
+    >
+      <input
+        checked={true}
+        name="searchOption"
+        type="radio"
+        value="1"
+      />
+      MatchPrefix
+       "
+      <span
+        className="keyword"
+      >
+        test
+      </span>
+      "ABCD
+    </label>
+  </DropdownItem>
+  <DropdownItem
+    disabled={false}
+    tag="div"
+  >
+    <label
+      className="selection-item"
+    >
+      <input
+        checked={false}
+        name="searchOption"
+        type="radio"
+        value="2"
+      />
+      MatchCase
+       AB"
+      <span
+        className="keyword"
+      >
+        test
+      </span>
+      "CD
+    </label>
+  </DropdownItem>
+</DropdownButton>
+`;
+
+exports[`SearchOption handleClose - isOpen should be false - match snapshot 2`] = `
+<DropdownButton
+  buttonLabel={
+    <i
+      className="material-icons"
+    >
+      settings
+    </i>
+  }
+  className="search-option"
+  isOpen={false}
+  onClose={[Function]}
+  onToggle={[Function]}
+  toggleButton={
+    Object {
+      "className": "toggle-outline toggle-outline-light",
+    }
+  }
+>
+  <DropdownItem
+    disabled={false}
+    tag="div"
+  >
+    <label
+      className="selection-item"
+    >
+      <input
+        checked={true}
+        name="searchOption"
+        type="radio"
+        value="1"
+      />
+      MatchPrefix
+       "
+      <span
+        className="keyword"
+      >
+        test
+      </span>
+      "ABCD
+    </label>
+  </DropdownItem>
+  <DropdownItem
+    disabled={false}
+    tag="div"
+  >
+    <label
+      className="selection-item"
+    >
+      <input
+        checked={false}
+        name="searchOption"
+        type="radio"
+        value="2"
+      />
+      MatchCase
+       AB"
+      <span
+        className="keyword"
+      >
+        test
+      </span>
+      "CD
+    </label>
+  </DropdownItem>
+</DropdownButton>
+`;
+
+exports[`SearchOption handleToggleDropdown - isOpen should be changed - match snapshot 1`] = `
+<DropdownButton
+  buttonLabel={
+    <i
+      className="material-icons"
+    >
+      settings
+    </i>
+  }
+  className="search-option"
+  isOpen={false}
+  onClose={[Function]}
+  onToggle={[Function]}
+  toggleButton={
+    Object {
+      "className": "toggle-outline toggle-outline-light",
+    }
+  }
+>
+  <DropdownItem
+    disabled={false}
+    tag="div"
+  >
+    <label
+      className="selection-item"
+    >
+      <input
+        checked={true}
+        name="searchOption"
+        type="radio"
+        value="1"
+      />
+      MatchPrefix
+       "
+      <span
+        className="keyword"
+      >
+        test
+      </span>
+      "ABCD
+    </label>
+  </DropdownItem>
+  <DropdownItem
+    disabled={false}
+    tag="div"
+  >
+    <label
+      className="selection-item"
+    >
+      <input
+        checked={false}
+        name="searchOption"
+        type="radio"
+        value="2"
+      />
+      MatchCase
+       AB"
+      <span
+        className="keyword"
+      >
+        test
+      </span>
+      "CD
+    </label>
+  </DropdownItem>
+</DropdownButton>
+`;
+
+exports[`SearchOption handleToggleDropdown - isOpen should be changed - match snapshot 2`] = `
+<DropdownButton
+  buttonLabel={
+    <i
+      className="material-icons"
+    >
+      settings
+    </i>
+  }
+  className="search-option"
+  isOpen={true}
+  onClose={[Function]}
+  onToggle={[Function]}
+  toggleButton={
+    Object {
+      "className": "toggle-outline toggle-outline-light",
+    }
+  }
+>
+  <DropdownItem
+    disabled={false}
+    tag="div"
+  >
+    <label
+      className="selection-item"
+    >
+      <input
+        checked={true}
+        name="searchOption"
+        type="radio"
+        value="1"
+      />
+      MatchPrefix
+       "
+      <span
+        className="keyword"
+      >
+        test
+      </span>
+      "ABCD
+    </label>
+  </DropdownItem>
+  <DropdownItem
+    disabled={false}
+    tag="div"
+  >
+    <label
+      className="selection-item"
+    >
+      <input
+        checked={false}
+        name="searchOption"
+        type="radio"
+        value="2"
+      />
+      MatchCase
+       AB"
+      <span
+        className="keyword"
+      >
+        test
+      </span>
+      "CD
+    </label>
+  </DropdownItem>
+</DropdownButton>
+`;
+
+exports[`SearchOption with initial state - should match snapshot 1`] = `
+<DropdownButton
+  buttonLabel={
+    <i
+      className="material-icons"
+    >
+      settings
+    </i>
+  }
+  className="search-option"
+  isOpen={false}
+  onClose={[Function]}
+  onToggle={[Function]}
+  toggleButton={
+    Object {
+      "className": "toggle-outline toggle-outline-light",
+    }
+  }
+>
+  <DropdownItem
+    disabled={false}
+    tag="div"
+  >
+    <label
+      className="selection-item"
+    >
+      <input
+        checked={true}
+        name="searchOption"
+        type="radio"
+        value="1"
+      />
+      MatchPrefix
+       "
+      <span
+        className="keyword"
+      >
+        test
+      </span>
+      "ABCD
+    </label>
+  </DropdownItem>
+  <DropdownItem
+    disabled={false}
+    tag="div"
+  >
+    <label
+      className="selection-item"
+    >
+      <input
+        checked={false}
+        name="searchOption"
+        type="radio"
+        value="2"
+      />
+      MatchCase
+       AB"
+      <span
+        className="keyword"
+      >
+        test
+      </span>
+      "CD
+    </label>
+  </DropdownItem>
+</DropdownButton>
+`;

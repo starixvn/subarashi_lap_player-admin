@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DropdownButton render with default props - render correctly 1`] = `
+<div
+  className="dropdown"
+>
+  <button
+    className="dropdown-toggle toggle-default site-caret"
+  />
+  <div
+    className="overlay"
+    style={
+      Object {
+        "display": "none",
+      }
+    }
+  >
+    <div
+      className="dropdown-menu"
+    >
+      <div>
+        Item 1
+      </div>
+      <div>
+        Item 2
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DropdownButton render with specific props - render correctly 1`] = `
+<div
+  className="dropdown custom-button-dropdown"
+>
+  <div
+    className="dropdown-toggle custom-toggle-button site-caret"
+    disabled={true}
+    onClick={[MockFunction]}
+  >
+    toggle label
+  </div>
+  <div
+    className="overlay overlay-open"
+    style={
+      Object {
+        "display": "block",
+      }
+    }
+  >
+    <ul
+      className="dropdown-menu custom-dropdown-menu"
+    >
+      <li>
+        Item 1
+      </li>
+      <li>
+        Item 2
+      </li>
+    </ul>
+  </div>
+</div>
+`;

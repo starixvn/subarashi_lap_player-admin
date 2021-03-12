@@ -1,0 +1,113 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BaseDataGrid  has data - map snapshot 1`] = `
+<div
+  className="betlist-container result-content"
+>
+  <ReportTitle
+    content="title"
+    tag="p"
+  />
+  <BetListDataGrid
+    adjustedHeight={-20}
+    afterLoad={[Function]}
+    columnAlignments={
+      Array [
+        "center-align",
+        "",
+        "",
+        "center-align",
+        "center-align",
+        "right-align",
+        "right-align",
+        "right-align",
+        "right-align",
+        "right-align",
+        "right-align",
+        "center-align",
+        "center-align",
+        "center-align",
+      ]
+    }
+    columnWidths={
+      Array [
+        40,
+        120,
+        120,
+        110,
+        150,
+        400,
+        70,
+        70,
+        100,
+        100,
+        100,
+        80,
+        80,
+        80,
+      ]
+    }
+    columns={
+      Array [
+        "Index",
+        "ExternalId",
+        "SystemId",
+        "RefNo",
+        "TransTime",
+        "Choice",
+        "Odds",
+        "OddsType",
+        "Stake",
+        "WinLoss",
+        "LicenseeWL",
+        "Status",
+        "Platform",
+        "Live",
+      ]
+    }
+    data={
+      Array [
+        Object {},
+      ]
+    }
+    getHeaderNameFunc={[Function]}
+    getResourceFunc={[Function]}
+    isPaging={false}
+    onPaging={[Function]}
+    onSort={[Function]}
+    pageOption={
+      Object {
+        "PageIndex": 1,
+        "PageList": Array [
+          50,
+          100,
+          200,
+          300,
+          400,
+          500,
+          1000,
+          2000,
+        ],
+        "PageSize": 50,
+        "TotalItem": 50,
+      }
+    }
+    sortableColumns={
+      Array [
+        "Stake",
+        "WinLoss",
+        "LicenseeWL",
+      ]
+    }
+    total={null}
+    totalColumns={
+      Array [
+        "Stake",
+        "WinLoss",
+        "LicenseeWL",
+      ]
+    }
+    totalText="Total"
+  />
+</div>
+`;

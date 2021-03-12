@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UserNameCell should match snapshot 1`] = `
+<div
+  className="username-cell"
+>
+  <button
+    className="btn-default btn-link username-link"
+    onClick={[Function]}
+  >
+    test
+  </button>
+  <button
+    className="btn-default btn-link btn-icon cell-menu"
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+  >
+    <i
+      className="material-icons"
+    >
+      edit
+    </i>
+  </button>
+</div>
+`;

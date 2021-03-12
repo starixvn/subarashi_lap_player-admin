@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AppContainer render - match with snapshot 1`] = `
+<AppLayout>
+  <Loader
+    isLoading={true}
+  />
+  <Connect(FormFilter) />
+  <Connect(Content) />
+  <Connect(PlayerDetail) />
+</AppLayout>
+`;
+
+exports[`AppContainer render - match with snapshot 2`] = `
+<AppLayout>
+  <Loader
+    isLoading={false}
+  />
+  <Connect(FormFilter) />
+  <Connect(Content) />
+  <Connect(PlayerDetail) />
+</AppLayout>
+`;

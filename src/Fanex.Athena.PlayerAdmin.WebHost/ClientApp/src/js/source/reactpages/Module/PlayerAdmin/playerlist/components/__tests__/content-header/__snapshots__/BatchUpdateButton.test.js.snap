@@ -1,0 +1,109 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BatchUpdateButton render render correctly when toggle isOpen 1`] = `
+<DropdownButton
+  buttonLabel="Batch Update"
+  isOpen={false}
+  onClose={[Function]}
+  onToggle={[Function]}
+  toggleButton={
+    Object {
+      "className": "toggle-default",
+    }
+  }
+>
+  <DropdownItem
+    disabled={false}
+    tag="button"
+  >
+    Item1
+  </DropdownItem>
+  <DropdownItem
+    disabled={false}
+    tag="button"
+  >
+    Item2
+  </DropdownItem>
+</DropdownButton>
+`;
+
+exports[`BatchUpdateButton render render correctly when toggle isOpen 2`] = `
+<DropdownButton
+  buttonLabel="Batch Update"
+  isOpen={true}
+  onClose={[Function]}
+  onToggle={[Function]}
+  toggleButton={
+    Object {
+      "className": "toggle-default",
+    }
+  }
+>
+  <DropdownItem
+    disabled={false}
+    tag="button"
+  >
+    Item1
+  </DropdownItem>
+  <DropdownItem
+    disabled={false}
+    tag="button"
+  >
+    Item2
+  </DropdownItem>
+</DropdownButton>
+`;
+
+exports[`BatchUpdateButton render render correctly when toggle isOpen 3`] = `
+<DropdownButton
+  buttonLabel="Batch Update"
+  isOpen={false}
+  onClose={[Function]}
+  onToggle={[Function]}
+  toggleButton={
+    Object {
+      "className": "toggle-default",
+    }
+  }
+>
+  <DropdownItem
+    disabled={false}
+    tag="button"
+  >
+    Item1
+  </DropdownItem>
+  <DropdownItem
+    disabled={false}
+    tag="button"
+  >
+    Item2
+  </DropdownItem>
+</DropdownButton>
+`;
+
+exports[`BatchUpdateButton render render correctly with default state 1`] = `
+<DropdownButton
+  buttonLabel="Batch Update"
+  isOpen={false}
+  onClose={[Function]}
+  onToggle={[Function]}
+  toggleButton={
+    Object {
+      "className": "toggle-default",
+    }
+  }
+>
+  <DropdownItem
+    disabled={false}
+    tag="button"
+  >
+    Item1
+  </DropdownItem>
+  <DropdownItem
+    disabled={false}
+    tag="button"
+  >
+    Item2
+  </DropdownItem>
+</DropdownButton>
+`;

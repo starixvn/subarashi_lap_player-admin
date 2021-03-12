@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
@@ -9,7 +9,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\auth\Fanex.Athena.PlayerAdmin.Auth\Fanex.Athena.PlayerAdmin.Auth.csproj" />
+    <PackageReference Include="IdentityModel.AspNetCore.OAuth2Introspection" Version="5.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="5.0.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Fanex.Athena.PlayerAdmin.API\Fanex.Athena.PlayerAdmin.API.csproj" />
+    <ProjectReference Include="..\Fanex.Athena.PlayerAdmin.Infrastructure\Fanex.Athena.PlayerAdmin.Infrastructure.csproj" />
+    <ProjectReference Include="..\Fanex.Athena.PlayerAdmin.MVC\Fanex.Athena.PlayerAdmin.MVC.csproj" />
   </ItemGroup>
 
 </Project>

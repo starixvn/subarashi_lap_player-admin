@@ -1,48 +1,63 @@
-﻿<!DOCTYPE html>
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    Layout = null;
+    var langCode = System.Globalization.CultureInfo.CurrentUICulture.IetfLanguageTag;
+    var rootUrl = Url.Content("~");
+}
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Fanex.Athena.PlayerAdmin.WebHost</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>@ViewData["Title"] - Player Administration</title>
+    <meta name="description" content="Player Administration" />
+    <base href="@rootUrl" />
+    <environment include="Development">
+        <link href="~/css/dev/vendor.css" asp-append-version="true" rel="stylesheet" type="text/css" />
+    </environment>
+    <environment exclude="Development">
+        <link href="~/css/pro/vendor.css" asp-append-version="true" rel="stylesheet" type="text/css" />
+    </environment>
+    @RenderSection("pagecss", required: false)
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Fanex.Athena.PlayerAdmin.WebHost</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+    @Html.AntiForgeryToken()
+    <div class="wrapper">
+        @RenderBody()
     </div>
+    <script type="text/javascript">
+        var PageLanguage = "@langCode";
+        window.rootUrl = '@rootUrl';
+        @RenderSection("globaljscode", required: false)
+    </script>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2020 - Fanex.Athena.PlayerAdmin.WebHost - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+    <environment include="Development">
+        <script src="~/js/dev/lib/common.chunk.js" asp-append-version="true"></script>
+        <script src="~/js/dev/lib/langHelper.chunk.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="~/js/pro/lib/common.chunk.js" asp-append-version="true"></script>
+        <script src="~/js/pro/lib/langHelper.chunk.js" asp-append-version="true"></script>
+    </environment>
+
+    @if (langCode != "en-US")
+    {
+        <environment exclude="Development">
+            @{
+                var langDevLink = "~/js/build/dev/lib/lang-" + langCode + ".chunk.js";
+                <script src="@langDevLink" asp-append-version="true"></script>
+            }
+        </environment>
+        <environment exclude="Development">
+            @{
+                var langProLink = "~/js/build/pro/lib/lang-" + langCode + ".chunk.js";
+                <script src="@langProLink" asp-append-version="true"></script>
+            }
+        </environment>
+    }
+
+    @await RenderSectionAsync("pagejs", required: false)
 </body>
 </html>

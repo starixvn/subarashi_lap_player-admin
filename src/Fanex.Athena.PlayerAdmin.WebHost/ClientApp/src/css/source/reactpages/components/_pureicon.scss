@@ -1,0 +1,22 @@
+﻿.chevron {
+    width: 8px;
+    height: 8px;
+    border-top: 1px solid #fff;
+    border-right: 1px solid #fff;
+    transition: .3s all cubic-bezier(1, 0.25, 0.25, .8);
+    will-change: transform;
+    display: inline-block;
+
+    &.down {
+        transform: rotate(135deg);
+        margin-bottom: 3px;
+    }
+
+    &.up {
+        transform: rotate(-45deg);
+    }
+
+    &.right {
+        transform: rotate(45deg);
+    }
+}

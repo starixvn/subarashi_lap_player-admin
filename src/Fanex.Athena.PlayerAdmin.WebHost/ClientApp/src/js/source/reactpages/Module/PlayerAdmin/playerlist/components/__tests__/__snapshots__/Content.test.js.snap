@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Content render pagingOption.TotalItem is not null - should match snapshot 1`] = `
+<div
+  className="result-content"
+>
+  <t
+    isAllowInputPageIndex={true}
+    isShowPagingInfo={true}
+    onPaging={[Function]}
+    pageOption={
+      Object {
+        "PageIndex": 1,
+        "PageList": Array [
+          50,
+          100,
+          200,
+          500,
+        ],
+        "PageSize": 50,
+        "TotalItem": 1000,
+      }
+    }
+  />
+  <Connect(GridCaption) />
+  <Connect(DataGrid) />
+</div>
+`;
+
+exports[`Content render pagingOption.TotalItem is null - return null 1`] = `""`;

@@ -1,0 +1,111 @@
+﻿@import "../common/reportcommon.main";
+
+.table > thead > tr > th {
+    background: $bgHeaderTableLevel1;
+    color: $white;
+}
+
+.group-color-box {
+    width: 90%;
+    border: 1px solid #d6d6d6;
+    margin: auto;
+    border-radius: 3px;
+
+    &:before {
+        content: "\00a0 ";
+    }
+}
+
+.page-action {
+    margin: 1.5rem 1.5rem 0;
+
+    .btn {
+        height: 26px;
+        line-height: 28px;
+        padding: 0 1rem;
+    }
+}
+
+.no-customer-border {
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    width: 90%;
+    display: block;
+    margin: auto;
+}
+
+#confirm-delete-comm-group {
+    display: none;
+}
+
+[type="radio"] + label {
+    color: inherit;
+    font-size: inherit !important;
+}
+
+.delete-comm-group, .customer-list-link {
+    cursor: pointer;
+}
+
+div {
+    &.icon-edit, &.icon-delete {
+        padding-left: 0 !important;
+        display: inline-block;
+    }
+}
+
+.col-child.medium.col-comm {
+    width: 8.5%;
+}
+
+.input-field.mult-products-container {
+    float: right;
+    width: 198px;
+    margin: 0;
+    height: 26px;
+
+    input[type="text"] {
+        color: #FFFFFF;
+        background-color: #4e68b6;
+        padding-left: 2px;
+
+        &:hover {
+            background: #7287c5;
+        }
+
+        &:focus {
+            background: #4e68b6;
+        }
+    }
+
+    > a.ui-multiselect .ui-multiselect-icon::before {
+        color: #FFFFFF;
+        top: 5px;
+        padding-right: 2px;
+    }
+}
+
+
+@media only screen and (min-width: 993px) {
+    .no-customer-border {
+        width: 70%;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .group-color-box {
+        width: 50%;
+    }
+
+    .no-customer-border {
+        width: 50%;
+    }
+}
+
+.table > tbody tr td.col-frozen {
+    background-color: #dfe1df;
+    border-color: #ffffff;
+}
+
+.fixed-table-container {
+    min-width: 1100px;
+}

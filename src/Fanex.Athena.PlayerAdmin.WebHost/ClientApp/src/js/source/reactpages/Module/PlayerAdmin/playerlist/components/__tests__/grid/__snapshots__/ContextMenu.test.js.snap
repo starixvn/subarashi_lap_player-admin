@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ContextMenu onMouseEnter - isOpen should be true 1`] = `
+<div
+  className="dropdown context-menu"
+  style={null}
+>
+  <DropdownMenu
+    isOpen={true}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    tag="div"
+  />
+</div>
+`;
+
+exports[`ContextMenu onMouseLeave - isOpen should rely on props.isOpenContextMenu 1`] = `
+<div
+  className="dropdown context-menu"
+  style={null}
+>
+  <DropdownMenu
+    isOpen={false}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    tag="div"
+  />
+</div>
+`;
+
+exports[`ContextMenu onMouseLeave - isOpen should rely on props.isOpenContextMenu 2`] = `
+<div
+  className="dropdown context-menu"
+  style={null}
+>
+  <DropdownMenu
+    isOpen={false}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    tag="div"
+  />
+</div>
+`;
+
+exports[`ContextMenu with default props and inital state - should match snapshot 1`] = `
+<div
+  className="dropdown context-menu"
+  style={null}
+>
+  <DropdownMenu
+    isOpen={false}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    tag="div"
+  />
+</div>
+`;

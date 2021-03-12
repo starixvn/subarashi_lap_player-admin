@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PageLayout  render with correct active tab 1`] = `
+<AppLayout>
+  <BetListLayout
+    afterShowFunc={[Function]}
+    baseCurrency="eur"
+    beforeShowFunc={[Function]}
+    formatDateStringFunc={[Function]}
+    getResourceFunc={[Function]}
+    pageName="BTC"
+    rootUrl="root"
+  >
+    <t>
+      <t
+        isActive={true}
+        label="SingleCustomer"
+        url="BettingTicketCenter/SingleCustomer"
+      />
+      <t
+        isActive={false}
+        label="RefNo"
+        url="BettingTicketCenter/RefNo"
+      />
+      <t
+        isActive={false}
+        label="Running"
+        url="BettingTicketCenter/Running"
+      />
+      <t
+        isActive={false}
+        label="AdvancedSearch"
+        url="BettingTicketCenter/AdvancedSearch"
+      />
+    </t>
+    <div />
+  </BetListLayout>
+</AppLayout>
+`;

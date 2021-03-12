@@ -1,13 +1,15 @@
+using Fanex.Athena.PlayerAdmin.Auth.Controllers;
+using Fanex.Athena.PlayerAdmin.Infrastructure.Configs;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Fanex.Athena.PlayerAdmin.WebHost
 {
@@ -20,28 +22,47 @@ namespace Fanex.Athena.PlayerAdmin.WebHost
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
+            services.AddControllersWithViews(options =>
+            {
+                var policy = new AuthorizationPolicyBuilder()
+                              .RequireAuthenticatedUser()
+                              .Build();
+                options.Filters.Add(new AuthorizeFilter(policy));
+            }).AddRazorRuntimeCompilation();
+
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(options =>
                 {
-                    options.Cookie = new Microsoft.AspNetCore.Http.CookieBuilder
+                    options.Cookie = new CookieBuilder
                     {
                         HttpOnly = true,
-                        SameSite = Microsoft.AspNetCore.Http.SameSiteMode.Unspecified,
+                        SameSite = SameSiteMode.None,
+                        SecurePolicy = CookieSecurePolicy.Always,
                         Name = "lap.playeradmin"
                     };
                     options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
-                    options.LoginPath = "/Home/Error";
+                    options.SlidingExpiration = true;
+                    options.LoginPath = "/Auth/RedirectToLAP";
+                })
+                .AddOAuth2Introspection(options =>
+                {
+                    options.Authority = "http://localhost:5000";
+                    options.ClientId = "playeradmin_api";
+                    options.ClientSecret = "playeradmin_api.secret";
+                    options.SaveToken = true;
                 });
+
+            services.Configure<IdentityServerSetting>(Configuration.GetSection("IdentityServer"));
+            services.AddHttpClient<AuthController>()
+                .SetHandlerLifetime(new TimeSpan(TimeSpan.TicksPerDay));
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
+            var isDev = env.IsDevelopment();
+            if (isDev)
             {
                 app.UseDeveloperExceptionPage();
             }
@@ -50,14 +71,19 @@ namespace Fanex.Athena.PlayerAdmin.WebHost
                 app.UseExceptionHandler("/Home/Error");
             }
 
-            app.UseStaticFiles();
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                OnPrepareResponse = ctx =>
+                {
+                    const int OneYear = 60 * 60 * 24 * 365;
+                    ctx.Context.Response.Headers[Microsoft.Net.Http.Headers.HeaderNames.CacheControl] = isDev ?
+                    "no-cache" : "public,max-age=" + OneYear;
+                }
+            });
 
             app.UseAuthentication();
-
             app.UseRouting();
-
             app.UseAuthorization();
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(

@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NoDataTitle  component render correctly 1`] = `
+<p
+  className="no-info-row center-align"
+  dangerouslySetInnerHTML={
+    Object {
+      "__html": "No Data",
+    }
+  }
+/>
+`;

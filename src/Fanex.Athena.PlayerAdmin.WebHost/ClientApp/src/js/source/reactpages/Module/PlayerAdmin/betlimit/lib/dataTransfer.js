@@ -1,0 +1,50 @@
+﻿import LangHelper from '@jsroot/lib/langHelper';
+import DataService from '@jsroot/lib/DataService';
+import Site from '@jsroot/lib/site';
+import { BetLimitProduct } from './constants';
+
+const Url = {
+    [BetLimitProduct.SB]: 'SportsBookBetLimit',
+    [BetLimitProduct.VS]: 'DcsBetLimit',
+    [BetLimitProduct.VS2]: 'DcsBetLimit',
+    [BetLimitProduct.LT]: 'DcsBetLimit',
+    [BetLimitProduct.NG]: 'NumberGameBetLimit',
+    [BetLimitProduct.KN]: 'RngKenoBetLimit',
+    [BetLimitProduct.AGC]: 'AGCasinoBetLimit',
+    [BetLimitProduct.TG]: 'DcsBetLimit',
+    [BetLimitProduct.I4D]: 'DcsBetLimit'
+};
+
+export default class DataTransfer {
+    static getData(param, callBack) {
+        const url = Site.resolveClientUrl(Url[param.ProductId] + '/GetSetting');
+        DataService.postData(url, param)
+            .then(response => {
+                const { Data, ...setting } = response.data;
+
+                callBack && callBack(Data, setting);
+            })
+            .catch(error => {
+                console.log(error.message);
+                callBack && callBack([], {});
+            });
+    }
+
+    static updateData(param, callBack) {
+        const url = Site.resolveClientUrl(Url[param.ProductId] + '/UpdateSetting');
+        DataService.postData(url, param)
+            .then(response => {
+                const result = response.data;
+                const isSuccess = Number(result.Code) === 0;
+                const title = isSuccess ?
+                    LangHelper.getSingleResource('MessageSuccess') :
+                    LangHelper.getSingleResource('Fail');
+
+                callBack && callBack(title, result.Message, isSuccess);
+            })
+            .catch(error => {
+                console.log(error.message);
+                callBack(LangHelper.getSingleResource('Error'), LangHelper.getSingleResource('ErrorProcessingMsg'), false);
+            });
+    }
+}

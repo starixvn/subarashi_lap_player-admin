@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CollapsiblePanel render isCollapsed = true - should render arrowStyle correctly 1`] = `
+<div
+  className="undefined"
+>
+  <div
+    style={
+      Object {
+        "display": "block",
+      }
+    }
+  >
+    <div>
+      Filter item 1
+    </div>
+    <div>
+      Filter item 2
+    </div>
+  </div>
+  <div
+    className="caret-block"
+  />
+  <div
+    className="filter-handle"
+    onClick={[Function]}
+    style={
+      Object {
+        "background": "#4c6274",
+        "bottom": 0,
+        "cursor": "pointer",
+        "height": "15px",
+        "left": "calc(50% - 10px)",
+        "position": "absolute",
+        "textAlign": "center",
+        "width": "20px",
+      }
+    }
+  >
+    <i
+      className="icon-arrow"
+      style={
+        Object {
+          "background": "#4c6274",
+          "color": "#fff",
+          "float": "left",
+          "height": "15px",
+          "textAlign": "center",
+          "transform": "rotate(180deg)",
+          "width": "20px",
+        }
+      }
+    />
+  </div>
+</div>
+`;
