@@ -1,0 +1,136 @@
+﻿@using System.Linq;
+
+@model MultipleUpdateGroupViewModel
+@{
+    Layout = "_SimpleGridLayout";
+    ViewData["Title"] = ViewResources.UpdateCommissionValue;
+}
+@section pagecss {
+    <environment include="Development">
+        <link href="~/jquery-pages/css/dev/pages/playercommission/index.css" asp-append-version="true" rel="stylesheet" type="text/css" />
+    </environment>
+    <environment exclude="Development">
+        <link href="~/jquery-pages/css/pro/pages/playercommission/index.css" asp-append-version="true" rel="stylesheet" type="text/css" />
+    </environment>
+}
+@section pagejs {
+    <environment include="Development">
+        <script src="~/jquery-pages/js/dev/pages/playercommission/multipleupdategroup.chunk.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="~/jquery-pages/js/pro/pages/playercommission/multipleupdategroup.chunk.js" asp-append-version="true"></script>
+    </environment>
+}
+
+@section Filter
+{
+    <div class="row page-form">
+        <form class="customer-comm-group-edit" id="customer-comm-group-edit"
+              action""
+              method="post">
+            <div class="row">
+                <div class="input-field col l6 m12 s18">
+                    <label>@ViewResources.SelectedCustomers</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col l6 m12 s18">
+                    <div class="multiselect-container">
+                        <select id="ddl-customers"></select>
+                    </div>
+                </div>
+            </div>
+            @Html.Hidden("CustNames", Model.CustNamesStr)
+            @Html.Hidden("CustIds", Model.CustIdsStr)
+            @Html.Hidden("Products", string.Join(",", Model.ProductPermissions.Select(p => p.Key)))
+        </form>
+    </div>
+}
+@section Content
+{
+    <div class="div-content">
+        <div class="row">
+            <div class="input-field col l6 m12 s18">
+                <table id="tbl-comm" class="table tbl-comm elm-update-comm">
+                    <thead class="">
+                        <tr>
+                            <th> @ViewResources.Product</th>
+                            <th class="col-comm"> @ViewResources.Commission (%)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var p in Model.ProductPermissions)
+                        {
+                            if (!p.Value)
+                            {
+                                continue;
+                            }
+                            <tr>
+                                <td>@ViewResources.ResourceManager.GetString("Product" + p.Key)</td>
+                                <td class="text-center">
+                                    <div class="col l4 m4 s4 input-field first-value">
+                                        @{ await GroupComSettingDropDownList("comm1-" + p.Key, GetCommValue(15, 1)); }
+                                    </div>
+                                    <div class="col l4 m4 s4 input-field">
+                                        @{ await GroupComSettingDropDownList("comm2-" + p.Key, GetCommValue(9, 1)); }
+                                    </div>
+                                    <div class="col l4 m4 s4 input-field third-value">
+                                        @{ await GroupComSettingDropDownList("comm3-" + p.Key, GetCommValue(1, 5)); }
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col l6 m12 s18">
+                <div id="div-result" class="div-result hide">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col l6 m12 s18">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-submit">@ViewResources.Save</button>
+                    <button type="button" class="btn btn-cancel">@ViewResources.Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@functions
+{
+    public static IDictionary<int, int> GetCommValue(int max, int increase)
+    {
+        var items = new Dictionary<int, int>();
+        for (int i = 0; i <= max; i++)
+        {
+            items.Add(i * increase, i * increase);
+        }
+
+        return items;
+    }
+}
+
+@{
+    async Task GroupComSettingDropDownList(string name, IDictionary<int, int> items, decimal selectedValue = 0)
+    {
+        <select id="@name" name="@name" class="hide select commission-selection" data-original="@selectedValue">
+            @foreach (var item in items)
+            {
+                if (selectedValue == item.Value)
+                {
+                    <option selected value="@item.Value">@item.Key.ToString("0.#")</option>
+                }
+                else
+                {
+                    <option value="@item.Value">@item.Key.ToString("0.#")</option>
+                }
+            }
+        </select>
+    }
+}
+

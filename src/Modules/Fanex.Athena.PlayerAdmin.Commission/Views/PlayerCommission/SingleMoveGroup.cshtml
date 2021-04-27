@@ -1,0 +1,134 @@
+﻿@using System.Linq;
+
+@model SingleMoveGroupViewModel
+@{
+    Layout = "_SimpleGridLayout";
+    ViewData["Title"] = ViewResources.MoveCommissionGroup;
+    var currentComms = Model.CurrentGroup.CommValues;
+    var hasCommPermissionWrite = Model.HasCommPermissionWrite;
+}
+@section pagecss {
+    <environment include="Development">
+        <link href="~/jquery-pages/css/dev/pages/playercommission/index.css" asp-append-version="true" rel="stylesheet" type="text/css" />
+    </environment>
+    <environment exclude="Development">
+        <link href="~/jquery-pages/css/pro/pages/playercommission/index.css" asp-append-version="true" rel="stylesheet" type="text/css" />
+    </environment>
+}
+@section pagejs {
+    <environment include="Development">
+        <script src="~/jquery-pages/js/dev/pages/playercommission/singlemovegroup.chunk.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="~/jquery-pages/js/pro/pages/playercommission/singlemovegroup.chunk.js" asp-append-version="true"></script>
+    </environment>
+}
+@section Filter
+{
+    <div class="row page-form">
+        <form class="customer-comm-group-edit" id="customer-comm-group-edit"
+              action""
+              method="post">
+            <div class="row">
+                <div class="input-field col l3 m6 s6">
+                    <label>@ViewResources.MoveCommissionGroup</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col l3 m6 s6">
+                    <select id="ddl-group" class="select">
+                        @foreach (var group in Model.Groups)
+                        {
+                            if (Model.CurrentGroup.GroupCommId == group.GroupCommId)
+                            {
+                                <option value="@group.GroupCommId" selected>
+                                    @group.GroupName
+                                </option>
+                            }
+                            else
+                            {
+                                <option value="@group.GroupCommId">
+                                    @group.GroupName
+                                </option>
+                            }
+
+                        }
+                    </select>
+                </div>
+                <div class="input-field col l9 m9 s9">
+                    @if (hasCommPermissionWrite)
+                    {
+                        <div class="btn-group-filter">
+                            <button type="button" class="btn btn-submit btn-update-comm">@ViewResources.UpdateCommissionValue</button>
+                            <button type="button" class="btn btn-submit btn-remove-comm">@ViewResources.RemoveFromGroup</button>
+                        </div>
+                    }
+                </div>
+            </div>
+            @Html.Hidden("CustIds", Model.CustId)
+            @Html.Hidden("Products", string.Join(",", Model.ProductPermissions.Select(p => p.Key)))
+            @Html.Hidden("GroupCommId", Model.CurrentGroup.GroupCommId)
+        </form>
+    </div>
+}
+@section Content
+{
+    <div class="div-content">
+        <div class="row">
+            <div class="col l7 m12 s18">
+                <div id="div-result" class="div-result hide">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col l7 m12 s18">
+                <table id="tbl-comm" class="table tbl-comm">
+                    <thead class="">
+                        <tr>
+                            <th> @ViewResources.Product</th>
+                            <th> @ViewResources.Commission (%)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var p in Model.ProductPermissions)
+                        {
+                            if (!p.Value)
+                            {
+                                continue;
+                            }
+
+                            var comm = currentComms[p.Key] * 100;
+                            <tr>
+                                <td>@ViewResources.ResourceManager.GetString("Product" + p.Key)</td>
+                                <td class="text-center">
+                                    <div class="comm-@p.Key">@(comm.ToString("N2"))</div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col l7 m12 s18">
+                @if (hasCommPermissionWrite)
+                {
+                    <div class="btn-group">
+                        <button type="button" disabled="disabled" class="btn btn-submit btn-save-comm">@ViewResources.Save</button>
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="comm-values hide">
+            @foreach (var group in Model.Groups)
+            {
+                var comms = group.CommValues;
+                foreach (var p in Model.ProductPermissions)
+                {
+                    var comm = comms == null ? 0 : comms[p.Key] * 100;
+                    @Html.Hidden("com-" + p.Key + "-" + group.GroupCommId, comm.ToString("N2"))
+                }
+            }
+        </div>
+    </div>
+}

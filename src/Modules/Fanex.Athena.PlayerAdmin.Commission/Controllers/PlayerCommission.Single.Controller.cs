@@ -1,0 +1,51 @@
+﻿using Fanex.Athena.PlayerAdmin.Commission.MetaModels;
+using Fanex.Athena.PlayerAdmin.Commission.ViewModels;
+using Fanex.Athena.PlayerAdmin.Infrastructure.Constants;
+using Fanex.Athena.PlayerAdmin.Infrastructure.Filters;
+using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
+
+namespace Fanex.Athena.PlayerAdmin.Commission.Controllers
+{
+    public partial class PlayerCommissionController : Controller
+    {
+        [HttpGet]
+        [CookieAuthorize(Roles.SuperAdmin, Roles.CommissionGroup, Policy = Policy.NotAllowSubsidiary)]
+        [AutoBindingMetaModel(bindLicenseeId: true, bindUsername: true, bindClientIP: true, bindLanguage: true, bindUserId: true)]
+        public async Task<ViewResult> SingleMoveGroup([FromQuery] SingleMoveGroupQuery query)
+        {
+            await AssignSessionToQuery(query);
+
+            var groups = await _playerCommService.GetAllCommGroups(query);
+            var currentGroup = await _playerCommService.GetPlayerCommissionGroup(query);
+            var hasCommPermissionWrite = _contextService.IsInRoles(Roles.SuperAdmin, Roles.CommissionGroup_Write);
+            var viewModel = new SingleMoveGroupViewModel(query, groups, currentGroup, hasCommPermissionWrite);
+
+            return View(viewModel);
+        }
+
+        [HttpGet]
+        [CookieAuthorize(Roles.SuperAdmin, Roles.CommissionGroup_Write, Policy = Policy.NotAllowSubsidiary)]
+        [AutoBindingMetaModel(bindLicenseeId: true, bindUsername: true, bindClientIP: true, bindLanguage: true, bindUserId: true)]
+        public async Task<ViewResult> SingleRemoveFromGroup([FromQuery] SingleRemoveFromGroupQuery query)
+        {
+            query.CustIds = query.CustId.ToString();
+            await AssignSessionToQuery(query);
+            var viewModel = new MultipleRemoveFromGroupViewModel(query);
+
+            return View(viewModel);
+        }
+
+        [HttpGet]
+        [CookieAuthorize(Roles.SuperAdmin, Roles.CommissionGroup_Write, Policy = Policy.NotAllowSubsidiary)]
+        [AutoBindingMetaModel(bindLicenseeId: true, bindUsername: true, bindClientIP: true, bindLanguage: true, bindUserId: true)]
+        public async Task<ViewResult> SingleUpdateGroup([FromQuery] SingleUpdateGroupQuery query)
+        {
+            await AssignSessionToQuery(query);
+            var groups = await _playerCommService.GetAllCommGroups(query);
+            var currentGroup = await _playerCommService.GetPlayerCommissionGroup(query);
+            var viewModel = new SingleMoveGroupViewModel(query, groups, currentGroup, true);
+            return View(viewModel);
+        }
+    }
+}

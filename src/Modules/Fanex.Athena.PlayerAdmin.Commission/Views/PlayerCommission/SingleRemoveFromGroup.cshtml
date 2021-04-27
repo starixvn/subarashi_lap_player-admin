@@ -1,0 +1,67 @@
+﻿@using System.Linq;
+
+@model MultipleRemoveFromGroupViewModel
+@{
+    Layout = "_SimpleGridLayout";
+    ViewData["Title"] = ViewResources.RemoveFromGroup;
+}
+@section pagecss {
+    <environment include="Development">
+        <link href="~/jquery-pages/css/dev/pages/playercommission/index.css" asp-append-version="true" rel="stylesheet" type="text/css" />
+    </environment>
+    <environment exclude="Development">
+        <link href="~/jquery-pages/css/pro/pages/playercommission/index.css" asp-append-version="true" rel="stylesheet" type="text/css" />
+    </environment>
+}
+@section pagejs {
+    <environment include="Development">
+        <script src="~/jquery-pages/js/dev/pages/playercommission/singleremovefromgroup.chunk.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="~/jquery-pages/js/pro/pages/playercommission/singleremovefromgroup.chunk.js" asp-append-version="true"></script>
+    </environment>
+}
+@section Content
+{
+    @Html.Hidden("CustIds", Model.CustIdsStr)
+    @Html.Hidden("Products", string.Join(",", Model.ProductPermissions.Select(p => p.Key)))
+    <div class="div-content">
+        <div class="row">
+            <div class="col l4 m8 s12">
+                <div id="div-result" class="div-result hide">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col l4 m8 s12">
+                <p id="remove-confirm-msg">@ViewResources.RemoveThisCustomerFromGroupMsg</p>
+                <p>
+                    <b>@ViewResources.ConfirmCommission</b>
+                </p>
+                <ul class="ul-remove-options">
+                    <li>
+                        <input type="radio" class="with-gap" name="rad-comm" id="rad-keep-comm" value="0" />
+                        <label for="rad-keep-comm">
+                            @ViewResources.KeepCurrentComm
+                        </label>
+                    </li>
+                    <li>
+                        <input type="radio" class="with-gap" name="rad-comm" id="rad-clear-comm" checked="checked" value="1" />
+                        <label for="rad-clear-comm">
+                            @ViewResources.ClearCurrentComm
+                        </label>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col l4 m8 s12">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-submit">@ViewResources.OK</button>
+                    <button type="button" class="btn btn-cancel">@ViewResources.Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+

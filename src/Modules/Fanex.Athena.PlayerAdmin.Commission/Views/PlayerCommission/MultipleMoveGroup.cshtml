@@ -1,0 +1,118 @@
+﻿@using System.Linq;
+
+@model MultipleMoveGroupViewModel
+@{
+    Layout = "_SimpleGridLayout";
+    ViewData["Title"] = ViewResources.MoveCommissionGroup;
+}
+
+@section pagecss {
+    <environment include="Development">
+        <link href="~/jquery-pages/css/dev/pages/playercommission/index.css" asp-append-version="true" rel="stylesheet" type="text/css" />
+    </environment>
+    <environment exclude="Development">
+        <link href="~/jquery-pages/css/pro/pages/playercommission/index.css" asp-append-version="true" rel="stylesheet" type="text/css" />
+    </environment>
+}
+@section pagejs {
+    <environment include="Development">
+        <script src="~/jquery-pages/js/dev/pages/playercommission/multiplemovegroup.chunk.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="~/jquery-pages/js/pro/pages/playercommission/multiplemovegroup.chunk.js" asp-append-version="true"></script>
+    </environment>
+}
+
+@section Filter
+{
+    <div class="row page-form">
+        <form class="customer-comm-group-edit" id="customer-comm-group-edit"
+              action""
+              method="post">
+            <div class="row">
+                <div class="input-field col l3 m6 s9">
+                    <label>@ViewResources.SelectedCustomers</label>
+                </div>
+                <div class="input-field col l3 m6 s9">
+                    <label>@ViewResources.MoveCommissionGroup</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col l3 m6 s9">
+                    <div class="multiselect-container">
+                        <select id="ddl-customers"></select>
+                    </div>
+                </div>
+                <div class="input-field col l3 m6 s9">
+                    <select id="ddl-group" class="select">
+                        @foreach (var group in Model.Groups)
+                        {
+                        <option value="@group.GroupCommId">@group.GroupName</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            @Html.Hidden("CustNames", Model.CustNamesStr)
+            @Html.Hidden("CustIds", Model.CustIdsStr)
+            @Html.Hidden("Products", string.Join(",", Model.ProductPermissions.Select(p => p.Key)))
+            @Html.Hidden("GroupCommId", 0)
+        </form>
+    </div>
+}
+
+@section Content
+{
+    <div class="div-content">
+        <div class="row">
+            <div class="col l6 m12 s18">
+                <div id="div-result" class="div-result hide">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col l6 m12 s18">
+                <table id="tbl-comm" class="table tbl-comm">
+                    <thead class="">
+                        <tr>
+                            <th> @ViewResources.Product</th>
+                            <th> @ViewResources.Commission (%)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var p in Model.ProductPermissions)
+                        {
+                            if (!p.Value)
+                            {
+                                continue;
+                            }
+                        <tr>
+                            <td>@ViewResources.ResourceManager.GetString("Product" + p.Key)</td>
+                            <td class="text-center">
+                                <div class="comm-@p.Key">0.00</div>
+                            </td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col l6 m12 s18">
+                <div class="btn-group">
+                    <button type="button" disabled="disabled" class="btn btn-submit">@ViewResources.Save</button>
+                    <button type="button" class="btn btn-cancel">@ViewResources.Cancel</button>
+                </div>
+            </div>
+        </div>
+        <div class="comm-values hide">
+            @foreach (var group in Model.Groups)
+            {
+                var comms = group.CommValues;
+                foreach (var p in Model.ProductPermissions)
+                {
+            @Html.Hidden("com-" + p.Key + "-" + group.GroupCommId, (comms[p.Key] * 100).ToString("N2"))
+                }
+            }
+        </div>
+    </div>
+}
