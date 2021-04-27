@@ -33,8 +33,11 @@ _ReSharper*/
 node_modules/
 coverage/
 
-src/Fanex.Athena.PlayerAdmin.WebHost/wwwroot
-
-#src/Fanex.Athena.PlayerAdmin.WebHost/ClientApp/src/js/pages/account-info
-#src/Fanex.Athena.PlayerAdmin.WebHost/ClientApp/src/js/pages/betlimit
+**/wwwroot/js
+**/wwwroot/css
+**/wwwroot/jquery-pages/css/dev
+**/wwwroot/jquery-pages/css/pro
+**/wwwroot/jquery-pages/js/dev
+**/wwwroot/jquery-pages/js/pro
+**/webpack-stats-react*
 **/__tests__
