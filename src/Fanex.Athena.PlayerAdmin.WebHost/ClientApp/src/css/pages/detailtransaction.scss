@@ -1,0 +1,34 @@
+﻿@import "../components/react-grid";
+@import "../components/date-range/styles.scss";
+
+.right-text {
+    text-align: right !important;
+}
+
+.center-text {
+    text-align: center !important;
+}
+
+.table-container .body-content {
+    min-height: 200px;
+}
+
+body {
+    min-height: 400px;
+}
+
+.form-group .chk-group {
+    margin-top: 20px;
+    color: #808080;
+
+    .chk-resettled {
+        display: inline-block;
+        width: 20px;
+        cursor: pointer;
+        padding: 2px;
+    }
+
+    .lbl-resettled {
+        cursor: pointer;
+    }
+}

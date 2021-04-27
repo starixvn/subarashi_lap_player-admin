@@ -1,0 +1,23 @@
+﻿@import "../components/react-grid";
+@import "../components/popup";
+@import "../components/_popup-content";
+
+.table {
+    line-height: inherit;
+}
+
+body {
+    background: #fff;
+}
+
+.pa-running-betlist-filter {
+    margin: 10px 0px;
+    padding: 0;
+    position: relative;
+    
+    .pa-running-betlist-export {
+        position: absolute;
+        right: 0;
+        top: 10px;
+    }
+}

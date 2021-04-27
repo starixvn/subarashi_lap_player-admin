@@ -1,0 +1,311 @@
+﻿@import "../abstracts/variables";
+@import "../components/react-grid";
+@import "../components/tab";
+@import "../components/react-multiselect";
+@import "../components/paging";
+@import "../components/forms/checkbox";
+@import "../components/switch";
+@import "../components/dropdown";
+@import "../components/dropdownlabel";
+@import "../components/popup";
+@import "../components/alert/index";
+
+$borderContainer: #d6d6d6;
+
+#app-container {
+    max-width: 1920px;
+}
+
+#paDetailFrame {
+    width: 100%;
+}
+
+.material-icons {
+    font-size: 12px;
+}
+
+.hide {
+    display: none !important;
+}
+
+/*Filter*/
+.page-filter {
+    min-height: 30px;
+
+    .search-option {
+        .dropdown {
+            &-menu {
+                width: 200px;
+            }
+        }
+
+        .keyword {
+            color: #f31111;
+        }
+    }
+
+    .pa-username {
+        .dropdown-menu {
+            overflow: auto;
+            max-height: 280px;
+        }
+    }
+}
+/*End Filter*/
+
+/*Search Option*/
+.search-option {
+    &.dropdown {
+        .dropdown-menu {
+            .dropdown-item {
+                padding: 0;
+            }
+        }
+    }
+
+    .selection-item {
+        margin-bottom: 0;
+        padding: 5px 10px;
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+    }
+}
+/*End Search Option*/
+
+/*Right part*/
+.caret-block {
+    bottom: 0;
+
+    .icon-excel-wrapper {
+        margin-left: 10px;
+        background: $white;
+        text-align: center;
+        width: 24px;
+        height: 22px;
+    }
+    /*select column part*/
+    .multiple-select-container {
+        width: 103px;
+
+        .multiple-select-options-container {
+            width: 200px;
+            left: -110px;
+
+            .multiple-select-options {
+                max-height: 300px;
+            }
+        }
+
+        .multiple-select-label {
+            color: #fff;
+            border-bottom: none;
+
+            .text-display {
+                line-height: 13px;
+            }
+
+            &:hover {
+                color: #dec5c5;
+            }
+        }
+    }
+}
+/*End Right part*/
+
+/*Tab*/
+.header-tab {
+    margin: 0;
+    border-left: 1px solid $borderContainer;
+    border-right: 1px solid $borderContainer;
+    background: #fff;
+
+    .content-tab {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .tabs .tab a {
+        font-size: 12px;
+
+        &.active {
+            color: #f05b1f;
+        }
+    }
+}
+
+iframe {
+    border-width: 0px 1px 1px;
+    border-style: solid;
+    border-color: $borderContainer;
+}
+/*End Tab*/
+
+/*Grid*/
+.btn-outline {
+    .close {
+        padding-left: 5px;
+        text-shadow: none;
+        opacity: 1;
+
+        &:hover {
+            text-shadow: 0 1px 0 #fff;
+        }
+    }
+}
+
+.cell-menu {
+    float: right;
+}
+
+.status-cell {
+    position: relative;
+    min-height: 14px;
+
+    .btn-status-menu {
+        position: absolute;
+        right: 5px;
+        top: calc(50% - 5px);
+        padding: 0;
+        width: 15px;
+        height: 15px;
+    }
+
+    .status-text {
+        margin: 0;
+    }
+}
+
+.result-content {
+    .context-menu, .special-level-menu, .oddsgroup-menu, .status-menu {
+        position: fixed;
+        z-index: 1;
+    }
+
+    .status-0 {
+        color: #00ff00 !important;
+    }
+
+    .status-1 {
+        color: #333333 !important;
+    }
+
+    .status-2 {
+        color: #ff0000 !important;
+    }
+
+    .status-3 {
+        color: #333333 !important;
+    }
+
+    .icon-separator {
+        border-top-width: 2px;
+        border-right-width: 2px;
+        margin: 0 5px;
+    }
+
+    .special-level-menu, .oddsgroup-menu {
+        .dropdown-menu {
+            min-width: 100px;
+        }
+
+        .dropdown-item {
+            padding: 1px 0;
+            border-top: 1px solid #fff;
+            text-align: center;
+
+            &:hover {
+                border: 1px solid #d4d4d4;
+            }
+        }
+    }
+
+    .oddsgroup-menu {
+        .oddsgroup-item {
+            border-top: 1px solid #ddd;
+        }
+    }
+
+    .disabled {
+        cursor: none;
+        pointer-events: none;
+    }
+
+    .dropdown-label-container {
+        &.disabled {
+            background-color: #d5c8c8;
+        }
+    }
+}
+
+/*End Grid*/
+/*Batch Update*/
+.text-center {
+    text-align: center;
+}
+
+#chk-cust-0, .chk-cust {
+    cursor: pointer;
+}
+
+.ddl-batch-update {
+    width: 200px;
+    margin: 0 10px;
+
+    .Select-control, &.is-focused:not(.is-open) > .Select-control, &.is-open > .Select-control {
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+    }
+
+    .Select-control .Select-input {
+        height: 2.2rem;
+        padding: 0;
+        /*caret-color: transparent;*/
+        color: #fff;
+        background-color: transparent;
+        border: none;
+
+        > input {
+            padding: 0;
+        }
+    }
+
+    .Select-placeholder {
+        color: #fff;
+        padding-right: 42px;
+        text-align: right;
+        line-height: 2.2rem;
+        padding-left: 0;
+    }
+
+    &.has-value.is-clearable.Select--single > .Select-control .Select-value {
+        text-align: right;
+    }
+
+    &.has-value.Select--single > .Select-control .Select-value .Select-value-label, &.has-value.is-pseudo-focused.Select--single > .Select-control .Select-value .Select-value-label {
+        color: #fff;
+        cursor: pointer;
+    }
+
+    .Select-arrow {
+        border-top-color: #fff;
+    }
+
+    &.is-open > .Select-control .Select-arrow {
+        border-color: transparent transparent #DEC3BD;
+    }
+
+    &:hover {
+        .Select-placeholder,
+        &.has-value.Select--single > .Select-control .Select-value .Select-value-label, &.has-value.is-pseudo-focused.Select--single > .Select-control .Select-value .Select-value-label {
+            color: #DEC3BD;
+        }
+
+        .Select-arrow-zone > .Select-arrow {
+            border-top-color: #DEC3BD;
+        }
+    }
+}
+
+/*End Batch Update*/

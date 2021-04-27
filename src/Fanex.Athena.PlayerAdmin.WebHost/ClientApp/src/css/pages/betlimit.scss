@@ -1,0 +1,65 @@
+﻿@import "../abstracts/_variables.scss";
+@import "../components/react-grid";
+@import "../components/balloon/balloon.scss";
+@import "../components/forms/checkbox";
+@import "../components/popup";
+@import "../components/alert/index";
+
+body {
+    background: $white;
+}
+
+.pa-betlimit-grid {
+    table {
+        width: 100%;
+
+        > thead > tr > th {
+            background: $bgHeaderTableLevel1;
+            color: $white;
+            font-weight: normal;
+            padding: 4px 5px;
+        }
+
+        td {
+            input {
+                width: 50% !important;
+
+                &.input-changed {
+                    border-bottom: 2px solid $red;
+                }
+
+                &:disabled {
+                    color: $input-disabled-color;
+                    border-bottom: $input-disabled-border;
+                }
+            }
+        }
+    }
+}
+
+.checkbox-group, .pa-betlimit-group {
+    margin-bottom: 10px;
+}
+
+.pa-betlimit-button {
+    margin-top: 10px;
+
+    button {
+        margin-left: 15px;
+        margin-bottom: 10px;
+        float: right;
+        text-transform: uppercase
+    }
+}
+
+.popup-content {
+    padding-top: 10px !important;
+    
+    .btn-alone{
+        margin-right: 0 !important;
+    }
+}
+
+.disabled-text {
+    color: $colorDisabled !important;
+}

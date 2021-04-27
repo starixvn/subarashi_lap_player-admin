@@ -1,0 +1,186 @@
+﻿$button-height: 32px;
+$btnSubmit-background: #f05b1f;
+$btnCancelBackground: #757985;
+$btnOulineSecondaryColor: #6c757d;
+$btnOutlineHorverLightColor: #e6c95a;
+
+%buttonDisabled {
+    background-color: #DFDFDF !important;
+    box-shadow: none;
+    color: #9F9F9F !important;
+    cursor: default;
+    pointer-events: none;
+}
+
+.btn {
+    border: none;
+    border-radius: 2px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    height: $button-height;
+    line-height: $button-height;
+    transition: none;
+    text-decoration: none;
+    text-align: center;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    display: inline-block;
+    outline: 0;
+    padding: 0 2rem;
+    vertical-align: middle;
+    -webkit-tap-highlight-color: transparent;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+
+    &:hover {
+        opacity: 0.9;
+    }
+
+    &:disabled {
+        @extend %buttonDisabled;
+    }
+}
+
+.btn-default {
+    display: inline-block;
+    font-weight: 400;
+    color: #212529;
+    text-align: center;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-color: transparent;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 1.2rem;
+    line-height: 1;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.btn-submit {
+    color: $white;
+    background-color: rgb(240, 91, 31);
+}
+
+.btn-cancel {
+    color: $white;
+    background-color: $btnCancelBackground;
+}
+
+.btn-apply {
+    background-color: #4e68b6;
+    color: $white;
+
+    &:hover {
+        background: lighten(#4e68b6, 10%);
+    }
+
+    &:focus {
+        background: #4e68b6;
+    }
+}
+
+button {
+    &:focus {
+        outline: none;
+    }
+
+    &:disabled {
+        @extend %buttonDisabled;
+    }
+
+    &:not(:disabled) {
+        cursor: pointer;
+    }
+}
+
+.btn-outline {
+    display: inline-block;
+    background-color: transparent;
+    border: 1px solid transparent;
+    padding: 4px 10px;
+    font-size: 12px;
+    border-radius: 3px;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+
+    &-light {
+        color: #fff;
+        border-color: #fff;
+
+        .close {
+            color: #fff;
+        }
+
+        &:hover {
+            color: $btnOutlineHorverLightColor;
+            border-color: $btnOutlineHorverLightColor;
+
+            .close {
+                color: $btnOutlineHorverLightColor;
+
+                &:not(:disabled):not(.disabled) {
+                    &:hover {
+                        opacity: .75;
+                    }
+                }
+            }
+        }
+    }
+
+    &-secondary {
+        color: $btnOulineSecondaryColor;
+        border-color: $btnOulineSecondaryColor;
+
+        &:hover {
+            color: #fff;
+            background-color: $btnOulineSecondaryColor;
+            border-color: $btnOulineSecondaryColor;
+        }
+    }
+}
+
+.close {
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1;
+    color: #000;
+    text-shadow: 0 1px 0 #fff;
+    opacity: .5;
+
+    &:hover {
+        color: #000;
+        text-decoration: none;
+    }
+}
+
+button.close {
+    padding: 0;
+    background-color: transparent;
+    border: 0;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.btn-icon {
+    padding: 0 4px;
+    font-size: 12px;
+    border: none;
+    cursor: pointer;
+
+    .material-icons {
+        font-size: 18px;
+    }
+}
+
+.btn-link {
+    font-weight: 400;
+    color: #007bff;
+    text-decoration: none;
+
+    &:hover {
+        color: #0056b3;
+        text-decoration: underline;
+    }
+}
