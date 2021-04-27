@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using System;
 
 namespace Fanex.Athena.PlayerAdmin.WebHost
@@ -15,9 +17,22 @@ namespace Fanex.Athena.PlayerAdmin.WebHost
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
+            .ConfigureAppConfiguration((builderContext, config) =>
+            {
+                var env = builderContext.HostingEnvironment;
+                config.SetBasePath(env.ContentRootPath);
+                config.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
+                config.AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true, reloadOnChange: true);
+                config.AddEnvironmentVariables();
+            })
+              .ConfigureWebHostDefaults(webBuilder =>
+              {
+                  webBuilder.UseStartup<Startup>();
+              })
+                .ConfigureLogging(logging =>
                 {
-                    webBuilder.UseStartup<Startup>();
+                    logging.ClearProviders();
+                    logging.AddConsole();
                 });
     }
 }

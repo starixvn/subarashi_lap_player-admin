@@ -1,16 +1,12 @@
-﻿var projectRoot = require('../config/path').projectRoot;
+﻿var projectRoot = require('./path').projectRoot;
 
 var alias = {
-    // vendors
-    'vendor-materialize': projectRoot + "/www/js/source/vendors/materialize/materialize.js",
-    // common
-    common: projectRoot + "/www/js/source/common",
-    lib: projectRoot + "/www/js/source/lib",
-    extensions: projectRoot + "/www/js/source/extensions",
-    components: projectRoot + "/www/js/source/components",
-    helpers: projectRoot + "/www/js/source/helpers",
-    pages: projectRoot + "/www/js/source/pages"
-   
+    'vendor-materialize': projectRoot + "/ClientApp/src/jquery-pages/js/vendors/materialize/materialize.js",
+    common: projectRoot + "/ClientApp/src/jquery-pages/js/common",
+    lib: projectRoot + "/ClientApp/src/jquery-pages/js/lib",
+    extensions: projectRoot + "/ClientApp/src/jquery-pages/js/extensions",
+    components: projectRoot + "/ClientApp/src/jquery-pages/js/components",
+    helpers: projectRoot + "/ClientApp/src/jquery-pages/js/helpers",   
 };
 
 module.exports = alias;

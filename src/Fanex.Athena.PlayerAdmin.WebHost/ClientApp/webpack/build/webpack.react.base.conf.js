@@ -1,12 +1,11 @@
-﻿var path = require('path');
-var alias = require('../config/aliasReact');
+﻿var alias = require('../config/aliasReact');
 var pathConfig = require('../config/pathReact');
 var pluginGenerator = require('../config/pluginReact');
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 
 function generateConfig(environment) {
-    var jsPath = `${pathConfig.scriptPaths.build}/${environment}/reactpages`;
-    var cssPath = `${pathConfig.cssPaths.build}/${environment}/reactpages`;
+    var jsPath = `${pathConfig.scriptPaths.build}/${environment}`;
+    var cssPath = `${pathConfig.cssPaths.build}/${environment}`;
     var commonConfigs = {
         resolve: {
             alias: alias,
@@ -14,55 +13,30 @@ function generateConfig(environment) {
         },
         entry: {
             /*js*/
-
             [`${jsPath}/lib/langHelper`]: pathConfig.scriptPaths.languageResource,
             [`${jsPath}/lib/lang-zh-CN`]: pathConfig.scriptPaths.langCN,
-            [`${jsPath}/lib/lang-zh-Hans`]: pathConfig.scriptPaths.langHans,
-            [`${jsPath}/lib/lang-zh-TW`]: pathConfig.scriptPaths.langTW,
 
-            [`${jsPath}/subsidiaryperformance/subsidiaryperformance`]: pathConfig.scriptPaths.subsidiaryperformance,
-            [`${jsPath}/notification/notification`]: pathConfig.scriptPaths.notification,
-            [`${jsPath}/report/licenseewlbytimezone`]: pathConfig.scriptPaths.licenseewlbytimezone,
-            [`${jsPath}/exchangewl/exchangewl`]: pathConfig.scriptPaths.exchangewl,
-            [`${jsPath}/report/speciallicenseewl`]: pathConfig.scriptPaths.speciallicenseewl,
-            [`${jsPath}/bettingticketscenter/advancedsearch`]: pathConfig.scriptPaths.bettingticketscenter_advancedsearch,
-            [`${jsPath}/bettingticketscenter/singlecustomer`]: pathConfig.scriptPaths.bettingticketscenter_singlecustomer,
-            [`${jsPath}/bettingticketscenter/refno`]: pathConfig.scriptPaths.bettingticketscenter_refno,
-            [`${jsPath}/bettingticketscenter/running`]: pathConfig.scriptPaths.bettingticketscenter_running,
-            [`${jsPath}/report/casinoturnover`]: pathConfig.scriptPaths.casinoturnover,
-            [`${jsPath}/playeradmin/playerlist`]: pathConfig.scriptPaths.playerlist,
-            [`${jsPath}/playeradmin/accountinfo`]: pathConfig.scriptPaths.accountinfo,
-            [`${jsPath}/playeradmin/runningbetlist`]: pathConfig.scriptPaths.playerrunningbetlist,
-            [`${jsPath}/playeradmin/betlimit`]: pathConfig.scriptPaths.playerbetlimit,
-            [`${jsPath}/playeradmin/single-customer`]: pathConfig.scriptPaths.singleCustomer,
-            [`${jsPath}/playeradmin/playerwinloss`]: pathConfig.scriptPaths.playerwinloss,
-            [`${jsPath}/playeradmin/statement`]: pathConfig.scriptPaths.statement,
-            [`${jsPath}/playeradmin/detailtransaction`]: pathConfig.scriptPaths.detailtransaction,
-            [`${jsPath}/report/dailybets`]: pathConfig.scriptPaths.dailybets,
-            [`${jsPath}/exchangevoided/exchangevoided`]: pathConfig.scriptPaths.exchangevoided,
-            [`${jsPath}/customer/playersegmentation/main`]: pathConfig.scriptPaths.playersegmentation,
-            [`${jsPath}/customer/playersegmentation/betlist`]: pathConfig.scriptPaths.playersegmentation_betlist,
-
-            /*css*/
-            [`${cssPath}/vendor`]: pathConfig.cssPaths.layout,
-            [`${cssPath}/subsidiaryperformance/index`]: pathConfig.cssPaths.subsidiaryperformance,
-            [`${cssPath}/licenseewlbytimezone/index`]: pathConfig.cssPaths.licenseewlbytimezone,
-            [`${cssPath}/notification/index`]: pathConfig.cssPaths.notification,
-            [`${cssPath}/exchangewl/index`]: pathConfig.cssPaths.exchangewl,
-            [`${cssPath}/speciallicenseewl/index`]: pathConfig.cssPaths.speciallicenseewl,
-            [`${cssPath}/bettingticketscenter/index`]: pathConfig.cssPaths.bettingticketscenter,
             [`${cssPath}/betlist/index`]: pathConfig.cssPaths.betlist,
-            [`${cssPath}/casinoturnover/index`]: pathConfig.cssPaths.casinoturnover,
-            [`${cssPath}/playeradmin/index`]: pathConfig.cssPaths.playeradmin,
-            [`${cssPath}/playeradmin/account-info`]: pathConfig.cssPaths.accountInfo,
-            [`${cssPath}/playeradmin/running-betlist`]: pathConfig.cssPaths.playerrunningbetlist,
-            [`${cssPath}/playeradmin/betlimit`]: pathConfig.cssPaths.playerbetlimit,
-            [`${cssPath}/playeradmin/playerwinloss`]: pathConfig.cssPaths.playerwinloss,
-            [`${cssPath}/playeradmin/statement`]: pathConfig.cssPaths.statement,
-            [`${cssPath}/playeradmin/detailtransaction`]: pathConfig.cssPaths.detailtransaction,
-            [`${cssPath}/dailybets/index`]: pathConfig.cssPaths.dailybets,
-            [`${cssPath}/exchangevoided/index`]: pathConfig.cssPaths.exchangevoided,
-            [`${cssPath}/customer/playersegmentation/index`]: pathConfig.cssPaths.playersegmentation,
+            [`${cssPath}/betlist/bettingticketscenter`]: pathConfig.cssPaths.bettingticketscenter,
+
+            [`${jsPath}/playerlist`]: pathConfig.scriptPaths.playerlist,
+            [`${jsPath}/accountinfo`]: pathConfig.scriptPaths.accountinfo,
+            [`${jsPath}/runningbetlist`]: pathConfig.scriptPaths.playerrunningbetlist,
+            [`${jsPath}/betlimit`]: pathConfig.scriptPaths.playerbetlimit,
+            [`${jsPath}/single-customer`]: pathConfig.scriptPaths.singleCustomer,
+            [`${jsPath}/playerwinloss`]: pathConfig.scriptPaths.playerwinloss,
+            [`${jsPath}/statement`]: pathConfig.scriptPaths.statement,
+            [`${jsPath}/detailtransaction`]: pathConfig.scriptPaths.detailtransaction,
+
+            // /*css*/
+            [`${cssPath}/vendor`]: pathConfig.cssPaths.layout,
+            [`${cssPath}/index`]: pathConfig.cssPaths.playeradmin,
+            [`${cssPath}/account-info`]: pathConfig.cssPaths.accountInfo,
+            [`${cssPath}/running-betlist`]: pathConfig.cssPaths.playerrunningbetlist,
+            [`${cssPath}/betlimit`]: pathConfig.cssPaths.playerbetlimit,
+            [`${cssPath}/playerwinloss`]: pathConfig.cssPaths.playerwinloss,
+            [`${cssPath}/statement`]: pathConfig.cssPaths.statement,
+            [`${cssPath}/detailtransaction`]: pathConfig.cssPaths.detailtransaction,
         },
         output: {
             path: pathConfig.projectRoot,
@@ -114,11 +88,17 @@ function generateConfig(environment) {
                     default: false,
                     vendors: false,
                     common: {
-                        name: 'lib/common',
+                        name: 'lib/vendor',
                         test: /(node_modules)/,
                         minChunks: 2,
                         priority: -10
-                    }
+                    },
+                    // default: {
+                    //     name: 'lib/common',
+                    //     minChunks: 2,
+                    //     priority: -20,
+                    //     reuseExistingChunk: true,
+                    //   },
                 }
             }
         }

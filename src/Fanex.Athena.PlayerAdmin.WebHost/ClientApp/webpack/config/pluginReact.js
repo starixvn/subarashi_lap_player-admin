@@ -13,7 +13,7 @@ function generatePlugins(environment) {
             exclude: ['fonts', 'images', 'dev', 'pro']
         }),
         new Visualizer({
-            filename: './webpack-stats-react.html'
+            filename: './wwwroot/webpack-stats-react.html'
         }),
         new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
         new WebpackBuildNotifierPlugin({

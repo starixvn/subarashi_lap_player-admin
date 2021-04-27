@@ -32,3 +32,6 @@ _ReSharper*/
 /TestReports
 node_modules/
 coverage/
+
+src/Fanex.Athena.PlayerAdmin.WebHost/wwwroot
+src/Fanex.Athena.PlayerAdmin.WebHost/ClientApp

@@ -1,1 +1,0 @@
-﻿export const SET_GRID_DATA = 'PLAYER_WINLOSS/SET_GRID_DATA';

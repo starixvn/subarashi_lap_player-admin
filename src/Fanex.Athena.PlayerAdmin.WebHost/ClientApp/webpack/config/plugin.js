@@ -1,5 +1,5 @@
 ﻿var webpack = require('webpack');
-var pathConfig = require('../config/path');
+var pathConfig = require('./path');
 var CleanWebpackPlugin = require('clean-webpack-plugin');
 var WebpackBuildNotifierPlugin = require('webpack-build-notifier');
 var Visualizer = require('webpack-visualizer-plugin');

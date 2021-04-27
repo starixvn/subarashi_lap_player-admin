@@ -10,7 +10,7 @@ var environment = "dev";
 var baseConfigs = baseWebpackConfigGenerator(environment);
 var cssRootPath = `${pathConfig.cssPaths.build}/${environment}`;
 var jsRootPath = `${pathConfig.scriptPaths.build}/${environment}`;
-var excludeOption = ['reactpages'];
+var excludeOption = [];
 module.exports = merge(baseConfigs,
     utils.setDefinePlugin('process.env.NODE_ENV', 'development'),
     {

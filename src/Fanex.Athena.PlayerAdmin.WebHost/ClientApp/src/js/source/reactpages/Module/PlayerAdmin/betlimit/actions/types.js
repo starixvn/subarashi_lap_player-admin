@@ -1,1 +1,0 @@
-﻿export const SET_ALERT_OPTION = "SET_ALERT_OPTION";

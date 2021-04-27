@@ -81,15 +81,15 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./www/css/source/reactpages/main.scss");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./ClientApp/src/css/main.scss");
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./www/css/source/reactpages/main.scss":
-/*!*********************************************!*\
-  !*** ./www/css/source/reactpages/main.scss ***!
-  \*********************************************/
+/***/ "./ClientApp/src/css/main.scss":
+/*!*************************************!*\
+  !*** ./ClientApp/src/css/main.scss ***!
+  \*************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 

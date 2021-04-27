@@ -1,7 +1,7 @@
-﻿var projectRoot = require('../config/path').projectRoot;
+﻿var projectRoot = require('./pathReact').projectRoot;
 
 var alias = {
-    '@jsroot': projectRoot + '/www/js/source/reactpages'
+    '@jsroot': projectRoot + '/ClientApp/src/js'
 };
 
 module.exports = alias;

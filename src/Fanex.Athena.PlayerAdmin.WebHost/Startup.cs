@@ -1,26 +1,58 @@
+using Fanex.Athena.PlayerAdmin.API.Extensions;
 using Fanex.Athena.PlayerAdmin.Auth.Controllers;
-using Fanex.Athena.PlayerAdmin.Infrastructure.Configs;
+using Fanex.Athena.PlayerAdmin.BetLimit.Extensions;
+using Fanex.Athena.PlayerAdmin.Commission.Extensions;
+using Fanex.Athena.PlayerAdmin.Infrastructure.ConsoleClient;
+using Fanex.Athena.PlayerAdmin.Infrastructure.Constants;
+using Fanex.Athena.PlayerAdmin.Infrastructure.Extensions;
+using Fanex.Athena.PlayerAdmin.Infrastructure.JsonConverter;
+using Fanex.Athena.PlayerAdmin.Infrastructure.Policies;
+using Fanex.Athena.PlayerAdmin.Infrastructure.Settings;
+using Fanex.Athena.PlayerAdmin.Infrastructure.Storages;
+using Fanex.Athena.PlayerAdmin.MVC.Extensions;
+using Fanex.Athena.PlayerAdmin.MVC.Services;
+using Fanex.Athena.PlayerAdmin.MVC.Services.Interfaces;
+using Fanex.Data;
+using Fanex.Data.SqlServer;
+using Fanex.Logging;
+using Fanex.Logging.RabbitMQ;
+using Fanex.Logging.Sentry.RavenClient;
+using Fanex.RemotingRef;
+using MediatR;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.HttpOverrides;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
+using SharpRaven;
+using StackExchange.Redis;
 using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Fanex.Athena.PlayerAdmin.WebHost
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration configuration, IWebHostEnvironment hostingEnvironment)
         {
             Configuration = configuration;
+            HostingEnvironment = hostingEnvironment;
         }
 
         public IConfiguration Configuration { get; }
+
+        public IWebHostEnvironment HostingEnvironment { get; }
 
         public void ConfigureServices(IServiceCollection services)
         {
@@ -30,45 +62,191 @@ namespace Fanex.Athena.PlayerAdmin.WebHost
                               .RequireAuthenticatedUser()
                               .Build();
                 options.Filters.Add(new AuthorizeFilter(policy));
-            }).AddRazorRuntimeCompilation();
+            })
+            .AddJsonOptions(jsonOptions =>
+            {
+                jsonOptions.JsonSerializerOptions.PropertyNamingPolicy = null;
+                jsonOptions.JsonSerializerOptions.Converters.Add(new StringToDateTimeConverter());
+                jsonOptions.JsonSerializerOptions.Converters.Add(new EmptyStringToNullConverter());
+            });
 
+            services.AddAuthorization(options =>
+            {
+                options.NotAllowSubsidiaryPolicy();
+            });
+
+            services.Configure<RequestLocalizationOptions>(options =>
+            {
+                var supportedCultures = new List<CultureInfo>
+                {
+                    new CultureInfo("en-US"),
+                    new CultureInfo("zh-CN")
+                };
+
+                options.DefaultRequestCulture = new RequestCulture("en-US");
+                options.SupportedCultures = supportedCultures;
+                options.SupportedUICultures = supportedCultures;
+
+                options.AddInitialRequestCultureProvider(new CustomRequestCultureProvider(context =>
+                {
+                    var lang = Languages.LanguageCodeMappers[context.User.FindFirst("Language")?.Value ?? "en"];
+                    return Task.FromResult(new ProviderCultureResult(lang));
+                }));
+            });
+
+            services.AddSingleton<IFileProvider>(new PhysicalFileProvider(HostingEnvironment.ContentRootPath));
+            services.AddSingleton<ITicketStore, RedisCacheTicketStore>();
+
+            var identityServer = Configuration.GetSection("IdentityServer").Get<IdentityServerSetting>();
+            var cookieSetting = new CookieSetting();
+            Configuration.GetSection("Cookie").Bind(cookieSetting);
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(options =>
                 {
                     options.Cookie = new CookieBuilder
                     {
                         HttpOnly = true,
-                        SameSite = SameSiteMode.None,
-                        SecurePolicy = CookieSecurePolicy.Always,
-                        Name = "lap.playeradmin"
+                        SameSite = cookieSetting.SameSite,
+                        SecurePolicy = cookieSetting.Secure,
+                        IsEssential = true,
+                        Name = cookieSetting.Name
                     };
-                    options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
-                    options.SlidingExpiration = true;
-                    options.LoginPath = "/Auth/RedirectToLAP";
+
+                    options.ExpireTimeSpan = TimeSpan.FromMinutes(cookieSetting.ExpireTime);
+                    options.SlidingExpiration = cookieSetting.SlidingExpiration;
+                    options.LoginPath = cookieSetting.LoginPath;
+                    options.AccessDeniedPath = cookieSetting.DeniedPath;
+                    options.SessionStore = services.BuildServiceProvider().GetRequiredService<ITicketStore>();
                 })
                 .AddOAuth2Introspection(options =>
                 {
-                    options.Authority = "http://localhost:5000";
-                    options.ClientId = "playeradmin_api";
-                    options.ClientSecret = "playeradmin_api.secret";
+                    options.Authority = identityServer.Host;
+                    options.ClientId = identityServer.CredentialsAPI.ClientId;
+                    options.ClientSecret = identityServer.CredentialsAPI.ClientSecret;
                     options.SaveToken = true;
+                    options.SkipTokensWithDots = true;
+                    options.EnableCaching = identityServer.CacheDuration > 0;
+                    options.CacheKeyPrefix = "OAuth2Introspection:";
+                    options.CacheDuration = TimeSpan.FromMinutes(identityServer.CacheDuration);
+                    options.DiscoveryPolicy.RequireHttps = false;
                 });
 
+            services.AddAntiforgery(options =>
+            {
+                options.FormFieldName = "__RequestVerificationToken";
+                options.HeaderName = "X-CSRF-TOKEN-PLAYERADMIN";
+                options.Cookie.SameSite = cookieSetting.SameSite;
+                options.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
+                options.Cookie.Name = "lap.playeradmin.antiforgery";
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+                options.SuppressXFrameOptionsHeader = true;
+            });
+
+            var redisSetting = Configuration.GetSection("Redis").Get<RedisSetting>();
+            ConfigDistributedCache(services, redisSetting);
+            ConfigDataProtection(services, redisSetting);
+            ConfigLogging(services);
+            ConfigFanexData();
+
+            RefDataTypeContainer
+                .ConnectTo(new Uri(Configuration["RemotingRefUrl"]))
+                .FromApplication("LAP.PlayerAdmin");
+
+            SetupMediatR(services);
+
+            services.AddInfrastructure();
+            services.AddAPI();
+            services.AddMVC();
+            services.AddBetLimit();
+            services.AddCommission();
+
+            var appSettingSection = Configuration.GetSection("App");
+            services.Configure<AppSetting>(appSettingSection);
+            var appSetting = appSettingSection.Get<AppSetting>();
+            services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(
+                                  builder =>
+                                  {
+                                      builder.SetIsOriginAllowed(domain =>
+                                      {
+                                          if (!appSetting.AllowedCrossDomains.Any())
+                                          {
+                                              return true;
+                                          }
+
+                                          var clientDomain = new Uri(domain).Authority;
+                                          var isValid = appSetting.AllowedCrossDomains.Any(allowedCrossDomain => clientDomain.EndsWith(allowedCrossDomain, StringComparison.OrdinalIgnoreCase));
+                                          return isValid;
+                                      })
+                                      .AllowAnyMethod()
+                                      .AllowAnyHeader();
+                                  });
+            });
+
             services.Configure<IdentityServerSetting>(Configuration.GetSection("IdentityServer"));
+            services.Configure<BetLimitApiSetting>(Configuration.GetSection("BetLimitApi"));
+            services.Configure<FunctionAllowedProductsSetting>(Configuration.GetSection("FunctionAllowedProducts"));
+
             services.AddHttpClient<AuthController>()
-                .SetHandlerLifetime(new TimeSpan(TimeSpan.TicksPerDay));
+                .SetHandlerLifetime(TimeSpan.FromDays(1));
+
+            var statement = Configuration.GetSection("Statement");
+            services.Configure<StatementSetting>(statement);
+            services.AddHttpClient<IPlayerStatementService, PlayerStatementService>(client =>
+            {
+                client.BaseAddress = new Uri(statement.Get<StatementSetting>().InternalHost);
+            }).SetHandlerLifetime(TimeSpan.FromDays(1));
+
+            var consoleClient = new ConsoleClient();
+            Configuration.GetSection("ConsoleClient").Bind(consoleClient);
+            services.AddHttpClient<IReportApiClient, ReportApiClient>(client =>
+            {
+                client.BaseAddress = new Uri(consoleClient.Report.Host);
+                client.DefaultRequestHeaders.Add("AUTH_TOKEN", consoleClient.Report.AuthKey);
+            }).SetHandlerLifetime(TimeSpan.FromDays(1));
+
+            services.AddHttpClient<IBetListApiClient, BetListApiClient>(client =>
+            {
+                client.BaseAddress = new Uri(consoleClient.BetList.Host);
+                client.DefaultRequestHeaders.Add("BETLIST_TOKEN_KEY", consoleClient.BetList.AuthKey);
+            }).SetHandlerLifetime(TimeSpan.FromDays(1));
+
+            services.AddHttpClient<ILgApiClient, LgApiClient>(client =>
+            {
+                client.BaseAddress = new Uri(consoleClient.Lg.Host);
+                client.DefaultRequestHeaders.Add("LGAPI_TOKEN_KEY", consoleClient.Lg.AuthKey);
+            }).SetHandlerLifetime(TimeSpan.FromDays(1));
+
+            services.AddHttpClient();
+
+            services.AddHealthChecks();
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app)
         {
-            var isDev = env.IsDevelopment();
+            var forwardOptions = new ForwardedHeadersOptions
+            {
+                ForwardedHeaders = ForwardedHeaders.All,
+            };
+            forwardOptions.KnownNetworks.Clear();
+            forwardOptions.KnownProxies.Clear();
+            app.UseForwardedHeaders(forwardOptions);
+
+            var isDev = HostingEnvironment.IsDevelopment();
             if (isDev)
             {
                 app.UseDeveloperExceptionPage();
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+                app.UseWhen(
+                    context => !context.Request.Path.StartsWithSegments("/api", StringComparison.OrdinalIgnoreCase),
+                    a => a.UseExceptionHandler("/Home/Error"));
+
+                app.UseHsts();
+                app.UseHttpsRedirection();
             }
 
             app.UseStaticFiles(new StaticFileOptions
@@ -78,18 +256,101 @@ namespace Fanex.Athena.PlayerAdmin.WebHost
                     const int OneYear = 60 * 60 * 24 * 365;
                     ctx.Context.Response.Headers[Microsoft.Net.Http.Headers.HeaderNames.CacheControl] = isDev ?
                     "no-cache" : "public,max-age=" + OneYear;
+                    ctx.Context.Response.Headers[Microsoft.Net.Http.Headers.HeaderNames.AccessControlAllowOrigin] = "*";
                 }
             });
 
-            app.UseAuthentication();
+            app.UseHealthChecks("/health");
+
             app.UseRouting();
+            app.UseCors();
+            app.UseAuthentication();
             app.UseAuthorization();
+            app.UseRequestLocalization();
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapDefaultControllerRoute();
             });
+        }
+
+        private static void ConfigDistributedCache(IServiceCollection services, RedisSetting redisSetting)
+        {
+            services.AddStackExchangeRedisCache(options =>
+            {
+                options.ConfigurationOptions = new ConfigurationOptions
+                {
+                    KeepAlive = 180,
+                    Password = redisSetting.Pass,
+                    DefaultDatabase = redisSetting.Database,
+                    EndPoints =
+                    {
+                        { redisSetting.Server, redisSetting.Port }
+                    },
+                };
+                options.InstanceName = redisSetting.AppName;
+            });
+        }
+
+        private static void ConfigDataProtection(IServiceCollection services, RedisSetting redisSetting)
+        {
+            var configRedix = new ConfigurationOptions
+            {
+                EndPoints =
+                {
+                    { redisSetting.Server, redisSetting.Port }
+                },
+                KeepAlive = redisSetting.KeepAlive,
+                Password = redisSetting.Pass
+            };
+            var redis = ConnectionMultiplexer.Connect(configRedix);
+            services.AddDataProtection()
+                .PersistKeysToStackExchangeRedis(redis, redisSetting.ProtectionDataKey)
+                .SetDefaultKeyLifetime(TimeSpan.FromDays(60))
+                .SetApplicationName(redisSetting.AppName);
+        }
+
+        private static void SetupMediatR(IServiceCollection services)
+        {
+            var assemblies = AppDomain.CurrentDomain.GetAssemblies().Where(x => x.FullName.StartsWith("Fanex.Athena.PlayerAdmin"));
+            services.AddMediatR(assemblies.ToArray());
+        }
+
+        private void ConfigFanexData()
+        {
+            var listConnectionName = Configuration.GetSection("ConnectionStrings").GetChildren().Select(_ => _.Key);
+            var connectionStrings = new Dictionary<string, ConnectionConfiguration>(listConnectionName
+                .Select(connectionName => new KeyValuePair<string, ConnectionConfiguration>(connectionName,
+                    new ConnectionConfiguration(connectionName, Configuration.GetConnectionString(connectionName)))
+                ));
+
+            DbSettingProviderManager
+                .StartNewSession()
+                .WithSqlServer(resourcePath: "~/App_Data/SpConfig/FanexSpName.xml")
+                .Use(connectionStrings)
+                .Run();
+        }
+
+        private void ConfigLogging(IServiceCollection services)
+        {
+            var loggingSetting = Configuration.GetSection("LoggingSetting").Get<LoggingSetting>();
+
+            var logEngines = new List<ILogEngine>(2);
+            if (loggingSetting.RabbitEngine != null)
+            {
+                logEngines.Add(new RabbitMQLogging(loggingSetting.RabbitEngine.ConnectionString));
+            }
+            if (loggingSetting.SentryEngine != null)
+            {
+                logEngines.Add(new SentryLogging(new SentryEngineOptions
+                {
+                    Dsn = new Dsn(loggingSetting.SentryEngine.BackendDsn)
+                }));
+            }
+
+            LogManager
+             .SetDefaultLogCategory(loggingSetting.Category)
+             .Use(logEngines);
+            services.AddSingleton(_ => Logger.Log);
         }
     }
 }

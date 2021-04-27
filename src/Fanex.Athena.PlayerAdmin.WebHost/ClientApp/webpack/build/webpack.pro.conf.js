@@ -9,7 +9,6 @@ var environment = "pro";
 var baseConfigs = baseWebpackConfigGenerator(environment);
 var cssRootPath = `${pathConfig.cssPaths.build}/${environment}`;
 var jsRootPath = `${pathConfig.scriptPaths.build}/${environment}`;
-var excludeOption = ['reactpages'];
 
 module.exports = merge(baseConfigs,
     utils.setDefinePlugin('process.env.NODE_ENV', 'production'),
@@ -19,17 +18,14 @@ module.exports = merge(baseConfigs,
         plugins: [
             new CleanWebpackPlugin([`${jsRootPath}`], {
                 root: process.cwd(),
-                exclude: excludeOption
             }),
 
             new CleanWebpackPlugin([`${cssRootPath}/*.css`,`${cssRootPath}/*.map`,`${cssRootPath}/*.js`], {
                 root: process.cwd(),
-                exclude: excludeOption
             }),
 
             new CleanWebpackPlugin([`${cssRootPath}/pages/*/*.css`,`${cssRootPath}/pages/*/*.js`,`${cssRootPath}/pages/*/*.map`], {
                 root: process.cwd(),
-                exclude: excludeOption
             }),
 
         ]

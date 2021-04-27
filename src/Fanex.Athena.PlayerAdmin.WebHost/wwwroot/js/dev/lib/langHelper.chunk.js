@@ -86,9 +86,9 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./www/js/source/common/languages/ViewResources.js":
+/***/ "./ClientApp/src/js/lib/languages/ViewResources.js":
 /*!*********************************************************!*\
-  !*** ./www/js/source/common/languages/ViewResources.js ***!
+  !*** ./ClientApp/src/js/lib/languages/ViewResources.js ***!
   \*********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -323,6 +323,7 @@ window._language_en_US = {
   DeleteCommissionGroup: "Delete Commission group",
   DeleteGroup: "Delete Group",
   Deposit: "Deposit",
+  Deposited: "Deposited",
   DetailedBetlist: "Detailed Bet list",
   Details: "Details",
   DetailTransaction: "Detail Transaction",
@@ -421,7 +422,7 @@ window._language_en_US = {
   Group: "Group",
   GroupBy: "Group By",
   GroupColor: "Group Color",
-  GroupCommission: "Group commission",
+  GroupCommission: "Group Commission",
   GroupCommNote: "If default group is selected, all newly registered customers will be automatically assigned to this commission group. There will be no change to existing customers.",
   GroupId: "Group Id",
   GroupManagement: "Group Management",
@@ -468,6 +469,7 @@ window._language_en_US = {
   InvalidRequestMsg: "Request is not valid",
   InvalidRequestOrNotAuthorizedMsg: "Invalid request or you are not authorized to access the requested resource!",
   InvalidSubsidiaryNameMsg: "Please contact admin to check your subsidiary name.",
+  IPLogin: "IP Login",
   IsNeutral: "(N)",
   JackpotWonDetails: "Jackpot Won Details",
   Jan: "Jan",
@@ -664,6 +666,7 @@ window._language_en_US = {
   PersonalMessage: "Personal Message",
   PlaceholderBankAccount: "Search by Exactly Bank Account Number",
   PlaceholderEmail: "Search by Exactly Email",
+  PlaceholderIPLogin: "Search by Exactly IP Login",
   Platform: "Platform",
   Platform_1: "Desktop",
   Platform_2: "Mobile",
@@ -696,7 +699,7 @@ window._language_en_US = {
   ProductFW: "Fishing World",
   ProductGD: "Gold Deluxe",
   ProductGDG: "GDG",
-  ProductI4D: "Indo 4D",
+  ProductI4D: "Togel 4D",
   ProductJK: "Joker",
   ProductKN: "RNG Keno",
   ProductLC: "Live Casino",
@@ -956,54 +959,14 @@ window._language_en_US = {
 
 /***/ }),
 
-/***/ "./www/js/source/reactpages/lib/langHelper.js":
-/*!****************************************************!*\
-  !*** ./www/js/source/reactpages/lib/langHelper.js ***!
-  \****************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return LangHelper; });
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-const DEFAULT_RESOURCE_NAME = "_language_en_US";
-const langCode = window.PageLanguage || "en-US";
-const resourceName = `_language_${langCode.replace("-", "_")}`;
-class LangHelper {
-  static get currentLanguage() {
-    return langCode;
-  }
-
-  static getSingleResource(key) {
-    var langHandler = window[resourceName];
-    return langHandler && langHandler[key] || window[DEFAULT_RESOURCE_NAME] && window[DEFAULT_RESOURCE_NAME][key] || key;
-  }
-
-  static getResources(keys) {
-    var langHandler = window[resourceName];
-    return keys.map(key => langHandler && langHandler[key] || window[DEFAULT_RESOURCE_NAME] && window[DEFAULT_RESOURCE_NAME][key] || key);
-  }
-
-}
-
-_defineProperty(LangHelper, "languageKeys", {
-  eng: "en-US",
-  zhCN: "zh-CN"
-});
-
-/***/ }),
-
 /***/ 0:
-/*!************************************************************************************************************!*\
-  !*** multi ./www/js/source/reactpages/lib/langHelper.js ./www/js/source/common/languages/ViewResources.js ***!
-  \************************************************************************************************************/
+/*!***************************************************************!*\
+  !*** multi ./ClientApp/src/js/lib/languages/ViewResources.js ***!
+  \***************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! ./www/js/source/reactpages/lib/langHelper.js */"./www/js/source/reactpages/lib/langHelper.js");
-module.exports = __webpack_require__(/*! ./www/js/source/common/languages/ViewResources.js */"./www/js/source/common/languages/ViewResources.js");
+module.exports = __webpack_require__(/*! ./ClientApp/src/js/lib/languages/ViewResources.js */"./ClientApp/src/js/lib/languages/ViewResources.js");
 
 
 /***/ })

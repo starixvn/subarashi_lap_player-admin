@@ -2,21 +2,64 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerfileContext>..\..</DockerfileContext>
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="ClientApp\src\" />
+    <Content Remove="wwwroot\webpack-stats-react.html" />
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="App_Data\ExcelTemplate\DetailTransaction.xls" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="App_Data\ExcelTemplate\DetailTransaction.xls">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\webpack-stats-react.html" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Fanex.Data.SqlServer" Version="4.2.2" />
+    <PackageReference Include="Fanex.Logging.RabbitMQ" Version="1.0.1" />
+    <PackageReference Include="Fanex.Logging.Sentry.RavenClient" Version="1.0.1" />
     <PackageReference Include="IdentityModel.AspNetCore.OAuth2Introspection" Version="5.1.0" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.DataProtection.StackExchangeRedis" Version="5.0.4" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="5.0.4" />
+    <PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="5.0.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.9" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Fanex.Athena.PlayerAdmin.API\Fanex.Athena.PlayerAdmin.API.csproj" />
     <ProjectReference Include="..\Fanex.Athena.PlayerAdmin.Infrastructure\Fanex.Athena.PlayerAdmin.Infrastructure.csproj" />
     <ProjectReference Include="..\Fanex.Athena.PlayerAdmin.MVC\Fanex.Athena.PlayerAdmin.MVC.csproj" />
+    <ProjectReference Include="..\Modules\Fanex.Athena.PlayerAdmin.BetLimit\Fanex.Athena.PlayerAdmin.BetLimit.csproj" />
+    <ProjectReference Include="..\Modules\Fanex.Athena.PlayerAdmin.Commission\Fanex.Athena.PlayerAdmin.Commission.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update=".babelrc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update=".dockerignore">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="App_Data\SpConfig\FanexSpName.PROD.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="App_Data\SpConfig\FanexSpName.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Dockerfile">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

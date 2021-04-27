@@ -81,14 +81,14 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./www/js/source/common/languages/ViewResources.zh-CN.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./ClientApp/src/js/lib/languages/ViewResources.zh-CN.js");
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./www/js/source/common/languages/ViewResources.zh-CN.js":
+/***/ "./ClientApp/src/js/lib/languages/ViewResources.zh-CN.js":
 /*!***************************************************************!*\
-  !*** ./www/js/source/common/languages/ViewResources.zh-CN.js ***!
+  !*** ./ClientApp/src/js/lib/languages/ViewResources.zh-CN.js ***!
   \***************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -302,6 +302,7 @@ window._language_zh_CN = {
   DeleteCommissionGroup: "删除佣金群组",
   DeleteGroup: "删除组",
   Deposit: "存款",
+  Deposited: "已存钱账号",
   DetailedBetlist: "投注历史明细",
   Details: "细节",
   DetailTransaction: "交易纪录",
@@ -420,6 +421,7 @@ window._language_zh_CN = {
   InvalidPlayerUpdateVipStatusSingle: "无效的玩家: {0}",
   InvalidRequestMsg: "请求无效",
   InvalidRequestOrNotAuthorizedMsg: "无效的请求或您未被授权访问所请求的资源",
+  IPLogin: "登入IP",
   IsNeutral: "(中)",
   JackpotWonDetails: "积宝头奖详情",
   Jan: "一月",
@@ -609,6 +611,7 @@ window._language_zh_CN = {
   PersonalMessage: "个人讯息",
   PlaceholderBankAccount: "精确查询银行帐户号码",
   PlaceholderEmail: "精确查询电子邮件",
+  PlaceholderIPLogin: "精确查询登入IP",
   Platform: "平台",
   Platform_1: "桌机",
   Platform_2: "手机版",
