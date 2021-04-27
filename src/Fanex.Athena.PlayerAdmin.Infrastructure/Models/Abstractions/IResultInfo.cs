@@ -1,0 +1,13 @@
+﻿namespace Fanex.Athena.PlayerAdmin.Infrastructure.Models
+{
+    public interface IResultInfo
+    {
+        int Code { get; set; }
+
+        bool IsSuccessful { get; }
+
+        string Message { get; set; }
+
+        string ExtendedData { get; set; }
+    }
+}
