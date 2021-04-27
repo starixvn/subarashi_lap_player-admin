@@ -34,6 +34,7 @@ node_modules/
 coverage/
 
 src/Fanex.Athena.PlayerAdmin.WebHost/wwwroot
-#src/Fanex.Athena.PlayerAdmin.WebHost/ClientApp/src/js/components
-src/Fanex.Athena.PlayerAdmin.WebHost/ClientApp/src/js/pages
+src/Fanex.Athena.PlayerAdmin.WebHost/ClientApp/src/js/pages/playerlist
+src/Fanex.Athena.PlayerAdmin.WebHost/ClientApp/src/js/pages/account-info
+src/Fanex.Athena.PlayerAdmin.WebHost/ClientApp/src/js/pages/betlimit
 **/__tests__
