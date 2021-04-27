@@ -1,0 +1,80 @@
+﻿@{
+    ViewData["Title"] = ViewResources.BettingTicketCenter + " - " + ViewResources.SingleCustomer;
+}
+
+@using  Fanex.Athena.PlayerAdmin.Infrastructure.Settings;
+@inject Microsoft.Extensions.Options.IOptions<AppSetting> setting
+
+@model PlayerBtcSingleCustomerViewModel
+
+@{
+    var now = DateTime.Now;
+    var fromDate = new DateTime(now.Year, now.Month, 1).ToString("MM/dd/yyyy");
+    var toDate = now.ToString("MM/dd/yyyy");
+
+    const string TitlePattern = "{0}: {1}, {2}→{3}, {4}: {5}, {6}: {7}";
+    var reportTitle = string.Format(TitlePattern,
+        ViewResources.Player, Model.UserName,
+        fromDate, toDate,
+        ViewResources.Currency, Model.CurrencyName,
+        ViewResources.Product, Model.ProductCodeListString);
+
+    var sessionBetlitResult = $"{setting.Value.BetListResultHost}Auth/CreateSession?token={Model.LapToken}";
+}
+
+@section pagecss {
+    <environment include="Development">
+        <link href="~/css/dev/betlist/index.css" rel="stylesheet" type="text/css" asp-append-version="true" />
+        <link href="~/css/dev/betlist/bettingticketscenter.css" rel="stylesheet" type="text/css" asp-append-version="true" />
+
+    </environment>
+    <environment exclude="Development">
+        <link href="~/css/pro/betlist/index.css" rel="stylesheet" type="text/css" asp-append-version="true" />
+        <link href="~/css/pro/betlist/bettingticketscenter.css" rel="stylesheet" type="text/css" asp-append-version="true" />
+    </environment>
+    <style>
+        .caret-block {
+            bottom: 2px;
+        }
+
+            .caret-block .icon-excel-wrapper {
+                margin-left: 10px;
+                background: #fff;
+                text-align: center;
+                width: 24px;
+                height: 22px;
+            }
+
+        #app-container {
+            margin-top: 10px;
+        }
+    </style>
+}
+
+@section pagejs {
+    <environment include="Development">
+        <script src="~/js/dev/single-customer.chunk.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="~/js/pro/single-customer.chunk.js" asp-append-version="true"></script>
+    </environment>
+}
+
+@section globaljscode {
+    window.initialState = {
+    isLoading: false,
+    requestParam: {userName: '@Model.UserName'}
+    };
+
+    window._AppData = {
+    isAllowedCustomerComm: @Model.IsAllowedCustomerComm.ToString().ToLower(),
+    reportTitle: '@Html.Raw(reportTitle)',
+    isAllowTxIDColumn: @ViewBag.IsAllowTxIDColumn.ToString().ToLower(),
+    betlistResultUrl: '@setting.Value.BetListResultHost'
+    };
+}
+<div id="app-container">
+</div>
+<div style="display:none">
+    <iframe src="@sessionBetlitResult" style="display:none; width:0; height:0; border:0; border:none;"></iframe>
+</div>

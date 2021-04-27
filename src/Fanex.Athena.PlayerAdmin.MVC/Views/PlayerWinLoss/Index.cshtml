@@ -1,0 +1,54 @@
+﻿@{
+    ViewData["Title"] = ViewResources.CustomerWinLoss;
+}
+
+@model PlayerFastCrossLinkViewModel
+
+@{
+    var now = DateTime.Now;
+    var fromDate = new DateTime(now.Year, now.Month, 1).ToString("MM/dd/yyyy");
+    var toDate = now.ToString("MM/dd/yyyy");
+
+    const string TitlePattern = "{0}: {1}, {2}→{3}, {4}: {5}, {6}: {7}";
+    var reportTitle = string.Format(TitlePattern,
+        ViewResources.Player, Model.UserName,
+        fromDate, toDate,
+        ViewResources.Currency, Model.CurrencyName,
+        ViewResources.Product, Model.ProductCodeListString);
+}
+
+@section pagecss {
+    <environment include="Development">
+        <link href="~/css/dev/playerwinloss.css" rel="stylesheet" type="text/css" asp-append-version="true" />
+    </environment>
+    <environment exclude="Development">
+        <link href="~/css/pro/playerwinloss.css" rel="stylesheet" type="text/css" asp-append-version="true" />
+    </environment>
+    <style>
+        #app-container {
+            margin-top: 10px;
+        }
+    </style>
+}
+@section pagejs {
+    <environment include="Development">
+        <script src="~/js/dev/playerwinloss.chunk.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="~/js/pro/playerwinloss.chunk.js" asp-append-version="true"></script>
+    </environment>
+}
+@section globaljscode {
+    window.initialState = {
+    isLoading: false,
+    requestParam: {userName: '@Model.UserName'},
+    hasCustomerComm: '@Model.IsAllowedCustomerCommission.ToString()' === 'True',
+    isAllowedBA: '@Model.IsAllowedBA.ToString()' === 'True'
+    };
+
+    window._AppData = {
+    reportTitle: '@Html.Raw(reportTitle)'
+    };
+}
+<div id="app-container">
+</div>

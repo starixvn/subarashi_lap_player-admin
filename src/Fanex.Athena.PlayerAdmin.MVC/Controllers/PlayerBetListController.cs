@@ -1,0 +1,81 @@
+﻿using Fanex.Athena.PlayerAdmin.Infrastructure.ConsoleClient;
+using Fanex.Athena.PlayerAdmin.Infrastructure.Constants;
+using Fanex.Athena.PlayerAdmin.Infrastructure.Filters;
+using Fanex.Athena.PlayerAdmin.Infrastructure.Services;
+using Fanex.Athena.PlayerAdmin.Infrastructure.Settings;
+using Fanex.Athena.PlayerAdmin.MVC.DTO;
+using Fanex.Athena.PlayerAdmin.MVC.MetaModel;
+using Fanex.Athena.PlayerAdmin.MVC.ViewModels;
+using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
+using System;
+using System.Linq;
+using System.Net;
+using System.Threading.Tasks;
+
+namespace Fanex.Athena.PlayerAdmin.MVC.Controllers
+{
+    [DisableCors]
+    public class PlayerBetListController : Controller
+    {
+        private readonly IContextService _contextService;
+        private readonly AppSetting _appSetting;
+
+        public PlayerBetListController(IContextService contextService, IOptions<AppSetting> appSetting)
+        {
+            _appSetting = appSetting.Value;
+            _contextService = contextService;
+        }
+
+        [HttpGet]
+        [CookieAuthorize(Roles.SuperAdmin, Roles.BetList)]
+        public ViewResult Running(int custId, int currencyId, string lapToken)
+        {
+            var currencyList = _contextService.CurrencyList;
+            var viewModel = new PlayerRunningBetListViewModel
+            {
+                CustId = custId,
+                Currency = currencyList.FirstOrDefault(x => x.Key == currencyId).Value,
+                LapToken = lapToken
+            };
+
+            ViewBag.IsAllowTxIDColumn = _appSetting.LicenseeOfferTxIDColumn.Contains(_contextService.SiteName, StringComparer.InvariantCultureIgnoreCase);
+
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [CookieAuthorize(Roles.SuperAdmin, Roles.BetList)]
+        [DataValidation(validateCustId: true)]
+        [AutoBindingMetaModel(bindAgent: true)]
+        public async Task<IActionResult> GetRunningBetList([FromServices] IBetListApiClient betListApiClient, [FromBody] PlayerRunningBetListMetalModel metaModel)
+        {
+            return metaModel.IsExport
+                ? await ExportRunningBetListDataAsync(betListApiClient, metaModel)
+                : await GetRunningBetListDataAsync(betListApiClient, metaModel);
+        }
+
+        private async Task<JsonResult> GetRunningBetListDataAsync(IBetListApiClient betListApiClient, PlayerRunningBetListMetalModel metaModel)
+        {
+            var result = await betListApiClient.PostAsync<BetList>("/PlayerAdminBetList/GetBetList", metaModel, _contextService.Language);
+            return Json(result);
+        }
+
+        private async Task<IActionResult> ExportRunningBetListDataAsync(IBetListApiClient betListApiClient, PlayerRunningBetListMetalModel metaModel)
+        {
+            metaModel.IsAllowTxIDColumn = _appSetting.LicenseeOfferTxIDColumn.Contains(
+                _contextService.SiteName, StringComparer.InvariantCultureIgnoreCase);
+
+            var httpResponse = await betListApiClient.PostAsync("/PlayerAdminBetList/Export", metaModel, _contextService.Language);
+
+            if (httpResponse.StatusCode == HttpStatusCode.NoContent)
+            {
+                return new StatusCodeResult((int)HttpStatusCode.NoContent);
+            }
+
+            return File(await httpResponse.Content.ReadAsStreamAsync(), "application/octet-stream");
+        }
+    }
+}

@@ -1,11 +1,39 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.ViewFeatures" Version="2.2.0" />
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Compile Remove="Controllers\BetLimits1\**" />
+    <Content Remove="Controllers\BetLimits1\**" />
+    <EmbeddedResource Remove="Controllers\BetLimits1\**" />
+    <None Remove="Controllers\BetLimits1\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Controllers\PlayerCommissionController.cs" />
+    <Compile Remove="MetaModel\PlayerBetLimitDetailedLogMetaModel.cs" />
+    <Compile Remove="MetaModel\PlayerBetLimitLogMetaModel.cs" />
+    <Compile Remove="MetaModel\PlayerBetLimitMetaModel.cs" />
+    <Compile Remove="MetaModel\PlayerBetLimitSelectMetaModel.cs" />
+    <Compile Remove="Repositories\Interfaces\INumberGameBetLimitRepository.cs" />
+    <Compile Remove="Repositories\Interfaces\IPlayerCommissionRepository.cs" />
+    <Compile Remove="Repositories\NumberGameBetLimitRepository.cs" />
+    <Compile Remove="Repositories\PlayerCommissionRepository.cs" />
+    <Compile Remove="Services\Interfaces\INumberGameBetLimitService.cs" />
+    <Compile Remove="Services\Interfaces\IPlayerCommissionService.cs" />
+    <Compile Remove="Services\NumberGameBetLimitService.cs" />
+    <Compile Remove="Services\PlayerCommissionService.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Fanex.Athena.PlayerAdmin.Infrastructure\Fanex.Athena.PlayerAdmin.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

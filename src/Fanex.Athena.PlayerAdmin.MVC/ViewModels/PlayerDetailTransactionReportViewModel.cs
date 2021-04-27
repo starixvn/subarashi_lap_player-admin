@@ -1,6 +1,9 @@
-﻿using System;
+﻿using Fanex.Athena.PlayerAdmin.MVC.MetaModel;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
-namespace Fanex.Athena.PlayerAdmin.MVC.Models
+namespace Fanex.Athena.PlayerAdmin.MVC.ViewModels
 {
     public class PlayerDetailTransactionReportViewModel
     {
@@ -14,8 +17,23 @@ namespace Fanex.Athena.PlayerAdmin.MVC.Models
             MinDate = DateTime.Now.AddMonths(-MaximumMonth);
             FromDate = new DateTime(today.Year, today.Month, 1);
             ToDate = today;
+            DetailTransactions = Enumerable.Empty<PlayerDetailTransactionViewModel>();
             PageSize = DefaultPageSize;
             PageIndex = DefaultPageIndex;
+        }
+
+        public PlayerDetailTransactionReportViewModel(
+            PlayerDetailTransactionsMetaModel criteria,
+            IEnumerable<PlayerDetailTransactionViewModel> detailTransactions) : this()
+        {
+            CustId = criteria.CustId;
+            CurrencyId = criteria.CurrencyId;
+            FromDate = criteria.FromDate;
+            ToDate = criteria.ToDate;
+            MinDate = criteria.MinDate;
+            PageSize = criteria.PageSize ?? DefaultPageSize;
+            PageIndex = criteria.PageIndex ?? DefaultPageIndex;
+            DetailTransactions = detailTransactions;
         }
 
         public int CustId { get; set; }
@@ -33,6 +51,8 @@ namespace Fanex.Athena.PlayerAdmin.MVC.Models
         public int PageIndex { get; set; }
 
         public int TotalRow { get; set; }
+
+        public IEnumerable<PlayerDetailTransactionViewModel> DetailTransactions { get; set; }
 
         public string FromDateStr => FromDate.ToString("MM/dd/yyyy");
 
