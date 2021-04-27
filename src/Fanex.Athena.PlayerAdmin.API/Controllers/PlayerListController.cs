@@ -1,41 +1,56 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using Fanex.Athena.PlayerAdmin.API.MetaModel;
+using Fanex.Athena.PlayerAdmin.API.Services.Interfaces;
+using Fanex.Athena.PlayerAdmin.API.ViewModels;
+using Fanex.Athena.PlayerAdmin.Infrastructure.Constants;
+using Fanex.Athena.PlayerAdmin.Infrastructure.Filters;
+using Fanex.Athena.PlayerAdmin.Infrastructure.Services;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Fanex.Athena.PlayerAdmin.API.Controllers
 {
+    [Route("api/[controller]/[action]")]
+    [EnableCors]
+    [ApiController]
+    [BearerAuthorize(Roles.SuperAdmin, Roles.PlayerAdmin)]
     public class PlayerListController : ControllerBase
     {
+        private readonly IPlayerListService _playerListService;
+        private readonly IContextService _contextService;
 
-        public PlayerListController()
+        public PlayerListController(IPlayerListService playerListService, IContextService contextService)
         {
-        }
-
-        [HttpGet]
-        public Task<JsonResult> Search1()
-        {
-            var subClaim = HttpContext.User?.Claims.FirstOrDefault(_ => _.Type == "sub");
-            return Task.FromResult(new JsonResult(new
-            {
-                sub = subClaim?.Value
-            }));
+            _playerListService = playerListService;
+            _contextService = contextService;
         }
 
         [HttpPost]
-        [Authorize(AuthenticationSchemes = "Bearer", Roles = "super_admin,pa_playerlist")]
-        public Task<JsonResult> Search()
+        [AutoBindingMetaModel(bindAgent: true, bindSiteName: true)]
+        public async Task<ActionResult<PlayerListResultViewModel>> Search(PlayerSearchingMetaModel searchParam)
         {
-            var user = HttpContext.User;
-            return Task.FromResult(new JsonResult(new
+            return await _playerListService.Search(searchParam);
+        }
+
+        [HttpPost]
+        [AutoBindingMetaModel(bindAgent: true, bindSiteName: true)]
+        public async Task<ActionResult<PlayerListResultViewModel>> GetPlayerListById(PlayerListByIdMetaModel metaModel)
+        {
+            metaModel.PageIndex = 1;
+            return await _playerListService.GetPlayerListById(metaModel);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<LRFFiltersViewModel>> LRFFilters()
+        {
+            var commGroups = await _playerListService.GetAllCommGroups(_contextService.LicenseeId);
+
+            return new LRFFiltersViewModel
             {
-                sub = user.Claims.FirstOrDefault(_ => _.Type == "sub")?.Value,
-                name = user.Identity.Name,
-                claims = user.Claims.Select(_ => new { type = _.Type, value = _.Value })
-            }));
+                CustomerClass = await _playerListService.CustomerClass(_contextService.SiteName),
+                CommGroups = commGroups
+            };
         }
     }
 }
