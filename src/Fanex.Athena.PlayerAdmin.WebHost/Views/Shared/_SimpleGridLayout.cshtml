@@ -1,0 +1,80 @@
+﻿@{
+    Layout = null;
+    var langCode = System.Globalization.CultureInfo.CurrentCulture.Name;
+    var rootUrl = Url.Content("~");
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>Player Administration - @ViewData["Title"]</title>
+    <meta name="description" content="Player Administration" />
+    <base href="@rootUrl" />
+    <environment include="Development">
+        <link href="~/jquery-pages/css/dev/main.css" asp-append-version="true" rel="stylesheet" type="text/css" />
+        <link href="~/jquery-pages/css/dev/pages/reports/reportjqgridlayout.css" asp-append-version="true" rel="stylesheet" type="text/css" />
+    </environment>
+    <environment exclude="Development">
+        <link href="~/jquery-pages/css/pro/main.css" asp-append-version="true" rel="stylesheet" type="text/css" />
+        <link href="~/jquery-pages/css/pro/pages/reports/reportjqgridlayout.css" asp-append-version="true" rel="stylesheet" type="text/css" />
+    </environment>
+    @RenderSection("pagecss", required: false)
+</head>
+<body>
+
+    @Html.AntiForgeryToken()
+    <input type="hidden" id="RootUrl" value="@Url.Content("~/")" />
+    <input type="hidden" id="PageLanguage" value="@langCode" />
+    <div class="loading" style="display: none">
+        <div class="icon-loading">
+            <div class="loader-inner ball-beat">
+                <span class="icon-ball"></span>
+                <span class="icon-ball"></span>
+                <span class="icon-ball"></span>
+            </div>
+        </div>
+    </div>
+    <div class="block-body" style="display: none">
+    </div>
+    <div class="wrapper">
+        <div id="report-container">
+            @RenderSection("Filter", required: false)
+            @RenderSection("Content", required: false)
+        </div>
+        <div class="page-portal">
+            <div class="toast-container toast-container-top toast-container-right">
+                <div class="toast-align">
+                </div>
+            </div>
+        </div>
+    </div>
+    <environment include="Development">
+        <script src="~/jquery-pages/js/dev/pages/lib/common.chunk.js" asp-append-version="true"></script>
+        <script src="~/jquery-pages/js/dev/language.chunk.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="~/jquery-pages/js/pro/pages/lib/common.chunk.js" asp-append-version="true"></script>
+        <script src="~/jquery-pages/js/pro/language.chunk.js" asp-append-version="true"></script>
+    </environment>
+
+    @if (langCode != "en-US")
+    {
+        <environment exclude="Development">
+            @{
+                var langDevLink = "~/jquery-pages/js/dev/language-" + langCode + ".chunk.js";
+                <script src="@langDevLink" asp-append-version="true"></script>
+            }
+        </environment>
+        <environment exclude="Development">
+            @{
+                var langProLink = "~/jquery-pages/js/pro/language-" + langCode + ".chunk.js";
+                <script src="@langProLink" asp-append-version="true"></script>
+            }
+        </environment>
+    }
+
+    @await RenderSectionAsync("pagejs", required: false)
+</body>
+</html>
