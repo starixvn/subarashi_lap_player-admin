@@ -34,4 +34,9 @@ node_modules/
 coverage/
 
 src/Fanex.Athena.PlayerAdmin.WebHost/wwwroot
-src/Fanex.Athena.PlayerAdmin.WebHost/ClientApp
+src/Fanex.Athena.PlayerAdmin.WebHost/ClientApp/src/css
+src/Fanex.Athena.PlayerAdmin.WebHost/ClientApp/src/js/actions
+src/Fanex.Athena.PlayerAdmin.WebHost/ClientApp/src/js/reducers
+src/Fanex.Athena.PlayerAdmin.WebHost/ClientApp/src/js/components
+src/Fanex.Athena.PlayerAdmin.WebHost/ClientApp/src/js/pages
+**/__tests__
