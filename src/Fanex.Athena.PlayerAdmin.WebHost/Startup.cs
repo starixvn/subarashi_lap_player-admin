@@ -194,34 +194,34 @@ namespace Fanex.Athena.PlayerAdmin.WebHost
 
             var statement = Configuration.GetSection("Statement");
             services.Configure<StatementSetting>(statement);
+
             services.AddHttpClient<IPlayerStatementService, PlayerStatementService>(client =>
             {
                 client.BaseAddress = new Uri(statement.Get<StatementSetting>().InternalHost);
             }).SetHandlerLifetime(TimeSpan.FromDays(1));
 
-            var consoleClient = new ConsoleClient();
-            Configuration.GetSection("ConsoleClient").Bind(consoleClient);
             services.AddHttpClient<IReportApiClient, ReportApiClient>(client =>
             {
-                client.BaseAddress = new Uri(consoleClient.Report.Host);
-                client.DefaultRequestHeaders.Add("AUTH_TOKEN", consoleClient.Report.AuthKey);
+                client.BaseAddress = new Uri(Configuration["ConsoleClient:Report:Host"]);
+                client.DefaultRequestHeaders.Add("AUTH_TOKEN", Configuration["ConsoleClient:Report:AuthKey"]);
             }).SetHandlerLifetime(TimeSpan.FromDays(1));
 
             services.AddHttpClient<IBetListApiClient, BetListApiClient>(client =>
             {
-                client.BaseAddress = new Uri(consoleClient.BetList.Host);
-                client.DefaultRequestHeaders.Add("BETLIST_TOKEN_KEY", consoleClient.BetList.AuthKey);
+                client.BaseAddress = new Uri(Configuration["ConsoleClient:BetList:Host"]);
+                client.DefaultRequestHeaders.Add("BETLIST_TOKEN_KEY", Configuration["ConsoleClient:BetList:AuthKey"]);
             }).SetHandlerLifetime(TimeSpan.FromDays(1));
 
             services.AddHttpClient<ILgApiClient, LgApiClient>(client =>
             {
-                client.BaseAddress = new Uri(consoleClient.Lg.Host);
-                client.DefaultRequestHeaders.Add("LGAPI_TOKEN_KEY", consoleClient.Lg.AuthKey);
+                client.BaseAddress = new Uri(Configuration["ConsoleClient:Lg:Host"]);
+                client.DefaultRequestHeaders.Add("LGAPI_TOKEN_KEY", Configuration["ConsoleClient:Lg:AuthKey"]);
             }).SetHandlerLifetime(TimeSpan.FromDays(1));
 
             services.AddHttpClient();
 
-            services.AddHealthChecks();
+            services.AddHealthCheck(Configuration);
+            services.AddUnderMaintenance(Configuration);
         }
 
         public void Configure(IApplicationBuilder app)
@@ -241,29 +241,16 @@ namespace Fanex.Athena.PlayerAdmin.WebHost
             }
             else
             {
-                app.UseWhen(
-                    context => !context.Request.Path.StartsWithSegments("/api", StringComparison.OrdinalIgnoreCase),
-                    a => a.UseExceptionHandler("/Home/Error"));
-
+                app.UseErrorHandler();
                 app.UseHsts();
                 app.UseHttpsRedirection();
             }
 
-            app.UseStaticFiles(new StaticFileOptions
-            {
-                OnPrepareResponse = ctx =>
-                {
-                    const int OneYear = 60 * 60 * 24 * 365;
-                    ctx.Context.Response.Headers[Microsoft.Net.Http.Headers.HeaderNames.CacheControl] = isDev ?
-                    "no-cache" : "public,max-age=" + OneYear;
-                    ctx.Context.Response.Headers[Microsoft.Net.Http.Headers.HeaderNames.AccessControlAllowOrigin] = "*";
-                }
-            });
-
-            app.UseHealthChecks("/health");
-
+            app.UseStaticResource(isDev);
+            app.UseHealthCheck(Configuration);
             app.UseRouting();
             app.UseCors();
+            app.UseUnderMaintenance();
             app.UseAuthentication();
             app.UseAuthorization();
             app.UseRequestLocalization();
@@ -350,7 +337,7 @@ namespace Fanex.Athena.PlayerAdmin.WebHost
             LogManager
              .SetDefaultLogCategory(loggingSetting.Category)
              .Use(logEngines);
-            services.AddSingleton(_ => Logger.Log);
+            services.AddSingleton(Logger.Log);
         }
     }
 }

@@ -6,10 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <FrameworkReference Include="Microsoft.AspNetCore.App" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\..\Fanex.Athena.PlayerAdmin.Infrastructure\Fanex.Athena.PlayerAdmin.Infrastructure.csproj" />
   </ItemGroup>
 

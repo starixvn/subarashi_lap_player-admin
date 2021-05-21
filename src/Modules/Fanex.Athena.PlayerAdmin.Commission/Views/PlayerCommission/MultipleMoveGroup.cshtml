@@ -47,7 +47,7 @@
                     <select id="ddl-group" class="select">
                         @foreach (var group in Model.Groups)
                         {
-                        <option value="@group.GroupCommId">@group.GroupName</option>
+                            <option value="@group.GroupCommId">@group.GroupName</option>
                         }
                     </select>
                 </div>
@@ -85,12 +85,12 @@
                             {
                                 continue;
                             }
-                        <tr>
-                            <td>@ViewResources.ResourceManager.GetString("Product" + p.Key)</td>
-                            <td class="text-center">
-                                <div class="comm-@p.Key">0.00</div>
-                            </td>
-                        </tr>
+                            <tr>
+                                <td>@ViewResources.ResourceManager.GetString("Product" + p.Key)</td>
+                                <td class="text-center">
+                                    <div class="comm-@p.Key">0.00</div>
+                                </td>
+                            </tr>
                         }
                     </tbody>
                 </table>
@@ -110,7 +110,7 @@
                 var comms = group.CommValues;
                 foreach (var p in Model.ProductPermissions)
                 {
-            @Html.Hidden("com-" + p.Key + "-" + group.GroupCommId, (comms[p.Key] * 100).ToString("N2"))
+                    @Html.Hidden("com-" + p.Key + "-" + group.GroupCommId, (comms[p.Key] * 100).ToString("N2"))
                 }
             }
         </div>

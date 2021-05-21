@@ -1,7 +1,11 @@
-﻿using Fanex.Athena.PlayerAdmin.WebHost.Models;
+﻿using Fanex.Athena.PlayerAdmin.Infrastructure.Settings;
+using Fanex.Athena.PlayerAdmin.WebHost.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
+using System.Collections.Generic;
 using System.Diagnostics;
 
 namespace Fanex.Athena.PlayerAdmin.WebHost.Controllers

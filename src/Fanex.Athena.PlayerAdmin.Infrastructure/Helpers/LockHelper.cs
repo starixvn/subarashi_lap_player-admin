@@ -13,7 +13,7 @@ namespace Fanex.Athena.PlayerAdmin.Infrastructure.Helpers
         public static TResult Lock<TResult>(string key, Func<TResult> doing)
             where TResult : class
         {
-            var lockObject = _lockObjects.GetOrAdd(key, key => new object());
+            var lockObject = _lockObjects.GetOrAdd(key, _ => new object());
             lock (lockObject)
             {
                 return doing?.Invoke();
@@ -23,7 +23,7 @@ namespace Fanex.Athena.PlayerAdmin.Infrastructure.Helpers
         public static async Task<TResult> LockAsync<TResult>(string key, Func<Task<TResult>> doing)
            where TResult : class
         {
-            var lockAsyncObject = _lockAsyncObjects.GetOrAdd(key, key => new SemaphoreSlim(1, 1));
+            var lockAsyncObject = _lockAsyncObjects.GetOrAdd(key, _ => new SemaphoreSlim(1, 1));
             await lockAsyncObject.WaitAsync();
 
             try

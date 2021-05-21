@@ -15,7 +15,7 @@ namespace Fanex.Athena.PlayerAdmin.Infrastructure.Filters
     public class ReferrerValidationAttribute : TypeFilterAttribute
     {
         public ReferrerValidationAttribute()
-            : base(typeof(ReferrerValidationAttribute))
+            : base(typeof(ReferrerValidationImplAttribute))
         {
         }
     }

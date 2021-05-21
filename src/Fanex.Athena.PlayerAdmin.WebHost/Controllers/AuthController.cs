@@ -71,7 +71,6 @@ namespace Fanex.Athena.PlayerAdmin.Auth.Controllers
             var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme, "name", "role");
             var actionLinkClaim = userInfo.Claims.FirstOrDefault(_ => _.Type.Equals("ActionLink", StringComparison.OrdinalIgnoreCase));
 
-            await TrySignOut();
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity));
 
             if (!string.IsNullOrEmpty(actionLinkClaim?.Value))
@@ -80,14 +79,6 @@ namespace Fanex.Athena.PlayerAdmin.Auth.Controllers
             }
 
             return Redirect("/");
-        }
-
-        private async Task TrySignOut()
-        {
-            if (HttpContext.User.Identity.IsAuthenticated)
-            {
-                await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-            }
         }
 
         private async Task<TokenResponse> RequestToken(string token)

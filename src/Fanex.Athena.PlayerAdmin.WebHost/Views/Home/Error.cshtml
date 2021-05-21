@@ -1,19 +1,29 @@
 ﻿@model Fanex.Athena.PlayerAdmin.WebHost.Models.ErrorViewModel;
 
 @{
-    ViewData["Title"] = "Error";
-    Layout = null;
-    var errorMsg = "Sorry, an error occurred while processing your request!";
+    Layout = "_ErrorLayout";
+    string errorMsg;
     switch (Model.Code)
     {
-        case 401:
+        case 400:
+            errorMsg = ViewResources.InvalidRequestMsg;
+            break;
+
         case 403:
-                 errorMsg = ViewResources.AccessDeniedMsg; break;
-        default: errorMsg = ViewResources.HttpError_Default; break;
+            errorMsg = ViewResources.HttpError_403;
+            break;
+
+        case 404:
+            errorMsg = ViewResources.HttpError_404;
+            break;
+
+        default:
+            errorMsg = ViewResources.HttpError_Default;
+            break;
     }
 }
 
-<h3>
+@section message{
     @errorMsg
-</h3>
+}
 

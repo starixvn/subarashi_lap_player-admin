@@ -1,9 +1,7 @@
 ﻿@{
-    ViewData["Title"] = "Access Denied";
-    Layout = null;
+    Layout = "_ErrorLayout";
 }
 
-<h3>
+@section message{
     @ViewResources.AccessDeniedMsg
-</h3>
-
+}

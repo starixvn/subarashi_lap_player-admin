@@ -65,7 +65,8 @@ class LapCommonService extends BaseCommonService {
         return locker.acquire(sysType, async () => {
             if(!window['playeradmin_' + sysType]) {
                 const { ApiUrl, Token } = await this.fetchTokenFromLap(sysType, action);
-                const response = await  axios.post(`${ApiUrl}/api/Auth/Token`, { token: Token })
+                const ajaxConfig = this._getConfigParam({ ...defaultAjaxConfig, url: `${ApiUrl}/api/Auth/Token` }, { token: Token });
+                const response = await  axios(ajaxConfig);
                 const { status, data } = response;
                 if(status === 200 && data.IsSuccess) {
                     window['playeradmin_' + sysType] = {

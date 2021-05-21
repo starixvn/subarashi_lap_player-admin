@@ -6,17 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <FrameworkReference Include="Microsoft.AspNetCore.App" />
-  </ItemGroup>
-  
-  <ItemGroup>
-    <Compile Remove="Controllers\BetLimits1\**" />
-    <Content Remove="Controllers\BetLimits1\**" />
-    <EmbeddedResource Remove="Controllers\BetLimits1\**" />
-    <None Remove="Controllers\BetLimits1\**" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Compile Remove="Controllers\PlayerCommissionController.cs" />
     <Compile Remove="MetaModel\PlayerBetLimitDetailedLogMetaModel.cs" />
     <Compile Remove="MetaModel\PlayerBetLimitLogMetaModel.cs" />

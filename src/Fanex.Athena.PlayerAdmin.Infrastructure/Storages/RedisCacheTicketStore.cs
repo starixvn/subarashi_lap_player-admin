@@ -41,7 +41,7 @@ namespace Fanex.Athena.PlayerAdmin.Infrastructure.Storages
         public Task<AuthenticationTicket> RetrieveAsync(string key)
         {
             AuthenticationTicket ticket;
-            byte[] bytes = _cache.Get(key); ;
+            byte[] bytes = _cache.Get(key);
             ticket = DeserializeFromBytes(bytes);
             return Task.FromResult(ticket);
         }

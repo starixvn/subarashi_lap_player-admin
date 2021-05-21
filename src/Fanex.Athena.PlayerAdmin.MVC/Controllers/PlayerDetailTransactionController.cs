@@ -43,8 +43,10 @@ namespace Fanex.Athena.PlayerAdmin.MVC.Controllers
         [HttpGet]
         [CookieAuthorize(Roles.SuperAdmin, Roles.DetailTransaction)]
         [DataValidation(validateCustId: true)]
-        public async Task<ActionResult> ExportDetailTransactionReport([FromServices] IFileProvider file, [FromServices] IPlayerDetailTransactionExcel excelService,
-            PlayerDetailTransactionsMetaModel criteria)
+        public async Task<ActionResult> ExportDetailTransactionReport(
+            [FromServices] IFileProvider file,
+            [FromServices] IPlayerDetailTransactionExcel excelService,
+            [FromQuery]PlayerDetailTransactionsMetaModel criteria)
         {
             criteria.PageSize = null;
             criteria.PageIndex = null;
