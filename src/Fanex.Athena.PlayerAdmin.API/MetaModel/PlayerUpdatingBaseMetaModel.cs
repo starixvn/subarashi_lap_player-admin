@@ -2,7 +2,7 @@
 
 namespace Fanex.Athena.PlayerAdmin.API.MetaModel
 {
-    public class PlayerUpdatingBaseMetaModel : ICustomerIdentityMetalModel, IClientIPMetaModel, IUserIdMetaModel, ILanguageMetaModel, ISiteNameMetaModel
+    public class PlayerUpdatingBaseMetaModel : ICustomerIdentityMetaModel, IClientIPMetaModel, IUserIdMetaModel, ILanguageMetaModel, ISiteNameMetaModel
     {
         public int UserId { get; set; }
 

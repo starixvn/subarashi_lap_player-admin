@@ -1,11 +1,9 @@
-﻿using Fanex.Athena.PlayerAdmin.Infrastructure.Settings;
-using Fanex.Athena.PlayerAdmin.WebHost.Models;
+﻿using Fanex.Athena.PlayerAdmin.WebHost.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Diagnostics.HealthChecks;
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using System.Collections.Generic;
 using System.Diagnostics;
 
 namespace Fanex.Athena.PlayerAdmin.WebHost.Controllers
@@ -19,15 +17,14 @@ namespace Fanex.Athena.PlayerAdmin.WebHost.Controllers
             _logger = logger;
         }
 
-        [Authorize]
-        public IActionResult Index()
+        [Authorize(AuthenticationSchemes = "Cookies")]
+        public IActionResult Index([FromServices] IWebHostEnvironment hostingEnvironment)
         {
-            return View();
-        }
+            if(!hostingEnvironment.IsDevelopment())
+            {
+                return RedirectToAction("AccessDenied");
+            }
 
-        [AllowAnonymous]
-        public IActionResult Menu()
-        {
             return View();
         }
 

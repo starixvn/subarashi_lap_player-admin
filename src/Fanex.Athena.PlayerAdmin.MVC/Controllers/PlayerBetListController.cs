@@ -6,7 +6,6 @@ using Fanex.Athena.PlayerAdmin.Infrastructure.Settings;
 using Fanex.Athena.PlayerAdmin.MVC.DTO;
 using Fanex.Athena.PlayerAdmin.MVC.MetaModel;
 using Fanex.Athena.PlayerAdmin.MVC.ViewModels;
-using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using System;
@@ -16,7 +15,7 @@ using System.Threading.Tasks;
 
 namespace Fanex.Athena.PlayerAdmin.MVC.Controllers
 {
-    [DisableCors]
+    [CookieAuthorize(Roles.SuperAdmin, Roles.BetList)]
     public class PlayerBetListController : Controller
     {
         private readonly IContextService _contextService;
@@ -29,7 +28,7 @@ namespace Fanex.Athena.PlayerAdmin.MVC.Controllers
         }
 
         [HttpGet]
-        [CookieAuthorize(Roles.SuperAdmin, Roles.BetList)]
+        [ReferrerValidation]
         public ViewResult Running(int custId, int currencyId, string lapToken)
         {
             var currencyList = _contextService.CurrencyList;
@@ -47,33 +46,31 @@ namespace Fanex.Athena.PlayerAdmin.MVC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [CookieAuthorize(Roles.SuperAdmin, Roles.BetList)]
         [DataValidation(validateCustId: true)]
         [AutoBindingMetaModel(bindAgent: true)]
-        public async Task<IActionResult> GetRunningBetList([FromServices] IBetListApiClient betListApiClient, [FromBody] PlayerRunningBetListMetalModel metaModel)
+        public async Task<IActionResult> GetRunningBetList([FromServices] IBetListApiClient betListApiClient, [FromBody] PlayerRunningBetListMetaModel metaModel)
         {
-            return metaModel.IsExport
+            metaModel.IsShowIp = _contextService.IsShowIP;
+            metaModel.IsShowIpVN = _contextService.IsShowIpVN;
+
+            IActionResult result = metaModel.IsExport
                 ? await ExportRunningBetListDataAsync(betListApiClient, metaModel)
                 : await GetRunningBetListDataAsync(betListApiClient, metaModel);
+            return result;
         }
 
-        private async Task<JsonResult> GetRunningBetListDataAsync(IBetListApiClient betListApiClient, PlayerRunningBetListMetalModel metaModel)
+        private async Task<JsonResult> GetRunningBetListDataAsync(IBetListApiClient betListApiClient, PlayerRunningBetListMetaModel metaModel)
         {
             var result = await betListApiClient.PostAsync<BetList>("/PlayerAdminBetList/GetBetList", metaModel, _contextService.Language);
             return Json(result);
         }
 
-        private async Task<IActionResult> ExportRunningBetListDataAsync(IBetListApiClient betListApiClient, PlayerRunningBetListMetalModel metaModel)
+        private async Task<FileResult> ExportRunningBetListDataAsync(IBetListApiClient betListApiClient, PlayerRunningBetListMetaModel metaModel)
         {
             metaModel.IsAllowTxIDColumn = _appSetting.LicenseeOfferTxIDColumn.Contains(
                 _contextService.SiteName, StringComparer.InvariantCultureIgnoreCase);
 
             var httpResponse = await betListApiClient.PostAsync("/PlayerAdminBetList/Export", metaModel, _contextService.Language);
-
-            if (httpResponse.StatusCode == HttpStatusCode.NoContent)
-            {
-                return new StatusCodeResult((int)HttpStatusCode.NoContent);
-            }
 
             return File(await httpResponse.Content.ReadAsStreamAsync(), "application/octet-stream");
         }

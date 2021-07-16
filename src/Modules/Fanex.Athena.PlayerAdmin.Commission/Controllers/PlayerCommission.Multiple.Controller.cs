@@ -10,6 +10,7 @@ namespace Fanex.Athena.PlayerAdmin.Commission.Controllers
     public partial class PlayerCommissionController : Controller
     {
         [HttpGet]
+        [ReferrerValidation]
         [CookieAuthorize(Roles.SuperAdmin, Roles.CommissionGroup_Write, Policy = Policy.NotAllowSubsidiary)]
         [AutoBindingMetaModel(bindLicenseeId: true, bindUsername: true, bindClientIP: true, bindLanguage: true, bindUserId: true)]
         public async Task<ViewResult> MultipleMoveGroup([FromQuery] MultipleMoveGroupQuery query)
@@ -24,6 +25,7 @@ namespace Fanex.Athena.PlayerAdmin.Commission.Controllers
         }
 
         [HttpGet]
+        [ReferrerValidation]
         [CookieAuthorize(Roles.SuperAdmin, Roles.CommissionGroup_Write, Policy = Policy.NotAllowSubsidiary)]
         [AutoBindingMetaModel(bindLicenseeId: true, bindUsername: true, bindClientIP: true, bindLanguage: true, bindUserId: true)]
         public async Task<ViewResult> MultipleRemoveFromGroup([FromQuery] MultipleRemoveFromGroupQuery query)
@@ -35,6 +37,7 @@ namespace Fanex.Athena.PlayerAdmin.Commission.Controllers
         }
 
         [HttpGet]
+        [ReferrerValidation]
         [CookieAuthorize(Roles.SuperAdmin, Roles.CommissionGroup_Write, Policy = Policy.NotAllowSubsidiary)]
         [AutoBindingMetaModel(bindLicenseeId: true, bindUsername: true, bindClientIP: true, bindLanguage: true, bindUserId: true)]
         public async Task<ViewResult> MultipleUpdateGroup([FromQuery] MultipleUpdateGroupQuery query)

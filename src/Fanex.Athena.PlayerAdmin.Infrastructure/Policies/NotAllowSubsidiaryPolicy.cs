@@ -1,5 +1,6 @@
 ﻿using Fanex.Athena.PlayerAdmin.Infrastructure.Constants;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.Extensions.Configuration;
 using System;
 
 namespace Fanex.Athena.PlayerAdmin.Infrastructure.Policies

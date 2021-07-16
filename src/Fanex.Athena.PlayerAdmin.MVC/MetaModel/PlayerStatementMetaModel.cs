@@ -4,7 +4,7 @@ using System;
 
 namespace Fanex.Athena.PlayerAdmin.MVC.MetaModel
 {
-    public class PlayerStatementMetaModel : ICustomerIdentityMetalModel, IValidationMetaModel ,ISiteNameMetaModel, ILanguageMetaModel
+    public class PlayerStatementMetaModel : ICustomerIdentityMetaModel, IValidationMetaModel ,ISiteNameMetaModel, ILanguageMetaModel
     {
         private const int MaximumYear = 2;
 

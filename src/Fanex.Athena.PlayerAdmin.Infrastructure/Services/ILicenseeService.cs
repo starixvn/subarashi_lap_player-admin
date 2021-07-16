@@ -6,13 +6,17 @@ namespace Fanex.Athena.PlayerAdmin.Infrastructure.Services
 {
     public interface ILicenseeService
     {
+        Task<bool> IsAllowUpdateMemberBAStatus(int licenseeId);
+
         bool IsFakeLicensee(string licenseeName);
 
         Task<BalanceUpData> GetBalanceUp();
 
         Task<bool> CheckProductBelongsTo(string licenseeName, int productId, int[] limitedProductIds = null);
 
-        Task<bool> CheckCustomerBelongsTo(IReadOnlyDictionary<int, int[]> agentList, int custId, int currencyId = 0);
+        Task<bool> CheckCustomerBelongTo(IReadOnlyDictionary<int, int[]> agentList, int custId, int currencyId = 0);
+
+         Task<ICollection<int>> GetCustomersBelongTo(IReadOnlyDictionary<int, int[]> agentList, string custIds);
 
         Task<IList<Product>> GetProductList(int licenseeId, string languageCode);
 

@@ -16,7 +16,7 @@
     };
 }
 
-export const buildLapPlayerList = (playerList) => {
+export const  buildLapPlayerList = (playerList) => {
     if (!playerList) {
         return [];
     }

@@ -3,28 +3,19 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { ActionCreators } from '../actions';
 import { heightSlicing, excludedTabNameWithNonDepositAndArchived, tabNames, excludedTabNameWithClosed } from '../lib/constants';
-import FactoryCommonService from '@jsroot/lib/factoryCommonService';
 
 export class PlayerDetail extends PureComponent {
     constructor(props) {
         super(props);
         this._tabList = this.props.getTabList();
-        this._lapToken = null;
     }
 
     _getDefaultSelectedTab() {
         return this._tabList && this._tabList.length && this._tabList[0].Name;
     }
 
-    handleClickMenu = async (event, tabName) => {
+    handleClickMenu = (event, tabName) => {
         event.preventDefault();
-        if(tabName === tabNames.betlist)  {
-            var lapService = FactoryCommonService.createInstance();
-            try {
-                const { Token } = await lapService.fetchTokenFromLap(0, '/');
-                this._lapToken = Token;
-            } catch(error) { console.log(error) }
-        }
         this.props.setSelectedTabName(tabName);
         this.props.setSelectedSubTabName(null);
     }
@@ -39,10 +30,7 @@ export class PlayerDetail extends PureComponent {
         let urlByPlayer = action + queryString;
         if (tabName === tabNames.playerInfo) {
             urlByPlayer += `&createdDate=${encodeURIComponent(createdDate)}`;
-        } else if(tabName === tabNames.betlist) {           
-            urlByPlayer += `&lapToken=${this._lapToken}`
         }
-        else { }
 
         return this.props.getLink(systemType, urlByPlayer);
     }

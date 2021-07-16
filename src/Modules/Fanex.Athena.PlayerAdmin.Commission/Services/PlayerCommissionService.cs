@@ -34,7 +34,7 @@ namespace Fanex.Athena.PlayerAdmin.Commission.Services
             var groupInfo = await _repository.GetCommissionGroupById(new GetCommissionGroupByIdCriteria(query));
             if (groupInfo?.CommValues == null)
             {
-                return new ResultInfo { Code = 1, Message = "GroupNotExists" };
+                return new ResultInfo { Code = 1, Message = ViewResources.GroupNotExists };
             }
 
             var criteria = new MultipleMoveGroupCriteria(query);

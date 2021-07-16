@@ -1,0 +1,18 @@
+﻿using Fanex.Athena.PlayerAdmin.BatchUpdate.Services;
+using Fanex.Athena.PlayerAdmin.Infrastructure.Services;
+using Fanex.Athena.PlayerAdmin.Infrastructure.Settings;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
+
+namespace Fanex.Athena.PlayerAdmin.BatchUpdate.Controllers
+{
+    public partial class PlayerBatchUpdateController : Controller
+    {
+        private readonly IPlayerBatchUpdateService _service;
+
+        public PlayerBatchUpdateController(IPlayerBatchUpdateService service)
+        {
+            _service = service;
+        }
+    }
+}

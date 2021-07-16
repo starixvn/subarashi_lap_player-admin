@@ -3,16 +3,14 @@ using Fanex.Athena.PlayerAdmin.BetLimit.Services.Interfaces;
 using Fanex.Athena.PlayerAdmin.Infrastructure.Constants;
 using Fanex.Athena.PlayerAdmin.Infrastructure.Filters;
 using Fanex.Athena.PlayerAdmin.Infrastructure.Models;
-using Fanex.Athena.PlayerAdmin.Infrastructure.Services;
 using Fanex.Athena.PlayerAdmin.Infrastructure.Resources;
-using Microsoft.AspNetCore.Cors;
+using Fanex.Athena.PlayerAdmin.Infrastructure.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace Fanex.Athena.PlayerAdmin.BetLimit.Controllers
 {
-    [DisableCors]
     public class AGCasinoBetLimitController : PlayerBetLimitBaseControler
     {
         private readonly IAGCasinoBetLimitService _service;

@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace Fanex.Athena.PlayerAdmin.BetLimit.MetaModel
 {
-    public class PlayerBetLimitUpdateMetaModel<T> : ICustomerIdentityMetalModel, IProductMetaModel, IValidationMetaModel,
+    public class PlayerBetLimitUpdateMetaModel<T> : ICustomerIdentityMetaModel, IProductMetaModel, IValidationMetaModel,
         IUserIdMetaModel, ISiteNameMetaModel, IClientIPMetaModel, ILanguageMetaModel
     {
         public int CustId { get; set; }

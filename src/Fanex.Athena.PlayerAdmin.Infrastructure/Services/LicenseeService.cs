@@ -1,4 +1,5 @@
 ﻿using Fanex.Athena.PlayerAdmin.Infrastructure.Constants;
+using Fanex.Athena.PlayerAdmin.Infrastructure.Extensions;
 using Fanex.Athena.PlayerAdmin.Infrastructure.Helpers;
 using Fanex.Athena.PlayerAdmin.Infrastructure.Models;
 using Fanex.Athena.PlayerAdmin.Infrastructure.Repositories;
@@ -26,6 +27,23 @@ namespace Fanex.Athena.PlayerAdmin.Infrastructure.Services
             _dbFactory = dbFactory;
             _appSetting = appSetting.Value;
             _functionSetting = functionSetting.Value;
+        }
+
+        public async Task<bool> IsAllowUpdateMemberBAStatus(int licenseeId)
+        {
+            const string UspName = "Lrf_BATimeCheck";
+
+            var isAllow = false;
+            using (var db = _dbFactory.GetObjectDb(UspName))
+            {
+                db.SetParameterValue("LicenseeID", licenseeId);
+                db.SetParameterValue("isallow", null);
+
+                await db.ExecuteNonQueryAsync();
+
+                isAllow = Convert.ToBoolean(db.GetParameterValue("isallow"));
+                return isAllow;
+            }
         }
 
         public Task<IList<Product>> GetProductList(int licenseeId, string languageCode)
@@ -76,7 +94,7 @@ namespace Fanex.Athena.PlayerAdmin.Infrastructure.Services
             return isValidProduct;
         }
 
-        public async Task<bool> CheckCustomerBelongsTo(IReadOnlyDictionary<int, int[]> agentList, int custId, int currencyId = 0)
+        public async Task<bool> CheckCustomerBelongTo(IReadOnlyDictionary<int, int[]> agentList, int custId, int currencyId = 0)
         {
             using (var db = _dbFactory.GetObjectDb("Lrf_CheckBelonging_GetAgentInfo"))
             {
@@ -94,6 +112,32 @@ namespace Fanex.Athena.PlayerAdmin.Infrastructure.Services
                 }
             }
             return false;
+        }
+
+        public async Task<ICollection<int>> GetCustomersBelongTo(IReadOnlyDictionary<int, int[]> agentList, string custIds)
+        {
+            var result = new List<Customer>();
+
+            using (var db = _dbFactory.GetObjectDb("Lrf_CheckBelongingMultiple_GetAgentInfo"))
+            {
+                db.SetParameterValue("custids", custIds);
+                using (var reader = await db.ExecuteReaderAsync())
+                {
+                    while (reader.Read())
+                    {
+                        result.Add(new Customer
+                        {
+                            Id = reader.ToInt("CustId"),
+                            AgentId = reader.ToInt("agentid"),
+                            CurrencyId = reader.ToInt("CurrencyId")
+                        });
+                    }
+                }
+            }
+
+            return result.Where(cust => IsBelonging(agentList, cust))
+                .Select(cust => cust.Id)
+                .ToArray();
         }
 
         public async Task<BalanceUpData> GetBalanceUp()
@@ -180,5 +224,8 @@ namespace Fanex.Athena.PlayerAdmin.Infrastructure.Services
                 return Convert.ToBoolean(await db.ExecuteScalarAsync());
             }
         }
+
+        private static bool IsBelonging(IReadOnlyDictionary<int, int[]> currencyAgents, Customer cust)
+                  => currencyAgents[cust.CurrencyId] is int[] agentList && agentList.Contains(cust.AgentId);
     }
 }

@@ -5,14 +5,14 @@ import { ActionCreators } from '../../actions';
 import { systemType } from '@jsroot/constants/config';
 import Popup from '@jsroot/components/popup';
 import ClientResourceManager from '@jsroot/lib/clientResourceManager';
-import FactoryCommonService from '@jsroot/lib/factoryCommonService';
 
 const defaultPopupInfo = {url: null, title: null, width: 0, height: 0};
 
 export const FastCrossLink = (props) => {
     const { userName, currencyName, getLink } = props;
 
-    const singleCustomerActionLink = `PlayerBtcSingleCustomer?userName=${userName}&currencyName=${currencyName}&lapToken={0}`;
+    const singleCustomerActionLink = `PlayerBtcSingleCustomer?userName=${userName}&currencyName=${currencyName}`;
+    const singleCustomerUrl = getLink(systemType.playerAdmin, singleCustomerActionLink);
 
     const customerWinLossActionLink = `PlayerWinLoss?userName=${userName}&currencyName=${currencyName}`;
     const customerWinLossUrl = getLink(systemType.playerAdmin, customerWinLossActionLink);
@@ -25,21 +25,8 @@ export const FastCrossLink = (props) => {
         setPopupInfo(popup);
     }
 
-    const handlClickSingleCustomer = async event => {
-        event.preventDefault();
-        let token = '';
-        var lapService = FactoryCommonService.createInstance();
-        try {
-            const { Token } = await lapService.fetchTokenFromLap(0, '/');
-            token = Token;
-        } catch(error) { console.log(error) }
-
-        const singleCustomerUrl = getLink(systemType.playerAdmin, singleCustomerActionLink.replace('{0}', token));
-        const popupInfo = { ...popupSingleCustomer, url: singleCustomerUrl }
-        setPopupInfo(popupInfo);
-    }
-
     const popupSingleCustomer = {
+        url: singleCustomerUrl,
         title: ClientResourceManager.getText('BettingTicketCenter') + ' - ' + ClientResourceManager.getText('SingleCustomer'),
         width: window.innerWidth - 10,
         height: window.innerHeight - 10
@@ -59,9 +46,9 @@ export const FastCrossLink = (props) => {
                 <div>
                     <span>{ClientResourceManager.getText('BettingTicketCenter')}</span>
                     <strong className="divider">{'>'}</strong>
-                    <span><a className="link" onClick={handlClickSingleCustomer}>{ClientResourceManager.getText('SingleCustomer')}</a></span>
+                    <span><a className="link" onClick={e => handleClickLink(e, popupSingleCustomer)}>{ClientResourceManager.getText('SingleCustomer')}</a></span>
                 </div>
-                <div><span><a className="link" onClick={(e) => handleClickLink(e, popupCustomerWinLoss)}>{ClientResourceManager.getText('CustomerWinLoss')}</a></span></div>
+                <div><span><a className="link" onClick={e => handleClickLink(e, popupCustomerWinLoss)}>{ClientResourceManager.getText('CustomerWinLoss')}</a></span></div>
             </div>
 
             <Popup isShow={isShowPopup} 

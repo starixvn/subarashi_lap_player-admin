@@ -15,7 +15,8 @@ using System.Threading.Tasks;
 namespace Fanex.Athena.PlayerAdmin.API.Controllers
 {
     [Route("api/[controller]/[action]")]
-    [EnableCors]
+    [ReferrerValidation]
+    [EnableCors(Policy.FromPortalSite)]
     [ApiController]
     public class PlayerSpecialLevelController : ControllerBase
     {
@@ -34,7 +35,6 @@ namespace Fanex.Athena.PlayerAdmin.API.Controllers
         }
 
         [HttpPost]
-        [ReferrerValidation]
         [BearerAuthorize(Roles.SuperAdmin, Roles.UpdateSpecialLevel)]
         [DataValidation(validateCustId: true)]
         [AutoBindingMetaModel(bindUserId: true, bindClientIP: true, bindLanguage: true, bindSiteName: true)]

@@ -1,19 +1,17 @@
-﻿using Fanex.Athena.PlayerAdmin.Infrastructure.Constants;
-using Fanex.Athena.PlayerAdmin.Infrastructure.Filters;
-using Fanex.Athena.PlayerAdmin.Infrastructure.Services;
-using Fanex.Athena.PlayerAdmin.BetLimit.DTO;
+﻿using Fanex.Athena.PlayerAdmin.BetLimit.DTO;
 using Fanex.Athena.PlayerAdmin.BetLimit.MetaModel;
 using Fanex.Athena.PlayerAdmin.BetLimit.Services.Interfaces;
 using Fanex.Athena.PlayerAdmin.BetLimit.ViewModels;
-using Microsoft.AspNetCore.Cors;
+using Fanex.Athena.PlayerAdmin.Infrastructure.Constants;
+using Fanex.Athena.PlayerAdmin.Infrastructure.Filters;
+using Fanex.Athena.PlayerAdmin.Infrastructure.Resources;
+using Fanex.Athena.PlayerAdmin.Infrastructure.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Fanex.Athena.PlayerAdmin.Infrastructure.Resources;
 
 namespace Fanex.Athena.PlayerAdmin.BetLimit.Controllers
 {
-    [DisableCors]
     public class RngKenoBetLimitController : PlayerBetLimitBaseControler
     {
         private readonly IRngKenoBetLimitService _service;
@@ -51,7 +49,7 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Controllers
         {
             var result = await _service.UpdateSettingAsync(metaModel);
 
-            result.Message = result.Code == 0 ? ViewResources.UpdateSuccess: result.Message;
+            result.Message = result.Code == 0 ? ViewResources.UpdateSuccess : result.Message;
 
             return Json(result);
         }

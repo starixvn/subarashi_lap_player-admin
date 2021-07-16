@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Fanex.Athena.PlayerAdmin.Infrastructure.Services
 {
@@ -15,6 +16,10 @@ namespace Fanex.Athena.PlayerAdmin.Infrastructure.Services
         public int UserLevel { get; }
         string ClientIP { get; }
         string Language { get; }
+        bool IsShowIP { get; }
+        bool IsShowIpVN { get; }
+        Task<string> AccessToken { get; }
+
         bool IsInRoles(params string[] roles);
     }
 }

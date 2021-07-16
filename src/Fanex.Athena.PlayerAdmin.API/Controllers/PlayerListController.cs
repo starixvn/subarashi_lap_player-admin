@@ -6,13 +6,13 @@ using Fanex.Athena.PlayerAdmin.Infrastructure.Filters;
 using Fanex.Athena.PlayerAdmin.Infrastructure.Services;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Fanex.Athena.PlayerAdmin.API.Controllers
 {
     [Route("api/[controller]/[action]")]
-    [EnableCors]
+    [ReferrerValidation]
+    [EnableCors(Policy.FromPortalSite)]
     [ApiController]
     [BearerAuthorize(Roles.SuperAdmin, Roles.PlayerAdmin)]
     public class PlayerListController : ControllerBase
@@ -37,7 +37,6 @@ namespace Fanex.Athena.PlayerAdmin.API.Controllers
         [AutoBindingMetaModel(bindAgent: true, bindSiteName: true)]
         public async Task<ActionResult<PlayerListResultViewModel>> GetPlayerListById(PlayerListByIdMetaModel metaModel)
         {
-            metaModel.PageIndex = 1;
             return await _playerListService.GetPlayerListById(metaModel);
         }
 

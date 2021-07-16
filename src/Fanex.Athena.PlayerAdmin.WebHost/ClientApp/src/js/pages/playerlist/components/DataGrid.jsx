@@ -21,8 +21,9 @@ const MAX_WIDTH_PAGE = 1920;
 export class DataGrid extends PureComponent {
     constructor(props) {
         super(props);
-
         this.maxWidth = Math.min(document.body.clientWidth, MAX_WIDTH_PAGE);
+        this.canSelectPlayers = props.hasCommPermissionEdit || props.hasSpecialLevelPermission || props.hasOddsGroupPermission
+            || (props.siteSetting.isAllowedBA && props.hasBaPermission);
     }
 
     componentDidMount() {
@@ -62,7 +63,7 @@ export class DataGrid extends PureComponent {
 
     render() {
         const { playerList, selectedPlayer, isFetchingData,
-            displayedColumnList, sweetAlertOption, hasCommPermissionEdit, hasCommPermissionRead } = this.props;
+            displayedColumnList, sweetAlertOption, hasCommPermissionRead } = this.props;
         if (!playerList) {
             return null;
         }
@@ -73,7 +74,6 @@ export class DataGrid extends PureComponent {
 
         const dataList = selectedPlayer ? [playerList.find(item => item.LicenseeCustId === selectedPlayer.licenseeCustId)] : playerList;
         const displayedColumn = buildDisplayedColumnObject(displayedColumnList);
-        const canSelectPlayers = hasCommPermissionEdit;
 
         return (
             <>
@@ -82,8 +82,8 @@ export class DataGrid extends PureComponent {
                     maxWidth={this.maxWidth}
                     minWidth={1300}
                     autoHeight={true}
-                    header={GridHelper.renderHeader(displayedColumn, canSelectPlayers, hasCommPermissionRead)}
-                    body={this._renderDataSection(dataList, displayedColumn, canSelectPlayers, hasCommPermissionRead)}
+                    header={GridHelper.renderHeader(displayedColumn, this.canSelectPlayers, hasCommPermissionRead)}
+                    body={this._renderDataSection(dataList, displayedColumn, this.canSelectPlayers, hasCommPermissionRead)}
                     containerPadding={30}
                     shouldResetScrollPosition={isFetchingData}
                     onSort={this.handleSort} />
@@ -103,8 +103,10 @@ function mapDispatchToProps(dispatch) {
 }
 
 function mapStateToProps(state) {
-    const { playerList, selectedPlayer, displayedColumnList, isFetchingData, sweetAlertOption, hasCommPermissionEdit, hasCommPermissionRead } = state;
-    return Object.assign({}, { playerList, selectedPlayer, displayedColumnList, isFetchingData, sweetAlertOption, hasCommPermissionEdit, hasCommPermissionRead });
+    const { playerList, selectedPlayer, displayedColumnList, isFetchingData, sweetAlertOption, hasCommPermissionEdit, hasCommPermissionRead,
+        hasBaPermission, hasOddsGroupPermission, hasSpecialLevelPermission, siteSetting } = state;
+    return Object.assign({}, { playerList, selectedPlayer, displayedColumnList, isFetchingData, sweetAlertOption, hasCommPermissionEdit, hasCommPermissionRead,
+        hasBaPermission, hasOddsGroupPermission, hasSpecialLevelPermission, siteSetting });
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(DataGrid);

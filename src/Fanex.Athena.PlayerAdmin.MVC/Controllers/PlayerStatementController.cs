@@ -3,14 +3,13 @@ using Fanex.Athena.PlayerAdmin.Infrastructure.Filters;
 using Fanex.Athena.PlayerAdmin.MVC.MetaModel;
 using Fanex.Athena.PlayerAdmin.MVC.Services.Interfaces;
 using Fanex.Athena.PlayerAdmin.MVC.ViewModels;
-using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
 
 namespace Fanex.Athena.PlayerAdmin.MVC.Controllers
 {
-    [DisableCors]
+    [CookieAuthorize(Roles.SuperAdmin, Roles.Statement)]
     public class PlayerStatementController : Controller
     {
         private readonly IPlayerStatementService _playerStatementService;
@@ -22,7 +21,7 @@ namespace Fanex.Athena.PlayerAdmin.MVC.Controllers
         }
 
         [HttpGet]
-        [CookieAuthorize(Roles.SuperAdmin, Roles.Statement)]
+        [ReferrerValidation]
         public ViewResult Index(int custId, int currencyId)
         {
             var today = DateTime.Today;
@@ -40,10 +39,9 @@ namespace Fanex.Athena.PlayerAdmin.MVC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [CookieAuthorize(Roles.SuperAdmin, Roles.Statement)]
         [DataValidation(validateCustId: true)]
         [AutoBindingMetaModel(bindSiteName: true, bindLanguage: true)]
-        public async Task<ActionResult> GetStatementUrl([FromBody]PlayerStatementMetaModel metaModel)
+        public async Task<ActionResult> GetStatementUrl([FromBody] PlayerStatementMetaModel metaModel)
         {
             return Content(await _playerStatementService.GetUrl(metaModel).ConfigureAwait(false));
         }

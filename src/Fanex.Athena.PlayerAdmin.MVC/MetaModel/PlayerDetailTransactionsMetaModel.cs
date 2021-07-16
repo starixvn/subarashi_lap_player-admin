@@ -5,7 +5,7 @@ using System;
 
 namespace Fanex.Athena.PlayerAdmin.MVC.MetaModel
 {
-    public class PlayerDetailTransactionsMetaModel : ICustomerIdentityMetalModel, IValidationMetaModel
+    public class PlayerDetailTransactionsMetaModel : ICustomerIdentityMetaModel, IValidationMetaModel
     {
         public string SPName => "LAP_Rpt_DetailTransaction_Mem";
 

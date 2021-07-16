@@ -1,4 +1,5 @@
 ﻿using Fanex.Athena.PlayerAdmin.Infrastructure.Constants;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 using System;
@@ -6,6 +7,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace Fanex.Athena.PlayerAdmin.Infrastructure.Services
 {
@@ -18,6 +20,7 @@ namespace Fanex.Athena.PlayerAdmin.Infrastructure.Services
 
         public ContextService(IHttpContextAccessor httpContextAccessor)
         {
+            
             _httpContextAccessor = httpContextAccessor;
         }
 
@@ -33,9 +36,15 @@ namespace Fanex.Athena.PlayerAdmin.Infrastructure.Services
 
         public int UserId => int.Parse(GetClaimValue("UserSEQ"));
 
-        public string Username => GetClaimValue("Username");
+        public string Username => GetClaimValue("UserID");
 
         public string Language => Languages.LanguageCodeMappers[GetClaimValue("Language")];
+
+        public bool IsShowIP => true;//bool.Parse(GetClaimValue("IsShowIP"));
+
+        public bool IsShowIpVN => true;
+
+        public Task<string> AccessToken => Context.GetTokenAsync(User.Identity.AuthenticationType, "access_token");
 
         public bool IsInRoles(params string[] roles) => roles?.Any(_ => User.IsInRole(_)) ?? false;
 

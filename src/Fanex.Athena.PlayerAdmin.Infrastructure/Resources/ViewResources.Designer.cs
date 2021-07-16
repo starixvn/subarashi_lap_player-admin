@@ -1303,15 +1303,6 @@ namespace Fanex.Athena.PlayerAdmin.Infrastructure.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to China.
-        /// </summary>
-        public static string China {
-            get {
-                return ResourceManager.GetString("China", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Choice.
         /// </summary>
         public static string Choice {
@@ -1515,6 +1506,51 @@ namespace Fanex.Athena.PlayerAdmin.Infrastructure.Resources {
         public static string Confirmation {
             get {
                 return ResourceManager.GetString("Confirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to change the status of these players?.
+        /// </summary>
+        public static string ConfirmBatchUpdateAccountStatus {
+            get {
+                return ResourceManager.GetString("ConfirmBatchUpdateAccountStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to turn off BA?.
+        /// </summary>
+        public static string ConfirmBatchUpdateBAStatus_Off {
+            get {
+                return ResourceManager.GetString("ConfirmBatchUpdateBAStatus_Off", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to turn on BA?.
+        /// </summary>
+        public static string ConfirmBatchUpdateBAStatus_On {
+            get {
+                return ResourceManager.GetString("ConfirmBatchUpdateBAStatus_On", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to move these players to selected odds group?.
+        /// </summary>
+        public static string ConfirmBatchUpdateOddsGroup {
+            get {
+                return ResourceManager.GetString("ConfirmBatchUpdateOddsGroup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to set special level for these players?.
+        /// </summary>
+        public static string ConfirmBatchUpdateSpecialLevel {
+            get {
+                return ResourceManager.GetString("ConfirmBatchUpdateSpecialLevel", resourceCulture);
             }
         }
         
@@ -2131,6 +2167,42 @@ namespace Fanex.Athena.PlayerAdmin.Infrastructure.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Deposited.
+        /// </summary>
+        public static string Deposited {
+            get {
+                return ResourceManager.GetString("Deposited", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Desktop China.
+        /// </summary>
+        public static string DesktopChina {
+            get {
+                return ResourceManager.GetString("DesktopChina", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Desktop New Asia.
+        /// </summary>
+        public static string DesktopNewAsia {
+            get {
+                return ResourceManager.GetString("DesktopNewAsia", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Desktop Others.
+        /// </summary>
+        public static string DesktopOthers {
+            get {
+                return ResourceManager.GetString("DesktopOthers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Detailed Bet list.
         /// </summary>
         public static string DetailedBetlist {
@@ -2244,6 +2316,15 @@ namespace Fanex.Athena.PlayerAdmin.Infrastructure.Resources {
         public static string DisableRNGCasino {
             get {
                 return ResourceManager.GetString("DisableRNGCasino", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Discount Value.
+        /// </summary>
+        public static string DiscountValue {
+            get {
+                return ResourceManager.GetString("DiscountValue", resourceCulture);
             }
         }
         
@@ -2527,7 +2608,7 @@ namespace Fanex.Athena.PlayerAdmin.Infrastructure.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to E-Sports App.
+        ///   Looks up a localized string similar to E-Sports APP.
         /// </summary>
         public static string ESportsApp {
             get {
@@ -2932,6 +3013,15 @@ namespace Fanex.Athena.PlayerAdmin.Infrastructure.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to God of Fortune Win Loss.
+        /// </summary>
+        public static string GodOfFortuneWinLoss {
+            get {
+                return ResourceManager.GetString("GodOfFortuneWinLoss", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Gold Deluxe is not offered for this currency..
         /// </summary>
         public static string GoldDeluxeNotOfferCurrency {
@@ -3018,6 +3108,15 @@ namespace Fanex.Athena.PlayerAdmin.Infrastructure.Resources {
         public static string GroupCommission {
             get {
                 return ResourceManager.GetString("GroupCommission", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Group Commission.
+        /// </summary>
+        public static string GroupCommission_2 {
+            get {
+                return ResourceManager.GetString("GroupCommission_2", resourceCulture);
             }
         }
         
@@ -3432,6 +3531,15 @@ namespace Fanex.Athena.PlayerAdmin.Infrastructure.Resources {
         public static string InvalidSubsidiaryNameMsg {
             get {
                 return ResourceManager.GetString("InvalidSubsidiaryNameMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to IP Login.
+        /// </summary>
+        public static string IPLogin {
+            get {
+                return ResourceManager.GetString("IPLogin", resourceCulture);
             }
         }
         
@@ -4237,6 +4345,24 @@ namespace Fanex.Athena.PlayerAdmin.Infrastructure.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to CLOSED: player cannot be restored forever!.
+        /// </summary>
+        public static string MessageBatchUpdateAccountStatus_Close {
+            get {
+                return ResourceManager.GetString("MessageBatchUpdateAccountStatus_Close", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to LOCKED: player cannot login!.
+        /// </summary>
+        public static string MessageBatchUpdateAccountStatus_Lock {
+            get {
+                return ResourceManager.GetString("MessageBatchUpdateAccountStatus_Lock", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Commission cannot be greater than 15%.
         /// </summary>
         public static string MessageCommCannotGreaterThan {
@@ -4291,11 +4417,38 @@ namespace Fanex.Athena.PlayerAdmin.Infrastructure.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to BA status can only be changed on Monday from 1PM to 5PM (GMT+8)..
+        /// </summary>
+        public static string MessageLimitTimeUpdateBA {
+            get {
+                return ResourceManager.GetString("MessageLimitTimeUpdateBA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Successful.
         /// </summary>
         public static string MessageSuccess {
             get {
                 return ResourceManager.GetString("MessageSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to VIP players are not allowed to turn on BA..
+        /// </summary>
+        public static string MessageTurnOffVIPError {
+            get {
+                return ResourceManager.GetString("MessageTurnOffVIPError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to BA players are not allowed to changed odds group..
+        /// </summary>
+        public static string MessageUpdateOddsGroupForBAPlayers {
+            get {
+                return ResourceManager.GetString("MessageUpdateOddsGroupForBAPlayers", resourceCulture);
             }
         }
         
@@ -4363,20 +4516,20 @@ namespace Fanex.Athena.PlayerAdmin.Infrastructure.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Mobile.
-        /// </summary>
-        public static string Mobile {
-            get {
-                return ResourceManager.GetString("Mobile", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Mobile App.
+        ///   Looks up a localized string similar to Mobile APP.
         /// </summary>
         public static string MobileApp {
             get {
                 return ResourceManager.GetString("MobileApp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mobile Compact.
+        /// </summary>
+        public static string MobileCompact {
+            get {
+                return ResourceManager.GetString("MobileCompact", resourceCulture);
             }
         }
         
@@ -4390,11 +4543,20 @@ namespace Fanex.Athena.PlayerAdmin.Infrastructure.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Mobile Lite Version.
+        ///   Looks up a localized string similar to Mobile Others.
         /// </summary>
-        public static string MobileLiteVersion {
+        public static string MobileOthers {
             get {
-                return ResourceManager.GetString("MobileLiteVersion", resourceCulture);
+                return ResourceManager.GetString("MobileOthers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mobile Standard.
+        /// </summary>
+        public static string MobileStandard {
+            get {
+                return ResourceManager.GetString("MobileStandard", resourceCulture);
             }
         }
         
@@ -4507,7 +4669,7 @@ namespace Fanex.Athena.PlayerAdmin.Infrastructure.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Native App.
+        ///   Looks up a localized string similar to Native APP.
         /// </summary>
         public static string NativeApp {
             get {
@@ -4521,15 +4683,6 @@ namespace Fanex.Athena.PlayerAdmin.Infrastructure.Resources {
         public static string NetTurnover {
             get {
                 return ResourceManager.GetString("NetTurnover", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to New Asia.
-        /// </summary>
-        public static string NewAsia {
-            get {
-                return ResourceManager.GetString("NewAsia", resourceCulture);
             }
         }
         
@@ -5209,6 +5362,15 @@ namespace Fanex.Athena.PlayerAdmin.Infrastructure.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Search by Exactly IP Login.
+        /// </summary>
+        public static string PlaceholderIPLogin {
+            get {
+                return ResourceManager.GetString("PlaceholderIPLogin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Platform.
         /// </summary>
         public static string Platform {
@@ -5286,6 +5448,15 @@ namespace Fanex.Athena.PlayerAdmin.Infrastructure.Resources {
         public static string PlayerAdminUpdateFailedMsg {
             get {
                 return ResourceManager.GetString("PlayerAdminUpdateFailedMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Player Betting Statistics (month to date).
+        /// </summary>
+        public static string PlayerBettingStatisticsTitle {
+            get {
+                return ResourceManager.GetString("PlayerBettingStatisticsTitle", resourceCulture);
             }
         }
         
@@ -5416,6 +5587,15 @@ namespace Fanex.Athena.PlayerAdmin.Infrastructure.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to BG.
+        /// </summary>
+        public static string ProductBGG {
+            get {
+                return ResourceManager.GetString("ProductBGG", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Bet Trade.
         /// </summary>
         public static string ProductBT {
@@ -5493,6 +5673,15 @@ namespace Fanex.Athena.PlayerAdmin.Infrastructure.Resources {
         public static string ProductGDG {
             get {
                 return ResourceManager.GetString("ProductGDG", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Habanero.
+        /// </summary>
+        public static string ProductHB {
+            get {
+                return ResourceManager.GetString("ProductHB", resourceCulture);
             }
         }
         
@@ -5641,7 +5830,7 @@ namespace Fanex.Athena.PlayerAdmin.Infrastructure.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to AE Casino.
+        ///   Looks up a localized string similar to AE Sexy.
         /// </summary>
         public static string ProductSXG {
             get {
@@ -5677,6 +5866,15 @@ namespace Fanex.Athena.PlayerAdmin.Infrastructure.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Vgaming.
+        /// </summary>
+        public static string ProductVGA {
+            get {
+                return ResourceManager.GetString("ProductVGA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Virtual Games.
         /// </summary>
         public static string ProductVRG {
@@ -5700,6 +5898,15 @@ namespace Fanex.Athena.PlayerAdmin.Infrastructure.Resources {
         public static string ProductVS2 {
             get {
                 return ResourceManager.GetString("ProductVS2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to WM.
+        /// </summary>
+        public static string ProductWM {
+            get {
+                return ResourceManager.GetString("ProductWM", resourceCulture);
             }
         }
         
@@ -6046,6 +6253,15 @@ namespace Fanex.Athena.PlayerAdmin.Infrastructure.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Search All Players.
+        /// </summary>
+        public static string SearchAllPlayers {
+            get {
+                return ResourceManager.GetString("SearchAllPlayers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Search Result.
         /// </summary>
         public static string SearchResult {
@@ -6249,6 +6465,15 @@ namespace Fanex.Athena.PlayerAdmin.Infrastructure.Resources {
         public static string SoccerParlay {
             get {
                 return ResourceManager.GetString("SoccerParlay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Soccer PinGoal.
+        /// </summary>
+        public static string SoccerPinGoal {
+            get {
+                return ResourceManager.GetString("SoccerPinGoal", resourceCulture);
             }
         }
         
@@ -7018,6 +7243,15 @@ namespace Fanex.Athena.PlayerAdmin.Infrastructure.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Update Account Status.
+        /// </summary>
+        public static string UpdateAccountStatus {
+            get {
+                return ResourceManager.GetString("UpdateAccountStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Update account successfully!.
         /// </summary>
         public static string UpdateAccountSuccessMsg {
@@ -7041,6 +7275,24 @@ namespace Fanex.Athena.PlayerAdmin.Infrastructure.Resources {
         public static string UpdateAgCasinoBetSettingSuccessMsg {
             get {
                 return ResourceManager.GetString("UpdateAgCasinoBetSettingSuccessMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update BA Status.
+        /// </summary>
+        public static string UpdateBAStatus {
+            get {
+                return ResourceManager.GetString("UpdateBAStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update Bet Limit.
+        /// </summary>
+        public static string UpdateBetLimit {
+            get {
+                return ResourceManager.GetString("UpdateBetLimit", resourceCulture);
             }
         }
         
@@ -7153,6 +7405,15 @@ namespace Fanex.Athena.PlayerAdmin.Infrastructure.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Update Odds Group.
+        /// </summary>
+        public static string UpdateOddsGroup {
+            get {
+                return ResourceManager.GetString("UpdateOddsGroup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to update all {0} bet settings?.
         /// </summary>
         public static string UpdateProductBetSettings {
@@ -7198,6 +7459,15 @@ namespace Fanex.Athena.PlayerAdmin.Infrastructure.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Update Special Level.
+        /// </summary>
+        public static string UpdateSpecialLevel {
+            get {
+                return ResourceManager.GetString("UpdateSpecialLevel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid parameter. Invalid custId..
         /// </summary>
         public static string UpdateSpecialLevelMsg {
@@ -7230,6 +7500,15 @@ namespace Fanex.Athena.PlayerAdmin.Infrastructure.Resources {
         public static string UpdateSuccess {
             get {
                 return ResourceManager.GetString("UpdateSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update to Account Status.
+        /// </summary>
+        public static string UpdateToAccountStatus {
+            get {
+                return ResourceManager.GetString("UpdateToAccountStatus", resourceCulture);
             }
         }
         

@@ -4,7 +4,6 @@ using Fanex.Athena.PlayerAdmin.MVC.Excel;
 using Fanex.Athena.PlayerAdmin.MVC.MetaModel;
 using Fanex.Athena.PlayerAdmin.MVC.Services.Interfaces;
 using Fanex.Athena.PlayerAdmin.MVC.ViewModels;
-using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.FileProviders;
 using System.IO;
@@ -12,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Fanex.Athena.PlayerAdmin.MVC.Controllers
 {
-    [DisableCors]
+    [CookieAuthorize(Roles.SuperAdmin, Roles.DetailTransaction)]
     public class PlayerDetailTransactionController : Controller
     {
         private readonly IPlayerDetailTransactionService _playerDetailTransactionService;
@@ -23,7 +22,7 @@ namespace Fanex.Athena.PlayerAdmin.MVC.Controllers
         }
 
         [HttpGet]
-        [CookieAuthorize(Roles.SuperAdmin, Roles.DetailTransaction)]
+        [ReferrerValidation]
         public ViewResult Index(int custId, int currencyId)
         {
             var viewModel = new PlayerDetailTransactionReportViewModel { CustId = custId, CurrencyId = currencyId };
@@ -32,7 +31,6 @@ namespace Fanex.Athena.PlayerAdmin.MVC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [CookieAuthorize(Roles.SuperAdmin, Roles.DetailTransaction)]
         [DataValidation(validateCustId: true)]
         public async Task<IActionResult> GetDetailTransactionReport([FromBody] PlayerDetailTransactionsMetaModel criteria)
         {
@@ -41,12 +39,12 @@ namespace Fanex.Athena.PlayerAdmin.MVC.Controllers
         }
 
         [HttpGet]
-        [CookieAuthorize(Roles.SuperAdmin, Roles.DetailTransaction)]
+        [ReferrerValidation]
         [DataValidation(validateCustId: true)]
-        public async Task<ActionResult> ExportDetailTransactionReport(
+        public async Task<FileResult> ExportDetailTransactionReport(
             [FromServices] IFileProvider file,
             [FromServices] IPlayerDetailTransactionExcel excelService,
-            [FromQuery]PlayerDetailTransactionsMetaModel criteria)
+            [FromQuery] PlayerDetailTransactionsMetaModel criteria)
         {
             criteria.PageSize = null;
             criteria.PageIndex = null;

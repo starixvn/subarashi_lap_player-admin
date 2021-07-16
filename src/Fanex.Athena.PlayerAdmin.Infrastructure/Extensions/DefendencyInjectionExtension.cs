@@ -1,6 +1,7 @@
 ﻿using Fanex.Athena.PlayerAdmin.Infrastructure.ConsoleClient;
 using Fanex.Athena.PlayerAdmin.Infrastructure.Repositories;
 using Fanex.Athena.PlayerAdmin.Infrastructure.Services;
+using Fanex.Core.Utils;
 using Fanex.RemotingRef;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
@@ -26,6 +27,8 @@ namespace Fanex.Athena.PlayerAdmin.Infrastructure.Extensions
             services.AddSingleton<ILicenseeService, LicenseeService>();
             services.AddSingleton<IResourceService, ResourceService>();
             services.AddSingleton<IRemotingRefService, RemotingRefService>();
+
+            services.AddSingleton<IMetaModelBindingService, BaseMetaModelBindingService>();
 
             services.AddHttpContextAccessor();
             return services;

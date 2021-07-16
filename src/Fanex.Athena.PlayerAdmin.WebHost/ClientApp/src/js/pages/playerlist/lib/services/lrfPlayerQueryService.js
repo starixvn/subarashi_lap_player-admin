@@ -7,21 +7,18 @@ export default class LrfPlayerQueryService {
         return commonService
             .fetchData(lrfSearch.type, lrfSearch.action, { ...param })
             .then(lrfResponse => {
-                const { DataList: lrfPlayerList } = lrfResponse.data;
+                const { DataList: lrfPlayerList, TotalItem } = lrfResponse.data;
 
                 return !lrfPlayerList || !lrfPlayerList.length
                     ? PlayerListDataHelper.createEmptyResult()
-                    : this._fetchFromLap(param, lrfPlayerList, lapDataById, commonService);
+                    : this._fetchFromLap(lrfPlayerList, lapDataById, commonService, TotalItem);
             })
             .catch(() => PlayerListDataHelper.createEmptyResult());
     }
 
-    static _fetchFromLap(param, lrfPlayerList, lapDataById, commonService) {
+    static _fetchFromLap(lrfPlayerList, lapDataById, commonService, lrfTotalItem) {
         const lapParam = {
-            idList: lrfPlayerList.map(x => x.IbcCustId),
-            bankAccountNumber: param.bankAccountNumber,
-            email: param.email,
-            ip: param.ipLogin
+            idList: lrfPlayerList.map(x => x.IbcCustId)
         };
 
         return commonService
@@ -34,15 +31,12 @@ export default class LrfPlayerQueryService {
 
                 const playerList = PlayerListDataHelper.mergePlayerList(lrfPlayerList, lapPlayerList);
 
-                const startIndex = param.pageSize * (param.pageIndex - 1);
-                const endIndex = startIndex + param.pageSize;
-                const dataList = playerList.slice(startIndex, endIndex);
-
                 return {
-                    playerList: dataList,
-                    totalItem: playerList.length
+                    playerList,
+                    totalItem: lrfTotalItem
                 };
             })
             .catch(() => PlayerListDataHelper.createEmptyResult());
     }
 }
+

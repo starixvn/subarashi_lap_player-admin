@@ -1,0 +1,81 @@
+﻿@using Fanex.Athena.PlayerAdmin.BatchUpdate.ViewModels;
+
+@model BasePlayerBatchUpdateViewModel
+@{
+    Layout = "_SimpleGridLayout";
+    ViewData["Title"] = ViewResources.UpdateSpecialLevel;
+}
+@section pagecss {
+    <environment include="Development">
+        <link href="~/jquery-pages/css/dev/pages/playerBatchUpdate/index.css" asp-append-version="true" rel="stylesheet" type="text/css" />
+    </environment>
+    <environment exclude="Development">
+        <link href="~/jquery-pages/css/pro/pages/playerBatchUpdate/index.css" asp-append-version="true" rel="stylesheet" type="text/css" />
+    </environment>
+}
+@section pagejs {
+    <environment include="Development">
+        <script src="~/jquery-pages/js/dev/pages/playerBatchUpdate/specialLevel.chunk.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="~/jquery-pages/js/pro/pages/playerBatchUpdate/specialLevel.chunk.js" asp-append-version="true"></script>
+    </environment>
+}
+@section Filter
+{
+    <div class="row page-form">
+        <form class="player-special-level-edit" id="player-special-level-edit"
+              action""
+              method="post">
+            <div class="row">
+                <div class="input-field col l3 m6 s6">
+                    <label>@ViewResources.SelectedCustomers</label>
+                </div>
+                <div class="input-field col l3 m6 s6">
+                    <label>@ViewResources.SpecialLevel</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col l3 m6 s6">
+                    <div class="multiselect-container">
+                        <select id="ddl-customers"></select>
+                    </div>
+                </div>
+                <div class="input-field col l3 m6 s6">
+                    <select id="ddl-special-level" class="select">
+                        <option value="-1" disabled="disabled" selected>@ViewResources.PleaseSelectOne</option>
+                        @for (var i = 0; i <= 10; i++)
+                        {
+                            <option value="@i" class="opt-special-level opt-special-level-@i">@(i == 0 ? ViewResources.None : i.ToString())</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            @Html.Hidden("CustNames", Model.CustNamesStr)
+            @Html.Hidden("CustIds", Model.CustIdsStr)
+        </form>
+    </div>
+}
+@section Content
+{ <div class="div-content">
+        <div class="row msg-confirm hide">
+            <div class="input-field col l6 m12 s12">
+                @ViewResources.ConfirmBatchUpdateSpecialLevel
+            </div>
+        </div>
+        <div class="row">
+            <div class="col l6 m12 s12">
+                <div id="div-result" class="div-result hide">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col l6 m12 s12">
+                <div class="btn-group">
+                    <button type="button" disabled="disabled" class="btn btn-submit">@ViewResources.Save</button>
+                    <button type="button" class="btn btn-cancel">@ViewResources.Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}

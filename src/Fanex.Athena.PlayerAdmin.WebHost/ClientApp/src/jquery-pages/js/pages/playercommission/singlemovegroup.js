@@ -12,7 +12,8 @@ define(
                 btnSave: null,
                 groupCommId: null,
                 divResult: null,
-                currentGroupId: null
+                currentGroupId: null,
+                oldCustIds: null
             },
             initialize: function () {
                 Site.initialize();
@@ -38,6 +39,8 @@ define(
             },
             storeElements: function () {
                 _me.elements.custIds = $("#CustIds");
+                _me.elements.oldCustIds = _me.elements.custIds.val();
+
                 _me.elements.ddlGroup = $("#ddl-group");
                 _me.elements.commValues = $(".comm-values");
                 _me.elements.tblComm = $("#tbl-comm");
@@ -88,13 +91,6 @@ define(
                         }
 
                         _me.showMsg(Site.getSingleResource('MoveSuccessfullyMsg'), result.IsSuccessful);
-                        var newGroup = _me.elements.ddlGroup.find("option:selected").text();
-                        PlayerCommissionComm.setTopWindowValue("playerComissionResult", {
-                            newGroup,
-                            isSuccess: true,
-                            custIds: param.CustIds
-                        });
-
                         setTimeout(() => {
                             location.reload(true);
                         }, 3000);

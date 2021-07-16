@@ -69,7 +69,7 @@ export const Content = (props) => {
     return (
         <BetListLayout
             pageName='PlayerAdmin'
-            rootUrl={AppData.betlistResultUrl}
+            rootUrl={Site.getRootUrl()}
             getResourceFunc={dataGridProps.getResource}
             formatDateStringFunc={formatDateString}
             baseCurrency=''

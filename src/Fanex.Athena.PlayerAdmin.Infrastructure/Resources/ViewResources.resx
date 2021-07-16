@@ -586,10 +586,6 @@
   <data name="Checkavailability" xml:space="preserve">
     <value>Check availability</value>
   </data>
-  <data name="China" xml:space="preserve">
-    <value>China</value>
-    <comment>#50939</comment>
-  </data>
   <data name="Choice" xml:space="preserve">
     <value>Choice</value>
   </data>
@@ -663,6 +659,21 @@
   </data>
   <data name="Confirmation" xml:space="preserve">
     <value>Confirmation</value>
+  </data>
+  <data name="ConfirmBatchUpdateAccountStatus" xml:space="preserve">
+    <value>Are you sure you want to change the status of these players?</value>
+  </data>
+  <data name="ConfirmBatchUpdateBAStatus_Off" xml:space="preserve">
+    <value>Are you sure you want to turn off BA?</value>
+  </data>
+  <data name="ConfirmBatchUpdateBAStatus_On" xml:space="preserve">
+    <value>Are you sure you want to turn on BA?</value>
+  </data>
+  <data name="ConfirmBatchUpdateOddsGroup" xml:space="preserve">
+    <value>Are you sure you want to move these players to selected odds group?</value>
+  </data>
+  <data name="ConfirmBatchUpdateSpecialLevel" xml:space="preserve">
+    <value>Are you sure you want to set special level for these players?</value>
   </data>
   <data name="ConfirmCommission" xml:space="preserve">
     <value>Confirm Customer's Commission:</value>
@@ -883,6 +894,21 @@
   <data name="Deposit" xml:space="preserve">
     <value>Deposit</value>
   </data>
+  <data name="Deposited" xml:space="preserve">
+    <value>Deposited</value>
+  </data>
+  <data name="DesktopChina" xml:space="preserve">
+    <value>Desktop China</value>
+    <comment>#50939</comment>
+  </data>
+  <data name="DesktopNewAsia" xml:space="preserve">
+    <value>Desktop New Asia</value>
+    <comment>#85203</comment>
+  </data>
+  <data name="DesktopOthers" xml:space="preserve">
+    <value>Desktop Others</value>
+    <comment>#50939</comment>
+  </data>
   <data name="DetailedBetlist" xml:space="preserve">
     <value>Detailed Bet list</value>
     <comment>#43078</comment>
@@ -926,6 +952,9 @@
   </data>
   <data name="DisableRNGCasino" xml:space="preserve">
     <value>Disable RNG Casino</value>
+  </data>
+  <data name="DiscountValue" xml:space="preserve">
+    <value>Discount Value</value>
   </data>
   <data name="Dontshowagain" xml:space="preserve">
     <value>Don't show again</value>
@@ -1028,7 +1057,7 @@
     <value>Sorry, an error occurred while processing your request.</value>
   </data>
   <data name="ESportsApp" xml:space="preserve">
-    <value>E-Sports App</value>
+    <value>E-Sports APP</value>
   </data>
   <data name="ESportsDesktop" xml:space="preserve">
     <value>E-Sports Desktop</value>
@@ -1173,6 +1202,9 @@
   <data name="Go" xml:space="preserve">
     <value>Go</value>
   </data>
+  <data name="GodOfFortuneWinLoss" xml:space="preserve">
+    <value>God of Fortune Win Loss</value>
+  </data>
   <data name="GoldDeluxeNotOfferCurrency" xml:space="preserve">
     <value>Gold Deluxe is not offered for this currency.</value>
   </data>
@@ -1205,6 +1237,9 @@
   </data>
   <data name="GroupCommission" xml:space="preserve">
     <value>Group commission</value>
+  </data>
+  <data name="GroupCommission_2" xml:space="preserve">
+    <value>Group Commission</value>
   </data>
   <data name="GroupCommNote" xml:space="preserve">
     <value>If default group is selected, all newly registered customers will be automatically assigned to this commission group. There will be no change to existing customers.</value>
@@ -1353,6 +1388,9 @@
   <data name="InvalidSubsidiaryNameMsg" xml:space="preserve">
     <value>Please contact admin to check your subsidiary name.</value>
     <comment>#95177</comment>
+  </data>
+  <data name="IPLogin" xml:space="preserve">
+    <value>IP Login</value>
   </data>
   <data name="IsNeutral" xml:space="preserve">
     <value>(N)</value>
@@ -1633,6 +1671,12 @@
   <data name="Member" xml:space="preserve">
     <value>Member</value>
   </data>
+  <data name="MessageBatchUpdateAccountStatus_Close" xml:space="preserve">
+    <value>CLOSED: player cannot be restored forever!</value>
+  </data>
+  <data name="MessageBatchUpdateAccountStatus_Lock" xml:space="preserve">
+    <value>LOCKED: player cannot login!</value>
+  </data>
   <data name="MessageCommCannotGreaterThan" xml:space="preserve">
     <value>Commission cannot be greater than 15%</value>
   </data>
@@ -1651,8 +1695,17 @@
   <data name="MessageInvalidCommValue" xml:space="preserve">
     <value>Invalid commission value!</value>
   </data>
+  <data name="MessageLimitTimeUpdateBA" xml:space="preserve">
+    <value>BA status can only be changed on Monday from 1PM to 5PM (GMT+8).</value>
+  </data>
   <data name="MessageSuccess" xml:space="preserve">
     <value>Successful</value>
+  </data>
+  <data name="MessageTurnOffVIPError" xml:space="preserve">
+    <value>VIP players are not allowed to turn on BA.</value>
+  </data>
+  <data name="MessageUpdateOddsGroupForBAPlayers" xml:space="preserve">
+    <value>BA players are not allowed to changed odds group.</value>
   </data>
   <data name="Message_RemoveCustomerLog" xml:space="preserve">
     <value>Customer Log will be removed at 11am on April 21st (GMT+8). Kindly use Player Administration instead. Thanks!</value>
@@ -1678,19 +1731,22 @@
   <data name="Mo" xml:space="preserve">
     <value>Mo</value>
   </data>
-  <data name="Mobile" xml:space="preserve">
-    <value>Mobile</value>
-  </data>
   <data name="MobileApp" xml:space="preserve">
-    <value>Mobile App</value>
+    <value>Mobile APP</value>
     <comment>104587</comment>
+  </data>
+  <data name="MobileCompact" xml:space="preserve">
+    <value>Mobile Compact</value>
+    <comment>106088</comment>
   </data>
   <data name="MobileEuro" xml:space="preserve">
     <value>Mobile Euro</value>
   </data>
-  <data name="MobileLiteVersion" xml:space="preserve">
-    <value>Mobile Lite Version</value>
-    <comment>106088</comment>
+  <data name="MobileOthers" xml:space="preserve">
+    <value>Mobile Others</value>
+  </data>
+  <data name="MobileStandard" xml:space="preserve">
+    <value>Mobile Standard</value>
   </data>
   <data name="Monday" xml:space="preserve">
     <value>Monday</value>
@@ -1732,15 +1788,11 @@
     <value>Name</value>
   </data>
   <data name="NativeApp" xml:space="preserve">
-    <value>Native App</value>
+    <value>Native APP</value>
     <comment>125824</comment>
   </data>
   <data name="NetTurnover" xml:space="preserve">
     <value>Net Turnover</value>
-  </data>
-  <data name="NewAsia" xml:space="preserve">
-    <value>New Asia</value>
-    <comment>#85203</comment>
   </data>
   <data name="NewGroup" xml:space="preserve">
     <value>New Group</value>
@@ -1986,6 +2038,9 @@
     <value>Search by Exactly Email</value>
     <comment>112658</comment>
   </data>
+  <data name="PlaceholderIPLogin" xml:space="preserve">
+    <value>Search by Exactly IP Login</value>
+  </data>
   <data name="Platform" xml:space="preserve">
     <value>Platform</value>
   </data>
@@ -2014,6 +2069,9 @@
   <data name="PlayerAdminUpdateFailedMsg" xml:space="preserve">
     <value>Please try again!</value>
     <comment>112658</comment>
+  </data>
+  <data name="PlayerBettingStatisticsTitle" xml:space="preserve">
+    <value>Player Betting Statistics (month to date)</value>
   </data>
   <data name="PlayerName" xml:space="preserve">
     <value>Player Name</value>
@@ -2065,6 +2123,9 @@
     <value>BA</value>
     <comment>#49196</comment>
   </data>
+  <data name="ProductBGG" xml:space="preserve">
+    <value>BG</value>
+  </data>
   <data name="ProductBT" xml:space="preserve">
     <value>Bet Trade</value>
     <comment>#49196</comment>
@@ -2098,6 +2159,9 @@
   </data>
   <data name="ProductGDG" xml:space="preserve">
     <value>GDG</value>
+  </data>
+  <data name="ProductHB" xml:space="preserve">
+    <value>Habanero</value>
   </data>
   <data name="ProductI4D" xml:space="preserve">
     <value>Togel 4D</value>
@@ -2158,7 +2222,7 @@
     <value>Sports Lottery</value>
   </data>
   <data name="ProductSXG" xml:space="preserve">
-    <value>AE Casino</value>
+    <value>AE Sexy</value>
     <comment>#141118</comment>
   </data>
   <data name="ProductTG" xml:space="preserve">
@@ -2172,6 +2236,9 @@
     <value>Macau</value>
     <comment>#49196</comment>
   </data>
+  <data name="ProductVGA" xml:space="preserve">
+    <value>Vgaming</value>
+  </data>
   <data name="ProductVRG" xml:space="preserve">
     <value>Virtual Games</value>
   </data>
@@ -2182,6 +2249,9 @@
   <data name="ProductVS2" xml:space="preserve">
     <value>Virtual Sports 2</value>
     <comment>#78241</comment>
+  </data>
+  <data name="ProductWM" xml:space="preserve">
+    <value>WM</value>
   </data>
   <data name="Promotion" xml:space="preserve">
     <value>Promotion</value>
@@ -2309,6 +2379,9 @@
   <data name="Score" xml:space="preserve">
     <value>Score</value>
   </data>
+  <data name="SearchAllPlayers" xml:space="preserve">
+    <value>Search All Players</value>
+  </data>
   <data name="SearchResult" xml:space="preserve">
     <value>Search Result</value>
   </data>
@@ -2382,6 +2455,9 @@
   </data>
   <data name="SoccerParlay" xml:space="preserve">
     <value>Soccer Parlay</value>
+  </data>
+  <data name="SoccerPinGoal" xml:space="preserve">
+    <value>Soccer PinGoal</value>
   </data>
   <data name="SolutionForRestriction" xml:space="preserve">
     <value>1. Login at Licensee Admin.&lt;br/&gt;2. Access the reports/ functions you want. &lt;br/&gt; 请洽你们的最高管理者替你设置币别权限</value>
@@ -2660,6 +2736,9 @@
   <data name="Update" xml:space="preserve">
     <value>Update</value>
   </data>
+  <data name="UpdateAccountStatus" xml:space="preserve">
+    <value>Update Account Status</value>
+  </data>
   <data name="UpdateAccountSuccessMsg" xml:space="preserve">
     <value>Update account successfully!</value>
   </data>
@@ -2670,6 +2749,12 @@
   <data name="UpdateAgCasinoBetSettingSuccessMsg" xml:space="preserve">
     <value>The Ag Casino bet setting of {0} was updated successfully</value>
     <comment>#19458</comment>
+  </data>
+  <data name="UpdateBAStatus" xml:space="preserve">
+    <value>Update BA Status</value>
+  </data>
+  <data name="UpdateBetLimit" xml:space="preserve">
+    <value>Update Bet Limit</value>
   </data>
   <data name="UpdateCommGroup_Warning" xml:space="preserve">
     <value>Please pay attention: Customer(s) will be removed from group(s) due to different discount values.</value>
@@ -2707,6 +2792,9 @@
   <data name="UpdateNumberGameBetSettingSuccessMsg" xml:space="preserve">
     <value>The Number Game bet setting of {0} was updated successfully</value>
   </data>
+  <data name="UpdateOddsGroup" xml:space="preserve">
+    <value>Update Odds Group</value>
+  </data>
   <data name="UpdateProductBetSettings" xml:space="preserve">
     <value>Are you sure you want to update all {0} bet settings?</value>
     <comment>79997</comment>
@@ -2724,6 +2812,9 @@
   <data name="UpdateRNGCasinoBetSettingSuccessMsg" xml:space="preserve">
     <value>The RNG Casino bet setting of {0} was updated successfully</value>
   </data>
+  <data name="UpdateSpecialLevel" xml:space="preserve">
+    <value>Update Special Level</value>
+  </data>
   <data name="UpdateSpecialLevelMsg" xml:space="preserve">
     <value>Invalid parameter. Invalid custId.</value>
   </data>
@@ -2735,6 +2826,9 @@
   </data>
   <data name="UpdateSuccess" xml:space="preserve">
     <value>Update successfully!</value>
+  </data>
+  <data name="UpdateToAccountStatus" xml:space="preserve">
+    <value>Update to Account Status</value>
   </data>
   <data name="UpdateToActiveConfirmMsg" xml:space="preserve">
     <value>Are you sure you want to change the status of this player to ACTIVE?</value>

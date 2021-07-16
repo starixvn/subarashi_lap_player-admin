@@ -92,13 +92,7 @@ function generateConfig(environment) {
                         test: /(node_modules)/,
                         minChunks: 2,
                         priority: -10
-                    },
-                    // default: {
-                    //     name: 'lib/common',
-                    //     minChunks: 2,
-                    //     priority: -20,
-                    //     reuseExistingChunk: true,
-                    //   },
+                    }
                 }
             }
         }

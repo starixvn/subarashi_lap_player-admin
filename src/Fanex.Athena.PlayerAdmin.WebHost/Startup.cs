@@ -1,5 +1,6 @@
 using Fanex.Athena.PlayerAdmin.API.Extensions;
 using Fanex.Athena.PlayerAdmin.Auth.Controllers;
+using Fanex.Athena.PlayerAdmin.BatchUpdate;
 using Fanex.Athena.PlayerAdmin.BetLimit.Extensions;
 using Fanex.Athena.PlayerAdmin.Commission.Extensions;
 using Fanex.Athena.PlayerAdmin.Infrastructure.ConsoleClient;
@@ -100,7 +101,8 @@ namespace Fanex.Athena.PlayerAdmin.WebHost
             var identityServer = Configuration.GetSection("IdentityServer").Get<IdentityServerSetting>();
             var cookieSetting = new CookieSetting();
             Configuration.GetSection("Cookie").Bind(cookieSetting);
-            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+
+            services.AddAuthentication()
                 .AddCookie(options =>
                 {
                     options.Cookie = new CookieBuilder
@@ -117,12 +119,13 @@ namespace Fanex.Athena.PlayerAdmin.WebHost
                     options.LoginPath = cookieSetting.LoginPath;
                     options.AccessDeniedPath = cookieSetting.DeniedPath;
                     options.SessionStore = services.BuildServiceProvider().GetRequiredService<ITicketStore>();
+
                 })
                 .AddOAuth2Introspection(options =>
                 {
                     options.Authority = identityServer.Host;
-                    options.ClientId = identityServer.CredentialsAPI.ClientId;
-                    options.ClientSecret = identityServer.CredentialsAPI.ClientSecret;
+                    options.ClientId = identityServer.CredentialIntrospection.ClientId;
+                    options.ClientSecret = identityServer.CredentialIntrospection.ClientSecret;
                     options.SaveToken = true;
                     options.SkipTokensWithDots = true;
                     options.EnableCaching = identityServer.CacheDuration > 0;
@@ -160,31 +163,12 @@ namespace Fanex.Athena.PlayerAdmin.WebHost
             services.AddMVC();
             services.AddBetLimit();
             services.AddCommission();
+            services.AddBatchUpdate();
 
             var appSettingSection = Configuration.GetSection("App");
+            services.AddCorsPortalSite(appSettingSection.Get<AppSetting>());
+
             services.Configure<AppSetting>(appSettingSection);
-            var appSetting = appSettingSection.Get<AppSetting>();
-            services.AddCors(options =>
-            {
-                options.AddDefaultPolicy(
-                                  builder =>
-                                  {
-                                      builder.SetIsOriginAllowed(domain =>
-                                      {
-                                          if (!appSetting.AllowedCrossDomains.Any())
-                                          {
-                                              return true;
-                                          }
-
-                                          var clientDomain = new Uri(domain).Authority;
-                                          var isValid = appSetting.AllowedCrossDomains.Any(allowedCrossDomain => clientDomain.EndsWith(allowedCrossDomain, StringComparison.OrdinalIgnoreCase));
-                                          return isValid;
-                                      })
-                                      .AllowAnyMethod()
-                                      .AllowAnyHeader();
-                                  });
-            });
-
             services.Configure<IdentityServerSetting>(Configuration.GetSection("IdentityServer"));
             services.Configure<BetLimitApiSetting>(Configuration.GetSection("BetLimitApi"));
             services.Configure<FunctionAllowedProductsSetting>(Configuration.GetSection("FunctionAllowedProducts"));
@@ -226,32 +210,28 @@ namespace Fanex.Athena.PlayerAdmin.WebHost
 
         public void Configure(IApplicationBuilder app)
         {
-            var forwardOptions = new ForwardedHeadersOptions
-            {
-                ForwardedHeaders = ForwardedHeaders.All,
-            };
-            forwardOptions.KnownNetworks.Clear();
-            forwardOptions.KnownProxies.Clear();
-            app.UseForwardedHeaders(forwardOptions);
+            app.UseForwardedHeaders();
 
-            var isDev = HostingEnvironment.IsDevelopment();
-            if (isDev)
+            if (string.Equals(Configuration["HandleError"], "1"))
             {
-                app.UseDeveloperExceptionPage();
+                app.UseErrorHandler();
             }
             else
             {
-                app.UseErrorHandler();
+                app.UseDeveloperExceptionPage();
+            }
+
+            if (!HostingEnvironment.IsDevelopment())
+            {
                 app.UseHsts();
                 app.UseHttpsRedirection();
             }
 
-            app.UseStaticResource(isDev);
+            app.UseStaticResource(HostingEnvironment.IsDevelopment());
             app.UseHealthCheck(Configuration);
             app.UseRouting();
             app.UseCors();
             app.UseUnderMaintenance();
-            app.UseAuthentication();
             app.UseAuthorization();
             app.UseRequestLocalization();
             app.UseEndpoints(endpoints =>

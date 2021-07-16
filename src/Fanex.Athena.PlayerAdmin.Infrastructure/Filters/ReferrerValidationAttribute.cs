@@ -44,7 +44,7 @@ namespace Fanex.Athena.PlayerAdmin.Infrastructure.Filters
         {
             referrerUrl = string.Empty;
 
-            if (!_setting.AllowedCrossDomains.Any())
+            if (!_setting.AllowedCrossDomains.IsPresent())
             {
                 return true;
             }
@@ -60,7 +60,8 @@ namespace Fanex.Athena.PlayerAdmin.Infrastructure.Filters
             }
 
             var clientDomain = new Uri(referrerUrl).Authority;
-            var isValid = _setting.AllowedCrossDomains.Any(allowedCrossDomain => clientDomain.EndsWith(allowedCrossDomain, StringComparison.OrdinalIgnoreCase));
+            var isValid = request.Host.Value.Equals(clientDomain, StringComparison.OrdinalIgnoreCase) ||
+                _setting.AllowedCrossDomains.Any(allowedCrossDomain => clientDomain.Equals(allowedCrossDomain, StringComparison.OrdinalIgnoreCase));
             return isValid;
         }
     }

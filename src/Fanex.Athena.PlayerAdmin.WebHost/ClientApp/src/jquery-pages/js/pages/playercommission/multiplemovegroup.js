@@ -14,7 +14,8 @@ define(
                 btnCancel: null,
                 btnSave: null,
                 groupCommId: null,
-                divResult: null
+                divResult: null,
+                oldCustIds: null
             },
             initialize: function () {
                 Site.initialize();
@@ -29,6 +30,8 @@ define(
             },
             storeElements: function () {
                 _me.elements.custIds = $("#CustIds");
+                _me.elements.oldCustIds = _me.elements.custIds.val();
+
                 _me.elements.custNames = $("#CustNames");
                 _me.elements.ddlCustomer = $("#ddl-customers");
                 _me.elements.ddlGroup = $("#ddl-group");
@@ -127,14 +130,17 @@ define(
                         _me.elements.btnSave.addClass("completed");
                         _me.showMsg(Site.getSingleResource('MoveSuccessfullyMsg'), result.IsSuccessful);
                         var newGroup = _me.elements.ddlGroup.find("option:selected").text();
-                        PlayerCommissionComm.setTopWindowValue("playerComissionResult", {
-                            newGroup,
-                            isSuccess: true,
-                            custIds: param.CustIds
-                        });
 
                         setTimeout(() => {
-                            PlayerCommissionComm.setTopWindowValue("playerComissionResult", { isCancel: true });
+                            PlayerCommissionComm.setTopWindowValue("playerComissionResult", {
+                                isCancel: true,
+                                oldCustIds: _me.elements.oldCustIds,
+                                custIds: param.CustIds,
+                                reloadGrid: true,
+                                newValue: {
+                                    CommissionGroup: newGroup
+                                }
+                            });
                         }, 3000);
                     }
                 });

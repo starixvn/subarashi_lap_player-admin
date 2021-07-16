@@ -23,8 +23,6 @@ namespace Fanex.Athena.PlayerAdmin.API.Extensions
             services.AddTransient<IPlayerOddsGroupService, PlayerOddsGroupService>();
             services.AddTransient<IPlayerSpecialLevelService, PlayerSpecialLevelService>();
 
-            services.AddSingleton<IMetaModelBindingService, BaseMetaModelBindingService>();
-
             return services;
         }
 

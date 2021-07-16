@@ -3,16 +3,14 @@ using Fanex.Athena.PlayerAdmin.BetLimit.Services.Interfaces;
 using Fanex.Athena.PlayerAdmin.BetLimit.ViewModels;
 using Fanex.Athena.PlayerAdmin.Infrastructure.Constants;
 using Fanex.Athena.PlayerAdmin.Infrastructure.Filters;
-using Fanex.Athena.PlayerAdmin.Infrastructure.Services;
 using Fanex.Athena.PlayerAdmin.Infrastructure.Resources;
-using Microsoft.AspNetCore.Cors;
+using Fanex.Athena.PlayerAdmin.Infrastructure.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Fanex.Athena.PlayerAdmin.BetLimit.Controllers
 {
-    [DisableCors]
     public class DcsBetLimitController : PlayerBetLimitBaseControler
     {
         private readonly IDcsBetLimitService _service;
@@ -25,6 +23,7 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [CookieAuthorize(Roles.SuperAdmin, Roles.BetLimit)]
         [DataValidation(
             validateCustId: true,
             validateProductId: -1,

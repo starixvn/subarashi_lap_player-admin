@@ -6,7 +6,6 @@ using Fanex.Athena.PlayerAdmin.Infrastructure.Settings;
 using Fanex.Athena.PlayerAdmin.MVC.DTO;
 using Fanex.Athena.PlayerAdmin.MVC.MetaModel;
 using Fanex.Athena.PlayerAdmin.MVC.ViewModels;
-using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using System;
@@ -16,16 +15,16 @@ using System.Threading.Tasks;
 
 namespace Fanex.Athena.PlayerAdmin.MVC.Controllers
 {
-    [DisableCors]
+    [CookieAuthorize(Roles.SuperAdmin, Roles.AccountInfo)]
     public class PlayerBtcSingleCustomerController : Controller
     {
         private const string FunctionKey = "BettingTicketCenter";
-        private const byte AllPlatform = 0;
+        private const string AllPlatform = "All";
 
         private static readonly int[] _statusList = new[]
         {
             StatusTypes.Won, StatusTypes.Lose, StatusTypes.Draw, StatusTypes.Void,
-            StatusTypes.AbnormalBet, StatusTypes.Reject, StatusTypes.Refund
+            StatusTypes.AbnormalBet, StatusTypes.Reject, StatusTypes.Refund,  StatusTypes.DelayedPayout
         };
 
         private static readonly int[] _liveStatusList = new[] { LiveStatusTypes.NonLive, LiveStatusTypes.Live, LiveStatusTypes.Mix };
@@ -46,16 +45,15 @@ namespace Fanex.Athena.PlayerAdmin.MVC.Controllers
         }
 
         [HttpGet]
-        [CookieAuthorize(Roles.SuperAdmin, Roles.AccountInfo)]
-        public async Task<ViewResult> Index(string userName, string currencyName, string lapToken)
+        [ReferrerValidation]
+        public async Task<ViewResult> Index([FromQuery]string userName, [FromQuery]string currencyName)
         {
             var viewModel = new PlayerBtcSingleCustomerViewModel
             {
                 UserName = userName?.Trim(),
                 CurrencyName = currencyName?.Trim(),
                 IsAllowedCustomerComm = _contextService.IsAllowedCustomerComm,
-                ProductCodeListString = await GetProductCode(),
-                LapToken = lapToken
+                ProductCodeListString = await GetProductCode()
             };
 
             ViewBag.IsAllowTxIDColumn = _appSettings.LicenseeOfferTxIDColumn.Contains(
@@ -66,14 +64,16 @@ namespace Fanex.Athena.PlayerAdmin.MVC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [CookieAuthorize(Roles.SuperAdmin, Roles.AccountInfo)]
         [DataValidation]
         [AutoBindingMetaModel(bindAgent: true)]
-        public async Task<IActionResult> Index([FromServices] IBetListApiClient betListApiClient, [Bind("Username", "PageSize", "PageIndex", "IsExport", "SortBy", "SortOrder")][FromBody] PlayerBtcSingleCustomerMetaModel metaModel)
+        public async Task<IActionResult> Index([FromServices] IBetListApiClient betListApiClient, [Bind("Username", "PageSize", "PageIndex", "IsExport", "SortBy", "SortOrder")]
+        [FromBody] PlayerBtcSingleCustomerMetaModel metaModel)
         {
             metaModel.HasPlayerCom = _contextService.IsAllowedCustomerComm;
             metaModel.IsAllowTxIDColumn = _appSettings.LicenseeOfferTxIDColumn.Contains(
                _contextService.SiteName, StringComparer.InvariantCultureIgnoreCase);
+            metaModel.IsShowIp = _contextService.IsShowIP;
+            metaModel.IsShowIpVN = _contextService.IsShowIpVN;
 
             await AssignMetaModelValue(metaModel);
 
@@ -104,7 +104,7 @@ namespace Fanex.Athena.PlayerAdmin.MVC.Controllers
             metaModel.ProductCodeList = await GetProductCode();
             metaModel.LiveStatus = GetLiveStatus();
             metaModel.BaseCurrency = null;
-            metaModel.FromDate = new DateTime(now.Year, now.Month - 1, 1);
+            metaModel.FromDate = new DateTime(now.Year, now.Month, 1);
             metaModel.ToDate = now;
         }
 

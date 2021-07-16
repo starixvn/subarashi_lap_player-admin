@@ -6,7 +6,6 @@ using Fanex.Athena.PlayerAdmin.Infrastructure.Services;
 using Fanex.Athena.PlayerAdmin.MVC.DTO;
 using Fanex.Athena.PlayerAdmin.MVC.MetaModel;
 using Fanex.Athena.PlayerAdmin.MVC.ViewModels;
-using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Linq;
@@ -15,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace Fanex.Athena.PlayerAdmin.MVC.Controllers
 {
-    [DisableCors]
+    [CookieAuthorize(Roles.SuperAdmin, Roles.AccountInfo)]
     public class PlayerWinLossController : Controller
     {
         private const string FunctionName = "CustomerWinLoss";
@@ -33,7 +32,7 @@ namespace Fanex.Athena.PlayerAdmin.MVC.Controllers
         }
 
         [HttpGet]
-        [CookieAuthorize(Roles.SuperAdmin, Roles.AccountInfo)]
+        [ReferrerValidation]
         public async Task<ViewResult> Index(string userName, string currencyName)
         {
             var productAccess = await GetProductAccess();
@@ -52,7 +51,6 @@ namespace Fanex.Athena.PlayerAdmin.MVC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [CookieAuthorize(Roles.SuperAdmin, Roles.AccountInfo)]
         [DataValidation]
         [AutoBindingMetaModel(bindAgent: true)]
         public async Task<IActionResult> Index([FromServices] IReportApiClient reportAPIClient, [Bind("Username")][FromBody] PlayerWinLossMetaModel metaModel)

@@ -238,6 +238,15 @@ iframe {
     }
 }
 
+input[disabled] {
+    &#userName,
+    &#bankAccountNumber,
+    &#email {
+        background-color: #D9D9D9;
+        cursor: default;
+    }
+}
+
 /*End Grid*/
 /*Batch Update*/
 .text-center {

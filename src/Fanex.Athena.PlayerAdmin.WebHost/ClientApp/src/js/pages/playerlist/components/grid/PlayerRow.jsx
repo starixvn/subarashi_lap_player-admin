@@ -36,18 +36,22 @@ export const PlayerRow = (props) => {
         IsDeposit,
         IsArchived,
         CommissionGroup,
-        VendorMemberId,
+        VendorMemberId
     } = dataItem;
     const canShowMainColumn = IsDeposit && !IsArchived;
     const commissionGroup = CommissionGroup || LangHelper.getSingleResource('None');
-    const canEditCommissionGpoup = IsDeposit && !IsArchived && dataItem.Status != playerStatusByName.Closed;
+    const playerIsEditable = IsDeposit && !IsArchived && dataItem.Status != playerStatusByName.Closed;
     const customerClass = dataItem.CustomerClass == "0" || !dataItem.CustomerClass
         ? LangHelper.getSingleResource('None') : dataItem.CustomerClass;
 
     return (
         <Row key={LicenseeCustId}>
-            {canSelectPlayers && displayedColumn[fields.Index] && !canEditCommissionGpoup && <Cell className="center-align"></Cell>}
-            {canSelectPlayers && displayedColumn[fields.Index] && canEditCommissionGpoup && <Cell className="center-align"><input type="checkbox" id={"chk-cust-" + LicenseeCustId} data-username={dataItem.UserName} data-custid={dataItem.IbcCustId} className="chk-cust" /></Cell>}
+            {canSelectPlayers && displayedColumn[fields.Index] && !playerIsEditable && <Cell className="center-align"></Cell>}
+            {canSelectPlayers && displayedColumn[fields.Index] && playerIsEditable &&
+                <Cell className="center-align">
+                    <input type="checkbox" id={"chk-cust-" + LicenseeCustId} data-username={dataItem.UserName}
+                        data-custid={dataItem.IbcCustId} className="chk-cust" defaultChecked={dataItem.Selected} />
+                </Cell>}
             {displayedColumn[fields.Status] && <Cell><StatusCell dataItem={dataItem} /></Cell>}
             {displayedColumn[fields.UserName] && <Cell><UserNameCell dataItem={dataItem} hasCommPermissionRead={hasCommPermissionRead} /></Cell>}
             {displayedColumn[fields.SystemId] && <Cell title={SystemId}>{SystemId}</Cell>}

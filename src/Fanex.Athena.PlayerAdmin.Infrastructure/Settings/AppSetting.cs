@@ -8,7 +8,8 @@ namespace Fanex.Athena.PlayerAdmin.Infrastructure.Settings
         public IEnumerable<string> FakeLicensees { get; set; }
         public IEnumerable<string> LicenseeOfferTxIDColumn { get; set; }
         public bool IsShowMixedSport { get; set; }
-        public string BetListResultHost { get; set; }
         public IEnumerable<string> AllowedCrossDomains { get; set; }
+        public IEnumerable<string> SpecialBAAdmins { get; set; }
+        public string BetTicketEventBuilderUrl { get; set; }
     }
 }

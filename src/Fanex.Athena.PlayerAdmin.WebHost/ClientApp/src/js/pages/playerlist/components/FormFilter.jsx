@@ -43,7 +43,6 @@ export class FormFilter extends PureComponent {
             isMatchPrecise: true,
             customerClass: "",
             changeOnCustomerClass: false,
-
             commGroups: "",
             changeOnCommGroups: false
         };
@@ -213,7 +212,7 @@ export class FormFilter extends PureComponent {
                         ipLogin={ipLogin}
                         onKeyPress={this.handlePressEnter} />}
 
-                    <div className="hide col-12 col-md-3 col-sm-3 col-lg-2 col-xl-1">
+                    <div className="col-12 col-md-3 col-sm-3 col-lg-2 col-xl-1">
                         <div className="form-group">
                             <label className="label-text">{LangHelper.getSingleResource("Deposited")}</label>
                             <Select instanceId='ddlDeposited'
@@ -254,10 +253,12 @@ export class FormFilter extends PureComponent {
         );
     }
 }
+
 function mapDispatchToProps(dispatch) {
     const { searchPlayer, setAdvancedSearch, setCollapseFilter, getSuggestionList, getSinglePlayer, getSiteSetting, getLRFFilters } = ActionCreators;
     return bindActionCreators({ searchPlayer, setAdvancedSearch, setCollapseFilter, getSuggestionList, getSinglePlayer, getSiteSetting, getLRFFilters }, dispatch);
 }
+
 function mapStateToProps(state) {
     const { type, isAdvancedSearch, isFilterCollapsing, pagingOption, currencyList, siteSetting, isSubsidiary, lrfFilters } = state;
     return Object.assign({}, { type, isAdvancedSearch, isFilterCollapsing, pagingOption, currencyList, siteSetting, isSubsidiary, lrfFilters });

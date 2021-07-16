@@ -35,9 +35,6 @@ var scriptPaths = {
     detailtransaction: "./ClientApp/src/js/pages/detailtransaction/components/index.jsx",
 
     playercomissionsingleupdategroup: "./ClientApp/src/js/pages/playercommission/singleupdategroup.js",
-
-    betlistResult: "./ClientApp/src/js/pages/betlist/betlistResult.js"
-
 };
 module.exports = {
     projectRoot: projectRoot,

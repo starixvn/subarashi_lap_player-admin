@@ -63,19 +63,19 @@ class LapCommonService extends BaseCommonService {
 
     _fetchAccessToken(sysType, action) {
         return locker.acquire(sysType, async () => {
-            if(!window['playeradmin_' + sysType]) {
+            if(!window.top['playeradmin_' + sysType]) {
                 const { ApiUrl, Token } = await this.fetchTokenFromLap(sysType, action);
                 const ajaxConfig = this._getConfigParam({ ...defaultAjaxConfig, url: `${ApiUrl}/api/Auth/Token` }, { token: Token });
                 const response = await  axios(ajaxConfig);
                 const { status, data } = response;
                 if(status === 200 && data.IsSuccess) {
-                    window['playeradmin_' + sysType] = {
+                    window.top['playeradmin_' + sysType] = {
                         accessToken: data.AccessToken,
                         apiUrl: ApiUrl
                     }
                 }
             }
-            return window['playeradmin_' + sysType];
+            return window.top['playeradmin_' + sysType];
         })
     }
 
@@ -94,7 +94,7 @@ class LapCommonService extends BaseCommonService {
         }
         catch (error) {
             if (error.response.status === 401 && !isRetry) {
-                window['playeradmin_' + sysType] = null;
+                window.top['playeradmin_' + sysType] = null;
                 return this._fetchDataWithToken(sysType, action, params, configOption, true);
             }
         }

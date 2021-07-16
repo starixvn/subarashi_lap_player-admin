@@ -1,7 +1,5 @@
 ﻿import React, { Component } from 'react';
 import { Table, HeaderRow, Row, HeaderCell, Cell } from '@9softstudio/react-grid';
-import Popup from '@jsroot/components/popup';
-import NoDataTitle from '@jsroot/components/NoDataTitle';
 import PropTypes from 'prop-types';
 
 class BetListDataGrid extends Component {

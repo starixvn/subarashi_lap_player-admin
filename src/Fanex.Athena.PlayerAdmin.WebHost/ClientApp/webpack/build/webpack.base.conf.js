@@ -23,6 +23,7 @@ function generateConfig(environment) {
             [`${cssPath}/main`]: pathConfig.cssPaths.main,
             [`${cssPath}/pages/reports/reportjqgridlayout`]: pathConfig.cssPaths.reportjqgridlayout,
             [`${cssPath}/pages/playercommission/index`]: pathConfig.cssPaths.playercomission,
+            [`${cssPath}/pages/playerBatchUpdate/index`]: pathConfig.cssPaths.playerBatchUpdate,
 
             [`${jsPath}/language`]: pathConfig.scriptPaths.language,
             [`${jsPath}/language-zh-CN`]: pathConfig.scriptPaths.languageCN,
@@ -32,6 +33,9 @@ function generateConfig(environment) {
             [`${jsPath}/pages/playercommission/singlemovegroup`]: [pathConfig.scriptPaths.playercomissionsinglemovegroup],
             [`${jsPath}/pages/playercommission/singleremovefromgroup`]: [pathConfig.scriptPaths.playercomissionsingleremovefromgroup],
             [`${jsPath}/pages/playercommission/singleupdategroup`]: [pathConfig.scriptPaths.playercomissionsingleupdategroup],
+            [`${jsPath}/pages/playerBatchUpdate/specialLevel`]: [pathConfig.scriptPaths.playerBatchUpdateSpecialLevel],
+            [`${jsPath}/pages/playerBatchUpdate/oddsGroup`]: [pathConfig.scriptPaths.playerBatchUpdateOddsGroup],
+            [`${jsPath}/pages/playerBatchUpdate/baStatus`]: [pathConfig.scriptPaths.playerBatchUpdateBAStatus]
         },
         output: {
             path: pathConfig.projectRoot,

@@ -8,6 +8,7 @@ var cssPaths = {
     main: ["./ClientApp/src/jquery-pages/css/main.scss"],
     reportjqgridlayout: "./ClientApp/src/jquery-pages/css/pages/common/reportjqgridlayout.main.scss",
     playercomission: "./ClientApp/src/jquery-pages/css/pages/playercommission/index.scss",
+    playerBatchUpdate: ["./ClientApp/src/jquery-pages/css/pages/playerBatchUpdate/index.scss"]
 };
 
 var scriptPaths = {
@@ -21,7 +22,11 @@ var scriptPaths = {
     playercomissionmultipleupdategroup: "./ClientApp/src/jquery-pages/js/pages/playercommission/multipleupdategroup.js",
     playercomissionsinglemovegroup: "./ClientApp/src/jquery-pages/js/pages/playercommission/singlemovegroup.js",
     playercomissionsingleremovefromgroup: "./ClientApp/src/jquery-pages/js/pages/playercommission/singleremovefromgroup.js",
-    playercomissionsingleupdategroup: "./ClientApp/src/jquery-pages/js/pages/playercommission/singleupdategroup.js"
+    playercomissionsingleupdategroup: "./ClientApp/src/jquery-pages/js/pages/playercommission/singleupdategroup.js",
+
+    playerBatchUpdateSpecialLevel: "./ClientApp/src/jquery-pages/js/pages/playerBatchUpdate/special-level.js",
+    playerBatchUpdateOddsGroup: "./ClientApp/src/jquery-pages/js/pages/playerBatchUpdate/odds-group.js",
+    playerBatchUpdateBAStatus: "./ClientApp/src/jquery-pages/js/pages/playerBatchUpdate/ba-status.js"
 };
 
 module.exports = {

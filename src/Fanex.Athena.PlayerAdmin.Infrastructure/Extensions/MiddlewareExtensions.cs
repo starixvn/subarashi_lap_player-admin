@@ -1,5 +1,7 @@
-﻿using Fanex.Athena.PlayerAdmin.Infrastructure.HealthCheck;
+﻿using Fanex.Athena.PlayerAdmin.Infrastructure.Constants;
+using Fanex.Athena.PlayerAdmin.Infrastructure.HealthCheck;
 using Fanex.Athena.PlayerAdmin.Infrastructure.Middlewares;
+using Fanex.Athena.PlayerAdmin.Infrastructure.Settings;
 using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
@@ -23,6 +25,30 @@ namespace Fanex.Athena.PlayerAdmin.Infrastructure.Extensions
 {
     public static class MiddlewareExtensions
     {
+        public static void AddCorsPortalSite(this IServiceCollection services, AppSetting appSetting)
+        {
+            services.AddCors(options =>
+            {
+                options.AddPolicy(Policy.FromPortalSite,
+                                  builder =>
+                                  {
+                                      builder.SetIsOriginAllowed(domain =>
+                                      {
+                                          if (!appSetting.AllowedCrossDomains.IsPresent())
+                                          {
+                                              return true;
+                                          }
+
+                                          var clientDomain = new Uri(domain).Authority;
+                                          var isValid = appSetting.AllowedCrossDomains.Any(allowedCrossDomain => clientDomain.EndsWith(allowedCrossDomain, StringComparison.OrdinalIgnoreCase));
+                                          return isValid;
+                                      })
+                                      .AllowAnyMethod()
+                                      .AllowAnyHeader();
+                                  });
+            });
+        }
+
         public static void AddHealthCheck(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddHealthChecks()

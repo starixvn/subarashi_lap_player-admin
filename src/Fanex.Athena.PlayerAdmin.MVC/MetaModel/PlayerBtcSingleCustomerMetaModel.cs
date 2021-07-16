@@ -4,7 +4,7 @@ using System;
 
 namespace Fanex.Athena.PlayerAdmin.MVC.MetaModel
 {
-    public class PlayerBtcSingleCustomerMetaModel : IAgentMetaModel, IValidationMetaModel
+    public class PlayerBtcSingleCustomerMetaModel : IAgentMetaModel, IShowBetFromIPMetaModel, IValidationMetaModel
     {
         private const int DefaultPageSize = 50;
 
@@ -45,7 +45,7 @@ namespace Fanex.Athena.PlayerAdmin.MVC.MetaModel
 
         public string LiveStatus { get; set; }
 
-        public int Platform { get; set; }
+        public string Platform { get; set; }
 
         public bool IsExport { get; set; }
 
@@ -71,11 +71,11 @@ namespace Fanex.Athena.PlayerAdmin.MVC.MetaModel
         }
 
         public string SortBy { get; set; }
-
         public string SortOrder { get; set; }
+        public bool IsAllowTxIDColumn { get; set; }
+        public bool IsShowIp { get; set; }
+        public bool IsShowIpVN { get; set; }
 
         public bool IsValid => !string.IsNullOrEmpty(UserName);
-
-        public bool IsAllowTxIDColumn { get; set; }
     }
 }

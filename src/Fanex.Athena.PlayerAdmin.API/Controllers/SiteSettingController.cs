@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 namespace Fanex.Athena.PlayerAdmin.API.Controllers
 {
     [Route("api/[controller]/[action]")]
-    [EnableCors]
-    [ApiController]
+    [EnableCors(Policy.FromPortalSite)]
     [BearerAuthorize(Roles.SuperAdmin, Roles.PlayerAdmin)]
+    [ApiController]
     public class SiteSettingController : ControllerBase
     {
         private readonly ILicenseeService _licenseeService;
@@ -30,8 +30,7 @@ namespace Fanex.Athena.PlayerAdmin.API.Controllers
             return new SiteSettingViewModel
             {
                 IsAllowedCustomerComm = _contextService.IsAllowedCustomerComm,
-                IsAllowedBA = _contextService.IsEnableBA &&
-                (await _licenseeService.CheckProductBelongsTo(siteName, ProductType.BA))
+                IsAllowedBA = _contextService.IsEnableBA && (await _licenseeService.CheckProductBelongsTo(siteName, ProductType.BA))
             };
         }
     }

@@ -1,18 +1,16 @@
-﻿using Fanex.Athena.PlayerAdmin.Infrastructure.Constants;
-using Fanex.Athena.PlayerAdmin.Infrastructure.Filters;
-using Fanex.Athena.PlayerAdmin.Infrastructure.Services;
-using Fanex.Athena.PlayerAdmin.BetLimit.Repositories.Interfaces;
+﻿using Fanex.Athena.PlayerAdmin.BetLimit.Repositories.Interfaces;
 using Fanex.Athena.PlayerAdmin.BetLimit.ViewModels;
-using Microsoft.AspNetCore.Cors;
+using Fanex.Athena.PlayerAdmin.Infrastructure.Constants;
+using Fanex.Athena.PlayerAdmin.Infrastructure.Filters;
+using Fanex.Athena.PlayerAdmin.Infrastructure.Helpers;
+using Fanex.Athena.PlayerAdmin.Infrastructure.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Fanex.Athena.PlayerAdmin.Infrastructure.Helpers;
 
 namespace Fanex.Athena.PlayerAdmin.BetLimit.Controllers
 {
-    [DisableCors]
     public class PlayerBetLimitController : Controller
     {
         private readonly IPlayerBetLimitRepository _playerBetLimitRepository;
@@ -23,6 +21,7 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Controllers
         }
 
         [HttpGet]
+        [ReferrerValidation]
         [CookieAuthorize(Roles.SuperAdmin, Roles.BetLimit)]
         public async Task<ViewResult> Index([FromServices] IContextService contextService, int custId, int currencyId, int licenseeCustId)
         {

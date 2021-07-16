@@ -2,14 +2,12 @@
 using Fanex.Athena.PlayerAdmin.Commission.MetaModels;
 using Fanex.Athena.PlayerAdmin.Commission.Services.Interfaces;
 using Fanex.Athena.PlayerAdmin.Infrastructure.Services;
-using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Fanex.Athena.PlayerAdmin.Commission.Controllers
 {
-    [DisableCors]
     public partial class PlayerCommissionController : Controller
     {
         private readonly IContextService _contextService;

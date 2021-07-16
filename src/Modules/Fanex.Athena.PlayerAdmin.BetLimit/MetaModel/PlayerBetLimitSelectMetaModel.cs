@@ -3,7 +3,7 @@
 namespace Fanex.Athena.PlayerAdmin.BetLimit.MetaModel
 {
 
-    public class PlayerBetLimitSelectMetaModel : ICustomerIdentityMetalModel, IProductMetaModel
+    public class PlayerBetLimitSelectMetaModel : ICustomerIdentityMetaModel, IProductMetaModel
     {
         public int CustId { get; set; }
 

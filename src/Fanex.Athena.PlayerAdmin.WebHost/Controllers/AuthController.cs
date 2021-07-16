@@ -1,4 +1,5 @@
-﻿using Fanex.Athena.PlayerAdmin.Infrastructure.Filters;
+﻿using Fanex.Athena.PlayerAdmin.Infrastructure.Constants;
+using Fanex.Athena.PlayerAdmin.Infrastructure.Filters;
 using Fanex.Athena.PlayerAdmin.Infrastructure.Settings;
 using Fanex.Athena.PlayerAdmin.WebHost.Models;
 using IdentityModel.Client;
@@ -24,22 +25,22 @@ namespace Fanex.Athena.PlayerAdmin.Auth.Controllers
         private readonly IdentityServerSetting _setting;
         private readonly HttpClient _client;
 
-        public AuthController(IOptions<IdentityServerSetting> setting, HttpClient client)
+        public AuthController(IOptionsSnapshot<IdentityServerSetting> setting, HttpClient client)
         {
             _setting = setting.Value;
             _client = client;
         }
 
-        [Route("api/auth/token")]
         [HttpPost]
+        [Route("api/auth/token")]
         [ReferrerValidation]
-        [EnableCors]
+        [EnableCors(Policy.FromPortalSite)]
         [AllowAnonymous]
         [ModelStateValidation]
         public async Task<JsonResult> Token([FromBody] LapTokenRequest request)
         {
-            var tokenResponse = await RequestToken(request.Token);
-            return new JsonResult(new
+            var tokenResponse = await RequestToken(request.Token, _setting.ExternalApiScope);
+            return Json(new
             {
                 IsSuccess = !tokenResponse.IsError,
                 Msg = tokenResponse.ErrorDescription,
@@ -47,15 +48,15 @@ namespace Fanex.Athena.PlayerAdmin.Auth.Controllers
             });
         }
 
-        [Route("auth/cookie")]
         [HttpGet]
+        [Route("auth/cookie")]
         [ReferrerValidation]
         [AllowAnonymous]
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public async Task<ActionResult> Cookie([FromQuery] string token)
         {
-            var tokenResponse = await RequestToken(token);
-            if(tokenResponse.IsError)
+            var tokenResponse = await RequestToken(token, _setting.InternalApiScope);
+            if (tokenResponse.IsError)
             {
                 return Redirect("/Home/AccessDenied");
             }
@@ -66,12 +67,24 @@ namespace Fanex.Athena.PlayerAdmin.Auth.Controllers
                 Token = tokenResponse.AccessToken
             });
 
-            var claims = new List<Claim> { new Claim("AccessToken", tokenResponse.AccessToken) };
-            claims.AddRange(userInfo.Claims);
+            if (userInfo.IsError)
+            {
+                return Redirect("/Home/AccessDenied");
+            }
+
+            var claims = new List<Claim>(userInfo.Claims);
             var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme, "name", "role");
             var actionLinkClaim = userInfo.Claims.FirstOrDefault(_ => _.Type.Equals("ActionLink", StringComparison.OrdinalIgnoreCase));
 
-            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity));
+            var properties = new AuthenticationProperties();
+            properties.StoreTokens(new[] {
+                new AuthenticationToken()
+                {
+                  Name = "access_token",
+                  Value = tokenResponse.AccessToken
+                }});
+
+            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), properties);
 
             if (!string.IsNullOrEmpty(actionLinkClaim?.Value))
             {
@@ -81,7 +94,7 @@ namespace Fanex.Athena.PlayerAdmin.Auth.Controllers
             return Redirect("/");
         }
 
-        private async Task<TokenResponse> RequestToken(string token)
+        private async Task<TokenResponse> RequestToken(string token, string scope)
         {
             if (string.IsNullOrWhiteSpace(token))
             {
@@ -91,10 +104,10 @@ namespace Fanex.Athena.PlayerAdmin.Auth.Controllers
             var tokenResponse = await _client.RequestTokenAsync(new TokenRequest
             {
                 Address = $"{_setting.Host}/{_setting.TokenEndpoint}",
-                ClientId = _setting.CredentialsClient.ClientId,
-                ClientSecret = _setting.CredentialsClient.ClientSecret,
+                ClientId = _setting.CredentialClient.ClientId,
+                ClientSecret = _setting.CredentialClient.ClientSecret,
                 GrantType = _setting.GrantType,
-                Parameters = new Parameters(new Dictionary<string, string> { { TokenKey, token } })
+                Parameters = new Parameters(new Dictionary<string, string> { { TokenKey, token }, { nameof(scope), scope } })
             });
 
             return tokenResponse;
@@ -105,7 +118,7 @@ namespace Fanex.Athena.PlayerAdmin.Auth.Controllers
         [AllowAnonymous]
         public ActionResult RedirectToLAP([FromRoute] string lapUrl, [FromRoute] string lapVer = "")
         {
-            return Redirect(string.Format("http://{0}/{1}/12bet/Auth/Login?returnUrl=http://{2}/Home/Menu", lapUrl, lapVer, HttpContext.Request.Host));
+            return Redirect(string.Format("http://{0}/{1}/12bet/Auth/Login?returnUrl=/PlayerAdminContainer/Index", lapUrl, lapVer));
         }
     }
 }

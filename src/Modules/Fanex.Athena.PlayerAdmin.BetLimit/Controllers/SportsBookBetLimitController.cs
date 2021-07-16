@@ -1,21 +1,19 @@
-﻿using Fanex.Athena.PlayerAdmin.Infrastructure.Constants;
-using Fanex.Athena.PlayerAdmin.Infrastructure.Filters;
-using Fanex.Athena.PlayerAdmin.Infrastructure.Services;
-using Fanex.Athena.PlayerAdmin.Infrastructure.Settings;
-using Fanex.Athena.PlayerAdmin.BetLimit.MetaModel;
+﻿using Fanex.Athena.PlayerAdmin.BetLimit.MetaModel;
 using Fanex.Athena.PlayerAdmin.BetLimit.Services.Interfaces;
 using Fanex.Athena.PlayerAdmin.BetLimit.ViewModels;
-using Microsoft.AspNetCore.Cors;
+using Fanex.Athena.PlayerAdmin.Infrastructure.Constants;
+using Fanex.Athena.PlayerAdmin.Infrastructure.Filters;
+using Fanex.Athena.PlayerAdmin.Infrastructure.Resources;
+using Fanex.Athena.PlayerAdmin.Infrastructure.Services;
+using Fanex.Athena.PlayerAdmin.Infrastructure.Settings;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Fanex.Athena.PlayerAdmin.Infrastructure.Resources;
 
 namespace Fanex.Athena.PlayerAdmin.BetLimit.Controllers
 {
-    [DisableCors]
     public class SportsBookBetLimitController : PlayerBetLimitBaseControler
     {
         private readonly ISportsBookBetLimitService _service;

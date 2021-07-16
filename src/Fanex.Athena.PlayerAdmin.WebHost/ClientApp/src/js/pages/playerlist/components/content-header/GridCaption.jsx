@@ -8,7 +8,7 @@ import ReportTitle from '@jsroot/components/ReportTitle';
 import MultipleSelect from '@9softstudio/react-multiselect';
 import LangHelper from '@jsroot/lib/langHelper';
 import { buildDisplayedColumnObject } from '../../lib/helpers/utils';
-import { batchUpdateManager } from '../../batch-update/batch-update-manager';
+import { batchUpdateManager, batchUpdatePermission } from '../../batch-update/batch-update-manager';
 import Popup from '@jsroot/components/popup';
 
 export class GridCaption extends React.Component {
@@ -19,19 +19,22 @@ export class GridCaption extends React.Component {
 
     initBatchUpdate() {
         this.batchUpdateMenuRef = React.createRef();
-        var s = {
-            batchUpdateSelectedOption: 0
+        var batchUpdateOptions = {
+            permission: {
+                [batchUpdatePermission.playerCommGroup]: this.props.hasCommPermissionEdit,
+                [batchUpdatePermission.accountStatus]: false,
+                [batchUpdatePermission.betLimit]: false,
+                [batchUpdatePermission.specialLevel]: this.props.hasSpecialLevelPermission,
+                [batchUpdatePermission.oddsGroup]: this.props.hasOddsGroupPermission,
+                [batchUpdatePermission.baStatus]: this.props.siteSetting.isAllowedBA && this.props.hasBaPermission
+            }
         };
 
-        var menu = [];
-        for (var i = 0; i < batchUpdateManager.editCommMenu.length; i++) {
-            var m = batchUpdateManager.editCommMenu[i];
-            s.popupBatchUpdateShow = false;
-            menu.push(m);
-        }
-
-        s.batchUpdateMenu = menu;
-        this.state = s;
+        this.state = {
+            batchUpdateSelectedOption: 0,
+            popupBatchUpdateShow: false,
+            batchUpdateMenu: batchUpdateManager.getMenu(batchUpdateOptions)
+        };
     }
 
     componentDidMount() {
@@ -68,8 +71,7 @@ export class GridCaption extends React.Component {
     }
 
     _buildBatchUpdateMenu() {
-        const hasCommPermissionEdit = this.props.hasCommPermissionEdit == 1;
-        if (!hasCommPermissionEdit) {
+        if (this.state.batchUpdateMenu.length === 0) {
             return (<></>);
         }
 
@@ -91,13 +93,13 @@ export class GridCaption extends React.Component {
             const { userName, currency } = selectedPlayer;
             return (
                 <>
-                    <span className="link" onClick={() => { 
+                    <span className="link" onClick={() => {
                         toggleLoader(true)
                         setTimeout(() => {
                             this.props.setSelectedPlayer(null);
                             toggleLoader(false)
                         }, 10)
-                        }}>{LangHelper.getSingleResource('PreviousSearchResult')}</span>
+                    }}>{LangHelper.getSingleResource('PreviousSearchResult')}</span>
                     <span><i className="chevron right icon-separator"></i> {LangHelper.getSingleResource('Player')}: {userName} {currency && `(${currency})`}</span>
                 </>
             )
@@ -130,7 +132,7 @@ export class GridCaption extends React.Component {
         const displayedColumn = buildDisplayedColumnObject(displayedColumnList);
         const dataList = selectedPlayer ? [playerList.find(item => item.LicenseeCustId === selectedPlayer.licenseeCustId)] : playerList;
 
-        exportExcel(dataList, param, displayedColumn,hasCommPermissionRead);
+        exportExcel(dataList, param, displayedColumn, hasCommPermissionRead);
     }
 
     render() {
@@ -153,14 +155,17 @@ export class GridCaption extends React.Component {
 }
 
 function mapDispatchToProps(dispatch) {
-    const { setSelectedPlayer, setDisplayedColumnList, toggleLoader, exportExcel } = ActionCreators;
-    return bindActionCreators({ setSelectedPlayer, setDisplayedColumnList, toggleLoader, exportExcel }, dispatch);
+    const { setSelectedPlayer, setDisplayedColumnList, toggleLoader, exportExcel, setPlayerList } = ActionCreators;
+    return bindActionCreators({ setSelectedPlayer, setDisplayedColumnList, toggleLoader, exportExcel, setPlayerList }, dispatch);
 }
 
 function mapStateToProps(state) {
-    const { pagingOption, selectedPlayer, displayedColumnList, param, playerList, hasCommPermissionEdit, hasCommPermissionRead } = state;
+    const { pagingOption, selectedPlayer, displayedColumnList, param, playerList, hasCommPermissionEdit, hasCommPermissionRead,
+    hasBaPermission, hasOddsGroupPermission, hasSpecialLevelPermission, siteSetting } = state;
     const playerCount = pagingOption.TotalItem || (playerList && playerList.length) || 0;
-    return Object.assign({}, { playerList, playerCount, selectedPlayer, displayedColumnList, param, hasCommPermissionEdit, hasCommPermissionRead });
+    return Object.assign({}, { playerList, playerCount, selectedPlayer, displayedColumnList, param, hasCommPermissionEdit, hasCommPermissionRead,
+        hasBaPermission, hasOddsGroupPermission, hasSpecialLevelPermission, siteSetting });
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(GridCaption);
+

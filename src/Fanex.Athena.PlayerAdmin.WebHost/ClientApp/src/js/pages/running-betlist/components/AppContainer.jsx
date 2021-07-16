@@ -3,10 +3,10 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { ActionCreators } from '../actions/index';
 import BetListLayout from '@jsroot/layouts/betlist/BetListLayout';
+import Site from '@jsroot/lib/site';
 import FormFilter from './FormFilter';
 import DataGrid from './DataGrid';
 import LangHelper from '@jsroot/lib/langHelper';
-import Site from '@jsroot/lib/site';
 import Service from '../lib/service';
 import Loader from '@jsroot/components/Loader';
 import AppLayout from '@jsroot/layouts/AppLayout';
@@ -47,7 +47,7 @@ export class AppContainer extends Component {
                     rootUrl={Site.getRootUrl()}
                     getResourceFunc={this.getResource}
                     formatDateStringFunc={this.formatDateString}
-                    baseCurrency=''
+                    baseCurrency={''}
                     beforeShowFunc={this.beforeShow}
                     afterShowFunc={this.afterShow}>
                     <Loader isLoading={this.props.isLoading} />

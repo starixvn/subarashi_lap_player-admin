@@ -40,9 +40,10 @@ export class FormFilter extends PureComponent {
             return;
         }
 
+        const dateFormatStr = "MM/DD/YYYY";
         var newRequestParam = {
-            FromDate: moment(date.startDate).format("MM/DD/YYYY"),
-            ToDate: moment(date.endDate).format("MM/DD/YYYY")
+            FromDate: moment(date.startDate).format(dateFormatStr),
+            ToDate: moment(date.endDate).format(dateFormatStr)
         };
 
         this.setState({

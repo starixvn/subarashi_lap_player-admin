@@ -116,8 +116,8 @@ namespace Fanex.Athena.PlayerAdmin.API.Services
             objectDb.SetParameterValue("BaFilter", metaModel.BaFilter);
             objectDb.SetParameterValue("SpecialLevel", metaModel.SpecialLevel);
             objectDb.SetParameterValue("OddsGroups", metaModel.OddsGroup);
-            objectDb.SetParameterValue("PageSize", int.MaxValue - 1);
-            objectDb.SetParameterValue("PageIndex", 1);
+            objectDb.SetParameterValue("PageSize", metaModel.PageSize);
+            objectDb.SetParameterValue("PageIndex", metaModel.PageIndex);
 
             objectDb.SetParameterValue("TotalRows", 0);
         }

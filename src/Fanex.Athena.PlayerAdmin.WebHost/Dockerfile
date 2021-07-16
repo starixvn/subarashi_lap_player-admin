@@ -1,34 +1,71 @@
-FROM node:10-alpine as frontend-builder
+FROM registry.nexdev.net:5050/docker/dotnet/core/sdk:5.0.102-ca-patch-buster-slim AS builder
 
-WORKDIR /frontend-out
-COPY package.json ./
-COPY package-lock.json ./
+RUN apt-get update  \
+	&& curl --silent --location https://deb.nodesource.com/setup_14.x | bash -  \
+	&& apt-get install -y nodejs
+
+RUN node -v
+RUN npm -v
+
+WORKDIR /src/Fanex.Athena.PlayerAdmin.WebHost
+
+COPY src/Fanex.Athena.PlayerAdmin.WebHost/package.json ./
+COPY src/Fanex.Athena.PlayerAdmin.WebHost/package-lock.json ./
+
 RUN npm install
 
-#build front-end
-COPY .babelrc ./
-ADD /ClientApp/webpack ./ClientApp/webpack
+WORKDIR /src
 
-#build react
-ADD /ClientApp/src/js ./ClientApp/src/js
-ADD /ClientApp/src/css ./ClientApp/src/css
-RUN npm run build-react-pro
+COPY NuGet.Config .
+
+COPY src/Fanex.Athena.PlayerAdmin.Infrastructure/Fanex.Athena.PlayerAdmin.Infrastructure.csproj ./Fanex.Athena.PlayerAdmin.Infrastructure/
+RUN dotnet restore Fanex.Athena.PlayerAdmin.Infrastructure/Fanex.Athena.PlayerAdmin.Infrastructure.csproj -v n
+
+COPY src/Fanex.Athena.PlayerAdmin.MVC/Fanex.Athena.PlayerAdmin.MVC.csproj ./Fanex.Athena.PlayerAdmin.MVC/
+RUN dotnet restore Fanex.Athena.PlayerAdmin.MVC/Fanex.Athena.PlayerAdmin.MVC.csproj -v n
+
+COPY src/Fanex.Athena.PlayerAdmin.API/Fanex.Athena.PlayerAdmin.API.csproj ./Fanex.Athena.PlayerAdmin.API/
+RUN dotnet restore Fanex.Athena.PlayerAdmin.API/Fanex.Athena.PlayerAdmin.API.csproj -v n
+
+COPY src/Modules/Fanex.Athena.PlayerAdmin.BatchUpdate/Fanex.Athena.PlayerAdmin.BatchUpdate.csproj ./Modules/Fanex.Athena.PlayerAdmin.BatchUpdate/
+RUN dotnet restore Modules/Fanex.Athena.PlayerAdmin.BatchUpdate/Fanex.Athena.PlayerAdmin.BatchUpdate.csproj -v n
+
+COPY src/Modules/Fanex.Athena.PlayerAdmin.BetLimit/Fanex.Athena.PlayerAdmin.BetLimit.csproj ./Modules/Fanex.Athena.PlayerAdmin.BetLimit/
+RUN dotnet restore Modules/Fanex.Athena.PlayerAdmin.BetLimit/Fanex.Athena.PlayerAdmin.BetLimit.csproj -v n
+
+COPY src/Modules/Fanex.Athena.PlayerAdmin.Commission/Fanex.Athena.PlayerAdmin.Commission.csproj ./Modules/Fanex.Athena.PlayerAdmin.Commission/
+RUN dotnet restore Modules/Fanex.Athena.PlayerAdmin.Commission/Fanex.Athena.PlayerAdmin.Commission.csproj -v n
+
+COPY src/Fanex.Athena.PlayerAdmin.WebHost/Fanex.Athena.PlayerAdmin.WebHost.csproj ./Fanex.Athena.PlayerAdmin.WebHost/
+RUN dotnet restore Fanex.Athena.PlayerAdmin.WebHost/Fanex.Athena.PlayerAdmin.WebHost.csproj -v n
+
+COPY src .
+
+WORKDIR /src/Fanex.Athena.PlayerAdmin.WebHost
 
 #build jquery
-ADD /ClientApp/src/jquery-pages ./ClientApp/src/jquery-pages
 RUN npm run build-pro
 
-RUN rm -rf node_modules
+#build react
+RUN npm run build-react-pro
 
-FROM mcr.microsoft.com/dotnet/aspnet:5.0 as runner
-WORKDIR /app
-COPY . .
-COPY --from=frontend-builder /frontend-out  .
-RUN rm -rf ClientApp
+RUN dotnet publish "Fanex.Athena.PlayerAdmin.WebHost.csproj" -c Release -o /publish \
+  --runtime alpine-x64 \
+  --self-contained false
+
+FROM registry.nexdev.net:5050/docker/dotnet/core/aspnet:5.0-buster-slim
+
+EXPOSE 5000
 
 RUN sed -i 's/DEFAULT@SECLEVEL=2/DEFAULT@SECLEVEL=1/g' /etc/ssl/openssl.cnf
 RUN sed -i 's/MinProtocol = TLSv1.2/MinProtocol = TLSv1/g' /etc/ssl/openssl.cnf
 RUN sed -i 's/DEFAULT@SECLEVEL=2/DEFAULT@SECLEVEL=1/g' /usr/lib/ssl/openssl.cnf
 RUN sed -i 's/MinProtocol = TLSv1.2/MinProtocol = TLSv1/g' /usr/lib/ssl/openssl.cnf
+
+WORKDIR /app
+
+COPY --from=builder /publish .
+
+ENV ASPNETCORE_URLS=http://*:5000
 
 ENTRYPOINT ["dotnet", "Fanex.Athena.PlayerAdmin.WebHost.dll"]

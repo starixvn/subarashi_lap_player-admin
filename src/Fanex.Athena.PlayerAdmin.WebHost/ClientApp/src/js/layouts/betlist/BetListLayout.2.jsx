@@ -77,8 +77,6 @@ BetListLayout.propTypes = {
     baseCurrency: PropTypes.string,
     beforeShowFunc: PropTypes.func,
     afterShowFunc: PropTypes.func,
-    beforeShowFunc: PropTypes.func,
-    afterShowFunc: PropTypes.func,
     formatDateStringFunc: PropTypes.func
 }
 

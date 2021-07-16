@@ -94,7 +94,7 @@ export default class ReportExcel {
         }
 
         if (columnConfig.field === fields.CommissionGroup) {
-            value = $(".td-comm-" + item.IbcCustId).html();
+            value = value == "0" || !value ? LangHelper.getSingleResource('None') : value;
         }
 
         if (columnConfig.field === fields.CustomerClass) {

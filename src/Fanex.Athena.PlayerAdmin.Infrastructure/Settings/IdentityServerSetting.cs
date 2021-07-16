@@ -4,8 +4,10 @@
     {
         public string Host { get; set; }
         public int MyProperty { get; set; }
-        public CredentialsSetting CredentialsClient { get; set; }
-        public CredentialsSetting CredentialsAPI { get; set; }
+        public CredentialsSetting CredentialClient { get; set; }
+        public CredentialsSetting CredentialIntrospection { get; set; }
+        public string InternalApiScope { get; set; }
+        public string ExternalApiScope { get; set; }
         public string GrantType { get; set; }
         public string TokenEndpoint { get; set; }
         public string UserInfoEndpoint { get; set; }
