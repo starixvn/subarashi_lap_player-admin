@@ -55,6 +55,7 @@ RUN dotnet publish "Fanex.Athena.PlayerAdmin.WebHost.csproj" -c Release -o /publ
 
 FROM registry.nexdev.net:5050/docker/dotnet/core/aspnet:5.0-buster-slim
 
+ENV ASPNETCORE_URLS=http://*:5000
 EXPOSE 5000
 
 RUN sed -i 's/DEFAULT@SECLEVEL=2/DEFAULT@SECLEVEL=1/g' /etc/ssl/openssl.cnf
@@ -65,7 +66,5 @@ RUN sed -i 's/MinProtocol = TLSv1.2/MinProtocol = TLSv1/g' /usr/lib/ssl/openssl.
 WORKDIR /app
 
 COPY --from=builder /publish .
-
-ENV ASPNETCORE_URLS=http://*:5000
 
 ENTRYPOINT ["dotnet", "Fanex.Athena.PlayerAdmin.WebHost.dll"]
