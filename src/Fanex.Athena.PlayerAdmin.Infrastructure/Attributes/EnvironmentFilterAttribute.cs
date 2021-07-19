@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Fanex.Athena.PlayerAdmin.Infrastructure.Filters
+namespace Fanex.Athena.PlayerAdmin.Infrastructure.Attributes
 {
     public class EnvironmentFilterAttribute : ActionFilterAttribute
     {

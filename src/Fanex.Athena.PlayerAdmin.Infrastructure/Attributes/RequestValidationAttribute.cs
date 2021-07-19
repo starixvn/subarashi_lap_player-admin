@@ -6,15 +6,14 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using System;
 using System.Collections.Generic;
-using System.Net;
 using System.Threading.Tasks;
 
-namespace Fanex.Athena.PlayerAdmin.Infrastructure.Filters
+namespace Fanex.Athena.PlayerAdmin.Infrastructure.Attributes
 {
     [AttributeUsage(AttributeTargets.Method | AttributeTargets.Class, AllowMultiple = false)]
-    public class DataValidationAttribute : TypeFilterAttribute
+    public class RequestValidationAttribute : TypeFilterAttribute
     {
-        public DataValidationAttribute(bool validateCustId = false, int validateProductId = -99, params int[] limitedProductIds)
+        public RequestValidationAttribute(bool validateCustId = false, int validateProductId = -99, params int[] limitedProductIds)
             : base(typeof(DataValidationImplAttribute))
         {
             Arguments = new object[] { validateCustId, validateProductId, limitedProductIds };

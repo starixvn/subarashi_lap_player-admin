@@ -2,7 +2,7 @@
 using Fanex.Athena.PlayerAdmin.BetLimit.Services.Interfaces;
 using Fanex.Athena.PlayerAdmin.BetLimit.ViewModels;
 using Fanex.Athena.PlayerAdmin.Infrastructure.Constants;
-using Fanex.Athena.PlayerAdmin.Infrastructure.Filters;
+using Fanex.Athena.PlayerAdmin.Infrastructure.Attributes;
 using Fanex.Athena.PlayerAdmin.Infrastructure.Resources;
 using Fanex.Athena.PlayerAdmin.Infrastructure.Services;
 using Fanex.Athena.PlayerAdmin.Infrastructure.Settings;
@@ -30,7 +30,7 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [CookieAuthorize(Roles.SuperAdmin, Roles.BetLimit)]
-        [DataValidation(validateCustId: true)]
+        [RequestValidation(validateCustId: true)]
         public async Task<JsonResult> GetSetting([FromBody] PlayerBetLimitSelectMetaModel metaModel)
         {
             var isEditable = HasEditPermission();
@@ -51,7 +51,7 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [CookieAuthorize(Roles.SuperAdmin, Roles.BetLimit_Write)]
-        [DataValidation(validateCustId: true)]
+        [RequestValidation(validateCustId: true)]
         [AutoBindingMetaModel(bindClientIP: true, bindLanguage: true, bindSiteName: true, bindUserId: true)]
         public async Task<JsonResult> UpdateSetting([FromBody] PlayerBetLimitUpdateMetaModel<IEnumerable<PlayerBetLimitMetaModel>> metaModel)
         {

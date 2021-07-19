@@ -1,6 +1,6 @@
 ﻿using Fanex.Athena.PlayerAdmin.Infrastructure.ConsoleClient;
 using Fanex.Athena.PlayerAdmin.Infrastructure.Constants;
-using Fanex.Athena.PlayerAdmin.Infrastructure.Filters;
+using Fanex.Athena.PlayerAdmin.Infrastructure.Attributes;
 using Fanex.Athena.PlayerAdmin.Infrastructure.Services;
 using Fanex.Athena.PlayerAdmin.Infrastructure.Settings;
 using Fanex.Athena.PlayerAdmin.MVC.DTO;
@@ -46,7 +46,7 @@ namespace Fanex.Athena.PlayerAdmin.MVC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [DataValidation(validateCustId: true)]
+        [RequestValidation(validateCustId: true)]
         [AutoBindingMetaModel(bindAgent: true)]
         public async Task<IActionResult> GetRunningBetList([FromServices] IBetListApiClient betListApiClient, [FromBody] PlayerRunningBetListMetaModel metaModel)
         {

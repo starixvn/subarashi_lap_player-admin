@@ -1,5 +1,5 @@
 ﻿using Fanex.Athena.PlayerAdmin.Infrastructure.Constants;
-using Fanex.Athena.PlayerAdmin.Infrastructure.Filters;
+using Fanex.Athena.PlayerAdmin.Infrastructure.Attributes;
 using Fanex.Athena.PlayerAdmin.MVC.MetaModel;
 using Fanex.Athena.PlayerAdmin.MVC.Services.Interfaces;
 using Fanex.Athena.PlayerAdmin.MVC.ViewModels;
@@ -39,7 +39,7 @@ namespace Fanex.Athena.PlayerAdmin.MVC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [DataValidation(validateCustId: true)]
+        [RequestValidation(validateCustId: true)]
         [AutoBindingMetaModel(bindSiteName: true, bindLanguage: true)]
         public async Task<ActionResult> GetStatementUrl([FromBody] PlayerStatementMetaModel metaModel)
         {

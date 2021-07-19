@@ -1,7 +1,7 @@
 ﻿using Fanex.Athena.PlayerAdmin.API.MetaModel;
 using Fanex.Athena.PlayerAdmin.API.Services.Interfaces;
 using Fanex.Athena.PlayerAdmin.Infrastructure.Constants;
-using Fanex.Athena.PlayerAdmin.Infrastructure.Filters;
+using Fanex.Athena.PlayerAdmin.Infrastructure.Attributes;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -23,7 +23,7 @@ namespace Fanex.Athena.PlayerAdmin.API.Controllers
 
         [HttpPost]
         [BearerAuthorize(Roles.SuperAdmin, Roles.AccountInfo)]
-        [DataValidation(validateCustId: true)]
+        [RequestValidation(validateCustId: true)]
         [AutoBindingMetaModel(bindBalanceUp: true)]
         public async Task<IActionResult> GetData(PlayerBettingStatisticsMetaModel metaModel)
         {

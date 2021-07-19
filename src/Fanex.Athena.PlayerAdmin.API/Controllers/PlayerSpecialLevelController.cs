@@ -2,15 +2,15 @@
 using Fanex.Athena.PlayerAdmin.API.Services.Interfaces;
 using Fanex.Athena.PlayerAdmin.API.Utilities;
 using Fanex.Athena.PlayerAdmin.Infrastructure.Constants;
-using Fanex.Athena.PlayerAdmin.Infrastructure.Filters;
+using Fanex.Athena.PlayerAdmin.Infrastructure.Attributes;
 using Fanex.Athena.PlayerAdmin.Infrastructure.Helpers;
 using Fanex.Athena.PlayerAdmin.Infrastructure.Models;
 using Fanex.Athena.PlayerAdmin.Infrastructure.Services;
-using Fanex.Logging;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
 
 namespace Fanex.Athena.PlayerAdmin.API.Controllers
 {
@@ -22,12 +22,12 @@ namespace Fanex.Athena.PlayerAdmin.API.Controllers
     {
         private readonly IPlayerSpecialLevelService _playerSpecialLevelService;
         private readonly ILicenseeService _licenseeService;
-        private readonly ILogger _logger;
+        private readonly ILogger<PlayerSpecialLevelController> _logger;
 
         public PlayerSpecialLevelController(
             IPlayerSpecialLevelService playerSpecialLevelService,
             ILicenseeService licenseeService,
-            ILogger logger)
+            ILogger<PlayerSpecialLevelController> logger)
         {
             _playerSpecialLevelService = playerSpecialLevelService;
             _licenseeService = licenseeService;
@@ -36,7 +36,7 @@ namespace Fanex.Athena.PlayerAdmin.API.Controllers
 
         [HttpPost]
         [BearerAuthorize(Roles.SuperAdmin, Roles.UpdateSpecialLevel)]
-        [DataValidation(validateCustId: true)]
+        [RequestValidation(validateCustId: true)]
         [AutoBindingMetaModel(bindUserId: true, bindClientIP: true, bindLanguage: true, bindSiteName: true)]
         public async Task<IActionResult> Update(SpecialLevelUpdatingMetaModel metaModel)
         {
@@ -55,7 +55,7 @@ namespace Fanex.Athena.PlayerAdmin.API.Controllers
             }
             catch (Exception exception)
             {
-                await _logger.ErrorAsync(ErrorMessageHelper.GenerateMessage(exception, HttpContext));
+                _logger.LogError(exception, ErrorMessageHelper.GenerateMessage(exception, HttpContext));
             }
 
             return Ok(new ResultViewModel

@@ -1,7 +1,7 @@
 ﻿using Fanex.Athena.PlayerAdmin.BetLimit.MetaModel;
 using Fanex.Athena.PlayerAdmin.BetLimit.Services.Interfaces;
 using Fanex.Athena.PlayerAdmin.Infrastructure.Constants;
-using Fanex.Athena.PlayerAdmin.Infrastructure.Filters;
+using Fanex.Athena.PlayerAdmin.Infrastructure.Attributes;
 using Fanex.Athena.PlayerAdmin.Infrastructure.Models;
 using Fanex.Athena.PlayerAdmin.Infrastructure.Resources;
 using Fanex.Athena.PlayerAdmin.Infrastructure.Services;
@@ -24,7 +24,7 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [CookieAuthorize(Roles.SuperAdmin, Roles.BetLimit)]
-        [DataValidation(validateProductId: ProductType.AgCasino, validateCustId: true)]
+        [RequestValidation(validateProductId: ProductType.AgCasino, validateCustId: true)]
         public async Task<JsonResult> GetSetting([FromBody] PlayerBetLimitSelectMetaModel metaModel)
         {
             var isEditable = HasEditPermission();
@@ -50,7 +50,7 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [CookieAuthorize(Roles.SuperAdmin, Roles.BetLimit_Write)]
-        [DataValidation(validateProductId: ProductType.AgCasino, validateCustId: true)]
+        [RequestValidation(validateProductId: ProductType.AgCasino, validateCustId: true)]
         [AutoBindingMetaModel(bindClientIP: true, bindLanguage: true, bindSiteName: true, bindUserId: true)]
         public async Task<JsonResult> UpdateSetting([FromBody] PlayerBetLimitUpdateMetaModel<AgCasinoBetLimitMetaModel> metaModel)
         {

@@ -1,6 +1,6 @@
 ﻿using Fanex.Athena.PlayerAdmin.Infrastructure.Helpers;
-using Fanex.Logging;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Net;
 using System.Threading.Tasks;
@@ -10,9 +10,9 @@ namespace Fanex.Athena.PlayerAdmin.Infrastructure.Middlewares
     public class ErrorHandler
     {
         private readonly RequestDelegate _next;
-        private readonly ILogger _logger;
+        private readonly ILogger<ErrorHandler> _logger;
 
-        public ErrorHandler(RequestDelegate next, ILogger logger)
+        public ErrorHandler(RequestDelegate next, ILogger<ErrorHandler> logger)
         {
             _next = next;
             _logger = logger;
@@ -26,14 +26,14 @@ namespace Fanex.Athena.PlayerAdmin.Infrastructure.Middlewares
             }
             catch (Exception exception)
             {
-                await HandleError(context, exception);
+                HandleError(context, exception);
             }
         }
 
-        private async Task HandleError(HttpContext context, Exception error)
+        private void HandleError(HttpContext context, Exception exception)
         {
-            var errorMsg = ErrorMessageHelper.GenerateMessage(error, context);
-            await _logger.ErrorAsync(errorMsg);
+            var errorMsg = ErrorMessageHelper.GenerateMessage(exception, context);
+            _logger.LogError(exception, errorMsg);
             context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
         }
     }

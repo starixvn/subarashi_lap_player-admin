@@ -17,6 +17,9 @@ namespace Fanex.Athena.PlayerAdmin.Infrastructure.Extensions
              => request.Headers.TryGetValue(RequestedWithHeader, out StringValues headerValue)
                 && string.Equals(headerValue.FirstOrDefault(), XmlHttpRequest, StringComparison.OrdinalIgnoreCase);
 
+        public static bool IsStaticRequest(this HttpRequest request)
+             => request.Path.Value?.Contains(".") ?? false;
+
         public static void HandleInvalidRequest(this ActionExecutingContext actionContext, string errorMsg)
         {
             IActionResult actionResult;

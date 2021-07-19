@@ -1,5 +1,5 @@
 ﻿using Fanex.Athena.PlayerAdmin.Infrastructure.Constants;
-using Fanex.Athena.PlayerAdmin.Infrastructure.Filters;
+using Fanex.Athena.PlayerAdmin.Infrastructure.Attributes;
 using Fanex.Athena.PlayerAdmin.MVC.Excel;
 using Fanex.Athena.PlayerAdmin.MVC.MetaModel;
 using Fanex.Athena.PlayerAdmin.MVC.Services.Interfaces;
@@ -31,7 +31,7 @@ namespace Fanex.Athena.PlayerAdmin.MVC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [DataValidation(validateCustId: true)]
+        [RequestValidation(validateCustId: true)]
         public async Task<IActionResult> GetDetailTransactionReport([FromBody] PlayerDetailTransactionsMetaModel criteria)
         {
             var data = await _playerDetailTransactionService.GetDetailTransactionReport(criteria);
@@ -40,7 +40,7 @@ namespace Fanex.Athena.PlayerAdmin.MVC.Controllers
 
         [HttpGet]
         [ReferrerValidation]
-        [DataValidation(validateCustId: true)]
+        [RequestValidation(validateCustId: true)]
         public async Task<FileResult> ExportDetailTransactionReport(
             [FromServices] IFileProvider file,
             [FromServices] IPlayerDetailTransactionExcel excelService,

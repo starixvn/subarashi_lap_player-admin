@@ -137,7 +137,7 @@ namespace Fanex.Athena.PlayerAdmin.Infrastructure.Extensions
         public static void UseErrorHandler(this IApplicationBuilder app)
         {
             //mvc
-            app.UseWhen(context => !context.Request.IsAjaxRequest(), builder => builder.UseStatusCodePagesWithReExecute("/Home/Error", "?code={0}"));
+            app.UseWhen(context => !context.Request.IsAjaxRequest() && !context.Request.IsStaticRequest(), builder => builder.UseStatusCodePagesWithReExecute("/Home/Error", "?code={0}"));
 
             //api
             app.UseWhen(context => context.Request.IsAjaxRequest(), builder => builder.UseStatusCodePages(async context =>

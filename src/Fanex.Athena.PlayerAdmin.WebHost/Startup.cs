@@ -15,9 +15,6 @@ using Fanex.Athena.PlayerAdmin.MVC.Services;
 using Fanex.Athena.PlayerAdmin.MVC.Services.Interfaces;
 using Fanex.Data;
 using Fanex.Data.SqlServer;
-using Fanex.Logging;
-using Fanex.Logging.RabbitMQ;
-using Fanex.Logging.Sentry.RavenClient;
 using Fanex.RemotingRef;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -33,7 +30,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
-using SharpRaven;
 using StackExchange.Redis;
 using System;
 using System.Collections.Generic;
@@ -119,7 +115,6 @@ namespace Fanex.Athena.PlayerAdmin.WebHost
                     options.LoginPath = cookieSetting.LoginPath;
                     options.AccessDeniedPath = cookieSetting.DeniedPath;
                     options.SessionStore = services.BuildServiceProvider().GetRequiredService<ITicketStore>();
-
                 })
                 .AddOAuth2Introspection(options =>
                 {
@@ -149,7 +144,6 @@ namespace Fanex.Athena.PlayerAdmin.WebHost
             var redisSetting = Configuration.GetSection("Redis").Get<RedisSetting>();
             ConfigDistributedCache(services, redisSetting);
             ConfigDataProtection(services, redisSetting);
-            ConfigLogging(services);
             ConfigFanexData();
 
             RefDataTypeContainer
@@ -206,13 +200,20 @@ namespace Fanex.Athena.PlayerAdmin.WebHost
 
             services.AddHealthCheck(Configuration);
             services.AddUnderMaintenance(Configuration);
+
+            services.Configure<ForwardedHeadersOptions>(options =>
+            {
+                options.ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto | ForwardedHeaders.XForwardedHost;
+                options.KnownNetworks.Clear();
+                options.KnownProxies.Clear();
+            });
         }
 
         public void Configure(IApplicationBuilder app)
         {
             app.UseForwardedHeaders();
 
-            if (string.Equals(Configuration["HandleError"], "1"))
+            if (string.Equals(Configuration["UseErrorHandler"], "1"))
             {
                 app.UseErrorHandler();
             }
@@ -295,29 +296,6 @@ namespace Fanex.Athena.PlayerAdmin.WebHost
                 .WithSqlServer(resourcePath: "~/App_Data/SpConfig/FanexSpName.xml")
                 .Use(connectionStrings)
                 .Run();
-        }
-
-        private void ConfigLogging(IServiceCollection services)
-        {
-            var loggingSetting = Configuration.GetSection("LoggingSetting").Get<LoggingSetting>();
-
-            var logEngines = new List<ILogEngine>(2);
-            if (loggingSetting.RabbitEngine != null)
-            {
-                logEngines.Add(new RabbitMQLogging(loggingSetting.RabbitEngine.ConnectionString));
-            }
-            if (loggingSetting.SentryEngine != null)
-            {
-                logEngines.Add(new SentryLogging(new SentryEngineOptions
-                {
-                    Dsn = new Dsn(loggingSetting.SentryEngine.BackendDsn)
-                }));
-            }
-
-            LogManager
-             .SetDefaultLogCategory(loggingSetting.Category)
-             .Use(logEngines);
-            services.AddSingleton(Logger.Log);
         }
     }
 }

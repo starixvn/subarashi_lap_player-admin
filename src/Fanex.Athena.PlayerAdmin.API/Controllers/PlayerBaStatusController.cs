@@ -1,7 +1,7 @@
 ﻿using Fanex.Athena.PlayerAdmin.API.MetaModel;
 using Fanex.Athena.PlayerAdmin.API.Services.Interfaces;
 using Fanex.Athena.PlayerAdmin.Infrastructure.Constants;
-using Fanex.Athena.PlayerAdmin.Infrastructure.Filters;
+using Fanex.Athena.PlayerAdmin.Infrastructure.Attributes;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -23,7 +23,7 @@ namespace Fanex.Athena.PlayerAdmin.API.Controllers
 
         [HttpPost]
         [BearerAuthorize(Roles.SuperAdmin, Roles.UpdateBaStatus)]
-        [DataValidation(validateCustId: true, validateProductId: ProductType.BA)]
+        [RequestValidation(validateCustId: true, validateProductId: ProductType.BA)]
         [AutoBindingMetaModel(bindUserId: true, bindSiteName: true, bindLanguage: true, bindClientIP: true)]
         public async Task<JsonResult> Update(BaStatusUpdatingMetaModel metaModel)
         {

@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using System.Linq;
 
-namespace Fanex.Athena.PlayerAdmin.Infrastructure.Filters
+namespace Fanex.Athena.PlayerAdmin.Infrastructure.Attributes
 {
     public sealed class CookieAuthorizeAttribute : AuthorizeAttribute
     {

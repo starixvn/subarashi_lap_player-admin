@@ -1,5 +1,5 @@
 ﻿using Fanex.Athena.PlayerAdmin.Infrastructure.Constants;
-using Fanex.Athena.PlayerAdmin.Infrastructure.Filters;
+using Fanex.Athena.PlayerAdmin.Infrastructure.Attributes;
 using Fanex.Athena.PlayerAdmin.Infrastructure.Settings;
 using Fanex.Athena.PlayerAdmin.WebHost.Models;
 using IdentityModel.Client;

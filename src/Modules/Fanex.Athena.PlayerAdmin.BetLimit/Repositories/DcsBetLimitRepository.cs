@@ -1,12 +1,12 @@
-﻿using Fanex.Athena.PlayerAdmin.Infrastructure.Constants;
+﻿using Fanex.Athena.PlayerAdmin.BetLimit.DTO;
+using Fanex.Athena.PlayerAdmin.BetLimit.MetaModel;
+using Fanex.Athena.PlayerAdmin.BetLimit.Repositories.Interfaces;
+using Fanex.Athena.PlayerAdmin.Infrastructure.Constants;
 using Fanex.Athena.PlayerAdmin.Infrastructure.Extensions;
 using Fanex.Athena.PlayerAdmin.Infrastructure.Models;
 using Fanex.Athena.PlayerAdmin.Infrastructure.Repositories;
-using Fanex.Athena.PlayerAdmin.BetLimit.DTO;
-using Fanex.Athena.PlayerAdmin.BetLimit.MetaModel;
-using Fanex.Athena.PlayerAdmin.BetLimit.Repositories.Interfaces;
 using Fanex.Data;
-using Fanex.Logging;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +20,7 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Repositories
     {
         private readonly IDbFactory _db;
 
-        private readonly ILogger _logger;
+        private readonly ILogger<DcsBetLimitRepository> _logger;
 
         private const int MemberRoleId = 1;
 
@@ -37,7 +37,7 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Repositories
             [ProductType.SLT] = new[] { "169" }
         };
 
-        public DcsBetLimitRepository(IDbFactory dbFactory, ILogger logger)
+        public DcsBetLimitRepository(IDbFactory dbFactory, ILogger<DcsBetLimitRepository> logger)
         {
             _db = dbFactory;
             _logger = logger;
@@ -158,9 +158,9 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Repositories
                     var doc = XDocument.Parse(xmlErrorMessage);
                     return doc.Root.Attribute("Msg").Value;
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-                    _logger.Error("Invalid xml content: " + xmlErrorMessage);
+                    _logger.LogError(ex, "Invalid xml content: " + xmlErrorMessage);
                 }
             }
 

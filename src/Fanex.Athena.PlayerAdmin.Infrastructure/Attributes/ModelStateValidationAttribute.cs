@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc.Filters;
 using System.Net;
 
-namespace Fanex.Athena.PlayerAdmin.Infrastructure.Filters
+namespace Fanex.Athena.PlayerAdmin.Infrastructure.Attributes
 {
     public sealed class ModelStateValidationAttribute : ActionFilterAttribute
     {

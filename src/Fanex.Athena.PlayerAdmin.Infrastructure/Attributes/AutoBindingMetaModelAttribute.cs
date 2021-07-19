@@ -1,5 +1,4 @@
-﻿using Fanex.Athena.PlayerAdmin.Infrastructure.Constants;
-using Fanex.Athena.PlayerAdmin.Infrastructure.Models;
+﻿using Fanex.Athena.PlayerAdmin.Infrastructure.Models;
 using Fanex.Athena.PlayerAdmin.Infrastructure.Services;
 using Fanex.Core.Utils;
 using Microsoft.AspNetCore.Mvc;
@@ -8,7 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Fanex.Athena.PlayerAdmin.Infrastructure.Filters
+namespace Fanex.Athena.PlayerAdmin.Infrastructure.Attributes
 {
     [AttributeUsage(AttributeTargets.Method, AllowMultiple = false)]
     public class AutoBindingMetaModelAttribute : TypeFilterAttribute

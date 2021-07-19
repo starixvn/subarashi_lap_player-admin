@@ -12,10 +12,10 @@ namespace Fanex.Athena.PlayerAdmin.WebHost
         {
             Console.Title = "Player Admin";
 
-            CreateHostBuilder(args).Build().Run();
+            CreateHost(args).Run();
         }
 
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
+        public static IHost CreateHost(string[] args) =>
             Host.CreateDefaultBuilder(args)
             .ConfigureAppConfiguration((builderContext, config) =>
             {
@@ -33,6 +33,8 @@ namespace Fanex.Athena.PlayerAdmin.WebHost
             {
                 logging.ClearProviders();
                 logging.AddConsole();
-            });
+                logging.AddSentry();
+            })
+            .Build();
     }
 }

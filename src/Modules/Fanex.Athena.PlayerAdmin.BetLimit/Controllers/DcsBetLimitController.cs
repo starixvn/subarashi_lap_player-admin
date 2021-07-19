@@ -2,7 +2,7 @@
 using Fanex.Athena.PlayerAdmin.BetLimit.Services.Interfaces;
 using Fanex.Athena.PlayerAdmin.BetLimit.ViewModels;
 using Fanex.Athena.PlayerAdmin.Infrastructure.Constants;
-using Fanex.Athena.PlayerAdmin.Infrastructure.Filters;
+using Fanex.Athena.PlayerAdmin.Infrastructure.Attributes;
 using Fanex.Athena.PlayerAdmin.Infrastructure.Resources;
 using Fanex.Athena.PlayerAdmin.Infrastructure.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -24,7 +24,7 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [CookieAuthorize(Roles.SuperAdmin, Roles.BetLimit)]
-        [DataValidation(
+        [RequestValidation(
             validateCustId: true,
             validateProductId: -1,
             limitedProductIds: new[] { ProductType.VirtualSports, ProductType.VirtualSports2, ProductType.Lottery, ProductType.TG, ProductType.I4D })]
@@ -48,7 +48,7 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [CookieAuthorize(Roles.SuperAdmin, Roles.BetLimit_Write)]
-        [DataValidation(
+        [RequestValidation(
             validateCustId: true,
             validateProductId: -1,
             limitedProductIds: new[] { ProductType.VirtualSports, ProductType.VirtualSports2, ProductType.Lottery, ProductType.TG, ProductType.I4D })]

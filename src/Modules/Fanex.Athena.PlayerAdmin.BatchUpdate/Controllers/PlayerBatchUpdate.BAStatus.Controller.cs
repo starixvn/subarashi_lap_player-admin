@@ -2,7 +2,7 @@
 using Fanex.Athena.PlayerAdmin.BatchUpdate.ViewModels;
 using Fanex.Athena.PlayerAdmin.Infrastructure.Constants;
 using Fanex.Athena.PlayerAdmin.Infrastructure.Extensions;
-using Fanex.Athena.PlayerAdmin.Infrastructure.Filters;
+using Fanex.Athena.PlayerAdmin.Infrastructure.Attributes;
 using Fanex.Athena.PlayerAdmin.Infrastructure.Resources;
 using Fanex.Athena.PlayerAdmin.Infrastructure.Services;
 using Fanex.Athena.PlayerAdmin.Infrastructure.Settings;
@@ -29,7 +29,7 @@ namespace Fanex.Athena.PlayerAdmin.BatchUpdate.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [CookieAuthorize(Roles.SuperAdmin, Roles.UpdateBaStatus)]
-        [DataValidation(validateProductId: ProductType.BA)]
+        [RequestValidation(validateProductId: ProductType.BA)]
         [AutoBindingMetaModel(bindLicenseeId: true, bindSiteName: true, bindClientIP: true, bindLanguage: true, bindUserId: true)]
         public async Task<JsonResult> UpdateBAStatus([FromServices] IContextService contextService, [FromServices]ILicenseeService licenseeService,
             IOptions<AppSetting> appSetting,

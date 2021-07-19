@@ -1,7 +1,7 @@
 ﻿using Fanex.Athena.PlayerAdmin.BatchUpdate.MetaModels;
 using Fanex.Athena.PlayerAdmin.BatchUpdate.ViewModels;
 using Fanex.Athena.PlayerAdmin.Infrastructure.Constants;
-using Fanex.Athena.PlayerAdmin.Infrastructure.Filters;
+using Fanex.Athena.PlayerAdmin.Infrastructure.Attributes;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
@@ -21,7 +21,7 @@ namespace Fanex.Athena.PlayerAdmin.BatchUpdate.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [CookieAuthorize(Roles.SuperAdmin, Roles.UpdateSpecialLevel)]
-        [DataValidation]
+        [RequestValidation]
         [AutoBindingMetaModel(bindLicenseeId: true, bindSiteName: true, bindClientIP: true, bindLanguage: true, bindUserId: true)]
         public async Task<JsonResult> UpdateSpecialLevel(UpdateSpecialLevelApiMetaModel metaModel)
         {

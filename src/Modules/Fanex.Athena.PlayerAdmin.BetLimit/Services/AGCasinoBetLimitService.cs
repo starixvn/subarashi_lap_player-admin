@@ -7,8 +7,8 @@ using Fanex.Athena.PlayerAdmin.BetLimit.Services.Interfaces;
 using Fanex.Athena.PlayerAdmin.Infrastructure.Helpers;
 using Fanex.Athena.PlayerAdmin.Infrastructure.Models;
 using Fanex.Athena.PlayerAdmin.Infrastructure.Settings;
-using Fanex.Logging;
 using MediatR;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
@@ -20,14 +20,14 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Services
 {
     public class AGCasinoBetLimitService : IAGCasinoBetLimitService
     {
-        private readonly ILogger _logger;
+        private readonly ILogger<AGCasinoBetLimitService> _logger;
         private readonly IPublisher _publisher;
         private readonly BetLimitApiSetting _appSetting;
         private readonly IAGCasinoBetLimitRepository _repository;
         private readonly HttpClient _httpClient;
 
         public AGCasinoBetLimitService(
-            ILogger logger,
+            ILogger<AGCasinoBetLimitService> logger,
             IOptions<BetLimitApiSetting> appSetting,
             IAGCasinoBetLimitRepository repository,
             HttpClient httpClient,
@@ -82,7 +82,7 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Services
             }
             catch (Exception exception)
             {
-                _logger.Error(ErrorMessageHelper.GenerateMessage(exception));
+                _logger.LogError(exception, ErrorMessageHelper.GenerateMessage(exception));
             }
 
             return games;

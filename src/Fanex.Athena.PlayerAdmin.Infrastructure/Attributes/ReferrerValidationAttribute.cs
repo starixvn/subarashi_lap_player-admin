@@ -9,7 +9,7 @@ using Microsoft.Net.Http.Headers;
 using System;
 using System.Linq;
 
-namespace Fanex.Athena.PlayerAdmin.Infrastructure.Filters
+namespace Fanex.Athena.PlayerAdmin.Infrastructure.Attributes
 {
     [AttributeUsage(AttributeTargets.Method | AttributeTargets.Class, AllowMultiple = false)]
     public class ReferrerValidationAttribute : TypeFilterAttribute
