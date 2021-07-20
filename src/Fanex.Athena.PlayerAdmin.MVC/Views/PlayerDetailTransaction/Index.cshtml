@@ -5,20 +5,11 @@
 @model PlayerDetailTransactionReportViewModel
 
 @section pagecss {
-    <environment include="Development">
-        <link href="~/css/dev/detailtransaction.css" rel="stylesheet" type="text/css" asp-append-version="true" />
-    </environment>
-    <environment exclude="Development">
-        <link href="~/css/pro/detailtransaction.css" rel="stylesheet" type="text/css" asp-append-version="true" />
-    </environment>
+    <link href="~/css/detailtransaction.css" rel="stylesheet" type="text/css" asp-append-version="true" />
+
 }
 @section pagejs {
-    <environment include="Development">
-        <script src="~/js/dev/detailtransaction.chunk.js" asp-append-version="true"></script>
-    </environment>
-    <environment exclude="Development">
-        <script src="~/js/pro/detailtransaction.chunk.js" asp-append-version="true"></script>
-    </environment>
+    <script src="~/js/detailtransaction.chunk.js" asp-append-version="true"></script>
 }
 @section globaljscode {
     window.initialState = {

@@ -3,7 +3,7 @@ var WebpackBuildNotifierPlugin = require('webpack-build-notifier');
 var Visualizer = require('webpack-visualizer-plugin');
 
 let _buildNumber = 1;
-function generatePlugins(environment) {
+function generatePlugins() {
     var commonPlugins = [
         new Visualizer({
             filename: './wwwroot/webpack-stats-react.html'

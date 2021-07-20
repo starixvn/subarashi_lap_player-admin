@@ -114,6 +114,25 @@ namespace Fanex.Athena.PlayerAdmin.WebHost
                     options.SlidingExpiration = cookieSetting.SlidingExpiration;
                     options.LoginPath = cookieSetting.LoginPath;
                     options.AccessDeniedPath = cookieSetting.DeniedPath;
+
+                    if(string.IsNullOrEmpty(options.LoginPath))
+                    {
+                        options.Events.OnRedirectToLogin = context =>
+                        {
+                            context.Response.StatusCode = StatusCodes.Status401Unauthorized;
+                            return Task.CompletedTask;
+                        };
+                    }
+
+                    if (string.IsNullOrEmpty(options.AccessDeniedPath))
+                    {
+                        options.Events.OnRedirectToAccessDenied = context =>
+                        {
+                            context.Response.StatusCode = StatusCodes.Status403Forbidden;
+                            return Task.CompletedTask;
+                        };
+                    }
+                   
                     options.SessionStore = services.BuildServiceProvider().GetRequiredService<ITicketStore>();
                 })
                 .AddOAuth2Introspection(options =>

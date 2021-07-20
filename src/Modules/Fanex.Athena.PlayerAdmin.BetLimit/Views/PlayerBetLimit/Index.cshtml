@@ -10,22 +10,11 @@
 }
 
 @section pagecss {
-    <environment include="Development">
-        <link href="~/css/dev/betlimit.css" rel="stylesheet" type="text/css" asp-append-version="true" />
-
-    </environment>
-    <environment exclude="Development">
-        <link href="~/css/pro/betlimit.css" rel="stylesheet" type="text/css" asp-append-version="true" />
-    </environment>
+    <link href="~/css/betlimit.css" rel="stylesheet" type="text/css" asp-append-version="true" />
 }
 
 @section pagejs {
-    <environment include="Development">
-        <script src="~/js/dev/betlimit.chunk.js" asp-append-version="true"></script>
-    </environment>
-    <environment exclude="Development">
-        <script src="~/js/pro/betlimit.chunk.js" asp-append-version="true"></script>
-    </environment>
+    <script src="~/js/betlimit.chunk.js" asp-append-version="true"></script>
 }
 
 @section globaljscode {

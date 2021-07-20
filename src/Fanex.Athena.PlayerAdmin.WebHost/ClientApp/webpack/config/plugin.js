@@ -2,7 +2,7 @@
 var WebpackBuildNotifierPlugin = require('webpack-build-notifier');
 var Visualizer = require('webpack-visualizer-plugin');
 
-function generatePlugins(environment) {
+function generatePlugins() {
     var commonPlugins = [
         new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
         new webpack.ProvidePlugin({
@@ -18,7 +18,7 @@ function generatePlugins(environment) {
              suppressSuccess: true
         }),
         new Visualizer({
-            filename: './webpack-stats-newui.html'
+            filename: './wwwroot/webpack-stats-newui.html'
         })
     ];
 

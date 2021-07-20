@@ -39,5 +39,5 @@ coverage/
 **/wwwroot/jquery-pages/css/pro
 **/wwwroot/jquery-pages/js/dev
 **/wwwroot/jquery-pages/js/pro
-**/webpack-stats-react*
+**/wwwroot/webpack-stats-*
 **/__tests__

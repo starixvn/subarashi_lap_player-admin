@@ -3,9 +3,9 @@ var pathConfig = require('../config/pathReact');
 var pluginGenerator = require('../config/pluginReact');
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 
-function generateConfig(environment) {
-    var jsPath = `${pathConfig.scriptPaths.build}/${environment}`;
-    var cssPath = `${pathConfig.cssPaths.build}/${environment}`;
+function generateConfig() {
+    var jsPath = pathConfig.scriptPaths.build;
+    var cssPath = pathConfig.cssPaths.build;
     var commonConfigs = {
         resolve: {
             alias: alias,
@@ -50,7 +50,7 @@ function generateConfig(environment) {
                 exclude: /node_modules/
             }]
         },
-        plugins: pluginGenerator(environment),
+        plugins: pluginGenerator(),
         stats: {
             assets: false,
             colors: true,
