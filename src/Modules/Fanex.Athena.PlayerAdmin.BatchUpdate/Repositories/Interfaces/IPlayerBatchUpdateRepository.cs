@@ -1,5 +1,5 @@
 ﻿using Fanex.Athena.PlayerAdmin.BatchUpdate.Criteria;
-using Fanex.Athena.PlayerAdmin.Infrastructure.Models;
+using Fanex.Athena.PlayerAdmin.Core.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 

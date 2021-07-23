@@ -1,11 +1,11 @@
 ﻿using Fanex.Athena.PlayerAdmin.BatchUpdate.MetaModels;
 using Fanex.Athena.PlayerAdmin.BatchUpdate.ViewModels;
-using Fanex.Athena.PlayerAdmin.Infrastructure.Constants;
-using Fanex.Athena.PlayerAdmin.Infrastructure.Extensions;
-using Fanex.Athena.PlayerAdmin.Infrastructure.Attributes;
-using Fanex.Athena.PlayerAdmin.Infrastructure.Resources;
-using Fanex.Athena.PlayerAdmin.Infrastructure.Services;
-using Fanex.Athena.PlayerAdmin.Infrastructure.Settings;
+using Fanex.Athena.PlayerAdmin.Core.Constants;
+using Fanex.Athena.PlayerAdmin.Core.Extensions;
+using Fanex.Athena.PlayerAdmin.Core.Attributes;
+using Fanex.Athena.PlayerAdmin.Core.Resources;
+using Fanex.Athena.PlayerAdmin.Core.Services;
+using Fanex.Athena.PlayerAdmin.Core.Settings;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using System;

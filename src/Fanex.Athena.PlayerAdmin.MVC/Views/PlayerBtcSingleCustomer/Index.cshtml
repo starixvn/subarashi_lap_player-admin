@@ -2,9 +2,9 @@
     ViewData["Title"] = ViewResources.BettingTicketCenter + " - " + ViewResources.SingleCustomer;
 }
 
-@using  Fanex.Athena.PlayerAdmin.Infrastructure.Settings;
+@using  Fanex.Athena.PlayerAdmin.Core.Settings;
 @inject Microsoft.Extensions.Options.IOptions<AppSetting> setting
-@inject Fanex.Athena.PlayerAdmin.Infrastructure.Services.IContextService contextService
+@inject Fanex.Athena.PlayerAdmin.Core.Services.IContextService contextService
 @model PlayerBtcSingleCustomerViewModel
 
 @{

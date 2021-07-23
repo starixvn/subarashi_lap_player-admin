@@ -7,11 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="jshint.json" />
-    <Content Remove="wwwroot\webpack-stats-react.html" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Remove="App_Data\ExcelTemplate\DetailTransaction.xls" />
   </ItemGroup>
 
@@ -19,10 +14,6 @@
     <Content Include="App_Data\ExcelTemplate\DetailTransaction.xls">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="wwwroot\webpack-stats-react.html" />
   </ItemGroup>
 
   <ItemGroup>
@@ -38,7 +29,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Fanex.Athena.PlayerAdmin.API\Fanex.Athena.PlayerAdmin.API.csproj" />
-    <ProjectReference Include="..\Fanex.Athena.PlayerAdmin.Infrastructure\Fanex.Athena.PlayerAdmin.Infrastructure.csproj" />
+    <ProjectReference Include="..\Fanex.Athena.PlayerAdmin.Core\Fanex.Athena.PlayerAdmin.Core.csproj" />
     <ProjectReference Include="..\Fanex.Athena.PlayerAdmin.MVC\Fanex.Athena.PlayerAdmin.MVC.csproj" />
     <ProjectReference Include="..\Modules\Fanex.Athena.PlayerAdmin.BatchUpdate\Fanex.Athena.PlayerAdmin.BatchUpdate.csproj" />
     <ProjectReference Include="..\Modules\Fanex.Athena.PlayerAdmin.BetLimit\Fanex.Athena.PlayerAdmin.BetLimit.csproj" />
@@ -46,30 +37,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update=".babelrc">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update=".dockerignore">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Update="App_Data\SpConfig\FanexSpName.PROD.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="App_Data\SpConfig\FanexSpName.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Dockerfile">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="wwwroot\css\" />
-    <Folder Include="wwwroot\js\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="jshint.json" />
-  </ItemGroup>
-
 </Project>

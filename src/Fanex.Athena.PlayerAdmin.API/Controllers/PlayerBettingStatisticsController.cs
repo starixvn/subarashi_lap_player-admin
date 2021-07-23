@@ -1,7 +1,7 @@
 ﻿using Fanex.Athena.PlayerAdmin.API.MetaModel;
 using Fanex.Athena.PlayerAdmin.API.Services.Interfaces;
-using Fanex.Athena.PlayerAdmin.Infrastructure.Constants;
-using Fanex.Athena.PlayerAdmin.Infrastructure.Attributes;
+using Fanex.Athena.PlayerAdmin.Core.Constants;
+using Fanex.Athena.PlayerAdmin.Core.Attributes;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using System;

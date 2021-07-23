@@ -1,6 +1,6 @@
-﻿using Fanex.Athena.PlayerAdmin.Infrastructure.Constants;
-using Fanex.Athena.PlayerAdmin.Infrastructure.Attributes;
-using Fanex.Athena.PlayerAdmin.Infrastructure.Settings;
+﻿using Fanex.Athena.PlayerAdmin.Core.Constants;
+using Fanex.Athena.PlayerAdmin.Core.Attributes;
+using Fanex.Athena.PlayerAdmin.Core.Settings;
 using Fanex.Athena.PlayerAdmin.WebHost.Models;
 using IdentityModel.Client;
 using Microsoft.AspNetCore.Authentication;

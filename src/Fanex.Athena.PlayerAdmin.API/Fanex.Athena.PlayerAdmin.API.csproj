@@ -3,9 +3,9 @@
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
-  
+
   <ItemGroup>
-    <ProjectReference Include="..\Fanex.Athena.PlayerAdmin.Infrastructure\Fanex.Athena.PlayerAdmin.Infrastructure.csproj" />
+    <ProjectReference Include="..\Fanex.Athena.PlayerAdmin.Core\Fanex.Athena.PlayerAdmin.Core.csproj" />
   </ItemGroup>
 
 </Project>

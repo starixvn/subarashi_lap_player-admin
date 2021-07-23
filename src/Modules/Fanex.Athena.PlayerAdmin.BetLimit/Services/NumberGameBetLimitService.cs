@@ -4,7 +4,7 @@ using Fanex.Athena.PlayerAdmin.BetLimit.Helpers;
 using Fanex.Athena.PlayerAdmin.BetLimit.MetaModel;
 using Fanex.Athena.PlayerAdmin.BetLimit.Repositories.Interfaces;
 using Fanex.Athena.PlayerAdmin.BetLimit.Services.Interfaces;
-using Fanex.Athena.PlayerAdmin.Infrastructure.Models;
+using Fanex.Athena.PlayerAdmin.Core.Models;
 using MediatR;
 using System.Collections.Generic;
 using System.Threading.Tasks;

@@ -1,7 +1,7 @@
 ﻿using Fanex.Athena.PlayerAdmin.BatchUpdate.Criteria;
-using Fanex.Athena.PlayerAdmin.Infrastructure.Extensions;
-using Fanex.Athena.PlayerAdmin.Infrastructure.Models;
-using Fanex.Athena.PlayerAdmin.Infrastructure.Repositories;
+using Fanex.Athena.PlayerAdmin.Core.Extensions;
+using Fanex.Athena.PlayerAdmin.Core.Models;
+using Fanex.Athena.PlayerAdmin.Core.Repositories;
 using Fanex.Data;
 using System;
 using System.Collections.Generic;

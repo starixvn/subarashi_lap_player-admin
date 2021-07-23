@@ -1,4 +1,4 @@
-﻿using Fanex.Athena.PlayerAdmin.Infrastructure.Constants;
+﻿using Fanex.Athena.PlayerAdmin.Core.Constants;
 using Fanex.Athena.PlayerAdmin.BetLimit.DataDomains;
 using Fanex.Athena.PlayerAdmin.BetLimit.Mediator;
 using Fanex.Athena.PlayerAdmin.BetLimit.MetaModel;

@@ -1,6 +1,6 @@
 ﻿using Fanex.Athena.PlayerAdmin.Commission.MetaModels;
 using Fanex.Athena.PlayerAdmin.Commission.ViewModels;
-using Fanex.Athena.PlayerAdmin.Infrastructure.Models;
+using Fanex.Athena.PlayerAdmin.Core.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 

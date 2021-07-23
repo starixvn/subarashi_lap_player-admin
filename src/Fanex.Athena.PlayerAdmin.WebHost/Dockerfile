@@ -18,8 +18,8 @@ WORKDIR /src
 
 COPY NuGet.Config .
 
-COPY src/Fanex.Athena.PlayerAdmin.Infrastructure/Fanex.Athena.PlayerAdmin.Infrastructure.csproj ./Fanex.Athena.PlayerAdmin.Infrastructure/
-RUN dotnet restore Fanex.Athena.PlayerAdmin.Infrastructure/Fanex.Athena.PlayerAdmin.Infrastructure.csproj -v n
+COPY src/Fanex.Athena.PlayerAdmin.Core/Fanex.Athena.PlayerAdmin.Core.csproj ./Fanex.Athena.PlayerAdmin.Core/
+RUN dotnet restore Fanex.Athena.PlayerAdmin.Core/Fanex.Athena.PlayerAdmin.Core.csproj -v n
 
 COPY src/Fanex.Athena.PlayerAdmin.MVC/Fanex.Athena.PlayerAdmin.MVC.csproj ./Fanex.Athena.PlayerAdmin.MVC/
 RUN dotnet restore Fanex.Athena.PlayerAdmin.MVC/Fanex.Athena.PlayerAdmin.MVC.csproj -v n

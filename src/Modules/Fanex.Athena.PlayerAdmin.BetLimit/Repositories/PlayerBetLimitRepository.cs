@@ -1,5 +1,5 @@
-﻿using Fanex.Athena.PlayerAdmin.Infrastructure.Extensions;
-using Fanex.Athena.PlayerAdmin.Infrastructure.Repositories;
+﻿using Fanex.Athena.PlayerAdmin.Core.Extensions;
+using Fanex.Athena.PlayerAdmin.Core.Repositories;
 using Fanex.Athena.PlayerAdmin.BetLimit.DTO;
 using Fanex.Athena.PlayerAdmin.BetLimit.Repositories.Interfaces;
 using System;
@@ -26,7 +26,7 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Repositories
             {
                 db.SetParameterValue("LicenseeName", siteName);
 
-                using (var reader = await db.ExecuteReaderAsync().ConfigureAwait(false))
+                using (var reader = await db.ExecuteReaderAsync())
                 {
                     while (reader.Read())
                     {

@@ -2,9 +2,9 @@
 using Fanex.Athena.PlayerAdmin.Commission.Helpers;
 using Fanex.Athena.PlayerAdmin.Commission.Repositories.Interfaces;
 using Fanex.Athena.PlayerAdmin.Commission.ViewModels;
-using Fanex.Athena.PlayerAdmin.Infrastructure.Extensions;
-using Fanex.Athena.PlayerAdmin.Infrastructure.Models;
-using Fanex.Athena.PlayerAdmin.Infrastructure.Repositories;
+using Fanex.Athena.PlayerAdmin.Core.Extensions;
+using Fanex.Athena.PlayerAdmin.Core.Models;
+using Fanex.Athena.PlayerAdmin.Core.Repositories;
 using Fanex.Data;
 using System.Collections.Generic;
 using System.Threading.Tasks;

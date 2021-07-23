@@ -1,5 +1,5 @@
 ﻿using Fanex.Athena.PlayerAdmin.BatchUpdate.MetaModels;
-using Fanex.Athena.PlayerAdmin.Infrastructure.Models;
+using Fanex.Athena.PlayerAdmin.Core.Models;
 using System.Threading.Tasks;
 
 namespace Fanex.Athena.PlayerAdmin.BatchUpdate.Services

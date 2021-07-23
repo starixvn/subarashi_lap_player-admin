@@ -1,7 +1,7 @@
 ﻿using System.Linq;
-using Fanex.Athena.PlayerAdmin.Infrastructure.Excel;
+using Fanex.Athena.PlayerAdmin.Core.Excel;
 using Fanex.Athena.PlayerAdmin.MVC.ViewModels;
-using Fanex.Athena.PlayerAdmin.Infrastructure.Resources;
+using Fanex.Athena.PlayerAdmin.Core.Resources;
 using NPOI.SS.UserModel;
 
 namespace Fanex.Athena.PlayerAdmin.MVC.Excel

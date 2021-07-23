@@ -1,4 +1,4 @@
-﻿using Fanex.Athena.PlayerAdmin.Infrastructure.Models;
+﻿using Fanex.Athena.PlayerAdmin.Core.Models;
 using Fanex.Athena.PlayerAdmin.Commission.Criteria;
 using Fanex.Athena.PlayerAdmin.Commission.ViewModels;
 using System.Collections.Generic;

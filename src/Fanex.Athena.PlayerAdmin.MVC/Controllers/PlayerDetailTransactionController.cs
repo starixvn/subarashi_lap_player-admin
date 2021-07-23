@@ -1,5 +1,5 @@
-﻿using Fanex.Athena.PlayerAdmin.Infrastructure.Constants;
-using Fanex.Athena.PlayerAdmin.Infrastructure.Attributes;
+﻿using Fanex.Athena.PlayerAdmin.Core.Constants;
+using Fanex.Athena.PlayerAdmin.Core.Attributes;
 using Fanex.Athena.PlayerAdmin.MVC.Excel;
 using Fanex.Athena.PlayerAdmin.MVC.MetaModel;
 using Fanex.Athena.PlayerAdmin.MVC.Services.Interfaces;

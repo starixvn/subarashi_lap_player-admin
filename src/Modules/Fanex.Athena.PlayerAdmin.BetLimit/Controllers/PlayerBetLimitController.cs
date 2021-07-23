@@ -1,9 +1,9 @@
 ﻿using Fanex.Athena.PlayerAdmin.BetLimit.Repositories.Interfaces;
 using Fanex.Athena.PlayerAdmin.BetLimit.ViewModels;
-using Fanex.Athena.PlayerAdmin.Infrastructure.Constants;
-using Fanex.Athena.PlayerAdmin.Infrastructure.Attributes;
-using Fanex.Athena.PlayerAdmin.Infrastructure.Helpers;
-using Fanex.Athena.PlayerAdmin.Infrastructure.Services;
+using Fanex.Athena.PlayerAdmin.Core.Constants;
+using Fanex.Athena.PlayerAdmin.Core.Attributes;
+using Fanex.Athena.PlayerAdmin.Core.Helpers;
+using Fanex.Athena.PlayerAdmin.Core.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
