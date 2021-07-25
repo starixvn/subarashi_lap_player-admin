@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json.Serialization;
 
 namespace Fanex.Athena.PlayerAdmin.MVC.ViewModels
 {
@@ -57,5 +58,8 @@ namespace Fanex.Athena.PlayerAdmin.MVC.ViewModels
         public string FromDateStr => FromDate.ToString("MM/dd/yyyy");
 
         public string ToDateStr => ToDate.ToString("MM/dd/yyyy");
+
+        [JsonIgnore]
+        public bool IsEnableSingleWallet { get; set; }
     }
 }

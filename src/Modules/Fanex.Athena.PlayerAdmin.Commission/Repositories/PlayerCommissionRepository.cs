@@ -101,7 +101,7 @@ namespace Fanex.Athena.PlayerAdmin.Commission.Repositories
             using (var db = dbFactory.GetObjectDb(criteria.GetSPName()))
             {
                 criteria.SetParameterValues(db);
-                await db.ExecuteNonQueryAsync().ConfigureAwait(false);
+                await db.ExecuteNonQueryAsync();
                 AssignResult(db, result);
                 return result;
             }

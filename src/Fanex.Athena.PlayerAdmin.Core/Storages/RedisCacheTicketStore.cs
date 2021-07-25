@@ -53,13 +53,9 @@ namespace Fanex.Athena.PlayerAdmin.Core.Storages
         }
 
         private static byte[] SerializeToBytes(AuthenticationTicket source)
-        {
-            return TicketSerializer.Default.Serialize(source);
-        }
+            => TicketSerializer.Default.Serialize(source);
 
         private static AuthenticationTicket DeserializeFromBytes(byte[] source)
-        {
-            return source == null ? null : TicketSerializer.Default.Deserialize(source);
-        }
+            => source == null ? null : TicketSerializer.Default.Deserialize(source);
     }
 }

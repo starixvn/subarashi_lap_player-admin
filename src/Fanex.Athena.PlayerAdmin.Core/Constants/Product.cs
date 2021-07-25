@@ -65,6 +65,8 @@
         public const string GDG = "GDG";
 
         public const string SLT = "SLT";
+
+        public const string CG = "CG";
     }
 
     public static class ProductType
@@ -80,5 +82,6 @@
         public const int TG = 40;
         public const int I4D = 43;
         public const int SLT = 63;
+        public const int CG = 62;
     }
 }

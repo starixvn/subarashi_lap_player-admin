@@ -13,7 +13,8 @@ namespace Fanex.Athena.PlayerAdmin.Core.Services
         IReadOnlyDictionary<int, string> CurrencyList { get; }
         bool IsAllowedCustomerComm { get; }
         bool IsEnableBA { get; }
-        public int UserLevel { get; }
+        bool IsEnableSingleWallet { get; }
+        int UserLevel { get; }
         string ClientIP { get; }
         string Language { get; }
         bool IsShowIP { get; }

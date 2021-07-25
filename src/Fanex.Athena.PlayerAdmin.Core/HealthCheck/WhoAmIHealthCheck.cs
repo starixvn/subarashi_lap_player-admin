@@ -4,6 +4,7 @@ using Microsoft.Extensions.Diagnostics.HealthChecks;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Net;
+using System.Net.Sockets;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -38,10 +39,10 @@ namespace Fanex.Athena.PlayerAdmin.Core.HealthCheck
             result.Add("Host Name", hostName);
 
             var serverIps = await Dns.GetHostAddressesAsync(hostName).ConfigureAwait(false);
-            for (var i = 1; i < serverIps.Length; i++)
+            for (var i = 0; i < serverIps.Length; i++)
             {
-                if (!serverIps[i].Equals("::1"))
-                {
+                if (serverIps[i].AddressFamily == AddressFamily.InterNetwork)
+                { 
                     result.Add($"IP{i}", serverIps[i].ToString());
                 }
             }

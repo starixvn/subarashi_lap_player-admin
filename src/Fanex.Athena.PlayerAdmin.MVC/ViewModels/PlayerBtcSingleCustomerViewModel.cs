@@ -3,6 +3,5 @@
     public class PlayerBtcSingleCustomerViewModel : PlayerFastCrossLinkViewModel
     {
         public bool IsAllowedCustomerComm { get; set; }
-        public string LapToken { get; set; }
     }
 }

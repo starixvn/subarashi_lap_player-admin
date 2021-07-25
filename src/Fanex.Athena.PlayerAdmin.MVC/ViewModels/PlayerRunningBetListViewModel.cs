@@ -5,7 +5,5 @@
         public int CustId { get; set; }
 
         public string Currency { get; set; }
-
-        public string LapToken { get; set; }
     }
 }

@@ -11,7 +11,13 @@ const ConfirmationMsg = {
     [BetLimitProduct.KN]: { Msg: 'UpdateProductBetSettings', Product: 'ProductKN' },
     [BetLimitProduct.AGC]: { Msg: 'UpdateAgCasinoBetSettings' },
     [BetLimitProduct.TG]: { Msg: 'UpdateProductBetSettings', Product: 'ProductTG' },
-	[BetLimitProduct.I4D]: { Msg: 'UpdateProductBetSettings', Product: 'ProductI4D' },
+    [BetLimitProduct.I4D]: { Msg: 'UpdateProductBetSettings', Product: 'ProductI4D' },
+    [BetLimitProduct.SLT]: { Msg: 'UpdateProductBetSettings', Product: 'ProductSLT' },
+    [BetLimitProduct.CG]: { Msg: 'UpdateProductBetSettings', Product: 'ProductCG' }
+}
+
+const ConfirmationUpdateProductStatusMsg = {
+    [BetLimitProduct.CG]: { Msg: 'UpdateProductStatus', Product: 'ProductCG' }
 }
 
 export default class Utility {
@@ -23,6 +29,16 @@ export default class Utility {
         }
 
         return message.replace('{0}', LangHelper.getSingleResource(ConfirmationMsg[productId].Product));
+    }
+
+    static getConfirmationUpdateStatusMsg(productId) {
+        const message = LangHelper.getSingleResource(ConfirmationUpdateProductStatusMsg[productId].Msg);
+
+        if (!ConfirmationUpdateProductStatusMsg[productId].Product) {
+            return message;
+        }
+
+        return message.replace('{0}', LangHelper.getSingleResource(ConfirmationUpdateProductStatusMsg[productId].Product));
     }
 
     static formatValue(number) {

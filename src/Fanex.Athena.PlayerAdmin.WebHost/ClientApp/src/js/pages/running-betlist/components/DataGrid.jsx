@@ -85,7 +85,7 @@ export class DataGrid extends Component {
         };
 
         let Columns = ['Index', 'RefNo', 'TransTime', 'Choice', 'Odds', 'OddsType', 'Stake', 'Status', 'Platform', 'Live'];
-        let ColumnWidths = [40, 110, 150, 400, 70, 70, 100, 80, 80, 80];
+        let ColumnWidths = [40, 110, 150, 400, 70, 70, 100, 110, 80, 80];
         let ColumnAlignments = [
             'center-align', 'center-align', 'center-align',
             'right-align', 'right-align', 'right-align', 'right-align',

@@ -95,64 +95,15 @@ namespace Fanex.Athena.PlayerAdmin.WebHost
             services.AddSingleton<ITicketStore, RedisCacheTicketStore>();
 
             var identityServer = Configuration.GetSection("IdentityServer").Get<IdentityServerSetting>();
-            var cookieSetting = new CookieSetting();
-            Configuration.GetSection("Cookie").Bind(cookieSetting);
+            var cookie = Configuration.GetSection("Cookie").Get<CookieSetting>();
 
-            services.AddAuthentication()
-                .AddCookie(options =>
-                {
-                    options.Cookie = new CookieBuilder
-                    {
-                        HttpOnly = true,
-                        SameSite = cookieSetting.SameSite,
-                        SecurePolicy = cookieSetting.Secure,
-                        IsEssential = true,
-                        Name = cookieSetting.Name
-                    };
-
-                    options.ExpireTimeSpan = TimeSpan.FromMinutes(cookieSetting.ExpireTime);
-                    options.SlidingExpiration = cookieSetting.SlidingExpiration;
-                    options.LoginPath = cookieSetting.LoginPath;
-                    options.AccessDeniedPath = cookieSetting.DeniedPath;
-
-                    if(string.IsNullOrEmpty(options.LoginPath))
-                    {
-                        options.Events.OnRedirectToLogin = context =>
-                        {
-                            context.Response.StatusCode = StatusCodes.Status401Unauthorized;
-                            return Task.CompletedTask;
-                        };
-                    }
-
-                    if (string.IsNullOrEmpty(options.AccessDeniedPath))
-                    {
-                        options.Events.OnRedirectToAccessDenied = context =>
-                        {
-                            context.Response.StatusCode = StatusCodes.Status403Forbidden;
-                            return Task.CompletedTask;
-                        };
-                    }
-                   
-                    options.SessionStore = services.BuildServiceProvider().GetRequiredService<ITicketStore>();
-                })
-                .AddOAuth2Introspection(options =>
-                {
-                    options.Authority = identityServer.Host;
-                    options.ClientId = identityServer.CredentialIntrospection.ClientId;
-                    options.ClientSecret = identityServer.CredentialIntrospection.ClientSecret;
-                    options.SaveToken = true;
-                    options.SkipTokensWithDots = true;
-                    options.EnableCaching = identityServer.CacheDuration > 0;
-                    options.CacheKeyPrefix = "OAuth2Introspection:";
-                    options.CacheDuration = TimeSpan.FromMinutes(identityServer.CacheDuration);
-                    options.DiscoveryPolicy.RequireHttps = false;
-                });
+            ConfigAuthentication(services, cookie, identityServer);
 
             services.AddAntiforgery(options =>
             {
                 options.FormFieldName = "__RequestVerificationToken";
                 options.HeaderName = "X-CSRF-TOKEN-PLAYERADMIN";
-                options.Cookie.SameSite = cookieSetting.SameSite;
+                options.Cookie.SameSite = cookie.SameSite;
                 options.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
                 options.Cookie.Name = "lap.playeradmin.antiforgery";
                 options.Cookie.HttpOnly = true;
@@ -266,13 +217,14 @@ namespace Fanex.Athena.PlayerAdmin.WebHost
             {
                 options.ConfigurationOptions = new ConfigurationOptions
                 {
-                    KeepAlive = 180,
+                    KeepAlive = redisSetting.KeepAlive,
                     Password = redisSetting.Pass,
                     DefaultDatabase = redisSetting.Database,
                     EndPoints =
                     {
                         { redisSetting.Server, redisSetting.Port }
                     },
+                    ConnectRetry = 3
                 };
                 options.InstanceName = redisSetting.AppName;
             });
@@ -315,6 +267,59 @@ namespace Fanex.Athena.PlayerAdmin.WebHost
                 .WithSqlServer(resourcePath: "~/App_Data/SpConfig/FanexSpName.xml")
                 .Use(connectionStrings)
                 .Run();
+        }
+
+        private void ConfigAuthentication(IServiceCollection services, CookieSetting cookie, IdentityServerSetting identityServer)
+        {
+            services.AddAuthentication()
+                .AddCookie(options =>
+                {
+                    options.Cookie = new CookieBuilder
+                    {
+                        HttpOnly = true,
+                        SameSite = cookie.SameSite,
+                        SecurePolicy = cookie.Secure,
+                        IsEssential = true,
+                        Name = cookie.Name
+                    };
+
+                    options.ExpireTimeSpan = TimeSpan.FromMinutes(cookie.ExpireTime);
+                    options.SlidingExpiration = cookie.SlidingExpiration;
+                    options.LoginPath = cookie.LoginPath;
+                    options.AccessDeniedPath = cookie.DeniedPath;
+
+                    if (string.IsNullOrEmpty(options.LoginPath))
+                    {
+                        options.Events.OnRedirectToLogin = context =>
+                        {
+                            context.Response.StatusCode = StatusCodes.Status401Unauthorized;
+                            return Task.CompletedTask;
+                        };
+                    }
+
+                    if (string.IsNullOrEmpty(options.AccessDeniedPath))
+                    {
+                        options.Events.OnRedirectToAccessDenied = context =>
+                        {
+                            context.Response.StatusCode = StatusCodes.Status403Forbidden;
+                            return Task.CompletedTask;
+                        };
+                    }
+
+                    options.SessionStore = services.BuildServiceProvider().GetRequiredService<ITicketStore>();
+                })
+                .AddOAuth2Introspection(options =>
+                {
+                    options.Authority = identityServer.Host;
+                    options.ClientId = identityServer.CredentialIntrospection.ClientId;
+                    options.ClientSecret = identityServer.CredentialIntrospection.ClientSecret;
+                    options.SaveToken = true;
+                    options.SkipTokensWithDots = true;
+                    options.EnableCaching = identityServer.CacheDuration > 0;
+                    options.CacheKeyPrefix = "OAuth2Introspection:";
+                    options.CacheDuration = TimeSpan.FromMinutes(identityServer.CacheDuration);
+                    options.DiscoveryPolicy.RequireHttps = false;
+                });
         }
     }
 }

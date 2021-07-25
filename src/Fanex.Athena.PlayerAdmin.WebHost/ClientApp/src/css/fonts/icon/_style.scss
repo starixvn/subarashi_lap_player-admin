@@ -1,7 +1,7 @@
 ﻿@font-face {
     font-family: 'icomoon';
-    src: url('../../fonts/font-icon/fonts/icomoon.eot?74xi81');
-    src: url('../../fonts/font-icon/fonts/icomoon.eot?74xi81#iefix') format('embedded-opentype'), url('../../fonts/font-icon/fonts/icomoon.ttf?74xi81') format('truetype'), url('../../fonts/font-icon/fonts/icomoon.woff?74xi81') format('woff'), url('../../fonts/font-icon/fonts/icomoon.svg?74xi81#icomoon') format('svg');
+    src: url('../fonts/font-icon/fonts/icomoon.eot?74xi81');
+    src: url('../fonts/font-icon/fonts/icomoon.eot?74xi81#iefix') format('embedded-opentype'), url('../fonts/font-icon/fonts/icomoon.ttf?74xi81') format('truetype'), url('../fonts/font-icon/fonts/icomoon.woff?74xi81') format('woff'), url('../fonts/font-icon/fonts/icomoon.svg?74xi81#icomoon') format('svg');
     font-weight: normal;
     font-style: normal;
 }
@@ -44,7 +44,7 @@
 }
 
 .icon-info {
-    background-image: url("../../images/info.png");
+    background-image: url("../images/info.png");
     width: 14px;
     height: 14px;
     cursor: pointer;
@@ -54,7 +54,7 @@
 
 
 .icon-red-check {
-    background-image: url("../../images/red-check.jpg");
+    background-image: url("../images/red-check.jpg");
     width: 14px;
     height: 14px;
     margin-top: 3px;

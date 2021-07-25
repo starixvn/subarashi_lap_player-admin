@@ -2,7 +2,6 @@
 using Fanex.Athena.PlayerAdmin.Core.HealthCheck;
 using Fanex.Athena.PlayerAdmin.Core.Middlewares;
 using Fanex.Athena.PlayerAdmin.Core.Settings;
-using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Http;
@@ -60,17 +59,6 @@ namespace Fanex.Athena.PlayerAdmin.Core.Extensions
                .AddUrlGroup(new Uri($"{configuration["ConsoleClient:BetList:Host"]}{configuration["ConsoleClient:BetList:HealthPath"]}"), "BetList API")
                .AddUrlGroup(new Uri($"{configuration["ConsoleClient:Lg:Host"]}{configuration["ConsoleClient:Lg:HealthPath"]}"), "LG API")
                .AddRedis($"{configuration["Redis:Server"]}:{configuration["Redis:Port"]},password={configuration["Redis:Pass"]}", "Redis");
-
-            if (bool.Parse(configuration["HealthCheck:EnableUI"]))
-            {
-                services.AddHealthChecksUI(opt =>
-                {
-                    opt.SetEvaluationTimeInSeconds(15); //time in seconds between check
-                    opt.MaximumHistoryEntriesPerEndpoint(60); //maximum history of checks
-                    opt.SetApiMaxActiveRequests(1); //api requests concurrency
-                    opt.AddHealthCheckEndpoint("Self", "/health-api");
-                }).AddInMemoryStorage();
-            }
         }
 
         public static void UseHealthCheck(this IApplicationBuilder app, IConfiguration configuration)
@@ -102,20 +90,6 @@ namespace Fanex.Athena.PlayerAdmin.Core.Extensions
                          Predicate = _ => !_.Name.Equals("WhoAmI"),
                          ResponseWriter = customResponseWriter
                      }));
-
-            if (bool.Parse(configuration["HealthCheck:EnableUI"]))
-            {
-                app.UseHealthChecks("/health-api", new HealthCheckOptions
-                {
-                    Predicate = _ => !_.Name.Equals("WhoAmI"),
-                    ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
-                });
-
-                app.UseHealthChecksUI(option =>
-                {
-                    option.UIPath = "/health-ui";
-                });
-            }
         }
 
         public static void AddUnderMaintenance(this IServiceCollection services, IConfiguration configuration)

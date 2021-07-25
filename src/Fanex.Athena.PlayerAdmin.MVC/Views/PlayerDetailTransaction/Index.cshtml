@@ -25,6 +25,7 @@
     };
 
     window._AppData = {
+    isEnableSingleWallet: @Model.IsEnableSingleWallet.ToString().ToLowerInvariant(),
     dateConstraint: {
     minDate: '@Model.MinDate.ToString("MM/dd/yyyy")',
     maxDate: '@Model.ToDate.ToString("MM/dd/yyyy")'

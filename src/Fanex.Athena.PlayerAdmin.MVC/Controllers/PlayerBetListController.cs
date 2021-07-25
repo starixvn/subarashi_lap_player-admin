@@ -29,14 +29,13 @@ namespace Fanex.Athena.PlayerAdmin.MVC.Controllers
 
         [HttpGet]
         [ReferrerValidation]
-        public ViewResult Running(int custId, int currencyId, string lapToken)
+        public ViewResult Running(int custId, int currencyId)
         {
             var currencyList = _contextService.CurrencyList;
             var viewModel = new PlayerRunningBetListViewModel
             {
                 CustId = custId,
-                Currency = currencyList.FirstOrDefault(x => x.Key == currencyId).Value,
-                LapToken = lapToken
+                Currency = currencyList.FirstOrDefault(x => x.Key == currencyId).Value
             };
 
             ViewBag.IsAllowTxIDColumn = _appSetting.LicenseeOfferTxIDColumn.Contains(_contextService.SiteName, StringComparer.InvariantCultureIgnoreCase);

@@ -5,6 +5,7 @@ import { Table, HeaderRow, HeaderCell, Row, Cell, Pager } from '@9softstudio/rea
 import LangHelper from '@jsroot/lib/langHelper';
 import ReportTitle from '@jsroot/components/ReportTitle';
 import NoDataTitle from '@jsroot/components/NoDataTitle';
+import AppData from '@jsroot/lib/AppData';
 import { ActionCreators } from '../actions/index.js';
 
 export class DataGrid extends PureComponent {
@@ -19,7 +20,7 @@ export class DataGrid extends PureComponent {
                 <HeaderCell colWidth={80}>{LangHelper.getSingleResource('TransactionTime')}</HeaderCell>
                 <HeaderCell colWidth={120}>{LangHelper.getSingleResource('Transaction')}</HeaderCell>
                 <HeaderCell colWidth={60}>{LangHelper.getSingleResource('BalanceChange')}</HeaderCell>
-                <HeaderCell colWidth={60}>{LangHelper.getSingleResource('AfterBalance')}</HeaderCell>
+                {!AppData.isEnableSingleWallet && <HeaderCell colWidth={60}>{LangHelper.getSingleResource('AfterBalance')}</HeaderCell>}
                 <HeaderCell colWidth={40}>{LangHelper.getSingleResource('Resettled')}</HeaderCell>
                 <HeaderCell colWidth={160}>{LangHelper.getSingleResource('Remark')}</HeaderCell>
             </HeaderRow>
@@ -37,7 +38,7 @@ export class DataGrid extends PureComponent {
                     <Cell className="center-text">{dataItem.TransactionTimeStr}</Cell>
                     <Cell>{dataItem.TransactionType}</Cell>
                     <Cell className="right-text">{dataItem.BalanceChangeStr}</Cell>
-                    <Cell className="right-text">{dataItem.AfterBalanceStr}</Cell>
+                    {!AppData.isEnableSingleWallet && <Cell className="right-text">{dataItem.AfterBalanceStr}</Cell>}
                     <Cell className="center-text">
                         {dataItem.IsResettled ? <div class="icon-red-check"></div> : ""}
                     </Cell>

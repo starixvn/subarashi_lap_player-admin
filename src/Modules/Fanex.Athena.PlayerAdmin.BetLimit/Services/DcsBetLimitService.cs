@@ -1,11 +1,11 @@
-﻿using Fanex.Athena.PlayerAdmin.Core.Constants;
-using Fanex.Athena.PlayerAdmin.Core.Models;
-using Fanex.Athena.PlayerAdmin.BetLimit.DataDomains;
+﻿using Fanex.Athena.PlayerAdmin.BetLimit.DataDomains;
 using Fanex.Athena.PlayerAdmin.BetLimit.DTO;
 using Fanex.Athena.PlayerAdmin.BetLimit.Helpers;
 using Fanex.Athena.PlayerAdmin.BetLimit.MetaModel;
 using Fanex.Athena.PlayerAdmin.BetLimit.Repositories.Interfaces;
 using Fanex.Athena.PlayerAdmin.BetLimit.Services.Interfaces;
+using Fanex.Athena.PlayerAdmin.Core.Constants;
+using Fanex.Athena.PlayerAdmin.Core.Models;
 using MediatR;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +15,7 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Services
 {
     public class DcsBetLimitService : IDcsBetLimitService
     {
-        private static readonly int[] ProductsHasStatus = { ProductType.Lottery };
+        private static readonly int[] ProductsHasStatus = { ProductType.Lottery, ProductType.CG };
 
         private readonly IDcsBetLimitRepository _repository;
         private readonly IPublisher _publisher;
@@ -28,7 +28,7 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Services
 
         public async Task<IEnumerable<PlayerBetLimit>> GetSettingAsync(int custId, int productId)
         {
-            return await _repository.GetSettingAsync(custId, productId).ConfigureAwait(false);
+            return await _repository.GetSettingAsync(custId, productId);
         }
 
         public async Task<bool> GetStatusAsync(int custId, int productId)
@@ -38,12 +38,12 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Services
                 return true;
             }
 
-            return await _repository.GetStatusAsync(custId, productId).ConfigureAwait(false);
+            return await _repository.GetStatusAsync(custId, productId);
         }
 
         public async Task<IResultInfo> UpdateSettingAsync(PlayerBetLimitUpdateMetaModel<IEnumerable<PlayerBetLimitMetaModel>> metaModel)
         {
-            var result = await _repository.UpdateSettingAsync(metaModel).ConfigureAwait(false);
+            var result = await _repository.UpdateSettingAsync(metaModel);
 
             var logEvent = BetLimitLogHelper.CreateLogEvent(
                 metaModel,
@@ -60,5 +60,8 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Services
 
             return result;
         }
+
+        public Task<IResultInfo> UpdateStatusAsync(PlayerBetLimitUpdateStatusMetaModel metaModel)
+            => _repository.UpdateStatusAsync(metaModel);
     }
 }

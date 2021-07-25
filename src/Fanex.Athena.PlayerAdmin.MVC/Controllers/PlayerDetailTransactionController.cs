@@ -1,5 +1,6 @@
-﻿using Fanex.Athena.PlayerAdmin.Core.Constants;
-using Fanex.Athena.PlayerAdmin.Core.Attributes;
+﻿using Fanex.Athena.PlayerAdmin.Core.Attributes;
+using Fanex.Athena.PlayerAdmin.Core.Constants;
+using Fanex.Athena.PlayerAdmin.Core.Services;
 using Fanex.Athena.PlayerAdmin.MVC.Excel;
 using Fanex.Athena.PlayerAdmin.MVC.MetaModel;
 using Fanex.Athena.PlayerAdmin.MVC.Services.Interfaces;
@@ -15,17 +16,24 @@ namespace Fanex.Athena.PlayerAdmin.MVC.Controllers
     public class PlayerDetailTransactionController : Controller
     {
         private readonly IPlayerDetailTransactionService _playerDetailTransactionService;
+        private readonly IContextService _contextService;
 
-        public PlayerDetailTransactionController(IPlayerDetailTransactionService playerDetailTransactionService)
+        public PlayerDetailTransactionController(IPlayerDetailTransactionService playerDetailTransactionService, IContextService contextService)
         {
             _playerDetailTransactionService = playerDetailTransactionService;
+            _contextService = contextService;
         }
 
         [HttpGet]
         [ReferrerValidation]
         public ViewResult Index(int custId, int currencyId)
         {
-            var viewModel = new PlayerDetailTransactionReportViewModel { CustId = custId, CurrencyId = currencyId };
+            var viewModel = new PlayerDetailTransactionReportViewModel
+            {
+                CustId = custId,
+                CurrencyId = currencyId,
+                IsEnableSingleWallet = _contextService.IsEnableSingleWallet
+            };
             return View(viewModel);
         }
 
@@ -49,6 +57,7 @@ namespace Fanex.Athena.PlayerAdmin.MVC.Controllers
             criteria.PageSize = null;
             criteria.PageIndex = null;
             var data = await _playerDetailTransactionService.GetDetailTransactionReport(criteria);
+            data.IsEnableSingleWallet = _contextService.IsEnableSingleWallet;
 
             var templatePath = file.GetFileInfo("/App_Data/ExcelTemplate/DetailTransaction.xls").PhysicalPath;
             excelService.SetData(templatePath, data);

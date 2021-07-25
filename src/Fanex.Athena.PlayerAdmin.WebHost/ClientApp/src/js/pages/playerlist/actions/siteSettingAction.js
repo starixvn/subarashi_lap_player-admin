@@ -3,15 +3,15 @@ import { setDisplayedColumnList } from './gridHandlerAction';
 import { buildColumnList } from '../lib/helpers/gridColumnBuilder';
 import SiteSettingService from '../lib/services/siteSettingService';
 
-export const getSiteSetting = (licType, isSubsidiary, hasCommPermissionRead) => (dispatch) => {
+export const getSiteSetting = (licType, isSubsidiary, hasCommPermissionRead, isEnableSingleWallet) => (dispatch) => {
     const service = new SiteSettingService();
 
     service.getSetting().then((response) => {
         const { IsAllowedCustomerComm, IsAllowedBA } = response.data;
 
         const isAllowedBA = !isSubsidiary && IsAllowedBA;
-        if (isAllowedBA) {
-            const columnList = buildColumnList(licType, isAllowedBA, hasCommPermissionRead);
+        if (isAllowedBA || isEnableSingleWallet) {
+            const columnList = buildColumnList(licType, isAllowedBA, hasCommPermissionRead, isEnableSingleWallet);
             dispatch(setDisplayedColumnList(columnList));
         }
 

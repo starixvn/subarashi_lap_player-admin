@@ -5,15 +5,17 @@
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <DockerfileContext>..\..</DockerfileContext>
   </PropertyGroup>
-
-  <ItemGroup>
-    <None Remove="App_Data\ExcelTemplate\DetailTransaction.xls" />
-  </ItemGroup>
-
+  
   <ItemGroup>
     <Content Include="App_Data\ExcelTemplate\DetailTransaction.xls">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="jshint.json" />
+    <None Include="package-lock.json" />
+    <None Include="package.json" />
   </ItemGroup>
 
   <ItemGroup>

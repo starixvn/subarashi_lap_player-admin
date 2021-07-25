@@ -12,7 +12,9 @@ const Url = {
     [BetLimitProduct.KN]: 'RngKenoBetLimit',
     [BetLimitProduct.AGC]: 'AGCasinoBetLimit',
     [BetLimitProduct.TG]: 'DcsBetLimit',
-    [BetLimitProduct.I4D]: 'DcsBetLimit'
+    [BetLimitProduct.I4D]: 'DcsBetLimit',
+    [BetLimitProduct.SLT]: 'DcsBetLimit',
+    [BetLimitProduct.CG]: 'DcsBetLimit'
 };
 
 export default class DataTransfer {
@@ -32,6 +34,24 @@ export default class DataTransfer {
 
     static updateData(param, callBack) {
         const url = Site.resolveClientUrl(Url[param.ProductId] + '/UpdateSetting');
+        DataService.postData(url, param)
+            .then(response => {
+                const result = response.data;
+                const isSuccess = Number(result.Code) === 0;
+                const title = isSuccess ?
+                    LangHelper.getSingleResource('MessageSuccess') :
+                    LangHelper.getSingleResource('Fail');
+
+                callBack && callBack(title, result.Message, isSuccess);
+            })
+            .catch(error => {
+                console.log(error.message);
+                callBack(LangHelper.getSingleResource('Error'), LangHelper.getSingleResource('ErrorProcessingMsg'), false);
+            });
+    }
+
+    static updateStatus(param, callBack) {
+        const url = Site.resolveClientUrl(Url[param.ProductId] + '/UpdateStatus');
         DataService.postData(url, param)
             .then(response => {
                 const result = response.data;
