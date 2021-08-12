@@ -4,9 +4,11 @@
     <TargetFramework>net5.0</TargetFramework>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <DockerfileContext>..\..</DockerfileContext>
+    <CodeAnalysisRuleSet>..\..\.sonarlint\lap_playeradmincsharp.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   
   <ItemGroup>
+    <AdditionalFiles Include="..\..\.sonarlint\lap_playeradmin\CSharp\SonarLint.xml" Link="SonarLint.xml" />
     <Content Include="App_Data\ExcelTemplate\DetailTransaction.xls">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
