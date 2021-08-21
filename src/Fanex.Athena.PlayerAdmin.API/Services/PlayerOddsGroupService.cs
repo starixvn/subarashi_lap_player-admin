@@ -1,9 +1,9 @@
 ﻿using Fanex.Athena.PlayerAdmin.API.MetaModel;
 using Fanex.Athena.PlayerAdmin.API.Services.Interfaces;
-using Fanex.Athena.PlayerAdmin.Infrastructure.DataDomains;
-using Fanex.Athena.PlayerAdmin.Infrastructure.Mediator;
-using Fanex.Athena.PlayerAdmin.Infrastructure.Models;
-using Fanex.Athena.PlayerAdmin.Infrastructure.Repositories;
+using Fanex.Athena.PlayerAdmin.Core.DataDomains;
+using Fanex.Athena.PlayerAdmin.Core.Mediator;
+using Fanex.Athena.PlayerAdmin.Core.Models;
+using Fanex.Athena.PlayerAdmin.Core.Repositories;
 using MediatR;
 using System;
 using System.Threading.Tasks;

@@ -1,11 +1,11 @@
 ﻿using Fanex.Athena.PlayerAdmin.BatchUpdate.Criteria;
 using Fanex.Athena.PlayerAdmin.BatchUpdate.MetaModels;
 using Fanex.Athena.PlayerAdmin.BatchUpdate.Repositories;
-using Fanex.Athena.PlayerAdmin.Infrastructure.DataDomains;
-using Fanex.Athena.PlayerAdmin.Infrastructure.Mediator;
-using Fanex.Athena.PlayerAdmin.Infrastructure.Models;
-using Fanex.Athena.PlayerAdmin.Infrastructure.Resources;
-using Fanex.Athena.PlayerAdmin.Infrastructure.Services;
+using Fanex.Athena.PlayerAdmin.Core.DataDomains;
+using Fanex.Athena.PlayerAdmin.Core.Mediator;
+using Fanex.Athena.PlayerAdmin.Core.Models;
+using Fanex.Athena.PlayerAdmin.Core.Resources;
+using Fanex.Athena.PlayerAdmin.Core.Services;
 using MediatR;
 using System;
 using System.Collections.Generic;

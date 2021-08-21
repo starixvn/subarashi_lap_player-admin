@@ -1,18 +1,29 @@
 ﻿using Fanex.Athena.PlayerAdmin.BetLimit.MetaModel;
 using Fanex.Athena.PlayerAdmin.BetLimit.Services.Interfaces;
 using Fanex.Athena.PlayerAdmin.BetLimit.ViewModels;
-using Fanex.Athena.PlayerAdmin.Infrastructure.Constants;
-using Fanex.Athena.PlayerAdmin.Infrastructure.Attributes;
-using Fanex.Athena.PlayerAdmin.Infrastructure.Resources;
-using Fanex.Athena.PlayerAdmin.Infrastructure.Services;
+using Fanex.Athena.PlayerAdmin.Core.Constants;
+using Fanex.Athena.PlayerAdmin.Core.Attributes;
+using Fanex.Athena.PlayerAdmin.Core.Resources;
+using Fanex.Athena.PlayerAdmin.Core.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace Fanex.Athena.PlayerAdmin.BetLimit.Controllers
 {
+    [RequestValidation(
+    validateCustId: true,
+    validateProductId: -1,
+    limitedProductIds: new[] { ProductType.VirtualSports, ProductType.VirtualSports2, ProductType.Lottery,
+                ProductType.TG, ProductType.I4D, ProductType.SLT, ProductType.CG })]
     public class DcsBetLimitController : PlayerBetLimitBaseControler
     {
+        private static readonly IEnumerable<int> ProductsHasStatus = new []
+        {
+            ProductType.CG
+        };
+
         private readonly IDcsBetLimitService _service;
 
         public DcsBetLimitController(IContextService contextService, IResourceService resourceService,
@@ -24,10 +35,6 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [CookieAuthorize(Roles.SuperAdmin, Roles.BetLimit)]
-        [RequestValidation(
-            validateCustId: true,
-            validateProductId: -1,
-            limitedProductIds: new[] { ProductType.VirtualSports, ProductType.VirtualSports2, ProductType.Lottery, ProductType.TG, ProductType.I4D })]
         public async Task<JsonResult> GetSetting([FromBody] PlayerBetLimitSelectMetaModel metaModel)
         {
             var isEditable = HasEditPermission();
@@ -39,7 +46,9 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Controllers
             var viewModel = new PlayerBetLimitViewModel
             {
                 Data = AddSettingTypeName(await data),
-                Editable = isEditable && await status
+                Editable = isEditable && await status,
+                IsStatusEnable = ProductsHasStatus.Contains(metaModel.ProductId),
+                StatusEnable = await status
             };
 
             return Json(viewModel);
@@ -48,14 +57,23 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [CookieAuthorize(Roles.SuperAdmin, Roles.BetLimit_Write)]
-        [RequestValidation(
-            validateCustId: true,
-            validateProductId: -1,
-            limitedProductIds: new[] { ProductType.VirtualSports, ProductType.VirtualSports2, ProductType.Lottery, ProductType.TG, ProductType.I4D })]
         [AutoBindingMetaModel(bindClientIP: true, bindLanguage: true, bindSiteName: true, bindUserId: true)]
         public async Task<JsonResult> UpdateSetting([FromBody] PlayerBetLimitUpdateMetaModel<IEnumerable<PlayerBetLimitMetaModel>> metaModel)
         {
             var result = await _service.UpdateSettingAsync(metaModel);
+
+            result.Message = result.Code == 0 ? ViewResources.UpdateSuccess : result.Message;
+
+            return Json(result);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [CookieAuthorize(Roles.SuperAdmin, Roles.BetLimit_Write)]
+        [AutoBindingMetaModel(bindClientIP: true, bindLanguage: true, bindSiteName: true, bindUserId: true)]
+        public async Task<JsonResult> UpdateStatus([FromBody] PlayerBetLimitUpdateStatusMetaModel metaModel)
+        {
+            var result = await _service.UpdateStatusAsync(metaModel);
 
             result.Message = result.Code == 0 ? ViewResources.UpdateSuccess : result.Message;
 

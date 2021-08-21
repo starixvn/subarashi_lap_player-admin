@@ -1,7 +1,7 @@
 ﻿using Fanex.Athena.PlayerAdmin.BetLimit.DTO;
-using Fanex.Athena.PlayerAdmin.Infrastructure.Constants;
-using Fanex.Athena.PlayerAdmin.Infrastructure.Services;
-using Fanex.Athena.PlayerAdmin.Infrastructure.Resources;
+using Fanex.Athena.PlayerAdmin.Core.Constants;
+using Fanex.Athena.PlayerAdmin.Core.Services;
+using Fanex.Athena.PlayerAdmin.Core.Resources;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 

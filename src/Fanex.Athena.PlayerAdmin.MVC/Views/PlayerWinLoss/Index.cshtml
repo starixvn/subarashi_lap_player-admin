@@ -18,12 +18,7 @@
 }
 
 @section pagecss {
-    <environment include="Development">
-        <link href="~/css/dev/playerwinloss.css" rel="stylesheet" type="text/css" asp-append-version="true" />
-    </environment>
-    <environment exclude="Development">
-        <link href="~/css/pro/playerwinloss.css" rel="stylesheet" type="text/css" asp-append-version="true" />
-    </environment>
+    <link href="~/css/playerwinloss.css" rel="stylesheet" type="text/css" asp-append-version="true" />
     <style>
         #app-container {
             margin-top: 10px;
@@ -31,12 +26,7 @@
     </style>
 }
 @section pagejs {
-    <environment include="Development">
-        <script src="~/js/dev/playerwinloss.chunk.js" asp-append-version="true"></script>
-    </environment>
-    <environment exclude="Development">
-        <script src="~/js/pro/playerwinloss.chunk.js" asp-append-version="true"></script>
-    </environment>
+    <script src="~/js/playerwinloss.chunk.js" asp-append-version="true"></script>
 }
 @section globaljscode {
     window.initialState = {

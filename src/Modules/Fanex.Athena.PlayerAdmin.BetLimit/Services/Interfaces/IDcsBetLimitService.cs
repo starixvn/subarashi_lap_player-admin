@@ -1,4 +1,4 @@
-﻿using Fanex.Athena.PlayerAdmin.Infrastructure.Models;
+﻿using Fanex.Athena.PlayerAdmin.Core.Models;
 using Fanex.Athena.PlayerAdmin.BetLimit.DTO;
 using Fanex.Athena.PlayerAdmin.BetLimit.MetaModel;
 using System.Collections.Generic;
@@ -13,5 +13,7 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Services.Interfaces
         Task<IResultInfo> UpdateSettingAsync(PlayerBetLimitUpdateMetaModel<IEnumerable<PlayerBetLimitMetaModel>> metaModel);
 
         Task<bool> GetStatusAsync(int custId, int productId);
+
+        Task<IResultInfo> UpdateStatusAsync(PlayerBetLimitUpdateStatusMetaModel metaModel);
     }
 }

@@ -9,8 +9,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{D361649C-3
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.Athena.PlayerAdmin.WebHost", "src\Fanex.Athena.PlayerAdmin.WebHost\Fanex.Athena.PlayerAdmin.WebHost.csproj", "{B8999570-EA26-4CEC-81BD-74AADD993C73}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.Athena.PlayerAdmin.Infrastructure", "src\Fanex.Athena.PlayerAdmin.Infrastructure\Fanex.Athena.PlayerAdmin.Infrastructure.csproj", "{52BF39CC-9EC1-469D-8B6E-9DCB0037280A}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.Athena.PlayerAdmin.API", "src\Fanex.Athena.PlayerAdmin.API\Fanex.Athena.PlayerAdmin.API.csproj", "{FF3C7DDB-1EB9-4AA0-9A82-6691954FFD50}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.Athena.PlayerAdmin.MVC", "src\Fanex.Athena.PlayerAdmin.MVC\Fanex.Athena.PlayerAdmin.MVC.csproj", "{611F908A-3A55-4FB8-94C0-33C5CF7A9CAC}"
@@ -21,7 +19,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.Athena.PlayerAdmin.Co
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.Athena.PlayerAdmin.BetLimit", "src\Modules\Fanex.Athena.PlayerAdmin.BetLimit\Fanex.Athena.PlayerAdmin.BetLimit.csproj", "{F78C226D-0AE4-4429-8B34-BB4AA7AD05FA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.Athena.PlayerAdmin.BatchUpdate", "src\Modules\Fanex.Athena.PlayerAdmin.BatchUpdate\Fanex.Athena.PlayerAdmin.BatchUpdate.csproj", "{1733FADB-8149-4888-B4D5-42D80C74022F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.Athena.PlayerAdmin.BatchUpdate", "src\Modules\Fanex.Athena.PlayerAdmin.BatchUpdate\Fanex.Athena.PlayerAdmin.BatchUpdate.csproj", "{1733FADB-8149-4888-B4D5-42D80C74022F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.Athena.PlayerAdmin.Core", "src\Fanex.Athena.PlayerAdmin.Core\Fanex.Athena.PlayerAdmin.Core.csproj", "{8D76DD4F-011C-43DE-88BE-4CDDA0CAC77C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.Athena.PlayerAdmin.Core.UnitTests", "test\Fanex.Athena.PlayerAdmin.Core.UnitTests\Fanex.Athena.PlayerAdmin.Core.UnitTests.csproj", "{77D0E28C-9086-477E-9871-B018D4CDD862}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,10 +35,6 @@ Global
 		{B8999570-EA26-4CEC-81BD-74AADD993C73}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B8999570-EA26-4CEC-81BD-74AADD993C73}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B8999570-EA26-4CEC-81BD-74AADD993C73}.Release|Any CPU.Build.0 = Release|Any CPU
-		{52BF39CC-9EC1-469D-8B6E-9DCB0037280A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{52BF39CC-9EC1-469D-8B6E-9DCB0037280A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{52BF39CC-9EC1-469D-8B6E-9DCB0037280A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{52BF39CC-9EC1-469D-8B6E-9DCB0037280A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FF3C7DDB-1EB9-4AA0-9A82-6691954FFD50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FF3C7DDB-1EB9-4AA0-9A82-6691954FFD50}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FF3C7DDB-1EB9-4AA0-9A82-6691954FFD50}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -57,19 +55,28 @@ Global
 		{1733FADB-8149-4888-B4D5-42D80C74022F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1733FADB-8149-4888-B4D5-42D80C74022F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1733FADB-8149-4888-B4D5-42D80C74022F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D76DD4F-011C-43DE-88BE-4CDDA0CAC77C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D76DD4F-011C-43DE-88BE-4CDDA0CAC77C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D76DD4F-011C-43DE-88BE-4CDDA0CAC77C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D76DD4F-011C-43DE-88BE-4CDDA0CAC77C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77D0E28C-9086-477E-9871-B018D4CDD862}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77D0E28C-9086-477E-9871-B018D4CDD862}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77D0E28C-9086-477E-9871-B018D4CDD862}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77D0E28C-9086-477E-9871-B018D4CDD862}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{B8999570-EA26-4CEC-81BD-74AADD993C73} = {C1AD4681-23B2-4754-9557-BDAAD5AB42E7}
-		{52BF39CC-9EC1-469D-8B6E-9DCB0037280A} = {C1AD4681-23B2-4754-9557-BDAAD5AB42E7}
 		{FF3C7DDB-1EB9-4AA0-9A82-6691954FFD50} = {C1AD4681-23B2-4754-9557-BDAAD5AB42E7}
 		{611F908A-3A55-4FB8-94C0-33C5CF7A9CAC} = {C1AD4681-23B2-4754-9557-BDAAD5AB42E7}
 		{23A7457E-411B-4812-A100-38A2D46F3C7E} = {C1AD4681-23B2-4754-9557-BDAAD5AB42E7}
 		{431BFB53-97FB-48AF-9B5E-B62D43B35914} = {23A7457E-411B-4812-A100-38A2D46F3C7E}
 		{F78C226D-0AE4-4429-8B34-BB4AA7AD05FA} = {23A7457E-411B-4812-A100-38A2D46F3C7E}
 		{1733FADB-8149-4888-B4D5-42D80C74022F} = {23A7457E-411B-4812-A100-38A2D46F3C7E}
+		{8D76DD4F-011C-43DE-88BE-4CDDA0CAC77C} = {C1AD4681-23B2-4754-9557-BDAAD5AB42E7}
+		{77D0E28C-9086-477E-9871-B018D4CDD862} = {D361649C-3A9F-4A62-A4E5-AC9127054C0B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {765C8FB1-5F05-431C-884A-C8DF3DCA0C32}

@@ -13,12 +13,7 @@
     <title>@title</title>
     <meta name="description" content="Player Administration" />
     <base href="@rootUrl" />
-    <environment include="Development">
-        <link href="~/css/dev/vendor.css" asp-append-version="true" rel="stylesheet" type="text/css" />
-    </environment>
-    <environment exclude="Development">
-        <link href="~/css/pro/vendor.css" asp-append-version="true" rel="stylesheet" type="text/css" />
-    </environment>
+    <link href="~/css/vendor.css" asp-append-version="true" rel="stylesheet" type="text/css" />
     @RenderSection("pagecss", required: false)
 </head>
 <body>
@@ -32,29 +27,13 @@
         @RenderSection("globaljscode", required: false)
     </script>
 
-    <environment include="Development">
-        <script src="~/js/dev/lib/vendor.chunk.js" asp-append-version="true"></script>
-        <script src="~/js/dev/lib/langHelper.chunk.js" asp-append-version="true"></script>
-    </environment>
-    <environment exclude="Development">
-        <script src="~/js/pro/lib/vendor.chunk.js" asp-append-version="true"></script>
-        <script src="~/js/pro/lib/langHelper.chunk.js" asp-append-version="true"></script>
-    </environment>
+    <script src="~/js/lib/vendor.chunk.js" asp-append-version="true"></script>
+    <script src="~/js/lib/langHelper.chunk.js" asp-append-version="true"></script>
 
     @if (langCode != "en-US")
     {
-        <environment include="Development">
-            @{
-                var langDevLink = "~/js/dev/lib/lang-" + langCode + ".chunk.js";
-                <script src="@langDevLink" asp-append-version="true"></script>
-            }
-        </environment>
-        <environment exclude="Development">
-            @{
-                var langProLink = "~/js/pro/lib/lang-" + langCode + ".chunk.js";
-                <script src="@langProLink" asp-append-version="true"></script>
-            }
-        </environment>
+        var langLink = "~/js/lib/lang-" + langCode + ".chunk.js";
+        <script src="@langLink" asp-append-version="true"></script>
     }
 
     @await RenderSectionAsync("pagejs", required: false)

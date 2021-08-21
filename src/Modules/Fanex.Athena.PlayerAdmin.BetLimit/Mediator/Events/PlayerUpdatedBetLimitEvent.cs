@@ -1,5 +1,5 @@
-﻿using Fanex.Athena.PlayerAdmin.Infrastructure.Constants;
-using Fanex.Athena.PlayerAdmin.Infrastructure.Mediator;
+﻿using Fanex.Athena.PlayerAdmin.Core.Constants;
+using Fanex.Athena.PlayerAdmin.Core.Mediator;
 using MediatR;
 using Newtonsoft.Json;
 using System.Collections.Generic;

@@ -1,4 +1,4 @@
-﻿using Fanex.Athena.PlayerAdmin.Infrastructure.Models;
+﻿using Fanex.Athena.PlayerAdmin.Core.Models;
 using Fanex.Core.Utils;
 
 namespace Fanex.Athena.PlayerAdmin.API.MetaModel

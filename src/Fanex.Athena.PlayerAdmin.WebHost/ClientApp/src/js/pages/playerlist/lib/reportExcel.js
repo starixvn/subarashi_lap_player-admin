@@ -1,9 +1,9 @@
 ﻿import Excel from '@jsroot/lib/excel';
 import NumberFormat from '@jsroot/lib/numberFormat';
+import LangHelper from '@jsroot/lib/langHelper';
 import { headerCellStyle, bodyCellStyle } from '@jsroot/constants/excelStyle';
 import { fields, headerText } from './constants';
 import { getSpecialLevelText, getBaStatusText, getPlayerStatus, getCustomerClassText } from './helpers/utils';
-import $ from 'jquery';
 
 const HEADER_ROW_INDEX = 0;
 const DATA_ROW_INDEX = 1;

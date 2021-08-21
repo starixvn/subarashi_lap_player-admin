@@ -5,20 +5,10 @@
 @model PlayerStatementViewModel
 
 @section pagecss {
-    <environment include="Development">
-        <link href="~/css/dev/statement.css" rel="stylesheet" type="text/css" asp-append-version="true" />
-    </environment>
-    <environment exclude="Development">
-        <link href="~/css/pro/statement.css" rel="stylesheet" type="text/css" asp-append-version="true" />
-    </environment>
+    <link href="~/css/statement.css" rel="stylesheet" type="text/css" asp-append-version="true" />
 }
 @section pagejs {
-    <environment include="Development">
-        <script src="~/js/dev/statement.chunk.js" asp-append-version="true"></script>
-    </environment>
-    <environment exclude="Development">
-        <script src="~/js/pro/statement.chunk.js" asp-append-version="true"></script>
-    </environment>
+    <script src="~/js/statement.chunk.js" asp-append-version="true"></script>
 }
 @section globaljscode {
     window.initialState = {

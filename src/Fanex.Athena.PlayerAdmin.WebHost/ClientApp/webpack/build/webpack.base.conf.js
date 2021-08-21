@@ -44,7 +44,7 @@ function generateConfig(environment) {
         module: {
             rules: rules.commonRules
         },
-        plugins: pluginGenerator(environment),
+        plugins: pluginGenerator(),
         stats: {
             assets: false,
             colors: true,

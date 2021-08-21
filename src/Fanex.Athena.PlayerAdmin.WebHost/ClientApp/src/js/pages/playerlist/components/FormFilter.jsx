@@ -60,7 +60,8 @@ export class FormFilter extends PureComponent {
         }
 
         const { type, isSubsidiary, hasCommPermissionRead } = this.props;
-        this.props.getSiteSetting(type, isSubsidiary, hasCommPermissionRead);
+        const isEnableSingleWallet = window._pConfig.isEnableSingleWallet === 1;
+        this.props.getSiteSetting(type, isSubsidiary, hasCommPermissionRead, isEnableSingleWallet);
         this.props.getLRFFilters();
     }
 

@@ -1,10 +1,10 @@
 ﻿using Fanex.Athena.PlayerAdmin.BetLimit.DTO;
 using Fanex.Athena.PlayerAdmin.BetLimit.MetaModel;
 using Fanex.Athena.PlayerAdmin.BetLimit.Repositories.Interfaces;
-using Fanex.Athena.PlayerAdmin.Infrastructure.Constants;
-using Fanex.Athena.PlayerAdmin.Infrastructure.Extensions;
-using Fanex.Athena.PlayerAdmin.Infrastructure.Models;
-using Fanex.Athena.PlayerAdmin.Infrastructure.Repositories;
+using Fanex.Athena.PlayerAdmin.Core.Constants;
+using Fanex.Athena.PlayerAdmin.Core.Extensions;
+using Fanex.Athena.PlayerAdmin.Core.Models;
+using Fanex.Athena.PlayerAdmin.Core.Repositories;
 using Fanex.Data;
 using Microsoft.Extensions.Logging;
 using System;
@@ -35,6 +35,18 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Repositories
             [ProductType.TG] = new[] { "222" },
             [ProductType.I4D] = new[] { "223" },
             [ProductType.SLT] = new[] { "169" }
+        };
+
+        private const string UpdateStatusXmlFormat = "<ROOT><ProductStatus SportType=\"{0}\" BetType=\"{1}\" IsDisabled=\"{2}\" IsDisabledDownline=\"0\" /></ROOT>";
+
+        private static readonly IDictionary<int, int> ProductSporttypeMap = new Dictionary<int, int>
+        {
+            { ProductType.CG, 167 }
+        };
+
+        private static readonly IDictionary<int, int> ProductBettypeMap = new Dictionary<int, int>
+        {
+            { ProductType.CG, 7301 }
         };
 
         public DcsBetLimitRepository(IDbFactory dbFactory, ILogger<DcsBetLimitRepository> logger)
@@ -120,6 +132,32 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Repositories
             return false;
         }
 
+        public async Task<IResultInfo> UpdateStatusAsync(PlayerBetLimitUpdateStatusMetaModel metaModel)
+        {
+            const string UspName = "Acc_Dep_CustSetting_DisableStatUpd";
+
+            using (var db = _db.GetObjectDb(UspName))
+            {
+                db.SetParameterValue("custid", metaModel.CustId);
+                db.SetParameterValue("userid", metaModel.UserId);
+                db.SetParameterValue("IsDisabled", BuildProductStatusXml(metaModel.ProductId, metaModel.Status));
+                db.SetParameterValue("ip", metaModel.Ip);
+                db.SetParameterValue("ErrCode", null);
+                db.SetParameterValue("ErrMsg", null);
+
+                await db.ExecuteNonQueryAsync();
+
+                var errorCode = db.GetParameterValue("ErrCode");
+                var errorMessage = db.GetParameterValue("ErrMsg");
+
+                return new ResultInfo
+                {
+                    Code = Converter.ToInt(errorCode),
+                    Message = GetErrorMessage(Converter.ToString(errorMessage))
+                };
+            }
+        }
+
         private static void AddUpdateParameter(IObjectDb db, PlayerBetLimitUpdateMetaModel<IEnumerable<PlayerBetLimitMetaModel>> metaModel)
         {
             db.SetParameterValue("custid", metaModel.CustId);
@@ -166,5 +204,8 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Repositories
 
             return xmlErrorMessage;
         }
+
+        private static string BuildProductStatusXml(int productId, bool status)
+           => string.Format(UpdateStatusXmlFormat, ProductSporttypeMap[productId], ProductBettypeMap[productId], status ? 0 : 1);
     }
 }

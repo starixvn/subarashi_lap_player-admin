@@ -1,6 +1,6 @@
 ﻿using Fanex.Athena.PlayerAdmin.BetLimit.DTO;
 using Fanex.Athena.PlayerAdmin.BetLimit.MetaModel;
-using Fanex.Athena.PlayerAdmin.Infrastructure.Models;
+using Fanex.Athena.PlayerAdmin.Core.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 

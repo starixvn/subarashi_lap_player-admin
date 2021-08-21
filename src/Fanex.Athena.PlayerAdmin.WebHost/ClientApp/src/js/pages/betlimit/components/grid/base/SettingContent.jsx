@@ -37,7 +37,7 @@ const SettingContent = (Grid, DataHandling) => {
                 this.props.setAlertOption({ isShow: false });
             }
 
-            if(prevProps.requestParam !== this.props.requestParam){
+            if (prevProps.requestParam !== this.props.requestParam) {
                 this._getData(this.props.requestParam);
             }
         }
@@ -105,6 +105,14 @@ const SettingContent = (Grid, DataHandling) => {
             }
         }
 
+        onUpdateStatus = () => {
+            if (!this.state.showError) {
+                const newStatus = !this.state.setting.StatusEnable;
+
+                this._showUpdateStatusConfirmation(() => this._updateStatus(newStatus));
+            }
+        }
+
         onCheck = (checked) => {
             if (checked) {
                 const { setting, errorBalloon, showError } = this.state;
@@ -154,6 +162,14 @@ const SettingContent = (Grid, DataHandling) => {
             DataTransfer.updateData(param, this._showSubmitResult.bind(this));
         }
 
+        _updateStatus(Status) {
+            this.props.toggleLoader(true);
+
+            const param = { ...this.props.requestParam, Status };
+
+            DataTransfer.updateStatus(param, this._showSubmitResult.bind(this));
+        }
+
         _showConfirmation(onOK) {
             const buttons = [
                 {
@@ -169,6 +185,31 @@ const SettingContent = (Grid, DataHandling) => {
             const msg = (<p className="center-align">{Utility.getConfirmationMsg(this.props.requestParam.ProductId)}</p>);
 
             this.setState({ disabledButton: true }, () => this.props.setAlertOption({
+                isShow: true,
+                title: LangHelper.getSingleResource('Confirmation'),
+                children: msg,
+                buttons: buttons,
+                icon: '',
+                onClose: this.onCloseAlert,
+                height: 130
+            }));
+        }
+
+        _showUpdateStatusConfirmation(onOK) {
+            const buttons = [
+                {
+                    text: LangHelper.getSingleResource('OK'),
+                    onClick: onOK,
+                    className: 'btn btn-apply'
+                }, {
+                    text: LangHelper.getSingleResource('Cancel'),
+                    onClick: this.onCloseAlert,
+                    className: 'btn btn-cancel'
+                }];
+
+            const msg = (<p className="center-align">{Utility.getConfirmationUpdateStatusMsg(this.props.requestParam.ProductId)}</p>);
+
+            this.setState({ disabledButton: !this.state.setting.StatusEnable }, () => this.props.setAlertOption({
                 isShow: true,
                 title: LangHelper.getSingleResource('Confirmation'),
                 children: msg,
@@ -236,42 +277,49 @@ const SettingContent = (Grid, DataHandling) => {
         render() {
             const data = this.state.data;
 
-            if (!data || !data.length) {
-                return <NoDataTitle />;
-            }
-
             const { setting, disabledButton, showError, errorBalloon, isCopy } = this.state;
+
+            const noSetting = !data || !data.length;
+
+            if (!setting.IsStatusEnable) {
+                if (noSetting) {
+                    return <NoDataTitle />;
+                }
+            }
 
             return (
                 <div className="pa-betlimit">
                     {
-                        setting.EnableCopy && setting.Editable &&
+                        setting.EnableCopy && setting.Editable && !noSetting &&
                         <CheckBox id="IsCopy"
                             checked={isCopy}
                             onChange={this.onCheck}
                             ref={this.checkBoxRef}
                             label={LangHelper.getSingleResource("CopyBetSettingFromSoccer")} />
                     }
-                    <Grid
+                    {!noSetting ? <Grid
                         data={data}
                         setting={setting}
                         setInputRef={this.setInputRef}
                         onChange={this.onChange}
                         isCopy={isCopy}
-                        getHeaderName={this.getHeaderName} />
+                        getHeaderName={this.getHeaderName} /> : <NoDataTitle title={LangHelper.getSingleResource('CannotUpdateBetLimitForProduct').replace("{0}", this.props.productLabel)} />}
                     {
-                        setting.Editable &&
                         <div className="pa-betlimit-button">
-                            <button type='button' className='btn btn-cancel' disabled={disabledButton} onClick={this.onReset}>
-                                {LangHelper.getSingleResource('Reset')}
-                            </button>
-                            <button type='button' className='btn btn-apply' disabled={disabledButton} onClick={this.onSubmit} ref={this.submitButtonRef}>
-                                {LangHelper.getSingleResource('Submit')}
-                            </button>
+                            {setting.Editable && !noSetting && <>
+                                <button type='button' className='btn btn-cancel' disabled={disabledButton} onClick={this.onReset}>
+                                    {LangHelper.getSingleResource('Reset')}
+                                </button>
+                                <button type='button' className='btn btn-apply' disabled={disabledButton} onClick={this.onSubmit} ref={this.submitButtonRef}>
+                                    {LangHelper.getSingleResource('Submit')}
+                                </button> </>}
+                            {setting.IsStatusEnable && <button type='button' className='btn btn-apply' onClick={this.onUpdateStatus}>
+                                {setting.StatusEnable ? LangHelper.getSingleResource('Disable') + ' ' + this.props.productLabel : LangHelper.getSingleResource('Enable') + ' ' + this.props.productLabel}
+                            </button>}
                         </div>
-                    }         
+                    }
                     {
-                        setting.Editable &&
+                        setting.Editable && !noSetting &&
                         <Balloon
                             width={140}
                             isOpen={showError}
@@ -290,8 +338,8 @@ function mapDispatchToProps(dispatch) {
     return bindActionCreators({ toggleLoader, setAlertOption }, dispatch);
 }
 function mapStateToProps(state) {
-    const { requestParam } = state;
-    return Object.assign({}, { requestParam });
+    const { requestParam, productLabel } = state;
+    return Object.assign({}, { requestParam, productLabel });
 };
 
 const createSetting = compose(connect(mapStateToProps, mapDispatchToProps), SettingContent);

@@ -1,8 +1,8 @@
-﻿using Fanex.Athena.PlayerAdmin.Infrastructure.ConsoleClient;
-using Fanex.Athena.PlayerAdmin.Infrastructure.Constants;
-using Fanex.Athena.PlayerAdmin.Infrastructure.Attributes;
-using Fanex.Athena.PlayerAdmin.Infrastructure.Services;
-using Fanex.Athena.PlayerAdmin.Infrastructure.Settings;
+﻿using Fanex.Athena.PlayerAdmin.Core.ConsoleClient;
+using Fanex.Athena.PlayerAdmin.Core.Constants;
+using Fanex.Athena.PlayerAdmin.Core.Attributes;
+using Fanex.Athena.PlayerAdmin.Core.Services;
+using Fanex.Athena.PlayerAdmin.Core.Settings;
 using Fanex.Athena.PlayerAdmin.MVC.DTO;
 using Fanex.Athena.PlayerAdmin.MVC.MetaModel;
 using Fanex.Athena.PlayerAdmin.MVC.ViewModels;
@@ -29,14 +29,13 @@ namespace Fanex.Athena.PlayerAdmin.MVC.Controllers
 
         [HttpGet]
         [ReferrerValidation]
-        public ViewResult Running(int custId, int currencyId, string lapToken)
+        public ViewResult Running(int custId, int currencyId)
         {
             var currencyList = _contextService.CurrencyList;
             var viewModel = new PlayerRunningBetListViewModel
             {
                 CustId = custId,
-                Currency = currencyList.FirstOrDefault(x => x.Key == currencyId).Value,
-                LapToken = lapToken
+                Currency = currencyList.FirstOrDefault(x => x.Key == currencyId).Value
             };
 
             ViewBag.IsAllowTxIDColumn = _appSetting.LicenseeOfferTxIDColumn.Contains(_contextService.SiteName, StringComparer.InvariantCultureIgnoreCase);

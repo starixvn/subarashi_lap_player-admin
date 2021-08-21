@@ -6,7 +6,7 @@ export const DataGrid = (props) => {
     const { data, total, pagingOption, onPaging, getResource, totalText, getHeaderName, onSort } = props;
 
     let Columns = ['Index', 'RefNo', 'TransTime', 'Choice', 'Odds', 'OddsType', 'Stake', 'WinLoss', 'LicenseeWL', 'Status', 'Platform', 'Live'];
-    let ColumnWidths = [40, 110, 150, 400, 70, 70, 80, 80, 80, 60, 60, 60];
+    let ColumnWidths = [40, 110, 150, 400, 70, 70, 80, 80, 80, 90, 60, 60];
     let ColumnAlignments = [
         'center-align', 'center-align', 'center-align',
         'right-align', 'right-align', 'right-align', 'right-align', 'right-align', 'right-align',

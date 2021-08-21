@@ -7,12 +7,15 @@ export const BetLimitProduct = {
     KN: 8,
     AGC: 10,
     TG: 40,
-    I4D: 43
+    I4D: 43,
+    SLT: 63,
+    CG: 62
 }
 
 export const BetLimitSport = {
     I4D: 223,
-    TG: 222
+    TG: 222,
+    SLT: 469
 }
 
 export const BetLimitType = {

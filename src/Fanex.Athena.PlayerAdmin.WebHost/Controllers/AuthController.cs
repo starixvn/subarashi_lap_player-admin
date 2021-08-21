@@ -1,6 +1,6 @@
-﻿using Fanex.Athena.PlayerAdmin.Infrastructure.Constants;
-using Fanex.Athena.PlayerAdmin.Infrastructure.Attributes;
-using Fanex.Athena.PlayerAdmin.Infrastructure.Settings;
+﻿using Fanex.Athena.PlayerAdmin.Core.Constants;
+using Fanex.Athena.PlayerAdmin.Core.Attributes;
+using Fanex.Athena.PlayerAdmin.Core.Settings;
 using Fanex.Athena.PlayerAdmin.WebHost.Models;
 using IdentityModel.Client;
 using Microsoft.AspNetCore.Authentication;
@@ -20,8 +20,6 @@ namespace Fanex.Athena.PlayerAdmin.Auth.Controllers
 {
     public class AuthController : Controller
     {
-        private const string TokenKey = "token";
-
         private readonly IdentityServerSetting _setting;
         private readonly HttpClient _client;
 
@@ -55,18 +53,14 @@ namespace Fanex.Athena.PlayerAdmin.Auth.Controllers
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public async Task<ActionResult> Cookie([FromQuery] string token)
         {
-            var tokenResponse = await RequestToken(token, _setting.InternalApiScope);
+            var currentAccessToken = await HttpContext.GetTokenAsync(CookieAuthenticationDefaults.AuthenticationScheme, "access_token");
+            var tokenResponse = await RequestToken(token, _setting.InternalApiScope, currentAccessToken);
             if (tokenResponse.IsError)
             {
                 return Redirect("/Home/AccessDenied");
             }
 
-            var userInfo = await _client.GetUserInfoAsync(new UserInfoRequest
-            {
-                Address = $"{_setting.Host}/{_setting.UserInfoEndpoint}",
-                Token = tokenResponse.AccessToken
-            });
-
+            var userInfo = await GetUserInfo(tokenResponse.AccessToken);
             if (userInfo.IsError)
             {
                 return Redirect("/Home/AccessDenied");
@@ -94,24 +88,43 @@ namespace Fanex.Athena.PlayerAdmin.Auth.Controllers
             return Redirect("/");
         }
 
-        private async Task<TokenResponse> RequestToken(string token, string scope)
+        private async Task<TokenResponse> RequestToken(string token, string scope, string currentAccessToken = null)
         {
             if (string.IsNullOrWhiteSpace(token))
             {
                 return ProtocolResponse.FromException<TokenResponse>(new ArgumentException($"token is not present"));
             }
 
-            var tokenResponse = await _client.RequestTokenAsync(new TokenRequest
+            using var request = new TokenRequest
             {
                 Address = $"{_setting.Host}/{_setting.TokenEndpoint}",
                 ClientId = _setting.CredentialClient.ClientId,
                 ClientSecret = _setting.CredentialClient.ClientSecret,
                 GrantType = _setting.GrantType,
-                Parameters = new Parameters(new Dictionary<string, string> { { TokenKey, token }, { nameof(scope), scope } })
-            });
+                Parameters = new Parameters(new Dictionary<string, string>
+                {
+                    { nameof(token), token },
+                    { nameof(scope), scope },
+                    { "access_token", currentAccessToken }
+                })
+            };
 
-            return tokenResponse;
+            var tokenResponse = await _client.RequestTokenAsync(request);
+         
+            return tokenResponse.Exception != null ? throw tokenResponse.Exception : tokenResponse;
         }
+
+        private async Task<UserInfoResponse> GetUserInfo(string accesToken)
+        {
+            using var request = new UserInfoRequest
+            {
+                Address = $"{_setting.Host}/{_setting.UserInfoEndpoint}",
+                Token = accesToken
+            };
+
+            var userInfo = await _client.GetUserInfoAsync(request);
+            return userInfo;
+        } 
 
         [HttpGet]
         [Route("auth/RedirectToLAP/{lapUrl}/{lapVer?}")]

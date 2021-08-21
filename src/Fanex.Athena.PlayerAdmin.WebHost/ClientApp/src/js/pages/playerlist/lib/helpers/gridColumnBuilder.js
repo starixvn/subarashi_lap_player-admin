@@ -13,7 +13,7 @@ export const buildDefaultColumnList = (licType, hasCommPermissionRead) => {
     }).map(item => ({ ...item }))
 }
 
-export const buildColumnList = (licType, isAllowedBA, hasCommPermissionRead) => {
+export const buildColumnList = (licType, isAllowedBA, hasCommPermissionRead, isEnableSingleWallet) => {
     const isApiType = licType === licenseeType.api;
 
     return columnList.filter(item => {
@@ -21,6 +21,8 @@ export const buildColumnList = (licType, isAllowedBA, hasCommPermissionRead) => 
             return isAllowedBA;
         } else if (item.key === fields.CommissionGroup) {
             return hasCommPermissionRead;
+        } else if (item.key === fields.CurrentBalance) {
+            return !isEnableSingleWallet;
         } else {
             return isApiType ? !excludedKeyForApiType.includes(item.key) : !excludedKeyForAthenaType.includes(item.key);
         }

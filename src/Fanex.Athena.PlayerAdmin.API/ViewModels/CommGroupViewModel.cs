@@ -1,4 +1,4 @@
-﻿using Fanex.Athena.PlayerAdmin.Infrastructure.Resources;
+﻿using Fanex.Athena.PlayerAdmin.Core.Resources;
 using System;
 using System.Collections.Generic;
 using System.Linq;
