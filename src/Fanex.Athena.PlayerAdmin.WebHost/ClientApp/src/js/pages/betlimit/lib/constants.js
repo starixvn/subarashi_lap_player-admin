@@ -9,7 +9,25 @@ export const BetLimitProduct = {
     TG: 40,
     I4D: 43,
     SLT: 63,
-    CG: 62
+    CG: 62,
+    AB: 21,
+    VB: 22,
+    CO: 25,
+    BX: 31,
+    PP: 32,
+    SXG: 45,
+    GDG: 59,
+    HB: 61,
+    JK: 56,
+    SAG: 39,
+    PGS: 55,
+    SBC: 42,
+    WM: 51,
+    SG: 36,
+    VRG: 38,
+    CC: 34,
+    CS: 6,
+    CB: 15
 }
 
 export const BetLimitSport = {

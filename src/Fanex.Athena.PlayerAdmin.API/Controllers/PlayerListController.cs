@@ -30,25 +30,30 @@ namespace Fanex.Athena.PlayerAdmin.API.Controllers
         [AutoBindingMetaModel(bindAgent: true, bindSiteName: true)]
         public async Task<ActionResult<PlayerListResultViewModel>> Search(PlayerSearchingMetaModel searchParam)
         {
-            return await _playerListService.Search(searchParam);
+            var result = await _playerListService.Search(searchParam);
+            return result;
         }
 
         [HttpPost]
         [AutoBindingMetaModel(bindAgent: true, bindSiteName: true)]
         public async Task<ActionResult<PlayerListResultViewModel>> GetPlayerListById(PlayerListByIdMetaModel metaModel)
         {
-            return await _playerListService.GetPlayerListById(metaModel);
+            var result = await _playerListService.GetPlayerListById(metaModel);
+            return result;
         }
 
         [HttpPost]
         public async Task<ActionResult<LRFFiltersViewModel>> LRFFilters()
         {
-            var commGroups = await _playerListService.GetAllCommGroups(_contextService.LicenseeId);
+            var commGroups = _playerListService.GetAllCommGroups(_contextService.LicenseeId);
+            var customerClass = _playerListService.GetCustomerClassList();
+
+            await Task.WhenAll(commGroups, customerClass);
 
             return new LRFFiltersViewModel
             {
-                CustomerClass = await _playerListService.CustomerClass(_contextService.SiteName),
-                CommGroups = commGroups
+                CustomerClass = await customerClass,
+                CommGroups = await commGroups
             };
         }
     }

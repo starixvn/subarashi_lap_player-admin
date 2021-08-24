@@ -57,6 +57,12 @@
     <Setting Key="Lrf_CustomerUpdMember_MinMaxBetKN" SpName="Lrf_CustomerUpdMember_MinMaxBetKN" DbName="DBCUST.CustDB.bodbLicenseeNet" />
     <Setting Key="Lrf_CustomerSelEditNG" SpName="Lrf_CustomerSelEditNG" DbName="DBCUST.CustDB.bodbLicenseeNet" />
     <Setting Key="Lrf_CustomerUpdMember_MinMaxBet161" SpName="Lrf_CustomerUpdMember_MinMaxBet161" DbName="DBCUST.CustDB.bodbLicenseeNet" />
+    <Setting Key="Lrf_CustomerSelStatus" SpName="Lrf_CustomerSelStatus" DbName="DBEXT.bodb02.bodbLicenseeNet" />
+    <Setting Key="Lrf_CustomerUpdCasinoStatus" SpName="Lrf_CustomerUpdCasinoStatus" DbName="DBCUST.CustDB.bodbLicenseeNet" />
+  </Function>
+  <Function Name="CustomerSettingsThridParty">
+    <Setting Key="Lrf_3rdProductSelCustStatus" SpName="Lrf_3rdProductSelCustStatus" DbName="DBLIC.bodb_Licensee.bodbLicenseeNet" />
+    <Setting Key="Lrf_3rdProductUpdCustStatus" SpName="Lrf_3rdProductUpdCustStatus" DbName="DBCUST.CustDB.bodbLicenseeNet" />
   </Function>
   <Function Name="Commission">
     <Setting Key="Lrf_LicenseeGroupCommSel" SpName="Lrf_LicenseeGroupCommSel" DbName="DBCUST.bodb_Licensee.bodbLicenseeNet">

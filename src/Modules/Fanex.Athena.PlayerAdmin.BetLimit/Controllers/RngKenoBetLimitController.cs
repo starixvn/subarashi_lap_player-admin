@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 
 namespace Fanex.Athena.PlayerAdmin.BetLimit.Controllers
 {
+    [RequestValidation(validateCustId: true, validateProductId: ProductTypes.Keno)]
     public class RngKenoBetLimitController : PlayerBetLimitBaseControler
     {
         private readonly IRngKenoBetLimitService _service;
@@ -25,7 +26,6 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [CookieAuthorize(Roles.SuperAdmin, Roles.BetLimit)]
-        [RequestValidation(validateCustId: true, validateProductId: ProductType.Keno)]
         public async Task<ActionResult<PlayerBetLimitViewModel>> GetSetting([FromBody] PlayerBetLimitSelectMetaModel metaModel)
         {
             var isEditable = HasEditPermission();
@@ -43,7 +43,6 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [CookieAuthorize(Roles.SuperAdmin, Roles.BetLimit_Write)]
-        [RequestValidation(validateCustId: true, validateProductId: ProductType.Keno)]
         [AutoBindingMetaModel(bindClientIP: true, bindLanguage: true, bindSiteName: true, bindUserId: true)]
         public async Task<JsonResult> UpdateSetting([FromBody] PlayerBetLimitUpdateMetaModel<IEnumerable<PlayerBetLimitMetaModel>> metaModel)
         {

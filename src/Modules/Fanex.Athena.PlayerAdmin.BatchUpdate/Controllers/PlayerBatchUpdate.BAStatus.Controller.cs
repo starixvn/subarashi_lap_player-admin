@@ -29,7 +29,7 @@ namespace Fanex.Athena.PlayerAdmin.BatchUpdate.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [CookieAuthorize(Roles.SuperAdmin, Roles.UpdateBaStatus)]
-        [RequestValidation(validateProductId: ProductType.BA)]
+        [RequestValidation(validateProductId: ProductTypes.BA)]
         [AutoBindingMetaModel(bindLicenseeId: true, bindSiteName: true, bindClientIP: true, bindLanguage: true, bindUserId: true)]
         public async Task<JsonResult> UpdateBAStatus([FromServices] IContextService contextService, [FromServices]ILicenseeService licenseeService,
             IOptions<AppSetting> appSetting,

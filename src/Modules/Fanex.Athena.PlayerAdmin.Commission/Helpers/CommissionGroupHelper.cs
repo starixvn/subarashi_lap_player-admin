@@ -33,7 +33,13 @@ namespace Fanex.Athena.PlayerAdmin.Commission.Helpers
             [ProductCode.CC] = "ArcadiaGaming",
             [ProductCode.SBC] = "Sabaclub",
             [ProductCode.SAG] = "SAGaming",
-            [ProductCode.PGS] = "PGSoft"
+            [ProductCode.PGS] = "PGSoft",
+            [ProductCode.WM] = "WMCasino",
+            [ProductCode.BGG] = "BigGaming",
+            [ProductCode.JK] = "Joker",
+            [ProductCode.GDG] = "GDG",
+            [ProductCode.SLT] = "SportsLottery",
+            [ProductCode.HB] = "Habanero"
         };
 
         public static IDictionary<string, string> MapHardcodedNameFromDB(IDictionary<string, bool> permissions, bool isUpdate)

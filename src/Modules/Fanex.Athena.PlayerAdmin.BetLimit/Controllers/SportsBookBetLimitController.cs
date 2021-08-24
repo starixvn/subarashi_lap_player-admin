@@ -14,6 +14,7 @@ using System.Threading.Tasks;
 
 namespace Fanex.Athena.PlayerAdmin.BetLimit.Controllers
 {
+    [RequestValidation(validateCustId: true)]
     public class SportsBookBetLimitController : PlayerBetLimitBaseControler
     {
         private readonly ISportsBookBetLimitService _service;
@@ -30,7 +31,6 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [CookieAuthorize(Roles.SuperAdmin, Roles.BetLimit)]
-        [RequestValidation(validateCustId: true)]
         public async Task<JsonResult> GetSetting([FromBody] PlayerBetLimitSelectMetaModel metaModel)
         {
             var isEditable = HasEditPermission();
@@ -51,7 +51,6 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [CookieAuthorize(Roles.SuperAdmin, Roles.BetLimit_Write)]
-        [RequestValidation(validateCustId: true)]
         [AutoBindingMetaModel(bindClientIP: true, bindLanguage: true, bindSiteName: true, bindUserId: true)]
         public async Task<JsonResult> UpdateSetting([FromBody] PlayerBetLimitUpdateMetaModel<IEnumerable<PlayerBetLimitMetaModel>> metaModel)
         {

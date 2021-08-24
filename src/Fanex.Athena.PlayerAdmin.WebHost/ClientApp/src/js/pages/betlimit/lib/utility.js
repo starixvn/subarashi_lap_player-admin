@@ -13,11 +13,50 @@ const ConfirmationMsg = {
     [BetLimitProduct.TG]: { Msg: 'UpdateProductBetSettings', Product: 'ProductTG' },
     [BetLimitProduct.I4D]: { Msg: 'UpdateProductBetSettings', Product: 'ProductI4D' },
     [BetLimitProduct.SLT]: { Msg: 'UpdateProductBetSettings', Product: 'ProductSLT' },
-    [BetLimitProduct.CG]: { Msg: 'UpdateProductBetSettings', Product: 'ProductCG' }
+    [BetLimitProduct.CG]: { Msg: 'UpdateProductBetSettings', Product: 'ProductCG' },
+    [BetLimitProduct.AB]: { Msg: 'UpdateProductBetSettings', Product: 'ProductAB' },
+    [BetLimitProduct.VB]: { Msg: 'UpdateProductBetSettings', Product: 'ProductVB' },
+    [BetLimitProduct.CO]: { Msg: 'UpdateProductBetSettings', Product: 'ProductCO' },
+    [BetLimitProduct.BX]: { Msg: 'UpdateProductBetSettings', Product: 'ProductBX' },
+    [BetLimitProduct.PP]: { Msg: 'UpdateProductBetSettings', Product: 'ProductPP' },
+    [BetLimitProduct.SXG]: { Msg: 'UpdateProductBetSettings', Product: 'ProductSXG' },
+    [BetLimitProduct.GDG]: { Msg: 'UpdateProductBetSettings', Product: 'ProductGDG' },
+    [BetLimitProduct.HB]: { Msg: 'UpdateProductBetSettings', Product: 'ProductHB' },
+    [BetLimitProduct.JK]: { Msg: 'UpdateProductBetSettings', Product: 'ProductJK' },
+    [BetLimitProduct.SAG]: { Msg: 'UpdateProductBetSettings', Product: 'ProductSAG' },
+    [BetLimitProduct.PGS]: { Msg: 'UpdateProductBetSettings', Product: 'ProductPGS' },
+    [BetLimitProduct.SBC]: { Msg: 'UpdateProductBetSettings', Product: 'ProductSBC' },
+    [BetLimitProduct.WM]: { Msg: 'UpdateProductBetSettings', Product: 'ProductWM' },
+    [BetLimitProduct.SG]: { Msg: 'UpdateProductBetSettings', Product: 'ProductSG' },
+    [BetLimitProduct.VRG]: { Msg: 'UpdateProductBetSettings', Product: 'ProductVRG' },
+    [BetLimitProduct.CC]: { Msg: 'UpdateProductBetSettings', Product: 'ProductCC' },
+    [BetLimitProduct.CS]: { Msg: 'UpdateProductBetSettings', Product: 'ProductCS' },
+    [BetLimitProduct.CB]: { Msg: 'UpdateProductBetSettings', Product: 'ProductCB' }
 }
 
 const ConfirmationUpdateProductStatusMsg = {
-    [BetLimitProduct.CG]: { Msg: 'UpdateProductStatus', Product: 'ProductCG' }
+    [BetLimitProduct.CG]: { Msg: 'UpdateProductStatus', Product: 'ProductCG' },
+    [BetLimitProduct.AGC]: { Msg: 'UpdateProductStatus', Product: 'ProductAGC' },
+    [BetLimitProduct.I4D]: { Msg: 'UpdateProductStatus', Product: 'ProductI4D' },
+    [BetLimitProduct.SLT]: { Msg: 'UpdateProductStatus', Product: 'ProductSLT' },
+    [BetLimitProduct.AB]: { Msg: 'UpdateProductStatus', Product: 'ProductAB' },
+    [BetLimitProduct.VB]: { Msg: 'UpdateProductStatus', Product: 'ProductVB' },
+    [BetLimitProduct.CO]: { Msg: 'UpdateProductStatus', Product: 'ProductCO' },
+    [BetLimitProduct.BX]: { Msg: 'UpdateProductStatus', Product: 'ProductBX' },
+    [BetLimitProduct.PP]: { Msg: 'UpdateProductStatus', Product: 'ProductPP' },
+    [BetLimitProduct.SXG]: { Msg: 'UpdateProductStatus', Product: 'ProductSXG' },
+    [BetLimitProduct.GDG]: { Msg: 'UpdateProductStatus', Product: 'ProductGDG' },
+    [BetLimitProduct.HB]: { Msg: 'UpdateProductStatus', Product: 'ProductHB' },
+    [BetLimitProduct.JK]: { Msg: 'UpdateProductStatus', Product: 'ProductJK' },
+    [BetLimitProduct.SAG]: { Msg: 'UpdateProductStatus', Product: 'ProductSAG' },
+    [BetLimitProduct.PGS]: { Msg: 'UpdateProductStatus', Product: 'ProductPGS' },
+    [BetLimitProduct.SBC]: { Msg: 'UpdateProductStatus', Product: 'ProductSBC' },
+    [BetLimitProduct.WM]: { Msg: 'UpdateProductStatus', Product: 'ProductWM' },
+    [BetLimitProduct.SG]: { Msg: 'UpdateProductStatus', Product: 'ProductSG' },
+    [BetLimitProduct.VRG]: { Msg: 'UpdateProductStatus', Product: 'ProductVRG' },
+    [BetLimitProduct.CC]: { Msg: 'UpdateProductStatus', Product: 'ProductCC' },
+    [BetLimitProduct.CS]: { Msg: 'UpdateProductStatus', Product: 'ProductCS' },
+    [BetLimitProduct.CB]: { Msg: 'UpdateProductStatus', Product: 'ProductCB' }
 }
 
 export default class Utility {

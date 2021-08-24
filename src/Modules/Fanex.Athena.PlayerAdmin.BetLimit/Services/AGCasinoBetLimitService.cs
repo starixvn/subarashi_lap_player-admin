@@ -1,4 +1,5 @@
-﻿using Fanex.Athena.PlayerAdmin.BetLimit.DTO;
+﻿using Fanex.Athena.PlayerAdmin.BetLimit.DataDomains;
+using Fanex.Athena.PlayerAdmin.BetLimit.DTO;
 using Fanex.Athena.PlayerAdmin.BetLimit.DTO.BetLimits;
 using Fanex.Athena.PlayerAdmin.BetLimit.Helpers;
 using Fanex.Athena.PlayerAdmin.BetLimit.MetaModel;
@@ -88,15 +89,21 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Services
             return games;
         }
 
-        public async Task<AgCasinoBetSetting> GetBetSettingAsync(int custId)
-        {
-            return await _repository.GetBetSettingAsync(custId);
-        }
+        public Task<AgCasinoBetSetting> GetBetSettingAsync(int custId)
+            => _repository.GetBetSettingAsync(custId);
 
         public async Task<IResultInfo> UpdateSettingAsync(PlayerBetLimitUpdateMetaModel<AgCasinoBetLimitMetaModel> metaModel)
         {
             var result = await _repository.UpdateSettingAsync(metaModel);
             var @event = BetLimitLogHelper.CreateLogEvent(metaModel, result.Code == 0);
+            await _publisher.Publish(@event);
+            return result;
+        }
+
+        public async Task<IResultInfo> UpdateStatusAsync(PlayerBetLimitUpdateStatusMetaModel metaModel)
+        {
+            var result = await _repository.UpdateStatusAsync(metaModel);
+            var @event = ProductStatusLogHelper.CreateLogEvent(metaModel, result.Code == 0);
             await _publisher.Publish(@event);
             return result;
         }

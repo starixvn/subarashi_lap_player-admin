@@ -23,7 +23,7 @@ export class GridCaption extends React.Component {
             permission: {
                 [batchUpdatePermission.playerCommGroup]: this.props.hasCommPermissionEdit,
                 [batchUpdatePermission.accountStatus]: false,
-                [batchUpdatePermission.betLimit]: false,
+                [batchUpdatePermission.betSetting]: false,
                 [batchUpdatePermission.specialLevel]: this.props.hasSpecialLevelPermission,
                 [batchUpdatePermission.oddsGroup]: this.props.hasOddsGroupPermission,
                 [batchUpdatePermission.baStatus]: this.props.siteSetting.isAllowedBA && this.props.hasBaPermission

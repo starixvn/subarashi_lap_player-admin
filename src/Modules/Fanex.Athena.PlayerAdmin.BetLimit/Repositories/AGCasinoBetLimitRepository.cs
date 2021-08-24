@@ -42,15 +42,28 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Repositories
                 AddUpdateParameter(db, metaModel);
 
                 await db.ExecuteNonQueryAsync().ConfigureAwait(false);
+                return GetResult(db);
+            }
+        }
 
-                var errorCode = db.GetParameterValue("ErrCode");
-                var errorMessage = db.GetParameterValue("ErrMsg");
+        public async Task<IResultInfo> UpdateStatusAsync(PlayerBetLimitUpdateStatusMetaModel metaModel)
+        {
+            const string UspName = "Lrf_AGC_UpdCustStatus";
 
-                return new ResultInfo
-                {
-                    Code = Converter.ToInt(errorCode),
-                    Message = Converter.ToString(errorMessage)
-                };
+            using (var db = _db.GetObjectDb(UspName))
+            {
+                db.SetParameterValue("isenabled", metaModel.Status);
+                db.SetParameterValue("ip", metaModel.Ip);
+                db.SetParameterValue("language", metaModel.Language);
+                db.SetParameterValue("userid", metaModel.UserId);
+                db.SetParameterValue("custid", metaModel.CustId);
+
+                db.SetParameterValue("ErrCode", null);
+                db.SetParameterValue("ErrMsg", null);
+
+                await db.ExecuteNonQueryAsync();
+
+                return GetResult(db);
             }
         }
 
@@ -85,6 +98,18 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Repositories
                 IsEnabled = Convert.ToBoolean(db.GetParameterValue("IsEnabled")),
                 IsLineEnabled = Convert.ToBoolean(db.GetParameterValue("IsLineEnabled")),
                 CheckedGroups = Convert.ToString(db.GetParameterValue("CheckedGroups")).Split(',')
+            };
+        }
+
+        private static IResultInfo GetResult(IObjectDb db)
+        {
+            var errorCode = db.GetParameterValue("ErrCode");
+            var errorMessage = db.GetParameterValue("ErrMsg");
+
+            return new ResultInfo
+            {
+                Code = Converter.ToInt(errorCode),
+                Message = Converter.ToString(errorMessage)
             };
         }
     }

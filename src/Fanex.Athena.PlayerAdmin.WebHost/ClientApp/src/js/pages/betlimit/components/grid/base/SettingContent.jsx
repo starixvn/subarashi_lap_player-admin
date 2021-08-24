@@ -107,9 +107,10 @@ const SettingContent = (Grid, DataHandling) => {
 
         onUpdateStatus = () => {
             if (!this.state.showError) {
+                const oldStatus = this.state.setting.StatusEnable;
                 const newStatus = !this.state.setting.StatusEnable;
 
-                this._showUpdateStatusConfirmation(() => this._updateStatus(newStatus));
+                this._showUpdateStatusConfirmation(() => this._updateStatus(oldStatus, newStatus));
             }
         }
 
@@ -162,10 +163,11 @@ const SettingContent = (Grid, DataHandling) => {
             DataTransfer.updateData(param, this._showSubmitResult.bind(this));
         }
 
-        _updateStatus(Status) {
+        _updateStatus(OldStatus, Status) {
             this.props.toggleLoader(true);
+            var productName = this.props.productLabel;
 
-            const param = { ...this.props.requestParam, Status };
+            const param = { ...this.props.requestParam, Status, OldStatus, productName };
 
             DataTransfer.updateStatus(param, this._showSubmitResult.bind(this));
         }
@@ -281,10 +283,8 @@ const SettingContent = (Grid, DataHandling) => {
 
             const noSetting = !data || !data.length;
 
-            if (!setting.IsStatusEnable) {
-                if (noSetting) {
-                    return <NoDataTitle />;
-                }
+            if (!setting.IsStatusEnable && noSetting) {
+                return <NoDataTitle />;
             }
 
             return (
@@ -314,7 +314,7 @@ const SettingContent = (Grid, DataHandling) => {
                                     {LangHelper.getSingleResource('Submit')}
                                 </button> </>}
                             {setting.IsStatusEnable && <button type='button' className='btn btn-apply' onClick={this.onUpdateStatus}>
-                                {setting.StatusEnable ? LangHelper.getSingleResource('Disable') + ' ' + this.props.productLabel : LangHelper.getSingleResource('Enable') + ' ' + this.props.productLabel}
+                                {setting.StatusEnable ? LangHelper.getSingleResource('DisableProduct').replace("{0}", this.props.productLabel) : LangHelper.getSingleResource('EnableProduct').replace("{0}", this.props.productLabel)}
                             </button>}
                         </div>
                     }

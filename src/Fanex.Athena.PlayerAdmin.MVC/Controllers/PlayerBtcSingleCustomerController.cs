@@ -32,16 +32,10 @@ namespace Fanex.Athena.PlayerAdmin.MVC.Controllers
         private readonly ILicenseeService _licenseeService;
         private readonly IContextService _contextService;
 
-        private readonly AppSetting _appSettings;
-
-        public PlayerBtcSingleCustomerController(
-            ILicenseeService licenseeService,
-            IContextService contextService,
-            IOptions<AppSetting> appSettings)
+        public PlayerBtcSingleCustomerController(ILicenseeService licenseeService, IContextService contextService)
         {
             _licenseeService = licenseeService;
             _contextService = contextService;
-            _appSettings = appSettings.Value;
         }
 
         [HttpGet]
@@ -56,8 +50,7 @@ namespace Fanex.Athena.PlayerAdmin.MVC.Controllers
                 ProductCodeListString = await GetProductCode()
             };
 
-            ViewBag.IsAllowTxIDColumn = _appSettings.LicenseeOfferTxIDColumn.Contains(
-               _contextService.SiteName, StringComparer.InvariantCultureIgnoreCase);
+            ViewBag.IsAllowTxIDColumn = _contextService.IsEnableSingleWallet;
 
             return View(viewModel);
         }
@@ -70,8 +63,7 @@ namespace Fanex.Athena.PlayerAdmin.MVC.Controllers
         [FromBody] PlayerBtcSingleCustomerMetaModel metaModel)
         {
             metaModel.HasPlayerCom = _contextService.IsAllowedCustomerComm;
-            metaModel.IsAllowTxIDColumn = _appSettings.LicenseeOfferTxIDColumn.Contains(
-               _contextService.SiteName, StringComparer.InvariantCultureIgnoreCase);
+            metaModel.IsAllowTxIDColumn = _contextService.IsEnableSingleWallet;
             metaModel.IsShowIp = _contextService.IsShowIP;
             metaModel.IsShowIpVN = _contextService.IsShowIpVN;
 

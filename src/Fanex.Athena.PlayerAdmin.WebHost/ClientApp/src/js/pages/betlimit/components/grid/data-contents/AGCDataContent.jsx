@@ -52,6 +52,15 @@ export class AGCDataContent extends PureComponent {
         }
     }
 
+    onUpdateStatus = () => {
+        if (!this.state.showError) {
+            const oldStatus = this.state.setting.StatusEnable;
+            const newStatus = !this.state.setting.StatusEnable;
+
+            this._showUpdateStatusConfirmation(() => this._updateStatus(oldStatus, newStatus));
+        }
+    }
+
     onCloseAlert = () => {
         this.setState({ disabledButton: false }, () => this.props.setAlertOption({ isShow: false }));
     }
@@ -97,6 +106,40 @@ export class AGCDataContent extends PureComponent {
         const param = Object.assign({}, this.props.requestParam, { Setting: { group, oldGroup } });
 
         DataTransfer.updateData(param, this._showSubmitResult.bind(this));
+    }
+
+    _updateStatus(OldStatus, Status) {
+        this.props.toggleLoader(true);
+        var productName = this.props.productLabel;
+
+        const param = { ...this.props.requestParam, Status, OldStatus, productName };
+
+        DataTransfer.updateStatus(param, this._showSubmitResult.bind(this));
+    }
+
+    _showUpdateStatusConfirmation(onOK) {
+        const buttons = [
+            {
+                text: LangHelper.getSingleResource('OK'),
+                onClick: onOK,
+                className: 'btn btn-apply'
+            }, {
+                text: LangHelper.getSingleResource('Cancel'),
+                onClick: this.onCloseAlert,
+                className: 'btn btn-cancel'
+            }];
+
+        const msg = (<p className="center-align">{Utility.getConfirmationUpdateStatusMsg(this.props.requestParam.ProductId)}</p>);
+
+        this.setState({ disabledButton: !this.state.setting.StatusEnable }, () => this.props.setAlertOption({
+            isShow: true,
+            title: LangHelper.getSingleResource('Confirmation'),
+            children: msg,
+            buttons: buttons,
+            icon: '',
+            onClose: this.onCloseAlert,
+            height: 130
+        }));
     }
 
     _showConfirmation(onOK) {
@@ -168,30 +211,36 @@ export class AGCDataContent extends PureComponent {
             <div className="pa-betlimit">
                 <div className="pa-betlimit-group row">
                     <div className="col-12 col-md-4 col-sm-12 col-lg-3 col-xl-2">
-                    {
-                        setting.BetSetting.IsEnabled && hasData
-                            ? <div className="form-group">
-                                <label className="label-text">{LangHelper.getSingleResource('BetSettingGroups')}</label>
-                                <Select instanceId="ddlGroup" value={selectedGroup} options={groups} onChange={this.onGroupChange} />
-                            </div>
-                            : <div>{`${LangHelper.getSingleResource('BetSettingGroups')} :`} <span className="disabled-text">{setting.BetSetting.AgGroup}</span></div>
+                        {
+                            setting.BetSetting.IsEnabled && hasData
+                                ? <div className="form-group">
+                                    <label className="label-text">{LangHelper.getSingleResource('BetSettingGroups')}</label>
+                                    <Select instanceId="ddlGroup" value={selectedGroup} options={groups} onChange={this.onGroupChange} />
+                                </div>
+                                : <div>{`${LangHelper.getSingleResource('BetSettingGroups')} :`} <span className="disabled-text">{setting.BetSetting.AgGroup}</span></div>
                         }
                     </div>
                 </div>
                 {
                     hasData
                         ? <AGCSettingGrid data={data} isEnabled={setting.BetSetting.IsEnabled} group={selectedGroup} />
-                        : <NoDataTitle title={LangHelper.getSingleResource('ProblemDisplayBetSetting')} />
+                        : (setting.IsStatusEnable ? <NoDataTitle title={LangHelper.getSingleResource('CannotUpdateBetLimitForProduct').replace("{0}", LangHelper.getSingleResource('AGCasino'))} />
+                            : <NoDataTitle title={LangHelper.getSingleResource('ProblemDisplayBetSetting')} />)
                 }
                 {
-                    (setting.Editable && hasData) &&
                     <div className="pa-betlimit-button">
-                        <button type='button' className='btn btn-cancel' disabled={disabledButton} onClick={this.onReset}>
-                            {LangHelper.getSingleResource('Reset')}
-                        </button>
-                        <button type='button' className='btn btn-apply' disabled={disabledButton} onClick={this.onSubmit}>
-                            {LangHelper.getSingleResource('Submit')}
-                        </button>
+                        {hasData && setting.Editable && <>
+                            <button type='button' className='btn btn-cancel' disabled={disabledButton} onClick={this.onReset}>
+                                {LangHelper.getSingleResource('Reset')}
+                            </button>
+                            <button type='button' className='btn btn-apply' disabled={disabledButton} onClick={this.onSubmit}>
+                                {LangHelper.getSingleResource('Submit')}
+                            </button> </>
+                        }
+
+                        {setting.IsStatusEnable && <button type='button' className='btn btn-apply' onClick={this.onUpdateStatus}>
+                            {setting.StatusEnable ? LangHelper.getSingleResource('DisableAgCasino') : LangHelper.getSingleResource('EnableAgCasino')}
+                        </button>}
                     </div>
                 }
             </div>
@@ -200,8 +249,8 @@ export class AGCDataContent extends PureComponent {
 }
 
 function mapDispatchToProps(dispatch) {
-    const { toggleLoader, setAlertOption  } = ActionCreators;
-    return bindActionCreators({ toggleLoader, setAlertOption  }, dispatch);
+    const { toggleLoader, setAlertOption } = ActionCreators;
+    return bindActionCreators({ toggleLoader, setAlertOption }, dispatch);
 }
 function mapStateToProps(state) {
     const { requestParam } = state;

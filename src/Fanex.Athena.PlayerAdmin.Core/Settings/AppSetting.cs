@@ -6,10 +6,10 @@ namespace Fanex.Athena.PlayerAdmin.Core.Settings
     {
         public string Environment { get; set; }
         public IEnumerable<string> FakeLicensees { get; set; }
-        public IEnumerable<string> LicenseeOfferTxIDColumn { get; set; }
         public bool IsShowMixedSport { get; set; }
         public IEnumerable<string> AllowedCrossDomains { get; set; }
         public IEnumerable<string> SpecialBAAdmins { get; set; }
         public string BetTicketEventBuilderUrl { get; set; }
+        public string CustomerClassUrl { get; set; }
     }
 }

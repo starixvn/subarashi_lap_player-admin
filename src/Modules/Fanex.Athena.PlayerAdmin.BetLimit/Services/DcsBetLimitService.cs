@@ -15,7 +15,9 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Services
 {
     public class DcsBetLimitService : IDcsBetLimitService
     {
-        private static readonly int[] ProductsHasStatus = { ProductType.Lottery, ProductType.CG };
+        private static readonly int[] ProductsHasStatus = { ProductTypes.Lottery, ProductTypes.I4D, ProductTypes.SLT, ProductTypes.AllBet, ProductTypes.Voidbridge, ProductTypes.CashOut,
+            ProductTypes.Exchange, ProductTypes.PP, ProductTypes.SXG, ProductTypes.GDG, ProductTypes.HB, ProductTypes.JK, ProductTypes.SAG, ProductTypes.PGS, ProductTypes.SBC, ProductTypes.WM,
+            ProductTypes.SG, ProductTypes.VRG, ProductTypes.CC, ProductTypes.CG };
 
         private readonly IDcsBetLimitRepository _repository;
         private readonly IPublisher _publisher;
@@ -49,7 +51,7 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Services
                 metaModel,
                 x => x.Id,
                 result.Code == 0,
-                metaModel.ProductId == ProductType.Lottery
+                metaModel.ProductId == ProductTypes.Lottery
                     ? new[] { LogActionDetailId.UpdatingMinBet, LogActionDetailId.UpdatingMaxBet, LogActionDetailId.UpdatingMaxBetPerDraw }
                     : new[] { LogActionDetailId.UpdatingMinBet, LogActionDetailId.UpdatingMaxBet, LogActionDetailId.UpdatingMaxPerMatch });
 
@@ -61,7 +63,14 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Services
             return result;
         }
 
-        public Task<IResultInfo> UpdateStatusAsync(PlayerBetLimitUpdateStatusMetaModel metaModel)
-            => _repository.UpdateStatusAsync(metaModel);
+        public async Task<IResultInfo> UpdateStatusAsync(PlayerBetLimitUpdateStatusMetaModel metaModel)
+        {
+            var result = await _repository.UpdateStatusAsync(metaModel);
+
+            var @event = ProductStatusLogHelper.CreateLogEvent(metaModel, result.Code == 0);
+            await _publisher.Publish(@event);
+
+            return result;
+        }
     }
 }

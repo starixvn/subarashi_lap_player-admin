@@ -35,7 +35,7 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Services
 
         public async Task<IEnumerable<PlayerBetLimit>> GetSettingAsync(int custId, bool isShowMixedSport)
         {
-            var eSportSetting = await _dcsBetSetting.GetSettingAsync(custId, ProductType.Sportsbooks2);
+            var eSportSetting = await _dcsBetSetting.GetSettingAsync(custId, ProductTypes.Sportsbooks2);
 
             if (!eSportSetting.Any())
             {
@@ -81,7 +81,7 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Services
                     SiteName = metaModel.SiteName,
                     Ip = metaModel.Ip,
                     Setting = esportsSetting,
-                    ProductId = ProductType.Sportsbooks2,
+                    ProductId = ProductTypes.Sportsbooks2,
                     LicenseeCustId = metaModel.LicenseeCustId
                 };
                 result = await _dcsBetSetting.UpdateSettingAsync(dcsMetaModel);

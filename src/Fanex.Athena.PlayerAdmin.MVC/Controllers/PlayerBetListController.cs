@@ -1,6 +1,6 @@
-﻿using Fanex.Athena.PlayerAdmin.Core.ConsoleClient;
+﻿using Fanex.Athena.PlayerAdmin.Core.Attributes;
+using Fanex.Athena.PlayerAdmin.Core.ConsoleClient;
 using Fanex.Athena.PlayerAdmin.Core.Constants;
-using Fanex.Athena.PlayerAdmin.Core.Attributes;
 using Fanex.Athena.PlayerAdmin.Core.Services;
 using Fanex.Athena.PlayerAdmin.Core.Settings;
 using Fanex.Athena.PlayerAdmin.MVC.DTO;
@@ -10,7 +10,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using System;
 using System.Linq;
-using System.Net;
 using System.Threading.Tasks;
 
 namespace Fanex.Athena.PlayerAdmin.MVC.Controllers
@@ -19,11 +18,9 @@ namespace Fanex.Athena.PlayerAdmin.MVC.Controllers
     public class PlayerBetListController : Controller
     {
         private readonly IContextService _contextService;
-        private readonly AppSetting _appSetting;
 
-        public PlayerBetListController(IContextService contextService, IOptions<AppSetting> appSetting)
+        public PlayerBetListController(IContextService contextService)
         {
-            _appSetting = appSetting.Value;
             _contextService = contextService;
         }
 
@@ -38,7 +35,7 @@ namespace Fanex.Athena.PlayerAdmin.MVC.Controllers
                 Currency = currencyList.FirstOrDefault(x => x.Key == currencyId).Value
             };
 
-            ViewBag.IsAllowTxIDColumn = _appSetting.LicenseeOfferTxIDColumn.Contains(_contextService.SiteName, StringComparer.InvariantCultureIgnoreCase);
+            ViewBag.IsAllowTxIDColumn = _contextService.IsEnableSingleWallet;
 
             return View(viewModel);
         }
@@ -66,8 +63,7 @@ namespace Fanex.Athena.PlayerAdmin.MVC.Controllers
 
         private async Task<FileResult> ExportRunningBetListDataAsync(IBetListApiClient betListApiClient, PlayerRunningBetListMetaModel metaModel)
         {
-            metaModel.IsAllowTxIDColumn = _appSetting.LicenseeOfferTxIDColumn.Contains(
-                _contextService.SiteName, StringComparer.InvariantCultureIgnoreCase);
+            metaModel.IsAllowTxIDColumn = _contextService.IsEnableSingleWallet;
 
             var httpResponse = await betListApiClient.PostAsync("/PlayerAdminBetList/Export", metaModel, _contextService.Language);
 

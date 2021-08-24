@@ -1910,6 +1910,9 @@
     <value>乐卡迪亚</value>
     <comment>115449</comment>
   </data>
+  <data name="ProductCG" xml:space="preserve">
+    <value>CG电子</value>
+  </data>
   <data name="ProductCO" xml:space="preserve">
     <value>即时兑现</value>
     <comment>#71727</comment>

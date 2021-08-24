@@ -6,6 +6,8 @@ import GameDataContent from './grid/data-contents/GameDataContent';
 import NGDataContent from './grid/data-contents/NGDataContent';
 import ACGDataContent from './grid/data-contents/AGCDataContent';
 import I4DDataContent from './grid/data-contents/I4DDataContent';
+import RNGCDataContent from './grid/data-contents/RNGCDataContent';
+import ThirdPartyDataContent from './grid/data-contents/ThirdPartyDataContent';
 
 const Setting = {
     [BetLimitProduct.SB]: SportDataContent,
@@ -18,7 +20,25 @@ const Setting = {
     [BetLimitProduct.TG]: GameDataContent,
     [BetLimitProduct.I4D]: I4DDataContent,
     [BetLimitProduct.SLT]: GameDataContent,
-    [BetLimitProduct.CG]: GameDataContent
+    [BetLimitProduct.CG]: GameDataContent,
+    [BetLimitProduct.AB]: GameDataContent,
+    [BetLimitProduct.VB]: GameDataContent,
+    [BetLimitProduct.CO]: ThirdPartyDataContent,
+    [BetLimitProduct.BX]: GameDataContent,
+    [BetLimitProduct.PP]: GameDataContent,
+    [BetLimitProduct.SXG]: GameDataContent,
+    [BetLimitProduct.GDG]: GameDataContent,
+    [BetLimitProduct.HB]: GameDataContent,
+    [BetLimitProduct.JK]: GameDataContent,
+    [BetLimitProduct.SAG]: GameDataContent,
+    [BetLimitProduct.PGS]: GameDataContent,
+    [BetLimitProduct.SBC]: GameDataContent,
+    [BetLimitProduct.WM]: GameDataContent,
+    [BetLimitProduct.SG]: GameDataContent,
+    [BetLimitProduct.VRG]: GameDataContent,
+    [BetLimitProduct.CC]: GameDataContent,
+    [BetLimitProduct.CS]: RNGCDataContent,
+    [BetLimitProduct.CB]: ThirdPartyDataContent
 };
 
 const DataContent = (props) => {

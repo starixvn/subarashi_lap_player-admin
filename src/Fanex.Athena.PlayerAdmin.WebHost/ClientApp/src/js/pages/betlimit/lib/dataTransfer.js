@@ -14,7 +14,25 @@ const Url = {
     [BetLimitProduct.TG]: 'DcsBetLimit',
     [BetLimitProduct.I4D]: 'DcsBetLimit',
     [BetLimitProduct.SLT]: 'DcsBetLimit',
-    [BetLimitProduct.CG]: 'DcsBetLimit'
+    [BetLimitProduct.CG]: 'DcsBetLimit',
+    [BetLimitProduct.AB]: 'DcsBetLimit',
+    [BetLimitProduct.VB]: 'DcsBetLimit',
+    [BetLimitProduct.CO]: 'ThirdPartyBetLimit',
+    [BetLimitProduct.BX]: 'DcsBetLimit',
+    [BetLimitProduct.PP]: 'DcsBetLimit',
+    [BetLimitProduct.SXG]: 'DcsBetLimit',
+    [BetLimitProduct.GDG]: 'DcsBetLimit',
+    [BetLimitProduct.HB]: 'DcsBetLimit',
+    [BetLimitProduct.JK]: 'DcsBetLimit',
+    [BetLimitProduct.SAG]: 'DcsBetLimit',
+    [BetLimitProduct.PGS]: 'DcsBetLimit',
+    [BetLimitProduct.SBC]: 'DcsBetLimit',
+    [BetLimitProduct.WM]: 'DcsBetLimit',
+    [BetLimitProduct.SG]: 'DcsBetLimit',
+    [BetLimitProduct.VRG]: 'DcsBetLimit',
+    [BetLimitProduct.CC]: 'DcsBetLimit',
+    [BetLimitProduct.CS]: 'RngCasinoBetLimit',
+    [BetLimitProduct.CB]: 'ThirdPartyBetLimit'
 };
 
 export default class DataTransfer {

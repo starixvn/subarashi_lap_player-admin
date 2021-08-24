@@ -15,13 +15,15 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Controllers
     [RequestValidation(
     validateCustId: true,
     validateProductId: -1,
-    limitedProductIds: new[] { ProductType.VirtualSports, ProductType.VirtualSports2, ProductType.Lottery,
-                ProductType.TG, ProductType.I4D, ProductType.SLT, ProductType.CG })]
+    limitedProductIds: new[] { ProductTypes.VirtualSports, ProductTypes.VirtualSports2, ProductTypes.Lottery, ProductTypes.TG, ProductTypes.I4D, ProductTypes.SLT, ProductTypes.I4D, ProductTypes.SLT,
+            ProductTypes.AllBet, ProductTypes.Voidbridge, ProductTypes.CashOut, ProductTypes.Exchange, ProductTypes.PP, ProductTypes.SXG, ProductTypes.GDG, ProductTypes.HB, ProductTypes.JK,
+            ProductTypes.SAG, ProductTypes.PGS, ProductTypes.SBC, ProductTypes.WM, ProductTypes.SG, ProductTypes.VRG, ProductTypes.CC, ProductTypes.CG })]
     public class DcsBetLimitController : PlayerBetLimitBaseControler
     {
         private static readonly IEnumerable<int> ProductsHasStatus = new []
         {
-            ProductType.CG
+            ProductTypes.I4D, ProductTypes.SLT, ProductTypes.AllBet, ProductTypes.Voidbridge, ProductTypes.CashOut, ProductTypes.Exchange, ProductTypes.PP, ProductTypes.SXG, ProductTypes.GDG,
+            ProductTypes.HB, ProductTypes.JK, ProductTypes.SAG, ProductTypes.PGS, ProductTypes.SBC, ProductTypes.WM, ProductTypes.SG, ProductTypes.VRG, ProductTypes.CC, ProductTypes.CG 
         };
 
         private readonly IDcsBetLimitService _service;
@@ -47,7 +49,7 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Controllers
             {
                 Data = AddSettingTypeName(await data),
                 Editable = isEditable && await status,
-                IsStatusEnable = ProductsHasStatus.Contains(metaModel.ProductId),
+                IsStatusEnable = isEditable && ProductsHasStatus.Contains(metaModel.ProductId),
                 StatusEnable = await status
             };
 
@@ -61,9 +63,7 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Controllers
         public async Task<JsonResult> UpdateSetting([FromBody] PlayerBetLimitUpdateMetaModel<IEnumerable<PlayerBetLimitMetaModel>> metaModel)
         {
             var result = await _service.UpdateSettingAsync(metaModel);
-
             result.Message = result.Code == 0 ? ViewResources.UpdateSuccess : result.Message;
-
             return Json(result);
         }
 
@@ -74,9 +74,7 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Controllers
         public async Task<JsonResult> UpdateStatus([FromBody] PlayerBetLimitUpdateStatusMetaModel metaModel)
         {
             var result = await _service.UpdateStatusAsync(metaModel);
-
             result.Message = result.Code == 0 ? ViewResources.UpdateSuccess : result.Message;
-
             return Json(result);
         }
     }

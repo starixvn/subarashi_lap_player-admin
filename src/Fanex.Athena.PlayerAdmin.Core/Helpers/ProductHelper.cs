@@ -49,7 +49,15 @@ namespace Fanex.Athena.PlayerAdmin.Core.Helpers
                 { ProductCode.PGS, nameof(ViewResources.ProductPGS) },
                 { ProductCode.JK, nameof(ViewResources.ProductJK) },
                 { ProductCode.GDG, nameof(ViewResources.ProductGDG) },
-                { ProductCode.SLT, nameof(ViewResources.ProductSLT) }
+                { ProductCode.SLT, nameof(ViewResources.ProductSLT) },
+                { ProductCode.HB, nameof(ViewResources.ProductHB) },
+                { ProductCode.WM, nameof(ViewResources.ProductWM) },
+                { ProductCode.BGG, nameof(ViewResources.ProductBGG) },
+                { ProductCode.VGA, nameof(ViewResources.ProductVGA) },
+                { ProductCode.CG, nameof(ViewResources.ProductCG) },
+                { ProductCode.CO, nameof(ViewResources.ProductCO) },
+                { ProductCode.CB, nameof(ViewResources.ProductCB) },
+                { ProductCode.BX, nameof(ViewResources.ProductBX) }
             };
 
         public static string GetProductName(string productCode, string defaultValue = null)

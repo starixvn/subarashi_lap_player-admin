@@ -2142,6 +2142,9 @@
     <value>Arcadia Gaming</value>
     <comment>115449</comment>
   </data>
+  <data name="ProductCG" xml:space="preserve">
+    <value>CG</value>
+  </data>
   <data name="ProductCO" xml:space="preserve">
     <value>Cash Out</value>
   </data>

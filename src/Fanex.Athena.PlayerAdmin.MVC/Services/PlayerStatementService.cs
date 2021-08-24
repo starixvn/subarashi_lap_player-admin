@@ -57,7 +57,7 @@ namespace Fanex.Athena.PlayerAdmin.MVC.Services
                 using (var response = await _client.SendAsync(request))
                 {
                     response.EnsureSuccessStatusCode();
-                    var content = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    var content = await response.Content.ReadAsStringAsync();
                     var result = response.StatusCode == HttpStatusCode.OK ? JsonConvert.DeserializeObject<StatementToken>(content) : default;
                     response.Content = null;
                     return result?.AccessToken;

@@ -64,24 +64,90 @@
 
         public const string GDG = "GDG";
 
+        public const string BGG = "BGG";
+
         public const string SLT = "SLT";
 
+        public const string HB = "HB";
+
+        public const string WM = "WM";
+
+        public const string VGA = "VGA";
+
         public const string CG = "CG";
+
+        public const string BX = "BX";
     }
 
-    public static class ProductType
+    public static class ProductTypes
     {
+        public const int Sportsbook = 0;
+
         public const int Sportsbooks2 = 16;
         public const int NumberGame = 2;
+
         public const int BA = 3;
+
         public const int VirtualSports = 5;
+
+        public const int RngCasino = 6;
+
         public const int Keno = 8;
-        public const int VirtualSports2 = 27;
+
         public const int AgCasino = 10;
+
+        public const int GoldDeluxe = 11;
+
+        public const int Macau = 12;
+
+        public const int BetTrade = 13;
+
+        public const int ColossusBets = 15;
+
+        public const int AllBet = 21;
+
+        public const int Voidbridge = 22;
+
+        public const int FishingWorld = 24;
+
+        public const int CashOut = 25;
+
+        public const int VirtualSports2 = 27;
+
         public const int Lottery = 28;
+
+        public const int Exchange = 31;
+
+        public const int PP = 32;
+
         public const int TG = 40;
+
         public const int I4D = 43;
+
         public const int SLT = 63;
+
         public const int CG = 62;
+
+        public const int SXG = 45;
+
+        public const int GDG = 59;
+
+        public const int HB = 61;
+
+        public const int JK = 56;
+
+        public const int SAG = 39;
+
+        public const int PGS = 55;
+
+        public const int SBC = 42;
+
+        public const int WM = 51;
+
+        public const int SG = 36;
+
+        public const int VRG = 38;
+
+        public const int CC = 34;
     }
 }

@@ -38,7 +38,7 @@ const EngContent = _ => {
                         <li>Password</li>
                         <li>Bank Information</li>
                         <li>Fundtransfer Limit</li>
-                        <li>Bet Limit</li>
+                        <li>Bet Setting</li>
                         <li>Statement</li>
                         <li>Personal Message</li>
                     </ul>
@@ -66,7 +66,7 @@ const EngContent = _ => {
                 <li><b>Detail Transaction:</b> view player balance changes and sort by time.</li>
                 <li><b>Bet List:</b> lists out non-settled tickets of player.</li>
                 <li><b>Fund Transfer:</b> view transfer log and wallets balance for player.</li>
-                <li><b>Bet Limit:</b> view bet setting for Sportsbook, Number Game, Virtual Sports, RNG Keno, Lottery and other products.</li>
+                <li><b>Bet Setting:</b> view bet setting for Sportsbook, Number Game, Virtual Sports, RNG Keno, Lottery and other products.</li>
                 <li><b>Note:</b> view or edit the note for player.</li>
                 <li><b>Log:</b> view update log of player.</li>
                 <li><b>Setting:</b> set password, fund transfer limit and bank info.</li>
@@ -113,7 +113,7 @@ const ZnCNContent = _ => {
                         <li>密码</li>
                         <li>银行资讯</li>
                         <li>转帐额度</li>
-                        <li>投注限额</li>
+                        <li>投注设定</li>
                         <li>帐目</li>
                         <li>个人讯息</li>
                     </ul>
@@ -141,7 +141,7 @@ const ZnCNContent = _ => {
                 <li><b>额度记录:</b> 查看玩家余额变化并按时间排序。</li>
                 <li><b>投注历史:</b> 列出玩家的未结算注单。</li>
                 <li><b>转帐:</b> 查看玩家的转帐日志和钱包余额。</li>
-                <li><b>投注限额:</b> 查看体育博彩，数字游戏，虚拟体育，基诺，彩票和其他产品的投注设置。</li>
+                <li><b>投注设定:</b> 查看体育博彩，数字游戏，虚拟体育，基诺，彩票和其他产品的投注设置。</li>
                 <li><b>记录:</b> 查看和编辑玩家记录。</li>
                 <li><b>日志:</b> 查看玩家的登入资讯和更新日志。</li>
                 <li><b>设定:</b> 设置密码，转账限额和银行信息。</li>

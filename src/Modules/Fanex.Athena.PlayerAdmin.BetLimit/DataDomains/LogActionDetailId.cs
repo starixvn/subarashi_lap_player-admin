@@ -13,5 +13,7 @@
         public const int UpdatingAGGroup = 34;
 
         public const int UpdatingMaxBetPerDraw = 35;
+
+        public const int UpdatingProductStatus = 36;
     }
 }

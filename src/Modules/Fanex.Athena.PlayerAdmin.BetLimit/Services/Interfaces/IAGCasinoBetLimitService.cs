@@ -13,5 +13,7 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Services.Interfaces
         Task<AgCasinoBetSetting> GetBetSettingAsync(int custId);
 
         Task<IResultInfo> UpdateSettingAsync(PlayerBetLimitUpdateMetaModel<AgCasinoBetLimitMetaModel> metaModel);
+
+        Task<IResultInfo> UpdateStatusAsync(PlayerBetLimitUpdateStatusMetaModel metaModel);
     }
 }

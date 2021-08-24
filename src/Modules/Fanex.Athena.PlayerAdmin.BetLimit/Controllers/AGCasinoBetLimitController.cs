@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace Fanex.Athena.PlayerAdmin.BetLimit.Controllers
 {
+    [RequestValidation(validateProductId: ProductTypes.AgCasino, validateCustId: true)]
     public class AGCasinoBetLimitController : PlayerBetLimitBaseControler
     {
         private readonly IAGCasinoBetLimitService _service;
@@ -24,7 +25,6 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [CookieAuthorize(Roles.SuperAdmin, Roles.BetLimit)]
-        [RequestValidation(validateProductId: ProductType.AgCasino, validateCustId: true)]
         public async Task<JsonResult> GetSetting([FromBody] PlayerBetLimitSelectMetaModel metaModel)
         {
             var isEditable = HasEditPermission();
@@ -43,14 +43,16 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Controllers
             {
                 Data = await getGroupBettingsTask,
                 BetSetting = setting,
-                Editable = isEditable && setting.IsEnabled && setting.IsLineEnabled
+                Editable = isEditable && setting.IsEnabled && setting.IsLineEnabled,
+                StatusEnable = setting.IsEnabled,
+                IsStatusEnable = isEditable,
+                setting.IsLineEnabled
             });
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         [CookieAuthorize(Roles.SuperAdmin, Roles.BetLimit_Write)]
-        [RequestValidation(validateProductId: ProductType.AgCasino, validateCustId: true)]
         [AutoBindingMetaModel(bindClientIP: true, bindLanguage: true, bindSiteName: true, bindUserId: true)]
         public async Task<JsonResult> UpdateSetting([FromBody] PlayerBetLimitUpdateMetaModel<AgCasinoBetLimitMetaModel> metaModel)
         {
@@ -63,6 +65,17 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Controllers
             var result = await _service.UpdateSettingAsync(metaModel);
             result.Message = result.Code == 0 ? ViewResources.UpdateSuccess : result.Message;
 
+            return Json(result);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [CookieAuthorize(Roles.SuperAdmin, Roles.BetLimit_Write)]
+        [AutoBindingMetaModel(bindClientIP: true, bindLanguage: true, bindSiteName: true, bindUserId: true)]
+        public async Task<JsonResult> UpdateStatus([FromBody] PlayerBetLimitUpdateStatusMetaModel metaModel)
+        {
+            var result = await _service.UpdateStatusAsync(metaModel);
+            result.Message = result.Code == 0 ? ViewResources.UpdateSuccess : result.Message;
             return Json(result);
         }
     }

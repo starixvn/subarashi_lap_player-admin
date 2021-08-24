@@ -28,25 +28,59 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Repositories
 
         private static readonly IDictionary<int, string[]> ProductSportList = new Dictionary<int, string[]>
         {
-            [ProductType.VirtualSports] = new[] { "180", "181", "182", "183", "184", "185", "186" },
-            [ProductType.VirtualSports2] = new[] { "190", "191", "192", "193", "199" },
-            [ProductType.Lottery] = new[] { "220" },
-            [ProductType.Sportsbooks2] = new[] { "43" },
-            [ProductType.TG] = new[] { "222" },
-            [ProductType.I4D] = new[] { "223" },
-            [ProductType.SLT] = new[] { "169" }
+            [ProductTypes.VirtualSports] = new[] { "180", "181", "182", "183", "184", "185", "186" },
+            [ProductTypes.VirtualSports2] = new[] { "190", "191", "192", "193", "199" },
+            [ProductTypes.Lottery] = new[] { "220" },
+            [ProductTypes.Sportsbooks2] = new[] { "43" },
+            [ProductTypes.TG] = new[] { "222" },
+            [ProductTypes.I4D] = new[] { "223" },
+            [ProductTypes.SLT] = new[] { "169" }
         };
 
         private const string UpdateStatusXmlFormat = "<ROOT><ProductStatus SportType=\"{0}\" BetType=\"{1}\" IsDisabled=\"{2}\" IsDisabledDownline=\"0\" /></ROOT>";
 
-        private static readonly IDictionary<int, int> ProductSporttypeMap = new Dictionary<int, int>
+        private static readonly IDictionary<int, int> ProductSportTypeMap = new Dictionary<int, int>
         {
-            { ProductType.CG, 167 }
+            { ProductTypes.CG, 167 },
+            { ProductTypes.Exchange, 221 },
+            { ProductTypes.SLT, 169 },
+            { ProductTypes.I4D, 223 },
+            { ProductTypes.AllBet, 211 },
+            { ProductTypes.Voidbridge, 212 },
+            { ProductTypes.PP, 248 },
+            { ProductTypes.SXG, 243 },
+            { ProductTypes.GDG, 236 },
+            { ProductTypes.HB, 238 },
+            { ProductTypes.JK, 234 },
+            { ProductTypes.SAG, 244 },
+            { ProductTypes.PGS, 232 },
+            { ProductTypes.WM, 233 },
+            { ProductTypes.SG, 247 },
+            { ProductTypes.VRG, 245 },
+            { ProductTypes.CC, 165 },
+            { ProductTypes.SBC, 200 }
         };
 
-        private static readonly IDictionary<int, int> ProductBettypeMap = new Dictionary<int, int>
+        private static readonly IDictionary<int, int> ProductBetTypeMap = new Dictionary<int, int>
         {
-            { ProductType.CG, 7301 }
+            { ProductTypes.CG, 7301 },
+            { ProductTypes.Exchange, 8001 },
+            { ProductTypes.SLT, 3611 },
+            { ProductTypes.I4D, 5001 },
+            { ProductTypes.AllBet, 2401 },
+            { ProductTypes.Voidbridge, 4001 },
+            { ProductTypes.PP, 4101 },
+            { ProductTypes.SXG, 3101 },
+            { ProductTypes.GDG, 5701 },
+            { ProductTypes.HB, 7001 },
+            { ProductTypes.JK, 6401 },
+            { ProductTypes.SAG, 3001 },
+            { ProductTypes.PGS, 6001 },
+            { ProductTypes.WM, 3401 },
+            { ProductTypes.SG, 4301 },
+            { ProductTypes.VRG, 4601 },
+            { ProductTypes.CC, 1901 },
+            { ProductTypes.SBC, 1611 }
         };
 
         public DcsBetLimitRepository(IDbFactory dbFactory, ILogger<DcsBetLimitRepository> logger)
@@ -120,7 +154,7 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Repositories
                 db.SetParameterValue("SettingType", ProductStatusSettingType);
                 db.SetParameterValue("RoleID", MemberRoleId);
 
-                using (var reader = await db.ExecuteReaderAsync().ConfigureAwait(false))
+                using (var reader = await db.ExecuteReaderAsync())
                 {
                     if (reader.Read())
                     {
@@ -206,6 +240,6 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Repositories
         }
 
         private static string BuildProductStatusXml(int productId, bool status)
-           => string.Format(UpdateStatusXmlFormat, ProductSporttypeMap[productId], ProductBettypeMap[productId], status ? 0 : 1);
+           => string.Format(UpdateStatusXmlFormat, ProductSportTypeMap[productId], ProductBetTypeMap[productId], status ? 0 : 1);
     }
 }

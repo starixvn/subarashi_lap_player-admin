@@ -30,7 +30,7 @@ namespace Fanex.Athena.PlayerAdmin.API.Controllers
             return new SiteSettingViewModel
             {
                 IsAllowedCustomerComm = _contextService.IsAllowedCustomerComm,
-                IsAllowedBA = _contextService.IsEnableBA && (await _licenseeService.CheckProductBelongsTo(siteName, ProductType.BA))
+                IsAllowedBA = _contextService.IsEnableBA && (await _licenseeService.CheckProductBelongsTo(siteName, ProductTypes.BA))
             };
         }
     }

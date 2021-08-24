@@ -20,7 +20,7 @@ namespace Fanex.Athena.PlayerAdmin.Core.Attributes
         }
     }
 
-    [AttributeUsage(AttributeTargets.Method, AllowMultiple = false)]
+    [AttributeUsage(AttributeTargets.Method | AttributeTargets.Class, AllowMultiple = false)]
     public class DataValidationImplAttribute : ActionFilterAttribute
     {
         private const string ErrorMsg = "Invalid Params";

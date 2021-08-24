@@ -4,21 +4,35 @@ using Fanex.Athena.PlayerAdmin.API.Services.Interfaces;
 using Fanex.Athena.PlayerAdmin.API.ViewModels;
 using Fanex.Athena.PlayerAdmin.Core.Extensions;
 using Fanex.Athena.PlayerAdmin.Core.Repositories;
+using Fanex.Athena.PlayerAdmin.Core.Settings;
 using Fanex.Data;
+using Microsoft.Extensions.Options;
+using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace Fanex.Athena.PlayerAdmin.API.Services
 {
+    internal class CustomerClassApiModel
+    {
+        public int CustomerClass { get; set; }
+    }
+
     public class PlayerListService : IPlayerListService
     {
         private readonly IDbFactory _dbFactory;
+        private readonly HttpClient _httpClient;
+        private readonly AppSetting _appSetting;
 
-        public PlayerListService(IDbFactory dbFactory)
+        public PlayerListService(IDbFactory dbFactory, HttpClient httpClient, IOptions<AppSetting> appSetting)
         {
             _dbFactory = dbFactory;
+            _httpClient = httpClient;
+            _appSetting = appSetting.Value;
         }
 
         public async Task<PlayerListResultViewModel> Search(PlayerSearchingMetaModel metaModel)
@@ -59,22 +73,15 @@ namespace Fanex.Athena.PlayerAdmin.API.Services
             return result;
         }
 
-        public async Task<IEnumerable<string>> CustomerClass(string licenseeName)
+        public async Task<IEnumerable<string>> GetCustomerClassList()
         {
+            var customerClassFromApi = await GetCustomerClassFromApi();
             var result = new List<string> { "0" };
-
-            using (var objectDb = _dbFactory.GetObjectDb("Lrf_CustomerClassSel"))
-            {
-                using (var reader = await objectDb.ExecuteReaderAsync())
-                {
-                    while (reader.Read())
-                    {
-                        result.Add(reader["CustomerClass"].ToString());
-                    }
-                }
-            }
-
-            return result;
+            result.AddRange(customerClassFromApi
+                .OrderBy(_ => _.CustomerClass)
+                .Select(_ => _.CustomerClass.ToString())
+                );
+            return result.Distinct();
         }
 
         public async Task<IEnumerable<CommGroupViewModel>> GetAllCommGroups(int licenseeId)
@@ -101,6 +108,15 @@ namespace Fanex.Athena.PlayerAdmin.API.Services
             return result;
         }
 
+        private async Task<IEnumerable<CustomerClassApiModel>> GetCustomerClassFromApi()
+        {
+            using var request = new HttpRequestMessage(HttpMethod.Get, new Uri(_appSetting.CustomerClassUrl));
+            using var response = await _httpClient.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+            var customerClassList = JsonConvert.DeserializeObject<IEnumerable<CustomerClassApiModel>>(await response.Content.ReadAsStringAsync());
+            return customerClassList;
+        }
+
         private static void AssignCommonParam(IObjectDb objectDb, PlayerListBaseMetaModel metaModel)
         {
             objectDb.SetParameterValue("LicenseeName", metaModel.SiteName);
@@ -111,7 +127,7 @@ namespace Fanex.Athena.PlayerAdmin.API.Services
 
         private static void AssignParamByUserName(IObjectDb objectDb, PlayerSearchingMetaModel metaModel)
         {
-            objectDb.SetParameterValue("UserName", metaModel.UserName);
+            objectDb.SetParameterValue("UserName", ToSqlTextSearch(metaModel.UserName));
             objectDb.SetParameterValue("SearchOption", metaModel.SearchOption);
             objectDb.SetParameterValue("BaFilter", metaModel.BaFilter);
             objectDb.SetParameterValue("SpecialLevel", metaModel.SpecialLevel);
@@ -164,8 +180,9 @@ namespace Fanex.Athena.PlayerAdmin.API.Services
         }
 
         private static int GetTotalItem(IObjectDb objectDb)
-        {
-            return Convert.ToInt32(objectDb.GetParameterValue("TotalRows"));
-        }
+            => Convert.ToInt32(objectDb.GetParameterValue("TotalRows"));
+
+        private static string ToSqlTextSearch(string text)
+            => string.IsNullOrEmpty(text) ? text : text.Trim().Replace("_", "[_]");
     }
 }

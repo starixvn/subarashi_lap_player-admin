@@ -12,6 +12,8 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.MetaModel
 
         public int UserId { get; set; }
 
+        public string Username { get; set; }
+
         public int CurrencyId { get; set; }
 
         public string Ip { get; set; }
@@ -23,6 +25,8 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.MetaModel
         public int LicenseeCustId { get; set; }
 
         public bool Status { get; set; }
+
+        public bool OldStatus { get; set; }
 
         public bool IsValid => true;
     }

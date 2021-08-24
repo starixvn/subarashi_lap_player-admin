@@ -11,7 +11,7 @@ namespace Fanex.Athena.PlayerAdmin.API.Services.Interfaces
 
         Task<PlayerListResultViewModel> GetPlayerListById(PlayerListByIdMetaModel metaModel);
 
-        Task<IEnumerable<string>> CustomerClass(string licenseeName);
+        Task<IEnumerable<string>> GetCustomerClassList();
 
         Task<IEnumerable<CommGroupViewModel>> GetAllCommGroups(int licenseeId);
     }

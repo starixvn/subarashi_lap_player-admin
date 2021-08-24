@@ -72,7 +72,7 @@ export const contextMenuKeys = {
     note: 'note',
     password: 'password',
     fundtransferLimit: 'fundtransferLimit',
-    betLimit: 'betLimit',
+    betSetting: 'betSetting',
     statement: 'statement',
     personalMessage: 'personalMessage',
     commissionGroup: 'commissionGroup'
@@ -82,7 +82,7 @@ export const tabNames = {
     playerInfo: 'lblPlayerAdminPlayerInfo',
     statement: 'lblPlayerAdminPlayerStatement',
     betlist: 'lblPlayerAdminBetList',
-    betLimit: 'lblPlayerAdminBetLimit',
+    betSetting: 'lblPlayerAdminBetSetting',
     setting: 'lblPlayerAdminSetting',
     fundTransferLimit: 'FundTransferLimit',
     password: 'Password',
@@ -93,7 +93,7 @@ export const tabNames = {
 }
 
 export const excludedTabNameWithNonDepositAndArchived =
-    [tabNames.statement, tabNames.betlist, tabNames.betLimit, tabNames.detailTransaction, tabNames.commissionGroup];
+    [tabNames.statement, tabNames.betlist, tabNames.betSetting, tabNames.detailTransaction, tabNames.commissionGroup];
 
 export const excludedTabNameWithClosed = [tabNames.commissionGroup];
 
@@ -102,7 +102,7 @@ export const contextMenuList = [
     { key: contextMenuKeys.password, name: LangHelper.getSingleResource('Password'), tabName: tabNames.setting, subTabName: tabNames.password },
     { key: contextMenuKeys.bankInformation, name: LangHelper.getSingleResource('BankInformation'), tabName: tabNames.setting, subTabName: tabNames.bankInfo },
     { key: contextMenuKeys.fundtransferLimit, name: LangHelper.getSingleResource('FundtransferLimit'), tabName: tabNames.setting, subTabName: tabNames.fundTransferLimit },
-    { key: contextMenuKeys.betLimit, name: LangHelper.getSingleResource('BetLimit'), tabName: tabNames.betLimit },
+    { key: contextMenuKeys.betSetting, name: LangHelper.getSingleResource('BetSetting'), tabName: tabNames.betSetting },
     { key: contextMenuKeys.statement, name: LangHelper.getSingleResource('Statement'), tabName: tabNames.statement },
     { key: contextMenuKeys.personalMessage, name: LangHelper.getSingleResource('PersonalMessage'), tabName: 'lblPlayerAdminMessage', subTabName: tabNames.personalMessage },
     { key: contextMenuKeys.commissionGroup, name: LangHelper.getSingleResource('CommissionGroup'), tabName: 'lblCommissionGroup' }
@@ -206,10 +206,10 @@ export const apiSiteSetting = { type: systemType.playerAdmin, action: 'api/SiteS
 export const apiSuggestion = { action: 'PlayerAdminContainer/GetSuggestionList', type: systemType.newAdmin };
 
 export const excludedContextMenuWithNonDeposit =
-    [contextMenuKeys.betLimit, contextMenuKeys.statement, contextMenuKeys.commissionGroup];
+    [contextMenuKeys.betSetting, contextMenuKeys.statement, contextMenuKeys.commissionGroup];
 export const excludedContextMenuWithClosed = [contextMenuKeys.password, contextMenuKeys.commissionGroup];
 export const excludedContextMenuWithArchived =
-    [contextMenuKeys.password, contextMenuKeys.betLimit, contextMenuKeys.statement, contextMenuKeys.commissionGroup];
+    [contextMenuKeys.password, contextMenuKeys.betSetting, contextMenuKeys.statement, contextMenuKeys.commissionGroup];
 export const excludedContextMenuWithApiLicensee =
     [contextMenuKeys.password, contextMenuKeys.bankInformation, contextMenuKeys.personalMessage];
 
