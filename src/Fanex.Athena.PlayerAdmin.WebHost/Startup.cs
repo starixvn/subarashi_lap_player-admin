@@ -198,8 +198,8 @@ namespace Fanex.Athena.PlayerAdmin.WebHost
                 app.UseHttpsRedirection();
             }
 
-            app.UseStaticResource(HostingEnvironment.IsDevelopment());
             app.UseHealthCheck(Configuration);
+            app.UseStaticResource(HostingEnvironment.IsDevelopment());
             app.UseRouting();
             app.UseCors();
             app.UseUnderMaintenance();

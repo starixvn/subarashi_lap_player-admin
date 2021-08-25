@@ -43,7 +43,7 @@ namespace Fanex.Athena.PlayerAdmin.MVC.Controllers
         [AutoBindingMetaModel(bindSiteName: true, bindLanguage: true)]
         public async Task<ActionResult> GetStatementUrl([FromBody] PlayerStatementMetaModel metaModel)
         {
-            return Content(await _playerStatementService.GetUrl(metaModel).ConfigureAwait(false));
+            return Content(await _playerStatementService.GetUrl(metaModel));
         }
     }
 }

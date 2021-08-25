@@ -6,6 +6,12 @@
     <DockerfileContext>..\..</DockerfileContext>
     <CodeAnalysisRuleSet>..\..\.sonarlint\lap_playeradmincsharp.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="jshint.json" />
+    <Content Remove="package-lock.json" />
+    <Content Remove="package.json" />
+  </ItemGroup>
   
   <ItemGroup>
     <AdditionalFiles Include="..\..\.sonarlint\lap_playeradmin\CSharp\SonarLint.xml" Link="SonarLint.xml" />
@@ -13,7 +19,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-
+  
   <ItemGroup>
     <None Include="jshint.json" />
     <None Include="package-lock.json" />
@@ -28,7 +34,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.HealthChecks" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="5.0.4" />
     <PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="5.0.1" />
-    <PackageReference Include="Sentry.AspNetCore" Version="3.8.1" />
+    <PackageReference Include="Sentry.Extensions.Logging" Version="2.1.6" />
   </ItemGroup>
 
   <ItemGroup>
@@ -41,9 +47,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="App_Data\SpConfig\FanexSpName.PROD.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Update="App_Data\SpConfig\FanexSpName.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

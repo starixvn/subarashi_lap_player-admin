@@ -20,7 +20,7 @@ namespace Fanex.Athena.PlayerAdmin.WebHost.Controllers
         [Authorize(AuthenticationSchemes = "Cookies")]
         public IActionResult Index([FromServices] IWebHostEnvironment hostingEnvironment)
         {
-            if(!hostingEnvironment.IsDevelopment())
+            if (!hostingEnvironment.IsDevelopment())
             {
                 return RedirectToAction("AccessDenied");
             }
