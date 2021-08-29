@@ -7441,6 +7441,15 @@ namespace Fanex.Athena.PlayerAdmin.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to update {0} status?.
+        /// </summary>
+        public static string UpdateProductStatus {
+            get {
+                return ResourceManager.GetString("UpdateProductStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The RNG Casino bet setting of {0} updated is failed.
         /// </summary>
         public static string UpdateRNGCasinoBetSettingFailMsg {

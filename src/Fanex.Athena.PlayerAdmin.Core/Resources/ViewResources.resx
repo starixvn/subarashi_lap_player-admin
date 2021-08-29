@@ -2806,6 +2806,9 @@
     <value>The {0} bet setting of {1} was updated successfully</value>
     <comment>79997</comment>
   </data>
+  <data name="UpdateProductStatus" xml:space="preserve">
+    <value>Are you sure you want to update {0} status?</value>
+  </data>
   <data name="UpdateRNGCasinoBetSettingFailMsg" xml:space="preserve">
     <value>The RNG Casino bet setting of {0} updated is failed</value>
   </data>

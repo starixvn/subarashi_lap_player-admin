@@ -1,0 +1,9 @@
+﻿
+
+// Generated helper templates
+// Generated items
+// Fanex.Athena.PlayerAdmin.WebHost\ClientApp\src\jquery-pages\js\common\languages\ViewResources.zh-CN.js
+// Fanex.Athena.PlayerAdmin.WebHost\ClientApp\src\js\lib\languages\ViewResources.zh-CN.js
+// Fanex.Athena.PlayerAdmin.WebHost\ClientApp\src\jquery-pages\js\common\languages\ViewResources.js
+// Fanex.Athena.PlayerAdmin.WebHost\ClientApp\src\js\lib\languages\ViewResources.js
+

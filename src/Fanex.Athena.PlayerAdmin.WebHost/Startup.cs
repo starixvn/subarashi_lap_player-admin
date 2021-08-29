@@ -1,5 +1,4 @@
 using Fanex.Athena.PlayerAdmin.API.Extensions;
-using Fanex.Athena.PlayerAdmin.Auth.Controllers;
 using Fanex.Athena.PlayerAdmin.BatchUpdate;
 using Fanex.Athena.PlayerAdmin.BetLimit.Extensions;
 using Fanex.Athena.PlayerAdmin.Commission.Extensions;
@@ -13,6 +12,7 @@ using Fanex.Athena.PlayerAdmin.Core.Storages;
 using Fanex.Athena.PlayerAdmin.MVC.Extensions;
 using Fanex.Athena.PlayerAdmin.MVC.Services;
 using Fanex.Athena.PlayerAdmin.MVC.Services.Interfaces;
+using Fanex.Athena.PlayerAdmin.WebHost.Controllers;
 using Fanex.Data;
 using Fanex.Data.SqlServer;
 using Fanex.RemotingRef;
@@ -104,7 +104,7 @@ namespace Fanex.Athena.PlayerAdmin.WebHost
                 options.FormFieldName = "__RequestVerificationToken";
                 options.HeaderName = "X-CSRF-TOKEN-PLAYERADMIN";
                 options.Cookie.SameSite = cookie.SameSite;
-                options.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
+                options.Cookie.SecurePolicy = cookie.Secure;
                 options.Cookie.Name = "lap.playeradmin.antiforgery";
                 options.Cookie.HttpOnly = true;
                 options.Cookie.IsEssential = true;

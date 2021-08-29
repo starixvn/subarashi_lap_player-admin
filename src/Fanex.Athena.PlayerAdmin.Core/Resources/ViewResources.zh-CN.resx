@@ -2493,6 +2493,9 @@
     <value>确定更新所有 {0} 的投注设定吗?</value>
     <comment>112658</comment>
   </data>
+  <data name="UpdateProductStatus" xml:space="preserve">
+    <value>Are you sure you want to update {0} status?</value>
+  </data>
   <data name="UpdateRNGCasinoBetSettingFailMsg" xml:space="preserve">
     <value>The RNG Casino bet setting of {0} updated is failed</value>
   </data>

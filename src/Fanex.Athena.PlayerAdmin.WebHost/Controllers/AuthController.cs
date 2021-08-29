@@ -16,7 +16,7 @@ using System.Net.Http;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
-namespace Fanex.Athena.PlayerAdmin.Auth.Controllers
+namespace Fanex.Athena.PlayerAdmin.WebHost.Controllers
 {
     public class AuthController : Controller
     {
@@ -105,7 +105,8 @@ namespace Fanex.Athena.PlayerAdmin.Auth.Controllers
                 {
                     { nameof(token), token },
                     { nameof(scope), scope },
-                    { "access_token", currentAccessToken }
+                    { "access_token", currentAccessToken },
+                    { "clien_ip", HttpContext.Connection.RemoteIpAddress.ToString() }
                 })
             };
 

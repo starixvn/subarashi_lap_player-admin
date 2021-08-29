@@ -1,50 +1,57 @@
 ﻿<#@ template debug="true" hostSpecific="true" #>
-<#@ output extension=".txt" #>
-<#@ include file="$(SolutionDir)\Packages\T4.TemplateFileManager.2.1.2\tools\ttinc\TemplateFilemanager.CS.ttinclude" #>
+<#@ include file="TemplateFilemanager.CS.ttinclude" #>
 <#@ Assembly Name="System.Core.dll" #>
 <#@ Assembly Name="System.Xml.Linq" #>
 <#@ assembly name="System.Xml" #>
 <#@ import namespace="System" #>
 <#@ import namespace="System.IO" #>
 <#@ import namespace="System.Security" #>
+<#@ output extension=".txt" #>
+
 <#
 	string solutionPath = Host.ResolveAssemblyReference("$(SolutionDir)");
 	Directory.SetCurrentDirectory(solutionPath);
 	var manager = TemplateFileManager.Create(this);	
 	string[] filePaths = Directory.GetFiles(solutionPath, "ViewResources*.resx", SearchOption.AllDirectories);
+	string[] outputPaths = new [] { 
+				$"{solutionPath}\\src\\Fanex.Athena.PlayerAdmin.WebHost\\ClientApp\\src\\js\\lib\\languages",
+				$"{solutionPath}\\src\\Fanex.Athena.PlayerAdmin.WebHost\\ClientApp\\src\\jquery-pages\\js\\common\\languages"
+	};
 	foreach(var filePath in filePaths)
 	{        
 		var fileName = Path.GetFileName(filePath.Replace("resx", "js"));
-		manager.StartNewFile(fileName);
-		const string ignoreKey = "ignorejs";
-		using (var stream = new FileStream(filePath, FileMode.Open, FileAccess.Read))
-            {
-               var xdoc = System.Xml.Linq.XDocument.Load(stream);
-					var items = xdoc.Descendants("data").OrderBy(i=>i.Attribute("name").Value);
-					 var index = 0;
-					var lastIndex = items.Count() - 1;
+		foreach (var outputPath in outputPaths)
+		{
+					manager.StartNewFile($"{outputPath}\\{fileName}");
+					const string ignoreKey = "ignorejs";
+					using (var stream = new FileStream(filePath, FileMode.Open, FileAccess.Read))
+						{
+						   var xdoc = System.Xml.Linq.XDocument.Load(stream);
+								var items = xdoc.Descendants("data").OrderBy(i=>i.Attribute("name").Value);
+								 var index = 0;
+								var lastIndex = items.Count() - 1;
 #>
 // Generated at: <#= DateTime.Now.ToString() #>
 window.<#=GetJsObjectName(fileName)#> = {
 <#
-                foreach (var item in items)
-                {
-                    var se = index < lastIndex;
-                    var valueItem = item.Descendants("value").FirstOrDefault();
-					var commentItem = item.Descendants("comment").FirstOrDefault();
-					index++;
-					var noGenerate = (commentItem?.Value?.ToString() ?? string.Empty)
-										.ToLower()
-										.Contains(ignoreKey);
-					if(noGenerate) 
-					{
-						continue;
-					}
-			#>
+							foreach (var item in items)
+							{
+								var se = index < lastIndex;
+								var valueItem = item.Descendants("value").FirstOrDefault();
+								var commentItem = item.Descendants("comment").FirstOrDefault();
+								index++;
+								var noGenerate = (commentItem?.Value?.ToString() ?? string.Empty)
+													.ToLower()
+													.Contains(ignoreKey);
+								if(noGenerate) 
+								{
+									continue;
+								}
+						#>
 <#=CreateJsonProperties(item.Attribute("name").Value, valueItem.Value, se)#>
 <# }} #>
-};
-<# }
+};	
+<# }}
 	manager.Process();
 #>
 
