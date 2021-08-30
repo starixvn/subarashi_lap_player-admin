@@ -1,7 +1,97 @@
-﻿@{
-    Layout = "_ErrorLayout";
+﻿
+@{
+    Layout = null;
 }
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>Error!!!!!</title>
 
-@section message{
-    @ViewResources.AccessDeniedMsg
-}
+    <style type="text/css">
+        body {
+            background: #fff;
+            font-family: Verdana,'sans-serif';
+        }
+
+        .error-content {
+            padding-top: 40px;
+        }
+
+        img {
+            margin: 10px auto;
+            display: block;
+        }
+
+        p {
+            text-align: center;
+            font-size: 18px;
+            line-height: 20px;
+        }
+
+        .first-line {
+            color: #0b3d6b;
+            font-size: 45px;
+        }
+
+        .second-line {
+            color: #545454;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 3px;
+            font-size: 18px;
+            text-decoration: none;
+        }
+
+        .btn-submit {
+            background-color: #1C80F0;
+            color: #fff;
+        }
+
+        .center {
+            margin: auto;
+            width: 50%;
+            padding: 10px;
+        }
+
+        ol {
+            counter-reset: item;
+        }
+
+            ol li {
+                display: block;
+            }
+
+                ol li:before {
+                    content: counter(item) ". ";
+                    counter-increment: item;
+                    font-weight: bold;
+                }
+    </style>
+</head>
+<body>
+    <div class="error-content">
+        <img src="~/images/lap-restriction-page.png" />
+        <div class="center">
+            <div>
+                <strong>@Html.Raw(ViewResources.ErrorNotification)</strong>
+            </div>
+            <ol style="list-style-type: decimal;">
+                <li style="color:red">
+                    @Html.Raw(ViewResources.TokenWasExpired)
+                </li>
+            </ol>
+            <div>
+                @Html.Raw(ViewResources.TryLogin)
+            </div>
+            <ul style="list-style-type: none;">
+                @Html.Raw(ViewResources.SolutionForRestriction)
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,8 +1,12 @@
-﻿@{
+﻿@using Microsoft.Extensions.Options;
+@using Fanex.Athena.PlayerAdmin.Core.Settings;
+@inject IOptions<AppSetting> appSetting
+@{
     Layout = null;
     var langCode = System.Globalization.CultureInfo.CurrentCulture.Name;
     var rootUrl = Url.Content("~");
     var title = ViewResources.PlayerAdministration + " - " + ViewData["Title"];
+    var isProduction = appSetting.Value.IsProduction;
 }
 
 <!DOCTYPE html>
@@ -26,16 +30,26 @@
         window.rootUrl = '@rootUrl';
         @RenderSection("globaljscode", required: false)
     </script>
-
     <script src="~/js/lib/vendor.chunk.js" asp-append-version="true"></script>
     <script src="~/js/lib/langHelper.chunk.js" asp-append-version="true"></script>
-
     @if (langCode != "en-US")
     {
         var langLink = "~/js/lib/lang-" + langCode + ".chunk.js";
         <script src="@langLink" asp-append-version="true"></script>
     }
-
     @await RenderSectionAsync("pagejs", required: false)
+    @if (isProduction)
+    {
+        <!-- Google Analytics -->
+        <script>
+            window.ga = window.ga || function () { (ga.q = ga.q || []).push(arguments) }; ga.l = +new Date;
+            ga('create', 'UA-93927620-1', {
+                cookieFlags: 'secure;samesite=none'
+            });
+            ga('send', 'pageview');
+        </script>
+        <script async src='https://www.google-analytics.com/analytics.js'></script>
+        <!-- End Google Analytics -->
+    }
 </body>
 </html>

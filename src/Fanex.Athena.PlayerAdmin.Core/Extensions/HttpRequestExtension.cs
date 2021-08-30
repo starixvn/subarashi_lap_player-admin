@@ -32,7 +32,7 @@ namespace Fanex.Athena.PlayerAdmin.Core.Extensions
             }
             else
             {
-                actionResult = new RedirectResult("/Home/AccessDenied");
+                actionResult = new RedirectResult("/Home/Error?code=400");
                 actionContext.HttpContext.Response.Headers.Add("error-msg", errorMsg);
             }
             actionContext.Result = actionResult;

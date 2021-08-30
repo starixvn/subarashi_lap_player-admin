@@ -33,7 +33,7 @@ namespace Fanex.Athena.PlayerAdmin.Core.Middlewares
         private void HandleError(HttpContext context, Exception exception)
         {
             var errorMsg = ErrorMessageHelper.GenerateMessage(exception, context);
-            _logger.LogError(exception, errorMsg);
+            _logger.LogCritical(exception, errorMsg);
             context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
         }
     }

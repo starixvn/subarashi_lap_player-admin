@@ -63,6 +63,15 @@ namespace Fanex.Athena.PlayerAdmin.Core.Extensions
 
         public static void UseHealthCheck(this IApplicationBuilder app, IConfiguration configuration)
         {
+            app.Use(async (context, next) =>
+            {
+                if (context.Request.Path.StartsWithSegments("/ping"))
+                {
+                    return;
+                }
+                await next();
+            });
+
             Func<HttpContext, HealthReport, Task> customResponseWriter = async (context, report) =>
             {
                 var result = JsonConvert.SerializeObject(
@@ -111,21 +120,23 @@ namespace Fanex.Athena.PlayerAdmin.Core.Extensions
         public static void UseErrorHandler(this IApplicationBuilder app)
         {
             //mvc
-            app.UseWhen(context => !context.Request.IsAjaxRequest() && !context.Request.IsStaticRequest(), builder => builder.UseStatusCodePagesWithReExecute("/Home/Error", "?code={0}"));
+            app.UseWhen(context => !context.Request.IsAjaxRequest() && !context.Request.IsStaticRequest(),
+                builder => builder.UseStatusCodePagesWithReExecute("/Home/Error", "?code={0}"));
 
             //api
-            app.UseWhen(context => context.Request.IsAjaxRequest(), builder => builder.UseStatusCodePages(async context =>
-            {
-                var response = context.HttpContext.Response;
-                response.ContentType = "application/json";
-                var errorObject = new
+            app.UseWhen(context => context.Request.IsAjaxRequest(),
+                builder => builder.UseStatusCodePages(async context =>
                 {
-                    statusCode = response.StatusCode,
-                    msg = "An error occurred while processing your request",
-                    isSuccess = false
-                };
-                await response.WriteAsync(JsonConvert.SerializeObject(errorObject));
-            }));
+                    var response = context.HttpContext.Response;
+                    response.ContentType = "application/json";
+                    var errorObject = new
+                    {
+                        statusCode = response.StatusCode,
+                        msg = "An error occurred while processing your request",
+                        isSuccess = false
+                    };
+                    await response.WriteAsync(JsonConvert.SerializeObject(errorObject));
+                }));
 
             //logging
             app.UseMiddleware<ErrorHandler>();
@@ -143,6 +154,75 @@ namespace Fanex.Athena.PlayerAdmin.Core.Extensions
                     ctx.Context.Response.Headers[Microsoft.Net.Http.Headers.HeaderNames.AccessControlAllowOrigin] = "*";
                 }
             });
+        }
+
+        public static void UseCookieSameSitePolicy(this IApplicationBuilder app)
+        {
+            app.UseCookiePolicy(new CookiePolicyOptions
+            {
+                MinimumSameSitePolicy = SameSiteMode.Unspecified,
+                OnAppendCookie = cookieContext =>
+                    CheckSameSite(cookieContext.Context, cookieContext.CookieOptions),
+                OnDeleteCookie = cookieContext =>
+                    CheckSameSite(cookieContext.Context, cookieContext.CookieOptions)
+            });
+        }
+
+        private static void CheckSameSite(HttpContext httpContext, CookieOptions options)
+        {
+            if (options.SameSite == SameSiteMode.None)
+            {
+                var userAgent = httpContext.Request.Headers["User-Agent"].ToString();
+                if (DisallowsSameSiteNone(userAgent))
+                {
+                    options.SameSite = SameSiteMode.Unspecified;
+                }
+            }
+        }
+
+        public static bool DisallowsSameSiteNone(string userAgent)
+        {
+            // Check if a null or empty string has been passed in, since this
+            // will cause further interrogation of the useragent to fail.
+            // - Safari on iOS 12 for iPhone, iPod Touch, iPad
+            // - WkWebview on iOS 12 for iPhone, iPod Touch, iPad
+            // - Chrome on iOS 12 for iPhone, iPod Touch, iPad
+            // All of which are broken by SameSite=None,
+            if (string.IsNullOrWhiteSpace(userAgent))
+            {
+                return false;
+            }
+
+            // Cover all iOS based browsers here. This includes: because they use the iOS networking
+            // stack.
+            if (userAgent.Contains("CPU iPhone OS 12") ||
+                userAgent.Contains("iPad; CPU OS 12"))
+            {
+                return true;
+            }
+
+            // Cover Mac OS X based browsers that use the Mac OS networking stack.
+            // This includes:
+            // - Safari on Mac OS X.
+            // This does not include:
+            // - Chrome on Mac OS X
+            // Because they do not use the Mac OS networking stack.
+            if (userAgent.Contains("Macintosh; Intel Mac OS X 10_14") &&
+                userAgent.Contains("Version/") && userAgent.Contains("Safari"))
+            {
+                return true;
+            }
+
+            // Cover Chrome 50-69, because some versions are broken by SameSite=None,
+            // and none in this range require it.
+            // Note: this covers some pre-Chromium Edge versions,
+            // but pre-Chromium Edge does not require SameSite=None.
+            if (userAgent.Contains("Chrome/5") || userAgent.Contains("Chrome/6"))
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }

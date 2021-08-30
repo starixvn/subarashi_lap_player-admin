@@ -83,7 +83,7 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Services
             }
             catch (Exception exception)
             {
-                _logger.LogError(exception, ErrorMessageHelper.GenerateMessage(exception));
+                _logger.LogCritical(exception, ErrorMessageHelper.GenerateMessage(exception));
             }
 
             return games;

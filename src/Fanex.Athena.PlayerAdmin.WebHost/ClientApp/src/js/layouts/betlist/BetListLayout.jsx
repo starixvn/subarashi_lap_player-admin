@@ -13,7 +13,7 @@ class BetListLayout extends Component {
         };
 
         window.openPopup = this._openPopup.bind(this);
-        window.getResource = this._getResource.bind(this);
+        window.getResource = null; //use resource from BetTicket site
         window.formatDateString = this._formatDateString.bind(this);
         window.beforeShow = this._beforeShow.bind(this);
         window.afterShow = this._afterShow.bind(this);

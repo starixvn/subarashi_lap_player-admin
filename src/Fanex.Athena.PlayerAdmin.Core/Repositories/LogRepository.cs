@@ -29,7 +29,7 @@ namespace Fanex.Athena.PlayerAdmin.Core.Repositories
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "WriteLog_UserLog_UserControl \n" + ex.Message);
+                _logger.LogCritical(ex, "WriteLog_UserLog_UserControl \n" + ex.Message);
             }
         }
     }

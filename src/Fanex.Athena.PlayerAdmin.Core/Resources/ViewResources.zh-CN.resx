@@ -1161,7 +1161,7 @@
     <value>半场/全场</value>
   </data>
   <data name="HttpError_403" xml:space="preserve">
-    <value>访问被拒绝</value>
+    <value>对不起, 您没有权限访问此页面。</value>
   </data>
   <data name="HttpError_404" xml:space="preserve">
     <value>页面不存在, 请检查地址</value>

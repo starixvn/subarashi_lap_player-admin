@@ -203,6 +203,7 @@ namespace Fanex.Athena.PlayerAdmin.WebHost
             app.UseRouting();
             app.UseCors();
             app.UseUnderMaintenance();
+            app.UseCookieSameSitePolicy();
             app.UseAuthorization();
             app.UseRequestLocalization();
             app.UseEndpoints(endpoints =>

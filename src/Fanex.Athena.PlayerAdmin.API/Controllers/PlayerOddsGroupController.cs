@@ -56,7 +56,7 @@ namespace Fanex.Athena.PlayerAdmin.API.Controllers
             }
             catch (Exception exception)
             {
-                _logger.LogError(exception, ErrorMessageHelper.GenerateMessage(exception, HttpContext));
+                _logger.LogCritical(exception, ErrorMessageHelper.GenerateMessage(exception, HttpContext));
             }
 
             return Ok(new ResultViewModel

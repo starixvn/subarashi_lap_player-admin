@@ -4,7 +4,7 @@ namespace Fanex.Athena.PlayerAdmin.Core.Settings
 {
     public class AppSetting
     {
-        public string Environment { get; set; }
+        public bool IsProduction { get; set; }
         public IEnumerable<string> FakeLicensees { get; set; }
         public bool IsShowMixedSport { get; set; }
         public IEnumerable<string> AllowedCrossDomains { get; set; }

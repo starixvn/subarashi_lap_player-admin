@@ -1,5 +1,6 @@
 ﻿using Fanex.Athena.PlayerAdmin.Core.Constants;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 using System;
@@ -45,7 +46,7 @@ namespace Fanex.Athena.PlayerAdmin.Core.Services
 
         public bool IsShowIpVN => IsInRoles("super_admin", "bl_view_ipvn");
 
-        public Task<string> AccessToken => Context.GetTokenAsync(User.Identity.AuthenticationType, "access_token");
+        public Task<string> AccessToken => Context.GetTokenAsync(CookieAuthenticationDefaults.AuthenticationScheme, "access_token");
 
         public bool IsInRoles(params string[] roles) => roles?.Any(_ => User.IsInRole(_)) ?? false;
 

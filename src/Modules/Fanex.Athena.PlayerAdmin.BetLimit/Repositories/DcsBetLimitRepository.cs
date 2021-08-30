@@ -232,7 +232,7 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Repositories
                 }
                 catch (Exception ex)
                 {
-                    _logger.LogError(ex, "Invalid xml content: " + xmlErrorMessage);
+                    _logger.LogCritical(ex, "Invalid xml content: " + xmlErrorMessage);
                 }
             }
 

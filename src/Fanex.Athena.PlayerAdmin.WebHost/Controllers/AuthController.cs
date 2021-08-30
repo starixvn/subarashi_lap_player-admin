@@ -67,7 +67,7 @@ namespace Fanex.Athena.PlayerAdmin.WebHost.Controllers
             }
 
             var claims = new List<Claim>(userInfo.Claims);
-            var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme, "name", "role");
+            var claimsIdentity = new ClaimsIdentity(claims, "portal.session", "name", "role");
             var actionLinkClaim = userInfo.Claims.FirstOrDefault(_ => _.Type.Equals("ActionLink", StringComparison.OrdinalIgnoreCase));
 
             var properties = new AuthenticationProperties();

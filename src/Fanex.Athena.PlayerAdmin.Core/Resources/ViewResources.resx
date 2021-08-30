@@ -1319,7 +1319,7 @@
     <value>HT/FT</value>
   </data>
   <data name="HttpError_403" xml:space="preserve">
-    <value>Access denied</value>
+    <value>Sorry, You don't have permission to access this page.</value>
   </data>
   <data name="HttpError_404" xml:space="preserve">
     <value>Page not found, please check the address</value>
