@@ -17,6 +17,7 @@ namespace Fanex.Athena.PlayerAdmin.WebHost.Controllers
             _logger = logger;
         }
 
+        [HttpGet]
         [Authorize(AuthenticationSchemes = "Cookies")]
         public IActionResult Index([FromServices] IWebHostEnvironment hostingEnvironment)
         {

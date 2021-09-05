@@ -1,4 +1,5 @@
-﻿using Fanex.Athena.PlayerAdmin.Core.Models;
+﻿using Fanex.Athena.PlayerAdmin.Core.Helpers;
+using Fanex.Athena.PlayerAdmin.Core.Models;
 using Fanex.Core.Utils;
 using Fanex.Data;
 using System;
@@ -26,7 +27,7 @@ namespace Fanex.Athena.PlayerAdmin.MVC.MetaModel
 
         public bool IsResettled { get; set; }
 
-        public DateTime MinDate => DateTime.Now.AddMonths(-MaximumMonth);
+        public DateTime MinDate => DateTimeHelper.DatabaseServerNow.AddMonths(-MaximumMonth);
 
         public bool IsValid => ToDate >= FromDate
             && FromDate >= ToDate.AddMonths(-MaximumMonth);

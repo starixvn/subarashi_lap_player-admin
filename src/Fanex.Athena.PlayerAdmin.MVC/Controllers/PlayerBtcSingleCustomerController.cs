@@ -12,6 +12,7 @@ using System;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
+using Fanex.Athena.PlayerAdmin.Core.Helpers;
 
 namespace Fanex.Athena.PlayerAdmin.MVC.Controllers
 {
@@ -89,8 +90,7 @@ namespace Fanex.Athena.PlayerAdmin.MVC.Controllers
 
         private async Task AssignMetaModelValue(PlayerBtcSingleCustomerMetaModel metaModel)
         {
-            var now = DateTime.Now;
-
+            var now = DateTimeHelper.DatabaseServerNow;
             metaModel.Status = GetStatus();
             metaModel.Platform = AllPlatform;
             metaModel.ProductCodeList = await GetProductCode();

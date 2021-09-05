@@ -11,6 +11,7 @@ using System;
 using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
+using Fanex.Athena.PlayerAdmin.Core.Helpers;
 
 namespace Fanex.Athena.PlayerAdmin.MVC.Controllers
 {
@@ -70,7 +71,7 @@ namespace Fanex.Athena.PlayerAdmin.MVC.Controllers
 
         private async Task SetDefaultProductOptionValue(PlayerWinLossMetaModel metaModel)
         {
-            var now = DateTime.Now;
+            var now = DateTimeHelper.DatabaseServerNow;
             var productAccess = await GetProductAccess();
 
             metaModel.ProductOptions = productAccess.ProductList.Select(p => new ProductOption { Code = p.ProductCode, Name = p.ProductName, Status = true });

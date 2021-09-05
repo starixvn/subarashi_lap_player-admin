@@ -6,6 +6,7 @@ using Fanex.Athena.PlayerAdmin.MVC.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
+using Fanex.Athena.PlayerAdmin.Core.Helpers;
 
 namespace Fanex.Athena.PlayerAdmin.MVC.Controllers
 {
@@ -24,7 +25,7 @@ namespace Fanex.Athena.PlayerAdmin.MVC.Controllers
         [ReferrerValidation]
         public ViewResult Index(int custId, int currencyId)
         {
-            var today = DateTime.Today;
+            var today = DateTimeHelper.DatabaseServerToDay;
             var viewModel = new PlayerStatementViewModel
             {
                 CustId = custId,

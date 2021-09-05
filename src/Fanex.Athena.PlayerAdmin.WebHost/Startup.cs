@@ -74,21 +74,37 @@ namespace Fanex.Athena.PlayerAdmin.WebHost
 
             services.Configure<RequestLocalizationOptions>(options =>
             {
-                var supportedCultures = new List<CultureInfo>
+                const string EnCultureName = "en-US";
+                var enCulture = new CultureInfo(EnCultureName)
                 {
-                    new CultureInfo("en-US"),
-                    new CultureInfo("zh-CN")
+                    DateTimeFormat = new DateTimeFormatInfo
+                    {
+                        ShortDatePattern = "M/d/yyyy",
+                        ShortTimePattern = "h:mm tt",
+                        LongDatePattern = "MM/dd/yyyy",
+                        LongTimePattern = "h:mm:ss tt"
+                    }
                 };
+                var csCulture = new CultureInfo("zh-CN");
 
-                options.DefaultRequestCulture = new RequestCulture("en-US");
-                options.SupportedCultures = supportedCultures;
-                options.SupportedUICultures = supportedCultures;
-
-                options.AddInitialRequestCultureProvider(new CustomRequestCultureProvider(context =>
+                options.DefaultRequestCulture = new RequestCulture(EnCultureName);
+                options.SupportedCultures = new List<CultureInfo>
                 {
-                    var lang = Languages.LanguageCodeMappers[context.User.FindFirst("Language")?.Value ?? "en"];
-                    return Task.FromResult(new ProviderCultureResult(lang));
-                }));
+                    enCulture
+                };
+                options.SupportedUICultures = new List<CultureInfo>
+                {
+                    enCulture,
+                    csCulture
+                };
+                options.RequestCultureProviders = new List<IRequestCultureProvider>
+                {
+                    new CustomRequestCultureProvider(context =>
+                    {
+                        var culture = Languages.LanguageCodeMappers[context.User.FindFirst("Language")?.Value ?? "en"];
+                        return Task.FromResult(new ProviderCultureResult(culture: EnCultureName, uiCulture: culture));
+                    })
+                };
             });
 
             services.AddSingleton<IFileProvider>(new PhysicalFileProvider(HostingEnvironment.ContentRootPath));

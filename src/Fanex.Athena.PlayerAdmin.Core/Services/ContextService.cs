@@ -6,6 +6,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -40,7 +41,7 @@ namespace Fanex.Athena.PlayerAdmin.Core.Services
 
         public string Username => GetClaimValue("UserID");
 
-        public string Language => Languages.LanguageCodeMappers[GetClaimValue("Language")];
+        public string Language => CultureInfo.CurrentUICulture.Name;
 
         public bool IsShowIP => GetClaimValue<bool>("IsShowIP");
 

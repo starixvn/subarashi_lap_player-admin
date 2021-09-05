@@ -1,0 +1,1 @@
+- resource dll is not generating for China(zh-CN) in Linux when build the app: https://github.com/dotnet/sdk/issues/11423

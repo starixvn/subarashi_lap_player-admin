@@ -1,4 +1,5 @@
-﻿using Fanex.Athena.PlayerAdmin.Core.Models;
+﻿using Fanex.Athena.PlayerAdmin.Core.Helpers;
+using Fanex.Athena.PlayerAdmin.Core.Models;
 using Fanex.Core.Utils;
 using System;
 
@@ -22,6 +23,6 @@ namespace Fanex.Athena.PlayerAdmin.MVC.MetaModel
 
         public bool IsValid => ToDate >= FromDate
                 && FromDate.Month == ToDate.Month
-                && FromDate.Year >= (DateTime.Today.Year - MaximumYear);
+                && FromDate.Year >= (DateTimeHelper.DatabaseServerToDay.Year - MaximumYear);
     }
 }

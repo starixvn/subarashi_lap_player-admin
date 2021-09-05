@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
+using Fanex.Athena.PlayerAdmin.Core.Helpers;
 
 namespace Fanex.Athena.PlayerAdmin.API.Controllers
 {
@@ -27,7 +28,7 @@ namespace Fanex.Athena.PlayerAdmin.API.Controllers
         [AutoBindingMetaModel(bindBalanceUp: true)]
         public async Task<IActionResult> GetData(PlayerBettingStatisticsMetaModel metaModel)
         {
-            var now = DateTime.Now;
+            var now = DateTimeHelper.DatabaseServerNow;
             metaModel.FromDate = new DateTime(now.Year, now.Month, 1);
             metaModel.ToDate = now;
 

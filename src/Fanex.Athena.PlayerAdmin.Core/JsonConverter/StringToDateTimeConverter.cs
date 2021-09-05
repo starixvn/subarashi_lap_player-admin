@@ -13,7 +13,8 @@ namespace Fanex.Athena.PlayerAdmin.Core.JsonConverter
 
         public override void Write(Utf8JsonWriter writer, DateTime value, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(value.ToUniversalTime().ToString());
+            const string DateTimeFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ss.FFFFFFFK";
+            writer.WriteStringValue(value.ToString(DateTimeFormat));
         }
     }
 }

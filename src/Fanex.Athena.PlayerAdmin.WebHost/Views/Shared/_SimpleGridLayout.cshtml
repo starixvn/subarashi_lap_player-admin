@@ -3,7 +3,7 @@
 @inject IOptions<AppSetting> appSetting
 @{
     Layout = null;
-    var langCode = System.Globalization.CultureInfo.CurrentCulture.Name;
+    var langCode = System.Globalization.CultureInfo.CurrentUICulture.Name;
     var rootUrl = Url.Content("~");
     var isProduction = appSetting.Value.IsProduction;
 }

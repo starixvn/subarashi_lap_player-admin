@@ -2,13 +2,14 @@
     ViewData["Title"] = ViewResources.BettingTicketCenter + " - " + ViewResources.SingleCustomer;
 }
 
-@using  Fanex.Athena.PlayerAdmin.Core.Settings;
+@using Fanex.Athena.PlayerAdmin.Core.Settings;
+@using Fanex.Athena.PlayerAdmin.Core.Helpers;
 @inject Microsoft.Extensions.Options.IOptions<AppSetting> setting
 @inject Fanex.Athena.PlayerAdmin.Core.Services.IContextService contextService
 @model PlayerBtcSingleCustomerViewModel
 
 @{
-    var now = DateTime.Now;
+    var now = DateTimeHelper.DatabaseServerNow;
     var fromDate = new DateTime(now.Year, now.Month, 1).ToString("MM/dd/yyyy");
     var toDate = now.ToString("MM/dd/yyyy");
 

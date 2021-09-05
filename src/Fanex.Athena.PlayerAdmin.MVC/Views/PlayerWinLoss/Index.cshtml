@@ -1,11 +1,12 @@
 ﻿@{
     ViewData["Title"] = ViewResources.CustomerWinLoss;
 }
+@using Fanex.Athena.PlayerAdmin.Core.Helpers;
 
 @model PlayerFastCrossLinkViewModel
 
 @{
-    var now = DateTime.Now;
+    var now = DateTimeHelper.DatabaseServerNow;
     var fromDate = new DateTime(now.Year, now.Month, 1).ToString("MM/dd/yyyy");
     var toDate = now.ToString("MM/dd/yyyy");
 
