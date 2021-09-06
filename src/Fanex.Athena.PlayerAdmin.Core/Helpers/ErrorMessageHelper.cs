@@ -120,8 +120,6 @@ namespace Fanex.Athena.PlayerAdmin.Core.Helpers
                     {
                         [nameof(request.Host)] = request?.Host,
                         [nameof(request.Path)] = request?.Path,
-                        [nameof(request.Body)] = request?.Body,
-                        ["Identity User"] = context.User?.Identity?.Name,
                         ["Remote IP"] = context.Connection?.RemoteIpAddress
                     };
         }

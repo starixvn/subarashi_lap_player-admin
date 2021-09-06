@@ -1,8 +1,8 @@
 ﻿using Fanex.Athena.PlayerAdmin.API.MetaModel;
 using Fanex.Athena.PlayerAdmin.API.Services.Interfaces;
 using Fanex.Athena.PlayerAdmin.API.ViewModels;
-using Fanex.Athena.PlayerAdmin.Core.Constants;
 using Fanex.Athena.PlayerAdmin.Core.Attributes;
+using Fanex.Athena.PlayerAdmin.Core.Constants;
 using Fanex.Athena.PlayerAdmin.Core.Services;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
@@ -28,9 +28,9 @@ namespace Fanex.Athena.PlayerAdmin.API.Controllers
 
         [HttpPost]
         [AutoBindingMetaModel(bindAgent: true, bindSiteName: true)]
-        public async Task<ActionResult<PlayerListResultViewModel>> Search(PlayerSearchingMetaModel searchParam)
+        public async Task<ActionResult<PlayerListResultViewModel>> Search(PlayerSearchingMetaModel metaModel)
         {
-            var result = await _playerListService.Search(searchParam);
+            var result = await _playerListService.Search(metaModel);
             return result;
         }
 

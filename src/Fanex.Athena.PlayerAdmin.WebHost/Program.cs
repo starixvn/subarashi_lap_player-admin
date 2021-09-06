@@ -25,16 +25,15 @@ namespace Fanex.Athena.PlayerAdmin.WebHost
                 config.AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true, reloadOnChange: true);
                 config.AddEnvironmentVariables();
             })
+            .ConfigureLogging(logging =>
+            {
+                logging.ClearProviders();
+                logging.AddConsole();
+            })
             .ConfigureWebHostDefaults(webBuilder =>
             {
                 webBuilder.UseStartup<Startup>();
-            })
-            .ConfigureLogging((config, logging) =>
-            {
-                logging.AddConfiguration(config.Configuration);
-                logging.ClearProviders();
-                logging.AddConsole();
-                logging.AddSentry();
+                webBuilder.UseSentry();
             })
             .Build();
     }

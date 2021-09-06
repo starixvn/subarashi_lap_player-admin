@@ -34,7 +34,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.HealthChecks" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="5.0.4" />
     <PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="5.0.1" />
-    <PackageReference Include="Sentry.Extensions.Logging" Version="2.1.6" />
+    <PackageReference Include="Sentry.AspNetCore" Version="2.1.6" />
   </ItemGroup>
 
   <ItemGroup>
