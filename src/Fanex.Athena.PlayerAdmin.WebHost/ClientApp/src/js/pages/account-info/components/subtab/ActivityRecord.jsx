@@ -43,7 +43,7 @@ export const ActivityRecord = ({ ibcCustId, createdDate, getActivityRecord }) =>
                         <td colSpan="2"></td>
                     </tr>
                     <tr>
-                        <td>{ClientResourceManager.getText('SpecialLevel')}</td>
+                        <td>{ClientResourceManager.getText('SpecialLevelUpdatedBy')}</td>
                         <td>{SpecialLevelUpdateBy}</td>
                     </tr>
                     <tr>

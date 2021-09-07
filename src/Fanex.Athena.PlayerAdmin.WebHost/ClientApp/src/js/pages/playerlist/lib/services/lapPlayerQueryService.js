@@ -30,8 +30,8 @@ export default class LapPlayerQueryService {
     }
   
     static _shouldBatchRequest(param) {
-      const { isMatchPrecise, bankAccountNumber, userName, email, pageSize } = param;
-      return (!userName || !isMatchPrecise) && !bankAccountNumber && !email && pageSize > maxLapPageSize;
+      const { isMatchPrecise, userName, pageSize } = param;
+      return (!userName || !isMatchPrecise) && !QueryServiceFactory._isChangeLAPSearch(param) && pageSize > maxLapPageSize;
     }
   
     static _batchRequest(param, maxLapPageSize, commonService, lapSearch) {

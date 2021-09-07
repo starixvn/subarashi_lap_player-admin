@@ -36,7 +36,7 @@ export const resource_en = {
     LastLogin: 'Last Login',
     BAUpdatedBy: 'BA Updated By',
     LastUpdatedBA: 'Last Updated BA',
-    SpecialLevel: 'Special Level',
+    SpecialLevelUpdatedBy: 'Special Level Updated By',
     LastUpdatedSpecialLevel: 'Last Updated Special Level',
     Margin: 'Margin',
     AverageBetSize: 'Average bet size',

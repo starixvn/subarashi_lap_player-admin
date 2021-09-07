@@ -72,8 +72,7 @@ export class PlayerDetail extends PureComponent {
             omittedHeight = heightSlicing.whenCollapsing;
         }
         else {
-            const key = isAdvancedSearch ? 'withAdvancedSearch' : 'default';
-            omittedHeight = heightSlicing[key];
+            omittedHeight = heightSlicing[isAdvancedSearch ? 'withAdvancedSearch' : 'default'];
         }
 
         return window.innerHeight - omittedHeight;

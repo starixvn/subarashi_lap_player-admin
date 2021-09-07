@@ -44,8 +44,7 @@ export class DataGrid extends PureComponent {
                 canSelectPlayers,
                 hasCommPermissionRead
             };
-
-            dataRows.push(<PlayerRow key={dataItem.LicenseeCustId} {...rowProps} />);
+            dataRows.push(<PlayerRow key={`${dataItem.LicenseeCustId}_${dataItem.IbcCustId}`} {...rowProps} />);
         }
 
         return dataRows;
