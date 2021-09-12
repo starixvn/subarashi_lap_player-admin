@@ -42,7 +42,8 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Repositories
                             BetValueMax = reader.ToDecimal("MaxBet_Min"),
                             BetValueMin = reader.ToDecimal("MinBet_Max"),
                             BetSettingType = reader.ToString("IBCBetTypeID"),
-                            Id = reader.ToString("GameTypeID")
+                            Id = reader.ToString("GameTypeID"),
+                            IsEnable = string.Equals(reader.ToString("IsDisabled"), "False", StringComparison.OrdinalIgnoreCase)
                         });
                     }
                 }

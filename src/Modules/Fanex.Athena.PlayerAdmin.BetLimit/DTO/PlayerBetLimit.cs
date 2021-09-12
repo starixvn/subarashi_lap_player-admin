@@ -25,5 +25,7 @@
         public decimal MaxPerBall { get; set; }
 
         public decimal MaxPerBallMax { get; set; }
+
+        public bool? IsEnable { get; set; }
     }
 }

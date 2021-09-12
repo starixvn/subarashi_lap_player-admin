@@ -27,7 +27,8 @@ export const BetLimitProduct = {
     VRG: 38,
     CC: 34,
     CS: 6,
-    CB: 15
+    CB: 15,
+    VGA: 66
 }
 
 export const BetLimitSport = {

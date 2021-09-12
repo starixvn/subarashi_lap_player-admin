@@ -149,5 +149,7 @@
         public const int VRG = 38;
 
         public const int CC = 34;
+
+        public const int VGA = 66;
     }
 }

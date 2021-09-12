@@ -31,7 +31,8 @@ const ConfirmationMsg = {
     [BetLimitProduct.VRG]: { Msg: 'UpdateProductBetSettings', Product: 'ProductVRG' },
     [BetLimitProduct.CC]: { Msg: 'UpdateProductBetSettings', Product: 'ProductCC' },
     [BetLimitProduct.CS]: { Msg: 'UpdateProductBetSettings', Product: 'ProductCS' },
-    [BetLimitProduct.CB]: { Msg: 'UpdateProductBetSettings', Product: 'ProductCB' }
+    [BetLimitProduct.CB]: { Msg: 'UpdateProductBetSettings', Product: 'ProductCB' },
+    [BetLimitProduct.VGA]: { Msg: 'UpdateProductBetSettings', Product: 'ProductVGA' }
 }
 
 const ConfirmationUpdateProductStatusMsg = {
@@ -56,7 +57,11 @@ const ConfirmationUpdateProductStatusMsg = {
     [BetLimitProduct.VRG]: { Msg: 'UpdateProductStatus', Product: 'ProductVRG' },
     [BetLimitProduct.CC]: { Msg: 'UpdateProductStatus', Product: 'ProductCC' },
     [BetLimitProduct.CS]: { Msg: 'UpdateProductStatus', Product: 'ProductCS' },
-    [BetLimitProduct.CB]: { Msg: 'UpdateProductStatus', Product: 'ProductCB' }
+    [BetLimitProduct.CB]: { Msg: 'UpdateProductStatus', Product: 'ProductCB' },
+    [BetLimitProduct.KN]: { Msg: 'UpdateProductStatus', Product: 'ProductKN' },
+    [BetLimitProduct.TG]: { Msg: 'UpdateProductStatus', Product: 'ProductTG' },
+    [BetLimitProduct.LT]: { Msg: 'UpdateProductStatus', Product: 'ProductLT' },
+    [BetLimitProduct.VGA]: { Msg: 'UpdateProductStatus', Product: 'ProductVGA' }
 }
 
 export default class Utility {

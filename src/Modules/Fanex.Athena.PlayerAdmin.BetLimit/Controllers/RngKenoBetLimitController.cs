@@ -9,6 +9,8 @@ using Fanex.Athena.PlayerAdmin.Core.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Fanex.Athena.PlayerAdmin.BetLimit.Services;
+using System.Linq;
 
 namespace Fanex.Athena.PlayerAdmin.BetLimit.Controllers
 {
@@ -16,11 +18,14 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Controllers
     public class RngKenoBetLimitController : PlayerBetLimitBaseControler
     {
         private readonly IRngKenoBetLimitService _service;
+        private readonly IThirdPartyBetLimitService _thirdPartyService;
 
         public RngKenoBetLimitController(IContextService contextService, IResourceService resourceService,
-            IRngKenoBetLimitService rngKenoBetLimitService) : base(contextService, resourceService)
+            IRngKenoBetLimitService rngKenoBetLimitService,
+            IThirdPartyBetLimitService thirdPartyService) : base(contextService, resourceService)
         {
             _service = rngKenoBetLimitService;
+            _thirdPartyService = thirdPartyService;
         }
 
         [HttpPost]
@@ -34,7 +39,9 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Controllers
             var viewModel = new PlayerBetLimitViewModel
             {
                 Data = AddProductName(data),
-                Editable = isEditable
+                Editable = isEditable,
+                IsStatusEnable = false,
+                StatusEnable = isEditable && data.Any(_ => _.IsEnable.HasValue && _.IsEnable.Value)
             };
 
             return viewModel;
