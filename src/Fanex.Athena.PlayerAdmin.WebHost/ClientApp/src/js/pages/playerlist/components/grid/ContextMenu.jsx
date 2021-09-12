@@ -51,14 +51,11 @@ export const ContextMenu = (props) => {
     return (
         <div className="dropdown context-menu" style={style}>
             <DropdownMenu onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} isOpen={isOpenContextMenu || isOpen}>
-                {
-                    activeMenuList.map(item => {
-                        const selectedTabName = item.tabName;
-                        const subTabName = item.subTabName;
-
-                        return <DropdownItem key={item.key} onClick={() => handleClickMenu(selectedTabName, subTabName)}>{item.name}</DropdownItem>
-                    })
-                }
+                {activeMenuList.map(item => {
+                    const selectedTabName = item.tabName;
+                    const subTabName = item.subTabName;
+                    return <DropdownItem key={item.key} onClick={() => handleClickMenu(selectedTabName, subTabName)}>{item.name}</DropdownItem>
+                })}
             </DropdownMenu>
         </div>
     )

@@ -5,28 +5,32 @@ import { bindActionCreators } from 'redux';
 import AthenaProfile from './AthenaProfile';
 import ApiProfile from './ApiProfile';
 import { licenseeType } from '../../lib/constants';
+import { SubsidiaryViewType } from '@jsroot/constants/report'
 
 export const AccountProfile = (props) => {
     const { licenseeCustId } = props;
     const [data, setData] = useState(null);
+    const [subsidiaryViewType, setSubsidiaryViewType] = useState(SubsidiaryViewType.NOT_MANAGEMENT);
 
     useEffect(() => {
         const param = { licenseeCustId };
-        props.getAccountProfile(param).then(result => setData(result));
+        props.getAccountProfile(param).then(setData);
+        props.getSubsidiaryViewType(param).then(setSubsidiaryViewType);
     }, [licenseeCustId]);
     
     return (
         <div className="left-side-content account-profile-container">
             <table className="table">
-                {props.licenseeType === licenseeType.api ? <ApiProfile data={data} /> : <AthenaProfile data={data} />}
+                {props.licenseeType === licenseeType.api ? 
+                <ApiProfile data={data} subsidiaryViewType={subsidiaryViewType} /> : <AthenaProfile data={data} subsidiaryViewType={subsidiaryViewType} />}
             </table>
         </div>
     );
 }
 
 function mapDispatchToProps(dispatch) {
-    const { getAccountProfile } = ActionCreators;
-    return bindActionCreators({ getAccountProfile }, dispatch);
+    const { getAccountProfile, getSubsidiaryViewType } = ActionCreators;
+    return bindActionCreators({ getAccountProfile, getSubsidiaryViewType }, dispatch);
 }
 
 function mapStateToProps(state) {

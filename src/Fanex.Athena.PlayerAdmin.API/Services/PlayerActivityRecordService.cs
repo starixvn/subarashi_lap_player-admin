@@ -21,7 +21,7 @@ namespace Fanex.Athena.PlayerAdmin.API.Services
 
             using (var db = _dbFactory.GetObjectDb(UspName))
             {
-                db.SetParameterValue("custid", metaModel.IbcCustId);
+                db.SetParameterValue("custid", metaModel.CustId);
                 db.SetParameterValue("siteName", metaModel.SiteName);
 
                 return db.QueryEntityAsync<PlayerActivityRecord>();

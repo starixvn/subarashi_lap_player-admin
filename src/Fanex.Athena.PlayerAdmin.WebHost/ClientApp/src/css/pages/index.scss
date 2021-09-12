@@ -50,7 +50,12 @@ $borderContainer: #d6d6d6;
             max-height: 280px;
         }
     }
+
+    .checkbox-group:nth-child(n+2):last-child {
+        margin-left: 30px;
+    }
 }
+
 /*End Filter*/
 
 /*Search Option*/

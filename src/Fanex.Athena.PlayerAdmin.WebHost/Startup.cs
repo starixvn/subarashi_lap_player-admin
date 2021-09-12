@@ -1,4 +1,4 @@
-using Fanex.Athena.PlayerAdmin.API.Extensions;
+using Fanex.Athena.PlayerAdmin.API;
 using Fanex.Athena.PlayerAdmin.BatchUpdate;
 using Fanex.Athena.PlayerAdmin.BetLimit.Extensions;
 using Fanex.Athena.PlayerAdmin.Commission.Extensions;

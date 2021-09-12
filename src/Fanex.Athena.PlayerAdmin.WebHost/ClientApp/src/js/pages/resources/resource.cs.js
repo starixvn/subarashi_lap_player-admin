@@ -61,4 +61,6 @@ export const resource_cs = {
     Draw: '和局',
     Cancelled: '已取消的',
     LastTransaction: '最后交易',
+    Whitelabel:"Whitelabel",
+    Subsidiary:"子网站",
 }

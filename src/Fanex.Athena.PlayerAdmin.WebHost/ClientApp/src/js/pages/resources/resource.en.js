@@ -61,4 +61,6 @@ export const resource_en = {
     Draw: 'Draw',
     Cancelled: 'Cancelled',
     LastTransaction: 'Last Transaction',
+    Whitelabel:"Whitelabel",
+    Subsidiary:"Subsidiary"
 }

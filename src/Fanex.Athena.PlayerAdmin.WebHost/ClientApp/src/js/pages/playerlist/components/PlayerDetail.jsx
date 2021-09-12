@@ -2,7 +2,7 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { ActionCreators } from '../actions';
-import { heightSlicing, excludedTabNameWithNonDepositAndArchived, tabNames, excludedTabNameWithClosed } from '../lib/constants';
+import { heightSlicing, excludedTabNameWithNonDepositAndArchived, tabNames, excludedTabNameWithClosed, excludedTabNameWithSubsidiary } from '../lib/constants';
 
 export class PlayerDetail extends PureComponent {
     constructor(props) {
@@ -36,16 +36,19 @@ export class PlayerDetail extends PureComponent {
     }
 
     _renderTabList(tabList) {
-        const { selectedPlayer } = this.props;
+        const { selectedPlayer, isSubsidiary } = this.props;
         const selectedTabName = this.props.selectedTabName || this._getDefaultSelectedTab();
-        const { isDeposit, isArchived } = selectedPlayer;
+        const { isDeposit, isArchived, isClosed } = selectedPlayer;
 
-        let renderedTabList = !isDeposit || isArchived ?
-            tabList.filter(item => !excludedTabNameWithNonDepositAndArchived.includes(item.Name)) : tabList;
-
-        if (selectedPlayer.isClosed) {
-            renderedTabList = renderedTabList.filter(item => !excludedTabNameWithClosed.includes(item.Name));
-        }
+        const renderedTabList = tabList.filter(tab => {
+            if ((!isDeposit || isArchived) && excludedTabNameWithNonDepositAndArchived.includes(tab.Name)) {
+                return false;
+            }
+            if(isClosed && excludedTabNameWithClosed.includes(tab.Name)) {
+                return false;
+            }
+            return !isSubsidiary || !excludedTabNameWithSubsidiary.includes(tab.Name);
+        });
 
         return (
             renderedTabList.map((item) => {
@@ -128,8 +131,8 @@ function mapDispatchToProps(dispatch) {
 }
 
 function mapStateToProps(state) {
-    const { selectedPlayer, isAdvancedSearch, isFilterCollapsing, selectedTabName, selectedSubTabName } = state;
-    return Object.assign({}, { selectedPlayer, isAdvancedSearch, isFilterCollapsing, selectedTabName, selectedSubTabName });
+    const { selectedPlayer, isSubsidiary, isAdvancedSearch, isFilterCollapsing, selectedTabName, selectedSubTabName } = state;
+    return Object.assign({}, { selectedPlayer, isSubsidiary, isAdvancedSearch, isFilterCollapsing, selectedTabName, selectedSubTabName });
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(PlayerDetail);

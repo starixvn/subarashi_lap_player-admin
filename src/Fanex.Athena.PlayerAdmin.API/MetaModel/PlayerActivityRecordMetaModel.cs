@@ -2,10 +2,10 @@
 
 namespace Fanex.Athena.PlayerAdmin.API.MetaModel
 {
-    public class PlayerActivityRecordMetaModel : ISiteNameMetaModel
+    public class PlayerActivityRecordMetaModel : ISiteNameMetaModel, ICustomerIdentityMetaModel
     {
-        public int IbcCustId { get; set; }
-
+        public int CustId { get; set; }
+        public int CurrencyId { get; set; }
         public string SiteName { get; set; }
     }
 }

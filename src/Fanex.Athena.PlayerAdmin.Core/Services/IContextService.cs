@@ -14,13 +14,17 @@ namespace Fanex.Athena.PlayerAdmin.Core.Services
         bool IsAllowedCustomerComm { get; }
         bool IsEnableBA { get; }
         bool IsEnableSingleWallet { get; }
+        bool IsEnabledSubsidiary { get; }
+        bool IsMasterLicensee { get; }
         int UserLevel { get; }
+        int? WhiteLabelID { get; }
+        string OperatorID { get; }
+        byte SubsidiaryViewType { get; }
         string ClientIP { get; }
         string Language { get; }
         bool IsShowIP { get; }
         bool IsShowIpVN { get; }
         Task<string> AccessToken { get; }
-
         bool IsInRoles(params string[] roles);
     }
 }

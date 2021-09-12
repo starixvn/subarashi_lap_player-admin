@@ -6,6 +6,7 @@ using Fanex.Athena.PlayerAdmin.Core.Extensions;
 using Fanex.Athena.PlayerAdmin.Core.Repositories;
 using Fanex.Athena.PlayerAdmin.Core.Settings;
 using Fanex.Data;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using System;
@@ -17,22 +18,13 @@ using System.Threading.Tasks;
 
 namespace Fanex.Athena.PlayerAdmin.API.Services
 {
-    internal class CustomerClassApiModel
-    {
-        public int CustomerClass { get; set; }
-    }
-
     public class PlayerListService : IPlayerListService
     {
         private readonly IDbFactory _dbFactory;
-        private readonly HttpClient _httpClient;
-        private readonly AppSetting _appSetting;
 
-        public PlayerListService(IDbFactory dbFactory, HttpClient httpClient, IOptions<AppSetting> appSetting)
+        public PlayerListService(IDbFactory dbFactory)
         {
             _dbFactory = dbFactory;
-            _httpClient = httpClient;
-            _appSetting = appSetting.Value;
         }
 
         public async Task<PlayerListResultViewModel> Search(PlayerSearchingMetaModel metaModel)
@@ -72,51 +64,7 @@ namespace Fanex.Athena.PlayerAdmin.API.Services
 
             return result;
         }
-
-        public async Task<IEnumerable<string>> GetCustomerClassList()
-        {
-            var customerClassFromApi = await GetCustomerClassFromApi();
-            var result = new List<string> { "0" };
-            result.AddRange(customerClassFromApi
-                .OrderBy(_ => _.CustomerClass)
-                .Select(_ => _.CustomerClass.ToString())
-                );
-            return result.Distinct();
-        }
-
-        public async Task<IEnumerable<CommGroupViewModel>> GetAllCommGroups(int licenseeId)
-        {
-            var result = new List<CommGroupViewModel> { new CommGroupViewModel() };
-
-            using (var objectDb = _dbFactory.GetObjectDb("Lrf_LicenseeGroupCommSel"))
-            {
-                objectDb.SetParameterValue("LicenseeID", licenseeId);
-
-                using (var reader = await objectDb.ExecuteReaderAsync())
-                {
-                    while (reader.Read())
-                    {
-                        result.Add(new CommGroupViewModel
-                        {
-                            Id = reader.ToString("GroupCommId"),
-                            Name = reader.ToString("GroupName")
-                        });
-                    }
-                }
-            }
-
-            return result;
-        }
-
-        private async Task<IEnumerable<CustomerClassApiModel>> GetCustomerClassFromApi()
-        {
-            using var request = new HttpRequestMessage(HttpMethod.Get, new Uri(_appSetting.CustomerClassUrl));
-            using var response = await _httpClient.SendAsync(request);
-            response.EnsureSuccessStatusCode();
-            var customerClassList = JsonConvert.DeserializeObject<IEnumerable<CustomerClassApiModel>>(await response.Content.ReadAsStringAsync());
-            return customerClassList;
-        }
-
+        
         private static void AssignCommonParam(IObjectDb objectDb, PlayerListBaseMetaModel metaModel)
         {
             objectDb.SetParameterValue("LicenseeName", metaModel.SiteName);

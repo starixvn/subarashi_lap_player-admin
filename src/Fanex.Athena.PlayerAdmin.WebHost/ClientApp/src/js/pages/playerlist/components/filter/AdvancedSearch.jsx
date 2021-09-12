@@ -13,8 +13,8 @@ export class AdvancedSearch extends React.Component {
         this.oddsGroupList = Object.keys(oddsGroupListWithStyle).map(item => ({ Id: item, Value: item, Status: true }));
         this.specialLevelList = Object.keys(specialLevelListWithColor).map(item => ({ Id: item, Value: getSpecialLevelText(item), Status: true }));
         this.baStatusList = Object.keys(baStatusList).map(item => ({ value: baStatusList[item], label: LangHelper.getSingleResource(item) }));
-        this.customerClassList = props.lrfFilters.CustomerClass.map(item => ({ Id: item, Value: getCustomerClassText(item), Status: true }));
-        this.commGroupList = props.lrfFilters.CommGroups.map(item => ({ Id: item.Id, Value: item.Name, Status: true }));
+        this.customerClassList = props.depositSetting.CustomerClass.map(item => ({ Id: item, Value: getCustomerClassText(item), Status: true }));
+        this.commGroupList = props.depositSetting.CommGroups.map(item => ({ Id: item.Id, Value: item.Name, Status: true }));
     }
 
     _createSelectData(originalList, selectedItemString) {
@@ -36,22 +36,22 @@ export class AdvancedSearch extends React.Component {
     };
 
     render() {
-        const { currencyList, param, isAllowedBA } = this.props;
+        const { currencyList, param, isAllowedBA, isSubsidiary } = this.props;
         const { currencyIdList, oddsGroup, specialLevel, baFilter } = param;
         const convertedCurrencyList = this._createSelectData(currencyList, currencyIdList);
         const oddsGroupList = this._createSelectData(this.oddsGroupList, oddsGroup);
         const specialLevelList = this._createSelectData(this.specialLevelList, specialLevel);
         const selectedBaStatus = isAllowedBA ? this.baStatusList.find(x => x.value === baFilter) : null;
 
-        const selectedCustomerClass = param.changeOnCustomerClass ? param.customerClass : this.props.lrfFilters.CustomerClass.join(",");
+        const selectedCustomerClass = param.changeOnCustomerClass ? param.customerClass : this.props.depositSetting.CustomerClass.join(",");
         const ddlCustomerClass = this._createSelectData(this.customerClassList, selectedCustomerClass);
 
-        const selectedCommGroups = param.changeOnCommGroups ? param.commGroups : this.props.lrfFilters.CommGroups.map(c => c.Id).join(",");
+        const selectedCommGroups = param.changeOnCommGroups ? param.commGroups : this.props.depositSetting.CommGroups.map(c => c.Id).join(",");
         const ddlCommGroups = this._createSelectData(this.commGroupList, selectedCommGroups);
 
         return (
             <>
-                <div className="col-12 col-md-3 col-sm-3 col-lg-2 col-xl-2">
+                <div className="col-12 col-md-3 col-sm-3 col-lg-2 col-xl-1">
                     <div className="form-group">
                         <label className="label-text">{LangHelper.getSingleResource("Currency")}</label>
                         <MultipleSelect id="currency"
@@ -114,8 +114,7 @@ export class AdvancedSearch extends React.Component {
                             onChange={(currentItem, selectedItemsKey) => this.handleChange('customerClass', selectedItemsKey)} />
                     </div>
                 </div>
-
-                <div className="col-12 col-md-4 col-sm-4 col-lg-3 col-xl-2">
+                {!isSubsidiary && <div className="col-12 col-md-4 col-sm-4 col-lg-3 col-xl-2">
                     <div className="form-group">
                         <label className="label-text">{LangHelper.getSingleResource("GroupCommission")}</label>
                         <MultipleSelect id="ddl-comm-group"
@@ -125,7 +124,7 @@ export class AdvancedSearch extends React.Component {
                             statusField={"Status"}
                             onChange={(currentItem, selectedItemsKey) => this.handleChange('commGroups', selectedItemsKey)} />
                     </div>
-                </div>
+                </div>}
             </>
         );
     }

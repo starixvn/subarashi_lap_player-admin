@@ -8,8 +8,7 @@ import * as gridOddsGroupAction from './gridOddsGroupAction';
 import * as gridSpecialLevelAction from './gridSpecialLevelAction';
 import * as gridPlayerStatusAction from './gridPlayerStatusAction';
 import * as gridUserNameAction from './gridUserNameAction';
-import * as siteSettingAction from './siteSettingAction';
-import * as lrfFiltersAction from './lrfFiltersAction';
+import * as settingAction from './settingAction';
 
 export const ActionCreators = Object.assign({},
     loaderAction,
@@ -22,6 +21,5 @@ export const ActionCreators = Object.assign({},
     gridSpecialLevelAction,
     gridPlayerStatusAction,
     gridUserNameAction,
-    siteSettingAction,
-    lrfFiltersAction
+    settingAction
 );

@@ -1,7 +1,7 @@
 ﻿using Fanex.Athena.PlayerAdmin.Core.Constants;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.Extensions.Configuration;
 using System;
+using System.Linq;
 
 namespace Fanex.Athena.PlayerAdmin.Core.Policies
 {
@@ -9,12 +9,11 @@ namespace Fanex.Athena.PlayerAdmin.Core.Policies
     {
         public static void NotAllowSubsidiaryPolicy(this AuthorizationOptions options)
         {
-            options.AddPolicy(Policy.NotAllowSubsidiary, policy => policy.RequireAssertion(context => context.User.HasClaim(claim =>
+            options.AddPolicy(Policy.NotAllowSubsidiary, policy => policy.RequireAssertion(context => !context.User.Claims.First(claim =>
             {
                 const string type = "userlevel";
-                const int subsidiaryLevel = 2;
-                return claim.Type.Equals(type, StringComparison.OrdinalIgnoreCase) && !claim.Equals(subsidiaryLevel);
-            })));
+                return claim.Type.Equals(type, StringComparison.OrdinalIgnoreCase);
+            }).Value.Equals(UserLevelType.Subsidiary.ToString())));
         }
     }
 }

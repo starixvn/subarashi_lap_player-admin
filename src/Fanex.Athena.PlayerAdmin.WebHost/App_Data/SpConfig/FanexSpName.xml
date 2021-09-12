@@ -15,7 +15,7 @@
     <Setting Key="Lrf_LicenseeProduct3rdSel_active" SpName="Lrf_LicenseeProduct3rdSel_active" DbName="DBLIC.bodb_Licensee.bodbLicenseeNet" />
   </Function>
   <Function Name="PlayerList">
-    <Setting Key="Lrf_CustomerSelByUsername" SpName="Lrf_CustomerSelByUsername" DbName="DBEXT.bodb02.bodbLicenseeNet" />
+    <Setting Key="Lrf_CustomerSelByUsername" SpName="Lrf_CustomerSelByUsername_xpre" DbName="DBEXT.bodb02.bodbLicenseeNet" />
     <Setting Key="Lrf_CustomerSelByCustid" SpName="Lrf_CustomerSelByCustid" DbName="DBEXT.bodb02.bodbLicenseeNet" />
     <Setting Key="Lrf_LicenseeProductByBetLimitSel" SpName="Lrf_LicenseeProductByBetLimitSel" DbName="DBLIC.bodb_Licensee.bodbLicenseeNet" />
     <Setting Key="Lrf_PlayerBettingStatistics" SpName="Lrf_PlayerBettingStatistics" DbName="DBACC.bodb02.bodbLicenseeNet" />
@@ -26,6 +26,7 @@
     <Setting Key="Lrf_CustomerSpecialLevelSel" SpName="Lrf_CustomerSpecialLevelSel" DbName="DBCUST.CustDB.bodbLicenseeNet" />
     <Setting Key="Lrf_CustomerUgroupSel" SpName="Lrf_CustomerUgroupSel" DbName="DBCUST.CustDB.bodbLicenseeNet" />
     <Setting Key="Lrf_CustomerBAStatusSel" SpName="Lrf_CustomerBAStatusSel" DbName="DBCUST.CustDB.bodbLicenseeNet" />
+    <Setting Key="Lrf_BATimeCheck" SpName="Lrf_BATimeCheck" DbName="DBCUST.CustDB.bodbLicenseeNet" />
   </Function>
   <Function Name="PlayerLog">
     <Setting Key="WriteLog_UserLog_UserControl" SpName="WriteLog_UserLog_UserControl" DbName="DBLOG.bodb_CustomerLog.bodbLicenseeNet" />
@@ -40,6 +41,10 @@
     <Setting Key="Lrf_CustomerClassSel" SpName="Lrf_CustomerClassSel" DbName="DBCUST.CustDB.bodbLicenseeNet" />
     <Setting Key="Lrf_CustomerClassPolicySel" SpName="Lrf_CustomerClassPolicySel" DbName="DBCUST.CustDB.bodbLicenseeNet" />
     <Setting Key="Lrf_CustomerClassSitePolicySel" SpName="Lrf_CustomerClassSitePolicySel" DbName="DBCUST.CustDB.bodbLicenseeNet" />
+  </Function>
+  <Function Name="SiteConfig">
+    <Setting Key="Lrf_SubsidiarySel" SpName="Lrf_SubsidiarySel" DbName="DBCUST.SiteConfig.bodbLicenseeNet" />
+    <Setting Key="Portal_Sub_GetSubsidiaryList" SpName="Portal_Sub_GetSubsidiaryList" DbName="DBCUST.SiteConfig.Dot_Admin_Portal" />
   </Function>
   <Function Name="AG Casino">
     <Setting Key="Lrf_AGC_SelCustSetting" SpName="Lrf_AGC_SelCustSetting" DbName="DBCUST.CustDB.bodbLicenseeNet" />

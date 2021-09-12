@@ -32,7 +32,7 @@ namespace Fanex.Athena.PlayerAdmin.BatchUpdate.Controllers
         [RequestValidation(validateProductId: ProductTypes.BA)]
         [AutoBindingMetaModel(bindLicenseeId: true, bindSiteName: true, bindClientIP: true, bindLanguage: true, bindUserId: true)]
         public async Task<JsonResult> UpdateBAStatus([FromServices] IContextService contextService, [FromServices]ILicenseeService licenseeService,
-            IOptions<AppSetting> appSetting,
+            [FromServices]IOptions<AppSetting> appSetting,
             UpdateBAStatusApiMetaModel metaModel)
         {
             if (await IsAllowUpdateBA(licenseeService, contextService.LicenseeId, contextService.Username, appSetting.Value.SpecialBAAdmins))

@@ -1,5 +1,4 @@
-﻿using Fanex.Athena.PlayerAdmin.Core.Constants;
-using Microsoft.AspNetCore.Authentication;
+﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
@@ -33,7 +32,46 @@ namespace Fanex.Athena.PlayerAdmin.Core.Services
 
         public bool IsEnableSingleWallet => GetClaimValue<bool>("IsEnableSingleWallet");
 
+        public bool IsEnabledSubsidiary => GetClaimValue<bool>("IsEnabledSubsidiary");
+
+        public bool IsMasterLicensee => GetClaimValue<bool>("IsMasterLicensee");
+
         public int UserLevel => GetClaimValue<int>("UserLevel");
+
+        public string OperatorID => GetClaimValue("OperatorID");
+
+        public int? WhiteLabelID
+        {
+            get
+            {
+                var value = GetClaimValue<int>("WhiteLabelID");
+                if (value < 0)
+                {
+                    return null;
+                }
+                return value;
+            }
+        }
+
+        public byte SubsidiaryViewType
+        {
+            get
+            {
+                if (IsEnabledSubsidiary && UserLevel < Constants.UserLevelType.Subsidiary)
+                {
+                    if (IsMasterLicensee && !WhiteLabelID.HasValue)
+                    {
+                        return Constants.SubsidiaryViewType.MasterManagement;
+                    }
+
+                    return Constants.SubsidiaryViewType.NormalManagement;
+                }
+                else
+                {
+                    return Constants.SubsidiaryViewType.NotManagement;
+                }
+            }
+        }
 
         public string SiteName => GetClaimValue("SiteName");
 

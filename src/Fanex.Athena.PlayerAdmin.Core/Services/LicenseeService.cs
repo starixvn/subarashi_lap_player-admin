@@ -96,6 +96,11 @@ namespace Fanex.Athena.PlayerAdmin.Core.Services
 
         public async Task<bool> CheckCustomerBelongTo(IReadOnlyDictionary<int, int[]> agentList, int custId, int currencyId = 0)
         {
+            if(custId == 0)
+            {
+                return true;
+            }
+
             using (var db = _dbFactory.GetObjectDb("Lrf_CheckBelonging_GetAgentInfo"))
             {
                 db.SetParameterValue("transid", 0);

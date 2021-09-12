@@ -31,7 +31,7 @@
         const IbcCustId = lapItem.IBCCustId || lrfItem.IbcCustId || 0;
         return {
             IbcCustId,
-            LicenseeCustId: lapItem.CustId,
+            LicenseeCustId: lapItem.CustId || 0,
             UserName: lapItem.UserName || lrfItem.UserName,
             SystemId: lapItem.IBCUserName || lrfItem.SystemId,
             VendorMemberId: lapItem.Vender_Member_ID,

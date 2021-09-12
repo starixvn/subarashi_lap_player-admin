@@ -9,7 +9,7 @@ export const ActivityRecord = ({ ibcCustId, createdDate, getActivityRecord }) =>
 
     useEffect(() => {
         if (data === null) {
-            const param = { ibcCustId };
+            const param = { custId: ibcCustId };
             getActivityRecord(param).then(result => setData(result));
         }
     }, [ibcCustId]);

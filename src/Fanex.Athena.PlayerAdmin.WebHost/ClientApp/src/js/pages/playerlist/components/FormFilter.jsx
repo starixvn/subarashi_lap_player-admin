@@ -10,13 +10,16 @@ import { licenseeType } from '../lib/constants';
 import CollapsiblePanel from '@jsroot/components/collapsible-panel';
 import UserGuide from '@jsroot/components/UserGuide';
 import LangHelper from '@jsroot/lib/langHelper';
-import { searchOptions, baStatusList, specialLevelListWithColor, emailPattern, oddsGroupListWithStyle, isDepositedList } from '../lib/constants';
+import { treeViewOption, searchOptions, baStatusList, specialLevelListWithColor,
+     emailPattern, oddsGroupListWithStyle, isDepositedList } from '../lib/constants';
 import UserNameInput from './filter/UserNameInput';
 import QueryString from '@jsroot/lib/QueryString';
 import { encode } from '@jsroot/lib/htmlHelper';
 import LicAthenaUserGuide from '../../userGuide/LicAthenaUserGuide';
 import LicApiUserGuide from '../../userGuide/LicApiUserGuide';
 import Select from 'react-select';
+import { TreeViewSelect } from '@9softstudio/react-multiselect'
+import { SubsidiaryViewType } from '@jsroot/constants/report'; 
 
 export class FormFilter extends PureComponent {
     constructor(props) {
@@ -44,7 +47,9 @@ export class FormFilter extends PureComponent {
             customerClass: "",
             changeOnCustomerClass: false,
             commGroups: "",
-            changeOnCommGroups: false
+            changeOnCommGroups: false,
+            subsidiarySearch: false,
+            selectedSubsidiaryList: "",
         };
     }
 
@@ -59,10 +64,10 @@ export class FormFilter extends PureComponent {
             this.userNameRef.current.value = userName;
         }
 
-        const { type, isSubsidiary, hasCommPermissionRead } = this.props;
-        const isEnableSingleWallet = window._pConfig.isEnableSingleWallet === 1;
-        this.props.getSiteSetting(type, isSubsidiary, hasCommPermissionRead, isEnableSingleWallet);
-        this.props.getLRFFilters();
+        const { type, hasCommPermissionRead } = this.props;
+        this.props.getSubsidiarySetting();
+        this.props.getDepositSetting();
+        this.props.getSiteSetting(type, hasCommPermissionRead);
     }
 
     componentDidUpdate(prevProps, prevState) {
@@ -73,10 +78,9 @@ export class FormFilter extends PureComponent {
                 oddsGroup: this.allOddsGroupString,
                 specialLevel: this.allSpecialLevel,
                 baFilter: baStatusList.All,
-
-                customerClass: this.props.lrfFilters.CustomerClass.join(','),
+                customerClass: this.props.depositSetting.CustomerClass.join(','),
                 changeOnCustomerClass: false,
-                commGroups: this.props.lrfFilters.CommGroups.map(c => c.Id).join(','),
+                commGroups: this.props.depositSetting.CommGroups.map(c => c.Id).join(','),
                 changeOnCommGroups: false
             });
         }
@@ -91,16 +95,16 @@ export class FormFilter extends PureComponent {
 
         const userName = this.userNameRef.current.value;
         const { pagingOption, searchPlayer, currencyList } = this.props;
-        const { specialLevel, currencyIdList, oddsGroup, ...restParam } = this.state;
+        const { specialLevel, currencyIdList, oddsGroup, subsidiarySearch, selectedSubsidiaryList, ...restParam } = this.state;
 
         const actualSpecialLevel = specialLevel.trim() === '' ? this.allSpecialLevel : specialLevel;
         const actualCurrencyIdList = currencyIdList.trim().split(',').length === currencyList.length ? '' : currencyIdList;
         const actualOddsGroup = oddsGroup.trim().split(',').length === Object.keys(oddsGroupListWithStyle).length ? '' : oddsGroup;
-        const actualCustomerClass = restParam.customerClass.trim().split(',').length === this.props.lrfFilters.CustomerClass.length
+        const actualCustomerClass = restParam.customerClass.trim().split(',').length === this.props.depositSetting.CustomerClass.length
             ? '' : restParam.customerClass;
 
         const actualCommGroups = this.state.changeOnCommGroups
-            ? restParam.commGroups : this.props.lrfFilters.CommGroups.map(c => c.Id).join(",");
+            ? restParam.commGroups : this.props.depositSetting.CommGroups.map(c => c.Id).join(",");
 
         const param = {
             ...restParam,
@@ -109,8 +113,10 @@ export class FormFilter extends PureComponent {
             oddsGroup: actualOddsGroup,
             specialLevel: actualSpecialLevel,
             customerClass: actualCustomerClass,
-            changeOnCommGroups: actualCommGroups.split(',').length != this.props.lrfFilters.CommGroups.length,
+            changeOnCommGroups: actualCommGroups.split(',').length != this.props.depositSetting.CommGroups.length,
             commGroups: actualCommGroups,
+            subsidiarySearch,
+            subsidiaryList: selectedSubsidiaryList,
             pageSize: pagingOption.PageSize,
             pageIndex: 1
         };
@@ -170,6 +176,21 @@ export class FormFilter extends PureComponent {
             content={this._renderContentUserGuide()} />)
     }
 
+    _renderSubsidiaryTreeView() {
+        return <TreeViewSelect
+            language={LangHelper.currentLanguage}
+            id="SubsidiaryTreeView"
+            dataSource={this.props.subsidiarySetting.SubsidiaryList}
+            keyField="Value"
+            valueField="Name"
+            statusField="Checked"
+            texts={{ SelectOptions: "Please select", All: "All", SelectedItemCount: "# selected" }}
+            isAllTextShown={false}
+            hasSearchBox={false}
+            treeViewOption={treeViewOption}
+            onChange={(currentItem, selectedItemsKey, treeViewList) => this.handleSpecificInputChange('selectedSubsidiaryList' , selectedItemsKey)} />;
+    }
+
     _getUserNameLabel() {
         return this.props.type === licenseeType.nonApi ?
             LangHelper.getSingleResource("Username") :
@@ -177,13 +198,15 @@ export class FormFilter extends PureComponent {
     }
 
     render() {
-        const { bankAccountNumber, email, searchOption, ipLogin, isDeposited, ...advancedSearchParam } = this.state;
-        const { type, isAdvancedSearch, isFilterCollapsing, currencyList, getSuggestionList, siteSetting } = this.props;
+        const { bankAccountNumber, email, searchOption, ipLogin, isDeposited, subsidiarySearch, selectedSubsidiaryList, ...advancedSearchParam } = this.state;
+        const { type, isSubsidiary, isAdvancedSearch, isFilterCollapsing, currencyList,
+             getSuggestionList, siteSetting, subsidiarySetting } = this.props;
         const { currencyIdList, oddsGroup, specialLevel } = advancedSearchParam;
 
         const isValidParam = !!currencyIdList && !!oddsGroup && !!specialLevel &&
             !(this.state.changeOnCustomerClass && !this.state.customerClass) &&
-            !(this.state.changeOnCommGroups && !this.state.commGroups);
+            !(this.state.changeOnCommGroups && !this.state.commGroups) &&
+            (!subsidiarySearch || selectedSubsidiaryList);
 
         const iconToggle = {
             tag: 'div',
@@ -195,6 +218,15 @@ export class FormFilter extends PureComponent {
             <CollapsiblePanel className="page-filter" iconToggle={iconToggle} stickyFooter={this.userGuide}
                 onCollapse={() => this.props.setCollapseFilter(true)} onExpand={() => this.props.setCollapseFilter(false)}>
                 <div className="row">
+                {subsidiarySetting.isAllowedSubsidiarySearch && subsidiarySearch && (<div className="col-12 col-md-4 col-sm-4 col-lg-3 col-xl-2">
+                        <div className="form-group">
+                            <label className="label-text">
+                                {subsidiarySetting.SubsidiaryViewType === SubsidiaryViewType.MASTER_MANAGEMENT ?
+                                 LangHelper.getSingleResource("WhiteLabel") : LangHelper.getSingleResource("Subsidiary")}
+                            </label>
+                            {this._renderSubsidiaryTreeView()}
+                        </div>
+                    </div>)}
                     <div className="col-12 col-md-4 col-sm-4 col-lg-3 col-xl-3">
                         <div className="form-group">
                             <label className="label-text">
@@ -206,13 +238,11 @@ export class FormFilter extends PureComponent {
                                 onKeyPress={this.handlePressEnter} onChange={(value) => this.handleUserNameChange(value)} />
                         </div>
                     </div>
-
                     {type === licenseeType.nonApi && <AthenaSearch onChange={this.handleChange}
                         bankAccountNumber={bankAccountNumber}
                         email={email}
                         ipLogin={ipLogin}
                         onKeyPress={this.handlePressEnter} />}
-
                     <div className="col-12 col-md-3 col-sm-3 col-lg-2 col-xl-1">
                         <div className="form-group">
                             <label className="label-text">{LangHelper.getSingleResource("Deposited")}</label>
@@ -223,15 +253,14 @@ export class FormFilter extends PureComponent {
                                 onChange={(item) => this.handleSpecificInputChange('isDeposited', item.value)} />
                         </div>
                     </div>
-
                     {isAdvancedSearch && <AdvancedSearch
                         currencyList={currencyList}
                         param={advancedSearchParam}
                         isAllowedBA={siteSetting.isAllowedBA}
+                        isSubsidiary={isSubsidiary}
                         onChange={this.handleSpecificInputChange}
-                        lrfFilters={this.props.lrfFilters} />
+                        depositSetting={this.props.depositSetting} />
                     }
-
                     <div className="col-12 col-md-2 col-sm-2 col-lg-2 col-xl-1">
                         <div className="form-group">
                             <div className="button-group">
@@ -240,14 +269,24 @@ export class FormFilter extends PureComponent {
                             </div>
                         </div>
                     </div>
-
-                    <div className="col-12 col-md-3 col-sm-3 col-lg-3 col-xl-2">
+                    <div className="col-12 col-md-6 col-sm-6 col-lg-3 col-xl-3"> 
                         <div className="form-group">
                             <CheckBox id="isAdvancedSearch"
                                 checked={isAdvancedSearch}
                                 onChange={checked => this.props.setAdvancedSearch(checked)}
                                 label={LangHelper.getSingleResource("AdvancedSearch")} />
+                                 {subsidiarySetting.isAllowedSubsidiarySearch && 
+                            <CheckBox id="SubsidiarySearch" className="SubsidiarySearch"
+                                checked={subsidiarySearch}
+                                onChange={checked => { 
+                                    this.handleSpecificInputChange('subsidiarySearch', checked);
+                                    this.handleSpecificInputChange('selectedSubsidiaryList', checked ? subsidiarySetting.defaultSelectedSubsidiaryList : '');
+                                }}
+                                label={LangHelper.getSingleResource("SubsidiarySearch")} />
+                      }
                         </div>
+                       
+                        
                     </div>
                 </div>
             </CollapsiblePanel>
@@ -256,13 +295,15 @@ export class FormFilter extends PureComponent {
 }
 
 function mapDispatchToProps(dispatch) {
-    const { searchPlayer, setAdvancedSearch, setCollapseFilter, getSuggestionList, getSinglePlayer, getSiteSetting, getLRFFilters } = ActionCreators;
-    return bindActionCreators({ searchPlayer, setAdvancedSearch, setCollapseFilter, getSuggestionList, getSinglePlayer, getSiteSetting, getLRFFilters }, dispatch);
+    const { searchPlayer, setAdvancedSearch, setCollapseFilter, getSuggestionList,
+         getSinglePlayer, getSiteSetting, getDepositSetting, getSubsidiarySetting} = ActionCreators;
+    return bindActionCreators({ searchPlayer, setAdvancedSearch, setCollapseFilter, getSuggestionList,
+         getSinglePlayer, getSiteSetting, getDepositSetting, getSubsidiarySetting }, dispatch);
 }
 
 function mapStateToProps(state) {
-    const { type, isAdvancedSearch, isFilterCollapsing, pagingOption, currencyList, siteSetting, isSubsidiary, lrfFilters } = state;
-    return Object.assign({}, { type, isAdvancedSearch, isFilterCollapsing, pagingOption, currencyList, siteSetting, isSubsidiary, lrfFilters });
+    const { type, isSubsidiary, isAdvancedSearch, isFilterCollapsing, pagingOption, currencyList, siteSetting, depositSetting, subsidiarySetting } = state;
+    return Object.assign({}, { type, isSubsidiary, isAdvancedSearch, isFilterCollapsing, pagingOption, currencyList, siteSetting, depositSetting, subsidiarySetting });
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(FormFilter);

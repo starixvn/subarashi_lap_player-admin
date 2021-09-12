@@ -1,9 +1,8 @@
 ﻿using Fanex.Athena.PlayerAdmin.API.Services;
 using Fanex.Athena.PlayerAdmin.API.Services.Interfaces;
-using Fanex.Core.Utils;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Fanex.Athena.PlayerAdmin.API.Extensions
+namespace Fanex.Athena.PlayerAdmin.API
 {
     public static class DefendencyInjectionExtension
     {
@@ -16,6 +15,8 @@ namespace Fanex.Athena.PlayerAdmin.API.Extensions
 
         private static IServiceCollection AddServices(this IServiceCollection services)
         {
+            services.AddSingleton<IDepositSettingService, DepositSettingService>();
+
             services.AddTransient<IPlayerActivityRecordService, PlayerActivityRecordService>();
             services.AddTransient<IPlayerBaStatusService, PlayerBaStatusService>();
             services.AddTransient<IPlayerBettingStatisticsService, PlayerBettingStatisticsService>();

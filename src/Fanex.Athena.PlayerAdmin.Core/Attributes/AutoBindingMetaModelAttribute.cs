@@ -4,6 +4,7 @@ using Fanex.Core.Utils;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -34,6 +35,7 @@ namespace Fanex.Athena.PlayerAdmin.Core.Attributes
     {
         private readonly IMetaModelBindingService _bindingService;
         private readonly ILicenseeService _licenseeService;
+        private readonly ISubsidiaryService _subsidiaryService;
         private readonly IContextService _contextService;
 
         private readonly bool _bindAgent;
@@ -46,7 +48,11 @@ namespace Fanex.Athena.PlayerAdmin.Core.Attributes
         private readonly bool _bindLicenseeId;
         private readonly bool _bindUsername;
 
-        public AutoBindingMetaModelImplAttribute(IMetaModelBindingService bindingService, ILicenseeService licenseeService, IContextService contextService,
+        public AutoBindingMetaModelImplAttribute(
+            IMetaModelBindingService bindingService,
+            ILicenseeService licenseeService,
+            ISubsidiaryService subsidiaryService,
+            IContextService contextService,
             bool bindAgent,
             bool bindSiteName,
             bool bindLanguage,
@@ -60,6 +66,7 @@ namespace Fanex.Athena.PlayerAdmin.Core.Attributes
         {
             _bindingService = bindingService;
             _licenseeService = licenseeService;
+            _subsidiaryService = subsidiaryService;
             _contextService = contextService;
 
             _bindAgent = bindAgent;
@@ -77,7 +84,7 @@ namespace Fanex.Athena.PlayerAdmin.Core.Attributes
         {
             if (_bindAgent)
             {
-                _bindingService.BindAgentXml(context.ActionArguments, _contextService.AgentList as IDictionary<int, int[]>);
+                await BindAgent(context);
             }
 
             if (_bindSiteName && MetaModelHelper.IsMetaModel(context.ActionArguments, out ISiteNameMetaModel siteNameMetaModel))
@@ -130,6 +137,17 @@ namespace Fanex.Athena.PlayerAdmin.Core.Attributes
             }
 
             await next();
+        }
+
+        private async Task BindAgent(ActionExecutingContext context)
+        {
+            var agentList = _contextService.AgentList as IDictionary<int, int[]>;
+            if (MetaModelHelper.IsMetaModel(context.ActionArguments, out ISubsidiarySearchMetaModel subsidiaryMetaModel)
+                && !_subsidiaryService.IsIgnoredSubsidiarySearch(subsidiaryMetaModel.SubsidiarySearch, subsidiaryMetaModel.SubsidiaryList, _contextService.SubsidiaryViewType))
+            {
+                agentList = await _subsidiaryService.GetAgentList(_contextService.SiteName, _contextService.AgentList, subsidiaryMetaModel.SubsidiaryList);
+            }
+            _bindingService.BindAgentXml(context.ActionArguments, agentList);
         }
     }
 }

@@ -96,6 +96,7 @@ export const excludedTabNameWithNonDepositAndArchived =
     [tabNames.statement, tabNames.betlist, tabNames.betSetting, tabNames.detailTransaction, tabNames.commissionGroup];
 
 export const excludedTabNameWithClosed = [tabNames.commissionGroup];
+export const excludedTabNameWithSubsidiary = [tabNames.commissionGroup];
 
 export const contextMenuList = [
     { key: contextMenuKeys.note, name: LangHelper.getSingleResource('Note'), tabName: 'lblPlayerAdminNote' },
@@ -119,6 +120,16 @@ export const searchOptions = {
     matchCase: '2',
     matchWholeWord: '3',
     matchPrecise: '4'
+}
+
+export const treeViewOption = {
+    childrenField: 'Children',
+    keyField: 'Value',
+    valueField: 'Name',
+    statusField: 'Checked',
+    indent: 30,
+    includeSelectedParentKey: false,
+    useOriginalDataSource: false
 }
 
 export const defaultPagingOption = {
@@ -201,7 +212,9 @@ export const apiUpdateInfo = {
     updatePlayerStatus: { action: 'PlayerAdminContainer/UpdatePlayerStatus', type: systemType.newAdmin }
 }
 
-export const apiSiteSetting = { type: systemType.playerAdmin, action: 'api/SiteSetting/GetSetting' };
+export const apiSiteSetting = { type: systemType.playerAdmin, action: 'api/Setting/GetSiteSetting' };
+export const apiDepositSetting = { type: systemType.playerAdmin, action: 'api/Setting/GetDepositSetting' };
+export const apiSubsidiarySetting = { type: systemType.playerAdmin, action: 'api/Setting/GetSubsidiarySetting' };
 
 export const apiSuggestion = { action: 'PlayerAdminContainer/GetSuggestionList', type: systemType.newAdmin };
 
