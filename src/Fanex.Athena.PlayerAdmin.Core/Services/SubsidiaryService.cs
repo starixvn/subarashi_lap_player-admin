@@ -59,12 +59,16 @@ namespace Fanex.Athena.PlayerAdmin.Core.Services
                 .OrderByDescending(x => x.WhiteLabelID)
                 .GroupBy(
                     x => x.WhiteLabelID,
-                    (key, group) => new SelectTreeItem
+                    (key, group) =>
                     {
-                        Value = key?.ToString() ?? OtherWhiteLabelID,
-                        Name = group.First().WhiteLabelName ?? ViewResources.Others,
-                        Checked = true,
-                        Children = group.Select(x => new SelectTreeItem { Value = x.OperatorId, Name = x.OperatorId, Checked = true })
+                        var whiteLabelName = group.First().WhiteLabelName;
+                        return new SelectTreeItem
+                        {
+                            Value = key?.ToString() ?? OtherWhiteLabelID,
+                            Name = string.IsNullOrEmpty(whiteLabelName) ? ViewResources.Others : whiteLabelName,
+                            Checked = true,
+                            Children = group.Select(x => new SelectTreeItem { Value = x.OperatorId, Name = x.OperatorId, Checked = true })
+                        };
                     });
 
         private async Task<IEnumerable<Subsidiary>> GetUserSubsidiaries(IReadOnlyDictionary<int, int[]> agentList, string siteName, int? whitteLabelId)

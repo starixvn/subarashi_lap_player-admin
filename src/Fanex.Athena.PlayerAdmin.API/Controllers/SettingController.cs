@@ -40,7 +40,7 @@ namespace Fanex.Athena.PlayerAdmin.API.Controllers
         [HttpPost]
         public async Task<ActionResult<DepositSettingViewModel>> GetDepositSetting([FromServices] IDepositSettingService depositSettingService)
         {
-            var commGroups = depositSettingService.GetAllCommGroups(_contextService.LicenseeId);
+            var commGroups = depositSettingService.GetCommGroupList(_contextService.LicenseeId);
             var customerClass = depositSettingService.GetCustomerClassList();
 
             await Task.WhenAll(commGroups, customerClass);

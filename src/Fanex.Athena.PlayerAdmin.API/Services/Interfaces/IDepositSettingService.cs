@@ -8,6 +8,6 @@ namespace Fanex.Athena.PlayerAdmin.API.Services
     {
         Task<IEnumerable<string>> GetCustomerClassList();
 
-        Task<IEnumerable<CommGroupViewModel>> GetAllCommGroups(int licenseeId);
+        Task<IEnumerable<CommGroupViewModel>> GetCommGroupList(int licenseeId);
     }
 }

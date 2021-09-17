@@ -42,7 +42,7 @@ namespace Fanex.Athena.PlayerAdmin.API.Services
             return result.Distinct();
         }
 
-        public async Task<IEnumerable<CommGroupViewModel>> GetAllCommGroups(int licenseeId)
+        public async Task<IEnumerable<CommGroupViewModel>> GetCommGroupList(int licenseeId)
         {
             var result = new List<CommGroupViewModel> { new CommGroupViewModel() };
 
