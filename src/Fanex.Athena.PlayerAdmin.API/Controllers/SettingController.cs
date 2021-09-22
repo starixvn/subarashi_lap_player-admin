@@ -38,18 +38,18 @@ namespace Fanex.Athena.PlayerAdmin.API.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<DepositSettingViewModel>> GetDepositSetting([FromServices] IDepositSettingService depositSettingService)
+        public async Task<IActionResult> GetDepositSetting([FromServices] IDepositSettingService depositSettingService)
         {
             var commGroups = depositSettingService.GetCommGroupList(_contextService.LicenseeId);
             var customerClass = depositSettingService.GetCustomerClassList();
 
             await Task.WhenAll(commGroups, customerClass);
 
-            return new DepositSettingViewModel
+            return Ok(new DepositSettingViewModel
             {
                 CustomerClass = await customerClass,
                 CommGroups = await commGroups
-            };
+            });
         }
 
         [HttpPost]

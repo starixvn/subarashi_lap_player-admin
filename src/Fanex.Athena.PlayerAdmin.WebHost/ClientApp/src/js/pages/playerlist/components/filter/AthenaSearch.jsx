@@ -7,7 +7,7 @@ const AthenaSearch = (props) => {
 
     return (
         <>
-            <div className="col-12 col-md-4 col-sm-4 col-lg-3 col-xl-2">
+            <div className="col-12 col-md-4 col-sm-6 col-lg-3 col-xl-2">
                 <div className="form-group">
                     <label className="label-text">{LangHelper.getSingleResource("BankAccountNumber")}</label>
                     <input className="input-text" id="bankAccountNumber" name="bankAccountNumber" type="text" value={bankAccountNumber}
@@ -16,7 +16,7 @@ const AthenaSearch = (props) => {
                 </div>
             </div>
 
-            <div className="col-12 col-md-4 col-sm-4 col-lg-3 col-xl-2">
+            <div className="col-12 col-md-4 col-sm-6 col-lg-3 col-xl-2">
                 <div className="form-group">
                     <label className="label-text">{LangHelper.getSingleResource("Email")}</label>
                     <input className="input-text" id="email" name="email" type="text" value={email}
@@ -25,7 +25,7 @@ const AthenaSearch = (props) => {
                 </div>
             </div>
 
-            <div className="col-12 col-md-4 col-sm-4 col-lg-3 col-xl-2">
+            <div className="col-12 col-md-4 col-sm-6 col-lg-3 col-xl-2">
                 <div className="form-group">
                     <label className="label-text">{LangHelper.getSingleResource("IPLogin")}</label>
                     <input className="input-text" id="ipLogin" name="ipLogin" type="text" value={ipLogin}

@@ -232,6 +232,33 @@ export const isDepositedList = {
     'No': 0
 };
 
+export const responsiveFilterColumn = {
+    username: {
+        [licenseeType.api]: "col-12 col-md-4 col-sm-6 col-lg-3 col-xl-3",
+        [licenseeType.nonApi]: "col-12 col-md-4 col-sm-6 col-lg-3 col-xl-2"
+    },
+    deposited: {
+        [licenseeType.api]: "col-12 col-md-4 col-sm-6 col-lg-2 col-xl-1",
+        [licenseeType.nonApi]: "col-12 col-md-4 col-sm-6 col-lg-3 col-xl-2"
+    },
+    currency: {
+        [licenseeType.api]: "col-12 col-md-4 col-sm-6 col-lg-2 col-xl-2",
+        [licenseeType.nonApi]: "col-12 col-md-4 col-sm-6 col-lg-3 col-xl-2"
+    }, 
+    oddsGroup: {
+        [licenseeType.api]: "col-12 col-md-4 col-sm-6 col-lg-2 col-xl-2",
+        [licenseeType.nonApi]: "col-12 col-md-4 col-sm-6 col-lg-3 col-xl-2"
+    }, 
+    customerClass: {
+        [licenseeType.api]: "col-12 col-md-4 col-sm-6 col-lg-2 col-xl-3",
+        [licenseeType.nonApi]: "col-12 col-md-4 col-sm-6 col-lg-3 col-xl-2"
+    }, 
+    groupCommission: {
+        [licenseeType.api]: "col-12 col-md-4 col-sm-6 col-lg-2 col-xl-3",
+        [licenseeType.nonApi]: "col-12 col-md-4 col-sm-6 col-lg-3 col-xl-2"
+    }, 
+}
+
 export const emailPattern = '^([a-zA-Z0-9_\\.\\-])+\\@(([a-zA-Z0-9\\-])+\\.)+([a-zA-Z0-9]{2,4})+$';
 
 export const maxLapPageSize = 250;

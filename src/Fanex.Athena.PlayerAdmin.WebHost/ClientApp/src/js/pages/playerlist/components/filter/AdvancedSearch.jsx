@@ -2,7 +2,7 @@
 import MultipleSelect from '@9softstudio/react-multiselect';
 import PropTypes from 'prop-types';
 import Select from 'react-select';
-import { baStatusList, specialLevelListWithColor, oddsGroupListWithStyle } from '../../lib/constants';
+import { baStatusList, specialLevelListWithColor, oddsGroupListWithStyle, responsiveFilterColumn } from '../../lib/constants';
 import LangHelper from '@jsroot/lib/langHelper';
 import { getSpecialLevelText, getCustomerClassText } from '../../lib/helpers/utils';
 
@@ -36,7 +36,7 @@ export class AdvancedSearch extends React.Component {
     };
 
     render() {
-        const { currencyList, param, isAllowedBA, isSubsidiary } = this.props;
+        const { currencyList, param, isAllowedBA, isSubsidiary, type } = this.props;
         const { currencyIdList, oddsGroup, specialLevel, baFilter } = param;
         const convertedCurrencyList = this._createSelectData(currencyList, currencyIdList);
         const oddsGroupList = this._createSelectData(this.oddsGroupList, oddsGroup);
@@ -48,10 +48,9 @@ export class AdvancedSearch extends React.Component {
 
         const selectedCommGroups = param.changeOnCommGroups ? param.commGroups : this.props.depositSetting.CommGroups.map(c => c.Id).join(",");
         const ddlCommGroups = this._createSelectData(this.commGroupList, selectedCommGroups);
-
         return (
             <>
-                <div className="col-12 col-md-3 col-sm-3 col-lg-2 col-xl-1">
+                <div className={responsiveFilterColumn["currency"][type]}>
                     <div className="form-group">
                         <label className="label-text">{LangHelper.getSingleResource("Currency")}</label>
                         <MultipleSelect id="currency"
@@ -63,7 +62,7 @@ export class AdvancedSearch extends React.Component {
                     </div>
                 </div>
 
-                <div className="col-12 col-md-3 col-sm-3 col-lg-2 col-xl-2">
+                <div className={responsiveFilterColumn["oddsGroup"][type]}>
                     <div className="form-group">
                         <label className="label-text">{LangHelper.getSingleResource("OddsGroup")}</label>
                         <MultipleSelect id="oddsGroup"
@@ -75,7 +74,7 @@ export class AdvancedSearch extends React.Component {
                     </div>
                 </div>
 
-                <div className="col-12 col-md-3 col-sm-3 col-lg-2 col-xl-1">
+                <div className="col-12 col-md-4 col-sm-6 col-lg-3 col-xl-2">
                     <div className="form-group">
                         <label className="label-text">{LangHelper.getSingleResource("SpecialLevel")}</label>
                         <MultipleSelect id="specialLevel"
@@ -90,7 +89,7 @@ export class AdvancedSearch extends React.Component {
                 {
                     selectedBaStatus !== null &&
                     (
-                        <div className="col-12 col-md-3 col-sm-3 col-lg-2 col-xl-1">
+                        <div className="col-12 col-md-4 col-sm-6 col-lg-3 col-xl-2">
                             <div className="form-group">
                                 <label className="label-text">{LangHelper.getSingleResource("BA")}</label>
                                 <Select instanceId='ddlBaStatus'
@@ -103,7 +102,7 @@ export class AdvancedSearch extends React.Component {
                     )
                 }
 
-                <div className="col-12 col-md-3 col-sm-3 col-lg-2 col-xl-1">
+                <div className={responsiveFilterColumn["customerClass"][type]}>
                     <div className="form-group">
                         <label className="label-text">{LangHelper.getSingleResource("CustomerClass")}</label>
                         <MultipleSelect id="ddl-customer-class"
@@ -114,7 +113,7 @@ export class AdvancedSearch extends React.Component {
                             onChange={(currentItem, selectedItemsKey) => this.handleChange('customerClass', selectedItemsKey)} />
                     </div>
                 </div>
-                {!isSubsidiary && <div className="col-12 col-md-4 col-sm-4 col-lg-3 col-xl-2">
+                {!isSubsidiary && <div className={responsiveFilterColumn["groupCommission"][type]}>
                     <div className="form-group">
                         <label className="label-text">{LangHelper.getSingleResource("GroupCommission")}</label>
                         <MultipleSelect id="ddl-comm-group"

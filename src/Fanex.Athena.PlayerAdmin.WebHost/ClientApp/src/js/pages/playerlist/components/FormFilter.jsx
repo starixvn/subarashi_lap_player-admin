@@ -11,7 +11,7 @@ import CollapsiblePanel from '@jsroot/components/collapsible-panel';
 import UserGuide from '@jsroot/components/UserGuide';
 import LangHelper from '@jsroot/lib/langHelper';
 import { treeViewOption, searchOptions, baStatusList, specialLevelListWithColor,
-     emailPattern, oddsGroupListWithStyle, isDepositedList } from '../lib/constants';
+    emailPattern, oddsGroupListWithStyle, isDepositedList, responsiveFilterColumn } from '../lib/constants';
 import UserNameInput from './filter/UserNameInput';
 import QueryString from '@jsroot/lib/QueryString';
 import { encode } from '@jsroot/lib/htmlHelper';
@@ -218,7 +218,7 @@ export class FormFilter extends PureComponent {
             <CollapsiblePanel className="page-filter" iconToggle={iconToggle} stickyFooter={this.userGuide}
                 onCollapse={() => this.props.setCollapseFilter(true)} onExpand={() => this.props.setCollapseFilter(false)}>
                 <div className="row">
-                {subsidiarySetting.isAllowedSubsidiarySearch && subsidiarySearch && (<div className="col-12 col-md-4 col-sm-4 col-lg-3 col-xl-2">
+                {subsidiarySetting.isAllowedSubsidiarySearch && subsidiarySearch && (<div className="col-12 col-md-4 col-sm-6 col-lg-3 col-xl-2">
                         <div className="form-group">
                             <label className="label-text">
                                 {subsidiarySetting.SubsidiaryViewType === SubsidiaryViewType.MASTER_MANAGEMENT ?
@@ -227,7 +227,7 @@ export class FormFilter extends PureComponent {
                             {this._renderSubsidiaryTreeView()}
                         </div>
                     </div>)}
-                    <div className="col-12 col-md-4 col-sm-4 col-lg-3 col-xl-3">
+                    <div className={responsiveFilterColumn["username"][type]}>
                         <div className="form-group">
                             <label className="label-text">
                                 {this._getUserNameLabel()}<span className={this.state.isMatchPrecise ? "" : "hide"}>/{LangHelper.getSingleResource("SystemId")}</span>
@@ -243,7 +243,7 @@ export class FormFilter extends PureComponent {
                         email={email}
                         ipLogin={ipLogin}
                         onKeyPress={this.handlePressEnter} />}
-                    <div className="col-12 col-md-3 col-sm-3 col-lg-2 col-xl-1">
+                    <div className={responsiveFilterColumn["deposited"][type]}>
                         <div className="form-group">
                             <label className="label-text">{LangHelper.getSingleResource("Deposited")}</label>
                             <Select instanceId='ddlDeposited'
@@ -259,6 +259,7 @@ export class FormFilter extends PureComponent {
                         isAllowedBA={siteSetting.isAllowedBA}
                         isSubsidiary={isSubsidiary}
                         onChange={this.handleSpecificInputChange}
+                        type={type}
                         depositSetting={this.props.depositSetting} />
                     }
                     <div className="col-12 col-md-2 col-sm-2 col-lg-2 col-xl-1">
@@ -269,7 +270,7 @@ export class FormFilter extends PureComponent {
                             </div>
                         </div>
                     </div>
-                    <div className="col-12 col-md-6 col-sm-6 col-lg-3 col-xl-3"> 
+                    <div className="col-12 col-md-6 col-sm-6 col-lg-4 col-xl-3"> 
                         <div className="form-group">
                             <CheckBox id="isAdvancedSearch"
                                 checked={isAdvancedSearch}
