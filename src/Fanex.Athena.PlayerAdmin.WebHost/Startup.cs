@@ -216,9 +216,9 @@ namespace Fanex.Athena.PlayerAdmin.WebHost
 
             app.UseHealthCheck(Configuration);
             app.UseStaticResource(HostingEnvironment.IsDevelopment());
+            app.UseUnderMaintenance();
             app.UseRouting();
             app.UseCors();
-            app.UseUnderMaintenance();
             app.UseCookieSameSitePolicy();
             app.UseAuthorization();
             app.UseRequestLocalization();

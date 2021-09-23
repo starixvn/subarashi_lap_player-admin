@@ -61,7 +61,7 @@ namespace Fanex.Athena.PlayerAdmin.Core.Attributes
 
             var clientDomain = new Uri(referrerUrl).Authority;
             var isValid = request.Host.Value.Equals(clientDomain, StringComparison.OrdinalIgnoreCase) ||
-                _setting.AllowedCrossDomains.Any(allowedCrossDomain => clientDomain.Equals(allowedCrossDomain, StringComparison.OrdinalIgnoreCase));
+                _setting.AllowedCrossDomains.Any(allowedCrossDomain => clientDomain.EndsWith(allowedCrossDomain, StringComparison.OrdinalIgnoreCase));
             return isValid;
         }
     }

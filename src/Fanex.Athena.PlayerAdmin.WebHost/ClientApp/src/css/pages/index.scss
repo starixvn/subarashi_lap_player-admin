@@ -32,6 +32,12 @@ $borderContainer: #d6d6d6;
 .page-filter {
     min-height: 30px;
 
+    .search-option-container {
+        position: absolute;
+        display: inline-block;
+        min-width: 42px;
+    }
+
     .search-option {
         .dropdown {
             &-menu {

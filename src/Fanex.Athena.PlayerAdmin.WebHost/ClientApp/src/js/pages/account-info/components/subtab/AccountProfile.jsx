@@ -22,7 +22,7 @@ export const AccountProfile = (props) => {
         <div className="left-side-content account-profile-container">
             <table className="table">
                 {props.licenseeType === licenseeType.api ? 
-                <ApiProfile data={data} subsidiaryViewType={subsidiaryViewType} /> : <AthenaProfile data={data} subsidiaryViewType={subsidiaryViewType} />}
+                <ApiProfile data={data} subsidiaryViewType={subsidiaryViewType} /> : <AthenaProfile data={data} />}
             </table>
         </div>
     );

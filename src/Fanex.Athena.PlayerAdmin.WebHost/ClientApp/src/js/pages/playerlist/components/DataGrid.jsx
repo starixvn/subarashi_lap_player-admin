@@ -76,7 +76,7 @@ export class DataGrid extends PureComponent {
 
         return (
             <>
-                <Table minWidth={650}
+                <Table
                     autoWidth={true}
                     maxWidth={this.maxWidth}
                     minWidth={1300}

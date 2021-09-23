@@ -1,9 +1,8 @@
 import React from 'react';
 import ClientResourceManager from '@jsroot/lib/clientResourceManager';
-import { SubsidiaryViewType } from '@jsroot/constants/report'
 
-export const AthenaProfile = ({ data, subsidiaryViewType }) => {
-    const { AGUserId, Whitelabel, Subsidiary, GoldDeluxeUserId, VoidbridgeUserId, ExchangeUserId,
+export const AthenaProfile = ({ data }) => {
+    const { AGUserId, GoldDeluxeUserId, VoidbridgeUserId, ExchangeUserId,
         FirstName, LastName, Gender, Birthday, Phone, Country, Address, City, Town, State, ZipCode,
         SecurityQuestion, SecurityCode, HowToKnow, PreferredUserName, PreferredCurrency, PreferredOdds, PreferredLanguage } = data || {};
 
@@ -28,14 +27,6 @@ export const AthenaProfile = ({ data, subsidiaryViewType }) => {
             <tr>
                 <td colSpan="2"></td>
             </tr>
-            {subsidiaryViewType === SubsidiaryViewType.MASTER_MANAGEMENT && <tr>
-                <td>{ClientResourceManager.getText('Whitelabel')}</td>
-                <td>{Whitelabel}</td>
-            </tr>}
-            {subsidiaryViewType !== SubsidiaryViewType.NOT_MANAGEMENT && <tr>
-                <td>{ClientResourceManager.getText('Subsidiary')}</td>
-                <td>{Subsidiary}</td>
-            </tr>}
             <tr>
                 <td>{ClientResourceManager.getText('FirstName')}</td>
                 <td>{FirstName}</td>

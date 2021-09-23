@@ -3,19 +3,11 @@ import ClientResourceManager from '@jsroot/lib/clientResourceManager';
 import { SubsidiaryViewType } from '@jsroot/constants/report'
 
 const ApiProfile = ({ data, subsidiaryViewType }) => {
-    const { MemberId, Whitelabel, Subsidiary, FirstName, LastName, OperatorId, SiteCode, ProductCode,
+    const { MemberId, Whitelabel, FirstName, LastName, OperatorId, SiteCode, ProductCode,
         CustomInfo1, CustomInfo2, CustomInfo3, CustomInfo4, CustomInfo5, ExchangeUserId } = data || {};
 
     return (
         <tbody>
-            {subsidiaryViewType === SubsidiaryViewType.MASTER_MANAGEMENT && <tr>
-                <td>{ClientResourceManager.getText('Whitelabel')}</td>
-                <td>{Whitelabel}</td>
-            </tr>}
-            {subsidiaryViewType !== SubsidiaryViewType.NOT_MANAGEMENT && <tr>
-                <td>{ClientResourceManager.getText('Subsidiary')}</td>
-                <td>{Subsidiary}</td>
-            </tr>}
             <tr>
                 <td className="first-cell">{ClientResourceManager.getText('MemberId')}</td>
                 <td>{MemberId}</td>
@@ -28,10 +20,14 @@ const ApiProfile = ({ data, subsidiaryViewType }) => {
                 <td>{ClientResourceManager.getText('LastName')}</td>
                 <td>{LastName}</td>
             </tr>
-            <tr>
+            {subsidiaryViewType !== SubsidiaryViewType.NOT_MANAGEMENT && <tr>
                 <td>{ClientResourceManager.getText('OperatorId')}</td>
                 <td>{OperatorId}</td>
-            </tr>
+            </tr>}
+            {subsidiaryViewType === SubsidiaryViewType.MASTER_MANAGEMENT && <tr>
+                <td>{ClientResourceManager.getText('Whitelabel')}</td>
+                <td>{Whitelabel}</td>
+            </tr>}
             <tr>
                 <td colSpan="2"></td>
             </tr>
