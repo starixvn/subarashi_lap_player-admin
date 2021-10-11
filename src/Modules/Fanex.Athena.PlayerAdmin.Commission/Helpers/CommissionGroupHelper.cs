@@ -89,6 +89,7 @@ namespace Fanex.Athena.PlayerAdmin.Commission.Helpers
             return columnsInTable;
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Major Code Smell", "S109:Magic numbers should not be used", Justification = "Howard")]
         public static int GetCommPart(decimal comm, int position)
         {
             var actualComm = comm * 10000;

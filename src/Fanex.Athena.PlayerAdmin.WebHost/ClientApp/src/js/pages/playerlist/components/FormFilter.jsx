@@ -272,7 +272,7 @@ export class FormFilter extends PureComponent {
                             </div>
                         </div>
                     </div>
-                    <div className="col-12 col-md-6 col-sm-6 col-lg-4 col-xl-3"> 
+                    <div className={`col-12 col-md-6 col-sm-6 col-lg-${subsidiarySetting.isAllowedSubsidiarySearch ? 4 : 3} col-xl-${subsidiarySetting.isAllowedSubsidiarySearch ? 3 : 2}`} > 
                         <div className="form-group">
                             <CheckBox id="isAdvancedSearch"
                                 checked={isAdvancedSearch}

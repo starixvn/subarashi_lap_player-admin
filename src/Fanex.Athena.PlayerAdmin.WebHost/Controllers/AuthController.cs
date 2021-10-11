@@ -72,7 +72,7 @@ namespace Fanex.Athena.PlayerAdmin.WebHost.Controllers
 
             var properties = new AuthenticationProperties();
             properties.StoreTokens(new[] {
-                new AuthenticationToken()
+                new AuthenticationToken
                 {
                   Name = "access_token",
                   Value = tokenResponse.AccessToken

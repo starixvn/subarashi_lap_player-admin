@@ -13,10 +13,10 @@ namespace Fanex.Athena.PlayerAdmin.Core.Mediator
 
         public int CustID { get; set; }
 
+        public byte TypeId => UserControlLogType.Function;
+
         public abstract int ActionID { get; }
 
         public abstract string Doing { get; }
-
-        public byte TypeId => UserControlLogType.Function;
     }
 }

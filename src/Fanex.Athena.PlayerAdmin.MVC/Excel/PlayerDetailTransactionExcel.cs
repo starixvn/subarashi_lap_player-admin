@@ -42,7 +42,7 @@ namespace Fanex.Athena.PlayerAdmin.MVC.Excel
 
         protected override void AssignNoInfoRow(ISheet sheet)
         {
-            sheet.SetTextRowValue(TemplateSheet, RowContentTemplate, RowContentTemplate, ColumnTemplateCount, ViewResources.NoInfo);
+            sheet.SetTextRowValue(TemplateSheet, sourceRowIndex: RowContentTemplate, destRowIndex: RowContentTemplate, ColumnTemplateCount, ViewResources.NoInfo);
         }
 
         protected override void AssignSheetData(ISheet sheet)

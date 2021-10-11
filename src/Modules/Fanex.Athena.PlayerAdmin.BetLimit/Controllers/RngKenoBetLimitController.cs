@@ -2,15 +2,14 @@
 using Fanex.Athena.PlayerAdmin.BetLimit.MetaModel;
 using Fanex.Athena.PlayerAdmin.BetLimit.Services.Interfaces;
 using Fanex.Athena.PlayerAdmin.BetLimit.ViewModels;
-using Fanex.Athena.PlayerAdmin.Core.Constants;
 using Fanex.Athena.PlayerAdmin.Core.Attributes;
+using Fanex.Athena.PlayerAdmin.Core.Constants;
 using Fanex.Athena.PlayerAdmin.Core.Resources;
 using Fanex.Athena.PlayerAdmin.Core.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
-using System.Threading.Tasks;
-using Fanex.Athena.PlayerAdmin.BetLimit.Services;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Fanex.Athena.PlayerAdmin.BetLimit.Controllers
 {
@@ -18,14 +17,11 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Controllers
     public class RngKenoBetLimitController : PlayerBetLimitBaseControler
     {
         private readonly IRngKenoBetLimitService _service;
-        private readonly IThirdPartyBetLimitService _thirdPartyService;
 
         public RngKenoBetLimitController(IContextService contextService, IResourceService resourceService,
-            IRngKenoBetLimitService rngKenoBetLimitService,
-            IThirdPartyBetLimitService thirdPartyService) : base(contextService, resourceService)
+            IRngKenoBetLimitService rngKenoBetLimitService) : base(contextService, resourceService)
         {
             _service = rngKenoBetLimitService;
-            _thirdPartyService = thirdPartyService;
         }
 
         [HttpPost]

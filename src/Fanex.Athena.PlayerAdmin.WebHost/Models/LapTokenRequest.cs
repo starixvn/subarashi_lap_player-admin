@@ -4,8 +4,10 @@ namespace Fanex.Athena.PlayerAdmin.WebHost.Models
 {
     public class LapTokenRequest
     {
+        const int MaxLengthToken = 30;
+
         [Required]
-        [StringLength(30)]
+        [StringLength(MaxLengthToken)]
         public string Token { get; set; }
     }
 }

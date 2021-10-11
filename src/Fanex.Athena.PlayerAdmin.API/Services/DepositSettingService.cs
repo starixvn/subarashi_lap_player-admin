@@ -3,6 +3,7 @@ using Fanex.Athena.PlayerAdmin.API.ViewModels;
 using Fanex.Athena.PlayerAdmin.Core.Extensions;
 using Fanex.Athena.PlayerAdmin.Core.Repositories;
 using Fanex.Athena.PlayerAdmin.Core.Settings;
+using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
@@ -16,24 +17,30 @@ namespace Fanex.Athena.PlayerAdmin.API.Services
 {
     public class DepositSettingService : IDepositSettingService
     {
+        private static readonly TimeSpan OneHour = TimeSpan.FromHours(1);
+
         private readonly IDbFactory _dbFactory;
+        private readonly IMemoryCache _cache;
         private readonly HttpClient _httpClient;
         private readonly AppSetting _appSetting;
         private readonly ILogger<DepositSettingService> _logger;
 
         public DepositSettingService(IDbFactory dbFactory, HttpClient httpClient,
+            IMemoryCache cache,
             IOptions<AppSetting> appSetting,
             ILogger<DepositSettingService> logger)
         {
             _dbFactory = dbFactory;
             _httpClient = httpClient;
+            _cache = cache;
             _appSetting = appSetting.Value;
             _logger = logger;
         }
 
         public async Task<IEnumerable<string>> GetCustomerClassList()
         {
-            var customerClassFromApi = await GetCustomerClassFromApi();
+            const string CacheKey = "CustomerClassList";
+            var customerClassFromApi = await TryGetOrAddFromCache(CacheKey, OneHour, GetCustomerClassFromApi);
             var result = new List<string> { "0" };
             result.AddRange(customerClassFromApi
                 .OrderBy(_ => _.CustomerClass)
@@ -44,7 +51,15 @@ namespace Fanex.Athena.PlayerAdmin.API.Services
 
         public async Task<IEnumerable<CommGroupViewModel>> GetCommGroupList(int licenseeId)
         {
-            var result = new List<CommGroupViewModel> { new CommGroupViewModel() };
+            var commGroups = new List<CommGroupViewModel> { new CommGroupViewModel() };
+            var commGroupsFromDB = await TryGetOrAddFromCache($"CommGroupList_{licenseeId}", OneHour, () => GetCommGroupFromDB(licenseeId));
+            commGroups.AddRange(commGroupsFromDB);
+            return commGroups;
+        }
+
+        public async Task<IEnumerable<CommGroupViewModel>> GetCommGroupFromDB(int licenseeId)
+        {
+            var commGroupsFromDB = new List<CommGroupViewModel>();
 
             using (var objectDb = _dbFactory.GetObjectDb("Lrf_LicenseeGroupCommSel"))
             {
@@ -54,7 +69,7 @@ namespace Fanex.Athena.PlayerAdmin.API.Services
                 {
                     while (reader.Read())
                     {
-                        result.Add(new CommGroupViewModel
+                        commGroupsFromDB.Add(new CommGroupViewModel
                         {
                             Id = reader.ToString("GroupCommId"),
                             Name = reader.ToString("GroupName")
@@ -63,7 +78,7 @@ namespace Fanex.Athena.PlayerAdmin.API.Services
                 }
             }
 
-            return result;
+            return commGroupsFromDB;
         }
 
         private async Task<IEnumerable<CustomerClassApiModel>> GetCustomerClassFromApi()
@@ -81,6 +96,19 @@ namespace Fanex.Athena.PlayerAdmin.API.Services
                 _logger.LogCritical(ex, $"Error occurred while calling CustomerClass api {_appSetting.CustomerClassUrl}");
                 return Enumerable.Empty<CustomerClassApiModel>();
             }
+        }
+
+        private async Task<T> TryGetOrAddFromCache<T>(string cacheKey, TimeSpan cacheTime, Func<Task<T>> func)
+        {
+            if (!_cache.TryGetValue(cacheKey, out T data))
+            {
+                data = await func.Invoke();
+                if (data is not null)
+                {
+                    _cache.Set(cacheKey, data, cacheTime);
+                }
+            }
+            return data;
         }
     }
 }

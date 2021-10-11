@@ -4,7 +4,6 @@ using Fanex.Core.Utils;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using System;
-using System.Linq;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -119,24 +118,34 @@ namespace Fanex.Athena.PlayerAdmin.Core.Attributes
 
             if (_bindBalanceUp && MetaModelHelper.IsMetaModel(context.ActionArguments, out IBalanceUpAndMoveBetMetaModel balanceUpAndMoveBetMetaModel))
             {
-                var balanceUp = await _licenseeService.GetBalanceUp();
-                balanceUpAndMoveBetMetaModel.BalanceUpDay = balanceUp.BalanceUpDay;
-                balanceUpAndMoveBetMetaModel.MoveBetsDay = balanceUp.MoveBetsDay;
+                await BindBalanceUp(balanceUpAndMoveBetMetaModel);
             }
 
             if (_bindLicenseeContract && MetaModelHelper.IsMetaModel(context.ActionArguments, out IFunctionContractMetaModel functionContractMetaModel))
             {
-                var productAccess = await _licenseeService.GetSingleWalletProductAccess(
-                    _contextService.LicenseeId,
-                    "en-US",
-                    functionContractMetaModel.FunctionKey);
-
-                functionContractMetaModel.HasComm = _contextService.IsAllowedCustomerComm;
-                functionContractMetaModel.IsAllowedBA = productAccess.IsAllowBA;
-                functionContractMetaModel.SystemIdVisible = !_licenseeService.IsFakeLicensee(_contextService.SiteName);
+                await BindLicenseeContract(functionContractMetaModel);
             }
 
             await next();
+        }
+
+        private async Task BindBalanceUp(IBalanceUpAndMoveBetMetaModel balanceUpAndMoveBetMetaModel)
+        {
+            var balanceUp = await _licenseeService.GetBalanceUp();
+            balanceUpAndMoveBetMetaModel.BalanceUpDay = balanceUp.BalanceUpDay;
+            balanceUpAndMoveBetMetaModel.MoveBetsDay = balanceUp.MoveBetsDay;
+        }
+
+        private async Task BindLicenseeContract(IFunctionContractMetaModel functionContractMetaModel)
+        {
+            var productAccess = await _licenseeService.GetSingleWalletProductAccess(
+                   _contextService.LicenseeId,
+                   "en-US",
+                   functionContractMetaModel.FunctionKey);
+
+            functionContractMetaModel.HasComm = _contextService.IsAllowedCustomerComm;
+            functionContractMetaModel.IsAllowedBA = productAccess.IsAllowBA;
+            functionContractMetaModel.SystemIdVisible = !_licenseeService.IsFakeLicensee(_contextService.SiteName);
         }
 
         private async Task BindAgent(ActionExecutingContext context)

@@ -23,6 +23,7 @@ namespace Fanex.Athena.PlayerAdmin.Core.Attributes
     [AttributeUsage(AttributeTargets.Method | AttributeTargets.Class, AllowMultiple = false)]
     public class DataValidationImplAttribute : ActionFilterAttribute
     {
+        private const int NoValidationProductId = -99;
         private const string ErrorMsg = "Invalid Params";
 
         private readonly IContextService _contextService;
@@ -66,12 +67,13 @@ namespace Fanex.Athena.PlayerAdmin.Core.Attributes
             result &= !_validateCustId || (MetaModelHelper.IsMetaModel(actionArguments, out ICustomerIdentityMetaModel customerIdentityMetaModel)
                 && await _licenseeService.CheckCustomerBelongTo(_contextService.AgentList, customerIdentityMetaModel.CustId, customerIdentityMetaModel.CurrencyId));
 
-            result &= _validateProductId == -99 || await _licenseeService.CheckProductBelongsTo(_contextService.SiteName, GetProductId(actionArguments, _validateProductId), _limitedProductIds);
+            result &= _validateProductId == NoValidationProductId 
+                || await _licenseeService.CheckProductBelongsTo(_contextService.SiteName, GetProductId(actionArguments, _validateProductId), _limitedProductIds);
 
             return result;
         }
 
-        private int GetProductId(IDictionary<string, object> actionArguments, int validateProductId)
+        private static int GetProductId(IDictionary<string, object> actionArguments, int validateProductId)
         {
             if (validateProductId >= 0)
             {

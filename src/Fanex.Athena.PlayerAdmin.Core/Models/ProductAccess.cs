@@ -9,15 +9,17 @@ namespace Fanex.Athena.PlayerAdmin.Core.Models
     {
         public ProductAccess(IList<Product> productList)
         {
-            ProductList = new ReadOnlyCollection<Product>(productList);
+            _productList = new ReadOnlyCollection<Product>(productList);
         }
 
-        public readonly ReadOnlyCollection<Product> ProductList;
+        private readonly ReadOnlyCollection<Product> _productList;
 
-        public IEnumerable<string> ListProductCode => ProductList.Select(_ => _.ProductCode);
+        public ReadOnlyCollection<Product> ProductList => _productList;
 
-        public bool IsAllowBA => ProductList.Any(p => p.ProductCode == ProductCode.BA);
+        public IEnumerable<string> ListProductCode => _productList.Select(_ => _.ProductCode);
 
-        public bool IsAllow(string productCode) => ProductList.Any(p => p.ProductCode == productCode);
+        public bool IsAllowBA => _productList.Any(p => p.ProductCode == ProductCode.BA);
+
+        public bool IsAllow(string productCode) => _productList.Any(p => p.ProductCode == productCode);
     }
 }

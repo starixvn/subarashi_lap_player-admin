@@ -25,7 +25,7 @@ namespace Fanex.Athena.PlayerAdmin.Commission.Repositories
             var comms = new List<PlayerCommissionViewModel>();
             var hardcodedColumns = CommissionGroupHelper.MapHardcodedNameFromDB(criteria.Permissions, isUpdate: false);
 
-            using (var db = dbFactory.GetObjectDb(criteria.GetSPName()))
+            using (var db = dbFactory.GetObjectDb(criteria.SPName))
             {
                 criteria.SetParameterValues(db);
                 using (var reader = await db.ExecuteReaderAsync())
@@ -50,7 +50,7 @@ namespace Fanex.Athena.PlayerAdmin.Commission.Repositories
             var comm = new PlayerCommissionViewModel();
             var hardcodedColumns = CommissionGroupHelper.MapHardcodedNameFromDB(criteria.Permissions, isUpdate: false);
 
-            using (var db = dbFactory.GetObjectDb(criteria.GetSPName()))
+            using (var db = dbFactory.GetObjectDb(criteria.SPName))
             {
                 criteria.SetParameterValues(db);
                 using (var reader = await db.ExecuteReaderAsync())
@@ -112,7 +112,7 @@ namespace Fanex.Athena.PlayerAdmin.Commission.Repositories
             var comm = new PlayerCommissionViewModel();
             var hardcodedColumns = CommissionGroupHelper.MapHardcodedNameFromDB(criteria.Permissions, isUpdate: false);
 
-            using (var db = dbFactory.GetObjectDb(criteria.GetSPName()))
+            using (var db = dbFactory.GetObjectDb(criteria.SPName))
             {
                 criteria.SetParameterValues(db);
                 using (var reader = await db.ExecuteReaderAsync())

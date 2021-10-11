@@ -19,7 +19,7 @@ namespace Fanex.Athena.PlayerAdmin.Commission.Criteria
 
         public IDictionary<string, bool> Permissions { get; set; }
 
-        public string GetSPName() => "Lrf_GroupCommGetById";
+        public string SPName => "Lrf_GroupCommGetById";
 
         public void SetParameterValues(IObjectDb db)
         {

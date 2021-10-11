@@ -4,6 +4,7 @@ using Microsoft.Extensions.Diagnostics.HealthChecks;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
@@ -43,7 +44,7 @@ namespace Fanex.Athena.PlayerAdmin.Core.HealthCheck
             for (var i = 0; i < serverIps.Length; i++)
             {
                 if (serverIps[i].AddressFamily == AddressFamily.InterNetwork)
-                { 
+                {
                     result.Add($"IP{i}", serverIps[i].ToString());
                 }
             }
@@ -55,7 +56,7 @@ namespace Fanex.Athena.PlayerAdmin.Core.HealthCheck
             result.Add("Local Ip", context.Connection.LocalIpAddress.ToString());
             result.Add("Local Port", context.Connection.LocalPort);
             result.Add("Client Ip", context.Connection.RemoteIpAddress.ToString());
-            result.Add("Server Time", DateTime.Now.ToString());
+            result.Add("Server Time", DateTime.Now.ToString(CultureInfo.InvariantCulture));
             result.Add("Host", context.Request.Host);
             result.Add("Schema", context.Request.Scheme);
         }

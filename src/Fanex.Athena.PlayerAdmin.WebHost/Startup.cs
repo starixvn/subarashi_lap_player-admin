@@ -72,40 +72,7 @@ namespace Fanex.Athena.PlayerAdmin.WebHost
                 options.NotAllowSubsidiaryPolicy();
             });
 
-            services.Configure<RequestLocalizationOptions>(options =>
-            {
-                const string EnCultureName = "en-US";
-                var enCulture = new CultureInfo(EnCultureName)
-                {
-                    DateTimeFormat = new DateTimeFormatInfo
-                    {
-                        ShortDatePattern = "M/d/yyyy",
-                        ShortTimePattern = "h:mm tt",
-                        LongDatePattern = "MM/dd/yyyy",
-                        LongTimePattern = "h:mm:ss tt"
-                    }
-                };
-                var csCulture = new CultureInfo("zh-CN");
-
-                options.DefaultRequestCulture = new RequestCulture(EnCultureName);
-                options.SupportedCultures = new List<CultureInfo>
-                {
-                    enCulture
-                };
-                options.SupportedUICultures = new List<CultureInfo>
-                {
-                    enCulture,
-                    csCulture
-                };
-                options.RequestCultureProviders = new List<IRequestCultureProvider>
-                {
-                    new CustomRequestCultureProvider(context =>
-                    {
-                        var culture = Languages.LanguageCodeMappers[context.User.FindFirst("Language")?.Value ?? "en"];
-                        return Task.FromResult(new ProviderCultureResult(culture: EnCultureName, uiCulture: culture));
-                    })
-                };
-            });
+            ConfigRequestLocalization(services);
 
             services.AddSingleton<IFileProvider>(new PhysicalFileProvider(HostingEnvironment.ContentRootPath));
             services.AddSingleton<ITicketStore, RedisCacheTicketStore>();
@@ -164,23 +131,7 @@ namespace Fanex.Athena.PlayerAdmin.WebHost
                 client.BaseAddress = new Uri(statement.Get<StatementSetting>().InternalHost);
             }).SetHandlerLifetime(TimeSpan.FromDays(1));
 
-            services.AddHttpClient<IReportApiClient, ReportApiClient>(client =>
-            {
-                client.BaseAddress = new Uri(Configuration["ConsoleClient:Report:Host"]);
-                client.DefaultRequestHeaders.Add("AUTH_TOKEN", Configuration["ConsoleClient:Report:AuthKey"]);
-            }).SetHandlerLifetime(TimeSpan.FromDays(1));
-
-            services.AddHttpClient<IBetListApiClient, BetListApiClient>(client =>
-            {
-                client.BaseAddress = new Uri(Configuration["ConsoleClient:BetList:Host"]);
-                client.DefaultRequestHeaders.Add("BETLIST_TOKEN_KEY", Configuration["ConsoleClient:BetList:AuthKey"]);
-            }).SetHandlerLifetime(TimeSpan.FromDays(1));
-
-            services.AddHttpClient<ILgApiClient, LgApiClient>(client =>
-            {
-                client.BaseAddress = new Uri(Configuration["ConsoleClient:Lg:Host"]);
-                client.DefaultRequestHeaders.Add("LGAPI_TOKEN_KEY", Configuration["ConsoleClient:Lg:AuthKey"]);
-            }).SetHandlerLifetime(TimeSpan.FromDays(1));
+            ConfigConsoleClient(services);
 
             services.AddHttpClient();
 
@@ -228,8 +179,70 @@ namespace Fanex.Athena.PlayerAdmin.WebHost
             });
         }
 
+        private void ConfigConsoleClient(IServiceCollection services)
+        {
+            TimeSpan OneDay = TimeSpan.FromDays(1);
+
+            services.AddHttpClient<IReportApiClient, ReportApiClient>(client =>
+            {
+                client.BaseAddress = new Uri(Configuration["ConsoleClient:Report:Host"]);
+                client.DefaultRequestHeaders.Add("AUTH_TOKEN", Configuration["ConsoleClient:Report:AuthKey"]);
+            }).SetHandlerLifetime(OneDay);
+
+            services.AddHttpClient<IBetListApiClient, BetListApiClient>(client =>
+            {
+                client.BaseAddress = new Uri(Configuration["ConsoleClient:BetList:Host"]);
+                client.DefaultRequestHeaders.Add("BETLIST_TOKEN_KEY", Configuration["ConsoleClient:BetList:AuthKey"]);
+            }).SetHandlerLifetime(OneDay);
+
+            services.AddHttpClient<ILgApiClient, LgApiClient>(client =>
+            {
+                client.BaseAddress = new Uri(Configuration["ConsoleClient:Lg:Host"]);
+                client.DefaultRequestHeaders.Add("LGAPI_TOKEN_KEY", Configuration["ConsoleClient:Lg:AuthKey"]);
+            }).SetHandlerLifetime(OneDay);
+        }
+
+        private static void ConfigRequestLocalization(IServiceCollection services)
+        {
+            services.Configure<RequestLocalizationOptions>(options =>
+            {
+                const string EnCultureName = "en-US";
+                var enCulture = new CultureInfo(EnCultureName)
+                {
+                    DateTimeFormat = new DateTimeFormatInfo
+                    {
+                        ShortDatePattern = "M/d/yyyy",
+                        ShortTimePattern = "h:mm tt",
+                        LongDatePattern = "MM/dd/yyyy",
+                        LongTimePattern = "h:mm:ss tt"
+                    }
+                };
+                var csCulture = new CultureInfo("zh-CN");
+
+                options.DefaultRequestCulture = new RequestCulture(EnCultureName);
+                options.SupportedCultures = new List<CultureInfo>
+                {
+                    enCulture
+                };
+                options.SupportedUICultures = new List<CultureInfo>
+                {
+                    enCulture,
+                    csCulture
+                };
+                options.RequestCultureProviders = new List<IRequestCultureProvider>
+                {
+                    new CustomRequestCultureProvider(context =>
+                    {
+                        var culture = Languages.LanguageCodeMappers[context.User.FindFirst("Language")?.Value ?? "en"];
+                        return Task.FromResult(new ProviderCultureResult(culture: EnCultureName, uiCulture: culture));
+                    })
+                };
+            });
+        }
+
         private static void ConfigDistributedCache(IServiceCollection services, RedisSetting redisSetting)
         {
+            const int NumberOfRetry = 3;
             services.AddStackExchangeRedisCache(options =>
             {
                 options.ConfigurationOptions = new ConfigurationOptions
@@ -241,7 +254,7 @@ namespace Fanex.Athena.PlayerAdmin.WebHost
                     {
                         { redisSetting.Server, redisSetting.Port }
                     },
-                    ConnectRetry = 3
+                    ConnectRetry = NumberOfRetry
                 };
                 options.InstanceName = redisSetting.AppName;
             });
@@ -249,6 +262,7 @@ namespace Fanex.Athena.PlayerAdmin.WebHost
 
         private static void ConfigDataProtection(IServiceCollection services, RedisSetting redisSetting)
         {
+            TimeSpan SixtyDays = TimeSpan.FromDays(60);
             var configRedix = new ConfigurationOptions
             {
                 EndPoints =
@@ -261,7 +275,7 @@ namespace Fanex.Athena.PlayerAdmin.WebHost
             var redis = ConnectionMultiplexer.Connect(configRedix);
             services.AddDataProtection()
                 .PersistKeysToStackExchangeRedis(redis, redisSetting.ProtectionDataKey)
-                .SetDefaultKeyLifetime(TimeSpan.FromDays(60))
+                .SetDefaultKeyLifetime(SixtyDays)
                 .SetApplicationName(redisSetting.AppName);
         }
 
