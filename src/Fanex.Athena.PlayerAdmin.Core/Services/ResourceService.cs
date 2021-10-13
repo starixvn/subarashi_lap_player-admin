@@ -1,4 +1,5 @@
 ﻿using Fanex.RemotingRef;
+using System.Globalization;
 using System.Threading;
 
 namespace Fanex.Athena.PlayerAdmin.Core.Services
@@ -39,7 +40,7 @@ namespace Fanex.Athena.PlayerAdmin.Core.Services
 
         private static string GetCurrentIBCLanguageCode(string languageCode = null)
         {
-            return string.IsNullOrEmpty(languageCode) ? Thread.CurrentThread.CurrentCulture.Name : languageCode;
+            return string.IsNullOrEmpty(languageCode) ? CultureInfo.CurrentUICulture.Name : languageCode;
         }
     }
 }
