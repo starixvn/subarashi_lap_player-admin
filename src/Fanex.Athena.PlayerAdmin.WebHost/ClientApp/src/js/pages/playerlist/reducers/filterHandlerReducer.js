@@ -22,7 +22,6 @@ export const hasOddsGroupPermission = createReducer(false, {});
 export const hasSpecialLevelPermission = createReducer(false, {});
 export const hasCommPermissionEdit = createReducer(false, {});
 export const hasCommPermissionRead = createReducer(false, {});
-
 export const isSubsidiary = createReducer(false, {});
 
 export const isAdvancedSearch = createReducer(false, {

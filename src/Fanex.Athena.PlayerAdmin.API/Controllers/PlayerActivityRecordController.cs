@@ -24,10 +24,11 @@ namespace Fanex.Athena.PlayerAdmin.API.Controllers
 
         [HttpPost]
         [BearerAuthorize(Roles.SuperAdmin, Roles.AccountInfo)]
+        [RequestValidation(validateCustId: true)]
         [AutoBindingMetaModel(bindSiteName: true)]
         public async Task<ActionResult<PlayerActivityRecord>> Index(PlayerActivityRecordMetaModel metaModel)
         {
-            if (metaModel.IbcCustId <= 0)
+            if (metaModel.CustId <= 0)
             {
                 return null;
             }

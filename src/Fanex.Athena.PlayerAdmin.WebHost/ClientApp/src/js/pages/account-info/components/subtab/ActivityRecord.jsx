@@ -9,7 +9,7 @@ export const ActivityRecord = ({ ibcCustId, createdDate, getActivityRecord }) =>
 
     useEffect(() => {
         if (data === null) {
-            const param = { ibcCustId };
+            const param = { custId: ibcCustId };
             getActivityRecord(param).then(result => setData(result));
         }
     }, [ibcCustId]);
@@ -43,7 +43,7 @@ export const ActivityRecord = ({ ibcCustId, createdDate, getActivityRecord }) =>
                         <td colSpan="2"></td>
                     </tr>
                     <tr>
-                        <td>{ClientResourceManager.getText('SpecialLevel')}</td>
+                        <td>{ClientResourceManager.getText('SpecialLevelUpdatedBy')}</td>
                         <td>{SpecialLevelUpdateBy}</td>
                     </tr>
                     <tr>

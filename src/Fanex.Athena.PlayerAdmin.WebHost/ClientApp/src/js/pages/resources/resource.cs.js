@@ -10,7 +10,7 @@ export const resource_cs = {
     LastTxn: '最后交易',
     BAUpdatedBy: 'BA更新帐号',
     LastUpdatedBy: '最近一次更新BA',
-    SpecialLevel: '特殊层级',
+    SpecialLevelUpdatedBy: '特殊层级更新者',
     LastUpdatedSpecialLevel: '最近更新的特殊级别',
     Margin: '杀数',
     SingleCustomer: '单一会员',
@@ -61,4 +61,6 @@ export const resource_cs = {
     Draw: '和局',
     Cancelled: '已取消的',
     LastTransaction: '最后交易',
+    Whitelabel:"Whitelabel",
+    Subsidiary:"子网站",
 }

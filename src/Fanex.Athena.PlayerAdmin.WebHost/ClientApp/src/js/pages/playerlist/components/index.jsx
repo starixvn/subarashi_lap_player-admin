@@ -19,15 +19,10 @@ const siteSetting = {
     isAllowedBA: false
 };
 
-const lrfFilters = {
-    CustomerClass: [],
-    CommGroups: []
-};
-
 const defaultState = {
     ...window.initialState, displayedColumnList, siteSetting,
     hasBaPermission, hasOddsGroupPermission, hasSpecialLevelPermission,
-    hasCommPermissionRead, hasCommPermissionEdit, lrfFilters
+    hasCommPermissionRead, hasCommPermissionEdit
 };
 const store = Store.createStore(reducer, defaultState);
 

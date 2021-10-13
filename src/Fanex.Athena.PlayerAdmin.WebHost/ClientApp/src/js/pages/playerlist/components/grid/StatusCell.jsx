@@ -12,6 +12,10 @@ export const StatusCell = (props) => {
     const { dataItem, statusDropdownPosition, setCurrentActivePlayer, setStatusDropdownPosition, type } = props;
     const { Status, IsOnline, IsDeposit, IsArchived } = dataItem;
 
+    if (Status === undefined) {
+        return null;
+    }
+
     const statusName = playerStatus[Status];
     const classname = 'status-text status-' + Status;
     const canUpdate = type === licenseeType.nonApi &&  !IsArchived && Status !== playerStatusByName.Closed;

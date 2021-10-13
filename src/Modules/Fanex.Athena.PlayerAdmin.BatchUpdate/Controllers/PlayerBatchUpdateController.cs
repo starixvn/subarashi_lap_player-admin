@@ -1,8 +1,5 @@
 ﻿using Fanex.Athena.PlayerAdmin.BatchUpdate.Services;
-using Fanex.Athena.PlayerAdmin.Core.Services;
-using Fanex.Athena.PlayerAdmin.Core.Settings;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Options;
 
 namespace Fanex.Athena.PlayerAdmin.BatchUpdate.Controllers
 {

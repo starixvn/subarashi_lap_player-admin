@@ -4,7 +4,7 @@ import LrfPlayerQueryService from "./lrfPlayerQueryService";
 
 export default class QueryServiceFactory {
     static getPlayerListService(param) {
-        return !this._isChangeLAPSearch(param) && this._isChangeAdvancedSearch(param)
+        return !this._isChangeLAPSearch(param) && (this._isDeposited(param) || this._isChangeAdvancedSearch(param))
             ? LrfPlayerQueryService
             : LapPlayerQueryService;
     }
@@ -13,6 +13,10 @@ export default class QueryServiceFactory {
         return this._isChangeLAPSearch(param) && this._isChangeAdvancedSearch(param);
     }
 
+    static _isDeposited(param) {
+        return param.isDeposited === 1;
+    }
+    
     static _isChangeLAPSearch(param) {
         const { bankAccountNumber, email, ipLogin } = param;
         return bankAccountNumber || email || ipLogin;

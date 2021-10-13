@@ -1,4 +1,5 @@
 import PlayerListDataHelper from '../helpers/playerListDataHelper';
+import { buildLrfPlayerList } from '../helpers/playerDataBuilder';
 
 export default class LrfPlayerQueryService {
     static fetchData(param, commonService, apiInfo) {
@@ -25,12 +26,12 @@ export default class LrfPlayerQueryService {
             .fetchData(lapDataById.type, lapDataById.action, lapParam)
             .then(lapResponse => {
                 const { PlayerList: lapPlayerList } = lapResponse.data;
+                let playerList = [];
                 if (!lapPlayerList || !lapPlayerList.length) {
-                    return PlayerListDataHelper.createEmptyResult();
+                    playerList = buildLrfPlayerList(lrfPlayerList);
+                } else {
+                    playerList = PlayerListDataHelper.mergePlayerListBasedLrf(lrfPlayerList, lapPlayerList);
                 }
-
-                const playerList = PlayerListDataHelper.mergePlayerList(lrfPlayerList, lapPlayerList);
-
                 return {
                     playerList,
                     totalItem: lrfTotalItem

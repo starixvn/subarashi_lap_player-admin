@@ -50,7 +50,7 @@ namespace Fanex.Athena.PlayerAdmin.API.Services
                     Success = code == 0,
                     Message = message,
                     ErrorCode = code,
-                    ExtendedData = Convert.ToString(oddsGroup).ToUpper(CultureInfo.CurrentCulture)
+                    ExtendedData = Convert.ToString(oddsGroup).ToUpper(CultureInfo.CurrentUICulture)
                 };
             }
 

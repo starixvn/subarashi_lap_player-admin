@@ -59,8 +59,46 @@ export const  buildLapPlayerList = (playerList) => {
             IsArchived: !!isArchived,
             CurrencyId: Currency,
             CreatedDate: CreatedDateString,
-            CommissionGroup: item.CommissionGroup,
-            CustomerClass: item.CustomerClass
+        };
+    });
+}
+
+export const  buildLrfPlayerList = (playerList) => {
+    if (!playerList) {
+        return [];
+    }
+
+    return playerList.map(item => {
+        const {
+            IbcCustId,
+            UserName,
+            SystemId,
+            Currency,
+            CurrentBalance,
+            OutstandingBalance,
+            CurrencyId,
+            OddsGroup,
+            BaStatus,
+            SpecialLevel,
+            CommissionGroup,
+            CustomerClass
+        } = item;
+
+        return {
+            IbcCustId,
+            LicenseeCustId: 0, // no sync from Licensee DB
+            UserName,
+            SystemId,
+            Currency,
+            CurrentBalance,
+            OutstandingBalance,
+            IsDeposit: IbcCustId > 0, // always true
+            CurrencyId,
+            OddsGroup,
+            BaStatus,
+            SpecialLevel,
+            CommissionGroup,
+            CustomerClass
         };
     });
 }

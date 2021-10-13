@@ -1,8 +1,6 @@
 ﻿@{
     ViewData["Title"] = ViewResources.BetLimit;
 }
-@using Fanex.Athena.PlayerAdmin.Core.Helpers;
-
 @model PlayerBetLimitProductViewModel
 
 @{
@@ -22,7 +20,7 @@
     requestParam: { CustId: @Model.CustId, ProductId: @Model.ProductId, CurrencyId: @Model.CurrencyId, LicenseeCustId: @Model.LicenseeCustId }
     };
     window._AppData = {
-    productList:  @Html.Raw(productList.ToJson())
+    productList:  @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(productList))
     };
 }
 <div id="app-container">

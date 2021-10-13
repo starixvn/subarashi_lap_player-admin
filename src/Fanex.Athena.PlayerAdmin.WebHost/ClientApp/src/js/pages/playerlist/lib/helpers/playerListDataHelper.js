@@ -13,34 +13,43 @@
         }, []);
     }
 
-    static mergePlayerItem(lrfItem, lapItem) {
-        const { OddsGroup, BaStatus, SpecialLevel } = lrfItem;
-        const {
-            Status, RealName, email, isOnline, IBCCustId, isArchived, LastTransaction,
-            CurrencyCode, OutBalance, IBCUserName, Vender_Member_ID, CreatedDateString
-        } = lapItem;
+    static mergePlayerListBasedLrf(lrfList, lapList) {
+        if (!lrfList || !lapList) {
+            return [];
+        }
+        const lapDic = this.toLapPlayerDic(lapList);
+        return lrfList.reduce((result, lrfItem) => {
+            const lapItem = lapDic[lrfItem.IbcCustId] || {};
+            const playerItem = this.mergePlayerItem(lrfItem, lapItem);
+            result.push(playerItem);
 
+            return result;
+        }, []);
+    }
+
+    static mergePlayerItem(lrfItem, lapItem) {
+        const IbcCustId = lapItem.IBCCustId || lrfItem.IbcCustId || 0;
         return {
-            IbcCustId: IBCCustId,
-            LicenseeCustId: lapItem.CustId,
-            UserName: lapItem.UserName,
-            SystemId: IBCUserName,
-            VendorMemberId: Vender_Member_ID,
-            Currency: CurrencyCode,
-            CurrentBalance: lapItem.CurrentBalance,
-            OutstandingBalance: OutBalance,
-            OddsGroup,
-            BaStatus,
-            SpecialLevel,
-            Status,
-            RealName,
-            LastTransaction,
-            Email: email,
-            IsOnline: isOnline,
-            IsDeposit: IBCCustId > 0,
-            IsArchived: !!isArchived,
-            CurrencyId: lapItem.Currency,
-            CreatedDate: CreatedDateString,
+            IbcCustId,
+            LicenseeCustId: lapItem.CustId || 0,
+            UserName: lapItem.UserName || lrfItem.UserName,
+            SystemId: lapItem.IBCUserName || lrfItem.SystemId,
+            VendorMemberId: lapItem.Vender_Member_ID,
+            Currency: lapItem.CurrencyCode || lrfItem.Currency,
+            CurrentBalance: lapItem.CurrentBalance || lrfItem.CurrentBalance,
+            OutstandingBalance: lapItem.OutBalance || lrfItem.OutstandingBalance,
+            OddsGroup: lrfItem.OddsGroup,
+            BaStatus: lrfItem.BaStatus,
+            SpecialLevel: lrfItem.SpecialLevel,
+            Status: lapItem.Status,
+            RealName: lapItem.RealName,
+            LastTransaction: lapItem.LastTransaction,
+            Email: lapItem.email,
+            IsOnline: !!lapItem.isOnline,
+            IsDeposit: IbcCustId > 0,
+            IsArchived: !!lapItem.isArchived,
+            CurrencyId: lapItem.Currency || lrfItem.CurrencyId,
+            CreatedDate: lapItem.CreatedDateString,
             CommissionGroup: lrfItem.CommissionGroup,
             CustomerClass: lrfItem.CustomerClass
         };
@@ -48,11 +57,19 @@
 
 
     static toLrfPlayerDic(lrfList) {
-        const lrfPlayerDic = lrfList.reduce((result, currentItem) => {
-            result[currentItem.IbcCustId] = currentItem;
+        return this._toPlayerDic(lrfList, 'IbcCustId');
+    }
+
+    static toLapPlayerDic(lapList) {
+        return this._toPlayerDic(lapList, 'IBCCustId');
+    }
+
+    static _toPlayerDic(playerList, custIdPropertyName) {
+        const playerListDic = playerList.reduce((result, currentItem) => {
+            result[currentItem[custIdPropertyName]] = currentItem;
             return result;
         }, {});
-        return lrfPlayerDic;
+        return playerListDic;
     }
 
     static createEmptyResult() {

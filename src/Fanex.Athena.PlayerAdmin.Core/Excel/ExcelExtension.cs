@@ -129,5 +129,34 @@ namespace Fanex.Athena.PlayerAdmin.Core.Excel
             var rangeAddress = new CellRangeAddress(firstRow, lastRow, firstCol, lastCol);
             return sheet.AddMergedRegion(rangeAddress);
         }
+
+        public static void HideColumn(this ISheet sheet, params int[] columnIndex)
+        {
+            // Clear content
+            var firstRowNum = sheet.FirstRowNum;
+            var lastRowNum = sheet.LastRowNum;
+
+            for (int i = firstRowNum; i <= lastRowNum; i++)
+            {
+                foreach (int j in columnIndex)
+                {
+                    var cell = sheet.GetCell(i, j);
+                    if (cell != null)
+                    {
+                        cell.SetCellValue(string.Empty);
+                    }
+                }
+            }
+
+            // Hide column
+            foreach (int i in columnIndex)
+            {
+                sheet.SetColumnWidth(i, 0);
+                sheet.SetColumnHidden(i, true);
+            }
+        }
+
+        public static ICell GetCell(this ISheet sheet, int rowIndex, int colIndex)
+            => sheet.GetRow(rowIndex).GetCell(colIndex);
     }
 }

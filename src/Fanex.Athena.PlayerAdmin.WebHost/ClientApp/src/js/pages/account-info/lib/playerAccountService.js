@@ -1,5 +1,5 @@
 import FactoryCommonService from '../../../lib/factoryCommonService';
-import { lapAccountProfile, lapBankInfo, lrfActivityRecord, custBettingStatus } from './apiInfo';
+import { lapAccountProfile, lapBankInfo, lrfActivityRecord, lrfSubsidiaryViewType, custBettingStatus } from './apiInfo';
 
 export default class PlayerAccountService {
     constructor() {
@@ -8,6 +8,10 @@ export default class PlayerAccountService {
 
     getAccountProfile(param) {
         return this._getData(lapAccountProfile.type, lapAccountProfile.action, param);
+    }
+
+    getSubsidiaryViewType() {
+        return this._getData(lrfSubsidiaryViewType.type, lrfSubsidiaryViewType.action, {});
     }
 
     getBankInfo(param) {

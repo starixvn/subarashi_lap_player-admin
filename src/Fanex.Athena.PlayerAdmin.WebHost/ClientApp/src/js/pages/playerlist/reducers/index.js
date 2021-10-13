@@ -7,8 +7,7 @@ import * as gridOddsGroupReducer from './gridOddsGroupReducer';
 import * as gridSpecialLevelReducer from './gridSpecialLevelReducer';
 import * as gridPlayerStatusReducer from './gridPlayerStatusReducer';
 import * as gridUserNameReducer from './gridUserNameReducer';
-import * as siteSettingReducer from './siteSettingReducer';
-import * as lrfFiltersReducer from './lrfFiltersReducer';
+import * as settingReducer from './settingReducer';
 
 export default combineReducers(Object.assign({},
     filterHandlerReducer,
@@ -19,6 +18,5 @@ export default combineReducers(Object.assign({},
     gridSpecialLevelReducer,
     gridPlayerStatusReducer,
     gridUserNameReducer,
-    siteSettingReducer,
-    lrfFiltersReducer
+    settingReducer
 ));

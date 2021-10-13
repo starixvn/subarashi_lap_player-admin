@@ -34,6 +34,7 @@ namespace Fanex.Athena.PlayerAdmin.Core.Attributes
     {
         private readonly IMetaModelBindingService _bindingService;
         private readonly ILicenseeService _licenseeService;
+        private readonly ISubsidiaryService _subsidiaryService;
         private readonly IContextService _contextService;
 
         private readonly bool _bindAgent;
@@ -46,7 +47,11 @@ namespace Fanex.Athena.PlayerAdmin.Core.Attributes
         private readonly bool _bindLicenseeId;
         private readonly bool _bindUsername;
 
-        public AutoBindingMetaModelImplAttribute(IMetaModelBindingService bindingService, ILicenseeService licenseeService, IContextService contextService,
+        public AutoBindingMetaModelImplAttribute(
+            IMetaModelBindingService bindingService,
+            ILicenseeService licenseeService,
+            ISubsidiaryService subsidiaryService,
+            IContextService contextService,
             bool bindAgent,
             bool bindSiteName,
             bool bindLanguage,
@@ -60,6 +65,7 @@ namespace Fanex.Athena.PlayerAdmin.Core.Attributes
         {
             _bindingService = bindingService;
             _licenseeService = licenseeService;
+            _subsidiaryService = subsidiaryService;
             _contextService = contextService;
 
             _bindAgent = bindAgent;
@@ -77,7 +83,7 @@ namespace Fanex.Athena.PlayerAdmin.Core.Attributes
         {
             if (_bindAgent)
             {
-                _bindingService.BindAgentXml(context.ActionArguments, _contextService.AgentList as IDictionary<int, int[]>);
+                await BindAgent(context);
             }
 
             if (_bindSiteName && MetaModelHelper.IsMetaModel(context.ActionArguments, out ISiteNameMetaModel siteNameMetaModel))
@@ -112,24 +118,45 @@ namespace Fanex.Athena.PlayerAdmin.Core.Attributes
 
             if (_bindBalanceUp && MetaModelHelper.IsMetaModel(context.ActionArguments, out IBalanceUpAndMoveBetMetaModel balanceUpAndMoveBetMetaModel))
             {
-                var balanceUp = await _licenseeService.GetBalanceUp();
-                balanceUpAndMoveBetMetaModel.BalanceUpDay = balanceUp.BalanceUpDay;
-                balanceUpAndMoveBetMetaModel.MoveBetsDay = balanceUp.MoveBetsDay;
+                await BindBalanceUp(balanceUpAndMoveBetMetaModel);
             }
 
             if (_bindLicenseeContract && MetaModelHelper.IsMetaModel(context.ActionArguments, out IFunctionContractMetaModel functionContractMetaModel))
             {
-                var productAccess = await _licenseeService.GetSingleWalletProductAccess(
-                    _contextService.LicenseeId,
-                    "en-US",
-                    functionContractMetaModel.FunctionKey);
-
-                functionContractMetaModel.HasComm = _contextService.IsAllowedCustomerComm;
-                functionContractMetaModel.IsAllowedBA = productAccess.IsAllowBA;
-                functionContractMetaModel.SystemIdVisible = !_licenseeService.IsFakeLicensee(_contextService.SiteName);
+                await BindLicenseeContract(functionContractMetaModel);
             }
 
             await next();
+        }
+
+        private async Task BindBalanceUp(IBalanceUpAndMoveBetMetaModel balanceUpAndMoveBetMetaModel)
+        {
+            var balanceUp = await _licenseeService.GetBalanceUp();
+            balanceUpAndMoveBetMetaModel.BalanceUpDay = balanceUp.BalanceUpDay;
+            balanceUpAndMoveBetMetaModel.MoveBetsDay = balanceUp.MoveBetsDay;
+        }
+
+        private async Task BindLicenseeContract(IFunctionContractMetaModel functionContractMetaModel)
+        {
+            var productAccess = await _licenseeService.GetSingleWalletProductAccess(
+                   _contextService.LicenseeId,
+                   "en-US",
+                   functionContractMetaModel.FunctionKey);
+
+            functionContractMetaModel.HasComm = _contextService.IsAllowedCustomerComm;
+            functionContractMetaModel.IsAllowedBA = productAccess.IsAllowBA;
+            functionContractMetaModel.SystemIdVisible = !_licenseeService.IsFakeLicensee(_contextService.SiteName);
+        }
+
+        private async Task BindAgent(ActionExecutingContext context)
+        {
+            var agentList = _contextService.AgentList as IDictionary<int, int[]>;
+            if (MetaModelHelper.IsMetaModel(context.ActionArguments, out ISubsidiarySearchMetaModel subsidiaryMetaModel)
+                && !_subsidiaryService.IsIgnoredSubsidiarySearch(subsidiaryMetaModel.SubsidiarySearch, subsidiaryMetaModel.SubsidiaryList, _contextService.SubsidiaryViewType))
+            {
+                agentList = await _subsidiaryService.GetAgentList(_contextService.SiteName, _contextService.AgentList, subsidiaryMetaModel.SubsidiaryList);
+            }
+            _bindingService.BindAgentXml(context.ActionArguments, agentList);
         }
     }
 }

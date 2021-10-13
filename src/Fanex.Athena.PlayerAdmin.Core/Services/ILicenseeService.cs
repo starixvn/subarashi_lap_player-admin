@@ -6,7 +6,7 @@ namespace Fanex.Athena.PlayerAdmin.Core.Services
 {
     public interface ILicenseeService
     {
-        Task<bool> IsAllowUpdateMemberBAStatus(int licenseeId);
+        Task<bool> IsAllowUpdateBA(int licenseeId, string userName, IEnumerable<string> specicalBAAdmins);
 
         bool IsFakeLicensee(string licenseeName);
 

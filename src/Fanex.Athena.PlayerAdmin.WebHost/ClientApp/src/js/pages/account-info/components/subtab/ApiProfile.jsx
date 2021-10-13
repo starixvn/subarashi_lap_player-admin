@@ -1,9 +1,10 @@
 import React from 'react';
 import ClientResourceManager from '@jsroot/lib/clientResourceManager';
+import { SubsidiaryViewType } from '@jsroot/constants/report'
 
-const ApiProfile = ({ data }) => {
-    const { MemberId, FirstName, LastName, OperatorId, SiteCode, ProductCode,
-        CustomInfo1, CustomInfo2, CustomInfo3, CustomInfo4, CustomInfo5, ExchangeUserId  } = data || {};
+const ApiProfile = ({ data, subsidiaryViewType }) => {
+    const { MemberId, Whitelabel, FirstName, LastName, OperatorId, SiteCode, ProductCode,
+        CustomInfo1, CustomInfo2, CustomInfo3, CustomInfo4, CustomInfo5, ExchangeUserId } = data || {};
 
     return (
         <tbody>
@@ -19,10 +20,14 @@ const ApiProfile = ({ data }) => {
                 <td>{ClientResourceManager.getText('LastName')}</td>
                 <td>{LastName}</td>
             </tr>
-            <tr>
+            {subsidiaryViewType !== SubsidiaryViewType.NOT_MANAGEMENT && <tr>
                 <td>{ClientResourceManager.getText('OperatorId')}</td>
                 <td>{OperatorId}</td>
-            </tr>
+            </tr>}
+            {subsidiaryViewType === SubsidiaryViewType.MASTER_MANAGEMENT && <tr>
+                <td>{ClientResourceManager.getText('Whitelabel')}</td>
+                <td>{Whitelabel}</td>
+            </tr>}
             <tr>
                 <td colSpan="2"></td>
             </tr>

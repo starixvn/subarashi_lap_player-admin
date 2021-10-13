@@ -44,7 +44,7 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Services
             var param = new
             {
                 CustId = metaModel.CustId,
-                Status = metaModel.Status ? 1 : 0,
+                Status = metaModel.Status ? 0 : 1,
                 Ip = metaModel.Ip,
                 UserId = metaModel.UserId,
                 UserName = metaModel.Username

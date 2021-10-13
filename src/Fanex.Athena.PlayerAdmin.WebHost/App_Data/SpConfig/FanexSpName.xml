@@ -26,6 +26,7 @@
     <Setting Key="Lrf_CustomerSpecialLevelSel" SpName="Lrf_CustomerSpecialLevelSel" DbName="DBCUST.CustDB.bodbLicenseeNet" />
     <Setting Key="Lrf_CustomerUgroupSel" SpName="Lrf_CustomerUgroupSel" DbName="DBCUST.CustDB.bodbLicenseeNet" />
     <Setting Key="Lrf_CustomerBAStatusSel" SpName="Lrf_CustomerBAStatusSel" DbName="DBCUST.CustDB.bodbLicenseeNet" />
+    <Setting Key="Lrf_BATimeCheck" SpName="Lrf_BATimeCheck" DbName="DBCUST.CustDB.bodbLicenseeNet" />
   </Function>
   <Function Name="PlayerLog">
     <Setting Key="WriteLog_UserLog_UserControl" SpName="WriteLog_UserLog_UserControl" DbName="DBLOG.bodb_CustomerLog.bodbLicenseeNet" />
@@ -40,6 +41,10 @@
     <Setting Key="Lrf_CustomerClassSel" SpName="Lrf_CustomerClassSel" DbName="DBCUST.CustDB.bodbLicenseeNet" />
     <Setting Key="Lrf_CustomerClassPolicySel" SpName="Lrf_CustomerClassPolicySel" DbName="DBCUST.CustDB.bodbLicenseeNet" />
     <Setting Key="Lrf_CustomerClassSitePolicySel" SpName="Lrf_CustomerClassSitePolicySel" DbName="DBCUST.CustDB.bodbLicenseeNet" />
+  </Function>
+  <Function Name="SiteConfig">
+    <Setting Key="Lrf_SubsidiarySel" SpName="Lrf_SubsidiarySel" DbName="DBCUST.SiteConfig.bodbLicenseeNet" />
+    <Setting Key="Portal_Sub_GetSubsidiaryList" SpName="Portal_Sub_GetSubsidiaryList" DbName="DBCUST.SiteConfig.Dot_Admin_Portal" />
   </Function>
   <Function Name="AG Casino">
     <Setting Key="Lrf_AGC_SelCustSetting" SpName="Lrf_AGC_SelCustSetting" DbName="DBCUST.CustDB.bodbLicenseeNet" />
@@ -70,9 +75,6 @@
       <Mapping DataField="RNGComm" ObjectProperty="CSComm" />
       <Mapping DataField="IsDefault" ObjectProperty="IsDefaultGroup" />
     </Setting>
-    <Setting Key="Lrf_LicenseeGroupCommIns" SpName="Lrf_LicenseeGroupCommIns_xpre" DbName="DBCUST.bodb_Licensee.bodbLicenseeNet" />
-    <Setting Key="Lrf_LicenseeGroupCommDel" SpName="Lrf_LicenseeGroupCommDel_xpre" DbName="DBCUST.bodb_Licensee.bodbLicenseeNet" TimeOut="300" />
-    <Setting Key="Lrf_LicenseeGroupCommUpd" SpName="Lrf_LicenseeGroupCommUpd_xpre" DbName="DBCUST.bodb_Licensee.bodbLicenseeNet" TimeOut="300" />
     <Setting Key="Lrf_GroupCommGetById" SpName="Lrf_GroupCommGetById" DbName="DBLIC.bodb_Licensee.bodbLicenseeNet">
       <Mapping DataField="Parlaycomm" ObjectProperty="ParlayComm" />
       <Mapping DataField="RNGComm" ObjectProperty="CSComm" />

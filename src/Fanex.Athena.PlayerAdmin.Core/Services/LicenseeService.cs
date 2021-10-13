@@ -29,21 +29,16 @@ namespace Fanex.Athena.PlayerAdmin.Core.Services
             _functionSetting = functionSetting.Value;
         }
 
-        public async Task<bool> IsAllowUpdateMemberBAStatus(int licenseeId)
+        public async Task<bool> IsAllowUpdateBA(int licenseeId, string userName, IEnumerable<string> specicalBAAdmins)
         {
-            const string UspName = "Lrf_BATimeCheck";
-
-            var isAllow = false;
-            using (var db = _dbFactory.GetObjectDb(UspName))
+            var specialBaPermission = specicalBAAdmins.IsPresent() && specicalBAAdmins.Contains(userName, StringComparer.InvariantCultureIgnoreCase);
+            if (specialBaPermission)
             {
-                db.SetParameterValue("LicenseeID", licenseeId);
-                db.SetParameterValue("isallow", null);
-
-                await db.ExecuteNonQueryAsync();
-
-                isAllow = Convert.ToBoolean(db.GetParameterValue("isallow"));
-                return isAllow;
+                return true;
             }
+
+            var isAllow = await IsAllowUpdateMemberBAStatus(licenseeId);
+            return isAllow;
         }
 
         public Task<IList<Product>> GetProductList(int licenseeId, string languageCode)
@@ -96,6 +91,11 @@ namespace Fanex.Athena.PlayerAdmin.Core.Services
 
         public async Task<bool> CheckCustomerBelongTo(IReadOnlyDictionary<int, int[]> agentList, int custId, int currencyId = 0)
         {
+            if(custId == 0)
+            {
+                return true;
+            }
+
             using (var db = _dbFactory.GetObjectDb("Lrf_CheckBelonging_GetAgentInfo"))
             {
                 db.SetParameterValue("transid", 0);
@@ -159,6 +159,23 @@ namespace Fanex.Athena.PlayerAdmin.Core.Services
                 }
             }
             return data;
+        }
+
+        private async Task<bool> IsAllowUpdateMemberBAStatus(int licenseeId)
+        {
+            const string UspName = "Lrf_BATimeCheck";
+
+            var isAllow = false;
+            using (var db = _dbFactory.GetObjectDb(UspName))
+            {
+                db.SetParameterValue("LicenseeID", licenseeId);
+                db.SetParameterValue("isallow", null);
+
+                await db.ExecuteNonQueryAsync();
+
+                isAllow = Convert.ToBoolean(db.GetParameterValue("isallow"));
+                return isAllow;
+            }
         }
 
         private async Task<IList<Product>> GetProductListFromDB(int licenseeId, bool isActiveCustomerSummaryReport = false)

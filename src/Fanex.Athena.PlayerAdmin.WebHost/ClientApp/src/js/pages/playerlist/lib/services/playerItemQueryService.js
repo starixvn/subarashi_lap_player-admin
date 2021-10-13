@@ -7,7 +7,7 @@ export default class PlayerItemQueryService {
         const { ibcCustId, licenseeCustId } = param;
 
         const lrfParam = {
-            idList: ibcCustId,
+            idList: ibcCustId + '',
             specialLevel: Object.keys(specialLevelListWithColor).map(item => item).join(','),
             pageSize: defaultPagingOption.PageSize,
             pageIndex: 1

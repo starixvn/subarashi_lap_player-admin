@@ -14,3 +14,9 @@ export const SubsidiaryViewType = {
     NORMAL_MANAGEMENT: 1,
     MASTER_MANAGEMENT: 2,
 }
+
+export const UserLevelType = {
+    ONEWORKS: 0,
+    LICENSEE: 1,
+    SUBSIDIARY: 2
+}

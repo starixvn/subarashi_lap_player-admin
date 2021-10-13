@@ -1,4 +1,5 @@
-﻿using Fanex.Athena.PlayerAdmin.WebHost.Models;
+﻿using Fanex.Athena.PlayerAdmin.Core.Services;
+using Fanex.Athena.PlayerAdmin.WebHost.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -27,6 +28,20 @@ namespace Fanex.Athena.PlayerAdmin.WebHost.Controllers
             }
 
             return View();
+        }
+
+        [HttpGet]
+        [Authorize(AuthenticationSchemes = "Cookies")]
+        public IActionResult UserInfo([FromServices] IContextService contextService)
+        {
+            return Json(new
+            {
+                UserId = contextService.UserId,
+                UserName = contextService.Username,
+                UserLevel = contextService.UserLevel,
+                IsMaster = contextService.IsMasterLicensee,
+                Whitelabel = contextService.WhiteLabelID
+            });
         }
 
         [AllowAnonymous]
