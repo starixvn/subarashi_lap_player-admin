@@ -9,7 +9,7 @@ namespace Fanex.Athena.PlayerAdmin.Core.Policies
     {
         public static void NotAllowSubsidiaryPolicy(this AuthorizationOptions options)
         {
-            options.AddPolicy(Policy.NotAllowSubsidiary, policy => policy.RequireAssertion(context => !context.User.Claims.First(claim =>
+            options.AddPolicy(Policy.NotAllowSubsidiary, policy => policy.RequireAssertion(context => context.User.Identity.IsAuthenticated && !context.User.Claims.First(claim =>
             {
                 const string type = "userlevel";
                 return claim.Type.Equals(type, StringComparison.OrdinalIgnoreCase);

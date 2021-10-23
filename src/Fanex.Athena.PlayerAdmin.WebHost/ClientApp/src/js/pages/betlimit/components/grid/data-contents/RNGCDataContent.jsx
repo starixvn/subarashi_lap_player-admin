@@ -27,7 +27,7 @@ export class RNGCDataContent extends PureComponent {
 
     onUpdateStatus = () => {
         if (!this.state.showError) {
-            const oldStatus = this.state.setting.StatusEnable;
+            const oldStatus = !!this.state.setting.StatusEnable;
             const newStatus = !this.state.setting.StatusEnable;
 
             this._showUpdateStatusConfirmation(() => this._updateStatus(oldStatus, newStatus));
@@ -71,7 +71,7 @@ export class RNGCDataContent extends PureComponent {
         this.props.toggleLoader(true);
         var productName = LangHelper.getSingleResource('ProductCS');
 
-        const param = {...this.props.requestParam, Status, OldStatus, productName};
+        const param = { ...this.props.requestParam, Status, OldStatus, productName };
 
         DataTransfer.updateStatus(param, this._showSubmitResult.bind(this));
     }
@@ -135,13 +135,13 @@ export class RNGCDataContent extends PureComponent {
         return (
             <div className="pa-betlimit">
                 {
-                     setting.IsStatusEnable ? <NoDataTitle title={LangHelper.getSingleResource('CannotUpdateBetLimitForProduct').replace("{0}", LangHelper.getSingleResource('ProductCS'))} /> : <NoDataTitle/>
+                    setting.IsStatusEnable ? <NoDataTitle title={LangHelper.getSingleResource('CannotUpdateBetLimitForProduct').replace("{0}", LangHelper.getSingleResource('ProductCS'))} /> : <NoDataTitle />
                 }
                 {
                     <div className="pa-betlimit-button">
                         {setting.IsStatusEnable && <button type='button' className='btn btn-apply' onClick={this.onUpdateStatus}>
-                                {setting.StatusEnable ? LangHelper.getSingleResource('DisableRNGCasino') :  LangHelper.getSingleResource('EnableRNGCasino')}
-                        </button>}                  
+                            {setting.StatusEnable ? LangHelper.getSingleResource('DisableRNGCasino') : LangHelper.getSingleResource('EnableRNGCasino')}
+                        </button>}
                     </div>
                 }
             </div>
@@ -150,8 +150,8 @@ export class RNGCDataContent extends PureComponent {
 }
 
 function mapDispatchToProps(dispatch) {
-    const { toggleLoader, setAlertOption  } = ActionCreators;
-    return bindActionCreators({ toggleLoader, setAlertOption  }, dispatch);
+    const { toggleLoader, setAlertOption } = ActionCreators;
+    return bindActionCreators({ toggleLoader, setAlertOption }, dispatch);
 }
 function mapStateToProps(state) {
     const { requestParam } = state;
