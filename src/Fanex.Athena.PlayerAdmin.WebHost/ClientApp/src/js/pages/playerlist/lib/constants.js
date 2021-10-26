@@ -243,11 +243,11 @@ export const responsiveFilterColumn = {
     },
     currency: {
         [licenseeType.api]: "col-12 col-md-4 col-sm-6 col-lg-2 col-xl-2",
-        [licenseeType.nonApi]: "col-12 col-md-4 col-sm-6 col-lg-3 col-xl-1"
+        [licenseeType.nonApi]: "col-12 col-md-4 col-sm-6 col-lg-3 col-xl-2"
     }, 
     oddsGroup: {
         [licenseeType.api]: "col-12 col-md-4 col-sm-6 col-lg-2 col-xl-2",
-        [licenseeType.nonApi]: "col-12 col-md-4 col-sm-6 col-lg-3 col-xl-2"
+        [licenseeType.nonApi]: "col-12 col-md-4 col-sm-6 col-lg-3 col-xl-1"
     }, 
     customerClass: {
         [licenseeType.api]: "col-12 col-md-4 col-sm-6 col-lg-2 col-xl-3",
