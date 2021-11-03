@@ -43,7 +43,8 @@ namespace Fanex.Athena.PlayerAdmin.Core.Extensions
                                           return isValid;
                                       })
                                       .AllowAnyMethod()
-                                      .AllowAnyHeader();
+                                      .AllowAnyHeader()
+                                      .SetPreflightMaxAge(TimeSpan.FromDays(1));
                                   });
             });
         }
