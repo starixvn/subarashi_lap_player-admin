@@ -2119,6 +2119,12 @@
     <value>AG Casino</value>
     <comment>#19458, #49196</comment>
   </data>
+  <data name="ProductAP" xml:space="preserve">
+    <value>AdvantPlay</value>
+  </data>
+  <data name="ProductAPM" xml:space="preserve">
+    <value>AdvantPlay Mini</value>
+  </data>
   <data name="ProductBA" xml:space="preserve">
     <value>BA</value>
     <comment>#49196</comment>

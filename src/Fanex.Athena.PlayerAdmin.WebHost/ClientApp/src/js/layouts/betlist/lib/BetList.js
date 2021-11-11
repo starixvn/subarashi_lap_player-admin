@@ -337,7 +337,6 @@ class BetList {
         return url;
     }
 
-
     getRngCasinoResultUrl(rootUrl) {
         return rootUrl + 'ResultReport/ShowRngCasinoSingleWalletResult';
     }

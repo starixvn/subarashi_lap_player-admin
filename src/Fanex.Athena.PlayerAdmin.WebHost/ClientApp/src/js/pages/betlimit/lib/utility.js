@@ -61,7 +61,9 @@ const ConfirmationUpdateProductStatusMsg = {
     [BetLimitProduct.KN]: { Msg: 'UpdateProductStatus', Product: 'ProductKN' },
     [BetLimitProduct.TG]: { Msg: 'UpdateProductStatus', Product: 'ProductTG' },
     [BetLimitProduct.LT]: { Msg: 'UpdateProductStatus', Product: 'ProductLT' },
-    [BetLimitProduct.VGA]: { Msg: 'UpdateProductStatus', Product: 'ProductVGA' }
+    [BetLimitProduct.VGA]: { Msg: 'UpdateProductStatus', Product: 'ProductVGA' },
+    [BetLimitProduct.AP]: { Msg: 'UpdateProductStatus', Product: 'ProductAP' },
+    [BetLimitProduct.APM]: { Msg: 'UpdateProductStatus', Product: 'ProductAPM' }
 }
 
 export default class Utility {

@@ -77,6 +77,10 @@
         public const string CG = "CG";
 
         public const string BX = "BX";
+
+        public const string AP = "AP";
+
+        public const string APM = "APM";
     }
 
     public static class ProductTypes
@@ -151,5 +155,9 @@
         public const int CC = 34;
 
         public const int VGA = 66;
+
+        public const int AP = 67;
+
+        public const int APM = 68;
     }
 }

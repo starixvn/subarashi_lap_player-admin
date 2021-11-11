@@ -39,7 +39,9 @@ const Setting = {
     [BetLimitProduct.CC]: GameDataContent,
     [BetLimitProduct.CS]: RNGCDataContent,
     [BetLimitProduct.CB]: ThirdPartyDataContent,
-    [BetLimitProduct.VGA]: GameDataContent
+    [BetLimitProduct.VGA]: GameDataContent,
+    [BetLimitProduct.AP]: GameDataContent,
+    [BetLimitProduct.APM]: GameDataContent
 };
 
 const DataContent = (props) => {
