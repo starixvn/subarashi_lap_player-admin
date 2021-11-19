@@ -12,6 +12,8 @@ namespace Fanex.Athena.PlayerAdmin.Core.Attributes
     [AttributeUsage(AttributeTargets.Method, AllowMultiple = false)]
     public class AutoBindingMetaModelAttribute : TypeFilterAttribute
     {
+#pragma warning disable S107 // Methods should not have too many parameters
+
         public AutoBindingMetaModelAttribute(
             bool bindAgent = false,
             bool bindSiteName = false,
@@ -21,11 +23,13 @@ namespace Fanex.Athena.PlayerAdmin.Core.Attributes
             bool bindBalanceUp = false,
             bool bindLicenseeContract = false,
             bool bindLicenseeId = false,
-            bool bindUsername = false
+            bool bindUsername = false,
+            bool bindProductCodeList = false
             )
+#pragma warning restore S107 // Methods should not have too many parameters
             : base(typeof(AutoBindingMetaModelImplAttribute))
         {
-            Arguments = new object[] { bindAgent, bindSiteName, bindLanguage, bindClientIP, bindUserId, bindBalanceUp, bindLicenseeContract, bindLicenseeId, bindUsername };
+            Arguments = new object[] { bindAgent, bindSiteName, bindLanguage, bindClientIP, bindUserId, bindBalanceUp, bindLicenseeContract, bindLicenseeId, bindUsername, bindProductCodeList };
         }
     }
 
@@ -46,6 +50,9 @@ namespace Fanex.Athena.PlayerAdmin.Core.Attributes
         private readonly bool _bindLicenseeContract;
         private readonly bool _bindLicenseeId;
         private readonly bool _bindUsername;
+        private readonly bool _bindProductCodeList;
+
+#pragma warning disable S107 // Methods should not have too many parameters
 
         public AutoBindingMetaModelImplAttribute(
             IMetaModelBindingService bindingService,
@@ -60,8 +67,10 @@ namespace Fanex.Athena.PlayerAdmin.Core.Attributes
             bool bindBalanceUp,
             bool bindFunctionContract,
             bool bindLicenseeId,
-            bool bindUsername
+            bool bindUsername,
+            bool bindProductCodeList
          )
+#pragma warning restore S107 // Methods should not have too many parameters
         {
             _bindingService = bindingService;
             _licenseeService = licenseeService;
@@ -77,6 +86,7 @@ namespace Fanex.Athena.PlayerAdmin.Core.Attributes
             _bindLicenseeContract = bindFunctionContract;
             _bindLicenseeId = bindLicenseeId;
             _bindUsername = bindUsername;
+            _bindProductCodeList = bindProductCodeList;
         }
 
         public override async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
@@ -126,6 +136,11 @@ namespace Fanex.Athena.PlayerAdmin.Core.Attributes
                 await BindLicenseeContract(functionContractMetaModel);
             }
 
+            if (_bindProductCodeList && MetaModelHelper.IsMetaModel(context.ActionArguments, out IProductCodeMetailModel functionProductCodeMetaModel))
+            {
+                BindProductCode(functionProductCodeMetaModel);
+            }
+
             await next();
         }
 
@@ -157,6 +172,13 @@ namespace Fanex.Athena.PlayerAdmin.Core.Attributes
                 agentList = await _subsidiaryService.GetAgentList(_contextService.SiteName, _contextService.AgentList, subsidiaryMetaModel.SubsidiaryList);
             }
             _bindingService.BindAgentXml(context.ActionArguments, agentList);
+        }
+
+        private void BindProductCode(IProductCodeMetailModel functionProductCodeMetaModel)
+        {
+            functionProductCodeMetaModel.ProductCodeList = _licenseeService.GetAllowedSubProductCodeList(
+                   _contextService.SubProductList,
+                   functionProductCodeMetaModel.ProductCodeList);
         }
     }
 }

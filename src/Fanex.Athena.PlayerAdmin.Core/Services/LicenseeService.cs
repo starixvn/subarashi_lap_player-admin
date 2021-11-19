@@ -91,7 +91,7 @@ namespace Fanex.Athena.PlayerAdmin.Core.Services
 
         public async Task<bool> CheckCustomerBelongTo(IReadOnlyDictionary<int, int[]> agentList, int custId, int currencyId = 0)
         {
-            if(custId == 0)
+            if (custId == 0)
             {
                 return true;
             }
@@ -244,5 +244,35 @@ namespace Fanex.Athena.PlayerAdmin.Core.Services
 
         private static bool IsBelonging(IReadOnlyDictionary<int, int[]> currencyAgents, Customer cust)
                   => currencyAgents[cust.CurrencyId] is int[] agentList && agentList.Contains(cust.AgentId);
+
+        public IList<ProductOption> GetAllowedSubProductOptions(IEnumerable<string> subProduct, IList<ProductOption> productOptions)
+        {
+            if (subProduct == null || !subProduct.Any() || !productOptions.Any(_ => _.Code == ProductCode.SB))
+            {
+                return productOptions;
+            }
+
+            foreach (var product in subProduct)
+            {
+                productOptions.Add(
+                new ProductOption
+                {
+                    Code = product,
+                    Status = true
+                });
+            }
+
+            return productOptions;
+        }
+
+        public string GetAllowedSubProductCodeList(IEnumerable<string> subProduct, string productCodes)
+        {
+            if (subProduct == null || !subProduct.Any() || !productCodes.Split(',').Any(_ => _ == ProductCode.SB))
+            {
+                return productCodes;
+            }
+
+            return productCodes + "," + string.Join(",", subProduct);
+        }
     }
 }

@@ -41,7 +41,7 @@ namespace Fanex.Athena.PlayerAdmin.MVC.Controllers
 
         [HttpGet]
         [ReferrerValidation]
-        public async Task<ViewResult> Index([FromQuery]string userName, [FromQuery]string currencyName)
+        public async Task<ViewResult> Index([FromQuery] string userName, [FromQuery] string currencyName)
         {
             var viewModel = new PlayerBtcSingleCustomerViewModel
             {
@@ -69,6 +69,7 @@ namespace Fanex.Athena.PlayerAdmin.MVC.Controllers
             metaModel.IsShowIpVN = _contextService.IsShowIpVN;
 
             await AssignMetaModelValue(metaModel);
+            metaModel.ProductCodeList = _licenseeService.GetAllowedSubProductCodeList(_contextService.SubProductList, metaModel.ProductCodeList);
 
             if (metaModel.IsExport)
             {

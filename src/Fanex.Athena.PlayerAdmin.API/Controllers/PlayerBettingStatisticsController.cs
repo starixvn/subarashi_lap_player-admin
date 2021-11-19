@@ -25,7 +25,7 @@ namespace Fanex.Athena.PlayerAdmin.API.Controllers
         [HttpPost]
         [BearerAuthorize(Roles.SuperAdmin, Roles.AccountInfo)]
         [RequestValidation(validateCustId: true)]
-        [AutoBindingMetaModel(bindBalanceUp: true)]
+        [AutoBindingMetaModel(bindBalanceUp: true, bindProductCodeList: true)]
         public async Task<IActionResult> GetData(PlayerBettingStatisticsMetaModel metaModel)
         {
             var now = DateTimeHelper.DatabaseServerNow;

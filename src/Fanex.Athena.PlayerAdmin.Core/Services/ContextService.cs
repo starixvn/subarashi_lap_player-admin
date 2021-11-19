@@ -85,6 +85,8 @@ namespace Fanex.Athena.PlayerAdmin.Core.Services
 
         public bool IsShowIpVN => IsInRoles("super_admin", "bl_view_ipvn");
 
+        public IEnumerable<string> SubProductList => new List<string> { "SLT" };
+
         public Task<string> AccessToken => Context.GetTokenAsync(CookieAuthenticationDefaults.AuthenticationScheme, "access_token");
 
         public bool IsInRoles(params string[] roles) => roles?.Any(_ => User.IsInRole(_)) ?? false;

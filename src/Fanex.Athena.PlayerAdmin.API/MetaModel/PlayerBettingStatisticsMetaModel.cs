@@ -1,9 +1,10 @@
-﻿using Fanex.Athena.PlayerAdmin.Core.Models;
+﻿using Fanex.Athena.PlayerAdmin.Core.Constants;
+using Fanex.Athena.PlayerAdmin.Core.Models;
 using System;
 
 namespace Fanex.Athena.PlayerAdmin.API.MetaModel
 {
-    public class PlayerBettingStatisticsMetaModel : IBalanceUpAndMoveBetMetaModel, ICustomerIdentityMetaModel
+    public class PlayerBettingStatisticsMetaModel : IBalanceUpAndMoveBetMetaModel, ICustomerIdentityMetaModel, IProductCodeMetailModel
     {
         public int CustId { get; set; }
 
@@ -16,5 +17,7 @@ namespace Fanex.Athena.PlayerAdmin.API.MetaModel
         public DateTime BalanceUpDay { get; set; }
 
         public int CurrencyId { get; set; }
+
+        public string ProductCodeList { get; set; } = ProductCode.SB;
     }
 }

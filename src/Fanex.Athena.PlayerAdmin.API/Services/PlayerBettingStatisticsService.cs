@@ -36,6 +36,7 @@ namespace Fanex.Athena.PlayerAdmin.API.Services
             objectDb.SetParameterValue("ToDate", metaModel.ToDate);
             objectDb.SetParameterValue("MoveBetsDay", metaModel.MoveBetsDay);
             objectDb.SetParameterValue("BalanceUpDay", metaModel.BalanceUpDay);
+            objectDb.SetParameterValue("ProductList", metaModel.ProductCodeList);
         }
 
         private static async Task<PlayerBettingStatistics> ReadData(IObjectDb objectDb)

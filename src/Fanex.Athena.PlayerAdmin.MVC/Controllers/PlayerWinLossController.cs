@@ -74,7 +74,8 @@ namespace Fanex.Athena.PlayerAdmin.MVC.Controllers
             var now = DateTimeHelper.DatabaseServerNow;
             var productAccess = await GetProductAccess();
 
-            metaModel.ProductOptions = productAccess.ProductList.Select(p => new ProductOption { Code = p.ProductCode, Name = p.ProductName, Status = true });
+            var productList = productAccess.ProductList.Select(p => new ProductOption { Code = p.ProductCode, Name = p.ProductName, Status = true }).ToList();
+            metaModel.ProductOptions = _licenseeService.GetAllowedSubProductOptions(_contextService.SubProductList, productList);
             metaModel.FromDate = new DateTime(now.Year, now.Month, 1);
             metaModel.ToDate = now;
         }

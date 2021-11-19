@@ -16,7 +16,7 @@ namespace Fanex.Athena.PlayerAdmin.Core.Services
 
         Task<bool> CheckCustomerBelongTo(IReadOnlyDictionary<int, int[]> agentList, int custId, int currencyId = 0);
 
-         Task<ICollection<int>> GetCustomersBelongTo(IReadOnlyDictionary<int, int[]> agentList, string custIds);
+        Task<ICollection<int>> GetCustomersBelongTo(IReadOnlyDictionary<int, int[]> agentList, string custIds);
 
         Task<IList<Product>> GetProductList(int licenseeId, string languageCode);
 
@@ -25,5 +25,9 @@ namespace Fanex.Athena.PlayerAdmin.Core.Services
         string[] GetAllowedProducts(string function);
 
         Task<ProductAccess> GetSingleWalletProductAccess(int licenseeId, string languageCode, string function = "Default");
+
+        IList<ProductOption> GetAllowedSubProductOptions(IEnumerable<string> subProduct, IList<ProductOption> productOptions);
+
+        string GetAllowedSubProductCodeList(IEnumerable<string> subProduct, string productCodes);
     }
 }
