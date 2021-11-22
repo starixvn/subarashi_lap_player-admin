@@ -2,14 +2,11 @@
 using Fanex.Athena.PlayerAdmin.Core.Constants;
 using Fanex.Athena.PlayerAdmin.Core.Attributes;
 using Fanex.Athena.PlayerAdmin.Core.Services;
-using Fanex.Athena.PlayerAdmin.Core.Settings;
 using Fanex.Athena.PlayerAdmin.MVC.DTO;
 using Fanex.Athena.PlayerAdmin.MVC.MetaModel;
 using Fanex.Athena.PlayerAdmin.MVC.ViewModels;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Options;
 using System;
-using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using Fanex.Athena.PlayerAdmin.Core.Helpers;
@@ -43,12 +40,13 @@ namespace Fanex.Athena.PlayerAdmin.MVC.Controllers
         [ReferrerValidation]
         public async Task<ViewResult> Index([FromQuery] string userName, [FromQuery] string currencyName)
         {
+            var productAccess = await _licenseeService.GetSingleWalletProductAccess(_contextService.LicenseeId, FunctionKey);
             var viewModel = new PlayerBtcSingleCustomerViewModel
             {
                 UserName = userName?.Trim(),
                 CurrencyName = currencyName?.Trim(),
                 IsAllowedCustomerComm = _contextService.IsAllowedCustomerComm,
-                ProductCodeListString = await GetProductCode()
+                ProductCodeListString = productAccess.ProductCodeListString
             };
 
             ViewBag.IsAllowTxIDColumn = _contextService.IsEnableSingleWallet;
@@ -59,17 +57,11 @@ namespace Fanex.Athena.PlayerAdmin.MVC.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [RequestValidation]
-        [AutoBindingMetaModel(bindAgent: true)]
+        [AutoBindingMetaModel(bindAgent: true, bindProductList: true)]
         public async Task<IActionResult> Index([FromServices] IBetListApiClient betListApiClient, [Bind("Username", "PageSize", "PageIndex", "IsExport", "SortBy", "SortOrder")]
         [FromBody] PlayerBtcSingleCustomerMetaModel metaModel)
         {
-            metaModel.HasPlayerCom = _contextService.IsAllowedCustomerComm;
-            metaModel.IsAllowTxIDColumn = _contextService.IsEnableSingleWallet;
-            metaModel.IsShowIp = _contextService.IsShowIP;
-            metaModel.IsShowIpVN = _contextService.IsShowIpVN;
-
-            await AssignMetaModelValue(metaModel);
-            metaModel.ProductCodeList = _licenseeService.GetAllowedSubProductCodeList(_contextService.SubProductList, metaModel.ProductCodeList);
+            AssignMetaModelValue(metaModel);
 
             if (metaModel.IsExport)
             {
@@ -89,12 +81,16 @@ namespace Fanex.Athena.PlayerAdmin.MVC.Controllers
             return Json(result);
         }
 
-        private async Task AssignMetaModelValue(PlayerBtcSingleCustomerMetaModel metaModel)
+        private void AssignMetaModelValue(PlayerBtcSingleCustomerMetaModel metaModel)
         {
             var now = DateTimeHelper.DatabaseServerNow;
+
+            metaModel.HasPlayerCom = _contextService.IsAllowedCustomerComm;
+            metaModel.IsAllowTxIDColumn = _contextService.IsEnableSingleWallet;
+            metaModel.IsShowIp = _contextService.IsShowIP;
+            metaModel.IsShowIpVN = _contextService.IsShowIpVN;
             metaModel.Status = GetStatus();
             metaModel.Platform = AllPlatform;
-            metaModel.ProductCodeList = await GetProductCode();
             metaModel.LiveStatus = GetLiveStatus();
             metaModel.BaseCurrency = null;
             metaModel.FromDate = new DateTime(now.Year, now.Month, 1);
@@ -102,23 +98,9 @@ namespace Fanex.Athena.PlayerAdmin.MVC.Controllers
         }
 
         private static string GetStatus()
-        {
-            return string.Join(",", _statusList);
-        }
+            => string.Join(",", _statusList);
 
         private static string GetLiveStatus()
-        {
-            return string.Join(",", _liveStatusList);
-        }
-
-        private async Task<string> GetProductCode()
-        {
-            var productAccess = await _licenseeService.GetSingleWalletProductAccess(
-                _contextService.LicenseeId,
-                _contextService.Language,
-                FunctionKey);
-
-            return string.Join(",", productAccess.ProductList.Select(i => i.ProductCode));
-        }
+            => string.Join(",", _liveStatusList);
     }
 }

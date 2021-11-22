@@ -4,7 +4,7 @@ using System;
 
 namespace Fanex.Athena.PlayerAdmin.API.MetaModel
 {
-    public class PlayerBettingStatisticsMetaModel : IBalanceUpAndMoveBetMetaModel, ICustomerIdentityMetaModel, IProductCodeMetailModel
+    public class PlayerBettingStatisticsMetaModel : IBalanceUpAndMoveBetMetaModel, ICustomerIdentityMetaModel, IProductCodeListMetaModel
     {
         public int CustId { get; set; }
 

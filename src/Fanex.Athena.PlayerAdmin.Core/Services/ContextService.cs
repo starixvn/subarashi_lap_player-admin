@@ -85,7 +85,14 @@ namespace Fanex.Athena.PlayerAdmin.Core.Services
 
         public bool IsShowIpVN => IsInRoles("super_admin", "bl_view_ipvn");
 
-        public IEnumerable<string> SubProductList => new List<string> { "SLT" };
+        public IEnumerable<string> OfferedSubProductList
+        {
+            get
+            {
+                var offeredSubProductList = GetClaimValue("OfferedSubProducts");
+                return string.IsNullOrEmpty(offeredSubProductList) ? Enumerable.Empty<string>() : offeredSubProductList.Split(',');
+            }
+        }
 
         public Task<string> AccessToken => Context.GetTokenAsync(CookieAuthenticationDefaults.AuthenticationScheme, "access_token");
 
@@ -145,7 +152,7 @@ namespace Fanex.Athena.PlayerAdmin.Core.Services
             => (T)Convert.ChangeType(GetClaimValue(claimType), typeof(T));
 
         private string GetClaimValue(string claimType)
-            => User.FindFirst(claimType)?.Value ?? throw new InvalidOperationException($"The {claimType} claim was not found");
+            => User.FindFirst(claimType)?.Value;
 
         protected internal class CurrencyAgentInfo
         {

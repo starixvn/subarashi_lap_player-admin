@@ -16,7 +16,11 @@ namespace Fanex.Athena.PlayerAdmin.Core.Models
 
         public ReadOnlyCollection<Product> ProductList => _productList;
 
-        public IEnumerable<string> ListProductCode => _productList.Select(_ => _.ProductCode);
+        public IEnumerable<string> ProductCodeList => _productList.Select(_ => _.ProductCode);
+
+        public string ProductCodeListString => string.Join(",", ProductCodeList);
+
+        public IEnumerable<ProductOption> ProductOptionList => ProductList.Select(p => new ProductOption { Code = p.ProductCode, Name = p.ProductName, Status = true });
 
         public bool IsAllowBA => _productList.Any(p => p.ProductCode == ProductCode.BA);
 

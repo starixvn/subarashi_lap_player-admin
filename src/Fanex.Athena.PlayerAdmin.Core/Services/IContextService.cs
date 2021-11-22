@@ -24,7 +24,7 @@ namespace Fanex.Athena.PlayerAdmin.Core.Services
         string Language { get; }
         bool IsShowIP { get; }
         bool IsShowIpVN { get; }
-        IEnumerable<string> SubProductList { get; }
+        IEnumerable<string> OfferedSubProductList { get; }
         Task<string> AccessToken { get; }
 
         bool IsInRoles(params string[] roles);
