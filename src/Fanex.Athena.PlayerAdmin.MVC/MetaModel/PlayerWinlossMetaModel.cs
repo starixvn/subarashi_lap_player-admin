@@ -34,6 +34,8 @@ namespace Fanex.Athena.PlayerAdmin.MVC.MetaModel
 
         public IEnumerable<ProductOption> ProductOptions { get; set; }
 
+        public IEnumerable<ProductOption> OriginalProductOptions { get; set; }
+
         public string AgentListXml { get; set; }
 
         public bool IsExportExcel { get; set; }

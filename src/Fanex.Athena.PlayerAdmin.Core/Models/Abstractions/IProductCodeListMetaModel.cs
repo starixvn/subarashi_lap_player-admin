@@ -3,5 +3,6 @@
     public interface IProductCodeListMetaModel
     {
         string ProductCodeList { get; set; }
+        string OriginalProductCodeList { get; set; }
     }
 }

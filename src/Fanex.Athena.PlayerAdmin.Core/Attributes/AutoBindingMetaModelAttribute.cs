@@ -180,6 +180,8 @@ namespace Fanex.Athena.PlayerAdmin.Core.Attributes
                 var productAccess = await _licenseeService.GetSingleWalletProductAccess(_contextService.LicenseeId, functionKey);
                 productCodeListFromFilter = productAccess.ProductCodeListString;
             }
+
+            productCodeListMetaModel.OriginalProductCodeList = productCodeListFromFilter;
             productCodeListMetaModel.ProductCodeList = _licenseeService.GetAllowedSubProductCodeList(_contextService.OfferedSubProductList, productCodeListFromFilter);
         }
 
@@ -191,6 +193,8 @@ namespace Fanex.Athena.PlayerAdmin.Core.Attributes
                 var productAccess = await _licenseeService.GetSingleWalletProductAccess(_contextService.LicenseeId, functionKey);
                 productOptionsFromFilter = productAccess.ProductOptionList;
             }
+
+            productOptionsMetaModel.OriginalProductOptions = productOptionsFromFilter;
             productOptionsMetaModel.ProductOptions = _licenseeService.GetAllowedSubProductOptions(_contextService.OfferedSubProductList, productOptionsFromFilter);
         }
     }

@@ -20,6 +20,8 @@ namespace Fanex.Athena.PlayerAdmin.MVC.MetaModel
 
         public string ProductCodeList { get; set; }
 
+        public string OriginalProductCodeList { get; set; }
+
         public DateTime FromDate { get; set; }
 
         public DateTime ToDate { get; set; }

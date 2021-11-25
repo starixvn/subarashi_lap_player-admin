@@ -19,5 +19,6 @@ namespace Fanex.Athena.PlayerAdmin.API.MetaModel
         public int CurrencyId { get; set; }
 
         public string ProductCodeList { get; set; } = ProductCode.SB;
+        public string OriginalProductCodeList { get; set; }
     }
 }
