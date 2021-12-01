@@ -1,4 +1,5 @@
-﻿using Fanex.Athena.PlayerAdmin.Core.Models;
+﻿using Fanex.Athena.PlayerAdmin.Core.Extensions;
+using Fanex.Athena.PlayerAdmin.Core.Models;
 using Fanex.Athena.PlayerAdmin.Core.Services;
 using Fanex.Core.Utils;
 using Microsoft.AspNetCore.Mvc;
@@ -12,6 +13,8 @@ namespace Fanex.Athena.PlayerAdmin.Core.Attributes
     [AttributeUsage(AttributeTargets.Method, AllowMultiple = false)]
     public class AutoBindingMetaModelAttribute : TypeFilterAttribute
     {
+#pragma warning disable S107 // Methods should not have too many parameters
+
         public AutoBindingMetaModelAttribute(
             bool bindAgent = false,
             bool bindSiteName = false,
@@ -19,13 +22,14 @@ namespace Fanex.Athena.PlayerAdmin.Core.Attributes
             bool bindClientIP = false,
             bool bindUserId = false,
             bool bindBalanceUp = false,
-            bool bindLicenseeContract = false,
             bool bindLicenseeId = false,
-            bool bindUsername = false
+            bool bindUsername = false,
+            bool bindProductList = false
             )
+#pragma warning restore S107 // Methods should not have too many parameters
             : base(typeof(AutoBindingMetaModelImplAttribute))
         {
-            Arguments = new object[] { bindAgent, bindSiteName, bindLanguage, bindClientIP, bindUserId, bindBalanceUp, bindLicenseeContract, bindLicenseeId, bindUsername };
+            Arguments = new object[] { bindAgent, bindSiteName, bindLanguage, bindClientIP, bindUserId, bindBalanceUp, bindLicenseeId, bindUsername, bindProductList };
         }
     }
 
@@ -43,9 +47,11 @@ namespace Fanex.Athena.PlayerAdmin.Core.Attributes
         private readonly bool _bindClientIP;
         private readonly bool _bindUserId;
         private readonly bool _bindBalanceUp;
-        private readonly bool _bindLicenseeContract;
         private readonly bool _bindLicenseeId;
         private readonly bool _bindUsername;
+        private readonly bool _bindProductList;
+
+#pragma warning disable S107 // Methods should not have too many parameters
 
         public AutoBindingMetaModelImplAttribute(
             IMetaModelBindingService bindingService,
@@ -58,10 +64,11 @@ namespace Fanex.Athena.PlayerAdmin.Core.Attributes
             bool bindClientIP,
             bool bindUserId,
             bool bindBalanceUp,
-            bool bindFunctionContract,
             bool bindLicenseeId,
-            bool bindUsername
+            bool bindUsername,
+            bool bindProductList
          )
+#pragma warning restore S107 // Methods should not have too many parameters
         {
             _bindingService = bindingService;
             _licenseeService = licenseeService;
@@ -74,9 +81,9 @@ namespace Fanex.Athena.PlayerAdmin.Core.Attributes
             _bindClientIP = bindClientIP;
             _bindUserId = bindUserId;
             _bindBalanceUp = bindBalanceUp;
-            _bindLicenseeContract = bindFunctionContract;
             _bindLicenseeId = bindLicenseeId;
             _bindUsername = bindUsername;
+            _bindProductList = bindProductList;
         }
 
         public override async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
@@ -121,9 +128,9 @@ namespace Fanex.Athena.PlayerAdmin.Core.Attributes
                 await BindBalanceUp(balanceUpAndMoveBetMetaModel);
             }
 
-            if (_bindLicenseeContract && MetaModelHelper.IsMetaModel(context.ActionArguments, out IFunctionContractMetaModel functionContractMetaModel))
+            if(_bindProductList)
             {
-                await BindLicenseeContract(functionContractMetaModel);
+                await BindProductList(context);
             }
 
             await next();
@@ -136,18 +143,6 @@ namespace Fanex.Athena.PlayerAdmin.Core.Attributes
             balanceUpAndMoveBetMetaModel.MoveBetsDay = balanceUp.MoveBetsDay;
         }
 
-        private async Task BindLicenseeContract(IFunctionContractMetaModel functionContractMetaModel)
-        {
-            var productAccess = await _licenseeService.GetSingleWalletProductAccess(
-                   _contextService.LicenseeId,
-                   "en-US",
-                   functionContractMetaModel.FunctionKey);
-
-            functionContractMetaModel.HasComm = _contextService.IsAllowedCustomerComm;
-            functionContractMetaModel.IsAllowedBA = productAccess.IsAllowBA;
-            functionContractMetaModel.SystemIdVisible = !_licenseeService.IsFakeLicensee(_contextService.SiteName);
-        }
-
         private async Task BindAgent(ActionExecutingContext context)
         {
             var agentList = _contextService.AgentList as IDictionary<int, int[]>;
@@ -157,6 +152,50 @@ namespace Fanex.Athena.PlayerAdmin.Core.Attributes
                 agentList = await _subsidiaryService.GetAgentList(_contextService.SiteName, _contextService.AgentList, subsidiaryMetaModel.SubsidiaryList);
             }
             _bindingService.BindAgentXml(context.ActionArguments, agentList);
+        }
+
+        private async Task BindProductList(ActionExecutingContext context)
+        {
+            var functionKey = MetaModelHelper.IsMetaModel(context.ActionArguments, out IFunctionKeyMetaModel functionKeyMetaModel) ? functionKeyMetaModel.FunctionKey : "Default";
+
+            if (MetaModelHelper.IsMetaModel(context.ActionArguments, out IProductCodeListMetaModel productCodeListMetaModel))
+            {
+                await BindProductCodeList(productCodeListMetaModel, functionKey);
+            } 
+            else if(MetaModelHelper.IsMetaModel(context.ActionArguments, out IProductOptionsMetaModel productOptionsMetaModel))
+            {
+                await BindProductOptions(productOptionsMetaModel, functionKey);
+            }
+            else
+            {
+                //nothing
+            }
+        }
+
+        private async Task BindProductCodeList(IProductCodeListMetaModel productCodeListMetaModel, string functionKey)
+        {
+            var productCodeListFromFilter = productCodeListMetaModel.ProductCodeList;
+            if (string.IsNullOrEmpty(productCodeListFromFilter))
+            {
+                var productAccess = await _licenseeService.GetSingleWalletProductAccess(_contextService.LicenseeId, functionKey);
+                productCodeListFromFilter = productAccess.ProductCodeListString;
+            }
+
+            productCodeListMetaModel.OriginalProductCodeList = productCodeListFromFilter;
+            productCodeListMetaModel.ProductCodeList = _licenseeService.GetAllowedSubProductCodeList(_contextService.OfferedSubProductList, productCodeListFromFilter);
+        }
+
+        private async Task BindProductOptions(IProductOptionsMetaModel productOptionsMetaModel, string functionKey)
+        {
+            var productOptionsFromFilter = productOptionsMetaModel.ProductOptions;
+            if (!productOptionsFromFilter.IsPresent())
+            {
+                var productAccess = await _licenseeService.GetSingleWalletProductAccess(_contextService.LicenseeId, functionKey);
+                productOptionsFromFilter = productAccess.ProductOptionList;
+            }
+
+            productOptionsMetaModel.OriginalProductOptions = productOptionsFromFilter;
+            productOptionsMetaModel.ProductOptions = _licenseeService.GetAllowedSubProductOptions(_contextService.OfferedSubProductList, productOptionsFromFilter);
         }
     }
 }

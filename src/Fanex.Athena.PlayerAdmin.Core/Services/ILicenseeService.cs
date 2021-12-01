@@ -16,14 +16,16 @@ namespace Fanex.Athena.PlayerAdmin.Core.Services
 
         Task<bool> CheckCustomerBelongTo(IReadOnlyDictionary<int, int[]> agentList, int custId, int currencyId = 0);
 
-         Task<ICollection<int>> GetCustomersBelongTo(IReadOnlyDictionary<int, int[]> agentList, string custIds);
+        Task<ICollection<int>> GetCustomersBelongTo(IReadOnlyDictionary<int, int[]> agentList, string custIds);
 
-        Task<IList<Product>> GetProductList(int licenseeId, string languageCode);
+        Task<ProductAccess> GetProductAccess(int licenseeId, string function = "Default");
 
-        Task<ProductAccess> GetProductAccess(int licenseeId, string languageCode, string function = "Default");
+        string[] GetAllowedProductsByFunction(string function);
 
-        string[] GetAllowedProducts(string function);
+        Task<ProductAccess> GetSingleWalletProductAccess(int licenseeId, string function = "Default");
 
-        Task<ProductAccess> GetSingleWalletProductAccess(int licenseeId, string languageCode, string function = "Default");
+        IEnumerable<ProductOption> GetAllowedSubProductOptions(IEnumerable<string> offeredSubProductList, IEnumerable<ProductOption> productOptions);
+
+        string GetAllowedSubProductCodeList(IEnumerable<string> offeredSubProductList, string productCodes);
     }
 }

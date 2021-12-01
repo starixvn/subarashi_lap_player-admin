@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Fanex.Athena.PlayerAdmin.MVC.MetaModel
 {
-    public class PlayerWinLossMetaModel : IAgentMetaModel, IValidationMetaModel, IFunctionContractMetaModel
+    public class PlayerWinLossMetaModel : IAgentMetaModel, IValidationMetaModel, IProductOptionsMetaModel, IFunctionKeyMetaModel
     {
         private const int MinimumPageSize = 50;
 
@@ -33,6 +33,8 @@ namespace Fanex.Athena.PlayerAdmin.MVC.MetaModel
         public DateTime ToDate { get; set; }
 
         public IEnumerable<ProductOption> ProductOptions { get; set; }
+
+        public IEnumerable<ProductOption> OriginalProductOptions { get; set; }
 
         public string AgentListXml { get; set; }
 

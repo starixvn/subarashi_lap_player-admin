@@ -25,7 +25,7 @@ namespace Fanex.Athena.PlayerAdmin.Commission.Controllers
         private async Task<IDictionary<string, bool>> GetProductPermissions()
         {
             var productAccess = await _licenseeService.GetProductAccess(_contextService.LicenseeId, _contextService.Language);
-            var supportedProducts = _licenseeService.GetAllowedProducts("CommissionGroups");
+            var supportedProducts = _licenseeService.GetAllowedProductsByFunction("CommissionGroups");
             return CommissionGroupHelper.GetProductPermissions(supportedProducts, productAccess);
         }
 

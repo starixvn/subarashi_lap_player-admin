@@ -4,7 +4,7 @@ using System;
 
 namespace Fanex.Athena.PlayerAdmin.MVC.MetaModel
 {
-    public class PlayerBtcSingleCustomerMetaModel : IAgentMetaModel, IShowBetFromIPMetaModel, IValidationMetaModel
+    public class PlayerBtcSingleCustomerMetaModel : IAgentMetaModel, IShowBetFromIPMetaModel, IProductCodeListMetaModel, IFunctionKeyMetaModel, IValidationMetaModel
     {
         private const int DefaultPageSize = 50;
 
@@ -19,6 +19,8 @@ namespace Fanex.Athena.PlayerAdmin.MVC.MetaModel
         }
 
         public string ProductCodeList { get; set; }
+
+        public string OriginalProductCodeList { get; set; }
 
         public DateTime FromDate { get; set; }
 
@@ -77,5 +79,7 @@ namespace Fanex.Athena.PlayerAdmin.MVC.MetaModel
         public bool IsShowIpVN { get; set; }
 
         public bool IsValid => !string.IsNullOrEmpty(UserName);
+
+        public string FunctionKey => "BettingTicketCenter";
     }
 }

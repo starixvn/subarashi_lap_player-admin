@@ -38,7 +38,6 @@ namespace Fanex.Athena.PlayerAdmin.Commission.Helpers
             [ProductCode.BGG] = "BigGaming",
             [ProductCode.JK] = "Joker",
             [ProductCode.GDG] = "GDG",
-            [ProductCode.SLT] = "SportsLottery",
             [ProductCode.HB] = "Habanero",
             [ProductCode.VGA] = "VGaming"
         };

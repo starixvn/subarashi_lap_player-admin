@@ -30,46 +30,21 @@ namespace Fanex.Athena.PlayerAdmin.Core.Services
         }
 
         public async Task<bool> IsAllowUpdateBA(int licenseeId, string userName, IEnumerable<string> specicalBAAdmins)
+            => specicalBAAdmins.IsPresent() && specicalBAAdmins.Contains(userName, StringComparer.InvariantCultureIgnoreCase) || await IsAllowUpdateMemberBAStatus(licenseeId);
+
+        public async Task<ProductAccess> GetProductAccess(int licenseeId, string function = "Default")
         {
-            var specialBaPermission = specicalBAAdmins.IsPresent() && specicalBAAdmins.Contains(userName, StringComparer.InvariantCultureIgnoreCase);
-            if (specialBaPermission)
-            {
-                return true;
-            }
-
-            var isAllow = await IsAllowUpdateMemberBAStatus(licenseeId);
-            return isAllow;
-        }
-
-        public Task<IList<Product>> GetProductList(int licenseeId, string languageCode)
-        {
-            var cacheKey = string.Format(CacheKey.ProductList, licenseeId, languageCode);
-            return LockHelper.LockAsync(cacheKey, () => TryGetOrAddFromCache(cacheKey, TimeSpan.FromDays(1), () => GetProductListFromDB(licenseeId)));
-        }
-
-        public async Task<ProductAccess> GetProductAccess(int licenseeId, string languageCode, string function = "Default")
-        {
-            var allowedProducts = GetAllowedProducts(function);
-            var originalProducts = await GetProductList(licenseeId, languageCode);
-
-            var productList = allowedProducts != null && allowedProducts.Any() ? originalProducts.Where(i => allowedProducts.Contains(i.ProductCode)).ToList()
-                : originalProducts;
-
+            var productList = await GetAllowedProducts(licenseeId, function, null);
             return new ProductAccess(productList);
         }
 
-        public async Task<ProductAccess> GetSingleWalletProductAccess(int licenseeId, string languageCode, string function = "Default")
+        public async Task<ProductAccess> GetSingleWalletProductAccess(int licenseeId, string function = "Default")
         {
-            var allowedProducts = GetAllowedProducts(function);
-            var originalProducts = await GetProductList(licenseeId, languageCode);
-
-            var productList = allowedProducts != null && allowedProducts.Any() ? originalProducts.Where(i => i.IsOfferedSingleWallet && allowedProducts.Contains(i.ProductCode)).ToList()
-                : originalProducts;
-
+            var productList = await GetAllowedProducts(licenseeId, function, isOfferedSingleWallet: true);
             return new ProductAccess(productList);
         }
 
-        public string[] GetAllowedProducts(string function)
+        public string[] GetAllowedProductsByFunction(string function)
         {
             var allowedProducts = _functionSetting.GetType()
                .GetProperty(function)?
@@ -79,7 +54,7 @@ namespace Fanex.Athena.PlayerAdmin.Core.Services
 
         public async Task<bool> CheckProductBelongsTo(string licenseeName, int productId, int[] limitedProductIds = null)
         {
-            if (limitedProductIds != null && limitedProductIds.Any() && !limitedProductIds.Contains(productId))
+            if (limitedProductIds.IsPresent() && !limitedProductIds.Contains(productId))
             {
                 return false;
             }
@@ -91,7 +66,7 @@ namespace Fanex.Athena.PlayerAdmin.Core.Services
 
         public async Task<bool> CheckCustomerBelongTo(IReadOnlyDictionary<int, int[]> agentList, int custId, int currencyId = 0)
         {
-            if(custId == 0)
+            if (custId == 0)
             {
                 return true;
             }
@@ -147,6 +122,33 @@ namespace Fanex.Athena.PlayerAdmin.Core.Services
         }
 
         public bool IsFakeLicensee(string licenseeName) => _appSetting.FakeLicensees.Any(_ => string.Equals(_, licenseeName, StringComparison.OrdinalIgnoreCase));
+
+        public IEnumerable<ProductOption> GetAllowedSubProductOptions(IEnumerable<string> offeredSubProductList, IEnumerable<ProductOption> productOptions)
+        {
+            if (!offeredSubProductList.IsPresent() || !productOptions.Any(_ => _.Code == ProductCode.SB))
+            {
+                return productOptions;
+            }
+
+            var newProductOptions = new List<ProductOption>(productOptions);
+            newProductOptions.AddRange(offeredSubProductList.Select(subProduct => new ProductOption
+            {
+                Code = subProduct,
+                Status = true
+            }));
+
+            return newProductOptions;
+        }
+
+        public string GetAllowedSubProductCodeList(IEnumerable<string> offeredSubProductList, string productCodes)
+        {
+            if (!offeredSubProductList.IsPresent() || !productCodes.Split(',').Any(_ => _ == ProductCode.SB))
+            {
+                return productCodes;
+            }
+
+            return productCodes + "," + string.Join(",", offeredSubProductList);
+        }
 
         private async Task<T> TryGetOrAddFromCache<T>(string cacheKey, TimeSpan cacheTime, Func<Task<T>> func)
         {
@@ -240,6 +242,25 @@ namespace Fanex.Athena.PlayerAdmin.Core.Services
 
                 return Convert.ToBoolean(await db.ExecuteScalarAsync());
             }
+        }
+
+        private async Task<IList<Product>> GetAllowedProducts(int licenseeId, string function, bool? isOfferedSingleWallet)
+        {
+            var allowedProductsByFunction = GetAllowedProductsByFunction(function);
+            var offeredProductsByLicensee = await GetOfferedProductsByLicensee(licenseeId);
+
+            var productList = allowedProductsByFunction != null && allowedProductsByFunction.Any() ? offeredProductsByLicensee.Where(i =>
+            (!isOfferedSingleWallet.HasValue || isOfferedSingleWallet == i.IsOfferedSingleWallet)
+            && allowedProductsByFunction.Contains(i.ProductCode)).ToList()
+                : offeredProductsByLicensee;
+
+            return productList;
+        }
+
+        private Task<IList<Product>> GetOfferedProductsByLicensee(int licenseeId)
+        {
+            var cacheKey = string.Format(CacheKey.ProductList, licenseeId);
+            return LockHelper.LockAsync(cacheKey, () => TryGetOrAddFromCache(cacheKey, TimeSpan.FromDays(1), () => GetProductListFromDB(licenseeId)));
         }
 
         private static bool IsBelonging(IReadOnlyDictionary<int, int[]> currencyAgents, Customer cust)
