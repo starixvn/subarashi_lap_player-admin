@@ -57,7 +57,9 @@ namespace Fanex.Athena.PlayerAdmin.Core.Helpers
                 { ProductCode.CG, nameof(ViewResources.ProductCG) },
                 { ProductCode.CO, nameof(ViewResources.ProductCO) },
                 { ProductCode.CB, nameof(ViewResources.ProductCB) },
-                { ProductCode.BX, nameof(ViewResources.ProductBX) }
+                { ProductCode.BX, nameof(ViewResources.ProductBX) },
+                { ProductCode.AP, nameof(ViewResources.ProductAP) },
+                { ProductCode.APM, nameof(ViewResources.ProductAPM) }
             };
 
         public static string GetProductName(string productCode, string defaultValue = null)
