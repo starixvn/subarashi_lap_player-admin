@@ -33,9 +33,9 @@ export const setPagingOption = (data) => {
     }
 }
 
-export const exportExcel = (playerList, param, displayedColumn, hasCommPermissionRead) => () => {
+export const exportExcel = (playerList, displayedColumn) => () => {
     const service = new PlayerQueryService();
-    service.exportExcel(playerList, param, displayedColumn, hasCommPermissionRead);
+    service.exportExcel(playerList, displayedColumn);
 }
 
 export const setIsFetchingData = (data) => {

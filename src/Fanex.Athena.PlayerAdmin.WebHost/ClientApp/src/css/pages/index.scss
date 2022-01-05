@@ -57,7 +57,7 @@ $borderContainer: #d6d6d6;
         }
     }
 
-    .checkbox-group:nth-child(n+2):last-child {
+    .checkbox-group:nth-child(n+2):not(:first-child) {
         margin-left: 20px;
     }
 }

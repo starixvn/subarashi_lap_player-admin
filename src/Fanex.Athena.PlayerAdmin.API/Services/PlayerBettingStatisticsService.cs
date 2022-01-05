@@ -17,7 +17,7 @@ namespace Fanex.Athena.PlayerAdmin.API.Services
             _dbFactory = dbFactory;
         }
 
-        public Task<PlayerBettingStatistics> GetPlayerBettingStatistics(PlayerBettingStatisticsMetaModel metaModel)
+        public async Task<PlayerBettingStatistics> GetPlayerBettingStatistics(PlayerBettingStatisticsMetaModel metaModel)
         {
             const string SpKey = "Lrf_PlayerBettingStatistics";
 
@@ -25,7 +25,7 @@ namespace Fanex.Athena.PlayerAdmin.API.Services
             {
                 AssignParam(objectDb, metaModel);
 
-                return ReadData(objectDb);
+                return await ReadData(objectDb);
             }
         }
 

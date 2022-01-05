@@ -4,6 +4,7 @@ using Fanex.Athena.PlayerAdmin.API.Services.Interfaces;
 using Fanex.Athena.PlayerAdmin.API.ViewModels;
 using Fanex.Athena.PlayerAdmin.Core.Extensions;
 using Fanex.Athena.PlayerAdmin.Core.Repositories;
+using Fanex.Athena.PlayerAdmin.Core.Services;
 using Fanex.Athena.PlayerAdmin.Core.Settings;
 using Fanex.Data;
 using Microsoft.Extensions.Logging;
@@ -21,10 +22,12 @@ namespace Fanex.Athena.PlayerAdmin.API.Services
     public class PlayerListService : IPlayerListService
     {
         private readonly IDbFactory _dbFactory;
+        private readonly IContextService _contextService;
 
-        public PlayerListService(IDbFactory dbFactory)
+        public PlayerListService(IDbFactory dbFactory, IContextService contextService)
         {
             _dbFactory = dbFactory;
+            _contextService = contextService;
         }
 
         public async Task<PlayerListResultViewModel> Search(PlayerSearchingMetaModel metaModel)
@@ -64,7 +67,34 @@ namespace Fanex.Athena.PlayerAdmin.API.Services
 
             return result;
         }
-        
+
+        public async Task<PlayerListResultViewModel> ArchivedSearch(PlayerArchivedSearchingMetaModel metaModel)
+        {
+            const string SpKey = "Lrf_DormantCustomerSel";
+            var result = new PlayerListResultViewModel();
+
+            using (var objectDb = _dbFactory.GetObjectDb(SpKey))
+            {
+                objectDb.SetParameterValue("AgentList", metaModel.AgentListXml);
+
+                var usernameTextSearch = ToSqlTextSearch(metaModel.UserName);
+                if (!string.IsNullOrWhiteSpace(usernameTextSearch))
+                {
+                    objectDb.SetParameterValue("UserName", usernameTextSearch);
+                    objectDb.SetParameterValue("SearchOption", metaModel.SearchOption);
+                }
+
+                objectDb.SetParameterValue("BaseCurrency", string.Empty);
+                objectDb.SetParameterValue("PageSize", metaModel.PageSize);
+                objectDb.SetParameterValue("PageIndex", metaModel.PageIndex);
+
+                result.DataList = await ReadArchivedPlayerList(objectDb);
+                result.TotalItem = GetTotalItem(objectDb);
+            }
+
+            return result;
+        }
+
         private static void AssignCommonParam(IObjectDb objectDb, PlayerListBaseMetaModel metaModel)
         {
             objectDb.SetParameterValue("LicenseeName", metaModel.SiteName);
@@ -120,6 +150,35 @@ namespace Fanex.Athena.PlayerAdmin.API.Services
                         OutstandingBalance = Convert.ToDecimal(reader["Outstanding"]),
                         CommissionGroup = Convert.ToString(reader["GroupName"]),
                         CustomerClass = Convert.ToString(reader["CustomerClass"])
+                    });
+                }
+            }
+
+            return playerList;
+        }
+
+        private async Task<IEnumerable<Player>> ReadArchivedPlayerList(IObjectDb objectDb)
+        {
+            var playerList = new List<Player>();
+            var currencyDic = _contextService.CurrencyList;
+
+            using (var reader = await objectDb.ExecuteReaderAsync())
+            {                
+                while (reader.Read())
+                {
+                    var currencyId = Convert.ToByte(reader["currency"]);
+                    var currency = currencyDic.ContainsKey(currencyId) ? currencyDic[currencyId] : string.Empty;
+                    const int ArchivedStatus = 3;
+
+                    playerList.Add(new Player
+                    {
+                        IbcCustId = reader.ToInt("custid"),
+                        SystemId = reader.ToString("username"),
+                        UserName = reader.ToString("nickname"),
+                        CurrentBalance = reader.ToDecimal("balance"),
+                        CurrencyId = currencyId,
+                        Currency = currency,
+                        Status = ArchivedStatus
                     });
                 }
             }

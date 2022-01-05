@@ -15,7 +15,7 @@ namespace Fanex.Athena.PlayerAdmin.API.Services
             _dbFactory = dbFactory;
         }
 
-        public Task<PlayerActivityRecord> GetActivityRecord(PlayerActivityRecordMetaModel metaModel)
+        public async Task<PlayerActivityRecord> GetActivityRecord(PlayerActivityRecordMetaModel metaModel)
         {
             const string UspName = "Lrf_CustomerLoginInfo";
 
@@ -24,7 +24,7 @@ namespace Fanex.Athena.PlayerAdmin.API.Services
                 db.SetParameterValue("custid", metaModel.CustId);
                 db.SetParameterValue("siteName", metaModel.SiteName);
 
-                return db.QueryEntityAsync<PlayerActivityRecord>();
+                return await db.QueryEntityAsync<PlayerActivityRecord>();
             }
         }
     }

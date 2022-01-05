@@ -2347,6 +2347,15 @@ namespace Fanex.Athena.PlayerAdmin.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Dormant players Search.
+        /// </summary>
+        public static string DormantPlayersSearch {
+            get {
+                return ResourceManager.GetString("DormantPlayersSearch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Double Chance.
         /// </summary>
         public static string DoubleChance {

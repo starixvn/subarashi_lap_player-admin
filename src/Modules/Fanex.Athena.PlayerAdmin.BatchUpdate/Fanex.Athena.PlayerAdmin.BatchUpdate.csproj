@@ -7,11 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <AdditionalFiles Include="..\..\..\.sonarlint\lap_playeradmin\CSharp\SonarLint.xml" Link="SonarLint.xml" />
+    <Compile Remove="DTO\**" />
+    <Content Remove="DTO\**" />
+    <EmbeddedResource Remove="DTO\**" />
+    <None Remove="DTO\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="DTO\" />
+    <AdditionalFiles Include="..\..\..\.sonarlint\lap_playeradmin\CSharp\SonarLint.xml" Link="SonarLint.xml" />
   </ItemGroup>
 
   <ItemGroup>

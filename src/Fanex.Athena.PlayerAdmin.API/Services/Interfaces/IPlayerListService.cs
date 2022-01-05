@@ -10,5 +10,7 @@ namespace Fanex.Athena.PlayerAdmin.API.Services.Interfaces
         Task<PlayerListResultViewModel> Search(PlayerSearchingMetaModel metaModel);
 
         Task<PlayerListResultViewModel> GetPlayerListById(PlayerListByIdMetaModel metaModel);
+
+        Task<PlayerListResultViewModel> ArchivedSearch(PlayerArchivedSearchingMetaModel metaModel);
     }
 }

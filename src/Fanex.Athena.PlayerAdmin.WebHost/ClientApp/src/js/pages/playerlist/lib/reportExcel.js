@@ -19,11 +19,10 @@ const displayedTextByField = {
 const fieldListWithEmptyValueByStatus = [fields.CurrentBalance, fields.OutstandingBalance, fields.OddsGroup, fields.BaStatus, fields.SpecialLevel];
 
 export default class ReportExcel {
-    constructor(data, displayedColumn, hasCommPermissionRead, title) {
+    constructor(data, displayedColumn, title) {
         this.data = data;
         this.title = title;
         this.displayedColumn = displayedColumn;
-        this.hasCommPermissionRead = hasCommPermissionRead;
 
         this.worksheet = {};
         this.currentRowIndex = DATA_ROW_INDEX;
@@ -183,22 +182,15 @@ export default class ReportExcel {
             field: fields.Email,
             [MAIN_SECTION_STYLE]: bodyCellStyle.left,
             width: 200
-        }];
-
-        if (this.hasCommPermissionRead) {
-            result.push({
-                field: fields.CommissionGroup,
-                [MAIN_SECTION_STYLE]: bodyCellStyle.center,
-                width: 120
-            });
-        }
-
-        result.push({
+        }, {
+            field: fields.CommissionGroup,
+            [MAIN_SECTION_STYLE]: bodyCellStyle.center,
+            width: 120
+        }, {
             field: fields.CustomerClass,
             [MAIN_SECTION_STYLE]: bodyCellStyle.center,
             width: 120
-        });
-
+        }];
         return result.filter(x => !!this.displayedColumn[x.field]);
     }
 }

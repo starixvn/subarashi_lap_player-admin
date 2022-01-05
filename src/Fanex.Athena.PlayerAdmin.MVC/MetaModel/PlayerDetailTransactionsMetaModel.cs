@@ -41,7 +41,7 @@ namespace Fanex.Athena.PlayerAdmin.MVC.MetaModel
             db.SetParameterValue("PageIndex", PageIndex);
             db.SetParameterValue("TotalRow", 0);
 
-            db.SetParameterValue("TransactionId", TransactionId);
+            db.SetParameterValue("TransactionId", TransactionId?.Trim());
             db.SetParameterValue("IsResettled", IsResettled);
         }
     }

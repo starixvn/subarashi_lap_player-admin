@@ -863,6 +863,9 @@
     <value>閑置玩家</value>
     <comment>ignoreJS</comment>
   </data>
+  <data name="DormantPlayersSearch" xml:space="preserve">
+    <value>搜寻休眠玩家</value>
+  </data>
   <data name="DoubleChance" xml:space="preserve">
     <value>双重机会</value>
   </data>

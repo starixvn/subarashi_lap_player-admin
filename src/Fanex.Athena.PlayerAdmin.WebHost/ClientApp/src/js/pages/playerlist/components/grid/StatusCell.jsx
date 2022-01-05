@@ -12,7 +12,7 @@ export const StatusCell = (props) => {
     const { dataItem, statusDropdownPosition, setCurrentActivePlayer, setStatusDropdownPosition, type } = props;
     const { Status, IsOnline, IsDeposit, IsArchived } = dataItem;
 
-    if (Status === undefined) {
+    if (Status === undefined || Status === null) {
         return null;
     }
 

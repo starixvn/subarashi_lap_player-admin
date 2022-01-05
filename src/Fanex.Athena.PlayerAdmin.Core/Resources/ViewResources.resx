@@ -963,6 +963,9 @@
     <value>Dormant Customers</value>
     <comment>102680</comment>
   </data>
+  <data name="DormantPlayersSearch" xml:space="preserve">
+    <value>Dormant players Search</value>
+  </data>
   <data name="DoubleChance" xml:space="preserve">
     <value>Double Chance</value>
   </data>

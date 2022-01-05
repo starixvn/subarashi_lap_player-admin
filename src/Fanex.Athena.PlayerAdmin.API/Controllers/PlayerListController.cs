@@ -3,6 +3,7 @@ using Fanex.Athena.PlayerAdmin.API.Services.Interfaces;
 using Fanex.Athena.PlayerAdmin.API.ViewModels;
 using Fanex.Athena.PlayerAdmin.Core.Attributes;
 using Fanex.Athena.PlayerAdmin.Core.Constants;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -36,6 +37,14 @@ namespace Fanex.Athena.PlayerAdmin.API.Controllers
         public async Task<ActionResult<PlayerListResultViewModel>> GetPlayerListById(PlayerListByIdMetaModel metaModel)
         {
             var result = await _playerListService.GetPlayerListById(metaModel);
+            return result;
+        }
+
+        [HttpPost]
+        [AutoBindingMetaModel(bindAgent: true)]
+        public async Task<ActionResult<PlayerListResultViewModel>> ArchivedSearch(PlayerArchivedSearchingMetaModel metaModel)
+        {
+            var result = await _playerListService.ArchivedSearch(metaModel);
             return result;
         }
     }

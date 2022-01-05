@@ -30,6 +30,20 @@ export default class GridHelper {
         )
     }
 
+    static renderHeaderForArchived(displayedColumn) {
+        const { Status, UserName, SystemId, Currency, CurrentBalance } = fields;
+
+        return (
+            <HeaderRow style={{ height: 32 }}>
+                {displayedColumn[Status] && <HeaderCell colWidth={60} >{headerText.Status}</HeaderCell>}
+                {displayedColumn[UserName] && <HeaderCell colWidth={120} sortBy={UserName}>{headerText.UserName}</HeaderCell>}
+                {displayedColumn[SystemId] && <HeaderCell colWidth={100}>{headerText.SystemId}</HeaderCell>}
+                {displayedColumn[Currency] && <HeaderCell colWidth={60} sortBy={Currency}>{headerText.Currency}</HeaderCell>}
+                {displayedColumn[CurrentBalance] && <HeaderCell colWidth={80} sortBy={CurrentBalance}>{headerText.CurrentBalance}</HeaderCell>}
+            </HeaderRow>
+        )
+    }
+
     static calculateTopPosition(dropdownHeight = 0, currentTop) {
         const innerHeight = window.innerHeight;
         const expectedHeight = dropdownHeight + currentTop + 20;
