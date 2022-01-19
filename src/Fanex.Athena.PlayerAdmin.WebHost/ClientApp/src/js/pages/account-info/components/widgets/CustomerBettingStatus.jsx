@@ -104,7 +104,7 @@ export const CustomerBettingStatus = (props) => {
             datasets: [dataSetItem]
         }
         const { Margin, AverageBetSize, Winnings, Loss, NetWinLoss } = data;
-        const marginPercent = NumberFormat.round(Margin, 2) * 100;
+        const marginPercent = Margin * 100;
 
         return (
             <div className="row">
