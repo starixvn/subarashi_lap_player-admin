@@ -62,9 +62,8 @@ define(
 
                         _me.elements.btnSave.addClass("completed");
                         _me.commonService.showMsg(result.Message, result.IsSuccessful);
-debugger
+
                         setTimeout(() => {
-                            debugger
                             _me.commonService.setTopWindowValue("playerComissionResult", {
                                 isCancel: true,
                                 oldCustIds: _me.commonService.elements.oldCustIds,

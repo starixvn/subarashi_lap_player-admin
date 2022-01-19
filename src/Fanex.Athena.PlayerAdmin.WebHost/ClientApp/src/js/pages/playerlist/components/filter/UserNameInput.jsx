@@ -34,7 +34,7 @@ export const UserNameInput = React.forwardRef((props, userNameRef) => {
 
         const { value } = element;
 
-        if (value.length >= minChar) {
+        if (getSuggestionList && value.length >= minChar) {
             const cachedData = cachedDataRef.current;
             const cacheKey = value + '_' + searchOption;
 

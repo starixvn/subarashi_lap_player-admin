@@ -10,8 +10,10 @@ import { licenseeType } from '../lib/constants';
 import CollapsiblePanel from '@jsroot/components/collapsible-panel';
 import UserGuide from '@jsroot/components/UserGuide';
 import LangHelper from '@jsroot/lib/langHelper';
-import { treeViewOption, searchOptions, baStatusList, specialLevelListWithColor,
-    emailPattern, oddsGroupListWithStyle, isDepositedList, responsiveFilterColumn } from '../lib/constants';
+import {
+    treeViewOption, searchOptions, baStatusList, specialLevelListWithColor,
+    emailPattern, oddsGroupListWithStyle, isDepositedList, responsiveFilterColumn
+} from '../lib/constants';
 import UserNameInput from './filter/UserNameInput';
 import QueryString from '@jsroot/lib/QueryString';
 import { encode } from '@jsroot/lib/htmlHelper';
@@ -19,7 +21,7 @@ import LicAthenaUserGuide from '../../userGuide/LicAthenaUserGuide';
 import LicApiUserGuide from '../../userGuide/LicApiUserGuide';
 import Select from 'react-select';
 import { TreeViewSelect } from '@9softstudio/react-multiselect'
-import { SubsidiaryViewType } from '@jsroot/constants/report'; 
+import { SubsidiaryViewType } from '@jsroot/constants/report';
 
 export class FormFilter extends PureComponent {
     constructor(props) {
@@ -34,6 +36,7 @@ export class FormFilter extends PureComponent {
         this.userNameRef = React.createRef();
 
         this.state = {
+            isArchivedPlayersSearch: false,
             bankAccountNumber: "",
             email: "",
             ipLogin: "",
@@ -126,7 +129,18 @@ export class FormFilter extends PureComponent {
 
     handleSubmit = (event) => {
         event.preventDefault();
-        this.searchPlayer();
+        if (this.state.isArchivedPlayersSearch) {
+            const { subsidiarySearch, selectedSubsidiaryList, searchOption } = this.state;
+            this.props.setParam({
+                isArchivedPlayersSearch: true,
+                userName: encode(this.userNameRef.current.value),
+                searchOption,
+                subsidiarySearch,
+                subsidiaryList: selectedSubsidiaryList
+            });
+        } else {
+            this.searchPlayer();
+        }
     };
 
     handlePressEnter = (event) => {
@@ -188,19 +202,19 @@ export class FormFilter extends PureComponent {
             isAllTextShown={false}
             hasSearchBox={false}
             treeViewOption={treeViewOption}
-            onChange={(currentItem, selectedItemsKey, treeViewList) => this.handleSpecificInputChange('selectedSubsidiaryList' , selectedItemsKey)} />;
+            onChange={(currentItem, selectedItemsKey, treeViewList) => this.handleSpecificInputChange('selectedSubsidiaryList', selectedItemsKey)} />;
     }
 
     _getUserNameLabel() {
-        return this.props.type === licenseeType.nonApi ?
+        return this.props.type === licenseeType.nonApi || this.state.isArchivedPlayersSearch ?
             LangHelper.getSingleResource("Username") :
             `${LangHelper.getSingleResource("Username")}/${LangHelper.getSingleResource("VendorMemberID")}`
     }
 
     render() {
-        const { bankAccountNumber, email, searchOption, ipLogin, isDeposited, subsidiarySearch, selectedSubsidiaryList, ...advancedSearchParam } = this.state;
+        const { bankAccountNumber, email, searchOption, ipLogin, isDeposited, subsidiarySearch, isArchivedPlayersSearch, selectedSubsidiaryList, ...advancedSearchParam } = this.state;
         const { type, isSubsidiary, isAdvancedSearch, isFilterCollapsing, currencyList,
-             getSuggestionList, siteSetting, subsidiarySetting } = this.props;
+            getSuggestionList, siteSetting, subsidiarySetting } = this.props;
         const { currencyIdList, oddsGroup, specialLevel } = advancedSearchParam;
 
         const isValidParam = !!currencyIdList && !!oddsGroup && !!specialLevel &&
@@ -218,11 +232,11 @@ export class FormFilter extends PureComponent {
             <CollapsiblePanel className="page-filter" iconToggle={iconToggle} stickyFooter={this.userGuide}
                 onCollapse={() => this.props.setCollapseFilter(true)} onExpand={() => this.props.setCollapseFilter(false)}>
                 <div className="row">
-                {subsidiarySetting.isAllowedSubsidiarySearch && subsidiarySearch && (<div className="col-12 col-md-4 col-sm-6 col-lg-3 col-xl-2">
+                    {subsidiarySetting.isAllowedSubsidiarySearch && subsidiarySearch && (<div className="col-12 col-md-4 col-sm-6 col-lg-3 col-xl-2">
                         <div className="form-group">
                             <label className="label-text">
                                 {subsidiarySetting.SubsidiaryViewType === SubsidiaryViewType.MASTER_MANAGEMENT ?
-                                 LangHelper.getSingleResource("WhiteLabel") : LangHelper.getSingleResource("Subsidiary")}
+                                    LangHelper.getSingleResource("WhiteLabel") : LangHelper.getSingleResource("Subsidiary")}
                             </label>
                             {this._renderSubsidiaryTreeView()}
                         </div>
@@ -236,16 +250,16 @@ export class FormFilter extends PureComponent {
                                 </div>
                             </label>
                             <UserNameInput ref={this.userNameRef} onSelectItem={(value) => this.handleUserNameChange(value)}
-                                minChar={3} getSuggestionList={getSuggestionList} searchOption={searchOption}
+                                minChar={3} getSuggestionList={isArchivedPlayersSearch ? null : getSuggestionList} searchOption={searchOption}
                                 onKeyPress={this.handlePressEnter} onChange={(value) => this.handleUserNameChange(value)} />
                         </div>
                     </div>
-                    {type === licenseeType.nonApi && <AthenaSearch onChange={this.handleChange}
+                    {!isArchivedPlayersSearch && type === licenseeType.nonApi && <AthenaSearch onChange={this.handleChange}
                         bankAccountNumber={bankAccountNumber}
                         email={email}
                         ipLogin={ipLogin}
                         onKeyPress={this.handlePressEnter} />}
-                    <div className={responsiveFilterColumn["deposited"][type]}>
+                    {!isArchivedPlayersSearch && <div className={responsiveFilterColumn["deposited"][type]}>
                         <div className="form-group">
                             <label className="label-text">{LangHelper.getSingleResource("Deposited")}</label>
                             <Select instanceId='ddlDeposited'
@@ -254,8 +268,8 @@ export class FormFilter extends PureComponent {
                                 options={this.isDepositedList}
                                 onChange={(item) => this.handleSpecificInputChange('isDeposited', item.value)} />
                         </div>
-                    </div>
-                    {isAdvancedSearch && <AdvancedSearch
+                    </div>}
+                    {!isArchivedPlayersSearch && isAdvancedSearch && <AdvancedSearch
                         currencyList={currencyList}
                         param={advancedSearchParam}
                         isAllowedBA={siteSetting.isAllowedBA}
@@ -272,24 +286,26 @@ export class FormFilter extends PureComponent {
                             </div>
                         </div>
                     </div>
-                    <div className={`col-12 col-md-6 col-sm-6 col-lg-${subsidiarySetting.isAllowedSubsidiarySearch ? 4 : 3} col-xl-${subsidiarySetting.isAllowedSubsidiarySearch ? 3 : 2}`} > 
+                    <div className={`col-12 col-md-7 col-sm-6 col-lg-${subsidiarySetting.isAllowedSubsidiarySearch ? 6 : 4} col-xl-${subsidiarySetting.isAllowedSubsidiarySearch ? 5 : 3}`} >
                         <div className="form-group">
-                            <CheckBox id="isAdvancedSearch"
+                            {!isArchivedPlayersSearch && <CheckBox id="isAdvancedSearch"
                                 checked={isAdvancedSearch}
-                                onChange={checked => this.props.setAdvancedSearch(checked)}
-                                label={LangHelper.getSingleResource("AdvancedSearch")} />
-                                 {subsidiarySetting.isAllowedSubsidiarySearch && 
-                            <CheckBox id="SubsidiarySearch" className="SubsidiarySearch"
-                                checked={subsidiarySearch}
-                                onChange={checked => { 
-                                    this.handleSpecificInputChange('subsidiarySearch', checked);
-                                    this.handleSpecificInputChange('selectedSubsidiaryList', checked ? subsidiarySetting.defaultSelectedSubsidiaryList : '');
-                                }}
-                                label={LangHelper.getSingleResource("SubsidiarySearch")} />
-                      }
+                                onChange={this.props.setAdvancedSearch}
+                                label={LangHelper.getSingleResource("AdvancedSearch")} />}
+                            {subsidiarySetting.isAllowedSubsidiarySearch &&
+                                <CheckBox id="SubsidiarySearch" className="SubsidiarySearch"
+                                    checked={subsidiarySearch}
+                                    onChange={checked => {
+                                        this.handleSpecificInputChange('subsidiarySearch', checked);
+                                        this.handleSpecificInputChange('selectedSubsidiaryList', checked ? subsidiarySetting.defaultSelectedSubsidiaryList : '');
+                                    }}
+                                    label={LangHelper.getSingleResource("SubsidiarySearch")} />
+                            }
+                            {<CheckBox id="isArchivedPlayersSearch"
+                                checked={isArchivedPlayersSearch}
+                                onChange={checked => this.handleSpecificInputChange('isArchivedPlayersSearch', checked)}
+                                label={LangHelper.getSingleResource("DormantPlayersSearch")} />}
                         </div>
-                       
-                        
                     </div>
                 </div>
             </CollapsiblePanel>
@@ -298,15 +314,17 @@ export class FormFilter extends PureComponent {
 }
 
 function mapDispatchToProps(dispatch) {
-    const { searchPlayer, setAdvancedSearch, setCollapseFilter, getSuggestionList,
-         getSinglePlayer, getSiteSetting, getDepositSetting, getSubsidiarySetting} = ActionCreators;
-    return bindActionCreators({ searchPlayer, setAdvancedSearch, setCollapseFilter, getSuggestionList,
-         getSinglePlayer, getSiteSetting, getDepositSetting, getSubsidiarySetting }, dispatch);
+    const { searchPlayer, setAdvancedSearch, setParam, setCollapseFilter, getSuggestionList,
+        getSinglePlayer, getSiteSetting, getDepositSetting, getSubsidiarySetting } = ActionCreators;
+    return bindActionCreators({
+        searchPlayer, setAdvancedSearch, setParam, setCollapseFilter, getSuggestionList,
+        getSinglePlayer, getSiteSetting, getDepositSetting, getSubsidiarySetting
+    }, dispatch);
 }
 
 function mapStateToProps(state) {
-    const { type, isSubsidiary, isAdvancedSearch, isFilterCollapsing, pagingOption, currencyList, siteSetting, depositSetting, subsidiarySetting } = state;
-    return Object.assign({}, { type, isSubsidiary, isAdvancedSearch, isFilterCollapsing, pagingOption, currencyList, siteSetting, depositSetting, subsidiarySetting });
+    const { type, isSubsidiary, hasCommPermissionRead, isAdvancedSearch, isFilterCollapsing, pagingOption, currencyList, siteSetting, depositSetting, subsidiarySetting } = state;
+    return Object.assign({}, { type, isSubsidiary, hasCommPermissionRead, isAdvancedSearch, isFilterCollapsing, pagingOption, currencyList, siteSetting, depositSetting, subsidiarySetting });
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(FormFilter);

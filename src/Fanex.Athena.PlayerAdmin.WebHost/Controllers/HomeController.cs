@@ -1,4 +1,5 @@
-﻿using Fanex.Athena.PlayerAdmin.Core.Services;
+﻿using Fanex.Athena.PlayerAdmin.Core.Attributes;
+using Fanex.Athena.PlayerAdmin.Core.Services;
 using Fanex.Athena.PlayerAdmin.WebHost.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
@@ -6,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using System.Diagnostics;
+
 
 namespace Fanex.Athena.PlayerAdmin.WebHost.Controllers
 {
@@ -18,8 +20,7 @@ namespace Fanex.Athena.PlayerAdmin.WebHost.Controllers
             _logger = logger;
         }
 
-        [HttpGet]
-        [Authorize(AuthenticationSchemes = "Cookies")]
+        [CookieAuthorize]
         public IActionResult Index([FromServices] IWebHostEnvironment hostingEnvironment)
         {
             if (!hostingEnvironment.IsDevelopment())
@@ -31,7 +32,7 @@ namespace Fanex.Athena.PlayerAdmin.WebHost.Controllers
         }
 
         [HttpGet]
-        [Authorize(AuthenticationSchemes = "Cookies")]
+        [CookieAuthorize]
         public IActionResult UserInfo([FromServices] IContextService contextService)
         {
             return Json(new

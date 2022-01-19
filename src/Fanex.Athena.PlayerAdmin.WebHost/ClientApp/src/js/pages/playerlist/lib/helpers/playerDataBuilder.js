@@ -63,7 +63,7 @@ export const  buildLapPlayerList = (playerList) => {
     });
 }
 
-export const  buildLrfPlayerList = (playerList) => {
+export const buildLrfPlayerList = (playerList) => {
     if (!playerList) {
         return [];
     }
@@ -81,7 +81,8 @@ export const  buildLrfPlayerList = (playerList) => {
             BaStatus,
             SpecialLevel,
             CommissionGroup,
-            CustomerClass
+            CustomerClass,
+            Status
         } = item;
 
         return {
@@ -98,7 +99,8 @@ export const  buildLrfPlayerList = (playerList) => {
             BaStatus,
             SpecialLevel,
             CommissionGroup,
-            CustomerClass
+            CustomerClass,
+            Status
         };
     });
 }

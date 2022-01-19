@@ -1,9 +1,9 @@
 ﻿import FactoryCommonService from '../../../../lib/factoryCommonService';
 import { apiInfo, isDepositedList } from '../constants';
-
 import ReportExcel from '../reportExcel';
 import QueryServiceFactory from './queryServiceFactory';
 import PlayerItemQueryService from './playerItemQueryService';
+import ArchivedPlayerQueryService from "./archivedPlayerQueryService";
 
 export default class PlayerQueryService {
     constructor() {
@@ -23,6 +23,10 @@ export default class PlayerQueryService {
         return playerListService.fetchData(param, this.commonService, apiInfo);
     }
 
+    getArchivedPlayerList(param) {
+        return ArchivedPlayerQueryService.fetchData(param, this.commonService, apiInfo);
+    }
+
     getSinglePlayer(param) {
         return PlayerItemQueryService.getPlayerById(param, this.commonService, apiInfo);
     }
@@ -30,6 +34,7 @@ export default class PlayerQueryService {
     getLink(systemType, action) {
         return this.commonService.getLink(systemType, action);
     }
+
     getDepositedName(isDeposited) {
         switch (isDeposited) {
             case isDepositedList.All:
@@ -41,8 +46,8 @@ export default class PlayerQueryService {
         }
     }
 
-    exportExcel(playerList, param, displayedColumn, hasCommPermissionRead, fileName = 'PlayerList') {
-        const reportExcel = new ReportExcel(playerList, displayedColumn, hasCommPermissionRead, fileName);
+    exportExcel(playerList, displayedColumn, fileName = 'PlayerList') {
+        const reportExcel = new ReportExcel(playerList, displayedColumn, fileName);
         reportExcel.export();
     }
 }

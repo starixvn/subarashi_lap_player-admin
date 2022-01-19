@@ -67,6 +67,14 @@ export const columnList = [
     { key: fields.CustomerClass, value: LangHelper.getSingleResource('CustomerClass'), show: true }
 ];
 
+export const columnListForArchived = [
+    { key: fields.Status, value: LangHelper.getSingleResource('Status'), show: true },
+    { key: fields.UserName, value: LangHelper.getSingleResource('Username'), show: true },
+    { key: fields.SystemId, value: LangHelper.getSingleResource('SystemId'), show: true },
+    { key: fields.Currency, value: LangHelper.getSingleResource('Currency'), show: true },
+    { key: fields.CurrentBalance, value: LangHelper.getSingleResource('CurrentBalance'), show: true }
+];
+
 export const contextMenuKeys = {
     bankInformation: 'bankInformation',
     note: 'note',
@@ -120,6 +128,12 @@ export const searchOptions = {
     matchCase: '2',
     matchWholeWord: '3',
     matchPrecise: '4'
+}
+
+export const archivedSearchOptionMapping = {
+    [searchOptions.matchPrecise]: 3,
+    [searchOptions.matchPrefix]: 1,
+    [searchOptions.matchCase]: 2,
 }
 
 export const treeViewOption = {
@@ -200,6 +214,7 @@ export const stringTypeFields = [fields.UserName, fields.RealName, fields.Curren
 export const apiInfo = {
     lrfSearch: { action: 'api/PlayerList/Search', type: systemType.playerAdmin },
     lrfDataById: { action: 'api/PlayerList/GetPlayerListById', type: systemType.playerAdmin },
+    lrfArchivedSearch: { action: 'api/PlayerList/ArchivedSearch', type: systemType.playerAdmin },
     lapSearch: { action: 'PlayerAdminContainer/Search', type: systemType.newAdmin },
     lapDataById: { action: 'PlayerAdminContainer/GetPlayerListById', type: systemType.newAdmin },
     lapGetPlayerByLicenseeId: { action: 'PlayerAdminContainer/GetPlayerById', type: systemType.newAdmin }

@@ -1,25 +1,46 @@
 ﻿import React from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { ActionCreators } from '../actions/index.js';
 import Content from './Content';
 import FormFilter from './FormFilter';
 import Loader from '@jsroot/components/Loader';
 import AppLayout from '@jsroot/layouts/AppLayout';
 import PlayerDetail from './PlayerDetail';
+import ArchivedContent from './ArchivedContent';
 
-export const AppContainer = (props) => {
+export const AppContainer = ({ isLoading, isArchivedPlayersSearch, archivedSearch, isEnableSingleWallet, toggleLoader }) => {
+    const _renderContent = () => {
+        return !isArchivedPlayersSearch ?
+            <>
+                <Content />
+                <PlayerDetail />
+            </> : <ArchivedContent archivedSearch={archivedSearch} isEnableSingleWallet={isEnableSingleWallet} isLoading={isLoading} toggleLoader={toggleLoader} />
+    }
     return (
         <AppLayout>
-            <Loader isLoading={props.isLoading} />
-            <FormFilter hasCommPermissionRead={props.hasCommPermissionRead} />
-            <Content />
-            <PlayerDetail />
+            <Loader isLoading={isLoading} />
+            <FormFilter />
+            {_renderContent()}
         </AppLayout>
     );
 }
 
-function mapStateToProps(state) {
-    const { isLoading, hasCommPermissionRead } = state;
-    return Object.assign({}, { isLoading, hasCommPermissionRead });
+function mapDispatchToProps(dispatch) {
+    const { toggleLoader } = ActionCreators;
+    return bindActionCreators({
+        toggleLoader
+    }, dispatch);
 }
 
-export default connect(mapStateToProps)(React.memo(AppContainer)); 
+function mapStateToProps(state) {
+    const { isLoading, param, siteSetting } = state;
+    return Object.assign({}, { 
+        isLoading,
+        isArchivedPlayersSearch: !!param.isArchivedPlayersSearch,
+        isEnableSingleWallet: siteSetting.isEnableSingleWallet,
+        archivedSearch: !!param.isArchivedPlayersSearch ? param: {}
+    });
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AppContainer); 

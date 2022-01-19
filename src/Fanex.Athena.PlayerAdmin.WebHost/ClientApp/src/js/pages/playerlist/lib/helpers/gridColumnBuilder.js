@@ -1,4 +1,4 @@
-﻿import { fields, columnList, licenseeType } from '../constants';
+﻿import { fields, columnList, columnListForArchived, licenseeType } from '../constants';
 
 const excludedKeyForApiType = [fields.RealName, fields.Email, fields.LastTransaction];
 const excludedKeyForAthenaType = [fields.VendorMemberId];
@@ -17,7 +17,7 @@ export const buildColumnList = (licType, isAllowedBA, hasCommPermissionRead, isE
         if (item.key === fields.BaStatus) {
             return isAllowedBA;
         } else if (item.key === fields.CommissionGroup) {
-            return  hasCommPermissionRead;
+            return hasCommPermissionRead;
         } else if (item.key === fields.CurrentBalance) {
             return !isEnableSingleWallet;
         } else {
@@ -25,5 +25,12 @@ export const buildColumnList = (licType, isAllowedBA, hasCommPermissionRead, isE
         }
     }).map(item => ({ ...item }))
 };
+
+export const buildArchivedColumnList = isEnableSingleWallet => columnListForArchived.filter(item => {
+    if (item.key === fields.CurrentBalance) {
+        return !isEnableSingleWallet;
+    }
+    return true;
+}).map(item => ({ ...item }))
 
 const _showByLicenseeType = (isApiType, colKey) => !((isApiType ? excludedKeyForApiType : excludedKeyForAthenaType).includes(colKey));

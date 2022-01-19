@@ -25,5 +25,7 @@
         public string CommissionGroup { get; set; }
 
         public string CustomerClass { get; set; }
+
+        public int? Status { get; set; }
     }
 }
