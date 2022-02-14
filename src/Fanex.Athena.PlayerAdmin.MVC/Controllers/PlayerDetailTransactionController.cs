@@ -42,6 +42,7 @@ namespace Fanex.Athena.PlayerAdmin.MVC.Controllers
         [RequestValidation(validateCustId: true)]
         public async Task<IActionResult> GetDetailTransactionReport([FromBody] PlayerDetailTransactionsMetaModel criteria)
         {
+            criteria.IsEnableSingleWallet = _contextService.IsEnableSingleWallet;
             var data = await _playerDetailTransactionService.GetDetailTransactionReport(criteria);
             return Ok(data);
         }
@@ -56,6 +57,8 @@ namespace Fanex.Athena.PlayerAdmin.MVC.Controllers
         {
             criteria.PageSize = null;
             criteria.PageIndex = null;
+            criteria.IsEnableSingleWallet = _contextService.IsEnableSingleWallet;
+
             var data = await _playerDetailTransactionService.GetDetailTransactionReport(criteria);
             data.IsEnableSingleWallet = _contextService.IsEnableSingleWallet;
 
