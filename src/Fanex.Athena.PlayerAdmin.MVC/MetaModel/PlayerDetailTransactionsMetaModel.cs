@@ -27,6 +27,8 @@ namespace Fanex.Athena.PlayerAdmin.MVC.MetaModel
 
         public bool IsResettled { get; set; }
 
+        public bool IsEnableSingleWallet { get; set; }
+
         public DateTime MinDate => DateTimeHelper.DatabaseServerNow.AddMonths(-MaximumMonth);
 
         public bool IsValid => ToDate >= FromDate
@@ -43,6 +45,7 @@ namespace Fanex.Athena.PlayerAdmin.MVC.MetaModel
 
             db.SetParameterValue("TransactionId", TransactionId?.Trim());
             db.SetParameterValue("IsResettled", IsResettled);
+            db.SetParameterValue("IsSingleWalletLic", IsEnableSingleWallet);
         }
     }
 }
