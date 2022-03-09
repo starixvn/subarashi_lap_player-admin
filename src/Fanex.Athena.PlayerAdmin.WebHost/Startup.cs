@@ -36,6 +36,8 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
+using Polly;
+using Microsoft.Extensions.Logging;
 
 namespace Fanex.Athena.PlayerAdmin.WebHost
 {
@@ -105,12 +107,12 @@ namespace Fanex.Athena.PlayerAdmin.WebHost
 
             SetupMediatR(services);
 
-            services.AddInfrastructure();
-            services.AddAPI();
-            services.AddMVC();
-            services.AddBetLimit();
-            services.AddCommission();
-            services.AddBatchUpdate();
+            services.AddCore()
+                .AddAPI()
+                .AddMVC()
+                .AddBetLimit()
+                .AddCommission()
+                .AddBatchUpdate();
 
             var appSettingSection = Configuration.GetSection("App");
             services.AddCorsPortalSite(appSettingSection.Get<AppSetting>());
@@ -120,21 +122,11 @@ namespace Fanex.Athena.PlayerAdmin.WebHost
             services.Configure<BetLimitApiSetting>(Configuration.GetSection("BetLimitApi"));
             services.Configure<FunctionAllowedProductsSetting>(Configuration.GetSection("FunctionAllowedProducts"));
 
-            services.AddHttpClient<AuthController>()
-                .SetHandlerLifetime(TimeSpan.FromDays(1));
-
             var statement = Configuration.GetSection("Statement");
             services.Configure<StatementSetting>(statement);
-
-            services.AddHttpClient<IPlayerStatementService, PlayerStatementService>(client =>
-            {
-                client.BaseAddress = new Uri(statement.Get<StatementSetting>().InternalHost);
-            }).SetHandlerLifetime(TimeSpan.FromDays(1));
-
+            ConfigStatement(services, statement);
             ConfigConsoleClient(services);
-
             services.AddHttpClient();
-
             services.AddHealthCheck(Configuration);
             services.AddUnderMaintenance(Configuration);
 
@@ -200,6 +192,23 @@ namespace Fanex.Athena.PlayerAdmin.WebHost
                 client.BaseAddress = new Uri(Configuration["ConsoleClient:Lg:Host"]);
                 client.DefaultRequestHeaders.Add("LGAPI_TOKEN_KEY", Configuration["ConsoleClient:Lg:AuthKey"]);
             }).SetHandlerLifetime(OneDay);
+        }
+
+        private void ConfigStatement(IServiceCollection services, IConfigurationSection statementConfig)
+        {
+            const int NumberOfRetry = 2;
+            const int RetryDelayTime = 2; //seconds
+
+            services.AddHttpClient<IPlayerStatementService, PlayerStatementService>(client =>
+            {
+                client.BaseAddress = new Uri(statementConfig.Get<StatementSetting>().InternalHost);
+            }).SetHandlerLifetime(TimeSpan.FromDays(1))
+            .AddTransientHttpErrorPolicy(p => p.WaitAndRetryAsync(NumberOfRetry, retryAttempt => TimeSpan.FromSeconds(retryAttempt * RetryDelayTime),
+             onRetry: (outcome, timespan, retryAttempt, _) =>
+             {
+                 services.BuildServiceProvider().GetService<ILogger<PlayerStatementService>>()
+                     .LogError($"Statement Service delaying for {timespan.Seconds}s, then making retry {retryAttempt}.");
+             }));
         }
 
         private static void ConfigRequestLocalization(IServiceCollection services)

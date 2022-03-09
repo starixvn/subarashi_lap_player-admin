@@ -17,11 +17,7 @@ export const specialLevelListWithColor = {
 
 export const oddsGroupListWithStyle = {
     A: { backgroundColor: '#006400', color: '#fff' },
-    B: { backgroundColor: '#0099ff', color: '#fff' },
-    C: null,
-    D: null,
-    E: null,
-    F: null
+    B: { backgroundColor: '#0099ff', color: '#fff' }
 }
 
 export const licenseeType = {

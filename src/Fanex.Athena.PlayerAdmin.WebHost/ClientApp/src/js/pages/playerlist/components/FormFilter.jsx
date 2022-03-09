@@ -12,7 +12,7 @@ import UserGuide from '@jsroot/components/UserGuide';
 import LangHelper from '@jsroot/lib/langHelper';
 import {
     treeViewOption, searchOptions, baStatusList, specialLevelListWithColor,
-    emailPattern, oddsGroupListWithStyle, isDepositedList, responsiveFilterColumn
+    emailPattern, isDepositedList, responsiveFilterColumn
 } from '../lib/constants';
 import UserNameInput from './filter/UserNameInput';
 import QueryString from '@jsroot/lib/QueryString';
@@ -27,7 +27,6 @@ export class FormFilter extends PureComponent {
     constructor(props) {
         super(props);
 
-        this.allOddsGroupString = Object.keys(oddsGroupListWithStyle).join(',');
         this.allCurrencyString = props.currencyList.map(c => c.Id).join(',');
         this.allSpecialLevel = Object.keys(specialLevelListWithColor).map(item => item).join(',');
         this.isDepositedList = Object.keys(isDepositedList).map(item => ({ value: isDepositedList[item], label: LangHelper.getSingleResource(item) }));
@@ -42,15 +41,13 @@ export class FormFilter extends PureComponent {
             ipLogin: "",
             isDeposited: isDepositedList["All"],
             currencyIdList: this.allCurrencyString,
-            oddsGroup: this.allOddsGroupString,
+            oddsGroup: "",
             specialLevel: this.allSpecialLevel,
             baFilter: baStatusList.All,
             searchOption: searchOptions.matchPrecise,
             isMatchPrecise: true,
             customerClass: "",
-            changeOnCustomerClass: false,
             commGroups: "",
-            changeOnCommGroups: false,
             subsidiarySearch: false,
             selectedSubsidiaryList: "",
         };
@@ -74,17 +71,15 @@ export class FormFilter extends PureComponent {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        const { isAdvancedSearch } = this.props;
-        if (prevProps.isAdvancedSearch !== isAdvancedSearch && !isAdvancedSearch) {
+        if (prevProps.depositSetting !== this.props.depositSetting 
+            || (prevProps.isAdvancedSearch && !this.props.isAdvancedSearch)) {
             this.setState({
                 currencyIdList: this.allCurrencyString,
-                oddsGroup: this.allOddsGroupString,
+                oddsGroup: this.props.depositSetting.OddsGroups.join(','),
                 specialLevel: this.allSpecialLevel,
                 baFilter: baStatusList.All,
                 customerClass: this.props.depositSetting.CustomerClass.join(','),
-                changeOnCustomerClass: false,
-                commGroups: this.props.depositSetting.CommGroups.map(c => c.Id).join(','),
-                changeOnCommGroups: false
+                commGroups: this.props.depositSetting.CommGroups.map(c => c.Id).join(',')
             });
         }
     }
@@ -98,16 +93,13 @@ export class FormFilter extends PureComponent {
 
         const userName = this.userNameRef.current.value;
         const { pagingOption, searchPlayer, currencyList } = this.props;
-        const { specialLevel, currencyIdList, oddsGroup, subsidiarySearch, selectedSubsidiaryList, ...restParam } = this.state;
+        const { specialLevel, currencyIdList, oddsGroup, customerClass, commGroups, subsidiarySearch, selectedSubsidiaryList, ...restParam } = this.state;
 
         const actualSpecialLevel = specialLevel.trim() === '' ? this.allSpecialLevel : specialLevel;
         const actualCurrencyIdList = currencyIdList.trim().split(',').length === currencyList.length ? '' : currencyIdList;
-        const actualOddsGroup = oddsGroup.trim().split(',').length === Object.keys(oddsGroupListWithStyle).length ? '' : oddsGroup;
-        const actualCustomerClass = restParam.customerClass.trim().split(',').length === this.props.depositSetting.CustomerClass.length
-            ? '' : restParam.customerClass;
-
-        const actualCommGroups = this.state.changeOnCommGroups
-            ? restParam.commGroups : this.props.depositSetting.CommGroups.map(c => c.Id).join(",");
+        const actualOddsGroup = oddsGroup.trim().split(',').length === this.props.depositSetting.OddsGroups.length ? '' : oddsGroup;
+        const actualCustomerClass = customerClass.trim().split(',').length === this.props.depositSetting.CustomerClass.length ? '' : customerClass;
+        const actualCommGroups = commGroups;
 
         const param = {
             ...restParam,
@@ -160,15 +152,6 @@ export class FormFilter extends PureComponent {
     };
 
     handleSpecificInputChange = (name, value) => {
-        switch (name) {
-            case "customerClass":
-                this.setState({ changeOnCustomerClass: true });
-                break;
-            case "commGroups":
-                this.setState({ changeOnCommGroups: true });
-                break;
-        }
-
         this.setState({ [name]: value });
     };
 
@@ -215,11 +198,10 @@ export class FormFilter extends PureComponent {
         const { bankAccountNumber, email, searchOption, ipLogin, isDeposited, subsidiarySearch, isArchivedPlayersSearch, selectedSubsidiaryList, ...advancedSearchParam } = this.state;
         const { type, isSubsidiary, isAdvancedSearch, isFilterCollapsing, currencyList,
             getSuggestionList, siteSetting, subsidiarySetting } = this.props;
-        const { currencyIdList, oddsGroup, specialLevel } = advancedSearchParam;
+        const { currencyIdList, oddsGroup, specialLevel, customerClass, commGroups } = advancedSearchParam;
 
-        const isValidParam = !!currencyIdList && !!oddsGroup && !!specialLevel &&
-            !(this.state.changeOnCustomerClass && !this.state.customerClass) &&
-            !(this.state.changeOnCommGroups && !this.state.commGroups) &&
+        const isValidParam = !!currencyIdList && !!oddsGroup && !!specialLevel 
+            && !!customerClass && !!commGroups &&
             (!subsidiarySearch || selectedSubsidiaryList);
 
         const iconToggle = {

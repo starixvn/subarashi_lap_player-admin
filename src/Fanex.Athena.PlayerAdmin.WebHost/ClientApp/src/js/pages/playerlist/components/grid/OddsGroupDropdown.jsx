@@ -23,7 +23,7 @@ export const OddsGroupDropdown = (props) => {
         setOddsGroupDropdownPosition(null);
     }
 
-    const { currentActivePlayer, updateOddsGroup, playerList, setPlayerList, toggleLoader, setSweetAlertOption } = props;
+    const { currentActivePlayer, updateOddsGroup, playerList, setPlayerList, toggleLoader, setSweetAlertOption, oddsGroups } = props;
     const handleCloseAlert = () => {
         setSweetAlertOption(null);
     }
@@ -85,9 +85,8 @@ export const OddsGroupDropdown = (props) => {
         <div className="dropdown oddsgroup-menu" style={style}>
             <DropdownMenu isOpen={isOpen} onClose={handleClose}>
                 {
-                    Object.keys(oddsGroupListWithStyle).map(item => {
+                    oddsGroups.map(item => {
                         const style = oddsGroupListWithStyle[item];
-
                         return <DropdownItem key={item} className="oddsgroup-item" style={style}
                             onClick={e => handleChangeOddsGroup(e, item)}>{item}</DropdownItem>
                     })
@@ -103,8 +102,8 @@ function mapDispatchToProps(dispatch) {
 }
 
 function mapStateToProps(state) {
-    const { oddsGroupDropdownPosition, currentActivePlayer, playerList } = state;
-    return Object.assign({}, { oddsGroupDropdownPosition, currentActivePlayer, playerList });
+    const { oddsGroupDropdownPosition, currentActivePlayer, playerList, depositSetting } = state;
+    return Object.assign({}, { oddsGroups: depositSetting.OddsGroups, oddsGroupDropdownPosition, currentActivePlayer, playerList });
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(OddsGroupDropdown);

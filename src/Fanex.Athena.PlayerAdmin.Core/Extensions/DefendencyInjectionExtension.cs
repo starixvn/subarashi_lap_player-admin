@@ -9,7 +9,7 @@ namespace Fanex.Athena.PlayerAdmin.Core.Extensions
 {
     public static class DefendencyInjectionExtension
     {
-        public static IServiceCollection AddInfrastructure(this IServiceCollection services)
+        public static IServiceCollection AddCore(this IServiceCollection services)
         {
             return services
                 .AddServices()

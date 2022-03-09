@@ -27,7 +27,7 @@ export default class QueryServiceFactory {
             param.currencyIdList !== "" ||
             param.oddsGroup !== "" ||
             Object.keys(specialLevelListWithColor).length !== param.specialLevel.split(",").length ||
-            param.customerClass != "" ||
+            param.customerClass !== "" ||
             param.changeOnCommGroups;
     }
 }

@@ -2,14 +2,13 @@
 using Fanex.Athena.PlayerAdmin.Core.Constants;
 using Fanex.Athena.PlayerAdmin.Core.Attributes;
 using Fanex.Athena.PlayerAdmin.Core.Services;
-using Fanex.Athena.PlayerAdmin.MVC.DTO;
 using Fanex.Athena.PlayerAdmin.MVC.MetaModel;
 using Fanex.Athena.PlayerAdmin.MVC.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Text.Json;
 using System.Threading.Tasks;
 using Fanex.Athena.PlayerAdmin.Core.Helpers;
+using Fanex.Athena.PlayerAdmin.Core.Extensions;
 
 namespace Fanex.Athena.PlayerAdmin.MVC.Controllers
 {
@@ -54,8 +53,8 @@ namespace Fanex.Athena.PlayerAdmin.MVC.Controllers
         public async Task<IActionResult> Index([FromServices] IReportApiClient reportAPIClient, [Bind("Username")][FromBody] PlayerWinLossMetaModel metaModel)
         {
             await AssignMetaModelValue(metaModel);
-            var result = await reportAPIClient.PostAsync<PlayerWinLoss>("api/CustomerWinLoss/Index", metaModel, _contextService.Language);
-            return Json(result, new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase });
+            var json = await reportAPIClient.PostStringAsync("api/CustomerWinLoss/Index", metaModel, _contextService.Language);
+            return this.ToJsonResult(json);
         }
 
         private async Task AssignMetaModelValue(PlayerWinLossMetaModel metaModel)

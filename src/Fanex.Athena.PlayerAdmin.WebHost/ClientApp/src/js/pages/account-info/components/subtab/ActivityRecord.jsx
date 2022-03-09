@@ -4,13 +4,15 @@ import { ActionCreators } from '../../actions/index.js';
 import { bindActionCreators } from 'redux';
 import ClientResourceManager from '@jsroot/lib/clientResourceManager';
 
-export const ActivityRecord = ({ ibcCustId, createdDate, getActivityRecord }) => {
-    const [data, setData] = useState(null);
+let defaultData = null;
 
+export const ActivityRecord = ({ ibcCustId, createdDate, getActivityRecord }) => {
+    const [data, setData] = useState(defaultData);
+    
     useEffect(() => {
         if (data === null) {
             const param = { custId: ibcCustId };
-            getActivityRecord(param).then(result => setData(result));
+            getActivityRecord(param).then(result => { setData(result); defaultData = result; });
         }
     }, [ibcCustId]);
 

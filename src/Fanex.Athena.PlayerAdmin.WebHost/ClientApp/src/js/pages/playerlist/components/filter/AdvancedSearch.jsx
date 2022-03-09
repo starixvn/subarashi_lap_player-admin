@@ -2,27 +2,24 @@
 import MultipleSelect from '@9softstudio/react-multiselect';
 import PropTypes from 'prop-types';
 import Select from 'react-select';
-import { baStatusList, specialLevelListWithColor, oddsGroupListWithStyle, responsiveFilterColumn } from '../../lib/constants';
+import { baStatusList, specialLevelListWithColor, responsiveFilterColumn } from '../../lib/constants';
 import LangHelper from '@jsroot/lib/langHelper';
 import { getSpecialLevelText, getCustomerClassText } from '../../lib/helpers/utils';
 
 export class AdvancedSearch extends React.Component {
     constructor(props) {
         super(props);
-
-        this.oddsGroupList = Object.keys(oddsGroupListWithStyle).map(item => ({ Id: item, Value: item, Status: true }));
         this.specialLevelList = Object.keys(specialLevelListWithColor).map(item => ({ Id: item, Value: getSpecialLevelText(item), Status: true }));
         this.baStatusList = Object.keys(baStatusList).map(item => ({ value: baStatusList[item], label: LangHelper.getSingleResource(item) }));
         this.customerClassList = props.depositSetting.CustomerClass.map(item => ({ Id: item, Value: getCustomerClassText(item), Status: true }));
         this.commGroupList = props.depositSetting.CommGroups.map(item => ({ Id: item.Id, Value: item.Name, Status: true }));
+        this.oddsGroupList = props.depositSetting.OddsGroups.map(item => ({ Id: item, Value: item, Status: true }));
     }
 
     _createSelectData(originalList, selectedItemString) {
         const selectedItemList = selectedItemString.split(',').filter(x => x !== '');
-
         return originalList.map(item => {
             const { Id, Value } = item;
-
             return { Id, Value, Status: selectedItemList.indexOf(Id) !== -1 };
         });
     }
@@ -37,17 +34,16 @@ export class AdvancedSearch extends React.Component {
 
     render() {
         const { currencyList, param, isAllowedBA, isSubsidiary, type } = this.props;
-        const { currencyIdList, oddsGroup, specialLevel, baFilter } = param;
+        const { currencyIdList, oddsGroup, specialLevel, baFilter, customerClass, commGroups } = param;
+
         const convertedCurrencyList = this._createSelectData(currencyList, currencyIdList);
         const oddsGroupList = this._createSelectData(this.oddsGroupList, oddsGroup);
         const specialLevelList = this._createSelectData(this.specialLevelList, specialLevel);
+        const customerClassList = this._createSelectData(this.customerClassList, customerClass);
+        const commGroupList = this._createSelectData(this.commGroupList, commGroups);
+
         const selectedBaStatus = isAllowedBA ? this.baStatusList.find(x => x.value === baFilter) : null;
 
-        const selectedCustomerClass = param.changeOnCustomerClass ? param.customerClass : this.props.depositSetting.CustomerClass.join(",");
-        const ddlCustomerClass = this._createSelectData(this.customerClassList, selectedCustomerClass);
-
-        const selectedCommGroups = param.changeOnCommGroups ? param.commGroups : this.props.depositSetting.CommGroups.map(c => c.Id).join(",");
-        const ddlCommGroups = this._createSelectData(this.commGroupList, selectedCommGroups);
         return (
             <>
                 <div className={responsiveFilterColumn["currency"][type]}>
@@ -106,7 +102,7 @@ export class AdvancedSearch extends React.Component {
                     <div className="form-group">
                         <label className="label-text">{LangHelper.getSingleResource("CustomerClass")}</label>
                         <MultipleSelect id="ddl-customer-class"
-                            dataSource={ddlCustomerClass}
+                            dataSource={customerClassList}
                             keyField={"Id"}
                             valueField={"Value"}
                             statusField={"Status"}
@@ -117,7 +113,7 @@ export class AdvancedSearch extends React.Component {
                     <div className="form-group">
                         <label className="label-text">{LangHelper.getSingleResource("GroupCommission")}</label>
                         <MultipleSelect id="ddl-comm-group"
-                            dataSource={ddlCommGroups}
+                            dataSource={commGroupList}
                             keyField={"Id"}
                             valueField={"Value"}
                             statusField={"Status"}

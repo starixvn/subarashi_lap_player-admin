@@ -123,6 +123,38 @@ namespace Fanex.Athena.PlayerAdmin.Core.ConsoleClient
                  }
                ).ConfigureAwait(false);
         }
+
+        public virtual async Task<string> PostStringAsync(string path, object value, string language, int timeOut = 100)
+        {
+            return await HandleAsync(path, value, language, MediaType.Json,
+                async (response) =>
+                {
+                    using (response)
+                    {
+                        using (var stream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false))
+                        {
+                            using (var streamReader = new StreamReader(stream))
+                            {
+                                using (var textWriter = new StringWriter())
+                                {
+                                    const int chunkLength = 4096;
+                                    var buffer = new char[chunkLength];
+                                    int readChunkLength;
+                                    do
+                                    {
+                                        readChunkLength = streamReader.ReadBlock(buffer, 0, chunkLength);
+                                        textWriter.Write(buffer, 0, readChunkLength);
+                                    } while (readChunkLength > 0);
+
+                                    return textWriter.ToString();
+                                }
+                            }
+                        }
+                    }
+                },
+                timeOut: timeOut
+            );
+        }
     }
 
     public sealed class ServiceException : Exception, ISerializable

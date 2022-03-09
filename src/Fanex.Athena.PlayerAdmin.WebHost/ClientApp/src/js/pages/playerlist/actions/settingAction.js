@@ -31,7 +31,8 @@ export const getDepositSetting = () => (dispatch) => {
     }).catch(() => {
         dispatch(setDepositSetting({
             CustomerClass: [],
-            CommGroups: []
+            CommGroups: [],
+            OddsGroups: []
         }));
     });
 };
@@ -43,8 +44,8 @@ export const getSubsidiarySetting = () => (dispatch) => {
         dispatch(setSubsidiarySetting(response.data));
     }).catch(() => {
         dispatch(setSubsidiarySetting({
-            CustomerClass: [],
-            CommGroups: []
+            SubsidiaryViewType: 0,
+            SubsidiaryList: []
         }));
     });
 };
