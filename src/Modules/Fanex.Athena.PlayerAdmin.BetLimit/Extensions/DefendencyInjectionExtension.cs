@@ -38,6 +38,7 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Extensions
             services.AddTransient<IRngCasinoBetLimitRepository, RngCasinoBetLimitRepository>();
             services.AddTransient<IThirdPartyBetLimitRepository, ThirdPartyBetLimitRepository>();
             services.AddTransient<INumberGameBetLimitService, NumberGameBetLimitService>();
+            services.AddTransient<INewDcsBetLimitRepository, NewDcsBetLimitRepository>();
 
             return services;
         }

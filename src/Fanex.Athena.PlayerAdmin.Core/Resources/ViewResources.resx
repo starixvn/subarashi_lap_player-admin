@@ -2262,6 +2262,9 @@
     <value>Virtual Sports 2</value>
     <comment>#78241</comment>
   </data>
+  <data name="ProductVS3" xml:space="preserve">
+    <value>Virtual Sports 3</value>
+  </data>
   <data name="ProductWM" xml:space="preserve">
     <value>WM</value>
   </data>

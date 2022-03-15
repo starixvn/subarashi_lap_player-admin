@@ -81,6 +81,8 @@
         public const string AP = "AP";
 
         public const string APM = "APM";
+
+        public const string VS3 = "VS3";
     }
 
     public static class ProductTypes
@@ -159,5 +161,7 @@
         public const int AP = 67;
 
         public const int APM = 68;
+
+        public const int VS3 = 49;
     }
 }

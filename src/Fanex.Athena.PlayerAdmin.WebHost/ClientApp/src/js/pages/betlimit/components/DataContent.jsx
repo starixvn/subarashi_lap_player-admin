@@ -7,6 +7,7 @@ import NGDataContent from './grid/data-contents/NGDataContent';
 import ACGDataContent from './grid/data-contents/AGCDataContent';
 import I4DDataContent from './grid/data-contents/I4DDataContent';
 import RNGCDataContent from './grid/data-contents/RNGCDataContent';
+import VS3DataContent from './grid/data-contents/VS3DataContent';
 import ThirdPartyDataContent from './grid/data-contents/ThirdPartyDataContent';
 
 const Setting = {
@@ -41,7 +42,8 @@ const Setting = {
     [BetLimitProduct.CB]: ThirdPartyDataContent,
     [BetLimitProduct.VGA]: GameDataContent,
     [BetLimitProduct.AP]: GameDataContent,
-    [BetLimitProduct.APM]: GameDataContent
+    [BetLimitProduct.APM]: GameDataContent,
+    [BetLimitProduct.VS3]: VS3DataContent
 };
 
 const DataContent = (props) => {

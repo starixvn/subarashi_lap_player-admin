@@ -30,7 +30,8 @@ export const BetLimitProduct = {
     CB: 15,
     VGA: 66,
     AP: 67,
-    APM: 68
+    APM: 68,
+    VS3: 49
 }
 
 export const BetLimitSport = {
