@@ -1,12 +1,11 @@
 ﻿@using Fanex.Athena.PlayerAdmin.BatchUpdate.ViewModels;
-
 @model BasePlayerBatchUpdateViewModel
 @{
     Layout = "_SimpleGridLayout";
     ViewData["Title"] = ViewResources.UpdateOddsGroup;
 }
 @{ 
-    var OddsGroupList = new[] { "A", "B", "C", "D", "E", "F" };
+    var OddsGroupList = ViewBag.OddsGroups as IEnumerable<string>;
 }
 @section pagecss {
     <environment include="Development">

@@ -24,7 +24,7 @@ export const TabContent = (props) => {
                 <div className="tab-panel">
                     <div style={getStyle(tabKeys.playerProfile)}><AccountProfile /></div>
                     <div style={getStyle(tabKeys.bankInformation)}><BankInformation /></div>
-                    <div style={getStyle(tabKeys.activityRecord)}><ActivityRecord /></div>
+                    {selectedTab === tabKeys.activityRecord && <ActivityRecord />}
                 </div>
             </div>
         </div>

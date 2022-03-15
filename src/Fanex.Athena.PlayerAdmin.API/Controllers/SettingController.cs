@@ -2,9 +2,13 @@
 using Fanex.Athena.PlayerAdmin.API.ViewModels;
 using Fanex.Athena.PlayerAdmin.Core.Attributes;
 using Fanex.Athena.PlayerAdmin.Core.Constants;
+using Fanex.Athena.PlayerAdmin.Core.Extensions;
 using Fanex.Athena.PlayerAdmin.Core.Services;
+using Fanex.Athena.PlayerAdmin.Core.Settings;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
+using System;
 using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -38,17 +42,17 @@ namespace Fanex.Athena.PlayerAdmin.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> GetDepositSetting([FromServices] IDepositSettingService depositSettingService)
+        public async Task<IActionResult> GetDepositSetting([FromServices] IDepositSettingService depositSettingService, [FromServices] ILicenseeService licenseeService)
         {
             var commGroups = depositSettingService.GetCommGroupList(_contextService.LicenseeId);
             var customerClass = depositSettingService.GetCustomerClassList();
-
-            await Task.WhenAll(commGroups, customerClass);
+            var oddsGroups = licenseeService.GetOddsGroups(_contextService.SiteName);
 
             return Ok(new DepositSettingViewModel
             {
                 CustomerClass = await customerClass,
-                CommGroups = await commGroups
+                CommGroups = await commGroups,
+                OddsGroups = oddsGroups
             });
         }
 

@@ -4,6 +4,6 @@ namespace Fanex.Athena.PlayerAdmin.Core.ConsoleClient
 {
     public interface IReportApiClient
     {
-        Task<T> PostAsync<T>(string path, object value, string language) where T : class;
+        Task<string> PostStringAsync(string path, object value, string language, int timeOut = 100);
     }
 }

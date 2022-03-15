@@ -29,6 +29,11 @@ namespace Fanex.Athena.PlayerAdmin.Core.Services
             _functionSetting = functionSetting.Value;
         }
 
+        public IEnumerable<string> GetOddsGroups(string siteName)
+            => _appSetting.OddsGroups
+                .Where(_ => !_.OfferedBy.IsPresent() || _.OfferedBy.Any(s => string.Equals(s, siteName, StringComparison.InvariantCultureIgnoreCase)))
+                .Select(_ => _.Value);
+
         public async Task<bool> IsAllowUpdateBA(int licenseeId, string userName, IEnumerable<string> specicalBAAdmins)
             => specicalBAAdmins.IsPresent() && specicalBAAdmins.Contains(userName, StringComparer.InvariantCultureIgnoreCase) || await IsAllowUpdateMemberBAStatus(licenseeId);
 

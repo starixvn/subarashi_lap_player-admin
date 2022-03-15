@@ -7,8 +7,6 @@ namespace Fanex.Athena.PlayerAdmin.Core.ConsoleClient
     {
         Task<HttpResponseMessage> PostAsync(string path, object value, string language, int timeOut = 100);
 
-        Task<T> PostAsync<T>(string path, object value, string language) where T : class;
-
-        Task<string> PostString(string path, object value, string language, int timeOut = 100);
+        Task<string> PostStringAsync(string path, object value, string language, int timeOut = 100);
     }
 }

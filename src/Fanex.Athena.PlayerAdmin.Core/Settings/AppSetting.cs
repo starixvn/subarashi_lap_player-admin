@@ -11,5 +11,12 @@ namespace Fanex.Athena.PlayerAdmin.Core.Settings
         public IEnumerable<string> SpecialBAAdmins { get; set; }
         public string BetTicketEventBuilderUrl { get; set; }
         public string CustomerClassUrl { get; set; }
+        public IEnumerable<OddsGroup> OddsGroups { get; set; }
+    }
+
+    public class OddsGroup
+    {
+        public string Value { get; set; }
+        public IEnumerable<string> OfferedBy { get; set; }
     }
 }

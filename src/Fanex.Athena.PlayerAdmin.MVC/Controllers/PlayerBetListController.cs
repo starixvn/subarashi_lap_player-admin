@@ -1,8 +1,8 @@
 ﻿using Fanex.Athena.PlayerAdmin.Core.Attributes;
 using Fanex.Athena.PlayerAdmin.Core.ConsoleClient;
 using Fanex.Athena.PlayerAdmin.Core.Constants;
+using Fanex.Athena.PlayerAdmin.Core.Extensions;
 using Fanex.Athena.PlayerAdmin.Core.Services;
-using Fanex.Athena.PlayerAdmin.MVC.DTO;
 using Fanex.Athena.PlayerAdmin.MVC.MetaModel;
 using Fanex.Athena.PlayerAdmin.MVC.ViewModels;
 using Microsoft.AspNetCore.Mvc;
@@ -46,16 +46,16 @@ namespace Fanex.Athena.PlayerAdmin.MVC.Controllers
             metaModel.IsShowIp = _contextService.IsShowIP;
             metaModel.IsShowIpVN = _contextService.IsShowIpVN;
 
-            IActionResult result = metaModel.IsExport
+            var result = metaModel.IsExport
                 ? await ExportRunningBetListDataAsync(betListApiClient, metaModel)
                 : await GetRunningBetListDataAsync(betListApiClient, metaModel);
             return result;
         }
 
-        private async Task<JsonResult> GetRunningBetListDataAsync(IBetListApiClient betListApiClient, PlayerRunningBetListMetaModel metaModel)
+        private async Task<IActionResult> GetRunningBetListDataAsync(IBetListApiClient betListApiClient, PlayerRunningBetListMetaModel metaModel)
         {
-            var result = await betListApiClient.PostAsync<BetList>("/PlayerAdminBetList/GetBetList", metaModel, _contextService.Language);
-            return Json(result);
+            var json = await betListApiClient.PostStringAsync("/PlayerAdminBetList/GetBetList", metaModel, _contextService.Language);
+            return this.ToJsonResult(json);
         }
 
         private async Task<FileResult> ExportRunningBetListDataAsync(IBetListApiClient betListApiClient, PlayerRunningBetListMetaModel metaModel)

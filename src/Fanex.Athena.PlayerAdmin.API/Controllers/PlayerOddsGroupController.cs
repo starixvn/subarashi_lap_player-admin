@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
+using System.Linq;
 
 namespace Fanex.Athena.PlayerAdmin.API.Controllers
 {
@@ -41,7 +42,8 @@ namespace Fanex.Athena.PlayerAdmin.API.Controllers
         [AutoBindingMetaModel(bindUserId: true, bindClientIP: true, bindLanguage: true, bindSiteName: true)]
         public async Task<IActionResult> Update(OddsGroupUpdatingMetaModel metaModel)
         {
-            if (_licenseeService.IsFakeLicensee(metaModel.SiteName))
+
+            if (_licenseeService.IsFakeLicensee(metaModel.SiteName) || !IsValidOddsGroup(metaModel.SiteName, metaModel.OddsGroup))
             {
                 return Ok(new ResultViewModel
                 {
@@ -64,6 +66,13 @@ namespace Fanex.Athena.PlayerAdmin.API.Controllers
                 Success = false,
                 ErrorMessage = ResourceKeyConstants.HttpErrDefault
             });
+        }
+
+        private bool IsValidOddsGroup(string siteName, string oddsGroup)
+        {
+            var oddsGroups = _licenseeService.GetOddsGroups(siteName);
+            var isValid = oddsGroups.Any(_ => string.Equals(_, oddsGroup, StringComparison.InvariantCultureIgnoreCase));
+            return isValid;
         }
     }
 }

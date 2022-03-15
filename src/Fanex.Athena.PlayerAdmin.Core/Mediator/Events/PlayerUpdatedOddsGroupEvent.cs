@@ -12,6 +12,7 @@ namespace Fanex.Athena.PlayerAdmin.Core.Mediator
 
         public override int ActionID => LogActionId.UpdateOddsGroup;
 
-        public override string Doing => $"LAP - {SiteName} - {LicenseeCustId} - {LogActionDetailId.UpdatingOddsGroup} - {Status} - {NewValue} - {OldValue}";
+        public override string Doing => $"LAP - {SiteName} - {LicenseeCustId} - {LogActionDetailId.UpdatingOddsGroup} -" +
+            $" {Status} - {NewValue.ToUpperInvariant()} - {OldValue.ToUpperInvariant()}";
     }
 }

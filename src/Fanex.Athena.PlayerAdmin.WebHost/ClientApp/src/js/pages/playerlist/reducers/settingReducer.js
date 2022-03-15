@@ -15,7 +15,7 @@ export const siteSetting = createReducer(defaultSiteSetting, {
     }
 })
 
-export const depositSetting = createReducer({ CustomerClass: [], CommGroups: [] }, {
+export const depositSetting = createReducer({ CustomerClass: [], CommGroups: [], OddsGroups: [] }, {
     [SET_DEPOSIT_SETTING](preState, action) {
         return { ...action.data };
     }
