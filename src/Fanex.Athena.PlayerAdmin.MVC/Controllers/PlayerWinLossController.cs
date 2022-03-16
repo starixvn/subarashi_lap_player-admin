@@ -48,8 +48,6 @@ namespace Fanex.Athena.PlayerAdmin.MVC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [RequestValidation]
-        [AutoBindingMetaModel(bindAgent: true, bindProductList: true)]
         public async Task<IActionResult> Index([FromServices] IReportApiClient reportAPIClient, [Bind("Username")][FromBody] PlayerWinLossMetaModel metaModel)
         {
             await AssignMetaModelValue(metaModel);
@@ -62,11 +60,9 @@ namespace Fanex.Athena.PlayerAdmin.MVC.Controllers
             const string AllOption = "All";
             var now = DateTimeHelper.DatabaseServerNow;
             var productAccess = await _licenseeService.GetSingleWalletProductAccess(_contextService.LicenseeId, FunctionName);
-            metaModel.HasComm = _contextService.IsAllowedCustomerComm;
-            metaModel.IsAllowedBA = productAccess.IsAllowBA;
-            metaModel.SystemIdVisible = !_licenseeService.IsFakeLicensee(_contextService.SiteName);
+            metaModel.ProductOptions = productAccess.ProductOptionList;
             metaModel.FromDate = new DateTime(now.Year, now.Month, 1);
-            metaModel.ToDate = now;
+            metaModel.ToDate = now.Date;
             metaModel.OddsGroup = AllOption;
             metaModel.CustomerClass = AllOption;
         }

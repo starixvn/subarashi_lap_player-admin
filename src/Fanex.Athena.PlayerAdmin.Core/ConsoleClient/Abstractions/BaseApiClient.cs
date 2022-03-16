@@ -39,6 +39,9 @@ namespace Fanex.Athena.PlayerAdmin.Core.ConsoleClient
             _client = client;
         }
 
+
+        protected virtual Task PrepareHeaders(HttpRequestHeaders headers) => Task.CompletedTask;
+
         protected virtual async Task<T> HandleAsync<T>(string path, object value, string language, MediaType mediaType, Func<HttpResponseMessage, Task<T>> codeBlock,
             bool disposeHttpResponse = true, int timeOut = 100)
         {
@@ -50,6 +53,8 @@ namespace Fanex.Athena.PlayerAdmin.Core.ConsoleClient
             {
                 using (var httpRequest = new HttpRequestMessage(HttpMethod.Post, new Uri(_client.BaseAddress + path)))
                 {
+                    await PrepareHeaders(httpRequest.Headers);
+
                     httpRequest.Headers.Add(LANGUAGEKEY, language);
                     HttpResponseMessage response = null;
                     try

@@ -36,6 +36,8 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Net.Http.Headers;
+using Fanex.Athena.PlayerAdmin.Core.Services;
 using Polly;
 using Microsoft.Extensions.Logging;
 
@@ -137,10 +139,17 @@ namespace Fanex.Athena.PlayerAdmin.WebHost
                 options.KnownNetworks.Clear();
                 options.KnownProxies.Clear();
             });
+
+            services.AddHttpsRedirection(options =>
+            {
+                const int httpsPort = 443;
+                options.HttpsPort = httpsPort;
+            });
         }
 
         public void Configure(IApplicationBuilder app)
         {
+            app.UsePing();
             app.UseForwardedHeaders();
 
             if (string.Equals(Configuration["UseErrorHandler"], "1"))
@@ -179,7 +188,6 @@ namespace Fanex.Athena.PlayerAdmin.WebHost
             services.AddHttpClient<IReportApiClient, ReportApiClient>(client =>
             {
                 client.BaseAddress = new Uri(Configuration["ConsoleClient:Report:Host"]);
-                client.DefaultRequestHeaders.Add("AUTH_TOKEN", Configuration["ConsoleClient:Report:AuthKey"]);
             }).SetHandlerLifetime(OneDay);
 
             services.AddHttpClient<IBetListApiClient, BetListApiClient>(client =>

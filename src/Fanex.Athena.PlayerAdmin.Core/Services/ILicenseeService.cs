@@ -10,8 +10,6 @@ namespace Fanex.Athena.PlayerAdmin.Core.Services
 
         Task<bool> IsAllowUpdateBA(int licenseeId, string userName, IEnumerable<string> specicalBAAdmins);
 
-        bool IsFakeLicensee(string licenseeName);
-
         Task<BalanceUpData> GetBalanceUp();
 
         Task<bool> CheckProductBelongsTo(string licenseeName, int productId, int[] limitedProductIds = null);

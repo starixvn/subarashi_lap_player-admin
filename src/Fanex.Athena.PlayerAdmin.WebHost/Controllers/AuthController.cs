@@ -106,7 +106,7 @@ namespace Fanex.Athena.PlayerAdmin.WebHost.Controllers
                     { nameof(token), token },
                     { nameof(scope), scope },
                     { "access_token", currentAccessToken },
-                    { "clien_ip", HttpContext.Connection.RemoteIpAddress.ToString() }
+                    { "client_ip", HttpContext.Connection.RemoteIpAddress.ToString() }
                 })
             };
 

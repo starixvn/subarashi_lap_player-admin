@@ -85,6 +85,8 @@ namespace Fanex.Athena.PlayerAdmin.Core.Services
 
         public bool IsShowIpVN => IsInRoles("super_admin", "bl_view_ipvn");
 
+        public bool IsFakeLicensee => GetClaimValue("IsFakeLicensee", false);
+
         public IEnumerable<string> OfferedSubProductList
         {
             get
@@ -98,7 +100,9 @@ namespace Fanex.Athena.PlayerAdmin.Core.Services
 
         public bool IsInRoles(params string[] roles) => roles?.Any(_ => User.IsInRole(_)) ?? false;
 
-        public string ClientIP => Context.Connection.RemoteIpAddress.ToString();
+        public string CurrentRequestClientIP => Context.Connection.RemoteIpAddress.ToString();
+
+        public string OwnerClientIP => GetClaimValue("ClientIP");
 
         private IReadOnlyDictionary<int, int[]> _agentList;
 
@@ -150,6 +154,16 @@ namespace Fanex.Athena.PlayerAdmin.Core.Services
 
         private T GetClaimValue<T>(string claimType)
             => (T)Convert.ChangeType(GetClaimValue(claimType), typeof(T));
+
+        private T GetClaimValue<T>(string claimType, T _default)
+        {
+            var claimValue = GetClaimValue(claimType);
+            if(string.IsNullOrEmpty(claimValue))
+            {
+                return _default;
+            }
+            return (T)Convert.ChangeType(claimValue, typeof(T));
+        }
 
         private string GetClaimValue(string claimType)
             => User.FindFirst(claimType)?.Value;

@@ -1,5 +1,4 @@
-﻿using Fanex.Athena.PlayerAdmin.Core.Extensions;
-using Fanex.Athena.PlayerAdmin.Core.Models;
+﻿using Fanex.Athena.PlayerAdmin.Core.Models;
 using Fanex.Athena.PlayerAdmin.Core.Services;
 using Fanex.Core.Utils;
 using Microsoft.AspNetCore.Mvc;
@@ -105,7 +104,7 @@ namespace Fanex.Athena.PlayerAdmin.Core.Attributes
 
             if (_bindClientIP && MetaModelHelper.IsMetaModel(context.ActionArguments, out IClientIPMetaModel clientIPMetaModel))
             {
-                clientIPMetaModel.Ip = _contextService.ClientIP;
+                clientIPMetaModel.Ip = _contextService.CurrentRequestClientIP;
             }
 
             if (_bindUserId && MetaModelHelper.IsMetaModel(context.ActionArguments, out IUserIdMetaModel userIdMetaModel))
@@ -162,10 +161,6 @@ namespace Fanex.Athena.PlayerAdmin.Core.Attributes
             {
                 await BindProductCodeList(productCodeListMetaModel, functionKey);
             } 
-            else if(MetaModelHelper.IsMetaModel(context.ActionArguments, out IProductOptionsMetaModel productOptionsMetaModel))
-            {
-                await BindProductOptions(productOptionsMetaModel, functionKey);
-            }
             else
             {
                 //nothing
@@ -183,19 +178,6 @@ namespace Fanex.Athena.PlayerAdmin.Core.Attributes
 
             productCodeListMetaModel.OriginalProductCodeList = productCodeListFromFilter;
             productCodeListMetaModel.ProductCodeList = _licenseeService.GetAllowedSubProductCodeList(_contextService.OfferedSubProductList, productCodeListFromFilter);
-        }
-
-        private async Task BindProductOptions(IProductOptionsMetaModel productOptionsMetaModel, string functionKey)
-        {
-            var productOptionsFromFilter = productOptionsMetaModel.ProductOptions;
-            if (!productOptionsFromFilter.IsPresent())
-            {
-                var productAccess = await _licenseeService.GetSingleWalletProductAccess(_contextService.LicenseeId, functionKey);
-                productOptionsFromFilter = productAccess.ProductOptionList;
-            }
-
-            productOptionsMetaModel.OriginalProductOptions = productOptionsFromFilter;
-            productOptionsMetaModel.ProductOptions = _licenseeService.GetAllowedSubProductOptions(_contextService.OfferedSubProductList, productOptionsFromFilter);
         }
     }
 }

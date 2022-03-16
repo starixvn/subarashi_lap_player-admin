@@ -13,10 +13,10 @@ namespace Fanex.Athena.PlayerAdmin.Core.Attributes
     [AttributeUsage(AttributeTargets.Method | AttributeTargets.Class, AllowMultiple = false)]
     public class RequestValidationAttribute : TypeFilterAttribute
     {
-        public RequestValidationAttribute(bool validateCustId = false, int validateProductId = -99, params int[] limitedProductIds)
+        public RequestValidationAttribute(bool validateCustId = false, bool validateClientIP = false, int validateProductId = -99, params int[] limitedProductIds)
             : base(typeof(DataValidationImplAttribute))
         {
-            Arguments = new object[] { validateCustId, validateProductId, limitedProductIds };
+            Arguments = new object[] { validateCustId, validateClientIP, validateProductId, limitedProductIds };
         }
     }
 
@@ -30,11 +30,13 @@ namespace Fanex.Athena.PlayerAdmin.Core.Attributes
         private readonly ILicenseeService _licenseeService;
 
         private readonly bool _validateCustId;
+        private readonly bool _validateClientIP;
         private readonly int _validateProductId;
         private readonly int[] _limitedProductIds;
 
         public DataValidationImplAttribute(IContextService contextService, ILicenseeService licenseeService,
             bool validateCustId,
+            bool validateClientIP,
             int validateProductId,
             int[] limitedProductIds
             )
@@ -43,6 +45,7 @@ namespace Fanex.Athena.PlayerAdmin.Core.Attributes
             _licenseeService = licenseeService;
 
             _validateCustId = validateCustId;
+            _validateClientIP = validateClientIP;
             _validateProductId = validateProductId;
             _limitedProductIds = limitedProductIds;
         }
@@ -66,6 +69,8 @@ namespace Fanex.Athena.PlayerAdmin.Core.Attributes
 
             result &= !_validateCustId || (MetaModelHelper.IsMetaModel(actionArguments, out ICustomerIdentityMetaModel customerIdentityMetaModel)
                 && await _licenseeService.CheckCustomerBelongTo(_contextService.AgentList, customerIdentityMetaModel.CustId, customerIdentityMetaModel.CurrencyId));
+
+            result &= !_validateClientIP || string.Equals(_contextService.CurrentRequestClientIP, _contextService.OwnerClientIP, StringComparison.InvariantCultureIgnoreCase);  
 
             result &= _validateProductId == NoValidationProductId 
                 || await _licenseeService.CheckProductBelongsTo(_contextService.SiteName, GetProductId(actionArguments, _validateProductId), _limitedProductIds);
