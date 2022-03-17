@@ -32,7 +32,8 @@ const ConfirmationMsg = {
     [BetLimitProduct.CC]: { Msg: 'UpdateProductBetSettings', Product: 'ProductCC' },
     [BetLimitProduct.CS]: { Msg: 'UpdateProductBetSettings', Product: 'ProductCS' },
     [BetLimitProduct.CB]: { Msg: 'UpdateProductBetSettings', Product: 'ProductCB' },
-    [BetLimitProduct.VGA]: { Msg: 'UpdateProductBetSettings', Product: 'ProductVGA' }
+    [BetLimitProduct.VGA]: { Msg: 'UpdateProductBetSettings', Product: 'ProductVGA' },
+    [BetLimitProduct.VS3]: { Msg: 'UpdateProductBetSettings', Product: 'ProductVS3' }
 }
 
 const ConfirmationUpdateProductStatusMsg = {
