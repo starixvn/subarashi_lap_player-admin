@@ -59,6 +59,7 @@ namespace Fanex.Athena.PlayerAdmin.MVC.Controllers
 
         private async Task AssignMetaModelValue(PlayerWinLossMetaModel metaModel)
         {
+            const string AllOption = "All";
             var now = DateTimeHelper.DatabaseServerNow;
             var productAccess = await _licenseeService.GetSingleWalletProductAccess(_contextService.LicenseeId, FunctionName);
             metaModel.HasComm = _contextService.IsAllowedCustomerComm;
@@ -66,6 +67,8 @@ namespace Fanex.Athena.PlayerAdmin.MVC.Controllers
             metaModel.SystemIdVisible = !_licenseeService.IsFakeLicensee(_contextService.SiteName);
             metaModel.FromDate = new DateTime(now.Year, now.Month, 1);
             metaModel.ToDate = now;
+            metaModel.OddsGroup = AllOption;
+            metaModel.CustomerClass = AllOption;
         }
     }
 }

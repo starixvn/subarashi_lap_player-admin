@@ -52,6 +52,10 @@ namespace Fanex.Athena.PlayerAdmin.MVC.MetaModel
 
         public bool IsExcludedTestData { get; set; }
 
+        public string CustomerClass { get; set; }
+
+        public string OddsGroup { get; set; }
+
         public string FunctionKey => "CustomerWinLoss";
     }
 }
