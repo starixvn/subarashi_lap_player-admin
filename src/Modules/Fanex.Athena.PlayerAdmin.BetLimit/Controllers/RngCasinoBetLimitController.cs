@@ -5,6 +5,7 @@ using Fanex.Athena.PlayerAdmin.Core.Constants;
 using Fanex.Athena.PlayerAdmin.Core.Models;
 using Fanex.Athena.PlayerAdmin.Core.Resources;
 using Fanex.Athena.PlayerAdmin.Core.Services;
+using Fanex.Athena.PlayerAdmin.Core.Settings;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
@@ -43,6 +44,7 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [CookieAuthorize(Roles.SuperAdmin, Roles.BetLimit_Write)]
+        [FunctionUM(FunctionUMType.BetSetting)]
         [AutoBindingMetaModel(bindClientIP: true, bindLanguage: true, bindSiteName: true, bindUserId: true)]
         public async Task<JsonResult> UpdateStatus([FromBody] PlayerBetLimitUpdateStatusMetaModel metaModel)
         {

@@ -3,6 +3,7 @@ using Fanex.Athena.PlayerAdmin.Core.Constants;
 using Fanex.Athena.PlayerAdmin.Core.Attributes;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using Fanex.Athena.PlayerAdmin.Core.Settings;
 
 namespace Fanex.Athena.PlayerAdmin.Commission.Controllers
 {
@@ -11,6 +12,7 @@ namespace Fanex.Athena.PlayerAdmin.Commission.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [CookieAuthorize(Roles.SuperAdmin, Roles.CommissionGroup_Write, Policy = Policy.NotAllowSubsidiary)]
+        [FunctionUM(FunctionUMType.Commission)]
         [RequestValidation]
         [AutoBindingMetaModel(bindLicenseeId: true, bindUsername: true, bindClientIP: true, bindLanguage: true, bindUserId: true)]
         public async Task<JsonResult> PostMultipleMoveGroup([FromForm] MultipleMoveGroupQuery query)
@@ -23,6 +25,7 @@ namespace Fanex.Athena.PlayerAdmin.Commission.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [CookieAuthorize(Roles.SuperAdmin, Roles.CommissionGroup_Write, Policy = Policy.NotAllowSubsidiary)]
+        [FunctionUM(FunctionUMType.Commission)]
         [RequestValidation]
         [AutoBindingMetaModel(bindLicenseeId: true, bindUsername: true, bindClientIP: true, bindLanguage: true, bindUserId: true)]
         public async Task<JsonResult> PostMultipleUpdateGroup([FromForm] MultipleUpdateGroupQuery query)
@@ -36,6 +39,7 @@ namespace Fanex.Athena.PlayerAdmin.Commission.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [CookieAuthorize(Roles.SuperAdmin, Roles.CommissionGroup_Write, Policy = Policy.NotAllowSubsidiary)]
+        [FunctionUM(FunctionUMType.Commission)]
         [RequestValidation]
         [AutoBindingMetaModel(bindLicenseeId: true, bindUsername: true, bindClientIP: true, bindLanguage: true, bindUserId: true)]
         public async Task<JsonResult> PostMultipleRemoveFromGroup([FromForm] MultipleRemoveFromGroupQuery query)
