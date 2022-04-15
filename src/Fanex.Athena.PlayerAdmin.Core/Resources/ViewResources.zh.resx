@@ -2703,4 +2703,19 @@
     <value>您还没有选择任何会员</value>
     <comment>#27974</comment>
   </data>
+  <data name="Saba" xml:space="preserve">
+    <value>沙巴</value>
+  </data>
+  <data name="MaxPayoutPerMatch" xml:space="preserve">
+    <value>单场最高派彩</value>
+  </data>
+  <data name="IncorrectMaxPayoutPerMatch" xml:space="preserve">
+    <value>单场最高派彩错误</value>
+  </data>
+  <data name="MaxPerMatchNotGreaterMaxPayoutPerMatch" xml:space="preserve">
+    <value>单场限额不能大于单场最高派彩</value>
+  </data>
+  <data name="MaxPayoutPerMatchLessThanOrEqual" xml:space="preserve">
+    <value>单场最高派彩必须少于或等于</value>
+  </data>
 </root>

@@ -4,13 +4,12 @@ using Fanex.Athena.PlayerAdmin.Core.Services;
 using Fanex.Athena.PlayerAdmin.Core.Resources;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System;
 
 namespace Fanex.Athena.PlayerAdmin.BetLimit.Controllers
 {
     public class PlayerBetLimitBaseControler : Controller
     {
-        private const string MixedSportId = "99MP";
-        private const string SoccerParlay = "1MP";
         private const string I4DId = "223";
 
         protected readonly IContextService _contextService;
@@ -26,28 +25,48 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Controllers
         {
             foreach (var item in data)
             {
-                item.BetSettingType = (item.Id == I4DId) ? GetBetTypeName(item.BetType) : GetSportName(item.Id);
+                item.BetSettingType = item.BetType switch
+                {
+                    BetType.Parlay => GetParlaySettingTypeName(item.SportType),
+                    _ => GetNormalSettingTypeName(item)
+                }; 
             }
-
             return data;
         }
+
+        private string GetNormalSettingTypeName(PlayerBetLimit item)
+        
+            => (item.SportType == I4DId) ? GetBetTypeName(item.BetType) : GetSportName(item.SportType);
+        
+
+        protected string GetParlaySettingTypeName(string id)
+        {
+            const string soccer = "1";
+            const string otherSports = "99";
+            return id switch
+               {
+                   soccer => ViewResources.SoccerParlay,
+                   otherSports => ViewResources.MixSportsParlay,
+                   _ => _resourceService.GetSportName(id)
+               };
+        }
+        
 
         protected bool HasEditPermission() => _contextService.IsInRoles(Roles.SuperAdmin, Roles.BetLimit_Write);
 
         protected string GetSportName(string sportId)
         {
-            if (sportId == MixedSportId)
+            if (sportId == SportType.SabaSoccer.ToString())
             {
-                return ViewResources.MixSportsParlay;
+                var sportName = _resourceService.GetSportName(SportType.Soccer);
+                return $"{ViewResources.Saba} {sportName}";
             }
-            else if (sportId == SoccerParlay)
+            if (sportId == SportType.SabaBasketBall.ToString())
             {
-                return ViewResources.SoccerParlay;
+                var sportName = _resourceService.GetSportName(SportType.BasketBall);
+                return $"{ViewResources.Saba}{sportName}";
             }
-            else
-            {
-                return _resourceService.GetSportName(sportId);
-            }
+            return _resourceService.GetSportName(sportId);
         }
 
         protected string GetBetTypeName(int bettypeId) => _resourceService.GetBettype(bettypeId);

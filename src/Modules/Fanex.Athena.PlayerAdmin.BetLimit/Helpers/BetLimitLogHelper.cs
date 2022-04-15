@@ -54,7 +54,8 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Helpers
             var updatedItems = setting.Where(x => x.IsUpdated);
             foreach (var item in updatedItems)
             {
-                var sportId = getSportTypeFunc?.Invoke(item);
+                var uSportId = getSportTypeFunc?.Invoke(item);
+                var sportId = GenSportIdForLog(uSportId);
                 for (var i = 0; i < logDetailIds.Length; i++)
                 {
                     var logDetailId = logDetailIds[i];
@@ -66,6 +67,30 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Helpers
                     }
                 }
             }
+        }
+
+        private static string GenSportIdForLog(string uSportId)
+        {
+
+            var splitParam = uSportId.Split('_');
+            const int minParam = 2;
+            var sportId = splitParam[0];
+            if (splitParam.Count() >= minParam)
+            {
+                var sportType = Convert.ToInt32(splitParam[0]);
+                var betType =  Convert.ToInt32(splitParam[1]);
+                sportId = sportType.ToString();
+                if (betType == BetType.Parlay)
+                {
+                    sportId = sportType switch
+                    {
+                        SportType.Soccer => SportTypeExtend.SoccerParlay,
+                        SportType.OtherSports => SportTypeExtend.MixSportsParlay,
+                        _ => sportType.ToString()
+                    };
+                }
+            }
+            return sportId;
         }
 
         private static PlayerBetLimitDetailedLog CreateLogDetailItemByAction(
@@ -94,6 +119,11 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Helpers
             if (logDetailId == LogActionDetailId.UpdatingMaxPerBall && item.MaxPerBall != item.OldMaxPerBall)
             {
                 return CreateLogDetailItem(logDetailId, sportId, status, item.OldMaxPerBall, item.MaxPerBall);
+            }
+
+            if (logDetailId == LogActionDetailId.UpdatingMaxPayoutPerMatch && item.MaxPayoutPerMatch != item.OldMaxPayoutPerMatch)
+            {
+                return CreateLogDetailItem(logDetailId, sportId, status, item.OldMaxPayoutPerMatch, item.MaxPayoutPerMatch);
             }
 
             return null;

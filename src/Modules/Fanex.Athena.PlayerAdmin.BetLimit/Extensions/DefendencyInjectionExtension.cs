@@ -20,7 +20,6 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Extensions
             services.AddTransient<IAGCasinoBetLimitService, AGCasinoBetLimitService>();
             services.AddTransient<ISportsBookBetLimitService, SportsBookBetLimitService>();
             services.AddTransient<IDcsBetLimitService, DcsBetLimitService>();
-            services.AddTransient<IRngKenoBetLimitService, RngKenoBetLimitService>();
             services.AddTransient<IThirdPartyBetLimitService, ThirdPartyBetLimitService>();
             services.AddTransient<IExchangeChargeCommService, ExchangeChargeCommService>();
 
@@ -33,11 +32,9 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Extensions
             services.AddTransient<IAGCasinoBetLimitRepository, AGCasinoBetLimitRepository>();
             services.AddTransient<ISportsBookBetLimitRepository, SportsBookBetLimitRepository>();
             services.AddTransient<IDcsBetLimitRepository, DcsBetLimitRepository>();
-            services.AddTransient<IRngKenoBetLimitRepository, RngKenoBetLimitRepository>();
             services.AddTransient<IThirdPartyBetLimitRepository, ThirdPartyBetLimitRepository>();
-            services.AddTransient<INumberGameBetLimitService, NumberGameBetLimitService>();
             services.AddTransient<INewDcsBetLimitRepository, NewDcsBetLimitRepository>();
-            services.AddTransient<INumberGameBetLimitRepository, NumberGameBetLimitRepository>();
+            services.AddTransient<IDcsGameBetLimitRepository, DcsGameBetLimitRepository>();
             return services;
         }
     }

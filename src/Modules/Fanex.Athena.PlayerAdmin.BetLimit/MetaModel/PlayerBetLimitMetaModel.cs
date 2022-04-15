@@ -4,6 +4,8 @@
     {
         public string Id { get; set; }
 
+        public string SportType { get; set; }
+
         public int BetType { get; set; }
 
         public decimal MinBet { get; set; }
@@ -14,6 +16,8 @@
 
         public decimal MaxPerBall { get; set; }
 
+        public decimal MaxPayoutPerMatch { get; set; }
+
         public decimal OldMinBet { get; set; }
 
         public decimal OldMaxBet { get; set; }
@@ -21,6 +25,8 @@
         public decimal OldMaxPerMatch { get; set; }
 
         public decimal OldMaxPerBall { get; set; }
+
+        public decimal OldMaxPayoutPerMatch { get; set; }
 
         public bool IsUpdated { get; set; }
     }

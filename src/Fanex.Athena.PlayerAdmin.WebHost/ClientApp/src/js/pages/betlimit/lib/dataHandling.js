@@ -12,6 +12,7 @@ export default class DataHandling {
     getViewRowData(rawData) {
         let row = {
             Id: rawData.Id,
+            SportType: rawData.SportType,
             BetType: rawData.BetType,
             BetSettingType: rawData.BetSettingType,
             MinBet: Utility.formatValue(rawData.MinBet),
@@ -37,6 +38,7 @@ export default class DataHandling {
         return {
             Id: row.Id,
             BetType: row.BetType,
+            SportType: row.SportType,
             BetSettingType: row.BetSettingType,
             MinBet: Utility.getValueAsNumber(row.MinBet),
             MaxBet: Utility.getValueAsNumber(row.MaxBet),

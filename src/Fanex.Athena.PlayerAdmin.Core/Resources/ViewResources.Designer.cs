@@ -3418,6 +3418,15 @@ namespace Fanex.Athena.PlayerAdmin.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Incorrect Max Payout Per Match.
+        /// </summary>
+        public static string IncorrectMaxPayoutPerMatch {
+            get {
+                return ResourceManager.GetString("IncorrectMaxPayoutPerMatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Incorrect Max Per Ball.
         /// </summary>
         public static string IncorrectMaxPerBall {
@@ -4291,6 +4300,24 @@ namespace Fanex.Athena.PlayerAdmin.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Max Payout Per Match.
+        /// </summary>
+        public static string MaxPayoutPerMatch {
+            get {
+                return ResourceManager.GetString("MaxPayoutPerMatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Max Payout Per Match must be less than or equal to.
+        /// </summary>
+        public static string MaxPayoutPerMatchLessThanOrEqual {
+            get {
+                return ResourceManager.GetString("MaxPayoutPerMatchLessThanOrEqual", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Max Per Ball.
         /// </summary>
         public static string MaxPerBall {
@@ -4332,6 +4359,15 @@ namespace Fanex.Athena.PlayerAdmin.Core.Resources {
         public static string MaxPerMatch2 {
             get {
                 return ResourceManager.GetString("MaxPerMatch2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Max Per Match cannot be greater than Max Payout Per Match .
+        /// </summary>
+        public static string MaxPerMatchNotGreaterMaxPayoutPerMatch {
+            get {
+                return ResourceManager.GetString("MaxPerMatchNotGreaterMaxPayoutPerMatch", resourceCulture);
             }
         }
         
@@ -6276,6 +6312,15 @@ namespace Fanex.Athena.PlayerAdmin.Core.Resources {
         public static string Sa {
             get {
                 return ResourceManager.GetString("Sa", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Saba .
+        /// </summary>
+        public static string Saba {
+            get {
+                return ResourceManager.GetString("Saba", resourceCulture);
             }
         }
         

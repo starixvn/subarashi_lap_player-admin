@@ -4,7 +4,7 @@ import { BetLimitType, BetLimitSport } from './constants';
 export default class Validatation {
     static validateMinMaxBet(current, limitData) {
         const { MinBet, MaxBet, MaxPerMatch } = current;
-        const Id = current.Id === BetLimitSport.I4D ? current.Id : current.BetType;
+        const Id = current.SportType === BetLimitSport.I4D ? current.SportType : current.Id;
 
         if (isNaN(MinBet)) {
             return {
@@ -140,6 +140,36 @@ export default class Validatation {
                 Id: Id,
                 Type: BetLimitType.MaxPerBall,
                 Message: LangHelper.getSingleResource('MaxPerBallLessThanOrEqual') + ' ' + limitData.MaxPerBallMax
+            };
+        }
+
+        return null;
+    }
+
+    static validateMaxPayoutPerMatch(current, limitData){
+        const { MaxPayoutPerMatch, Id, MaxPerMatch } = current;
+
+        if (isNaN(MaxPayoutPerMatch)) {
+            return {
+                Id: Id,
+                Type: BetLimitType.MaxPayoutPerMatch,
+                Message: LangHelper.getSingleResource('IncorrectMaxPayoutPerMatch')
+            };
+        }
+
+        if (MaxPerMatch > MaxPayoutPerMatch){
+            return{
+                Id: Id,
+                Type: BetLimitType.MaxPerMatch,
+                Message: LangHelper.getSingleResource("MaxPerMatchNotGreaterMaxPayoutPerMatch")
+            }
+        }
+
+        if (limitData.MaxPayoutPerMatchMax > 0 && MaxPayoutPerMatch > limitData.MaxPayoutPerMatchMax) {
+            return {
+                Id: Id,
+                Type: BetLimitType.MaxPayoutPerMatch,
+                Message: LangHelper.getSingleResource('MaxPayoutPerMatchLessThanOrEqual') + ' ' + limitData.MaxPayoutPerMatchMax
             };
         }
 

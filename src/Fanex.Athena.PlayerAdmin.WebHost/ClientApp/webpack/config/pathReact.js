@@ -14,7 +14,8 @@ var cssPaths = {
     playerbetlimit: "./ClientApp/src/css/pages/betlimit.scss",
     playerwinloss: "./ClientApp/src/css/pages/playerwinloss.scss",
     statement: "./ClientApp/src/css/pages/statement.scss",
-    detailtransaction: "./ClientApp/src/css/pages/detailtransaction.scss"
+    detailtransaction: "./ClientApp/src/css/pages/detailtransaction.scss",
+    userguide: "./ClientApp/src/css/pages/userguide.scss"
 };
 
 var scriptPaths = {

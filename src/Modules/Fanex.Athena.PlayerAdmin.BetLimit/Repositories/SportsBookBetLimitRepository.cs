@@ -109,7 +109,6 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Repositories
                 MaxPerMatchMin = reader.ToDecimal("MaxPerMatch" + sportSuffix + "_Min"),
                 BetValueMax = reader.ToDecimal("MaxBet" + sportSuffix + "_Min"),
                 BetValueMin = reader.ToDecimal("MinBet" + sportSuffix + "_Max"),
-                Id = sportId
             };
 
             return sport;

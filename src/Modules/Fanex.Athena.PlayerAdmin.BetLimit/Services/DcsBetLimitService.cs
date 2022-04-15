@@ -24,18 +24,25 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Services
 
         private readonly IDcsBetLimitRepository _repository;
         private readonly INewDcsBetLimitRepository _newRepository;
+        private readonly IDcsGameBetLimitRepository _gameBetLimitRepository;
         private readonly IPublisher _publisher;
 
-        public DcsBetLimitService(IDcsBetLimitRepository repository, INewDcsBetLimitRepository newRepository, IPublisher publisher)
+        public DcsBetLimitService(IDcsBetLimitRepository repository, INewDcsBetLimitRepository newRepository, IDcsGameBetLimitRepository dcsGameBetLimitRepository,IPublisher publisher)
         {
             _repository = repository;
             _newRepository = newRepository;
             _publisher = publisher;
+            _gameBetLimitRepository = dcsGameBetLimitRepository;
         }
 
         public async Task<IEnumerable<PlayerBetLimit>> GetSettingAsync(int custId, int productId)
         {
-            return productId == ProductTypes.VS3 ? await _newRepository.GetSettingAsync(custId, productId) : await _repository.GetSettingAsync(custId, productId);
+            return productId switch
+            {
+                ProductTypes.Sportsbook or ProductTypes.NumberGame => await _gameBetLimitRepository.GetSettingAsync(custId, productId),
+                ProductTypes.VS3 => await _newRepository.GetSettingAsync(custId, productId),
+                _ => await _repository.GetSettingAsync(custId, productId),
+            };
         }
 
         public async Task<bool?> GetStatusAsync(int custId, int productId)
@@ -50,7 +57,12 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Services
 
         public async Task<IResultInfo> UpdateSettingAsync(PlayerBetLimitUpdateMetaModel<IEnumerable<PlayerBetLimitMetaModel>> metaModel)
         {
-            var result = metaModel.ProductId == ProductTypes.VS3 ? await _newRepository.UpdateSettingAsync(metaModel) : await _repository.UpdateSettingAsync(metaModel);
+            var result = metaModel.ProductId switch
+            {
+                ProductTypes.Sportsbook or ProductTypes.NumberGame => await _gameBetLimitRepository.UpdateSettingAsync(metaModel),
+                ProductTypes.VS3 => await _newRepository.UpdateSettingAsync(metaModel),
+                _ => await _repository.UpdateSettingAsync(metaModel),
+            };
 
             var logEvent = BetLimitLogHelper.CreateLogEvent(
                 metaModel,
@@ -80,7 +92,10 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Services
         {
             return productId switch
             {
-                ProductTypes.Lottery => new[] { LogActionDetailId.UpdatingMinBet, LogActionDetailId.UpdatingMaxBet, LogActionDetailId.UpdatingMaxBetPerDraw },
+                ProductTypes.Lottery or ProductTypes.Keno => new[] { LogActionDetailId.UpdatingMinBet, LogActionDetailId.UpdatingMaxBet, LogActionDetailId.UpdatingMaxBetPerDraw },
+                ProductTypes.NumberGame => new[] { LogActionDetailId.UpdatingMinBet, LogActionDetailId.UpdatingMaxBet, LogActionDetailId.UpdatingMaxPerMatch, LogActionDetailId.UpdatingMaxPerBall },
+                ProductTypes.Sportsbook => new[] { LogActionDetailId.UpdatingMinBet, LogActionDetailId.UpdatingMaxBet, 
+                    LogActionDetailId.UpdatingMaxPerMatch, LogActionDetailId.UpdatingMaxPayoutPerMatch },
                 ProductTypes.VS3 => new[] { LogActionDetailId.UpdatingMinBet, LogActionDetailId.UpdatingMaxBet },
                 _ => new[] { LogActionDetailId.UpdatingMinBet, LogActionDetailId.UpdatingMaxBet, LogActionDetailId.UpdatingMaxPerMatch },
             };

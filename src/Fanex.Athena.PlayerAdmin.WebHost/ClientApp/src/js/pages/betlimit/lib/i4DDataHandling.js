@@ -15,6 +15,7 @@ export default class I4DDataHandling extends DataHandling {
         return {
             Id: row.Id,
             BetType: row.BetType,
+            SportType: row.SportType,
             BetSettingType: row.BetSettingType,
             MinBet: Utility.getValueAsNumber(row.MinBet),
             MaxBet: Utility.getValueAsNumber(row.MaxBet),

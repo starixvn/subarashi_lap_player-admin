@@ -23,7 +23,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.Athena.PlayerAdmin.Ba
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.Athena.PlayerAdmin.Core", "src\Fanex.Athena.PlayerAdmin.Core\Fanex.Athena.PlayerAdmin.Core.csproj", "{8D76DD4F-011C-43DE-88BE-4CDDA0CAC77C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.Athena.PlayerAdmin.Core.UnitTests", "test\Fanex.Athena.PlayerAdmin.Core.UnitTests\Fanex.Athena.PlayerAdmin.Core.UnitTests.csproj", "{77D0E28C-9086-477E-9871-B018D4CDD862}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.Athena.PlayerAdmin.Core.UnitTests", "test\Fanex.Athena.PlayerAdmin.Core.UnitTests\Fanex.Athena.PlayerAdmin.Core.UnitTests.csproj", "{77D0E28C-9086-477E-9871-B018D4CDD862}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
