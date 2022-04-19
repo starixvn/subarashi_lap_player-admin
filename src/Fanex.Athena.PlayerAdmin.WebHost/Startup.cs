@@ -121,6 +121,7 @@ namespace Fanex.Athena.PlayerAdmin.WebHost
             services.Configure<IdentityServerSetting>(Configuration.GetSection("IdentityServer"));
             services.Configure<BetLimitApiSetting>(Configuration.GetSection("BetLimitApi"));
             services.Configure<FunctionAllowedProductsSetting>(Configuration.GetSection("FunctionAllowedProducts"));
+            services.Configure<FunctionUMSetting>(Configuration.GetSection("Function.UM"));
 
             var statement = Configuration.GetSection("Statement");
             services.Configure<StatementSetting>(statement);

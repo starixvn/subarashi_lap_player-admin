@@ -1182,6 +1182,10 @@
   <data name="FunctionNoAvailableMsg" xml:space="preserve">
     <value>This function was no longer available!</value>
   </data>
+  <data name="FunctionUMMessage" xml:space="preserve">
+    <value>Unable to update since this function is under maintenance from {0} to {1} (HK Time GMT +8). We are sorry for any inconvenience caused!</value>
+    <comment>ignorejs</comment>
+  </data>
   <data name="FundtransferLimit" xml:space="preserve">
     <value>Fund Transfer Limit</value>
     <comment>112658</comment>

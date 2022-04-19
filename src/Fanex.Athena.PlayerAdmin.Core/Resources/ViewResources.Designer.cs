@@ -2959,6 +2959,15 @@ namespace Fanex.Athena.PlayerAdmin.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Unable to update since this function is under maintenance from {0} to {1} (HK Time GMT +8). We are sorry for any inconvenience caused!.
+        /// </summary>
+        public static string FunctionUMMessage {
+            get {
+                return ResourceManager.GetString("FunctionUMMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Fund Transfer Limit.
         /// </summary>
         public static string FundtransferLimit {
