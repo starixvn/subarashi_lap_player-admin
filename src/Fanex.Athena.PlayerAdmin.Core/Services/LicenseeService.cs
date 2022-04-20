@@ -4,7 +4,6 @@ using Fanex.Athena.PlayerAdmin.Core.Helpers;
 using Fanex.Athena.PlayerAdmin.Core.Models;
 using Fanex.Athena.PlayerAdmin.Core.Repositories;
 using Fanex.Athena.PlayerAdmin.Core.Settings;
-using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Options;
 using System;
@@ -28,11 +27,6 @@ namespace Fanex.Athena.PlayerAdmin.Core.Services
             _appSetting = appSetting.Value;
             _functionSetting = functionSetting.Value;
         }
-
-        public IEnumerable<string> GetOddsGroups(string siteName)
-            => _appSetting.OddsGroups
-                .Where(_ => !_.OfferedBy.IsPresent() || _.OfferedBy.Any(s => string.Equals(s, siteName, StringComparison.InvariantCultureIgnoreCase)))
-                .Select(_ => _.Value);
 
         public async Task<bool> IsAllowUpdateBA(int licenseeId, string userName, IEnumerable<string> specicalBAAdmins)
             => specicalBAAdmins.IsPresent() && specicalBAAdmins.Contains(userName, StringComparer.InvariantCultureIgnoreCase) || await IsAllowUpdateMemberBAStatus(licenseeId);

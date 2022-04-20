@@ -46,7 +46,7 @@ namespace Fanex.Athena.PlayerAdmin.API.Controllers
         public async Task<IActionResult> Update(OddsGroupUpdatingMetaModel metaModel)
         {
 
-            if (_contextService.IsFakeLicensee || !IsValidOddsGroup(metaModel.SiteName, metaModel.OddsGroup))
+            if (_contextService.IsFakeLicensee || !IsValidOddsGroup(metaModel.OddsGroup))
             {
                 return Ok(new ResultViewModel
                 {
@@ -71,11 +71,8 @@ namespace Fanex.Athena.PlayerAdmin.API.Controllers
             });
         }
 
-        private bool IsValidOddsGroup(string siteName, string oddsGroup)
-        {
-            var oddsGroups = _licenseeService.GetOddsGroups(siteName);
-            var isValid = oddsGroups.Any(_ => string.Equals(_, oddsGroup, StringComparison.InvariantCultureIgnoreCase));
-            return isValid;
-        }
+        private bool IsValidOddsGroup(string oddsGroup)
+            => _contextService.OfferedOddsGroupList
+            .Any(_ => string.Equals(_, oddsGroup, StringComparison.InvariantCultureIgnoreCase));
     }
 }

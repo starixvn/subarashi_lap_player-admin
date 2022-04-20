@@ -203,7 +203,7 @@ namespace Fanex.Athena.PlayerAdmin.WebHost
             }).SetHandlerLifetime(OneDay);
         }
 
-        private void ConfigStatement(IServiceCollection services, IConfigurationSection statementConfig)
+        private static void ConfigStatement(IServiceCollection services, IConfigurationSection statementConfig)
         {
             const int NumberOfRetry = 2;
             const int RetryDelayTime = 2; //seconds
@@ -213,7 +213,7 @@ namespace Fanex.Athena.PlayerAdmin.WebHost
                 client.BaseAddress = new Uri(statementConfig.Get<StatementSetting>().InternalHost);
             }).SetHandlerLifetime(TimeSpan.FromDays(1))
             .AddTransientHttpErrorPolicy(p => p.WaitAndRetryAsync(NumberOfRetry, retryAttempt => TimeSpan.FromSeconds(retryAttempt * RetryDelayTime),
-             onRetry: (outcome, timespan, retryAttempt, _) =>
+             onRetry: (_, timespan, retryAttempt, _) =>
              {
                  services.BuildServiceProvider().GetService<ILogger<PlayerStatementService>>()
                      .LogError($"Statement Service delaying for {timespan.Seconds}s, then making retry {retryAttempt}.");

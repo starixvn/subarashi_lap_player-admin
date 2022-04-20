@@ -18,11 +18,10 @@ namespace Fanex.Athena.PlayerAdmin.BatchUpdate.Controllers
         [ReferrerValidation]
         [CookieAuthorize(Roles.SuperAdmin, Roles.UpdateOddsGroup)]
         public ViewResult UpdateOddsGroup(PlayerBatchUpdateMetaModel metaModel, 
-            [FromServices] IContextService contextService,
-            [FromServices] ILicenseeService licenseeService)
+            [FromServices] IContextService contextService)
         {
             var viewModel = new BasePlayerBatchUpdateViewModel(metaModel);
-            ViewBag.OddsGroups = licenseeService.GetOddsGroups(contextService.SiteName);
+            ViewBag.OddsGroups = contextService.OfferedOddsGroupList;
             return View(viewModel);
         }
 
@@ -31,11 +30,12 @@ namespace Fanex.Athena.PlayerAdmin.BatchUpdate.Controllers
         [CookieAuthorize(Roles.SuperAdmin, Roles.UpdateOddsGroup)]
         [RequestValidation]
         [AutoBindingMetaModel(bindLicenseeId: true, bindSiteName: true, bindClientIP: true, bindLanguage: true, bindUserId: true)]
-        public async Task<JsonResult> UpdateOddsGroup(UpdateOddsGroupApiMetaModel metaModel, [FromServices] ILicenseeService licenseeService)
+        public async Task<JsonResult> UpdateOddsGroup(UpdateOddsGroupApiMetaModel metaModel, [FromServices] IContextService contextService)
         {
-            var oddsGroups = licenseeService.GetOddsGroups(metaModel.SiteName);
-            var isValid = oddsGroups.Any(_ => string.Equals(_, metaModel.OddsGroupId, StringComparison.InvariantCultureIgnoreCase));
-            if(!isValid)
+            var isValid = contextService.OfferedOddsGroupList
+                .Any(_ => string.Equals(_, metaModel.OddsGroupId, StringComparison.InvariantCultureIgnoreCase));
+
+            if (!isValid)
             {
                 return Json(new ResultInfo
                 {

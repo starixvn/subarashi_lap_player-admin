@@ -27,6 +27,7 @@ namespace Fanex.Athena.PlayerAdmin.Core.Services
         bool IsShowIpVN { get; }
         bool IsFakeLicensee { get; }
         IEnumerable<string> OfferedSubProductList { get; }
+        IEnumerable<string> OfferedOddsGroupList { get; }
         Task<string> AccessToken { get; }
 
         bool IsInRoles(params string[] roles);

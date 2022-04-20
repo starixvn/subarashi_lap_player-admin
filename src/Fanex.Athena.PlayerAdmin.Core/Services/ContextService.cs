@@ -96,6 +96,15 @@ namespace Fanex.Athena.PlayerAdmin.Core.Services
             }
         }
 
+        public IEnumerable<string> OfferedOddsGroupList
+        {
+            get
+            {
+                var offeredOddsGroupList = GetClaimValue("OfferedOddsGroups");
+                return string.IsNullOrEmpty(offeredOddsGroupList) ? Enumerable.Empty<string>() : offeredOddsGroupList.Split(',');
+            }
+        }
+
         public Task<string> AccessToken => Context.GetTokenAsync(CookieAuthenticationDefaults.AuthenticationScheme, "access_token");
 
         public bool IsInRoles(params string[] roles) => roles?.Any(_ => User.IsInRole(_)) ?? false;

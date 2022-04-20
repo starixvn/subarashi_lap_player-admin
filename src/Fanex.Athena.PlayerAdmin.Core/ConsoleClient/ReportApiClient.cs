@@ -14,7 +14,6 @@ namespace Fanex.Athena.PlayerAdmin.Core.ConsoleClient
             _contextService = contextService;
         }
 
-
         protected override async Task PrepareHeaders(HttpRequestHeaders headers)
             => headers.Authorization = new AuthenticationHeaderValue("Bearer", await _contextService.AccessToken);
 

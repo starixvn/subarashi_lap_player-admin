@@ -18,7 +18,7 @@ namespace Fanex.Athena.PlayerAdmin.Commission.Helpers
 
         public static readonly string[] ExcludeProductsSPParam = new[] { "SB", "Parlay" };
 
-        public static readonly IDictionary<string, string> ProductCodeMapper = new Dictionary<string, string>
+        public static readonly IReadOnlyDictionary<string, string> ProductCodeMapper = new Dictionary<string, string>
         {
             [ProductCode.CS] = "RNG",
             [ProductCode.VB] = "Macau",

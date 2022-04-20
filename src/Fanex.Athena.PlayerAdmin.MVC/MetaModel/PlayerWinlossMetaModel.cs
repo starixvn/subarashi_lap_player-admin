@@ -33,9 +33,8 @@ namespace Fanex.Athena.PlayerAdmin.MVC.MetaModel
 
         public IEnumerable<ProductOption> ProductOptions { get; set; }
 
-        public int CurrencyId => -1;
-
         public string CustomerClass { get; set; }
 
-        public string OddsGroup { get; set; }    }
+        public string OddsGroup { get; set; }    
+    }
 }

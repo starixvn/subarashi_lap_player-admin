@@ -6,8 +6,6 @@ namespace Fanex.Athena.PlayerAdmin.Core.Services
 {
     public interface ILicenseeService
     {
-        public IEnumerable<string> GetOddsGroups(string siteName);
-
         Task<bool> IsAllowUpdateBA(int licenseeId, string userName, IEnumerable<string> specicalBAAdmins);
 
         Task<BalanceUpData> GetBalanceUp();
