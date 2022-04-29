@@ -15,5 +15,7 @@
         public const int UpdatingMaxBetPerDraw = 35;
 
         public const int UpdatingProductStatus = 36;
+
+        public const int UpdatingChargeComm = 37;
     }
 }

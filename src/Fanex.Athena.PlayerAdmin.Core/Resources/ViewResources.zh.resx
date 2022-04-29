@@ -471,6 +471,9 @@
   <data name="Cancel" xml:space="preserve">
     <value>取消</value>
   </data>
+  <data name="CannotUpdateBetLimitForProduct" xml:space="preserve">
+    <value>您无法更新 {0} 的玩家投注限额</value>
+  </data>
   <data name="CashOutAmount" xml:space="preserve">
     <value>预先兑现金额</value>
   </data>
@@ -528,6 +531,9 @@
   <data name="ChangeStatusOfThisCustomerMsg" xml:space="preserve">
     <value>您确定您要更换此会员的状态吗?</value>
     <comment>#27974</comment>
+  </data>
+  <data name="ChargeCommission" xml:space="preserve">
+    <value>收取佣金</value>
   </data>
   <data name="Checkavailability" xml:space="preserve">
     <value>检查可用性</value>
@@ -850,6 +856,9 @@
   <data name="DisableAgCasino" xml:space="preserve">
     <value>Disable AG Casino</value>
   </data>
+  <data name="DisableProduct" xml:space="preserve">
+    <value>停用 {0}</value>
+  </data>
   <data name="DisableRNGCasino" xml:space="preserve">
     <value>停用娱乐城</value>
   </data>
@@ -911,6 +920,9 @@
   </data>
   <data name="EnableCashOut" xml:space="preserve">
     <value>开启即时兑现</value>
+  </data>
+  <data name="EnableProduct" xml:space="preserve">
+    <value>开启 {0}</value>
   </data>
   <data name="EnableRNGCasino" xml:space="preserve">
     <value>Enable RNG Casino</value>
@@ -2500,8 +2512,11 @@
     <value>确定更新所有 {0} 的投注设定吗?</value>
     <comment>112658</comment>
   </data>
+  <data name="UpdateProductChargeComm" xml:space="preserve">
+    <value>您确定要更新{0}佣金收取比例吗？</value>
+  </data>
   <data name="UpdateProductStatus" xml:space="preserve">
-    <value>Are you sure you want to update {0} status?</value>
+    <value>您确定要更新 {0} 状态吗？</value>
   </data>
   <data name="UpdateRNGCasinoBetSettingFailMsg" xml:space="preserve">
     <value>The RNG Casino bet setting of {0} updated is failed</value>
