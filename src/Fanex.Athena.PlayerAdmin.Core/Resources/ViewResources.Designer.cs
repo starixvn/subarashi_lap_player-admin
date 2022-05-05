@@ -1105,7 +1105,7 @@ namespace Fanex.Athena.PlayerAdmin.Core.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You cannot update member bet limit for product {0}..
+        ///   Looks up a localized string similar to You cannot update player bet limit for product {0}..
         /// </summary>
         public static string CannotUpdateBetLimitForProduct {
             get {
@@ -7482,6 +7482,15 @@ namespace Fanex.Athena.PlayerAdmin.Core.Resources {
         public static string UpdateProductBetSettingSuccessMsg {
             get {
                 return ResourceManager.GetString("UpdateProductBetSettingSuccessMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to update {0} charge commission?.
+        /// </summary>
+        public static string UpdateProductChargeComm {
+            get {
+                return ResourceManager.GetString("UpdateProductChargeComm", resourceCulture);
             }
         }
         

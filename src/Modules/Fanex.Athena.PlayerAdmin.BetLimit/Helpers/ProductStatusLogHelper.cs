@@ -26,7 +26,7 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Helpers
             };
         }
 
-        private static PlayerProductStatusDetailedLog BuildBetLimitLogDetail(
+        private static PlayerUpdatedProductDetailedLog BuildBetLimitLogDetail(
             PlayerBetLimitUpdateStatusMetaModel metaModel,
             bool isSuccessful)
         {
@@ -36,7 +36,7 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Helpers
             return betLimitLogDetailItem;
         }
 
-        private static PlayerProductStatusDetailedLog CreateLogDetailItemByAction(
+        private static PlayerUpdatedProductDetailedLog CreateLogDetailItemByAction(
             int logDetailId,
             string productId,
             string status,
@@ -48,14 +48,14 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Helpers
             return CreateLogDetailItem(logDetailId, productId, status, oldStatus, newStatus);
         }
 
-        private static PlayerProductStatusDetailedLog CreateLogDetailItem(
+        private static PlayerUpdatedProductDetailedLog CreateLogDetailItem(
             int logDetailId,
             string productId,
             string status,
             string oldValue,
             string newValue)
         {
-            return new PlayerProductStatusDetailedLog
+            return new PlayerUpdatedProductDetailedLog
             {
                 DetailedId = logDetailId,
                 ProductId = productId,

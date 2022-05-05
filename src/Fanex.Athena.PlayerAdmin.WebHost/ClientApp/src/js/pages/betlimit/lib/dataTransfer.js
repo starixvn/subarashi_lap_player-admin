@@ -18,7 +18,7 @@ const Url = {
     [BetLimitProduct.AB]: 'DcsBetLimit',
     [BetLimitProduct.VB]: 'DcsBetLimit',
     [BetLimitProduct.CO]: 'ThirdPartyBetLimit',
-    [BetLimitProduct.BX]: 'DcsBetLimit',
+    [BetLimitProduct.BX]: 'ExchangeDcsBetLimit',
     [BetLimitProduct.PP]: 'DcsBetLimit',
     [BetLimitProduct.SXG]: 'DcsBetLimit',
     [BetLimitProduct.GDG]: 'DcsBetLimit',
@@ -74,6 +74,26 @@ export default class DataTransfer {
 
     static updateStatus(param, callBack) {
         const url = Site.resolveClientUrl(Url[param.ProductId] + '/UpdateStatus');
+        DataService.postData(url, param)
+            .then(response => {
+                const result = response.data;
+                const isSuccess = Number(result.Code) === 0;
+                const title = isSuccess ?
+                    LangHelper.getSingleResource('MessageSuccess') :
+                    LangHelper.getSingleResource('Fail');
+
+                callBack && callBack(title, result.Message, isSuccess);
+            })
+            .catch(error => {
+                console.log(error.message);
+                callBack(LangHelper.getSingleResource('Error'), LangHelper.getSingleResource('ErrorProcessingMsg'), false);
+            });
+    }
+
+
+    //Exchange only
+    static updateExchangeChargeComm(param, callBack) {
+        const url = Site.resolveClientUrl(Url[BetLimitProduct.BX] + '/UpdateChargeComm');
         DataService.postData(url, param)
             .then(response => {
                 const result = response.data;

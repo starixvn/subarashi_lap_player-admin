@@ -66,6 +66,9 @@ const ConfirmationUpdateProductStatusMsg = {
     [BetLimitProduct.AP]: { Msg: 'UpdateProductStatus', Product: 'ProductAP' },
     [BetLimitProduct.APM]: { Msg: 'UpdateProductStatus', Product: 'ProductAPM' }
 }
+const ConfirmationUpdateProductChargeCommMsg = {
+    [BetLimitProduct.BX]: { Msg: 'UpdateProductChargeComm', Product: 'ProductBX' },
+}
 
 export default class Utility {
     static getConfirmationMsg(productId) {
@@ -86,6 +89,12 @@ export default class Utility {
         }
 
         return message.replace('{0}', LangHelper.getSingleResource(ConfirmationUpdateProductStatusMsg[productId].Product));
+    }
+
+    static getConfirmationUpdateChargeCommMsg(productId) {
+        const { Msg, Product } = ConfirmationUpdateProductChargeCommMsg[productId];
+        const message = LangHelper.getSingleResource(Msg);
+        return message.replace('{0}', LangHelper.getSingleResource(Product));
     }
 
     static formatValue(number) {

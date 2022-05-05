@@ -13,4 +13,9 @@
 
         public string ExtendedData { get; set; }
     }
+
+    public class ResultInfo<T> : ResultInfo, IResultInfo<T>
+    {
+        public T SpecificExtendedData { get; set; }
+    }
 }

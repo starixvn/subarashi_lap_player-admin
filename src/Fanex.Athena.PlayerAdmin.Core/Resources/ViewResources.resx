@@ -516,7 +516,7 @@
     <value>Cancel</value>
   </data>
   <data name="CannotUpdateBetLimitForProduct" xml:space="preserve">
-    <value>You cannot update member bet limit for product {0}.</value>
+    <value>You cannot update player bet limit for product {0}.</value>
     <comment>#32647</comment>
   </data>
   <data name="CashOutAmount" xml:space="preserve">
@@ -2821,6 +2821,9 @@
   <data name="UpdateProductBetSettingSuccessMsg" xml:space="preserve">
     <value>The {0} bet setting of {1} was updated successfully</value>
     <comment>79997</comment>
+  </data>
+  <data name="UpdateProductChargeComm" xml:space="preserve">
+    <value>Are you sure you want to update {0} charge commission?</value>
   </data>
   <data name="UpdateProductStatus" xml:space="preserve">
     <value>Are you sure you want to update {0} status?</value>
