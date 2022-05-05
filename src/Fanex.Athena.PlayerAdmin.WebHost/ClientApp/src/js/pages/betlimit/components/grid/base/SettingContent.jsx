@@ -254,7 +254,7 @@ const SettingContent = (Grid, DataHandling) => {
 
                 this.setState({
                     showError: true,
-                    errorBalloon: { Id: invalidData.Id, msg: invalidData.Message, targetTop: pos.top, targetLeft: pos.left + pos.width / 2 }
+                    errorBalloon: { Id: invalidData.Id, msg: invalidData.Message, targetTop: pos.top + window.scrollY, targetLeft: pos.left + pos.width / 2 }
                 }, () => invalidInput.focus());
             }
         }
