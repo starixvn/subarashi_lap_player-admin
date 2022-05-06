@@ -42,11 +42,11 @@ namespace Fanex.Athena.PlayerAdmin.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> GetDepositSetting([FromServices] IDepositSettingService depositSettingService, [FromServices] ILicenseeService licenseeService)
+        public async Task<IActionResult> GetDepositSetting([FromServices] IDepositSettingService depositSettingService)
         {
             var commGroups = depositSettingService.GetCommGroupList(_contextService.LicenseeId);
             var customerClass = depositSettingService.GetCustomerClassList();
-            var oddsGroups = licenseeService.GetOddsGroups(_contextService.SiteName);
+            var oddsGroups = _contextService.OfferedOddsGroupList;
 
             return Ok(new DepositSettingViewModel
             {

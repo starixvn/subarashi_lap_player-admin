@@ -52,7 +52,7 @@ namespace Fanex.Athena.PlayerAdmin.Core.Services
         private static IEnumerable<SelectTreeItem> BuildSubsidiaryTree(IEnumerable<Subsidiary> subsidiaries)
             => subsidiaries
                 .GroupBy(x => x.OperatorId,
-                (key, group) => new SelectTreeItem { Value = key, Name = key, Checked = true }, StringComparer.OrdinalIgnoreCase);
+                (key, _) => new SelectTreeItem { Value = key, Name = key, Checked = true }, StringComparer.OrdinalIgnoreCase);
 
         private static IEnumerable<SelectTreeItem> BuildWhiteLabelTree(IEnumerable<Subsidiary> subsidiaries)
             => subsidiaries

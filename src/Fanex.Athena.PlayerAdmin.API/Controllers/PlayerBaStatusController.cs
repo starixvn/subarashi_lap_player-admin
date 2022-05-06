@@ -28,7 +28,7 @@ namespace Fanex.Athena.PlayerAdmin.API.Controllers
 
         [HttpPost]
         [BearerAuthorize(Roles.SuperAdmin, Roles.UpdateBaStatus)]
-        [RequestValidation(validateCustId: true, validateProductId: ProductTypes.BA)]
+        [RequestValidation(validateCustId: true, validateClientIP: true, validateProductId: ProductTypes.BA)]
         [AutoBindingMetaModel(bindUserId: true, bindSiteName: true, bindLanguage: true, bindClientIP: true)]
         public async Task<ActionResult<ResultViewModel>> Update(
             [FromServices] IContextService contextService, [FromServices] ILicenseeService licenseeService,

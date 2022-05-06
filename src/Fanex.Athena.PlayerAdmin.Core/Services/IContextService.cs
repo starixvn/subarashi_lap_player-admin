@@ -20,11 +20,14 @@ namespace Fanex.Athena.PlayerAdmin.Core.Services
         int? WhiteLabelID { get; }
         string OperatorID { get; }
         byte SubsidiaryViewType { get; }
-        string ClientIP { get; }
+        string CurrentRequestClientIP { get; }
+        string OwnerClientIP { get; }
         string Language { get; }
         bool IsShowIP { get; }
         bool IsShowIpVN { get; }
+        bool IsFakeLicensee { get; }
         IEnumerable<string> OfferedSubProductList { get; }
+        IEnumerable<string> OfferedOddsGroupList { get; }
         Task<string> AccessToken { get; }
 
         bool IsInRoles(params string[] roles);

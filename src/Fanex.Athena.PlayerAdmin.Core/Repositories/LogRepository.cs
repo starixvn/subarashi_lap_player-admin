@@ -1,4 +1,5 @@
-﻿using Fanex.Athena.PlayerAdmin.Core.Models;
+﻿using Fanex.Athena.PlayerAdmin.Core.Helpers;
+using Fanex.Athena.PlayerAdmin.Core.Models;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Threading.Tasks;
@@ -29,7 +30,7 @@ namespace Fanex.Athena.PlayerAdmin.Core.Repositories
             }
             catch (Exception ex)
             {
-                _logger.LogCritical(ex, "WriteLog_UserLog_UserControl \n" + ex.Message);
+                _logger.LogCritical(ex, ErrorMessageHelper.GenerateMessage(ex));
             }
         }
     }

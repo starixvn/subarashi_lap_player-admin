@@ -22,25 +22,28 @@ namespace Fanex.Athena.PlayerAdmin.API.Controllers
     {
         private readonly IPlayerSpecialLevelService _playerSpecialLevelService;
         private readonly ILicenseeService _licenseeService;
+        private readonly IContextService _contextService;
         private readonly ILogger<PlayerSpecialLevelController> _logger;
 
         public PlayerSpecialLevelController(
             IPlayerSpecialLevelService playerSpecialLevelService,
             ILicenseeService licenseeService,
+            IContextService contextService,
             ILogger<PlayerSpecialLevelController> logger)
         {
             _playerSpecialLevelService = playerSpecialLevelService;
             _licenseeService = licenseeService;
+            _contextService = contextService;
             _logger = logger;
         }
 
         [HttpPost]
         [BearerAuthorize(Roles.SuperAdmin, Roles.UpdateSpecialLevel)]
-        [RequestValidation(validateCustId: true)]
+        [RequestValidation(validateCustId: true, validateClientIP: true)]
         [AutoBindingMetaModel(bindUserId: true, bindClientIP: true, bindLanguage: true, bindSiteName: true)]
         public async Task<IActionResult> Update(SpecialLevelUpdatingMetaModel metaModel)
         {
-            if (_licenseeService.IsFakeLicensee(metaModel.SiteName))
+            if (_contextService.IsFakeLicensee)
             {
                 return Ok(new ResultViewModel
                 {

@@ -4,7 +4,6 @@ using Fanex.Athena.PlayerAdmin.Core.Helpers;
 using Fanex.Athena.PlayerAdmin.Core.Models;
 using Fanex.Athena.PlayerAdmin.Core.Repositories;
 using Fanex.Athena.PlayerAdmin.Core.Settings;
-using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Options;
 using System;
@@ -28,11 +27,6 @@ namespace Fanex.Athena.PlayerAdmin.Core.Services
             _appSetting = appSetting.Value;
             _functionSetting = functionSetting.Value;
         }
-
-        public IEnumerable<string> GetOddsGroups(string siteName)
-            => _appSetting.OddsGroups
-                .Where(_ => !_.OfferedBy.IsPresent() || _.OfferedBy.Any(s => string.Equals(s, siteName, StringComparison.InvariantCultureIgnoreCase)))
-                .Select(_ => _.Value);
 
         public async Task<bool> IsAllowUpdateBA(int licenseeId, string userName, IEnumerable<string> specicalBAAdmins)
             => specicalBAAdmins.IsPresent() && specicalBAAdmins.Contains(userName, StringComparer.InvariantCultureIgnoreCase) || await IsAllowUpdateMemberBAStatus(licenseeId);
@@ -65,7 +59,7 @@ namespace Fanex.Athena.PlayerAdmin.Core.Services
             }
 
             var cacheKey = string.Format(CacheKey.CheckProductBelong, licenseeName, productId);
-            var isValidProduct = await TryGetOrAddFromCache(cacheKey, TimeSpan.FromHours(1), () => CheckProductBelongsToFromDB(licenseeName, productId));
+            var isValidProduct = await _cache.TryGetOrAddFromCache(cacheKey, TimeSpan.FromHours(1), () => CheckProductBelongsToFromDB(licenseeName, productId));
             return isValidProduct;
         }
 
@@ -122,11 +116,9 @@ namespace Fanex.Athena.PlayerAdmin.Core.Services
 
         public async Task<BalanceUpData> GetBalanceUp()
         {
-            var balanceUp = await TryGetOrAddFromCache(CacheKey.Balanceup, TimeSpan.FromSeconds(60), GetBalanceUpDayFromDb);
+            var balanceUp = await _cache.TryGetOrAddFromCache(CacheKey.Balanceup, TimeSpan.FromSeconds(60), GetBalanceUpDayFromDb);
             return balanceUp;
         }
-
-        public bool IsFakeLicensee(string licenseeName) => _appSetting.FakeLicensees.Any(_ => string.Equals(_, licenseeName, StringComparison.OrdinalIgnoreCase));
 
         public IEnumerable<ProductOption> GetAllowedSubProductOptions(IEnumerable<string> offeredSubProductList, IEnumerable<ProductOption> productOptions)
         {
@@ -153,19 +145,6 @@ namespace Fanex.Athena.PlayerAdmin.Core.Services
             }
 
             return productCodes + "," + string.Join(",", offeredSubProductList);
-        }
-
-        private async Task<T> TryGetOrAddFromCache<T>(string cacheKey, TimeSpan cacheTime, Func<Task<T>> func)
-        {
-            if (!_cache.TryGetValue(cacheKey, out T data))
-            {
-                data = await func.Invoke();
-                if (data is not null)
-                {
-                    _cache.Set(cacheKey, data, cacheTime);
-                }
-            }
-            return data;
         }
 
         private async Task<bool> IsAllowUpdateMemberBAStatus(int licenseeId)
@@ -265,7 +244,7 @@ namespace Fanex.Athena.PlayerAdmin.Core.Services
         private Task<IList<Product>> GetOfferedProductsByLicensee(int licenseeId)
         {
             var cacheKey = string.Format(CacheKey.ProductList, licenseeId);
-            return LockHelper.LockAsync(cacheKey, () => TryGetOrAddFromCache(cacheKey, TimeSpan.FromDays(1), () => GetProductListFromDB(licenseeId)));
+            return LockHelper.LockAsync(cacheKey, () => _cache.TryGetOrAddFromCache(cacheKey, TimeSpan.FromDays(1), () => GetProductListFromDB(licenseeId)));
         }
 
         private static bool IsBelonging(IReadOnlyDictionary<int, int[]> currencyAgents, Customer cust)

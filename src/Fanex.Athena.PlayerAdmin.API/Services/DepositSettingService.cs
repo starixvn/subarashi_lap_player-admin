@@ -17,7 +17,7 @@ namespace Fanex.Athena.PlayerAdmin.API.Services
 {
     public class DepositSettingService : IDepositSettingService
     {
-        private static readonly TimeSpan OneHour = TimeSpan.FromHours(1);
+        private static readonly TimeSpan FifteenMinutes = TimeSpan.FromMinutes(15);
 
         private readonly IDbFactory _dbFactory;
         private readonly IMemoryCache _cache;
@@ -40,7 +40,7 @@ namespace Fanex.Athena.PlayerAdmin.API.Services
         public async Task<IEnumerable<string>> GetCustomerClassList()
         {
             const string CacheKey = "CustomerClassList";
-            var customerClassFromApi = await TryGetOrAddFromCache(CacheKey, OneHour, GetCustomerClassFromApi);
+            var customerClassFromApi = await _cache.TryGetOrAddFromCache(CacheKey, FifteenMinutes, GetCustomerClassFromApi);
             var result = new List<string> { "0" };
             result.AddRange(customerClassFromApi
                 .OrderBy(_ => _.CustomerClass)
@@ -52,7 +52,7 @@ namespace Fanex.Athena.PlayerAdmin.API.Services
         public async Task<IEnumerable<CommGroupViewModel>> GetCommGroupList(int licenseeId)
         {
             var commGroups = new List<CommGroupViewModel> { new CommGroupViewModel() };
-            var commGroupsFromDB = await TryGetOrAddFromCache($"CommGroupList_{licenseeId}", OneHour, () => GetCommGroupFromDB(licenseeId));
+            var commGroupsFromDB = await _cache.TryGetOrAddFromCache($"CommGroupList_{licenseeId}", FifteenMinutes, () => GetCommGroupFromDB(licenseeId));
             commGroups.AddRange(commGroupsFromDB);
             return commGroups;
         }
@@ -96,19 +96,6 @@ namespace Fanex.Athena.PlayerAdmin.API.Services
                 _logger.LogCritical(ex, $"Error occurred while calling CustomerClass api {_appSetting.CustomerClassUrl}");
                 return Enumerable.Empty<CustomerClassApiModel>();
             }
-        }
-
-        private async Task<T> TryGetOrAddFromCache<T>(string cacheKey, TimeSpan cacheTime, Func<Task<T>> func)
-        {
-            if (!_cache.TryGetValue(cacheKey, out T data))
-            {
-                data = await func.Invoke();
-                if (data is not null)
-                {
-                    _cache.Set(cacheKey, data, cacheTime);
-                }
-            }
-            return data;
         }
     }
 }
