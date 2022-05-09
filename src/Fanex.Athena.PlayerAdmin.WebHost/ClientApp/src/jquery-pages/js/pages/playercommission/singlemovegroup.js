@@ -91,6 +91,18 @@ define(
                         }
 
                         _me.showMsg(Site.getSingleResource('MoveSuccessfullyMsg'), result.IsSuccessful);
+
+                        var newGroup = _me.elements.ddlGroup.find("option:selected").text().trim();
+                        PlayerCommissionComm.setTopWindowValue("playerComissionResult", {
+                            isSuccess: true,
+                            oldCustIds: _me.elements.oldCustIds,
+                            custIds: param.CustIds,
+                            reloadGrid: true,
+                            newValue: {
+                                CommissionGroup: newGroup
+                            }
+                        });
+
                         setTimeout(() => {
                             location.reload(true);
                         }, 3000);

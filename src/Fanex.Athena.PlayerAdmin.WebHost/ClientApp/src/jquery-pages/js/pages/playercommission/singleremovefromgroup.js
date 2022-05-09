@@ -59,19 +59,21 @@ define(
 
                         _me.elements.btnSave.addClass("completed");
                         _me.showMsg(Site.getSingleResource('MessageSuccess'), result.IsSuccessful);
-                        var newValue = {
+
+                        let message = {
                             isSuccess: true,
                             oldCustIds: _me.elements.oldCustIds,
                             custIds: param.CustIds,
-                            popupId: "popup-remove-comm",
                             reloadGrid: true,
                             newValue: {
                                 CommissionGroup: Site.getSingleResource('None')
                             }
-                        };
+                        }
+
+                        PlayerCommissionComm.setTopWindowValue("playerComissionResult", message);
 
                         setTimeout(() => {
-                            PlayerCommissionComm.setParentWindowValue("singlePlayerComissionResult", newValue);
+                            PlayerCommissionComm.setParentWindowValue("singlePlayerComissionResult", message);
                         }, 3000);
                     }
                 });

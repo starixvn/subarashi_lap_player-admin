@@ -12,7 +12,7 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Services.Interfaces
 
         Task<IResultInfo> UpdateSettingAsync(PlayerBetLimitUpdateMetaModel<IEnumerable<PlayerBetLimitMetaModel>> metaModel);
 
-        Task<bool> GetStatusAsync(int custId, int productId);
+        Task<bool?> GetStatusAsync(int custId, int productId);
 
         Task<IResultInfo> UpdateStatusAsync(PlayerBetLimitUpdateStatusMetaModel metaModel);
     }

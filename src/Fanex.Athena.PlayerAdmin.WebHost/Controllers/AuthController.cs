@@ -82,7 +82,7 @@ namespace Fanex.Athena.PlayerAdmin.WebHost.Controllers
 
             if (!string.IsNullOrEmpty(actionLinkClaim?.Value))
             {
-                return Redirect(Url.Content("~/" + actionLinkClaim?.Value));
+                return Redirect(Url.Content("~/" + actionLinkClaim.Value));
             }
 
             return Redirect("/");
