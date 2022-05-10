@@ -5,6 +5,7 @@ using Fanex.Athena.PlayerAdmin.Core.Settings;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
@@ -110,14 +111,12 @@ namespace Fanex.Athena.PlayerAdmin.Core.Extensions
             services.AddSingleton(new UMClientConfiguration().Initialize(configuration));
             services.AddSingleton<IUMCacheService, UMCacheService>();
             services.AddSingleton<IUMRestClient, UMRestClient>();
-            services.AddSingleton<IHttpContextHelper, HttpContextHelper>();
+            services.AddSingleton<IHttpContextHelper, ContextInMemoryHelper>();
             services.AddSingleton<IMaintenanceService, MaintenanceService>();
-            services.AddSession();
         }
 
         public static void UseUnderMaintenance(this IApplicationBuilder app)
         {
-            app.UseSession();
             app.UseMiddleware<UnderMaintenanceHandler>();
         }
 
@@ -227,6 +226,31 @@ namespace Fanex.Athena.PlayerAdmin.Core.Extensions
             }
 
             return false;
+        }
+
+        internal class ContextInMemoryHelper : IHttpContextHelper
+        {
+            private readonly TimeSpan ByPassUMCacheTime = TimeSpan.FromMinutes(30);
+            private readonly IHttpContextAccessor httpContextAccessor;
+            private readonly IMemoryCache cache;
+
+            public ContextInMemoryHelper(IHttpContextAccessor httpContextAccessor, IMemoryCache cache)
+            {
+                this.httpContextAccessor = httpContextAccessor;
+                this.cache = cache;
+            }
+
+            public string GetSession(string key)
+                => cache.TryGetValue(BuildKey(key), out string value) ? value : string.Empty;
+
+            public string GetValueFromQueryString(string queryKey)
+                => httpContextAccessor.HttpContext?.Request.Query[queryKey].ToString();
+
+            public void SetSession(string key, string value)
+                => cache.Set(BuildKey(key), value, ByPassUMCacheTime);
+
+            private string BuildKey(string key)
+                => $"{key}:{httpContextAccessor.HttpContext?.Connection.RemoteIpAddress.ToString()}";
         }
     }
 }
