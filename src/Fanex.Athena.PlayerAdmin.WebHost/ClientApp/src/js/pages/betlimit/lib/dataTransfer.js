@@ -31,7 +31,7 @@ const Url = {
     [BetLimitProduct.SG]: 'DcsBetLimit',
     [BetLimitProduct.VRG]: 'DcsBetLimit',
     [BetLimitProduct.CC]: 'DcsBetLimit',
-    [BetLimitProduct.CS]: 'RngCasinoBetLimit',
+    [BetLimitProduct.CS]: 'DcsBetLimit',
     [BetLimitProduct.CB]: 'ThirdPartyBetLimit',
     [BetLimitProduct.VGA]: 'DcsBetLimit',
     [BetLimitProduct.AP]: 'DcsBetLimit',

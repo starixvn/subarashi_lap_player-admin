@@ -15,9 +15,11 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Services
 {
     public class DcsBetLimitService : IDcsBetLimitService
     {
-        private static readonly int[] ProductsHasStatus = { ProductTypes.Lottery, ProductTypes.I4D, ProductTypes.SLT, ProductTypes.AllBet, ProductTypes.Voidbridge, ProductTypes.CashOut,
-            ProductTypes.Exchange, ProductTypes.PP, ProductTypes.SXG, ProductTypes.GDG, ProductTypes.HB, ProductTypes.JK, ProductTypes.SAG, ProductTypes.PGS, ProductTypes.SBC, ProductTypes.WM,
-            ProductTypes.SG, ProductTypes.VRG, ProductTypes.CC, ProductTypes.CG, ProductTypes.VGA, ProductTypes.TG, ProductTypes.AP, ProductTypes.APM };
+        public static readonly IEnumerable<int> ProductsHasControlStatus = new [] { 
+            ProductTypes.Lottery, ProductTypes.I4D, ProductTypes.SLT, ProductTypes.AllBet, ProductTypes.Voidbridge, ProductTypes.CashOut, ProductTypes.Exchange,
+            ProductTypes.PP, ProductTypes.SXG, ProductTypes.GDG, ProductTypes.HB, ProductTypes.JK, ProductTypes.SAG, ProductTypes.PGS, ProductTypes.SBC, ProductTypes.WM,
+            ProductTypes.SG, ProductTypes.VRG, ProductTypes.CC, ProductTypes.CG, ProductTypes.VGA, ProductTypes.TG, ProductTypes.AP, ProductTypes.APM, ProductTypes.SabaCasino 
+        };
 
         private readonly IDcsBetLimitRepository _repository;
         private readonly INewDcsBetLimitRepository _newRepository;
@@ -35,11 +37,11 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Services
             return productId == ProductTypes.VS3 ? await _newRepository.GetSettingAsync(custId, productId) : await _repository.GetSettingAsync(custId, productId);
         }
 
-        public async Task<bool> GetStatusAsync(int custId, int productId)
+        public async Task<bool?> GetStatusAsync(int custId, int productId)
         {
-            if (!ProductsHasStatus.Contains(productId))
+            if (!ProductsHasControlStatus.Contains(productId))
             {
-                return true;
+                return null;
             }
 
             return await _repository.GetStatusAsync(custId, productId);

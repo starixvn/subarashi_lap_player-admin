@@ -24,7 +24,6 @@ namespace Fanex.Athena.PlayerAdmin.Core.Extensions
             services.AddScoped<IContextService, ContextService>();
 
             services.AddSingleton<ILicenseeService, LicenseeService>();
-            services.AddSingleton<ICustomerService, CustomerService>();
             services.AddSingleton<ISubsidiaryService, SubsidiaryService>();
             services.AddSingleton<IResourceService, ResourceService>();
             services.AddSingleton<IRemotingRefService, RemotingRefService>();

@@ -6,7 +6,6 @@ import GameDataContent from './grid/data-contents/GameDataContent';
 import NGDataContent from './grid/data-contents/NGDataContent';
 import ACGDataContent from './grid/data-contents/AGCDataContent';
 import I4DDataContent from './grid/data-contents/I4DDataContent';
-import RNGCDataContent from './grid/data-contents/RNGCDataContent';
 import VS3DataContent from './grid/data-contents/VS3DataContent';
 import ThirdPartyDataContent from './grid/data-contents/ThirdPartyDataContent';
 import ExchangeDataContent from './grid/data-contents/ExchangeDataContent';
@@ -39,7 +38,7 @@ const Setting = {
     [BetLimitProduct.SG]: GameDataContent,
     [BetLimitProduct.VRG]: GameDataContent,
     [BetLimitProduct.CC]: GameDataContent,
-    [BetLimitProduct.CS]: RNGCDataContent,
+    [BetLimitProduct.CS]: GameDataContent,
     [BetLimitProduct.CB]: ThirdPartyDataContent,
     [BetLimitProduct.VGA]: GameDataContent,
     [BetLimitProduct.AP]: GameDataContent,

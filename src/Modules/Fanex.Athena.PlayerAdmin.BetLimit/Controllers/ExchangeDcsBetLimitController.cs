@@ -40,7 +40,7 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Controllers
             {
                 ValidComms = ValidComms,
                 Commission = (await commResult).IsSuccessful ? (await commResult).SpecificExtendedData : null,
-                StatusEnable = await status,
+                StatusEnable = (await status).GetValueOrDefault(),
                 Editable = HasEditPermission()
             };
 
@@ -71,7 +71,7 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Controllers
                 return Json(new ResultInfo { Code = InvalidChargeCommissionError, Message = ViewResources.InvalidChargeCommission });
             }
 
-            if (!(await _dcsService.GetStatusAsync(metaModel.CustId, ProductTypes.Exchange)))
+            if (!(await _dcsService.GetStatusAsync(metaModel.CustId, ProductTypes.Exchange)).GetValueOrDefault())
             {
                 return Json(new ResultInfo { Code = 1, Message = ViewResources.FunctionDeniedMsg });
             }
