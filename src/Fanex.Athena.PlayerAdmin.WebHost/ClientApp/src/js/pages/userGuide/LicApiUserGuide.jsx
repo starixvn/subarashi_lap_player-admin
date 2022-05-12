@@ -67,7 +67,7 @@ const EngContent = ({isSingleWallet})=> {
     </div>)
 };
 
-const ZnCNContent = _ => {
+const ZnCNContent = ({isSingleWallet}) => {
     return (<div>
         <div className="rule">
             <h4>一般信息</h4>
