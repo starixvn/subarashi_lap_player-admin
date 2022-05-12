@@ -2,7 +2,7 @@ import React from 'react';
 import BaseUserGuide from '../../components/BaseUserGuide'
 
 
-const EngContent = _ => {
+const EngContent = ({isSingleWallet}) => {
     return (<div>
         <div className="rule">
             <h4>General Info</h4>
@@ -43,7 +43,7 @@ const EngContent = _ => {
                         <li>Personal Message</li>
                     </ul>
                 </li>
-                <li><b>Current Balances: </b> indicate available amount to place bets.</li>
+                {!isSingleWallet && <li><b>Current Balances: </b> indicate available amount to place bets.</li>}
                 <li><b>Outstanding Balance:</b> indicate total stakes of all running bets.</li>
                 <li><b>Odds Group:</b> view or set odds group for player.</li>
                 <li><b>BA Status:</b> switch on/off BA status for player.</li>
@@ -118,7 +118,7 @@ const ZnCNContent = _ => {
                         <li>个人讯息</li>
                     </ul>
                 </li>
-                <li><b>目前余额:</b> 显示可用于投注的金额。</li>
+                {!isSingleWallet && <li><b>目前余额:</b> 显示可用于投注的金额。</li>}
                 <li><b>未结余额:</b> 显示所有投注中的总投注额。</li>
                 <li><b>Odds Group:</b> 显示或设定玩家的odds group。</li>
                 <li><b>BA状态:</b> 开/关玩家的BA状态。</li>
@@ -158,9 +158,9 @@ const Contents = {
 };
 
 const LicAthenaUserGuide = props => {
-    const { lang } = props;
+    const { lang, isSingleWallet } = props;
     return (<React.Fragment>
-        <BaseUserGuide lang={lang} contents={Contents} />
+        <BaseUserGuide lang={lang} isSingleWallet={isSingleWallet} contents={Contents} />
     </React.Fragment>);
 }
 

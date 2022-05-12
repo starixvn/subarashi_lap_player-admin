@@ -2,12 +2,12 @@ import React from 'react';
 import LangHelper from '@jsroot/lib/langHelper';
 
 const BaseUserGuide = props => {
-    const { lang, contents  } = props;
+    const { lang, contents, ...rest  } = props;
     const renderContentByLanguage = () => {
         if (lang === LangHelper.languageKeys.zhCN) {
-            return contents.znCNContent();
+            return contents.znCNContent(rest);
         }
-        return contents.engContent();
+        return contents.engContent(rest);
     }
     return <React.Fragment>
         {renderContentByLanguage()}
