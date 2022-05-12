@@ -30,8 +30,6 @@ export class FormFilter extends PureComponent {
         this.allCurrencyString = props.currencyList.map(c => c.Id).join(',');
         this.allSpecialLevel = Object.keys(specialLevelListWithColor).map(item => item).join(',');
         this.isDepositedList = Object.keys(isDepositedList).map(item => ({ value: isDepositedList[item], label: LangHelper.getSingleResource(item) }));
-
-        this.userGuide = this._renderUserGuide();
         this.userNameRef = React.createRef();
 
         this.state = {
@@ -161,8 +159,8 @@ export class FormFilter extends PureComponent {
 
     _renderContentUserGuide() {
         const currentLang = LangHelper.currentLanguage;
-        return this.props.type === licenseeType.nonApi ? <LicAthenaUserGuide lang={currentLang} />
-            : <LicApiUserGuide lang={currentLang} />
+        return this.props.type === licenseeType.nonApi ? <LicAthenaUserGuide lang={currentLang} isSingleWallet={this.props.siteSetting.isEnableSingleWallet}/>
+            : <LicApiUserGuide lang={currentLang} isSingleWallet={this.props.siteSetting.isEnableSingleWallet} />
     }
 
     _renderUserGuide() {
@@ -200,6 +198,8 @@ export class FormFilter extends PureComponent {
             getSuggestionList, siteSetting, subsidiarySetting } = this.props;
         const { currencyIdList, oddsGroup, specialLevel, customerClass, commGroups } = advancedSearchParam;
 
+        const userGuide = this._renderUserGuide();
+
         const isValidParam = !!currencyIdList && !!oddsGroup && !!specialLevel 
             && !!customerClass && !!commGroups &&
             (!subsidiarySearch || selectedSubsidiaryList);
@@ -211,7 +211,7 @@ export class FormFilter extends PureComponent {
         };
 
         return (
-            <CollapsiblePanel className="page-filter" iconToggle={iconToggle} stickyFooter={this.userGuide}
+            <CollapsiblePanel className="page-filter" iconToggle={iconToggle} stickyFooter={userGuide}
                 onCollapse={() => this.props.setCollapseFilter(true)} onExpand={() => this.props.setCollapseFilter(false)}>
                 <div className="row">
                     {subsidiarySetting.isAllowedSubsidiarySearch && subsidiarySearch && (<div className="col-12 col-md-4 col-sm-6 col-lg-3 col-xl-2">
