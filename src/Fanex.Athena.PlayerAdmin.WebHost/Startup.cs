@@ -280,7 +280,7 @@ namespace Fanex.Athena.PlayerAdmin.WebHost
 
         private static void ConfigDataProtection(IServiceCollection services, RedisSetting redisSetting)
         {
-            TimeSpan SixtyDays = TimeSpan.FromDays(60);
+            TimeSpan OneYear = TimeSpan.FromDays(365);
             var configRedix = new ConfigurationOptions
             {
                 EndPoints =
@@ -293,7 +293,7 @@ namespace Fanex.Athena.PlayerAdmin.WebHost
             var redis = ConnectionMultiplexer.Connect(configRedix);
             services.AddDataProtection()
                 .PersistKeysToStackExchangeRedis(redis, redisSetting.ProtectionDataKey)
-                .SetDefaultKeyLifetime(SixtyDays)
+                .SetDefaultKeyLifetime(OneYear)
                 .SetApplicationName(redisSetting.AppName);
         }
 
