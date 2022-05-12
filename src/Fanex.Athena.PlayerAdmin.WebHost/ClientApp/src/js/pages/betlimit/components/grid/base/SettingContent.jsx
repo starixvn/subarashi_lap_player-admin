@@ -77,8 +77,8 @@ const SettingContent = (Grid, DataHandling) => {
             this.ref[type][id] = element;
         }
 
-        _closeError() {
-            this.setState({ showError: false });
+        _closeError(callback) {
+            this.setState({ showError: false }, callback);
         }
 
         onReset = () => {
@@ -92,6 +92,11 @@ const SettingContent = (Grid, DataHandling) => {
         }
 
         onSubmit = () => {
+            this._closeError(this.submitData);
+        }
+
+        submitData = () => {
+
             if (!this.state.showError) {
                 const data = this.state.data;
                 const submitData = DataHandling.getSubmitData(data);
@@ -102,6 +107,7 @@ const SettingContent = (Grid, DataHandling) => {
                 else {
                     this._showConfirmation(() => this._submit(submitData.Data));
                 }
+
             }
         }
 
