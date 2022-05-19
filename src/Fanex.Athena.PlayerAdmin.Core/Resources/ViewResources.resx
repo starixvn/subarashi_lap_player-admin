@@ -2143,6 +2143,9 @@
     <value>Bet Trade</value>
     <comment>#49196</comment>
   </data>
+  <data name="ProductBTC" xml:space="preserve">
+    <value>Bitcoin</value>
+  </data>
   <data name="ProductBX" xml:space="preserve">
     <value>Exchange</value>
     <comment>88192</comment>
