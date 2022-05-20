@@ -5,7 +5,7 @@ using System;
 
 namespace Fanex.Athena.PlayerAdmin.MVC.MetaModel
 {
-    public class PlayerStatementMetaModel : ICustomerIdentityMetaModel, IValidationMetaModel ,ISiteNameMetaModel, ILanguageMetaModel
+    public class PlayerStatementMetaModel : ICustomerIdentityMetaModel, IValidationMetaModel ,ISiteNameMetaModel, ILanguageMetaModel, IShowBetFromIPMetaModel
     {
         private const int MaximumYear = 2;
 
@@ -21,8 +21,12 @@ namespace Fanex.Athena.PlayerAdmin.MVC.MetaModel
 
         public int CurrencyId { get; set; }
 
+        public bool IsShowIp { get; set; }
+        public bool IsShowIpVN { get; set; }
+
         public bool IsValid => ToDate >= FromDate
                 && FromDate.Month == ToDate.Month
                 && FromDate.Year >= (DateTimeHelper.DatabaseServerToDay.Year - MaximumYear);
+
     }
 }

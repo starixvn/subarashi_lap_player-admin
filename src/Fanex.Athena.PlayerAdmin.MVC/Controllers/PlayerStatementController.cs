@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
 using Fanex.Athena.PlayerAdmin.Core.Helpers;
+using Fanex.Athena.PlayerAdmin.Core.Services;
 
 namespace Fanex.Athena.PlayerAdmin.MVC.Controllers
 {
@@ -42,8 +43,9 @@ namespace Fanex.Athena.PlayerAdmin.MVC.Controllers
         [ValidateAntiForgeryToken]
         [RequestValidation(validateCustId: true)]
         [AutoBindingMetaModel(bindSiteName: true, bindLanguage: true)]
-        public async Task<ActionResult> GetStatementUrl([FromBody] PlayerStatementMetaModel metaModel)
+        public async Task<ActionResult> GetStatementUrl([FromBody] PlayerStatementMetaModel metaModel, [FromServices] IContextService contextService)
         {
+            metaModel.IsShowIpVN = contextService.IsShowIpVN;
             return Content(await _playerStatementService.GetUrl(metaModel));
         }
     }
