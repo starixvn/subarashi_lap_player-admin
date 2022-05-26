@@ -1925,6 +1925,9 @@
   <data name="ProductBGG" xml:space="preserve">
     <value>大遊真人</value>
   </data>
+  <data name="ProductBTC" xml:space="preserve">
+    <value>比特币</value>
+  </data>
   <data name="ProductCC" xml:space="preserve">
     <value>乐卡迪亚</value>
     <comment>115449</comment>

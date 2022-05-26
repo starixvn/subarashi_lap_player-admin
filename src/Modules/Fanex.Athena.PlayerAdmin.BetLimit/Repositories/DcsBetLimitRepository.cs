@@ -36,7 +36,8 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Repositories
             [ProductTypes.I4D] = new[] { "223" },
             [ProductTypes.SLT] = new[] { "169" },
             [ProductTypes.AP] = new[] { "172" },
-            [ProductTypes.APM] = new[] { "174" }
+            [ProductTypes.APM] = new[] { "174" },
+            [ProductTypes.BTC] = new[] { "175" }
         };
 
         private const string UpdateStatusXmlFormat = "<ROOT><ProductStatus SportType=\"{0}\" BetType=\"{1}\" IsDisabled=\"{2}\" IsDisabledDownline=\"0\" /></ROOT>";
@@ -66,7 +67,8 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Repositories
             { ProductTypes.VGA, 171 },
             { ProductTypes.AP, 172 },
             { ProductTypes.APM, 174 },
-            { ProductTypes.SabaCasino, 208 }
+            { ProductTypes.SabaCasino, 208 },
+            { ProductTypes.BTC, 175 }
         };
 
         private static readonly IDictionary<int, int> ProductBetTypeMap = new Dictionary<int, int>
@@ -94,7 +96,8 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Repositories
             { ProductTypes.VGA, 3801 },
             { ProductTypes.AP, 7701 },
             { ProductTypes.APM, 7801 },
-            { ProductTypes.SabaCasino, 2101 }
+            { ProductTypes.SabaCasino, 2101 },
+            { ProductTypes.BTC, 7901 }
         };
 
         public DcsBetLimitRepository(IDbFactory dbFactory, ILogger<DcsBetLimitRepository> logger)
