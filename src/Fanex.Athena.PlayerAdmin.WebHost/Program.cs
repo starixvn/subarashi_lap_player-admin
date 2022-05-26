@@ -22,6 +22,7 @@ namespace Fanex.Athena.PlayerAdmin.WebHost
                 var env = builderContext.HostingEnvironment;
                 config.SetBasePath(env.ContentRootPath);
                 config.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
+                config.AddJsonFile("App_Data/UnchangeSetting.json", optional: false, reloadOnChange: true);
                 config.AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true, reloadOnChange: true);
                 config.AddEnvironmentVariables();
             })
