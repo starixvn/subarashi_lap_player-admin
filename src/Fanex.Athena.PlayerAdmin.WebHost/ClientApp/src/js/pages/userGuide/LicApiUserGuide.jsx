@@ -1,7 +1,7 @@
 import React from 'react';
 import BaseUserGuide from '../../components/BaseUserGuide'
 
-const EngContent = ({isSingleWallet})=> {
+const EngContent = ({isSingleWallet, exportOddsGroup})=> {
     return (<div>
         <div className="rule">
             <h4>General Info</h4>
@@ -63,11 +63,14 @@ const EngContent = ({isSingleWallet})=> {
                 <li><b>Log:</b> view update log of player.</li>
                 <li><b>Setting:</b> set fund transfer limit.</li>
             </ul>
+            <p>
+                <a className="hyper-link" onClick={exportOddsGroup}>User guide for odds group feature</a>
+            </p>
         </div>
     </div>)
 };
 
-const ZnCNContent = ({isSingleWallet}) => {
+const ZnCNContent = ({isSingleWallet, exportOddsGroup}) => {
     return (<div>
         <div className="rule">
             <h4>一般信息</h4>
@@ -130,6 +133,9 @@ const ZnCNContent = ({isSingleWallet}) => {
                 <li><b>日志:</b> 查看玩家的更新日志。</li>
                 <li><b>设定:</b> 设置转账限额。</li>
             </ul>
+            <p>
+                <a className="hyper-link" onClick={exportOddsGroup}>水位组别(Odds Group)用户手册</a>
+            </p>
         </div>
     </div>)
 };
@@ -140,9 +146,9 @@ const Contents = {
 };
 
 const LicApiUserGuide = props => {
-    const { lang, isSingleWallet } = props;
+    const { lang, isSingleWallet, exportOddsGroup } = props;
     return (<React.Fragment>
-        <BaseUserGuide lang={lang} isSingleWallet={isSingleWallet} contents={Contents} />
+        <BaseUserGuide lang={lang} isSingleWallet={isSingleWallet} exportOddsGroup={exportOddsGroup} contents={Contents} />
     </React.Fragment>);
 }
 
