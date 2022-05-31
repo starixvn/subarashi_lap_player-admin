@@ -1,6 +1,8 @@
 ﻿import { playerStatus } from '../constants';
 import LangHelper from '@jsroot/lib/langHelper';
 import { decode } from '@jsroot/lib/htmlHelper';
+import FactoryCommonService from '../../../../lib/factoryCommonService';
+import axios from 'axios'
 
 export const getSpecialLevelText = (value) => {
     return value === undefined || value === null ? '' : (Number(value) === 0 ? LangHelper.getSingleResource('None') : value);
@@ -61,3 +63,22 @@ const isUnauthorizedResponse = (errorInfo) => {
 export const getCustomerClassText = (value) => {
     return value === "0" || value == "" || value == undefined ? LangHelper.getSingleResource('None') : value;
 };
+
+export const getOddsGroupPdf = (fileName) => {
+    const playerAdminSystemId = 5;
+    const url = "api/UserGuide/OddsGroupPdf?fileName=" + fileName;
+    const commonService = FactoryCommonService.createInstance();
+
+    const ajaxConfig = {
+        method: 'post',
+        headers: {
+            'X-Requested-With': 'XMLHttpRequest',
+            'content-type': 'application/json;charset=UTF-8'
+        },
+        withCredentials: false,
+        responseType: 'arraybuffer',
+        cancelToken: new axios.CancelToken(function(cancel) {})
+    }
+
+    return commonService.fetchData(playerAdminSystemId, url, {}, ajaxConfig);
+}

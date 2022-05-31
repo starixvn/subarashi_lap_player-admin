@@ -22,6 +22,8 @@ import LicApiUserGuide from '../../userGuide/LicApiUserGuide';
 import Select from 'react-select';
 import { TreeViewSelect } from '@9softstudio/react-multiselect'
 import { SubsidiaryViewType } from '@jsroot/constants/report';
+import { getOddsGroupPdf } from '../lib/helpers/utils'
+import Site from '@jsroot/lib/site';
 
 export class FormFilter extends PureComponent {
     constructor(props) {
@@ -157,10 +159,22 @@ export class FormFilter extends PureComponent {
         this.userNameRef.current.value = value;
     };
 
+    handleExportUserOddsGroup = (event) => {
+        event.preventDefault();
+        var fileName = this.props.siteSetting.isAllowedBA ? "Odds Group Feature_Licensee_BA.pdf" : "Odds Group Feature_Licensee.pdf";
+
+        getOddsGroupPdf(fileName).then(response => {
+            Site.downloadFile(response.data, fileName);
+        })
+        .catch(err => {
+            console.log(err.message);
+        });
+    }
+
     _renderContentUserGuide() {
         const currentLang = LangHelper.currentLanguage;
-        return this.props.type === licenseeType.nonApi ? <LicAthenaUserGuide lang={currentLang} isSingleWallet={this.props.siteSetting.isEnableSingleWallet}/>
-            : <LicApiUserGuide lang={currentLang} isSingleWallet={this.props.siteSetting.isEnableSingleWallet} />
+        return this.props.type === licenseeType.nonApi ? <LicAthenaUserGuide lang={currentLang} exportOddsGroup={this.handleExportUserOddsGroup}/>
+            : <LicApiUserGuide lang={currentLang} isSingleWallet={this.props.siteSetting.isEnableSingleWallet} exportOddsGroup={this.handleExportUserOddsGroup}/>
     }
 
     _renderUserGuide() {

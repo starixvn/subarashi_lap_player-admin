@@ -24,6 +24,10 @@
     <None Include="jshint.json" />
     <None Include="package-lock.json" />
     <None Include="package.json" />
+    <None Include="wwwroot\assets\UserGuide\pdf\en-US\Odds Group Feature_Licensee.pdf" />
+    <None Include="wwwroot\assets\UserGuide\pdf\en-US\Odds Group Feature_Licensee_BA.pdf" />
+    <None Include="wwwroot\assets\UserGuide\pdf\zh-CN\Odds Group Feature_Licensee.pdf" />
+    <None Include="wwwroot\assets\UserGuide\pdf\zh-CN\Odds Group Feature_Licensee_BA.pdf" />
   </ItemGroup>
 
   <ItemGroup>
