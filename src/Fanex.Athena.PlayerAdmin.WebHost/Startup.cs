@@ -35,13 +35,10 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Net.Http.Headers;
-using Fanex.Athena.PlayerAdmin.Core.Services;
 using Polly;
 using Microsoft.Extensions.Logging;
 using System.Net.Http;
 using System.Net;
-using IdentityModel.AspNetCore.OAuth2Introspection;
 
 namespace Fanex.Athena.PlayerAdmin.WebHost
 {
@@ -86,13 +83,8 @@ namespace Fanex.Athena.PlayerAdmin.WebHost
             var identityServer = Configuration.GetSection("IdentityServer").Get<IdentityServerSetting>();
             var cookie = Configuration.GetSection("Cookie").Get<CookieSetting>();
 
-            ConfigAuthentication(services, cookie, identityServer).AddHttpClient("Auth")
-                .ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler
-                {
-                    AllowAutoRedirect = false,
-                    UseCookies = false,
-                    AutomaticDecompression = DecompressionMethods.GZip
-                });
+            ConfigAuthentication(services, cookie, identityServer)
+                .AddHttpClient("Auth");
 
             services.AddAntiforgery(options =>
             {
