@@ -12,7 +12,6 @@ using Fanex.Athena.PlayerAdmin.Core.Storages;
 using Fanex.Athena.PlayerAdmin.MVC.Extensions;
 using Fanex.Athena.PlayerAdmin.MVC.Services;
 using Fanex.Athena.PlayerAdmin.MVC.Services.Interfaces;
-using Fanex.Athena.PlayerAdmin.WebHost.Controllers;
 using Fanex.Data;
 using Fanex.Data.SqlServer;
 using Fanex.RemotingRef;
@@ -36,10 +35,10 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Net.Http.Headers;
-using Fanex.Athena.PlayerAdmin.Core.Services;
 using Polly;
 using Microsoft.Extensions.Logging;
+using System.Net.Http;
+using System.Net;
 
 namespace Fanex.Athena.PlayerAdmin.WebHost
 {
@@ -84,7 +83,8 @@ namespace Fanex.Athena.PlayerAdmin.WebHost
             var identityServer = Configuration.GetSection("IdentityServer").Get<IdentityServerSetting>();
             var cookie = Configuration.GetSection("Cookie").Get<CookieSetting>();
 
-            ConfigAuthentication(services, cookie, identityServer);
+            ConfigAuthentication(services, cookie, identityServer)
+                .AddHttpClient("Auth");
 
             services.AddAntiforgery(options =>
             {
@@ -161,13 +161,14 @@ namespace Fanex.Athena.PlayerAdmin.WebHost
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseHealthCheck(Configuration);
+
             if (!HostingEnvironment.IsDevelopment())
             {
                 app.UseHsts();
                 app.UseHttpsRedirection();
             }
 
-            app.UseHealthCheck(Configuration);
             app.UseStaticResource(HostingEnvironment.IsDevelopment());
             app.UseUnderMaintenance();
             app.UseRouting();
@@ -318,7 +319,7 @@ namespace Fanex.Athena.PlayerAdmin.WebHost
                 .Run();
         }
 
-        private void ConfigAuthentication(IServiceCollection services, CookieSetting cookie, IdentityServerSetting identityServer)
+        private IServiceCollection ConfigAuthentication(IServiceCollection services, CookieSetting cookie, IdentityServerSetting identityServer)
         {
             services.AddAuthentication()
                 .AddCookie(options =>
@@ -369,6 +370,8 @@ namespace Fanex.Athena.PlayerAdmin.WebHost
                     options.CacheDuration = TimeSpan.FromMinutes(identityServer.CacheDuration);
                     options.DiscoveryPolicy.RequireHttps = false;
                 });
+
+            return services;
         }
     }
 }

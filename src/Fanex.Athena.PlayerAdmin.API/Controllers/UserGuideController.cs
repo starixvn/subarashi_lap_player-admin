@@ -27,6 +27,7 @@ namespace Fanex.Athena.PlayerAdmin.API.Controllers
             _contextService = contextService;
         }
 
+        [HttpPost]
         public IActionResult OddsGroupPdf([FromServices] IFileProvider file, string fileName)
         {
             var language = _contextService.Language;
@@ -37,7 +38,7 @@ namespace Fanex.Athena.PlayerAdmin.API.Controllers
 
         private IFileInfo GetDefaultFilePathIfNotExist(IFileProvider file, string language, string fileName)
         {
-            const string filePath = "wwwroot/assets/UserGuide/pdf/{0}/{1}";
+            const string filePath = "App_Data/UserGuide/pdf/{0}/{1}";
             var fileInfo = file.GetFileInfo(string.Format(filePath, language, fileName));
 
             if (fileInfo.Exists)

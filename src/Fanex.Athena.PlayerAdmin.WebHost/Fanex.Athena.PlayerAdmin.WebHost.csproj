@@ -12,10 +12,29 @@
     <Content Remove="package-lock.json" />
     <Content Remove="package.json" />
   </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="App_Data\UserGuide\pdf\en-US\Odds Group Feature_Licensee.pdf" />
+    <None Remove="App_Data\UserGuide\pdf\en-US\Odds Group Feature_Licensee_BA.pdf" />
+    <None Remove="App_Data\UserGuide\pdf\zh-CN\Odds Group Feature_Licensee.pdf" />
+    <None Remove="App_Data\UserGuide\pdf\zh-CN\Odds Group Feature_Licensee_BA.pdf" />
+  </ItemGroup>
   
   <ItemGroup>
     <AdditionalFiles Include="..\..\.sonarlint\lap_playeradmin\CSharp\SonarLint.xml" Link="SonarLint.xml" />
     <Content Include="App_Data\ExcelTemplate\DetailTransaction.xls">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="App_Data\UserGuide\pdf\en-US\Odds Group Feature_Licensee.pdf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="App_Data\UserGuide\pdf\en-US\Odds Group Feature_Licensee_BA.pdf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="App_Data\UserGuide\pdf\zh-CN\Odds Group Feature_Licensee.pdf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="App_Data\UserGuide\pdf\zh-CN\Odds Group Feature_Licensee_BA.pdf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
@@ -24,10 +43,6 @@
     <None Include="jshint.json" />
     <None Include="package-lock.json" />
     <None Include="package.json" />
-    <None Include="wwwroot\assets\UserGuide\pdf\en-US\Odds Group Feature_Licensee.pdf" />
-    <None Include="wwwroot\assets\UserGuide\pdf\en-US\Odds Group Feature_Licensee_BA.pdf" />
-    <None Include="wwwroot\assets\UserGuide\pdf\zh-CN\Odds Group Feature_Licensee.pdf" />
-    <None Include="wwwroot\assets\UserGuide\pdf\zh-CN\Odds Group Feature_Licensee_BA.pdf" />
   </ItemGroup>
 
   <ItemGroup>

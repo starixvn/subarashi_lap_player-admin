@@ -23,10 +23,10 @@ namespace Fanex.Athena.PlayerAdmin.WebHost.Controllers
         private readonly IdentityServerSetting _setting;
         private readonly HttpClient _client;
 
-        public AuthController(IOptionsSnapshot<IdentityServerSetting> setting, HttpClient client)
+        public AuthController(IOptionsSnapshot<IdentityServerSetting> setting, IHttpClientFactory clientFactory)
         {
             _setting = setting.Value;
-            _client = client;
+            _client = clientFactory.CreateClient("Auth");
         }
 
         [HttpPost]
