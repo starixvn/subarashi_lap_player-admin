@@ -2168,6 +2168,9 @@
     <value>Saba Casino</value>
     <comment>#49196</comment>
   </data>
+  <data name="ProductFGGL" xml:space="preserve">
+    <value>FGG</value>
+  </data>
   <data name="ProductFW" xml:space="preserve">
     <value>Fishing World</value>
     <comment>#66737</comment>
