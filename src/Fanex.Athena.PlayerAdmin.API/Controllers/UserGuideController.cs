@@ -36,7 +36,7 @@ namespace Fanex.Athena.PlayerAdmin.API.Controllers
             return File(fileInfo.CreateReadStream(), System.Net.Mime.MediaTypeNames.Application.Pdf, fileName);
         }
 
-        private IFileInfo GetDefaultFilePathIfNotExist(IFileProvider file, string language, string fileName)
+        private static IFileInfo GetDefaultFilePathIfNotExist(IFileProvider file, string language, string fileName)
         {
             const string filePath = "App_Data/UserGuide/pdf/{0}/{1}";
             var fileInfo = file.GetFileInfo(string.Format(filePath, language, fileName));

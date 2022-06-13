@@ -32,7 +32,8 @@ export const BetLimitProduct = {
     AP: 67,
     APM: 68,
     VS3: 49,
-    BTC: 69
+    BTC: 69,
+    FGGL: 70
 }
 
 export const BetLimitSport = {
