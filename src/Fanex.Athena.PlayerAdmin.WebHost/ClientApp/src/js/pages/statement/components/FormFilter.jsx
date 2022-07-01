@@ -4,43 +4,44 @@ import { ActionCreators } from '../actions/index.js';
 import { bindActionCreators } from 'redux';
 import LangHelper from '@jsroot/lib/langHelper';
 import AppData from '@jsroot/lib/AppData';
-import MonthPicker from '@jsroot/components/month-picker/index';
+import { DateRange } from '@jsroot/components/date-range';
+import Site from '@jsroot/lib/site'
 
 const FormFilter = (props) => {
-    const [dateRange, setDateRange] = useState({ fromDate: props.requestParam.fromDate, toDate: props.requestParam.toDate });
+    const [dateRange, setDateRange] = useState({ startDate: props.requestParam.fromDate, endDate: props.requestParam.toDate });
     const dateConstraint = AppData.dateConstraint;
 
     const onSubmit = () => {
-        const param = Object.assign({}, props.requestParam, dateRange);
+        const param = Object.assign({}, props.requestParam, {fromDate: Site.convertDateToString(dateRange.startDate), toDate: Site.convertDateToString(dateRange.endDate)});
 
         props.setRequestParam(param);
     }
 
-    const onChange = (dateRange) => {
-        setDateRange(dateRange);
+    const onChangeDateRange = (range, isValid = true) => {
+        if (isValid) {
+            setDateRange(range);
+        } else {
+            const message = LangHelper.getSingleResource("DateRangeExceedMsg").replace("{0}", AppData.dateConstraint.limitedMonthRange);
+            alert(message);
+        }
     }
 
-    const renderMonthPicker = () => {
-        const monthOption = {
-            label: LangHelper.getSingleResource('ViewDataInMonth')
-        };
-
-        return <MonthPicker
-            minDate={dateConstraint.minDate}
-            maxDate={dateConstraint.maxDate}
-            fromDate={dateRange.fromDate}
-            toDate={dateRange.toDate}
-            onChange={onChange}
-            monthOption={monthOption}
-            showDate={false} />;
+    const _renderDateFilter = () => {
+        return <DateRange
+                startDate={dateRange.startDate} endDate={dateRange.endDate}
+                minDate={dateConstraint.minDate} maxDate={dateConstraint.maxDate}
+                today={dateRange.endDate} limitedMonthRange={dateConstraint.limitedMonthRange}
+                onChange={onChangeDateRange}
+            />;
     }
 
     return (
         <div className='page-filter'>
             <div className="row">
-                <div className="col-12 col-md-5 col-sm-8 col-lg-4 col-xl-3">
+                <div className="col-12 col-md-3 col-sm-6 col-lg-4 col-xl-2">
                     <div className="form-group">
-                        {renderMonthPicker()}
+                        <label className="label-text">{LangHelper.getSingleResource("Date")}</label>
+                        {_renderDateFilter()}
                     </div>
                 </div>
                 <div className="col-12 col-md-3 col-sm-4 col-lg-2 col-xl-2">

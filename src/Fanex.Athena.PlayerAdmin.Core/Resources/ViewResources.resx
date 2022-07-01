@@ -2089,7 +2089,7 @@
     <comment>#128082</comment>
   </data>
   <data name="PlayerStatementSupportMonths" xml:space="preserve">
-    <value>Support data up to 18 months</value>
+    <value>The report support range time in 2 months</value>
     <comment>112658</comment>
   </data>
   <data name="PleaseSelectOne" xml:space="preserve">

@@ -13,5 +13,7 @@
         public DateTime ToDate { get; set; }
 
         public DateTime MinDate { get; set; }
+
+        public DateTime MaxDate { get; set; }
     }
 }

@@ -16,7 +16,7 @@
     };
 
     window._AppData = {
-    dateConstraint: { minDate: '@Model.MinDate.ToString("MM/dd/yyyy")', maxDate: '@Model.ToDate.ToString("MM/dd/yyyy")' }
+    dateConstraint: { minDate: '@Model.MinDate.ToString("MM/dd/yyyy")', maxDate: '@Model.MaxDate.ToString("MM/dd/yyyy")', limitedMonthRange: 2 }
     };
 }
 <div id="app-container">

@@ -15,7 +15,6 @@ namespace Fanex.Athena.PlayerAdmin.MVC.Controllers
     public class PlayerStatementController : Controller
     {
         private readonly IPlayerStatementService _playerStatementService;
-        private const int MaximumYear = 2;
 
         public PlayerStatementController(IPlayerStatementService playerStatementService)
         {
@@ -26,6 +25,9 @@ namespace Fanex.Athena.PlayerAdmin.MVC.Controllers
         [ReferrerValidation]
         public ViewResult Index(int custId, int currencyId)
         {
+            const int MinYearRange = 2;
+            const int MaxYearRange = 5;
+
             var today = DateTimeHelper.DatabaseServerToDay;
             var viewModel = new PlayerStatementViewModel
             {
@@ -33,7 +35,8 @@ namespace Fanex.Athena.PlayerAdmin.MVC.Controllers
                 CurrencyId = currencyId,
                 FromDate = new DateTime(today.Year, today.Month, 1),
                 ToDate = today,
-                MinDate = new DateTime(today.Year - MaximumYear, 1, 1)
+                MinDate = new DateTime(today.Year - MinYearRange, 1, 1),
+                MaxDate = new DateTime(today.Year + MaxYearRange, 12, 31)
             };
 
             return View(viewModel);
