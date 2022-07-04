@@ -782,6 +782,9 @@
   <data name="DateRange" xml:space="preserve">
     <value>日期范围</value>
   </data>
+  <data name="DateRangeExceedMsg" xml:space="preserve">
+    <value>搜寻范围超过{0}个月，请再试一次。</value>
+  </data>
   <data name="DateRangeNote" xml:space="preserve">
     <value>数据可从{0:d MMM yyyy}查看</value>
   </data>
@@ -1889,7 +1892,7 @@
     <comment>#128082</comment>
   </data>
   <data name="PlayerStatementSupportMonths" xml:space="preserve">
-    <value>数据最多只支持18个月</value>
+    <value>此报告仅提供两个月内数据</value>
     <comment>112658</comment>
   </data>
   <data name="PleaseSelectOne" xml:space="preserve">

@@ -5497,7 +5497,7 @@ namespace Fanex.Athena.PlayerAdmin.Core.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Support data up to 18 months.
+        ///   Looks up a localized string similar to The report support range time in 2 months.
         /// </summary>
         public static string PlayerStatementSupportMonths {
             get {
