@@ -17,9 +17,9 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Controllers
     limitedProductIds: new[] { ProductTypes.VirtualSports, ProductTypes.VirtualSports2, ProductTypes.Lottery, ProductTypes.TG, ProductTypes.I4D, ProductTypes.SLT, ProductTypes.I4D, ProductTypes.SLT,
             ProductTypes.AllBet, ProductTypes.Voidbridge, ProductTypes.CashOut, ProductTypes.PP, ProductTypes.SXG, ProductTypes.GDG, ProductTypes.HB, ProductTypes.JK,
             ProductTypes.SAG, ProductTypes.PGS, ProductTypes.SBC, ProductTypes.WM, ProductTypes.SG, ProductTypes.VRG, ProductTypes.CC, ProductTypes.CG, ProductTypes.VGA, ProductTypes.AP,
-            ProductTypes.APM, ProductTypes.VS3, ProductTypes.SabaCasino, ProductTypes.BTC, ProductTypes.FGGL })]
+            ProductTypes.APM, ProductTypes.VS3, ProductTypes.SabaCasino, ProductTypes.BTC, ProductTypes.FGGL, ProductTypes.MXG })]
     public class DcsBetLimitController : PlayerBetLimitBaseControler
-    {                                                          
+    {
         private readonly IDcsBetLimitService _service;
 
         public DcsBetLimitController(IContextService contextService, IResourceService resourceService,
