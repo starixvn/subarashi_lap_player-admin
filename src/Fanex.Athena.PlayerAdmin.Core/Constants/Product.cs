@@ -85,8 +85,10 @@
         public const string VS3 = "VS3";
 
         public const string BTC = "BTC";
-        
+
         public const string FGGL = "FGGL";
+
+        public const string MXG = "MXG";
     }
 
     public static class ProductTypes
@@ -169,7 +171,9 @@
         public const int VS3 = 49;
 
         public const int BTC = 69;
-        
+
         public const int FGGL = 70;
+
+        public const int MXG = 60;
     }
 }

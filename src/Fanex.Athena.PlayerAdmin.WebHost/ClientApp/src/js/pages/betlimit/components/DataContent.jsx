@@ -45,7 +45,8 @@ const Setting = {
     [BetLimitProduct.APM]: GameDataContent,
     [BetLimitProduct.VS3]: VS3DataContent,
     [BetLimitProduct.BTC]: GameDataContent,
-    [BetLimitProduct.FGGL]: GameDataContent
+    [BetLimitProduct.FGGL]: GameDataContent,
+    [BetLimitProduct.MXG]: GameDataContent
 };
 
 const DataContent = (props) => {
