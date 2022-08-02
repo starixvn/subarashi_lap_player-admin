@@ -20,7 +20,6 @@ namespace Fanex.Athena.PlayerAdmin.MVC.Controllers
 
         [HttpGet]
         [Route("UserGuide/Document/{name}")]
-        [ReferrerValidation]
         public ActionResult Index(string name)
         {
             return View(name as object);
