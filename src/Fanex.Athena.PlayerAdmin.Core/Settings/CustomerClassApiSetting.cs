@@ -5,6 +5,8 @@
         public string BaseAddress { get; set; }
 
         public CustomerClassEndpoint EndPoints { get; set; }
+
+        public bool Enabled { get; set; }
     }
 
     public class CustomerClassEndpoint

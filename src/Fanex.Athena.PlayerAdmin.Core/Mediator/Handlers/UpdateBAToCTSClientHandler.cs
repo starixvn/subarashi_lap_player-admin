@@ -22,7 +22,7 @@ namespace Fanex.Athena.PlayerAdmin.Core.Mediator.Handlers
 
         public async Task Handle(PlayerUpdatedBAEvent notification, CancellationToken cancellationToken)
         {
-            if (notification.Status == LogText.Success)
+            if (notification.Status == LogText.Success && Setting.Enabled)
             {
                 var isBa = notification.NewValue == LogText.On;
                 var path = isBa ? Setting.EndPoints.AddLicBA : Setting.EndPoints.RemoveLicBA;
