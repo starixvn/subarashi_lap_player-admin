@@ -39,6 +39,7 @@ using Polly;
 using Microsoft.Extensions.Logging;
 using System.Net.Http;
 using System.Net;
+using Fanex.Athena.PlayerAdmin.Core.ConsoleClient.Abstractions;
 
 namespace Fanex.Athena.PlayerAdmin.WebHost
 {
@@ -127,8 +128,11 @@ namespace Fanex.Athena.PlayerAdmin.WebHost
 
             var statement = Configuration.GetSection("Statement");
             services.Configure<StatementSetting>(statement);
+
             ConfigStatement(services, statement);
             ConfigConsoleClient(services);
+            ConfigCustomerClassApi(services);
+
             services.AddHttpClient();
             services.AddHealthCheck(Configuration);
             services.AddUnderMaintenance(Configuration);
@@ -218,6 +222,26 @@ namespace Fanex.Athena.PlayerAdmin.WebHost
              {
                  services.BuildServiceProvider().GetService<ILogger<PlayerStatementService>>()
                      .LogError($"Statement Service delaying for {timespan.Seconds}s, then making retry {retryAttempt}.");
+             }));
+        }
+
+        private void ConfigCustomerClassApi(IServiceCollection services)
+        {
+            const int NumberOfRetry = 2;
+            const int RetryDelayTime = 1; 
+
+            var configuration = Configuration.GetSection("CustomerClassApi");
+            services.Configure<CustomerClassApiSetting>(configuration);
+
+            services.AddHttpClient<ICTSApiClient, CTSApiClient>(client =>
+            {
+                client.BaseAddress = new Uri(configuration.Get<CustomerClassApiSetting>().BaseAddress);
+            }).SetHandlerLifetime(TimeSpan.FromDays(1))
+            .AddTransientHttpErrorPolicy(p => p.WaitAndRetryAsync(NumberOfRetry, retryAttempt => TimeSpan.FromSeconds(retryAttempt * RetryDelayTime),
+             onRetry: (_, timespan, retryAttempt, _) =>
+             {
+                 services.BuildServiceProvider().GetService<ILogger<PlayerStatementService>>()
+                     .LogError($"CustomerClass Service delaying for {timespan.Seconds}s, then making retry {retryAttempt}.");
              }));
         }
 

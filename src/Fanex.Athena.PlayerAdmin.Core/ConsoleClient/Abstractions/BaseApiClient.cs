@@ -80,7 +80,10 @@ namespace Fanex.Athena.PlayerAdmin.Core.ConsoleClient
                                 response = await _client.SendAsync(httpRequest, HttpCompletionOption.ResponseHeadersRead, cancelToken.Token).ConfigureAwait(false);
                             }
                         }
-                        response?.EnsureSuccessStatusCode();
+                        if (response != null && !response.IsSuccessStatusCode)
+                        {
+                            await HandleUnSuccessRequestAsync(response);
+                        }
                         return await codeBlock(response).ConfigureAwait(false);
                     }
                     catch (Exception ex)
@@ -159,6 +162,12 @@ namespace Fanex.Athena.PlayerAdmin.Core.ConsoleClient
                 },
                 timeOut: timeOut
             );
+        }
+        
+        protected virtual Task HandleUnSuccessRequestAsync(HttpResponseMessage response)
+        {
+            response?.EnsureSuccessStatusCode();
+            return Task.CompletedTask;
         }
     }
 

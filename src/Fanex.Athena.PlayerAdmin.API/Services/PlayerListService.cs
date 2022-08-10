@@ -7,14 +7,8 @@ using Fanex.Athena.PlayerAdmin.Core.Repositories;
 using Fanex.Athena.PlayerAdmin.Core.Services;
 using Fanex.Athena.PlayerAdmin.Core.Settings;
 using Fanex.Data;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using Newtonsoft.Json;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace Fanex.Athena.PlayerAdmin.API.Services
