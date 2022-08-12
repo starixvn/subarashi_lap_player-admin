@@ -142,7 +142,7 @@ const SettingContent = (Grid, DataHandling) => {
                             return e;
                         }
 
-                        return Object.assign({}, e, { MinBet: copyRow.MinBet, MaxBet: copyRow.MaxBet, MaxPerMatch: copyRow.MaxPerMatch });
+                        return Object.assign({}, e, { MinBet: copyRow.MinBet, MaxBet: copyRow.MaxBet, MaxPerMatch: copyRow.MaxPerMatch, MaxPayoutPerMatch: copyRow.MaxPayoutPerMatch });
                     });
 
                     this.setState({ isCopy: true, data: newData });
