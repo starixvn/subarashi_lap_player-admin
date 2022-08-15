@@ -15,8 +15,8 @@
     <Setting Key="Lrf_LicenseeProduct3rdSel_active" SpName="Lrf_LicenseeProduct3rdSel_active" DbName="DBLIC.bodb_Licensee.bodbLicenseeNet" />
   </Function>
   <Function Name="PlayerList">
-    <Setting Key="Lrf_CustomerSelByUsername" SpName="Lrf_CustomerSelByUsername" DbName="DBEXT.bodb02.bodbLicenseeNet" />
-    <Setting Key="Lrf_CustomerSelByCustid" SpName="Lrf_CustomerSelByCustid" DbName="DBEXT.bodb02.bodbLicenseeNet" />
+    <Setting Key="Shard_Lrf_CustomerSelByUsername" SpName="Lrf_CustomerSelByUsername" DbName="DBEXT.bodb02.bodbLicenseeNet" />
+    <Setting Key="Shard_Lrf_CustomerSelByCustid" SpName="Lrf_CustomerSelByCustid" DbName="DBEXT.bodb02.bodbLicenseeNet" />
     <Setting Key="Lrf_DormantCustomerSel" SpName="Lrf_DormantCustomerSel_xtest" DbName="DBEXT.bodb02.bodbLicenseeNet" />
     <Setting Key="Lrf_LicenseeProductByBetLimitSel" SpName="Lrf_LicenseeProductByBetLimitSel_UAT1" DbName="DBLIC.bodb_Licensee.bodbLicenseeNet" />
     <Setting Key="Lrf_PlayerBettingStatistics" SpName="Lrf_PlayerBettingStatistics" DbName="DBACC.bodb02.bodbLicenseeNet" />
@@ -88,4 +88,8 @@
     <Setting Key="Lrf_CustomerRemoveGroupComm" SpName="Lrf_CustomerRemoveGroupComm_UAT1" DbName="DBCUST.bodb_Licensee.bodbLicenseeNet" TimeOut="240" />
     <Setting Key="Lrf_CustomerMoveGroupComm" SpName="Lrf_CustomerMoveGroupComm_UAT1" DbName="DBCUST.bodb_Licensee.bodbLicenseeNet" TimeOut="240" />
   </Function>
+  <SiteDB>
+    <Setting Key="SiteDB_Lrf_CustomerSelByUsername" SpName="SiteDB_Lrf_CustomerSelByUsername_xtest" DbName="DBSID.bodb02.bodbLicenseeNet" />
+    <Setting Key="SiteDB_Lrf_CustomerSelByCustid" SpName="SiteDB_Lrf_CustomerSelByCustid_xtest" DbName="DBSID.bodb02.bodbLicenseeNet" />
+  </SiteDB>
 </Functions>

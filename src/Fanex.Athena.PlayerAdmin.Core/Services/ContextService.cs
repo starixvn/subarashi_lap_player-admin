@@ -38,6 +38,8 @@ namespace Fanex.Athena.PlayerAdmin.Core.Services
 
         public int UserLevel => GetClaimValue<int>("UserLevel");
 
+        public string SiteDBServer => GetClaimValue("SiteDBServer") ?? string.Empty;
+
         public string OperatorID => GetClaimValue("OperatorID");
 
         public int? WhiteLabelID

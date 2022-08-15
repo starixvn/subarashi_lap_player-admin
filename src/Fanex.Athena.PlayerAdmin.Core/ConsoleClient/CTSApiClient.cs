@@ -1,5 +1,4 @@
-﻿using Fanex.Athena.PlayerAdmin.Core.ConsoleClient.Abstractions;
-using System.Net.Http;
+﻿using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace Fanex.Athena.PlayerAdmin.Core.ConsoleClient

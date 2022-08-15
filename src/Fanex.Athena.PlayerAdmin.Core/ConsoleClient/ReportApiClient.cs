@@ -15,7 +15,10 @@ namespace Fanex.Athena.PlayerAdmin.Core.ConsoleClient
         }
 
         protected override async Task PrepareHeaders(HttpRequestHeaders headers)
-            => headers.Authorization = new AuthenticationHeaderValue("Bearer", await _contextService.AccessToken);
+        {
+            headers.Authorization = new AuthenticationHeaderValue("Bearer", await _contextService.AccessToken);
+            headers.Add("X-IgnoreSharding", bool.TrueString);
+        }
 
         protected override string ApiName => "Report";
     }

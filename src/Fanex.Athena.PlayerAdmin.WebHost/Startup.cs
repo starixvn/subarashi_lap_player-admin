@@ -37,9 +37,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Polly;
 using Microsoft.Extensions.Logging;
-using System.Net.Http;
-using System.Net;
-using Fanex.Athena.PlayerAdmin.Core.ConsoleClient.Abstractions;
+using Fanex.Athena.PlayerAdmin.Core.Services;
 
 namespace Fanex.Athena.PlayerAdmin.WebHost
 {
@@ -99,16 +97,19 @@ namespace Fanex.Athena.PlayerAdmin.WebHost
                 options.SuppressXFrameOptionsHeader = true;
             });
 
+            services.AddHttpContextAccessor();
+
             var redisSetting = Configuration.GetSection("Redis").Get<RedisSetting>();
             ConfigDistributedCache(services, redisSetting);
             ConfigDataProtection(services, redisSetting);
-            ConfigFanexData();
+            ConfigFanexData(services);
 
             RefDataTypeContainer
                 .ConnectTo(new Uri(Configuration["RemotingRefUrl"]))
                 .FromApplication("LAP.PlayerAdmin");
 
             SetupMediatR(services);
+
 
             services.AddCore()
                 .AddAPI()
@@ -328,7 +329,7 @@ namespace Fanex.Athena.PlayerAdmin.WebHost
             services.AddMediatR(assemblies.ToArray());
         }
 
-        private void ConfigFanexData()
+        private void ConfigFanexData(IServiceCollection services)
         {
             var listConnectionName = Configuration.GetSection("ConnectionStrings").GetChildren().Select(_ => _.Key);
             var connectionStrings = new Dictionary<string, ConnectionConfiguration>(listConnectionName
@@ -338,12 +339,15 @@ namespace Fanex.Athena.PlayerAdmin.WebHost
 
             DbSettingProviderManager
                 .StartNewSession()
-                .WithSqlServer(resourcePath: "~/App_Data/SpConfig/FanexSpName.xml")
+                .WithSqlServer()
                 .Use(connectionStrings)
+                .Use(new ShardDbSettingProvider(new ShardInfoAccessor(
+                    new ContextService(services.BuildServiceProvider().GetRequiredService<IHttpContextAccessor>())),
+                    resourcePath: "~/App_Data/SpConfig/FanexSpName.xml"))
                 .Run();
         }
 
-        private IServiceCollection ConfigAuthentication(IServiceCollection services, CookieSetting cookie, IdentityServerSetting identityServer)
+        private static IServiceCollection ConfigAuthentication(IServiceCollection services, CookieSetting cookie, IdentityServerSetting identityServer)
         {
             services.AddAuthentication()
                 .AddCookie(options =>

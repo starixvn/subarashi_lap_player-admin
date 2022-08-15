@@ -30,7 +30,6 @@ namespace Fanex.Athena.PlayerAdmin.Core.Extensions
             services.AddSingleton<IMetaModelBindingService, BaseMetaModelBindingService>();
             services.AddSingleton<IFunctionUMService, FunctionUMService>();
             
-            services.AddHttpContextAccessor();
             return services;
         }
 
