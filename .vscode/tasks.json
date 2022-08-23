@@ -1,0 +1,50 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/src/Fanex.Athena.PlayerAdmin.WebHost/Fanex.Athena.PlayerAdmin.WebHost.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "publish",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "publish",
+                "${workspaceFolder}/src/Fanex.Athena.PlayerAdmin.WebHost/Fanex.Athena.PlayerAdmin.WebHost.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "watch",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "watch",
+                "run",
+                "--project",
+                "${workspaceFolder}/src/Fanex.Athena.PlayerAdmin.WebHost/Fanex.Athena.PlayerAdmin.WebHost.csproj"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "type": "npm",
+            "script": "build-dev",
+            "path": "src/Fanex.Athena.PlayerAdmin.WebHost",
+            "group": "build",
+            "problemMatcher": [],
+            "label": "npm: build-dev - src/Fanex.Athena.PlayerAdmin.WebHost",
+            "detail": "node node_modules/webpack/bin/webpack.js --config ClientApp/webpack/build/webpack.dev.conf.js"
+        }
+    ]
+}
