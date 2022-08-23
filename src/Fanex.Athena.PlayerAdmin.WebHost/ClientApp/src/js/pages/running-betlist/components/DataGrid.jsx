@@ -85,9 +85,9 @@ export class DataGrid extends Component {
         };
 
         let Columns = ['Index', 'RefNo', 'TransTime', 'Choice', 'Odds', 'OddsType', 'Stake', 'Status', 'Platform', 'Live'];
-        let ColumnWidths = [40, 110, 150, 400, 70, 70, 100, 110, 80, 80];
+        let ColumnWidths = [40, 160, 150, 370, 70, 70, 100, 110, 80, 80];
         let ColumnAlignments = [
-            'center-align', 'center-align', 'center-align',
+            'center-align', 'center-align tooltip', 'center-align',
             'right-align', 'right-align', 'right-align', 'right-align',
             'center-align', 'center-align', 'center-align'
         ]
@@ -95,7 +95,7 @@ export class DataGrid extends Component {
         if (AppData.isAllowTxIDColumn && !Columns.includes('LicenseeTxId')) {
             Columns.splice(2, 0, 'LicenseeTxId');
             ColumnWidths.splice(2, 0, 110);
-            ColumnAlignments.splice(2, 0, 'center-align');
+            ColumnAlignments.splice(2, 0, 'center-align tooltip');
         }
 
         return <BetListDataGrid

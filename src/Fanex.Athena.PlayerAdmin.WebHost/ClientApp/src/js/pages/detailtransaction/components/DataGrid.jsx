@@ -34,7 +34,7 @@ export class DataGrid extends PureComponent {
             const dataItem = transactions[i];
             dataRows.push(
                 <Row key={dataItem.TransactionId + "_" + i}>
-                    <Cell>{dataItem.TransactionId}</Cell>
+                    <Cell title={dataItem.TransactionTimeStr}>{dataItem.TransactionId}</Cell>
                     <Cell className="center-text">{dataItem.TransactionTimeStr}</Cell>
                     <Cell>{dataItem.TransactionType}</Cell>
                     <Cell className="right-text">{dataItem.BalanceChangeStr}</Cell>

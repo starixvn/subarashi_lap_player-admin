@@ -60,8 +60,10 @@ class BetListDataGrid extends Component {
 
             for (let j = 0; j < columns.length; j++) {
                 const column = columns[j];
+                let hasTooltip = columnAlignments[j].indexOf('tooltip') !== -1;
+
                 cells.push(
-                    <Cell key={`${column}-${i}`} className={columnAlignments[j]} dangerouslySetInnerHTML={{ __html: item[column] }}></Cell>
+                    <Cell key={`${column}-${i}`} className={columnAlignments[j]} {...(hasTooltip ? {title: item[column]} : {})} dangerouslySetInnerHTML={{ __html: item[column] }}></Cell>
                 )
             }
 
