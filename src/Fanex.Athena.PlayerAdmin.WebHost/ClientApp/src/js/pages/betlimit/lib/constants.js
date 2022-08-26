@@ -47,7 +47,8 @@ export const BetLimitType = {
     MinBet: 'MinBet',
     MaxBet: 'MaxBet',
     MaxPerMatch: 'MaxPerMatch',
-    MaxPerBall: 'MaxPerBall'
+    MaxPerBall: 'MaxPerBall',
+    MaxPayoutPerMatch: 'MaxPayoutPerMatch',
 }
 
 export const InputClassName = {

@@ -35,7 +35,7 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Controllers
         {
             var isEditable = HasEditPermission();
             var data = await _service.GetSettingAsync(metaModel.CustId, _appSetting.IsShowMixedSport);
-            var copySportId = SportType.Soccer.ToString();
+            var copySportId = $"{SportType.Soccer}_{BetType.DefaultBetType}";
 
             var viewModel = new PlayerBetLimitViewModel
             {

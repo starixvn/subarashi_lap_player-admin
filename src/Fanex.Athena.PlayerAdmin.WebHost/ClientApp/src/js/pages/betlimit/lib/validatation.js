@@ -1,10 +1,11 @@
 ﻿import LangHelper from '@jsroot/lib/langHelper';
 import { BetLimitType, BetLimitSport } from './constants';
+import NumberFormat from "@jsroot/lib/numberFormat";
 
 export default class Validatation {
     static validateMinMaxBet(current, limitData) {
         const { MinBet, MaxBet, MaxPerMatch } = current;
-        const Id = current.Id === BetLimitSport.I4D ? current.Id : current.BetType;
+        const Id = current.SportType === BetLimitSport.I4D ? current.SportType : current.Id;
 
         if (isNaN(MinBet)) {
             return {
@@ -25,7 +26,7 @@ export default class Validatation {
             return {
                 Id: Id,
                 Type: BetLimitType.MinBet,
-                Message: LangHelper.getSingleResource('MinBetGreaterThanOrEqual') + ' ' + limitData.BetValueMin
+                Message: LangHelper.getSingleResource('MinBetGreaterThanOrEqual') + ' ' + NumberFormat.formatInteger(limitData.BetValueMin)
             };
         }
 
@@ -33,7 +34,7 @@ export default class Validatation {
             return {
                 Id: Id,
                 Type: BetLimitType.MaxBet,
-                Message: LangHelper.getSingleResource('MaxBetLessThanOrEqual') + ' ' + limitData.BetValueMax
+                Message: LangHelper.getSingleResource('MaxBetLessThanOrEqual') + ' ' + NumberFormat.formatInteger(limitData.BetValueMax)
             };
         }
 
@@ -41,7 +42,7 @@ export default class Validatation {
             return {
                 Id: Id,
                 Type: BetLimitType.MinBet,
-                Message: LangHelper.getSingleResource('MinBetCanNotGreaterThanMaxBet') + ' ' + MaxBet
+                Message: LangHelper.getSingleResource('MinBetCanNotGreaterThanMaxBet') + ' ' + NumberFormat.formatInteger(MaxBet)
             };
         }
 
@@ -63,7 +64,7 @@ export default class Validatation {
             return {
                 Id: Id,
                 Type: BetLimitType.MaxPerMatch,
-                Message: LangHelper.getSingleResource('MaxBetMatchMoreThanOrEqual') + ' ' + limitData.MaxPerMatchMax
+                Message: LangHelper.getSingleResource('MaxBetMatchMoreThanOrEqual') + ' ' + NumberFormat.formatInteger(limitData.MaxPerMatchMax)
             };
         }
 
@@ -71,7 +72,7 @@ export default class Validatation {
             return {
                 Id: Id,
                 Type: BetLimitType.MaxPerMatch,
-                Message: LangHelper.getSingleResource('MaxBetMatchLessThanOrEqual') + ' ' + limitData.MaxPerMatchMin
+                Message: LangHelper.getSingleResource('MaxBetMatchLessThanOrEqual') + ' ' + NumberFormat.formatInteger(limitData.MaxPerMatchMin)
             };
         }
 
@@ -79,7 +80,7 @@ export default class Validatation {
             return {
                 Id: Id,
                 Type: BetLimitType.MaxBet,
-                Message: LangHelper.getSingleResource('MaxBetCanNotGreaterThanMaxPerMatch') + ' ' + MaxPerMatch
+                Message: LangHelper.getSingleResource('MaxBetCanNotGreaterThanMaxPerMatch') + ' ' + NumberFormat.formatInteger(MaxPerMatch)
             };
         }
 
@@ -101,7 +102,7 @@ export default class Validatation {
             return {
                 Id: Id,
                 Type: BetLimitType.MaxPerMatch,
-                Message: LangHelper.getSingleResource('MaxBetPerDrawMoreThanOrEqual') + ' ' + limitData.MaxPerMatchMax
+                Message: LangHelper.getSingleResource('MaxBetPerDrawMoreThanOrEqual') + ' ' + NumberFormat.formatInteger(limitData.MaxPerMatchMax)
             };
         }
 
@@ -109,7 +110,7 @@ export default class Validatation {
             return {
                 Id: Id,
                 Type: BetLimitType.MaxPerMatch,
-                Message: LangHelper.getSingleResource('MaxBetPerDrawLessThanOrEqual') + ' ' + limitData.MaxPerMatchMin
+                Message: LangHelper.getSingleResource('MaxBetPerDrawLessThanOrEqual') + ' ' + NumberFormat.formatInteger(limitData.MaxPerMatchMin)
             };
         }
 
@@ -117,7 +118,7 @@ export default class Validatation {
             return {
                 Id: Id,
                 Type: BetLimitType.MaxBet,
-                Message: LangHelper.getSingleResource('MaxBetCanNotGreaterThanMaxBetPerDraw') + ' ' + MaxPerMatch
+                Message: LangHelper.getSingleResource('MaxBetCanNotGreaterThanMaxBetPerDraw') + ' ' + NumberFormat.formatInteger(MaxPerMatch)
             };
         }
 
@@ -139,7 +140,37 @@ export default class Validatation {
             return {
                 Id: Id,
                 Type: BetLimitType.MaxPerBall,
-                Message: LangHelper.getSingleResource('MaxPerBallLessThanOrEqual') + ' ' + limitData.MaxPerBallMax
+                Message: LangHelper.getSingleResource('MaxPerBallLessThanOrEqual') + ' ' + NumberFormat.formatInteger(limitData.MaxPerBallMax)
+            };
+        }
+
+        return null;
+    }
+
+    static validateMaxPayoutPerMatch(current, limitData){
+        const { MaxPayoutPerMatch, Id, MaxPerMatch } = current;
+
+        if (isNaN(MaxPayoutPerMatch)) {
+            return {
+                Id: Id,
+                Type: BetLimitType.MaxPayoutPerMatch,
+                Message: LangHelper.getSingleResource('IncorrectMaxPayoutPerMatch')
+            };
+        }
+
+        if (MaxPerMatch > MaxPayoutPerMatch){
+            return{
+                Id: Id,
+                Type: BetLimitType.MaxPerMatch,
+                Message: LangHelper.getSingleResource("MaxPerMatchNotGreaterMaxPayoutPerMatch")
+            }
+        }
+
+        if (limitData.MaxPayoutPerMatchMax > 0 && MaxPayoutPerMatch > limitData.MaxPayoutPerMatchMax) {
+            return {
+                Id: Id,
+                Type: BetLimitType.MaxPayoutPerMatch,
+                Message: LangHelper.getSingleResource('MaxPayoutPerMatchLessThanOrEqual') + ' ' + NumberFormat.formatInteger(limitData.MaxPayoutPerMatchMax)
             };
         }
 

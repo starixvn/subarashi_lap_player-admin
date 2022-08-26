@@ -3084,4 +3084,19 @@
   <data name="YouNotChooseAnyCustomerMsg" xml:space="preserve">
     <value>You did not choose any customers.</value>
   </data>
+  <data name="MaxPayoutPerMatch" xml:space="preserve">
+    <value>Max Payout Per Match</value>
+  </data>
+  <data name="IncorrectMaxPayoutPerMatch" xml:space="preserve">
+    <value>Incorrect Max Payout Per Match</value>
+  </data>
+  <data name="Saba" xml:space="preserve">
+    <value>Saba </value>
+  </data>
+  <data name="MaxPerMatchNotGreaterMaxPayoutPerMatch" xml:space="preserve">
+    <value>Max Per Match cannot be greater than Max Payout Per Match </value>
+  </data>
+  <data name="MaxPayoutPerMatchLessThanOrEqual" xml:space="preserve">
+    <value>Max Payout Per Match must be less than or equal to</value>
+  </data>
 </root>

@@ -17,85 +17,42 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Services
 {
     public class SportsBookBetLimitService : ISportsBookBetLimitService
     {
-        private const int EsportIndex = 2;
-
-        private readonly ISportsBookBetLimitRepository _betSetting;
-        private readonly IDcsBetLimitRepository _dcsBetSetting;
+        private readonly IDcsGameBetLimitRepository _betSetting;
         private readonly IPublisher _publisher;
+        private (string SportType, int BetType) MixParlaySports = (SportType.OtherSports.ToString(), BetType.Parlay);
 
         public SportsBookBetLimitService(
-            ISportsBookBetLimitRepository betSettingRepository,
-            IDcsBetLimitRepository dcsBetSettingRepository,
+            IDcsGameBetLimitRepository betSettingRepository,
             IPublisher publisher)
         {
             _betSetting = betSettingRepository;
-            _dcsBetSetting = dcsBetSettingRepository;
             _publisher = publisher;
         }
 
         public async Task<IEnumerable<PlayerBetLimit>> GetSettingAsync(int custId, bool isShowMixedSport)
         {
-            var eSportSetting = await _dcsBetSetting.GetSettingAsync(custId, ProductTypes.Sportsbooks2);
+            var sbSettings = await _betSetting.GetSettingAsync(custId, ProductTypes.Sportsbook);
+            var result = isShowMixedSport
+                ? sbSettings.ToList()
+                : sbSettings.Where(_ => _.SportType != MixParlaySports.SportType && _.BetType != MixParlaySports.BetType);
 
-            if (!eSportSetting.Any())
-            {
-                throw new InvalidOperationException("There is no E-sport setting data.");
-            }
-
-            var sbSettings = await _betSetting.GetSettingAsync(custId, isShowMixedSport);
-
-            var result = sbSettings.ToList();
-            var sbSettingTotal = sbSettings.Count();
-            result.Insert(sbSettingTotal > EsportIndex ? EsportIndex : sbSettingTotal, eSportSetting.First());
+            result = result.OrderBy(_ => _, new SBBetLimitComparer());
 
             return result;
         }
 
         public async Task<IResultInfo> UpdateSettingAsync(PlayerBetLimitUpdateMetaModel<IEnumerable<PlayerBetLimitMetaModel>> metaModel, bool isShowMixedSport)
         {
-            var esportsTypeId = SportType.Esports.ToString();
-            if (!metaModel.Setting.Any(x => x.Id == esportsTypeId))
-            {
-                return new ResultInfo { Code = 1, Message = "Invalid parameters. Setting is null." };
-            }
-
-            var result = await _betSetting.UpdateSettingAsync(metaModel, isShowMixedSport);
+            var result = await _betSetting.UpdateSettingAsync(metaModel);
 
             var logEvent = BetLimitLogHelper.CreateLogEvent(
                 metaModel,
-                GetDetailedLog(metaModel.Setting.Where(x => x.Id != esportsTypeId), result.Code == 0));
+                GetDetailedLog(metaModel.Setting, result.Code == 0));
 
             if (result.Code > 0)
             {
                 await PublishLogEvent(logEvent);
                 return result;
-            }
-
-            var esportsSetting = metaModel.Setting.Where(x => x.IsUpdated && x.Id == esportsTypeId).ToList();
-            if (esportsSetting.Any())
-            {
-                var dcsMetaModel = new PlayerBetLimitUpdateMetaModel<IEnumerable<PlayerBetLimitMetaModel>>
-                {
-                    CustId = metaModel.CustId,
-                    UserId = metaModel.UserId,
-                    SiteName = metaModel.SiteName,
-                    Ip = metaModel.Ip,
-                    Setting = esportsSetting,
-                    ProductId = ProductTypes.Sportsbooks2,
-                    LicenseeCustId = metaModel.LicenseeCustId
-                };
-                result = await _dcsBetSetting.UpdateSettingAsync(dcsMetaModel);
-
-                if (logEvent is null)
-                {
-                    logEvent = BetLimitLogHelper.CreateLogEvent(
-                        metaModel,
-                        GetDetailedLog(esportsSetting, result.Code == 0));
-                }
-                else
-                {
-                    logEvent.Detail = logEvent.Detail.Concat(GetDetailedLog(esportsSetting, result.Code == 0));
-                }
             }
 
             await PublishLogEvent(logEvent);
@@ -109,15 +66,51 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Services
                  setting,
                  x => x.Id,
                  isSuccessful,
-                 new[] { LogActionDetailId.UpdatingMinBet, LogActionDetailId.UpdatingMaxBet, LogActionDetailId.UpdatingMaxPerMatch });
+                 new[] { LogActionDetailId.UpdatingMinBet, LogActionDetailId.UpdatingMaxBet, LogActionDetailId.UpdatingMaxPerMatch,
+                     LogActionDetailId.UpdatingMaxPayoutPerMatch, LogActionDetailId.UpdatingMaxPayoutPerMatch });
         }
 
         private async Task PublishLogEvent(PlayerUpdatedBetLimitEvent logEvent)
         {
-            if(logEvent is not null)
+            if (logEvent is not null)
             {
                 await _publisher.Publish(logEvent);
             }
+        }
+    }
+
+    internal class SBBetLimitComparer : IComparer<PlayerBetLimit>
+    {
+        private readonly IDictionary<string, int> BetLimitOrderer = new Dictionary<string, int>
+        {
+            {$"{SportType.Soccer}_{BetType.DefaultBetType}", 0 },
+            {$"{SportType.Soccer}_{BetType.Parlay}", 1 },
+            {$"{SportType.SabaSoccer}_{BetType.DefaultBetType}", 2 },
+            {$"{SportType.Esports}_{BetType.DefaultBetType}", 3 },
+            {$"{SportType.BasketBall}_{BetType.DefaultBetType}", 4 },
+            {$"{SportType.SabaBasketBall}_{BetType.DefaultBetType}", 5 },
+            {$"{SportType.FootBall}_{BetType.DefaultBetType}", 6 },
+            {$"{SportType.Tennis}_{BetType.DefaultBetType}", 7 },
+            {$"{SportType.BaseBall}_{BetType.DefaultBetType}", 8 },
+            {$"{SportType.Golf}_{BetType.DefaultBetType}", 9 },
+            {$"{SportType.Motorsports}_{BetType.DefaultBetType}", 10 },
+            {$"{SportType.OtherSports}_{BetType.DefaultBetType}", 11 },
+            {$"{SportType.OtherSports}_{BetType.Parlay}", 12 },
+        };
+
+        public int Compare(PlayerBetLimit x, PlayerBetLimit y)
+        {
+            if (x == null || y == null)
+            {
+                return 1;
+            }
+
+            if (!BetLimitOrderer.ContainsKey(x.Id) || !BetLimitOrderer.ContainsKey(y.Id))
+            {
+                return 1;
+            }
+
+            return BetLimitOrderer[x.Id] - BetLimitOrderer[y.Id];
         }
     }
 }

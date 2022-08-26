@@ -1,0 +1,62 @@
+@import "../abstracts/variables";
+@import "../base/common";
+
+
+.container{
+    font-size: 1.4rem;
+    max-width: 900px;
+    margin-top: 30px;
+    padding-right: 25px;
+    padding-left: 25px;
+    background-color: ghostwhite;
+}
+
+.title{
+    background-color: #4c6375;
+    margin: 0px -25px;
+    padding: 0px 25px;
+    color: white;
+    h3{
+        font-weight: normal;
+        padding: 5px 0px;
+    }
+}
+
+ol, ul {
+    ul{
+        margin-left: 15px;
+        margin-bottom: 8px;
+    }
+}
+
+.note{
+    font-style: italic;
+}
+
+table{
+    font-size: small;
+    th, td{
+        border: 1px solid black;
+        padding: 1px 4px;
+    }
+    th{
+        background-color: #1d8bdf;
+        color: white;
+        padding: 3px 10px;
+        font-style: normal;
+    }
+}
+.table-content{
+    margin-left: auto;
+    margin-right: auto;
+    table{
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 50px;
+        margin-top: 20px;
+    }
+}
+
+.style-double-asterisk{
+    list-style-type: "** ";
+}

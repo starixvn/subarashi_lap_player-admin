@@ -77,8 +77,8 @@ const SettingContent = (Grid, DataHandling) => {
             this.ref[type][id] = element;
         }
 
-        _closeError() {
-            this.setState({ showError: false });
+        _closeError(callback) {
+            this.setState({ showError: false }, callback);
         }
 
         onReset = () => {
@@ -92,6 +92,11 @@ const SettingContent = (Grid, DataHandling) => {
         }
 
         onSubmit = () => {
+            this._closeError(this.submitData);
+        }
+
+        submitData = () => {
+
             if (!this.state.showError) {
                 const data = this.state.data;
                 const submitData = DataHandling.getSubmitData(data);
@@ -102,6 +107,7 @@ const SettingContent = (Grid, DataHandling) => {
                 else {
                     this._showConfirmation(() => this._submit(submitData.Data));
                 }
+
             }
         }
 
@@ -136,7 +142,7 @@ const SettingContent = (Grid, DataHandling) => {
                             return e;
                         }
 
-                        return Object.assign({}, e, { MinBet: copyRow.MinBet, MaxBet: copyRow.MaxBet, MaxPerMatch: copyRow.MaxPerMatch });
+                        return Object.assign({}, e, { MinBet: copyRow.MinBet, MaxBet: copyRow.MaxBet, MaxPerMatch: copyRow.MaxPerMatch, MaxPayoutPerMatch: copyRow.MaxPayoutPerMatch });
                     });
 
                     this.setState({ isCopy: true, data: newData });
@@ -254,7 +260,7 @@ const SettingContent = (Grid, DataHandling) => {
 
                 this.setState({
                     showError: true,
-                    errorBalloon: { Id: invalidData.Id, msg: invalidData.Message, targetTop: pos.top, targetLeft: pos.left + pos.width / 2 }
+                    errorBalloon: { Id: invalidData.Id, msg: invalidData.Message, targetTop: pos.top + window.scrollY, targetLeft: pos.left + pos.width / 2 }
                 }, () => invalidInput.focus());
             }
         }

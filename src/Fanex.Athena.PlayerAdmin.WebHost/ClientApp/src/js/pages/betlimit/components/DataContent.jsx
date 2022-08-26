@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { BetLimitProduct } from '../lib/constants';
 import SportDataContent from './grid/data-contents/SportDataContent';
+import SBDataContent from './grid/data-contents/SBDataContent';
 import GameDataContent from './grid/data-contents/GameDataContent';
 import NGDataContent from './grid/data-contents/NGDataContent';
 import ACGDataContent from './grid/data-contents/AGCDataContent';
@@ -11,7 +12,7 @@ import ThirdPartyDataContent from './grid/data-contents/ThirdPartyDataContent';
 import ExchangeDataContent from './grid/data-contents/ExchangeDataContent';
 
 const Setting = {
-    [BetLimitProduct.SB]: SportDataContent,
+    [BetLimitProduct.SB]: SBDataContent,
     [BetLimitProduct.VS]: SportDataContent,
     [BetLimitProduct.VS2]: SportDataContent,
     [BetLimitProduct.LT]: GameDataContent,

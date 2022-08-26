@@ -37,6 +37,7 @@ function generateConfig() {
             [`${cssPath}/playerwinloss`]: pathConfig.cssPaths.playerwinloss,
             [`${cssPath}/statement`]: pathConfig.cssPaths.statement,
             [`${cssPath}/detailtransaction`]: pathConfig.cssPaths.detailtransaction,
+            [`${cssPath}/userguide`]: pathConfig.cssPaths.userguide,
         },
         output: {
             path: pathConfig.projectRoot,

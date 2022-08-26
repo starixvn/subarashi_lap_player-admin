@@ -133,7 +133,7 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Repositories
                             BetValueMax = reader.ToDecimal("maxbetmax"),
                             MaxPerMatch = reader.ToDecimal("maxpermatch"),
                             MaxPerMatchMax = reader.ToDecimal("maxpermatchmax"),
-                            Id = reader.ToString("sporttype"),
+                            SportType = reader.ToString("sporttype"),
                             BetType = reader.ToInt("bettype")
                         });
                     }
@@ -229,15 +229,17 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Repositories
             const string XMLElement = "<BetLimit SportType=\"{0}\" BetType=\"{1}\" MinBet=\"{2}\" MaxBet=\"{3}\" MaxPerMatch=\"{4}\" ></BetLimit>";
 
             var xmlElementBuilder = new StringBuilder();
-            var sports = ProductSportList[productId];
+
+            var isHasValue = ProductSportList.TryGetValue(productId, out var sports);
 
             foreach (var item in setting)
             {
-                if (sports.Contains(item.Id))
+                if (!isHasValue || sports.Contains(item.SportType))
                 {
-                    xmlElementBuilder.Append(string.Format(XMLElement, item.Id, item.BetType, item.MinBet, item.MaxBet, item.MaxPerMatch));
+                    xmlElementBuilder.Append(string.Format(XMLElement, item.SportType, item.BetType, item.MinBet, item.MaxBet, item.MaxPerMatch));
                 }
             }
+
 
             return string.Format(XMLPattern, xmlElementBuilder);
         }

@@ -54,7 +54,7 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Repositories
                             BetValueMin = reader.ToDecimal("minbetmin"),
                             MaxBet = reader.ToDecimal("maxbet"),
                             BetValueMax = reader.ToDecimal("maxbetmax"),
-                            Id = reader.ToString("sporttype"),
+                            SportType = reader.ToString("sporttype"),
                             BetType = reader.ToInt("bettype")
                         });
                     }
@@ -105,9 +105,9 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Repositories
 
             foreach (var item in setting)
             {
-                if (sports.Contains(item.Id))
+                if (sports.Contains(item.SportType))
                 {
-                    xmlElementBuilder.Append(string.Format(XMLElement, item.Id, item.BetType, item.MinBet, item.MaxBet));
+                    xmlElementBuilder.Append(string.Format(XMLElement, item.SportType, item.BetType, item.MinBet, item.MaxBet));
                 }
             }
 

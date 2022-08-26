@@ -2,7 +2,9 @@
 {
     public class PlayerBetLimit
     {
-        public string Id { get; set; }
+        public string Id => $"{SportType}_{BetType}";
+
+        public string SportType { get; set; }
 
         public int BetType { get; set; }
 
@@ -25,6 +27,10 @@
         public decimal MaxPerBall { get; set; }
 
         public decimal MaxPerBallMax { get; set; }
+
+        public decimal MaxPayoutPerMatch { get; set; }
+
+        public decimal MaxPayoutPerMatchMax { get; set; }
 
         public bool? IsEnable { get; set; }
     }

@@ -14,5 +14,13 @@
         public const int OtherSports = 99;
         public const int NumberGame = 161;
         public const int Keno = 202;
+        public const int SabaSoccer = 9901;
+        public const int SabaBasketBall = 9902;
+    }
+
+    public static class SportTypeExtend
+    {
+        public const string SoccerParlay = "1MP";
+        public const string MixSportsParlay = "99MP";
     }
 }
