@@ -11,6 +11,7 @@ namespace Fanex.Athena.PlayerAdmin.Core.Services
         string Username { get; }
         IReadOnlyDictionary<int, int[]> AgentList { get; }
         IReadOnlyDictionary<int, string> CurrencyList { get; }
+        string SiteDBServer { get; }
         bool IsAllowedCustomerComm { get; }
         bool IsEnableBA { get; }
         bool IsEnableSingleWallet { get; }

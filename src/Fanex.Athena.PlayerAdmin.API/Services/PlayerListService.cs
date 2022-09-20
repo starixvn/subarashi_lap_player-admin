@@ -26,7 +26,7 @@ namespace Fanex.Athena.PlayerAdmin.API.Services
 
         public async Task<PlayerListResultViewModel> Search(PlayerSearchingMetaModel metaModel)
         {
-            const string SpKey = "Lrf_CustomerSelByUsername";
+            const string SpKey = "Shard_Lrf_CustomerSelByUsername";
             var result = new PlayerListResultViewModel { DataList = new List<Player>() };
             if (metaModel.IsDeposited == 0)
             {
@@ -47,7 +47,7 @@ namespace Fanex.Athena.PlayerAdmin.API.Services
 
         public async Task<PlayerListResultViewModel> GetPlayerListById(PlayerListByIdMetaModel metaModel)
         {
-            const string SpKey = "Lrf_CustomerSelByCustid";
+            const string SpKey = "Shard_Lrf_CustomerSelByCustid";
             var result = new PlayerListResultViewModel();
 
             using (var objectDb = _dbFactory.GetObjectDb(SpKey))

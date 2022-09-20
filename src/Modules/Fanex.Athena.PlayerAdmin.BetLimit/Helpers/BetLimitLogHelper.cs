@@ -71,14 +71,13 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Helpers
 
         private static string GenSportIdForLog(string uSportId)
         {
-
             var splitParam = uSportId.Split('_');
             const int minParam = 2;
             var sportId = splitParam[0];
             if (splitParam.Count() >= minParam)
             {
                 var sportType = Convert.ToInt32(splitParam[0]);
-                var betType =  Convert.ToInt32(splitParam[1]);
+                var betType = Convert.ToInt32(splitParam[1]);
                 sportId = sportType.ToString();
                 if (betType == BetType.Parlay)
                 {
@@ -93,35 +92,60 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Helpers
             return sportId;
         }
 
+        private static bool IsMinBetActionDetail(int logDetailId, PlayerBetLimitMetaModel item)
+        {
+            return logDetailId == LogActionDetailId.UpdatingMinBet && item.MinBet != item.OldMinBet;
+        }
+
+        private static bool IsMaxBetActionDetail(int logDetailId, PlayerBetLimitMetaModel item)
+        {
+            return logDetailId == LogActionDetailId.UpdatingMaxBet && item.MaxBet != item.OldMaxBet;
+        }
+
+        private static bool IsMaxPerMatchActionDetail(int logDetailId, PlayerBetLimitMetaModel item)
+        {
+            return (logDetailId == LogActionDetailId.UpdatingMaxPerMatch
+                || logDetailId == LogActionDetailId.UpdatingMaxBetPerDraw)
+                && item.MaxPerMatch != item.OldMaxPerMatch;
+        }
+
+        private static bool IsMaxPerBallActionDetail(int logDetailId, PlayerBetLimitMetaModel item)
+        {
+            return logDetailId == LogActionDetailId.UpdatingMaxPerBall && item.MaxPerBall != item.OldMaxPerBall;
+        }
+
+        public static bool IsMaxPayoutPerMatch(int logDetailId, PlayerBetLimitMetaModel item)
+        {
+            return logDetailId == LogActionDetailId.UpdatingMaxPayoutPerMatch && item.MaxPayoutPerMatch != item.OldMaxPayoutPerMatch;
+        }
+
         private static PlayerBetLimitDetailedLog CreateLogDetailItemByAction(
             int logDetailId,
             string sportId,
             string status,
             PlayerBetLimitMetaModel item)
         {
-            if (logDetailId == LogActionDetailId.UpdatingMinBet && item.MinBet != item.OldMinBet)
+            if (IsMinBetActionDetail(logDetailId, item))
             {
                 return CreateLogDetailItem(logDetailId, sportId, status, item.OldMinBet, item.MinBet);
             }
 
-            if (logDetailId == LogActionDetailId.UpdatingMaxBet && item.MaxBet != item.OldMaxBet)
+            if (IsMaxBetActionDetail(logDetailId, item))
             {
                 return CreateLogDetailItem(logDetailId, sportId, status, item.OldMaxBet, item.MaxBet);
             }
 
-            if ((logDetailId == LogActionDetailId.UpdatingMaxPerMatch
-                || logDetailId == LogActionDetailId.UpdatingMaxBetPerDraw)
-                && item.MaxPerMatch != item.OldMaxPerMatch)
+            if (IsMaxPerMatchActionDetail(logDetailId, item))
             {
                 return CreateLogDetailItem(logDetailId, sportId, status, item.OldMaxPerMatch, item.MaxPerMatch);
             }
 
-            if (logDetailId == LogActionDetailId.UpdatingMaxPerBall && item.MaxPerBall != item.OldMaxPerBall)
+            if (IsMaxPerBallActionDetail(logDetailId, item))
             {
                 return CreateLogDetailItem(logDetailId, sportId, status, item.OldMaxPerBall, item.MaxPerBall);
             }
 
-            if (logDetailId == LogActionDetailId.UpdatingMaxPayoutPerMatch && item.MaxPayoutPerMatch != item.OldMaxPayoutPerMatch)
+            if (IsMaxPayoutPerMatch(logDetailId, item))
             {
                 return CreateLogDetailItem(logDetailId, sportId, status, item.OldMaxPayoutPerMatch, item.MaxPayoutPerMatch);
             }
