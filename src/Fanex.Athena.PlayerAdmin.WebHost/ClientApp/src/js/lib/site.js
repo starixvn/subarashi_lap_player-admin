@@ -50,4 +50,8 @@ export default class Site {
     static getRootUrl() {
         return _rootUrl;
     }
+
+    static getPageLanguage(){
+        return window.PageLanguage;
+    }
 }

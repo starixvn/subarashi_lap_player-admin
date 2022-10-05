@@ -1,15 +1,12 @@
-﻿using Fanex.Athena.PlayerAdmin.Core.Attributes;
-using Fanex.Athena.PlayerAdmin.Core.Services;
+﻿using Fanex.Athena.PlayerAdmin.Core.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Globalization;
 
 namespace Fanex.Athena.PlayerAdmin.MVC.Controllers
 {
-    [CookieAuthorize]
+
+    [AllowAnonymous]
     public class UserGuideController : Controller
     {
         private readonly IContextService _contextService;
@@ -19,9 +16,11 @@ namespace Fanex.Athena.PlayerAdmin.MVC.Controllers
         }
 
         [HttpGet]
-        [Route("UserGuide/Document/{name}")]
-        public ActionResult Index(string name)
+        [Route("UserGuide/Document/{name}/{culture}")]
+        public ActionResult Index(string name, string culture)
         {
+            CultureInfo.CurrentCulture = new CultureInfo(culture, true);
+            CultureInfo.CurrentUICulture = new CultureInfo(culture, true);
             return View(name as object);
         }
     }

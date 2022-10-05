@@ -31,7 +31,7 @@
                     Parlay Max Payout Per Match: The system accumulates the max payout of all running parlay tickets and uses it together with the setting value to calculate the next
                     ticket max bet. The max bet calculation is different between Single Match Parlay and Mix/Combo Parlay.
                 </p>
-                <ul >
+                <ul>
                     <li>
                         <b>Single Match Parlay:</b> Max Bet = (Parlay Max Payout Per Match Setting - Accumulated Max Payout of the same match) / Odds
                         <div class='note'>Note: Single Match Parlay does not count Mix/Combo Parlay ticket</div>
@@ -53,29 +53,7 @@
                         <tr>
                             <th>Bet types that do not apply Max Payout setting</th>
                         </tr>
-                        <tr><td>Handicap</td></tr>
-                        <tr><td>Over/Under</td></tr>
-                        <tr><td>1X2</td></tr>
-                        <tr><td>1H Handicap</td></tr>
-                        <tr><td>1H Over/Under</td></tr>
-                        <tr><td>1H 1X2</td></tr>
-                        <tr><td>Moneyline</td></tr>
-                        <tr><td>1H Moneyline</td></tr>
-                        <tr><td>Game Handicap</td></tr>
-                        <tr><td>Match Winner</td></tr>
-                        <tr><td>Quarter X Handicap</td></tr>
-                        <tr><td>Quarter X Over/Under</td></tr>
-                        <tr><td>Quarter X Moneyline</td></tr>
-                        <tr><td>Match Handicap</td></tr>
-                        <tr><td>Match Point Handicap</td></tr>
-                        <tr><td>Match Point Over/Under</td></tr>
-                        <tr><td>Super Over Winner</td></tr>
-                        <tr><td>Home Inns Runs</td></tr>
-                        <tr><td>Away Inns Runs</td></tr>
-                        <tr><td>Home 1st Inns Runs</td></tr>
-                        <tr><td>Away 1st Inns Runs</td></tr>
-                        <tr><td>Home 2nd Inns Runs</td></tr>
-                        <tr><td>Away 2nd Inns Runs</td></tr>
+                        @Html.Partial("bettype-table.cshtml")
                     </table>
                 </div>
 

@@ -7,7 +7,8 @@ import Site from '@jsroot/lib/site';
 const NGSettingGrid = (props) => {
     const { setting, data, onChange } = props;
     const setInputRef = props.setInputRef;
-    const actionLink = "UserGuide/Document/MaxPayoutPerMatch";
+    const lang = Site.getPageLanguage();
+    const actionLink = `UserGuide/Document/MaxPayoutPerMatch/${lang}`;
     const url = Site.resolveClientUrl(actionLink);
 
     const onInputChange = (type, id, value) => {
