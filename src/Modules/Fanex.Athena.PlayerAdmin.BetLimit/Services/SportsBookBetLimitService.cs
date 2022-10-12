@@ -84,8 +84,8 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Services
         private readonly IDictionary<string, int> BetLimitOrderer = new Dictionary<string, int>
         {
             {$"{SportType.Soccer}_{BetType.DefaultBetType}", 0 },
-            {$"{SportType.Soccer}_{BetType.Parlay}", 1 },
-            {$"{SportType.SabaSoccer}_{BetType.DefaultBetType}", 2 },
+            {$"{SportType.SabaSoccer}_{BetType.DefaultBetType}", 1 },
+            {$"{SportType.Soccer}_{BetType.Parlay}", 2 },
             {$"{SportType.Esports}_{BetType.DefaultBetType}", 3 },
             {$"{SportType.BasketBall}_{BetType.DefaultBetType}", 4 },
             {$"{SportType.SabaBasketBall}_{BetType.DefaultBetType}", 5 },
@@ -93,9 +93,11 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Services
             {$"{SportType.Tennis}_{BetType.DefaultBetType}", 7 },
             {$"{SportType.BaseBall}_{BetType.DefaultBetType}", 8 },
             {$"{SportType.Golf}_{BetType.DefaultBetType}", 9 },
-            {$"{SportType.Motorsports}_{BetType.DefaultBetType}", 10 },
-            {$"{SportType.OtherSports}_{BetType.DefaultBetType}", 11 },
-            {$"{SportType.OtherSports}_{BetType.Parlay}", 12 },
+            {$"{SportType.Cricket}_{BetType.DefaultBetType}", 10 },
+            {$"{SportType.SabaCricket}_{BetType.DefaultBetType}", 11 },
+            {$"{SportType.Motorsports}_{BetType.DefaultBetType}", 12 },
+            {$"{SportType.OtherSports}_{BetType.DefaultBetType}", 13 },
+            {$"{SportType.OtherSports}_{BetType.Parlay}", 14 },
         };
 
         public int Compare(PlayerBetLimit x, PlayerBetLimit y)

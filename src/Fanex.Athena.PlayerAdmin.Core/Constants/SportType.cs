@@ -10,12 +10,14 @@
         public const int BaseBall = 8;
         public const int Golf = 10;
         public const int Motorsports = 11;
+        public const int Cricket = 50;
         public const int Esports = 43;
         public const int OtherSports = 99;
         public const int NumberGame = 161;
         public const int Keno = 202;
         public const int SabaSoccer = 9901;
         public const int SabaBasketBall = 9902;
+        public const int SabaCricket = 9907;
     }
 
     public static class SportTypeExtend
