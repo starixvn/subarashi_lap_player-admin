@@ -6,5 +6,7 @@
     { value: -5, text: 'CNY' },
     { value: -6, text: 'THB' },
     { value: -7, text: 'IDR' },
-    { value: -8, text: 'INH' }
+    { value: -8, text: 'INH' },
+    //crypto currencies
+    { value: -99, text: 'USDT' }
 ]
