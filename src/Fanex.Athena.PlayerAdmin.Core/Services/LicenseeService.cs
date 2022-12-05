@@ -180,7 +180,7 @@ namespace Fanex.Athena.PlayerAdmin.Core.Services
                         allowedProducts.Add(new Product
                         {
                             ProductID = Convert.ToInt32(reader["ProductID"]),
-                            ProductName = Convert.ToString(reader["productprefix"]), //DataHelper.GetProductName(Convert.ToString(reader["productprefix"])),
+                            ProductName = Convert.ToString(reader["productprefix"]),
                             ProductCode = Convert.ToString(reader["productprefix"]),
                             AllowCommission = Convert.ToBoolean(reader["comm"]),
                             AllowWinloss = Convert.ToBoolean(reader["winloss"]),
