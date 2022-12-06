@@ -27,6 +27,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.Athena.PlayerAdmin.Co
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.Athena.PlayerAdmin.UnitTest.Common", "test\Fanex.Athena.PlayerAdmin.UnitTest.Common\Fanex.Athena.PlayerAdmin.UnitTest.Common.csproj", "{5831B9E8-1837-4102-8A5B-32182F89DDE7}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".config", ".config", "{3B48F284-5496-4D33-9F32-66EEABF5C677}"
+	ProjectSection(SolutionItems) = preProject
+		.gitlab-ci.yml = .gitlab-ci.yml
+		NuGet.Config = NuGet.Config
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

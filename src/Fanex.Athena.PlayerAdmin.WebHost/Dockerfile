@@ -17,6 +17,7 @@ RUN npm install
 WORKDIR /src
 
 COPY NuGet.Config .
+RUN dotnet nuget add source http://nuget.nexdev.net/api/v2
 
 COPY src/Fanex.Athena.PlayerAdmin.Core/Fanex.Athena.PlayerAdmin.Core.csproj ./Fanex.Athena.PlayerAdmin.Core/
 RUN dotnet restore Fanex.Athena.PlayerAdmin.Core/Fanex.Athena.PlayerAdmin.Core.csproj -v n
