@@ -5,7 +5,6 @@
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <DockerfileContext>..\..</DockerfileContext>
     <CodeAnalysisRuleSet>..\..\.sonarlint\lap_playeradmincsharp.ruleset</CodeAnalysisRuleSet>
-    <SonarQubeExclude>True</SonarQubeExclude>
   </PropertyGroup>
 
   <ItemGroup>
@@ -98,5 +97,10 @@
     <None Update="App_Data\SpConfig\FanexSpName.LOCAL.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <SonarQubeSetting Include="sonar.coverage.exclusions">
+      <Value>**/Startup.cs, **/Program.cs</Value>
+    </SonarQubeSetting>
   </ItemGroup>
 </Project>

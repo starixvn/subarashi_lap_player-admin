@@ -1,1 +1,24 @@
-{"sonar.exclusions":["**/*.jsx"],"sonar.global.exclusions":["**/*GlobalSuppressions.cs","**/*AssemblyInfo.cs","**/*.generated.cs","**/*.native.*","**/Global.asax.cs","**/node_modules/**","**/bower_components/**","**/*.js","**/*.html","**/*.css","**/*.scss"],"sonar.inclusions":[]}
+{
+  "sonar.exclusions": [
+    "**/*.jsx"
+  ],
+  "sonar.global.exclusions": [
+    "**/*GlobalSuppressions.cs",
+    "**/*AssemblyInfo.cs",
+    "**/*.generated.cs",
+    "**/*.native.*",
+    "**/Global.asax.cs",
+    "**/node_modules/**",
+    "**/bower_components/**",
+    "**/*.js",
+    "**/*.html",
+    "**/*.css",
+    "**/*.scss"
+  ],
+  "sonar.inclusions": [
+  ],
+  "sonar.coverage.exclusions": [
+    "**/Program.cs",
+    "**/Startup.cs"
+  ]
+}

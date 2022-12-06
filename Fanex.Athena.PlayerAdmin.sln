@@ -33,6 +33,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".config", ".config", "{3B48
 		NuGet.Config = NuGet.Config
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".sonarlint", ".sonarlint", "{9E996AA8-7F54-4C32-BF3A-AE6B77454877}"
+	ProjectSection(SolutionItems) = preProject
+		.sonarlint\Fanex.Athena.PlayerAdmin.slconfig = .sonarlint\Fanex.Athena.PlayerAdmin.slconfig
+		.sonarlint\sonar.settings.json = .sonarlint\sonar.settings.json
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
