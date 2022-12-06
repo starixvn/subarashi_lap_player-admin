@@ -2,10 +2,8 @@
 using Fanex.Athena.PlayerAdmin.BetLimit.MetaModel;
 using Fanex.Athena.PlayerAdmin.BetLimit.Repositories.Interfaces;
 using Fanex.Athena.PlayerAdmin.Core.Constants;
-using Fanex.Athena.PlayerAdmin.Core.Extensions;
 using Fanex.Athena.PlayerAdmin.Core.Models;
 using Fanex.Athena.PlayerAdmin.Core.Repositories;
-using Fanex.Data;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -16,7 +14,7 @@ using System.Xml.Linq;
 
 namespace Fanex.Athena.PlayerAdmin.BetLimit.Repositories
 {
-    public class NewDcsBetLimitRepository : INewDcsBetLimitRepository
+    public class NewDcsBetLimitRepository : DCSBetLimitRepositoryBase, INewDcsBetLimitRepository
     {
         private readonly IDbFactory _db;
 
@@ -36,32 +34,23 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Repositories
         public async Task<IEnumerable<PlayerBetLimit>> GetSettingAsync(int custId, int productId)
         {
             const string UspName = "Acc_Dep_CustSetting_NewBetLimitSettingSelect";
-
-            var dataList = new List<PlayerBetLimit>();
-
             using (var db = _db.GetObjectDb(UspName))
             {
+                var dataList = new List<PlayerBetLimit>();
+
                 db.SetParameterValue("custid", custId);
                 db.SetParameterValue("productid", productId);
-
                 using (var reader = await db.ExecuteReaderAsync())
                 {
                     while (reader.Read())
                     {
-                        dataList.Add(new PlayerBetLimit
-                        {
-                            MinBet = reader.ToDecimal("minbet"),
-                            BetValueMin = reader.ToDecimal("minbetmin"),
-                            MaxBet = reader.ToDecimal("maxbet"),
-                            BetValueMax = reader.ToDecimal("maxbetmax"),
-                            SportType = reader.ToString("sporttype"),
-                            BetType = reader.ToInt("bettype")
-                        });
+                        var playerBetLimit = new PlayerBetLimit();
+                        ReadCommonField(reader, playerBetLimit);
+                        dataList.Add(playerBetLimit);
                     }
                 }
+                return dataList;
             }
-
-            return dataList;
         }
 
         public async Task<IResultInfo> UpdateSettingAsync(PlayerBetLimitUpdateMetaModel<IEnumerable<PlayerBetLimitMetaModel>> metaModel)
@@ -72,30 +61,12 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Repositories
             {
                 AddUpdateParameter(db, metaModel);
 
-                await db.ExecuteNonQueryAsync().ConfigureAwait(false);
-
-                var errorCode = db.GetParameterValue("ErrCode");
-                var errorMessage = db.GetParameterValue("ErrMsg");
-
-                return new ResultInfo
-                {
-                    Code = Converter.ToInt(errorCode),
-                    Message = GetErrorMessage(Converter.ToString(errorMessage))
-                };
+                await db.ExecuteNonQueryAsync();
+                return GetActionResult(db);
             }
         }
 
-        private static void AddUpdateParameter(IObjectDb db, PlayerBetLimitUpdateMetaModel<IEnumerable<PlayerBetLimitMetaModel>> metaModel)
-        {
-            db.SetParameterValue("custid", metaModel.CustId);
-            db.SetParameterValue("userid", metaModel.UserId);
-            db.SetParameterValue("ip", metaModel.Ip);
-            db.SetParameterValue("betlimit", BuildBetLimitParameter(metaModel.ProductId, metaModel.Setting));
-            db.SetParameterValue("errcode", null);
-            db.SetParameterValue("errmsg", null);
-        }
-
-        private static string BuildBetLimitParameter(int productId, IEnumerable<PlayerBetLimitMetaModel> setting)
+        protected override string BuildBetLimitParameter(int productId, IEnumerable<PlayerBetLimitMetaModel> setting)
         {
             const string XMLPattern = "<ROOT>{0}</ROOT>";
             const string XMLElement = "<BetLimit SportType=\"{0}\" BetType=\"{1}\" MinBet=\"{2}\" MaxBet=\"{3}\" ></BetLimit>";
@@ -114,7 +85,7 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Repositories
             return string.Format(XMLPattern, xmlElementBuilder);
         }
 
-        private string GetErrorMessage(string xmlErrorMessage)
+        protected override string GetErrorMessage(string xmlErrorMessage)
         {
             if (!string.IsNullOrEmpty(xmlErrorMessage) && xmlErrorMessage.StartsWith("<"))
             {

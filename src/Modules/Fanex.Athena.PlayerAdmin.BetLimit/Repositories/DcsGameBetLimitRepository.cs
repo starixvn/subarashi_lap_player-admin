@@ -5,18 +5,17 @@ using Fanex.Athena.PlayerAdmin.Core.Constants;
 using Fanex.Athena.PlayerAdmin.Core.Extensions;
 using Fanex.Athena.PlayerAdmin.Core.Models;
 using Fanex.Athena.PlayerAdmin.Core.Repositories;
-using Fanex.Data;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Data;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
 namespace Fanex.Athena.PlayerAdmin.BetLimit.Repositories
 {
-    public class DcsGameBetLimitRepository : IDcsGameBetLimitRepository
+    public class DcsGameBetLimitRepository : DCSBetLimitRepositoryBase, IDcsGameBetLimitRepository
     {
         private readonly IDbFactory _db;
 
@@ -51,25 +50,12 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Repositories
                 {
                     while (reader.Read())
                     {
-                        dataList.Add(new PlayerBetLimit
-                        {
-                            MinBet = reader.ToDecimal("minbet"),
-                            BetValueMin = reader.ToDecimal("minbetmin"),
-                            MaxBet = reader.ToDecimal("maxbet"),
-                            BetValueMax = reader.ToDecimal("maxbetmax"),
-                            MaxPerMatch = reader.ToDecimal("maxpermatch"),
-                            MaxPerMatchMax = reader.ToDecimal("maxpermatchmax"),
-                            MaxPayoutPerMatch = reader.ToDecimal("maxpayoutpermatch"),
-                            MaxPayoutPerMatchMax = reader.ToDecimal("maxpayoutpermatchmax"),
-                            MaxPerBall = reader.ToDecimal("maxpernumber"),
-                            MaxPerBallMax = reader.ToDecimal("maxpernumbermax"),
-                            SportType = reader.ToString("sporttype"),
-                            BetType = reader.ToInt("bettype")
-                        });
+                        var playerBetLimit = new PlayerBetLimit();
+                        ReadCommonField(reader, playerBetLimit);
+                        ReadDCSGameField(reader, playerBetLimit);
                     }
                 }
             }
-
             return dataList;
         }
 
@@ -82,41 +68,22 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Repositories
                 AddUpdateParameter(db, metaModel);
 
                 await db.ExecuteNonQueryAsync().ConfigureAwait(false);
-
-                var errorCode = db.GetParameterValue("ErrCode");
-                var errorMessage = db.GetParameterValue("ErrMsg");
-
-                return new ResultInfo
-                {
-                    Code = Converter.ToInt(errorCode),
-                    Message = GetErrorMessage(Converter.ToString(errorMessage))
-                };
+                return GetActionResult(db);
             }
         }
 
-        private static void AddUpdateParameter(IObjectDb db, PlayerBetLimitUpdateMetaModel<IEnumerable<PlayerBetLimitMetaModel>> metaModel)
-        {
-            db.SetParameterValue("custid", metaModel.CustId);
-            db.SetParameterValue("userid", metaModel.UserId);
-            db.SetParameterValue("ip", metaModel.Ip);
-            db.SetParameterValue("betlimit", BuildBetLimitParameter(metaModel.ProductId, metaModel.Setting));
-            db.SetParameterValue("errcode", null);
-            db.SetParameterValue("errmsg", null);
-        }
-
-        private static string BuildBetLimitParameter(int productId, IEnumerable<PlayerBetLimitMetaModel> setting)
+        protected override string BuildBetLimitParameter(int productId, IEnumerable<PlayerBetLimitMetaModel> setting)
         {
             const string XMLPattern = "<ROOT>{0}</ROOT>";
-            string XMLElement = productId switch
-            {
-                ProductTypes.Sportsbook => "<BetLimit SportType=\"{0}\" BetType=\"{1}\" MinBet=\"{2}\" MaxBet=\"{3}\" MaxPerMatch=\"{4}\" MaxPayoutPerMatch=\"{5}\"></BetLimit>",
-                _ => "<BetLimit SportType=\"{0}\" BetType=\"{1}\" MinBet=\"{2}\" MaxBet=\"{3}\" MaxPerMatch=\"{4}\" MaxPerNumber=\"{5}\"></BetLimit>",
-            };
+            string XMLElement = productId == ProductTypes.Sportsbook
+                ? "<BetLimit SportType=\"{0}\" BetType=\"{1}\" MinBet=\"{2}\" MaxBet=\"{3}\" MaxPerMatch=\"{4}\" MaxPayoutPerMatch=\"{5}\"></BetLimit>"
+                : "<BetLimit SportType=\"{0}\" BetType=\"{1}\" MinBet=\"{2}\" MaxBet=\"{3}\" MaxPerMatch=\"{4}\" MaxPerNumber=\"{5}\"></BetLimit>";
+
             var xmlElementBuilder = new StringBuilder();
             foreach (var item in setting)
             {
-                xmlElementBuilder.Append(productId == ProductTypes.Sportsbook 
-                    ? string.Format(XMLElement, item.SportType, item.BetType, item.MinBet, item.MaxBet, item.MaxPerMatch, item.MaxPayoutPerMatch) 
+                xmlElementBuilder.Append(productId == ProductTypes.Sportsbook
+                    ? string.Format(XMLElement, item.SportType, item.BetType, item.MinBet, item.MaxBet, item.MaxPerMatch, item.MaxPayoutPerMatch)
                     : string.Format(XMLElement, item.SportType, item.BetType, item.MinBet, item.MaxBet, item.MaxPerMatch, item.MaxPerBall)
                 );
             }
@@ -124,7 +91,7 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Repositories
             return string.Format(XMLPattern, xmlElementBuilder);
         }
 
-        private string GetErrorMessage(string xmlErrorMessage)
+        protected override string GetErrorMessage(string xmlErrorMessage)
         {
             if (!string.IsNullOrEmpty(xmlErrorMessage) && xmlErrorMessage.StartsWith("<"))
             {
@@ -140,6 +107,15 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Repositories
             }
 
             return xmlErrorMessage;
+        }
+        private static void ReadDCSGameField(IDataReader reader, PlayerBetLimit playerBetLimit)
+        {
+            playerBetLimit.MaxPerMatch = reader.ToDecimal("maxpermatch");
+            playerBetLimit.MaxPerMatchMax = reader.ToDecimal("maxpermatchmax");
+            playerBetLimit.MaxPayoutPerMatch = reader.ToDecimal("maxpayoutpermatch");
+            playerBetLimit.MaxPayoutPerMatchMax = reader.ToDecimal("maxpayoutpermatchmax");
+            playerBetLimit.MaxPerBall = reader.ToDecimal("maxpernumber");
+            playerBetLimit.MaxPerBallMax = reader.ToDecimal("maxpernumbermax");
         }
     }
 }

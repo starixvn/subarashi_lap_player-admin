@@ -54,6 +54,17 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Controllers
         [ValidateAntiForgeryToken]
         [CookieAuthorize(Roles.SuperAdmin, Roles.BetLimit_Write)]
         [AutoBindingMetaModel(bindClientIP: true, bindLanguage: true, bindSiteName: true, bindUserId: true)]
+        public async Task<JsonResult> UpdateStatus([FromBody] PlayerBetLimitUpdateStatusMetaModel metaModel)
+        {
+            var result = await _service.UpdateStatusAsync(metaModel);
+            result.Message = result.Code == 0 ? ViewResources.UpdateSuccess : result.Message;
+            return Json(result);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [CookieAuthorize(Roles.SuperAdmin, Roles.BetLimit_Write)]
+        [AutoBindingMetaModel(bindClientIP: true, bindLanguage: true, bindSiteName: true, bindUserId: true)]
         public async Task<JsonResult> UpdateSetting([FromBody] PlayerBetLimitUpdateMetaModel<AgCasinoBetLimitMetaModel> metaModel)
         {
             var setting = await _service.GetBetSettingAsync(metaModel.CustId);
@@ -68,15 +79,5 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Controllers
             return Json(result);
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        [CookieAuthorize(Roles.SuperAdmin, Roles.BetLimit_Write)]
-        [AutoBindingMetaModel(bindClientIP: true, bindLanguage: true, bindSiteName: true, bindUserId: true)]
-        public async Task<JsonResult> UpdateStatus([FromBody] PlayerBetLimitUpdateStatusMetaModel metaModel)
-        {
-            var result = await _service.UpdateStatusAsync(metaModel);
-            result.Message = result.Code == 0 ? ViewResources.UpdateSuccess : result.Message;
-            return Json(result);
-        }
     }
 }

@@ -5,7 +5,6 @@ using Fanex.Athena.PlayerAdmin.Core.Constants;
 using Fanex.Athena.PlayerAdmin.Core.Extensions;
 using Fanex.Athena.PlayerAdmin.Core.Models;
 using Fanex.Athena.PlayerAdmin.Core.Repositories;
-using Fanex.Data;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -16,7 +15,7 @@ using System.Xml.Linq;
 
 namespace Fanex.Athena.PlayerAdmin.BetLimit.Repositories
 {
-    public class DcsBetLimitRepository : IDcsBetLimitRepository
+    public class DcsBetLimitRepository : DCSBetLimitRepositoryBase, IDcsBetLimitRepository
     {
         private readonly IDbFactory _db;
 
@@ -26,7 +25,7 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Repositories
 
         private const int ProductStatusSettingType = 4;
 
-        private static readonly IDictionary<int, string[]> ProductSportList = new Dictionary<int, string[]>
+        private static readonly IReadOnlyDictionary<int, string[]> ProductSportList = new Dictionary<int, string[]>
         {
             [ProductTypes.VirtualSports] = new[] { "180", "181", "182", "183", "184", "185", "186" },
             [ProductTypes.VirtualSports2] = new[] { "190", "191", "192", "193", "199" },
@@ -42,66 +41,35 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Repositories
 
         private const string UpdateStatusXmlFormat = "<ROOT><ProductStatus SportType=\"{0}\" BetType=\"{1}\" IsDisabled=\"{2}\" IsDisabledDownline=\"0\" /></ROOT>";
 
-        private static readonly IDictionary<int, int> ProductSportTypeMap = new Dictionary<int, int>
+        private static readonly IReadOnlyDictionary<int, (int SportType, int BetType)> ProductMaping = new Dictionary<int, (int,int)>
         {
-            { ProductTypes.CG, 167 },
-            { ProductTypes.Exchange, 221 },
-            { ProductTypes.SLT, 169 },
-            { ProductTypes.I4D, 223 },
-            { ProductTypes.AllBet, 211 },
-            { ProductTypes.Voidbridge, 212 },
-            { ProductTypes.PP, 248 },
-            { ProductTypes.SXG, 243 },
-            { ProductTypes.HB, 238 },
-            { ProductTypes.JK, 234 },
-            { ProductTypes.SAG, 244 },
-            { ProductTypes.PGS, 232 },
-            { ProductTypes.WM, 233 },
-            { ProductTypes.SG, 247 },
-            { ProductTypes.VRG, 245 },
-            { ProductTypes.CC, 165 },
-            { ProductTypes.SBC, 200 },
-            { ProductTypes.Lottery, 220 },
-            { ProductTypes.TG, 222 },
-            { ProductTypes.VGA, 171 },
-            { ProductTypes.AP, 172 },
-            { ProductTypes.APM, 174 },
-            { ProductTypes.SabaCasino, 208 },
-            { ProductTypes.BTC, 175 },
-            { ProductTypes.FGGL, 176 },
-            { ProductTypes.MXG, 237 },
-            { ProductTypes.JIG, 158 }
-        };
-
-        private static readonly IDictionary<int, int> ProductBetTypeMap = new Dictionary<int, int>
-        {
-            { ProductTypes.CG, 7301 },
-            { ProductTypes.Exchange, 8001 },
-            { ProductTypes.SLT, 3611 },
-            { ProductTypes.I4D, 5001 },
-            { ProductTypes.AllBet, 2401 },
-            { ProductTypes.Voidbridge, 4001 },
-            { ProductTypes.PP, 4101 },
-            { ProductTypes.SXG, 3101 },
-            { ProductTypes.HB, 7001 },
-            { ProductTypes.JK, 6401 },
-            { ProductTypes.SAG, 3001 },
-            { ProductTypes.PGS, 6001 },
-            { ProductTypes.WM, 3401 },
-            { ProductTypes.SG, 4301 },
-            { ProductTypes.VRG, 4601 },
-            { ProductTypes.CC, 1901 },
-            { ProductTypes.SBC, 1611 },
-            { ProductTypes.Lottery, 1021 },
-            { ProductTypes.TG, 4901 },
-            { ProductTypes.VGA, 3801 },
-            { ProductTypes.AP, 7701 },
-            { ProductTypes.APM, 7801 },
-            { ProductTypes.SabaCasino, 2101 },
-            { ProductTypes.BTC, 7901 },
-            { ProductTypes.FGGL, 8201 },
-            { ProductTypes.MXG, 5401 },
-            { ProductTypes.JIG, 5100 }
+            { ProductTypes.CG, (167, 7301) },
+            { ProductTypes.Exchange, (221, 8001) },
+            { ProductTypes.SLT, (169, 3611) },
+            { ProductTypes.I4D, (223, 5001) },
+            { ProductTypes.AllBet, (211, 2401) },
+            { ProductTypes.Voidbridge, (212, 4001) },
+            { ProductTypes.PP, (248, 4101) },
+            { ProductTypes.SXG, (243, 3101) },
+            { ProductTypes.HB, (238, 7001) },
+            { ProductTypes.JK, (234, 6401) },
+            { ProductTypes.SAG, (244, 3001) },
+            { ProductTypes.PGS, (232, 6001) },
+            { ProductTypes.WM, (233, 3401) },
+            { ProductTypes.SG, (247, 4301) },
+            { ProductTypes.VRG, (245, 4601) },
+            { ProductTypes.CC, (165, 1901) },
+            { ProductTypes.SBC, (200, 1611) },
+            { ProductTypes.Lottery, (220, 1021) },
+            { ProductTypes.TG, (222, 4901) },
+            { ProductTypes.VGA, (171, 3801) },
+            { ProductTypes.AP, (172, 7701) },
+            { ProductTypes.APM, (174, 7801) },
+            { ProductTypes.SabaCasino, (208, 2101) },
+            { ProductTypes.BTC, (175, 7901) },
+            { ProductTypes.FGGL, (176, 8201) },
+            { ProductTypes.MXG, (237, 5401) },
+            { ProductTypes.JIG, (158, 5100 }
         };
 
         public DcsBetLimitRepository(IDbFactory dbFactory, ILogger<DcsBetLimitRepository> logger)
@@ -113,29 +81,20 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Repositories
         public async Task<IEnumerable<PlayerBetLimit>> GetSettingAsync(int custId, int productId)
         {
             const string UspName = "Acc_Dep_CustSetting_BetLimitSettingSelect";
-
             var dataList = new List<PlayerBetLimit>();
-
             using (var db = _db.GetObjectDb(UspName))
             {
                 db.SetParameterValue("custid", custId);
                 db.SetParameterValue("productid", productId);
-
                 using (var reader = await db.ExecuteReaderAsync())
                 {
                     while (reader.Read())
                     {
-                        dataList.Add(new PlayerBetLimit
-                        {
-                            MinBet = reader.ToDecimal("minbet"),
-                            BetValueMin = reader.ToDecimal("minbetmin"),
-                            MaxBet = reader.ToDecimal("maxbet"),
-                            BetValueMax = reader.ToDecimal("maxbetmax"),
-                            MaxPerMatch = reader.ToDecimal("maxpermatch"),
-                            MaxPerMatchMax = reader.ToDecimal("maxpermatchmax"),
-                            SportType = reader.ToString("sporttype"),
-                            BetType = reader.ToInt("bettype")
-                        });
+                        var playerBetLimit = new PlayerBetLimit();
+                        ReadCommonField(reader, playerBetLimit);
+                        playerBetLimit.MaxPerMatch = reader.ToDecimal("maxpermatch");
+                        playerBetLimit.MaxPerMatchMax = reader.ToDecimal("maxpermatchmax");
+                        dataList.Add(playerBetLimit);
                     }
                 }
             }
@@ -150,17 +109,8 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Repositories
             using (var db = _db.GetObjectDb(UspName))
             {
                 AddUpdateParameter(db, metaModel);
-
                 await db.ExecuteNonQueryAsync().ConfigureAwait(false);
-
-                var errorCode = db.GetParameterValue("ErrCode");
-                var errorMessage = db.GetParameterValue("ErrMsg");
-
-                return new ResultInfo
-                {
-                    Code = Converter.ToInt(errorCode),
-                    Message = GetErrorMessage(Converter.ToString(errorMessage))
-                };
+                return GetActionResult(db);
             }
         }
 
@@ -202,28 +152,11 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Repositories
 
                 await db.ExecuteNonQueryAsync();
 
-                var errorCode = db.GetParameterValue("ErrCode");
-                var errorMessage = db.GetParameterValue("ErrMsg");
-
-                return new ResultInfo
-                {
-                    Code = Converter.ToInt(errorCode),
-                    Message = GetErrorMessage(Converter.ToString(errorMessage))
-                };
+                return GetActionResult(db);
             }
         }
 
-        private static void AddUpdateParameter(IObjectDb db, PlayerBetLimitUpdateMetaModel<IEnumerable<PlayerBetLimitMetaModel>> metaModel)
-        {
-            db.SetParameterValue("custid", metaModel.CustId);
-            db.SetParameterValue("userid", metaModel.UserId);
-            db.SetParameterValue("ip", metaModel.Ip);
-            db.SetParameterValue("betlimit", BuildBetLimitParameter(metaModel.ProductId, metaModel.Setting));
-            db.SetParameterValue("errcode", null);
-            db.SetParameterValue("errmsg", null);
-        }
-
-        private static string BuildBetLimitParameter(int productId, IEnumerable<PlayerBetLimitMetaModel> setting)
+        protected override string BuildBetLimitParameter(int productId, IEnumerable<PlayerBetLimitMetaModel> setting)
         {
             const string XMLPattern = "<ROOT>{0}</ROOT>";
             const string XMLElement = "<BetLimit SportType=\"{0}\" BetType=\"{1}\" MinBet=\"{2}\" MaxBet=\"{3}\" MaxPerMatch=\"{4}\" ></BetLimit>";
@@ -243,7 +176,7 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Repositories
             return string.Format(XMLPattern, xmlElementBuilder);
         }
 
-        private string GetErrorMessage(string xmlErrorMessage)
+        protected override string GetErrorMessage(string xmlErrorMessage)
         {
             if (!string.IsNullOrEmpty(xmlErrorMessage) && xmlErrorMessage.StartsWith("<"))
             {
@@ -262,6 +195,6 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Repositories
         }
 
         private static string BuildProductStatusXml(int productId, bool status)
-           => string.Format(UpdateStatusXmlFormat, ProductSportTypeMap[productId], ProductBetTypeMap[productId], status ? 0 : 1);
+           => string.Format(UpdateStatusXmlFormat, ProductMaping[productId].SportType, ProductMaping[productId].BetType, status ? 0 : 1);
     }
 }

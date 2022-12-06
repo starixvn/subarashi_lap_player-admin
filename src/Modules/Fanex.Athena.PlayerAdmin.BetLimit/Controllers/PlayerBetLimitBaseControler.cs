@@ -4,7 +4,6 @@ using Fanex.Athena.PlayerAdmin.Core.Services;
 using Fanex.Athena.PlayerAdmin.Core.Resources;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
-using System;
 
 namespace Fanex.Athena.PlayerAdmin.BetLimit.Controllers
 {
@@ -25,11 +24,9 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Controllers
         {
             foreach (var item in data)
             {
-                item.BetSettingType = item.BetType switch
-                {
-                    BetType.Parlay => GetParlaySettingTypeName(item.SportType),
-                    _ => GetNormalSettingTypeName(item)
-                }; 
+                item.BetSettingType = item.BetType == BetType.Parlay
+                    ? GetParlaySettingTypeName(item.SportType)
+                    : GetNormalSettingTypeName(item);                
             }
             return data;
         }
