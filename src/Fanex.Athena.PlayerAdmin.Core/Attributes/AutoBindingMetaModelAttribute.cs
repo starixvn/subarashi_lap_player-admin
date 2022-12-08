@@ -161,10 +161,6 @@ namespace Fanex.Athena.PlayerAdmin.Core.Attributes
             {
                 await BindProductCodeList(productCodeListMetaModel, functionKey);
             } 
-            else
-            {
-                //nothing
-            }
         }
 
         private async Task BindProductCodeList(IProductCodeListMetaModel productCodeListMetaModel, string functionKey)

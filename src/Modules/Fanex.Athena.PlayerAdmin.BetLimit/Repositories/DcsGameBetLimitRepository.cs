@@ -19,7 +19,7 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Repositories
     {
         private readonly IDbFactory _db;
 
-        private readonly ILogger<DcsBetLimitRepository> _logger;
+        private readonly ILogger<DcsGameBetLimitRepository> _logger;
 
         private static readonly IDictionary<int, (int ProductId, int SettingType)> MappingProducts = new Dictionary<int, (int, int)>
         {
@@ -27,7 +27,7 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Repositories
             {ProductTypes.NumberGame, (3, 12) }
         };
 
-        public DcsGameBetLimitRepository(IDbFactory dbFactory, ILogger<DcsBetLimitRepository> logger)
+        public DcsGameBetLimitRepository(IDbFactory dbFactory, ILogger<DcsGameBetLimitRepository> logger)
         {
             _db = dbFactory;
             _logger = logger;
@@ -53,6 +53,7 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Repositories
                         var playerBetLimit = new PlayerBetLimit();
                         ReadCommonField(reader, playerBetLimit);
                         ReadDCSGameField(reader, playerBetLimit);
+                        dataList.Add(playerBetLimit);
                     }
                 }
             }

@@ -175,10 +175,6 @@ namespace Fanex.Athena.PlayerAdmin.Core.ConsoleClient
     {
         private readonly string _serviceName;
 
-        private ServiceException(SerializationInfo info, StreamingContext context) : base(info, context)
-        {
-        }
-
         public ServiceException(string message, string serviceName)
             : base(message)
         {

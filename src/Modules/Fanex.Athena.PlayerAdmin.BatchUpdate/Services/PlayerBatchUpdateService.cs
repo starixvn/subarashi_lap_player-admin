@@ -191,7 +191,7 @@ namespace Fanex.Athena.PlayerAdmin.BatchUpdate.Services
             var customers = ToCustomerList(metaModel.CustIds, metaModel.CustNames);
             var validCustIds = await _licenseeService.GetCustomersBelongTo(_contextService.AgentList, metaModel.CustIds);
             var oldValues = await _repository.GetOldValues(validCustIds, GetOldValuesCriteria.SpecialLevelType);
-
+                
             foreach (var cust in customers)
             {
                 var custId = cust.Id.ToString();

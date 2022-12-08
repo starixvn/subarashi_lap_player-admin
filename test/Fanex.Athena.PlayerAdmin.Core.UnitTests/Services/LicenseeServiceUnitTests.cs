@@ -156,8 +156,8 @@ namespace Fanex.Athena.PlayerAdmin.Core.UnitTests.Services
         }
 
         [TestCase(null)]
-        [TestCase(new int[] {1, 2, 3})]
-        public async Task CheckProductBelongsTo_WhenCallWithProductNotBelongLimitedProductIds_ReturnFalse(int[] limitedProductIds )
+        [TestCase(new int[] { 1, 2, 3 })]
+        public async Task CheckProductBelongsTo_WhenCallWithProductNotBelongLimitedProductIds_ReturnFalse(int[] limitedProductIds)
         {
             //Arrange
             var productId = 6;
@@ -381,7 +381,7 @@ namespace Fanex.Athena.PlayerAdmin.Core.UnitTests.Services
             var functionSettingOption = Substitute.For<IOptions<FunctionAllowedProductsSetting>>();
             appSettingOption.Value.Returns(_appSetting);
             functionSettingOption.Value.Returns(_functionSetting);
-            
+
             return new LicenseeService(_cache, _dbFactory, appSettingOption, functionSettingOption);
         }
 
