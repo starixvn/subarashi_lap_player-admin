@@ -13,6 +13,7 @@ namespace Fanex.Athena.PlayerAdmin.Commission.Controllers
         [ReferrerValidation]
         [CookieAuthorize(Roles.SuperAdmin, Roles.CommissionGroup_Write, Policy = Policy.NotAllowSubsidiary)]
         [AutoBindingMetaModel(bindLicenseeId: true, bindUsername: true, bindClientIP: true, bindLanguage: true, bindUserId: true)]
+        [DecompressModelStateAndMetaModel("query", new[] { "CustIds", "CustNames" })]
         public async Task<ViewResult> MultipleMoveGroup([FromQuery] MultipleMoveGroupQuery query)
         {
             await AssignSessionToQuery(query);
@@ -28,6 +29,7 @@ namespace Fanex.Athena.PlayerAdmin.Commission.Controllers
         [ReferrerValidation]
         [CookieAuthorize(Roles.SuperAdmin, Roles.CommissionGroup_Write, Policy = Policy.NotAllowSubsidiary)]
         [AutoBindingMetaModel(bindLicenseeId: true, bindUsername: true, bindClientIP: true, bindLanguage: true, bindUserId: true)]
+        [DecompressModelStateAndMetaModel("query", new[] { "CustIds", "CustNames" })]
         public async Task<ViewResult> MultipleRemoveFromGroup([FromQuery] MultipleRemoveFromGroupQuery query)
         {
             await AssignSessionToQuery(query);
@@ -40,6 +42,7 @@ namespace Fanex.Athena.PlayerAdmin.Commission.Controllers
         [ReferrerValidation]
         [CookieAuthorize(Roles.SuperAdmin, Roles.CommissionGroup_Write, Policy = Policy.NotAllowSubsidiary)]
         [AutoBindingMetaModel(bindLicenseeId: true, bindUsername: true, bindClientIP: true, bindLanguage: true, bindUserId: true)]
+        [DecompressModelStateAndMetaModel("query", new[] { "CustIds", "CustNames" })]
         public async Task<ViewResult> MultipleUpdateGroup([FromQuery] MultipleUpdateGroupQuery query)
         {
             await AssignSessionToQuery(query);

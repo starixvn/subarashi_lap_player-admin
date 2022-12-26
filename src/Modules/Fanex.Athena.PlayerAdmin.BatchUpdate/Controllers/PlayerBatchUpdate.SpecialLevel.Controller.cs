@@ -12,6 +12,7 @@ namespace Fanex.Athena.PlayerAdmin.BatchUpdate.Controllers
         [HttpGet]
         [ReferrerValidation]
         [CookieAuthorize(Roles.SuperAdmin, Roles.UpdateSpecialLevel)]
+        [DecompressModelStateAndMetaModel("metaModel", new[] { "CustIds", "CustNames" })]
         public ViewResult UpdateSpecialLevel(PlayerBatchUpdateMetaModel metaModel)
         {
             var viewModel = new BasePlayerBatchUpdateViewModel(metaModel);

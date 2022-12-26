@@ -19,7 +19,9 @@
     <PackageReference Include="Fanex.Core.Utils" Version="1.0.2" />
     <PackageReference Include="Fanex.Data" Version="4.2.2" />
     <PackageReference Include="Fanex.RemotingRef" Version="1.5.0" />
+    <PackageReference Include="LZStringCSharp" Version="1.4.0" />
     <PackageReference Include="MediatR" Version="9.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="NPOI" Version="2.5.3" />
     <PackageReference Include="ONEbook.UM.AspNetCore" Version="3.1.0-beta05" />

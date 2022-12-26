@@ -18,6 +18,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="LZStringCSharp" Version="1.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\..\Fanex.Athena.PlayerAdmin.Core\Fanex.Athena.PlayerAdmin.Core.csproj" />
   </ItemGroup>
 
