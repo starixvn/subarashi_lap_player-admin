@@ -87,17 +87,33 @@ namespace Fanex.Athena.PlayerAdmin.BatchUpdate.Services
                     CustID = cust.Id,
                     Status = tempResult.IsSuccessful ? LogText.Success : LogText.False,
                     NewValue = metaModel.BAStatusId == "1" ? LogText.On : LogText.Off,
-                    OldValue = oldValue
+                    OldValue = oldValue,
+                    IgnoreCTSEvent = true
                 };
 
                 await _publisher.Publish(@event);
             }
 
+            var listSuccessfulCust = string.Join(",", extendedData);
+            await PublishCTSBAEvent(listSuccessfulCust, metaModel.BAStatusId);
+
             result.Code = hasError ? 1 : 0;
             var mssg = errors.Any() ? string.Join("<br />", errors) : ViewResources.UpdateSuccess;
             result.Message = addTurnOffVIPError ? $"{ViewResources.MessageTurnOffVIPError}<br />{mssg}" : mssg;
-            result.ExtendedData = string.Join(",", extendedData);
+            result.ExtendedData = listSuccessfulCust;
             return result;
+        }
+
+        private async Task PublishCTSBAEvent(string listCust, string statusId)
+        {
+            if (!string.IsNullOrEmpty(listCust))
+            {
+                await _publisher.Publish(new PlayerUpdatedMultipleBAToCTSEvent
+                {
+                    CustIDList = listCust,
+                    NewValue = statusId
+                });
+            }
         }
 
         public async Task<IResultInfo> UpdateOddsGroup(UpdateOddsGroupApiMetaModel metaModel)
@@ -136,7 +152,14 @@ namespace Fanex.Athena.PlayerAdmin.BatchUpdate.Services
 
                 var criteria = new UpdateOddsGroupCriteria(metaModel, custId);
                 var tempResult = await _repository.Update(criteria);
-                errors.Add(!tempResult.IsSuccessful ? $"{tempResult.Message} ({custName})" : custId);
+                if (tempResult.IsSuccessful)
+                {
+                    extendedData.Add(custId);
+                }
+                else
+                {
+                    errors.Add($"{tempResult.Message} ({custName})");
+                }
 
                 var @event = new PlayerUpdatedOddsGroupEvent
                 {
@@ -187,7 +210,14 @@ namespace Fanex.Athena.PlayerAdmin.BatchUpdate.Services
 
                 var criteria = new UpdateSpecialLevelCriteria(metaModel, custId);
                 var tempResult = await _repository.Update(criteria);
-                errors.Add(!tempResult.IsSuccessful ? $"{tempResult.Message} ({custName})" : custId);
+                if (tempResult.IsSuccessful)
+                {
+                    extendedData.Add(custId);
+                }
+                else
+                {
+                    errors.Add($"{tempResult.Message} ({custName})");
+                }
 
                 var @event = new PlayerUpdatedSpecialLevelEvent
                 {
