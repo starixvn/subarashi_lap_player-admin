@@ -18,11 +18,10 @@ namespace Fanex.Athena.PlayerAdmin.Core.Mediator.Handlers
             CTSApiClient = cTSApiClient;
             Setting = setting.Value;
         }
-        
 
         public async Task Handle(PlayerUpdatedBAEvent notification, CancellationToken cancellationToken)
         {
-            if (Setting.Enabled && notification.Status == LogText.Success)
+            if (Setting.Enabled && !notification.IgnoreCTSEvent && notification.Status == LogText.Success)
             {
                 var isBa = notification.NewValue == LogText.On;
                 var path = isBa ? Setting.EndPoints.AddLicBA : Setting.EndPoints.RemoveLicBA;

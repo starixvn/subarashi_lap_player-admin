@@ -2,6 +2,7 @@
 import $ from 'jquery';
 import FactoryCommonService from '@jsroot/lib/factoryCommonService';
 import { systemType } from '@jsroot/constants/config';
+import LZString from 'lz-string';
 
 export const batchUpdatePermission = {
     playerCommGroup: "PlayerCommGroup",
@@ -17,49 +18,57 @@ export const batchUpdatePopups = {
         url: 'PlayerCommission/MultipleMoveGroup',
         title: LangHelper.getSingleResource('BatchUpdate') + " - " + LangHelper.getSingleResource('MoveCommissionGroup'),
         width: 800,
-        height: 600
+        height: 600,
+        compressParam: true
     },
     popupOption_2: {
         url: 'PlayerCommission/MultipleUpdateGroup',
         title: LangHelper.getSingleResource('BatchUpdate') + " - " + LangHelper.getSingleResource('UpdateCommissionValue'),
         width: 800,
-        height: 600
+        height: 600,
+        compressParam: true
     },
     popupOption_3: {
         url: 'PlayerCommission/MultipleRemoveFromGroup',
         title: LangHelper.getSingleResource('BatchUpdate') + " - " + LangHelper.getSingleResource('RemoveFromGroup'),
         width: 600,
-        height: 400
+        height: 400,
+        compressParam: true
     },
     popupOption_4: {
         url: 'PlayerBatchUpdate/UpdateAccountStatus',
         title: LangHelper.getSingleResource('BatchUpdate') + " - " + LangHelper.getSingleResource('UpdateAccountStatus'),
         width: 600,
-        height: 400
+        height: 400,
+        compressParam: false
     },
     popupOption_5: {
         url: 'SportsbookBetSetting/Index',
         title: LangHelper.getSingleResource('BatchUpdate') + " - " + LangHelper.getSingleResource('UpdateBetSetting'),
         width: 800,
-        height: 600
+        height: 600,
+        compressParam: false
     },
     popupOption_6: {
         url: 'PlayerBatchUpdate/UpdateSpecialLevel',
         title: LangHelper.getSingleResource('BatchUpdate') + " - " + LangHelper.getSingleResource('UpdateSpecialLevel'),
         width: 600,
-        height: 400
+        height: 400,
+        compressParam: true
     },
     popupOption_7: {
         url: 'PlayerBatchUpdate/UpdateOddsGroup',
         title: LangHelper.getSingleResource('BatchUpdate') + " - " + LangHelper.getSingleResource('UpdateOddsGroup'),
         width: 600,
-        height: 400
+        height: 400,
+        compressParam: true
     },
     popupOption_8: {
         url: 'PlayerBatchUpdate/UpdateBAStatus',
         title: LangHelper.getSingleResource('BatchUpdate') + " - " + LangHelper.getSingleResource('UpdateBAStatus'),
         width: 600,
-        height: 400
+        height: 400,
+        compressParam: true
     }
 };
 
@@ -173,14 +182,14 @@ export const batchUpdateManager = {
     getPopupOption: function (selectedOption) {
         var timestamps = Date.now();
         var { custIds, custNames } = batchUpdateManager.getSelectCusts();
+        var opt = Object.assign({}, batchUpdatePopups["popupOption_" + selectedOption]);
 
         var query = "?" + $.param({
             t: timestamps,
-            custIds: custIds.join(","),
-            custNames: custNames.join(",")
+            custIds: opt.compressParam ? LZString.compressToEncodedURIComponent(custIds.join(",")) : custIds.join(","),
+            custNames: opt.compressParam ? LZString.compressToEncodedURIComponent(custNames.join(",")) : custNames.join(",")
         });
-
-        var opt = Object.assign({}, batchUpdatePopups["popupOption_" + selectedOption]);
+  
         opt.url = batchUpdateManager.getLink(opt.url + query);
         return opt;
     },

@@ -17,7 +17,8 @@ namespace Fanex.Athena.PlayerAdmin.BatchUpdate.Controllers
         [HttpGet]
         [ReferrerValidation]
         [CookieAuthorize(Roles.SuperAdmin, Roles.UpdateOddsGroup)]
-        public ViewResult UpdateOddsGroup(PlayerBatchUpdateMetaModel metaModel, 
+        [DecompressModelStateAndMetaModel("metaModel", new[] { "CustIds", "CustNames" })]
+        public ViewResult UpdateOddsGroup(PlayerBatchUpdateMetaModel metaModel,
             [FromServices] IContextService contextService)
         {
             var viewModel = new BasePlayerBatchUpdateViewModel(metaModel);
@@ -41,7 +42,7 @@ namespace Fanex.Athena.PlayerAdmin.BatchUpdate.Controllers
                 {
                     Code = 1,
                     Message = ViewResources.FunctionDeniedMsg
-                }); 
+                });
             }
 
             var result = await _service.UpdateOddsGroup(metaModel);
