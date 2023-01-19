@@ -18,14 +18,11 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Controllers
     public class SportsBookBetLimitController : PlayerBetLimitBaseControler
     {
         private readonly ISportsBookBetLimitService _service;
-        private readonly AppSetting _appSetting;
 
         public SportsBookBetLimitController(IContextService contextService, IResourceService resourceService,
-            ISportsBookBetLimitService sportBookBetLimitService,
-            IOptions<AppSetting> appSetting) : base(contextService, resourceService)
+            ISportsBookBetLimitService sportBookBetLimitService) : base(contextService, resourceService)
         {
             _service = sportBookBetLimitService;
-            _appSetting = appSetting.Value;
         }
 
         [HttpPost]
@@ -34,7 +31,7 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Controllers
         public async Task<JsonResult> GetSetting([FromBody] PlayerBetLimitSelectMetaModel metaModel)
         {
             var isEditable = HasEditPermission();
-            var data = await _service.GetSettingAsync(metaModel.CustId, _appSetting.IsShowMixedSport);
+            var data = await _service.GetSettingAsync(metaModel.CustId);
             var copySportId = $"{SportType.Soccer}_{BetType.DefaultBetType}";
 
             var viewModel = new PlayerBetLimitViewModel
@@ -54,7 +51,7 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Controllers
         [AutoBindingMetaModel(bindClientIP: true, bindLanguage: true, bindSiteName: true, bindUserId: true)]
         public async Task<JsonResult> UpdateSetting([FromBody] PlayerBetLimitUpdateMetaModel<IEnumerable<PlayerBetLimitMetaModel>> metaModel)
         {
-            var result = await _service.UpdateSettingAsync(metaModel, _appSetting.IsShowMixedSport);
+            var result = await _service.UpdateSettingAsync(metaModel);
 
             result.Message = result.Code == 0 ? ViewResources.UpdateSuccess : result.Message;
 

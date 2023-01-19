@@ -25,8 +25,6 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.UnitTests.Controllers
         private ISportsBookBetLimitService _service;
         private IContextService _contextService;
         private IResourceService _resourceService;
-        private IOptions<AppSetting> _options;
-        private AppSetting _appSetting;
 
         [SetUp]
         public void Setup()
@@ -34,9 +32,6 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.UnitTests.Controllers
             _service = Substitute.For<ISportsBookBetLimitService>();
             _contextService= Substitute.For<IContextService>();
             _resourceService= Substitute.For<IResourceService>();
-            _options= Substitute.For<IOptions<AppSetting>>();
-            _appSetting = FakeHelper.Create<AppSetting>();
-            _options.Value.Returns(_appSetting);
         }
 
         [Test]
@@ -48,7 +43,7 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.UnitTests.Controllers
             var firstData = expectedData.First();
             firstData.SportType = $"{SportType.Soccer}";
             firstData.BetType = BetType.DefaultBetType;
-            _service.GetSettingAsync(metaModel.CustId, _appSetting.IsShowMixedSport).Returns(expectedData);
+            _service.GetSettingAsync(metaModel.CustId).Returns(expectedData);
 
             var controller = CreateController();
 
@@ -73,7 +68,7 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.UnitTests.Controllers
             var metaModel = FakeHelper.Create<PlayerBetLimitUpdateMetaModel<IEnumerable<PlayerBetLimitMetaModel>>>();
             var expectedMsg = code == 0 ? ViewResources.UpdateSuccess : msg;
             var expectedResult = new ResultInfo { Code= code, Message = msg };
-            _service.UpdateSettingAsync(metaModel, _appSetting.IsShowMixedSport).Returns(expectedResult);
+            _service.UpdateSettingAsync(metaModel).Returns(expectedResult);
 
             var controller = CreateController();
 
@@ -91,6 +86,6 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.UnitTests.Controllers
         }
 
         private SportsBookBetLimitController CreateController()
-            => new SportsBookBetLimitController(_contextService, _resourceService, _service, _options);
+            => new SportsBookBetLimitController(_contextService, _resourceService, _service);
     }
 }

@@ -19,7 +19,6 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Services
     {
         private readonly IDcsGameBetLimitRepository _betSetting;
         private readonly IPublisher _publisher;
-        private (string SportType, int BetType) MixParlaySports = (SportType.OtherSports.ToString(), BetType.Parlay);
 
         public SportsBookBetLimitService(
             IDcsGameBetLimitRepository betSettingRepository,
@@ -29,31 +28,20 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Services
             _publisher = publisher;
         }
 
-        public async Task<IEnumerable<PlayerBetLimit>> GetSettingAsync(int custId, bool isShowMixedSport)
+        public async Task<IEnumerable<PlayerBetLimit>> GetSettingAsync(int custId)
         {
             var sbSettings = await _betSetting.GetSettingAsync(custId, ProductTypes.Sportsbook);
-            var result = isShowMixedSport
-                ? sbSettings.ToList()
-                : sbSettings.Where(_ => _.SportType != MixParlaySports.SportType && _.BetType != MixParlaySports.BetType);
-
-            result = result.OrderBy(_ => _, new SBBetLimitComparer());
-
+            var result = sbSettings.OrderBy(_ => _, new SBBetLimitComparer());
             return result;
         }
 
-        public async Task<IResultInfo> UpdateSettingAsync(PlayerBetLimitUpdateMetaModel<IEnumerable<PlayerBetLimitMetaModel>> metaModel, bool isShowMixedSport)
+        public async Task<IResultInfo> UpdateSettingAsync(PlayerBetLimitUpdateMetaModel<IEnumerable<PlayerBetLimitMetaModel>> metaModel)
         {
             var result = await _betSetting.UpdateSettingAsync(metaModel);
 
             var logEvent = BetLimitLogHelper.CreateLogEvent(
                 metaModel,
                 GetDetailedLog(metaModel.Setting, result.Code == 0));
-
-            if (result.Code > 0)
-            {
-                await PublishLogEvent(logEvent);
-                return result;
-            }
 
             await PublishLogEvent(logEvent);
 

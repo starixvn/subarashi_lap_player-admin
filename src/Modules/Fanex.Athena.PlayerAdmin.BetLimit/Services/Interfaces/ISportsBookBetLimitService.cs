@@ -8,8 +8,8 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Services.Interfaces
 {
     public interface ISportsBookBetLimitService
     {
-        Task<IEnumerable<PlayerBetLimit>> GetSettingAsync(int custId, bool isShowMixedSport);
+        Task<IEnumerable<PlayerBetLimit>> GetSettingAsync(int custId);
 
-        Task<IResultInfo> UpdateSettingAsync(PlayerBetLimitUpdateMetaModel<IEnumerable<PlayerBetLimitMetaModel>> metaModel, bool isShowMixedSport);
+        Task<IResultInfo> UpdateSettingAsync(PlayerBetLimitUpdateMetaModel<IEnumerable<PlayerBetLimitMetaModel>> metaModel);
     }
 }
