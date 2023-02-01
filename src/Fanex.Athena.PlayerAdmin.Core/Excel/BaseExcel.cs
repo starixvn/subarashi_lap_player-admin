@@ -3,7 +3,9 @@ using NPOI.SS.UserModel;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 
+[assembly: InternalsVisibleTo("Fanex.Athena.PlayerAdmin.Core.UnitTests")]
 namespace Fanex.Athena.PlayerAdmin.Core.Excel
 {
     public abstract class BaseExcel
@@ -24,14 +26,14 @@ namespace Fanex.Athena.PlayerAdmin.Core.Excel
 
         private int _pageSize;
 
-        protected void SetData(string templatePath, int totalRows, int pageSize = 0)
+        protected internal void SetData(string templatePath, int totalRows, int pageSize = 0)
         {
             _templatePath = templatePath;
             _totalRows = totalRows;
             PageSize = pageSize;
         }
 
-        protected bool IsMultiSheet { get; set; }
+        protected internal bool IsMultiSheet { get; set; }
 
         protected int TotalRows
         {
@@ -82,7 +84,7 @@ namespace Fanex.Athena.PlayerAdmin.Core.Excel
             RemoveTemplate();
         }
 
-        protected static void ClearTemplate(ISheet sheet, int startRowIndex)
+        protected internal static void ClearTemplate(ISheet sheet, int startRowIndex)
         {
             int lastRowNum = sheet.LastRowNum;
             for (int i = startRowIndex; i <= lastRowNum; i++)
@@ -96,7 +98,7 @@ namespace Fanex.Athena.PlayerAdmin.Core.Excel
             return numberOfItems % pageSize == 0 ? numberOfItems / pageSize : (numberOfItems / pageSize) + 1;
         }
 
-        protected static void SetTextRowHeader(IRow row, IEnumerable<string> headerTextList)
+        protected internal static void SetTextRowHeader(IRow row, IEnumerable<string> headerTextList)
         {
             for (int i = 0; i < headerTextList.Count(); i++)
             {
@@ -104,7 +106,7 @@ namespace Fanex.Athena.PlayerAdmin.Core.Excel
             }
         }
 
-        protected virtual void AssignData()
+        protected internal virtual void AssignData()
         {
             var sheet = CloneSheet(Workbook, TemplateSheetName, "Data");
 
@@ -123,7 +125,7 @@ namespace Fanex.Athena.PlayerAdmin.Core.Excel
             ProcessUI(sheet);
         }
 
-        protected virtual void AssignDataMultiSheet()
+        protected internal virtual void AssignDataMultiSheet()
         {
             ISheet sheet;
 
@@ -148,27 +150,27 @@ namespace Fanex.Athena.PlayerAdmin.Core.Excel
             }
         }
 
-        protected abstract void AssignTitle(ISheet sheet);
+        protected internal abstract void AssignTitle(ISheet sheet);
 
-        protected abstract void AssignHeader(ISheet sheet);
+        protected internal abstract void AssignHeader(ISheet sheet);
 
-        protected virtual void ProcessUI(ISheet sheet)
+        protected internal virtual void ProcessUI(ISheet sheet)
         {
         }
 
-        protected virtual void AssignNoInfoRow(ISheet sheet)
+        protected internal virtual void AssignNoInfoRow(ISheet sheet)
         {
         }
 
-        protected virtual void AssignSheetData(ISheet sheet)
+        protected virtual internal void AssignSheetData(ISheet sheet)
         {
         }
 
-        protected virtual void AssignSheetData(ISheet sheet, int pageIndex)
+        protected internal virtual void AssignSheetData(ISheet sheet, int pageIndex)
         {
         }
 
-        protected virtual void LoadTemplate()
+        protected internal virtual void LoadTemplate()
         {
             FileStream stream = null;
             try
@@ -189,7 +191,7 @@ namespace Fanex.Athena.PlayerAdmin.Core.Excel
             }
         }
 
-        protected virtual void RemoveTemplate()
+        protected internal virtual void RemoveTemplate()
         {
             RemoveSheet(Workbook, TemplateSheetName);
         }

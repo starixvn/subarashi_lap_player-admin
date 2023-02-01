@@ -33,7 +33,6 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Controllers
             var isEditable = HasEditPermission();
             var data = await _service.GetSettingAsync(metaModel.CustId);
             var copySportId = $"{SportType.Soccer}_{BetType.DefaultBetType}";
-
             var viewModel = new PlayerBetLimitViewModel
             {
                 Data = AddSettingTypeName(data),
@@ -41,7 +40,6 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Controllers
                 CopyId = copySportId,
                 EnableCopy = data.Any(x => x.Id == copySportId)
             };
-
             return Json(viewModel);
         }
 
@@ -52,9 +50,7 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Controllers
         public async Task<JsonResult> UpdateSetting([FromBody] PlayerBetLimitUpdateMetaModel<IEnumerable<PlayerBetLimitMetaModel>> metaModel)
         {
             var result = await _service.UpdateSettingAsync(metaModel);
-
             result.Message = result.Code == 0 ? ViewResources.UpdateSuccess : result.Message;
-
             return Json(result);
         }
     }
