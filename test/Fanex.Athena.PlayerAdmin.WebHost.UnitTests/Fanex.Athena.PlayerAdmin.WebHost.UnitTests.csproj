@@ -14,4 +14,9 @@
     <PackageReference Include="coverlet.collector" Version="3.0.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Fanex.Athena.PlayerAdmin.WebHost\Fanex.Athena.PlayerAdmin.WebHost.csproj" />
+    <ProjectReference Include="..\Fanex.Athena.PlayerAdmin.UnitTest.Common\Fanex.Athena.PlayerAdmin.UnitTest.Common.csproj" />
+  </ItemGroup>
+
 </Project>
