@@ -40,16 +40,21 @@
     @await RenderSectionAsync("pagejs", required: false)
     @if (isProduction)
     {
-        <!-- Google Analytics -->
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-M09N5LNEH1"></script>
         <script>
-            window.ga = window.ga || function () { (ga.q = ga.q || []).push(arguments) }; ga.l = +new Date;
-            ga('create', 'UA-93927620-1', {
-                cookieFlags: 'secure;samesite=none'
+                window.dataLayer = window.dataLayer || [];
+            function gtag() { dataLayer.push(arguments); }
+            gtag('js', new Date());
+
+            gtag('config', 'G-M09N5LNEH1'{
+                cookie_flags: 'secure;samesite=none'
             });
-            ga('send', 'pageview');
+            gtag('config', 'UA-93927620-1', {
+                cookie_flags: 'secure;samesite=none'
+            });
+
         </script>
-        <script async src='https://www.google-analytics.com/analytics.js'></script>
-        <!-- End Google Analytics -->
     }
 </body>
 </html>
