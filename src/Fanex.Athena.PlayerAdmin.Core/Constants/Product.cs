@@ -89,6 +89,8 @@
         public const string FGGL = "FGGL";
 
         public const string MXG = "MXG";
+
+        public const string JIG = "JIG";
     }
 
     public static class ProductTypes
@@ -175,5 +177,7 @@
         public const int FGGL = 70;
 
         public const int MXG = 60;
+
+        public const int JIG = 75;
     }
 }

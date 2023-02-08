@@ -3099,4 +3099,7 @@
   <data name="MaxPayoutPerMatchLessThanOrEqual" xml:space="preserve">
     <value>Max Payout Per Match must be less than or equal to</value>
   </data>
+  <data name="ProductJIG" xml:space="preserve">
+    <value>Jili</value>
+  </data>
 </root>
