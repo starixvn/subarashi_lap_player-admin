@@ -12,7 +12,6 @@
     </Setting>
     <Setting Key="Lrf_SelBalanceUpDay" SpName="Lrf_SelBalanceUpDay" DbName="DBEXT.bodb02.bodbLicenseeNet" />
     <Setting Key="Lrf_LicenseeProduct3rdSel" SpName="Lrf_LicenseeProduct3rdSel" DbName="DBLIC.bodb_Licensee.bodbLicenseeNet" />
-    <Setting Key="Lrf_LicenseeProduct3rdSel_active" SpName="Lrf_LicenseeProduct3rdSel_active" DbName="DBLIC.bodb_Licensee.bodbLicenseeNet" />
   </Function>
   <Function Name="PlayerList">
     <Setting Key="Shard_Lrf_CustomerSelByUsername" SpName="Lrf_CustomerSelByUsername" DbName="DBEXT.bodb02.bodbLicenseeNet" />

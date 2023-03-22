@@ -147,9 +147,6 @@
     <value>活跃玩家</value>
     <comment>ignoreJS</comment>
   </data>
-  <data name="ActiveCustomerSummary" xml:space="preserve">
-    <value>活跃会员人数摘要</value>
-  </data>
   <data name="AD" xml:space="preserve">
     <value>客和</value>
   </data>
@@ -570,9 +567,6 @@
   </data>
   <data name="ClosingBalance" xml:space="preserve">
     <value>期末余额</value>
-  </data>
-  <data name="ColossusBetsWinLoss" xml:space="preserve">
-    <value>CB足彩输赢</value>
   </data>
   <data name="Columns" xml:space="preserve">
     <value>Columns</value>
@@ -1077,13 +1071,6 @@
   </data>
   <data name="GodOfFortuneWinLoss" xml:space="preserve">
     <value>财神爷输赢</value>
-  </data>
-  <data name="GoldDeluxeWinLoss" xml:space="preserve">
-    <value>GD真人娱乐场输赢</value>
-  </data>
-  <data name="GoldDeluxeWinLossGuidelineContent" xml:space="preserve">
-    <value>在GMT-4下午4点之前的任何查询将依据前一天下午4点的数据。您每次查询可以过滤最多3个月内的数据。</value>
-    <comment>#71725</comment>
   </data>
   <data name="GotoCustomerList" xml:space="preserve">
     <value>转至会员名单</value>
@@ -1945,15 +1932,6 @@
   <data name="ProductCS" xml:space="preserve">
     <value>娱乐城</value>
     <comment>#49196</comment>
-  </data>
-  <data name="ProductFW" xml:space="preserve">
-    <value>GG捕鱼</value>
-  </data>
-  <data name="ProductGD" xml:space="preserve">
-    <value>GD真人娱乐场</value>
-  </data>
-  <data name="ProductGDG" xml:space="preserve">
-    <value>金大门</value>
   </data>
   <data name="ProductHB" xml:space="preserve">
     <value>HB电子</value>

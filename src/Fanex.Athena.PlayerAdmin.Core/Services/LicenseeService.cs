@@ -164,14 +164,12 @@ namespace Fanex.Athena.PlayerAdmin.Core.Services
             }
         }
 
-        private async Task<IList<Product>> GetProductListFromDB(int licenseeId, bool isActiveCustomerSummaryReport = false)
+        private async Task<IList<Product>> GetProductListFromDB(int licenseeId)
         {
-            var uspName = isActiveCustomerSummaryReport ? "Lrf_LicenseeProduct3rdSel_active" : "Lrf_LicenseeProduct3rdSel";
-
             // All licensees have product Sb
             var allowedProducts = new List<Product> { new Product { IsOfferedSingleWallet = true, ProductCode = ProductCode.SB, ProductName = "Sportsbook" } };
 
-            using (var db = _dbFactory.GetObjectDb(uspName))
+            using (var db = _dbFactory.GetObjectDb("Lrf_LicenseeProduct3rdSel"))
             {
                 db.SetParameterValue("licenseeid", licenseeId);
 

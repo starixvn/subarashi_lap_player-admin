@@ -37,7 +37,6 @@ namespace Fanex.Athena.PlayerAdmin.Commission.Helpers
             [ProductCode.WM] = "WMCasino",
             [ProductCode.BGG] = "BigGaming",
             [ProductCode.JK] = "Joker",
-            [ProductCode.GDG] = "GDG",
             [ProductCode.HB] = "Habanero",
             [ProductCode.VGA] = "VGaming",
             [ProductCode.CG] = "CG",
