@@ -19,7 +19,7 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Services
             ProductTypes.Lottery, ProductTypes.I4D, ProductTypes.SLT, ProductTypes.AllBet, ProductTypes.Voidbridge, ProductTypes.CashOut, ProductTypes.Exchange,
             ProductTypes.PP, ProductTypes.SXG, ProductTypes.GDG, ProductTypes.HB, ProductTypes.JK, ProductTypes.SAG, ProductTypes.PGS, ProductTypes.SBC, ProductTypes.WM,
             ProductTypes.SG, ProductTypes.VRG, ProductTypes.CC, ProductTypes.CG, ProductTypes.VGA, ProductTypes.TG, ProductTypes.AP, ProductTypes.APM, ProductTypes.SabaCasino,
-            ProductTypes.BTC, ProductTypes.FGGL, ProductTypes.MXG
+            ProductTypes.BTC, ProductTypes.FGGL, ProductTypes.MXG, ProductTypes.JIG
         };
 
         private readonly IDcsBetLimitRepository _repository;
@@ -27,7 +27,7 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Services
         private readonly IDcsGameBetLimitRepository _gameBetLimitRepository;
         private readonly IPublisher _publisher;
 
-        public DcsBetLimitService(IDcsBetLimitRepository repository, INewDcsBetLimitRepository newRepository, IDcsGameBetLimitRepository dcsGameBetLimitRepository,IPublisher publisher)
+        public DcsBetLimitService(IDcsBetLimitRepository repository, INewDcsBetLimitRepository newRepository, IDcsGameBetLimitRepository dcsGameBetLimitRepository, IPublisher publisher)
         {
             _repository = repository;
             _newRepository = newRepository;
@@ -94,7 +94,7 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Services
             {
                 ProductTypes.Lottery or ProductTypes.Keno => new[] { LogActionDetailId.UpdatingMinBet, LogActionDetailId.UpdatingMaxBet, LogActionDetailId.UpdatingMaxBetPerDraw },
                 ProductTypes.NumberGame => new[] { LogActionDetailId.UpdatingMinBet, LogActionDetailId.UpdatingMaxBet, LogActionDetailId.UpdatingMaxPerMatch, LogActionDetailId.UpdatingMaxPerBall },
-                ProductTypes.Sportsbook => new[] { LogActionDetailId.UpdatingMinBet, LogActionDetailId.UpdatingMaxBet, 
+                ProductTypes.Sportsbook => new[] { LogActionDetailId.UpdatingMinBet, LogActionDetailId.UpdatingMaxBet,
                     LogActionDetailId.UpdatingMaxPerMatch, LogActionDetailId.UpdatingMaxPayoutPerMatch },
                 ProductTypes.VS3 => new[] { LogActionDetailId.UpdatingMinBet, LogActionDetailId.UpdatingMaxBet },
                 _ => new[] { LogActionDetailId.UpdatingMinBet, LogActionDetailId.UpdatingMaxBet, LogActionDetailId.UpdatingMaxPerMatch },

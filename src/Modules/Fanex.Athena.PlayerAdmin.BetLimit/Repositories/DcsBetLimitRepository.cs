@@ -70,7 +70,8 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Repositories
             { ProductTypes.SabaCasino, 208 },
             { ProductTypes.BTC, 175 },
             { ProductTypes.FGGL, 176 },
-            { ProductTypes.MXG, 237 }
+            { ProductTypes.MXG, 237 },
+            { ProductTypes.JIG, 158 }
         };
 
         private static readonly IDictionary<int, int> ProductBetTypeMap = new Dictionary<int, int>
@@ -101,7 +102,8 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Repositories
             { ProductTypes.SabaCasino, 2101 },
             { ProductTypes.BTC, 7901 },
             { ProductTypes.FGGL, 8201 },
-            { ProductTypes.MXG, 5401 }
+            { ProductTypes.MXG, 5401 },
+            { ProductTypes.JIG, 5100 }
         };
 
         public DcsBetLimitRepository(IDbFactory dbFactory, ILogger<DcsBetLimitRepository> logger)
@@ -239,7 +241,6 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Repositories
                     xmlElementBuilder.Append(string.Format(XMLElement, item.SportType, item.BetType, item.MinBet, item.MaxBet, item.MaxPerMatch));
                 }
             }
-
 
             return string.Format(XMLPattern, xmlElementBuilder);
         }
