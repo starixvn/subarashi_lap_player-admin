@@ -2,7 +2,7 @@ import React from 'react';
 import ClientResourceManager from '@jsroot/lib/clientResourceManager';
 
 export const AthenaProfile = ({ data }) => {
-    const { AGUserId, GoldDeluxeUserId, VoidbridgeUserId, ExchangeUserId,
+    const { AGUserId, VoidbridgeUserId, ExchangeUserId,
         FirstName, LastName, Gender, Birthday, Phone, Country, Address, City, Town, State, ZipCode,
         SecurityQuestion, SecurityCode, HowToKnow, PreferredUserName, PreferredCurrency, PreferredOdds, PreferredLanguage } = data || {};
 
@@ -11,10 +11,6 @@ export const AthenaProfile = ({ data }) => {
             <tr>
                 <td className="first-cell">{ClientResourceManager.getText('AgUserId')}</td>
                 <td>{AGUserId}</td>
-            </tr>
-            <tr>
-                <td>{ClientResourceManager.getText('GoldDeluxeUserId')}</td>
-                <td>{GoldDeluxeUserId}</td>
             </tr>
             <tr>
                 <td>{ClientResourceManager.getText('MacauGamesUserId')}</td>

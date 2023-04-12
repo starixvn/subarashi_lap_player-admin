@@ -19,7 +19,7 @@ namespace Fanex.Athena.PlayerAdmin.Core.Resources {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class ViewResources {
@@ -138,15 +138,6 @@ namespace Fanex.Athena.PlayerAdmin.Core.Resources {
         public static string ActiveCustomers {
             get {
                 return ResourceManager.GetString("ActiveCustomers", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Active Customer Summary.
-        /// </summary>
-        public static string ActiveCustomerSummary {
-            get {
-                return ResourceManager.GetString("ActiveCustomerSummary", resourceCulture);
             }
         }
         
@@ -1393,24 +1384,6 @@ namespace Fanex.Athena.PlayerAdmin.Core.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Member owned {0}% of this ticket&lt;br/&gt;Member sold {1}% of this ticket for {2}.
-        /// </summary>
-        public static string ColossusBetBetListDetailMsg {
-            get {
-                return ResourceManager.GetString("ColossusBetBetListDetailMsg", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Colossus Bets Win Loss.
-        /// </summary>
-        public static string ColossusBetsWinLoss {
-            get {
-                return ResourceManager.GetString("ColossusBetsWinLoss", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Columns.
         /// </summary>
         public static string Columns {
@@ -2257,33 +2230,6 @@ namespace Fanex.Athena.PlayerAdmin.Core.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Disable Colossus Bets.
-        /// </summary>
-        public static string DisableColossusBets {
-            get {
-                return ResourceManager.GetString("DisableColossusBets", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Disable Fishing World.
-        /// </summary>
-        public static string DisableFishingWorld {
-            get {
-                return ResourceManager.GetString("DisableFishingWorld", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Disable Gold Deluxe.
-        /// </summary>
-        public static string DisableGoldDeluxe {
-            get {
-                return ResourceManager.GetString("DisableGoldDeluxe", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Disable Macau.
         /// </summary>
         public static string DisableMacau {
@@ -2505,33 +2451,6 @@ namespace Fanex.Athena.PlayerAdmin.Core.Resources {
         public static string EnableCashOut {
             get {
                 return ResourceManager.GetString("EnableCashOut", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Enable Colossus Bets.
-        /// </summary>
-        public static string EnableColossusBets {
-            get {
-                return ResourceManager.GetString("EnableColossusBets", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Enable Fishing World.
-        /// </summary>
-        public static string EnableFishingWorld {
-            get {
-                return ResourceManager.GetString("EnableFishingWorld", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Enable Gold Deluxe.
-        /// </summary>
-        public static string EnableGoldDeluxe {
-            get {
-                return ResourceManager.GetString("EnableGoldDeluxe", resourceCulture);
             }
         }
         
@@ -3036,33 +2955,6 @@ namespace Fanex.Athena.PlayerAdmin.Core.Resources {
         public static string GodOfFortuneWinLoss {
             get {
                 return ResourceManager.GetString("GodOfFortuneWinLoss", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Gold Deluxe is not offered for this currency..
-        /// </summary>
-        public static string GoldDeluxeNotOfferCurrency {
-            get {
-                return ResourceManager.GetString("GoldDeluxeNotOfferCurrency", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Gold Deluxe Win Loss.
-        /// </summary>
-        public static string GoldDeluxeWinLoss {
-            get {
-                return ResourceManager.GetString("GoldDeluxeWinLoss", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Any query before 4PM GMT-4 will return the data up to 4PM of the day before. You can filter data up to 3 months per query..
-        /// </summary>
-        public static string GoldDeluxeWinLossGuidelineContent {
-            get {
-                return ResourceManager.GetString("GoldDeluxeWinLossGuidelineContent", resourceCulture);
             }
         }
         
@@ -5695,15 +5587,6 @@ namespace Fanex.Athena.PlayerAdmin.Core.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Colossus Bets.
-        /// </summary>
-        public static string ProductCB {
-            get {
-                return ResourceManager.GetString("ProductCB", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Arcadia Gaming.
         /// </summary>
         public static string ProductCC {
@@ -5745,33 +5628,6 @@ namespace Fanex.Athena.PlayerAdmin.Core.Resources {
         public static string ProductFGGL {
             get {
                 return ResourceManager.GetString("ProductFGGL", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Fishing World.
-        /// </summary>
-        public static string ProductFW {
-            get {
-                return ResourceManager.GetString("ProductFW", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Gold Deluxe.
-        /// </summary>
-        public static string ProductGD {
-            get {
-                return ResourceManager.GetString("ProductGD", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to GDG.
-        /// </summary>
-        public static string ProductGDG {
-            get {
-                return ResourceManager.GetString("ProductGDG", resourceCulture);
             }
         }
         
@@ -7491,15 +7347,6 @@ namespace Fanex.Athena.PlayerAdmin.Core.Resources {
         public static string UpdateFunctionSuccessfulMsg {
             get {
                 return ResourceManager.GetString("UpdateFunctionSuccessfulMsg", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to update all Gold Deluxe bet settings?.
-        /// </summary>
-        public static string UpdateGoldDeluxeBetSettings {
-            get {
-                return ResourceManager.GetString("UpdateGoldDeluxeBetSettings", resourceCulture);
             }
         }
         

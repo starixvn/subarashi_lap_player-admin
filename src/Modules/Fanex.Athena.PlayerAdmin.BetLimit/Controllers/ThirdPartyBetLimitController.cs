@@ -13,7 +13,7 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Controllers
     [RequestValidation(
         validateCustId: true,
         validateProductId: -1,
-        limitedProductIds: new[] { ProductTypes.ColossusBets, ProductTypes.CashOut })]
+        limitedProductIds: new[] { ProductTypes.CashOut })]
     public class ThirdPartyBetLimitController : PlayerBetLimitBaseControler
     {
         private readonly IThirdPartyBetLimitService _service;

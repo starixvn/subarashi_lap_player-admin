@@ -148,10 +148,6 @@
     <value>Active Customers</value>
     <comment>102680</comment>
   </data>
-  <data name="ActiveCustomerSummary" xml:space="preserve">
-    <value>Active Customer Summary</value>
-    <comment>#29219</comment>
-  </data>
   <data name="ActualStake" xml:space="preserve">
     <value>Actual Stake</value>
     <comment>#51264</comment>
@@ -618,13 +614,6 @@
   <data name="ClosingBalance" xml:space="preserve">
     <value>Closing Balance</value>
   </data>
-  <data name="ColossusBetBetListDetailMsg" xml:space="preserve">
-    <value>Member owned {0}% of this ticket&lt;br/&gt;Member sold {1}% of this ticket for {2}</value>
-    <comment>#63785</comment>
-  </data>
-  <data name="ColossusBetsWinLoss" xml:space="preserve">
-    <value>Colossus Bets Win Loss</value>
-  </data>
   <data name="Columns" xml:space="preserve">
     <value>Columns</value>
     <comment>#7730</comment>
@@ -928,17 +917,6 @@
   <data name="DisableAllBet" xml:space="preserve">
     <value>Disable AllBet</value>
   </data>
-  <data name="DisableColossusBets" xml:space="preserve">
-    <value>Disable Colossus Bets</value>
-    <comment>#63785</comment>
-  </data>
-  <data name="DisableFishingWorld" xml:space="preserve">
-    <value>Disable Fishing World</value>
-    <comment>#66737</comment>
-  </data>
-  <data name="DisableGoldDeluxe" xml:space="preserve">
-    <value>Disable Gold Deluxe</value>
-  </data>
   <data name="DisableMacau" xml:space="preserve">
     <value>Disable Macau</value>
     <comment>#32647</comment>
@@ -1018,17 +996,6 @@
   </data>
   <data name="EnableCashOut" xml:space="preserve">
     <value>Enable Cash Out</value>
-  </data>
-  <data name="EnableColossusBets" xml:space="preserve">
-    <value>Enable Colossus Bets</value>
-    <comment>#63785</comment>
-  </data>
-  <data name="EnableFishingWorld" xml:space="preserve">
-    <value>Enable Fishing World</value>
-    <comment>#66737</comment>
-  </data>
-  <data name="EnableGoldDeluxe" xml:space="preserve">
-    <value>Enable Gold Deluxe</value>
   </data>
   <data name="EnableMacau" xml:space="preserve">
     <value>Enable Macau</value>
@@ -1211,16 +1178,6 @@
   </data>
   <data name="GodOfFortuneWinLoss" xml:space="preserve">
     <value>God of Fortune Win Loss</value>
-  </data>
-  <data name="GoldDeluxeNotOfferCurrency" xml:space="preserve">
-    <value>Gold Deluxe is not offered for this currency.</value>
-  </data>
-  <data name="GoldDeluxeWinLoss" xml:space="preserve">
-    <value>Gold Deluxe Win Loss</value>
-  </data>
-  <data name="GoldDeluxeWinLossGuidelineContent" xml:space="preserve">
-    <value>Any query before 4PM GMT-4 will return the data up to 4PM of the day before. You can filter data up to 3 months per query.</value>
-    <comment>#71725</comment>
   </data>
   <data name="GotoCustomerList" xml:space="preserve">
     <value>Go to Customer List</value>
@@ -2150,10 +2107,6 @@
     <value>Exchange</value>
     <comment>88192</comment>
   </data>
-  <data name="ProductCB" xml:space="preserve">
-    <value>Colossus Bets</value>
-    <comment>#63785</comment>
-  </data>
   <data name="ProductCC" xml:space="preserve">
     <value>Arcadia Gaming</value>
     <comment>115449</comment>
@@ -2170,17 +2123,6 @@
   </data>
   <data name="ProductFGGL" xml:space="preserve">
     <value>FGG</value>
-  </data>
-  <data name="ProductFW" xml:space="preserve">
-    <value>Fishing World</value>
-    <comment>#66737</comment>
-  </data>
-  <data name="ProductGD" xml:space="preserve">
-    <value>Gold Deluxe</value>
-    <comment>#49196</comment>
-  </data>
-  <data name="ProductGDG" xml:space="preserve">
-    <value>GDG</value>
   </data>
   <data name="ProductHB" xml:space="preserve">
     <value>Habanero</value>
@@ -2804,9 +2746,6 @@
   </data>
   <data name="UpdateFunctionSuccessfulMsg" xml:space="preserve">
     <value>Updating Functions is successul.</value>
-  </data>
-  <data name="UpdateGoldDeluxeBetSettings" xml:space="preserve">
-    <value>Are you sure you want to update all Gold Deluxe bet settings?</value>
   </data>
   <data name="UpdateKenoBetSettings" xml:space="preserve">
     <value>Are you sure you want to update all RNG Keno bet settings?</value>

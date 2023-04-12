@@ -5,7 +5,6 @@ export const resource_en = {
     BankAccountNumber: 'Bank Account Number',
     Country: 'Country',
     AgUserId: 'AG UserId',
-    GoldDeluxeUserId: 'Gold Deluxe UserID',
     MacauGamesUserId: 'Macau Games UserID',
     ExchangeUserId: 'Exchange UserID',
     FirstName: 'First name',
@@ -61,6 +60,6 @@ export const resource_en = {
     Draw: 'Draw',
     Cancelled: 'Cancelled',
     LastTransaction: 'Last Transaction',
-    Whitelabel:"Whitelabel",
-    Subsidiary:"Subsidiary"
+    Whitelabel: "Whitelabel",
+    Subsidiary: "Subsidiary"
 }

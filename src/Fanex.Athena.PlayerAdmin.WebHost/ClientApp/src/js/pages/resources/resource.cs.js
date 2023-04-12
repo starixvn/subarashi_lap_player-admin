@@ -38,7 +38,6 @@ export const resource_cs = {
     CustomInfo4: '玩家信息4',
     CustomInfo5: '玩家信息5',
     AgUserId: 'AG使用者ID',
-    GoldDeluxeUserId: 'GD真人娱乐场平台使用者ID',
     MacauGamesUserId: 'Macau Games UserID',
     ExchangeUserId: 'Exchange使用者ID',
     Gender: '性别',
@@ -61,6 +60,6 @@ export const resource_cs = {
     Draw: '和局',
     Cancelled: '已取消的',
     LastTransaction: '最后交易',
-    Whitelabel:"Whitelabel",
-    Subsidiary:"子网站",
+    Whitelabel: "Whitelabel",
+    Subsidiary: "子网站",
 }

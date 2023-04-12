@@ -1,95 +1,94 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Functions SiteId="31" SiteName="PlayerAdmin">
-  <Function Name="Licensee">
-    <Setting Key="Lrf_CheckBelonging_GetAgentInfo" SpName="Lrf_CheckBelonging_GetAgentInfo" DbName="DBEXT.bodb02.bodbLicenseeNet" />
-    <Setting Key="Lrf_CheckBelongingMultiple_GetAgentInfo" SpName="Lrf_CheckBelongingMultiple_GetAgentInfo" DbName="DBEXT.bodb02.bodbLicenseeNet" />
-    <Setting Key="Lrf_CheckBelonging_ValidateProduct" SpName="Lrf_CheckBelonging_ValidateProduct" DbName="DBLIC.bodb_Licensee.bodbLicenseeNet" />
-    <Setting Key="Lrf_LicenseeSelBySiteName" SpName="Lrf_LicenseeSelBySiteName" DbName="DBLIC.bodb_Licensee.bodbLicenseeNet">
-      <Mapping DataField="LicenseeID" ObjectProperty="Id" />
-      <Mapping DataField="LicenseeName" ObjectProperty="Name" />
-      <Mapping DataField="IsAllowedMemberComm" ObjectProperty="IsAllowedCustomerComm" />
-      <Mapping DataField="EnableBA" ObjectProperty="IsEnableBA" />
-    </Setting>
-    <Setting Key="Lrf_SelBalanceUpDay" SpName="Lrf_SelBalanceUpDay" DbName="DBEXT.bodb02.bodbLicenseeNet" />
-    <Setting Key="Lrf_LicenseeProduct3rdSel" SpName="Lrf_LicenseeProduct3rdSel" DbName="DBLIC.bodb_Licensee.bodbLicenseeNet" />
-    <Setting Key="Lrf_LicenseeProduct3rdSel_active" SpName="Lrf_LicenseeProduct3rdSel_active" DbName="DBLIC.bodb_Licensee.bodbLicenseeNet" />
-  </Function>
-  <Function Name="PlayerList">
-    <Setting Key="Shard_Lrf_CustomerSelByUsername" SpName="Lrf_CustomerSelByUsername" DbName="DBEXT.bodb02.bodbLicenseeNet" />
-    <Setting Key="Shard_Lrf_CustomerSelByCustid" SpName="Lrf_CustomerSelByCustid" DbName="DBEXT.bodb02.bodbLicenseeNet" />
-    <Setting Key="Lrf_DormantCustomerSel" SpName="Lrf_DormantCustomerSel_xtest" DbName="DBEXT.bodb02.bodbLicenseeNet" />
-    <Setting Key="Lrf_LicenseeProductByBetLimitSel" SpName="Lrf_LicenseeProductByBetLimitSel_UAT1" DbName="DBLIC.bodb_Licensee.bodbLicenseeNet" />
-    <Setting Key="Lrf_PlayerBettingStatistics" SpName="Lrf_PlayerBettingStatistics" DbName="DBACC.bodb02.bodbLicenseeNet" />
-    <Setting Key="Lrf_CustomerUpdMemberBAStatus" SpName="Lrf_CustomerUpdMemberBAStatus" DbName="DBCUST.CustDB.bodbLicenseeNet" />
-    <Setting Key="Lrf_CustomerUpdUgroup" SpName="Lrf_CustomerUpdUgroup" DbName="DBCUST.CustDB.bodbLicenseeNet" />
-    <Setting Key="Lrf_CustomerUpdSpecialLevel" SpName="Lrf_CustomerUpdSpecialLevel" DbName="DBCUST.CustDB.bodbLicenseeNet" />
-    <Setting Key="Lrf_CustomerSpecialLevelSel" SpName="Lrf_CustomerSpecialLevelSel" DbName="DBCUST.CustDB.bodbLicenseeNet" />
-    <Setting Key="Lrf_CustomerUgroupSel" SpName="Lrf_CustomerUgroupSel" DbName="DBCUST.CustDB.bodbLicenseeNet" />
-    <Setting Key="Lrf_CustomerBAStatusSel" SpName="Lrf_CustomerBAStatusSel" DbName="DBCUST.CustDB.bodbLicenseeNet" />
-    <Setting Key="Lrf_BATimeCheck" SpName="Lrf_BATimeCheck" DbName="DBCUST.CustDB.bodbLicenseeNet" />
-  </Function>
-  <Function Name="PlayerLog">
-    <Setting Key="WriteLog_UserLog_UserControl" SpName="WriteLog_UserLog_UserControl" DbName="DBLOG.bodb_CustomerLog.bodbLicenseeNet" />
-  </Function>
-  <Function Name="PlayerProfile">
-    <Setting Key="Lrf_CustomerLoginInfo" SpName="Lrf_CustomerLoginInfo" DbName="DBEXT.bodb02.bodbLicenseeNet" />
-  </Function>
-  <Function Name="DetailTransaction">
-    <Setting Key="LAP_Rpt_DetailTransaction_Mem" SpName="LAP_Rpt_DetailTransaction_Mem" DbName="DBBAH.bodb02.bodbLicenseeNet" />
-  </Function>
-  <Function Name="CustomerClass">
-    <Setting Key="Lrf_CustomerClassSel" SpName="Lrf_CustomerClassSel" DbName="DBCUST.CustDB.bodbLicenseeNet" />
-    <Setting Key="Lrf_CustomerClassPolicySel" SpName="Lrf_CustomerClassPolicySel" DbName="DBCUST.CustDB.bodbLicenseeNet" />
-    <Setting Key="Lrf_CustomerClassSitePolicySel" SpName="Lrf_CustomerClassSitePolicySel" DbName="DBCUST.CustDB.bodbLicenseeNet" />
-  </Function>
-  <Function Name="SiteConfig">
-    <Setting Key="Lrf_SubsidiarySel" SpName="Lrf_SubsidiarySel" DbName="DBCUST.SiteConfig.bodbLicenseeNet" />
-    <Setting Key="Portal_Sub_GetSubsidiaryList" SpName="Portal_Sub_GetSubsidiaryList" DbName="DBCUST.SiteConfig.Dot_Admin_Portal" />
-  </Function>
-  <Function Name="AG Casino">
-    <Setting Key="Lrf_AGC_SelCustSetting" SpName="Lrf_AGC_SelCustSetting" DbName="DBCUST.CustDB.bodbLicenseeNet" />
-    <Setting Key="Lrf_AGC_UpdCustSetting" SpName="Lrf_AGC_UpdCustSetting" DbName="DBCUST.CustDB.bodbLicenseeNet" />
-    <Setting Key="Lrf_AGC_UpdCustStatus" SpName="Lrf_AGC_UpdCustStatus" DbName="DBCUST.CustDB.bodbLicenseeNet" />
-  </Function>
-  <Function Name="CustomerSettings">
-    <Setting Key="Lrf_CustomerSelEditCustomer" SpName="Lrf_CustomerSelEditCustomer" DbName="DBCUST.CustDB.bodbLicenseeNet" />
-    <Setting Key="Lrf_CustomerUpdMember_All" SpName="Lrf_CustomerUpdMember_All" DbName="DBCUST.CustDB.bodbLicenseeNet" />
-    <Setting Key="Acc_Dep_CustSetting_StatusSettingSelect" SpName="Acc_Dep_CustSetting_StatusSettingSelect_UAT2" DbName="DBCUST.CustDB.bodbLicenseeNet" />
-    <Setting Key="Acc_Dep_CustSetting_BetLimitSettingSelect" SpName="Acc_Dep_CustSetting_BetLimitSettingSelect_UAT2" DbName="DBCUST.CustDB.bodbLicenseeNet" />
-    <Setting Key="Acc_Dep_CustSetting_BetLimitUpd" SpName="Acc_Dep_CustSetting_BetLimitUpd_UAT2" DbName="DBCUST.CustDB.bodbLicenseeNet" />
-    <Setting Key="Acc_Dep_CustSetting_DisableStatUpd" SpName="Acc_Dep_CustSetting_DisableStatUpd_UAT2" DbName="DBCUST.CustDB.bodbLicenseeNet" />
-    <Setting Key="Lrf_CustomerSelEditKN" SpName="Lrf_CustomerSelEditKN" DbName="DBCUST.CustDB.bodbLicenseeNet" />
-    <Setting Key="Lrf_CustomerUpdMember_MinMaxBetKN" SpName="Lrf_CustomerUpdMember_MinMaxBetKN" DbName="DBCUST.CustDB.bodbLicenseeNet" />
-    <Setting Key="Lrf_CustomerSelEditNG" SpName="Lrf_CustomerSelEditNG" DbName="DBCUST.CustDB.bodbLicenseeNet" />
-    <Setting Key="Lrf_CustomerUpdMember_MinMaxBet161" SpName="Lrf_CustomerUpdMember_MinMaxBet161" DbName="DBCUST.CustDB.bodbLicenseeNet" />
-    <Setting Key="Acc_Dep_CustSetting_NewBetLimitSettingSelect" SpName="Acc_Dep_CustSetting_NewBetLimitSettingSelect" DbName="DBCUST.CustDB.bodbLicenseeNet" />
-    <Setting Key="Acc_Dep_CustSetting_NewBetLimitUpd" SpName="Acc_Dep_CustSetting_NewBetLimitUpd" DbName="DBCUST.CustDB.bodbLicenseeNet" />
-    <Setting Key="Acc_Dep_CustSetting_Game_BetLimitSettingSelect" SpName="Acc_Dep_CustSetting_Game_BetLimitSettingSelect_UAT2" DbName="DBCUST.CustDB.bodbLicenseeNet" />
-    <Setting Key="Acc_Dep_CustSetting_Game_BetLimitUpd" SpName="Acc_Dep_CustSetting_Game_BetLimitUpd_UAT2" DbName="DBCUST.CustDB.bodbLicenseeNet" />
-  </Function>
-  <Function Name="CustomerSettingsThridParty">
-    <Setting Key="Lrf_3rdProductSelCustStatus" SpName="Lrf_3rdProductSelCustStatus" DbName="DBLIC.bodb_Licensee.bodbLicenseeNet" />
-    <Setting Key="Lrf_3rdProductUpdCustStatus" SpName="Lrf_3rdProductUpdCustStatus" DbName="DBCUST.CustDB.bodbLicenseeNet" />
-  </Function>
-  <Function Name="Commission">
-    <Setting Key="Lrf_LicenseeGroupCommSel" SpName="Lrf_LicenseeGroupCommSel" DbName="DBCUST.bodb_Licensee.bodbLicenseeNet">
-      <Mapping DataField="Parlaycomm" ObjectProperty="ParlayComm" />
-      <Mapping DataField="RNGComm" ObjectProperty="CSComm" />
-      <Mapping DataField="IsDefault" ObjectProperty="IsDefaultGroup" />
-    </Setting>
-    <Setting Key="Lrf_GroupCommGetById" SpName="Lrf_GroupCommGetById" DbName="DBLIC.bodb_Licensee.bodbLicenseeNet">
-      <Mapping DataField="Parlaycomm" ObjectProperty="ParlayComm" />
-      <Mapping DataField="RNGComm" ObjectProperty="CSComm" />
-      <Mapping DataField="IsDefault" ObjectProperty="IsDefaultGroup" />
-    </Setting>
-    <Setting Key="Lrf_GroupCommCheckByName" SpName="Lrf_GroupCommCheckByName" DbName="DBLIC.bodb_Licensee.bodbLicenseeNet" />
-    <Setting Key="Lrf_LicenseeCustCommSel" SpName="Lrf_LicenseeCustCommSel" DbName="DBLIC.bodb_Licensee.bodbLicenseeNet" TimeOut="240" />
-    <Setting Key="Lrf_LicenseeCustCommUpd" SpName="Lrf_LicenseeCustCommUpd_UAT1" DbName="DBCUST.bodb_Licensee.bodbLicenseeNet" TimeOut="240" />
-    <Setting Key="Lrf_CustomerRemoveGroupComm" SpName="Lrf_CustomerRemoveGroupComm_UAT1" DbName="DBCUST.bodb_Licensee.bodbLicenseeNet" TimeOut="240" />
-    <Setting Key="Lrf_CustomerMoveGroupComm" SpName="Lrf_CustomerMoveGroupComm_UAT1" DbName="DBCUST.bodb_Licensee.bodbLicenseeNet" TimeOut="240" />
-  </Function>
-  <SiteDB>
-    <Setting Key="SiteDB_Lrf_CustomerSelByUsername" SpName="SiteDB_Lrf_CustomerSelByUsername_xtest" DbName="DBSID.bodb02.bodbLicenseeNet" />
-    <Setting Key="SiteDB_Lrf_CustomerSelByCustid" SpName="SiteDB_Lrf_CustomerSelByCustid_xtest" DbName="DBSID.bodb02.bodbLicenseeNet" />
-  </SiteDB>
+	<Function Name="Licensee">
+		<Setting Key="Lrf_CheckBelonging_GetAgentInfo" SpName="Lrf_CheckBelonging_GetAgentInfo" DbName="DBEXT.bodb02.bodbLicenseeNet" />
+		<Setting Key="Lrf_CheckBelongingMultiple_GetAgentInfo" SpName="Lrf_CheckBelongingMultiple_GetAgentInfo" DbName="DBEXT.bodb02.bodbLicenseeNet" />
+		<Setting Key="Lrf_CheckBelonging_ValidateProduct" SpName="Lrf_CheckBelonging_ValidateProduct" DbName="DBLIC.bodb_Licensee.bodbLicenseeNet" />
+		<Setting Key="Lrf_LicenseeSelBySiteName" SpName="Lrf_LicenseeSelBySiteName" DbName="DBLIC.bodb_Licensee.bodbLicenseeNet">
+			<Mapping DataField="LicenseeID" ObjectProperty="Id" />
+			<Mapping DataField="LicenseeName" ObjectProperty="Name" />
+			<Mapping DataField="IsAllowedMemberComm" ObjectProperty="IsAllowedCustomerComm" />
+			<Mapping DataField="EnableBA" ObjectProperty="IsEnableBA" />
+		</Setting>
+		<Setting Key="Lrf_SelBalanceUpDay" SpName="Lrf_SelBalanceUpDay" DbName="DBEXT.bodb02.bodbLicenseeNet" />
+		<Setting Key="Lrf_LicenseeProduct3rdSel" SpName="Lrf_LicenseeProduct3rdSel" DbName="DBLIC.bodb_Licensee.bodbLicenseeNet" />
+	</Function>
+	<Function Name="PlayerList">
+		<Setting Key="Shard_Lrf_CustomerSelByUsername" SpName="Lrf_CustomerSelByUsername" DbName="DBEXT.bodb02.bodbLicenseeNet" />
+		<Setting Key="Shard_Lrf_CustomerSelByCustid" SpName="Lrf_CustomerSelByCustid" DbName="DBEXT.bodb02.bodbLicenseeNet" />
+		<Setting Key="Lrf_DormantCustomerSel" SpName="Lrf_DormantCustomerSel_xtest" DbName="DBEXT.bodb02.bodbLicenseeNet" />
+		<Setting Key="Lrf_LicenseeProductByBetLimitSel" SpName="Lrf_LicenseeProductByBetLimitSel_UAT1" DbName="DBLIC.bodb_Licensee.bodbLicenseeNet" />
+		<Setting Key="Lrf_PlayerBettingStatistics" SpName="Lrf_PlayerBettingStatistics" DbName="DBACC.bodb02.bodbLicenseeNet" />
+		<Setting Key="Lrf_CustomerUpdMemberBAStatus" SpName="Lrf_CustomerUpdMemberBAStatus" DbName="DBCUST.CustDB.bodbLicenseeNet" />
+		<Setting Key="Lrf_CustomerUpdUgroup" SpName="Lrf_CustomerUpdUgroup" DbName="DBCUST.CustDB.bodbLicenseeNet" />
+		<Setting Key="Lrf_CustomerUpdSpecialLevel" SpName="Lrf_CustomerUpdSpecialLevel" DbName="DBCUST.CustDB.bodbLicenseeNet" />
+		<Setting Key="Lrf_CustomerSpecialLevelSel" SpName="Lrf_CustomerSpecialLevelSel" DbName="DBCUST.CustDB.bodbLicenseeNet" />
+		<Setting Key="Lrf_CustomerUgroupSel" SpName="Lrf_CustomerUgroupSel" DbName="DBCUST.CustDB.bodbLicenseeNet" />
+		<Setting Key="Lrf_CustomerBAStatusSel" SpName="Lrf_CustomerBAStatusSel" DbName="DBCUST.CustDB.bodbLicenseeNet" />
+		<Setting Key="Lrf_BATimeCheck" SpName="Lrf_BATimeCheck" DbName="DBCUST.CustDB.bodbLicenseeNet" />
+	</Function>
+	<Function Name="PlayerLog">
+		<Setting Key="WriteLog_UserLog_UserControl" SpName="WriteLog_UserLog_UserControl" DbName="DBLOG.bodb_CustomerLog.bodbLicenseeNet" />
+	</Function>
+	<Function Name="PlayerProfile">
+		<Setting Key="Lrf_CustomerLoginInfo" SpName="Lrf_CustomerLoginInfo" DbName="DBEXT.bodb02.bodbLicenseeNet" />
+	</Function>
+	<Function Name="DetailTransaction">
+		<Setting Key="LAP_Rpt_DetailTransaction_Mem" SpName="LAP_Rpt_DetailTransaction_Mem" DbName="DBBAH.bodb02.bodbLicenseeNet" />
+	</Function>
+	<Function Name="CustomerClass">
+		<Setting Key="Lrf_CustomerClassSel" SpName="Lrf_CustomerClassSel" DbName="DBCUST.CustDB.bodbLicenseeNet" />
+		<Setting Key="Lrf_CustomerClassPolicySel" SpName="Lrf_CustomerClassPolicySel" DbName="DBCUST.CustDB.bodbLicenseeNet" />
+		<Setting Key="Lrf_CustomerClassSitePolicySel" SpName="Lrf_CustomerClassSitePolicySel" DbName="DBCUST.CustDB.bodbLicenseeNet" />
+	</Function>
+	<Function Name="SiteConfig">
+		<Setting Key="Lrf_SubsidiarySel" SpName="Lrf_SubsidiarySel" DbName="DBCUST.SiteConfig.bodbLicenseeNet" />
+		<Setting Key="Portal_Sub_GetSubsidiaryList" SpName="Portal_Sub_GetSubsidiaryList" DbName="DBCUST.SiteConfig.Dot_Admin_Portal" />
+	</Function>
+	<Function Name="AG Casino">
+		<Setting Key="Lrf_AGC_SelCustSetting" SpName="Lrf_AGC_SelCustSetting" DbName="DBCUST.CustDB.bodbLicenseeNet" />
+		<Setting Key="Lrf_AGC_UpdCustSetting" SpName="Lrf_AGC_UpdCustSetting" DbName="DBCUST.CustDB.bodbLicenseeNet" />
+		<Setting Key="Lrf_AGC_UpdCustStatus" SpName="Lrf_AGC_UpdCustStatus" DbName="DBCUST.CustDB.bodbLicenseeNet" />
+	</Function>
+	<Function Name="CustomerSettings">
+		<Setting Key="Lrf_CustomerSelEditCustomer" SpName="Lrf_CustomerSelEditCustomer" DbName="DBCUST.CustDB.bodbLicenseeNet" />
+		<Setting Key="Lrf_CustomerUpdMember_All" SpName="Lrf_CustomerUpdMember_All" DbName="DBCUST.CustDB.bodbLicenseeNet" />
+		<Setting Key="Acc_Dep_CustSetting_StatusSettingSelect" SpName="Acc_Dep_CustSetting_StatusSettingSelect_UAT2" DbName="DBCUST.CustDB.bodbLicenseeNet" />
+		<Setting Key="Acc_Dep_CustSetting_BetLimitSettingSelect" SpName="Acc_Dep_CustSetting_BetLimitSettingSelect_UAT2" DbName="DBCUST.CustDB.bodbLicenseeNet" />
+		<Setting Key="Acc_Dep_CustSetting_BetLimitUpd" SpName="Acc_Dep_CustSetting_BetLimitUpd_UAT2" DbName="DBCUST.CustDB.bodbLicenseeNet" />
+		<Setting Key="Acc_Dep_CustSetting_DisableStatUpd" SpName="Acc_Dep_CustSetting_DisableStatUpd_UAT2" DbName="DBCUST.CustDB.bodbLicenseeNet" />
+		<Setting Key="Lrf_CustomerSelEditKN" SpName="Lrf_CustomerSelEditKN" DbName="DBCUST.CustDB.bodbLicenseeNet" />
+		<Setting Key="Lrf_CustomerUpdMember_MinMaxBetKN" SpName="Lrf_CustomerUpdMember_MinMaxBetKN" DbName="DBCUST.CustDB.bodbLicenseeNet" />
+		<Setting Key="Lrf_CustomerSelEditNG" SpName="Lrf_CustomerSelEditNG" DbName="DBCUST.CustDB.bodbLicenseeNet" />
+		<Setting Key="Lrf_CustomerUpdMember_MinMaxBet161" SpName="Lrf_CustomerUpdMember_MinMaxBet161" DbName="DBCUST.CustDB.bodbLicenseeNet" />
+		<Setting Key="Acc_Dep_CustSetting_NewBetLimitSettingSelect" SpName="Acc_Dep_CustSetting_NewBetLimitSettingSelect" DbName="DBCUST.CustDB.bodbLicenseeNet" />
+		<Setting Key="Acc_Dep_CustSetting_NewBetLimitUpd" SpName="Acc_Dep_CustSetting_NewBetLimitUpd" DbName="DBCUST.CustDB.bodbLicenseeNet" />
+		<Setting Key="Acc_Dep_CustSetting_Game_BetLimitSettingSelect" SpName="Acc_Dep_CustSetting_Game_BetLimitSettingSelect_UAT2" DbName="DBCUST.CustDB.bodbLicenseeNet" />
+		<Setting Key="Acc_Dep_CustSetting_Game_BetLimitUpd" SpName="Acc_Dep_CustSetting_Game_BetLimitUpd_UAT2" DbName="DBCUST.CustDB.bodbLicenseeNet" />
+	</Function>
+	<Function Name="CustomerSettingsThridParty">
+		<Setting Key="Lrf_3rdProductSelCustStatus" SpName="Lrf_3rdProductSelCustStatus" DbName="DBLIC.bodb_Licensee.bodbLicenseeNet" />
+		<Setting Key="Lrf_3rdProductUpdCustStatus" SpName="Lrf_3rdProductUpdCustStatus" DbName="DBCUST.CustDB.bodbLicenseeNet" />
+	</Function>
+	<Function Name="Commission">
+		<Setting Key="Lrf_LicenseeGroupCommSel" SpName="Lrf_LicenseeGroupCommSel" DbName="DBCUST.bodb_Licensee.bodbLicenseeNet">
+			<Mapping DataField="Parlaycomm" ObjectProperty="ParlayComm" />
+			<Mapping DataField="RNGComm" ObjectProperty="CSComm" />
+			<Mapping DataField="IsDefault" ObjectProperty="IsDefaultGroup" />
+		</Setting>
+		<Setting Key="Lrf_GroupCommGetById" SpName="Lrf_GroupCommGetById" DbName="DBLIC.bodb_Licensee.bodbLicenseeNet">
+			<Mapping DataField="Parlaycomm" ObjectProperty="ParlayComm" />
+			<Mapping DataField="RNGComm" ObjectProperty="CSComm" />
+			<Mapping DataField="IsDefault" ObjectProperty="IsDefaultGroup" />
+		</Setting>
+		<Setting Key="Lrf_GroupCommCheckByName" SpName="Lrf_GroupCommCheckByName" DbName="DBLIC.bodb_Licensee.bodbLicenseeNet" />
+		<Setting Key="Lrf_LicenseeCustCommSel" SpName="Lrf_LicenseeCustCommSel" DbName="DBLIC.bodb_Licensee.bodbLicenseeNet" TimeOut="240" />
+		<Setting Key="Lrf_LicenseeCustCommUpd" SpName="Lrf_LicenseeCustCommUpd_UAT1" DbName="DBCUST.bodb_Licensee.bodbLicenseeNet" TimeOut="240" />
+		<Setting Key="Lrf_CustomerRemoveGroupComm" SpName="Lrf_CustomerRemoveGroupComm_UAT1" DbName="DBCUST.bodb_Licensee.bodbLicenseeNet" TimeOut="240" />
+		<Setting Key="Lrf_CustomerMoveGroupComm" SpName="Lrf_CustomerMoveGroupComm_UAT1" DbName="DBCUST.bodb_Licensee.bodbLicenseeNet" TimeOut="240" />
+	</Function>
+	<SiteDB>
+		<Setting Key="SiteDB_Lrf_CustomerSelByUsername" SpName="SiteDB_Lrf_CustomerSelByUsername_xtest" DbName="DBSID.bodb02.bodbLicenseeNet" />
+		<Setting Key="SiteDB_Lrf_CustomerSelByCustid" SpName="SiteDB_Lrf_CustomerSelByCustid_xtest" DbName="DBSID.bodb02.bodbLicenseeNet" />
+	</SiteDB>
 </Functions>
