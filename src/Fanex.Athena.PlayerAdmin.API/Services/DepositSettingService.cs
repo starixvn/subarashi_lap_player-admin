@@ -2,6 +2,7 @@
 using Fanex.Athena.PlayerAdmin.API.ViewModels;
 using Fanex.Athena.PlayerAdmin.Core.Extensions;
 using Fanex.Athena.PlayerAdmin.Core.Repositories;
+using Fanex.Athena.PlayerAdmin.Core.Resources;
 using Fanex.Athena.PlayerAdmin.Core.Settings;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
@@ -25,6 +26,8 @@ namespace Fanex.Athena.PlayerAdmin.API.Services
         private readonly AppSetting _appSetting;
         private readonly ILogger<DepositSettingService> _logger;
 
+        private readonly string[] RiskLevelKeyByOrder = new[] { "New", "Healthy", "Moderate", "Suspicious", "Dangerous", "Problems", "Robot", RiskLevel.Uncategorized };
+
         public DepositSettingService(IDbFactory dbFactory, HttpClient httpClient,
             IMemoryCache cache,
             IOptions<AppSetting> appSetting,
@@ -37,16 +40,9 @@ namespace Fanex.Athena.PlayerAdmin.API.Services
             _logger = logger;
         }
 
-        public async Task<IEnumerable<string>> GetCustomerClassList()
+        public async Task<IEnumerable<RiskLevel>> GetRiskLevelList(string language)
         {
-            const string CacheKey = "CustomerClassList";
-            var customerClassFromApi = await _cache.TryGetOrAddFromCache(CacheKey, FifteenMinutes, GetCustomerClassFromApi);
-            var result = new List<string> { "0" };
-            result.AddRange(customerClassFromApi
-                .OrderBy(_ => _.CustomerClass)
-                .Select(_ => _.CustomerClass.ToString())
-                );
-            return result.Distinct();
+            return await _cache.TryGetOrAddFromCache($"RiskLevelList_{language}", FifteenMinutes, GetRiskLevelFromApi);
         }
 
         public async Task<IEnumerable<CommGroupViewModel>> GetCommGroupList(int licenseeId)
@@ -81,20 +77,32 @@ namespace Fanex.Athena.PlayerAdmin.API.Services
             return commGroupsFromDB;
         }
 
-        private async Task<IEnumerable<CustomerClassApiModel>> GetCustomerClassFromApi()
+        private async Task<IEnumerable<RiskLevel>> GetRiskLevelFromApi()
         {
             try
             {
                 using var request = new HttpRequestMessage(HttpMethod.Get, new Uri(_appSetting.CustomerClassUrl));
                 using var response = await _httpClient.SendAsync(request);
+                var RiskLevelList = new List<RiskLevel>();
                 response.EnsureSuccessStatusCode();
                 var customerClassList = JsonConvert.DeserializeObject<IEnumerable<CustomerClassApiModel>>(await response.Content.ReadAsStringAsync());
-                return customerClassList;
+                foreach (var key in RiskLevelKeyByOrder)
+                {
+                    RiskLevelList.Add(new RiskLevel
+                    {
+                        Id = RiskLevelList.Count.ToString(),
+                        Key = key,
+                        Name = ViewResources.ResourceManager.GetString(key),
+                        CustomerClassList = key == RiskLevel.Uncategorized ? new[] { "0" }
+                            : customerClassList.Where(_ => _.CustomerClassName.Contains(key, StringComparison.OrdinalIgnoreCase)).Select(_ => _.CustomerClass.ToString()).Distinct()
+                    });
+                }
+                return RiskLevelList;
             }
             catch (Exception ex)
             {
                 _logger.LogCritical(ex, $"Error occurred while calling CustomerClass api {_appSetting.CustomerClassUrl}");
-                return Enumerable.Empty<CustomerClassApiModel>();
+                return Enumerable.Empty<RiskLevel>();
             }
         }
     }

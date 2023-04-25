@@ -100,6 +100,11 @@ export default class ReportExcel {
             value = getCustomerClassText(value);
         }
 
+        if (columnConfig.field === fields.RiskLevel) {
+            value = !value ? LangHelper.getSingleResource('Uncategorized') : value;
+        }
+
+
         const displayedTextFunc = displayedTextByField[columnConfig.field];
         const displayedValue = this._shouldSetEmpty(value) ? '' :
             (displayedTextFunc ? displayedTextFunc(value) : value);
@@ -160,6 +165,10 @@ export default class ReportExcel {
             width: 130
         }, {
             field: fields.OutstandingBalance,
+            [MAIN_SECTION_STYLE]: bodyCellStyle.decimal,
+            width: 130
+        }, {
+            field: fields.RiskLevel,
             [MAIN_SECTION_STYLE]: bodyCellStyle.decimal,
             width: 130
         }, {

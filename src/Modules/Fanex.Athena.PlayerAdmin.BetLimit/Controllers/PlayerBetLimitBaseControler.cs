@@ -25,32 +25,26 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Controllers
         {
             foreach (var item in data)
             {
-                item.BetSettingType = item.BetType switch
-                {
-                    BetType.Parlay => GetParlaySettingTypeName(item.SportType),
-                    _ => GetNormalSettingTypeName(item)
-                }; 
+                item.BetSettingType = item.BetType == BetType.Parlay ? GetParlaySettingTypeName(item.SportType) : GetNormalSettingTypeName(item);
             }
             return data;
         }
 
         private string GetNormalSettingTypeName(PlayerBetLimit item)
-        
+
             => (item.SportType == I4DId) ? GetBetTypeName(item.BetType) : GetSportName(item.SportType);
-        
 
         protected string GetParlaySettingTypeName(string id)
         {
             const string soccer = "1";
             const string otherSports = "99";
             return id switch
-               {
-                   soccer => ViewResources.SoccerParlay,
-                   otherSports => ViewResources.MixSportsParlay,
-                   _ => _resourceService.GetSportName(id)
-               };
+            {
+                soccer => ViewResources.SoccerParlay,
+                otherSports => ViewResources.MixSportsParlay,
+                _ => _resourceService.GetSportName(id)
+            };
         }
-        
 
         protected bool HasEditPermission() => _contextService.IsInRoles(Roles.SuperAdmin, Roles.BetLimit_Write);
 

@@ -12,6 +12,7 @@ import OddsGroupCell from './OddsGroupCell';
 import SpecialLevelCell from './SpecialLevelCell';
 import StatusCell from './StatusCell';
 import BaStatusCell from './BaStatusCell';
+import RiskLevelCell from './RiskLevelCell';
 import LangHelper from '@jsroot/lib/langHelper';
 
 export const PlayerRow = (props) => {
@@ -36,10 +37,15 @@ export const PlayerRow = (props) => {
         IsDeposit,
         IsArchived,
         CommissionGroup,
-        VendorMemberId
+        VendorMemberId,
+        RiskLevelKey,
+        RiskLevel
     } = dataItem;
     const canShowMainColumn = IsDeposit && !IsArchived;
     const commissionGroup = CommissionGroup || LangHelper.getSingleResource('None');
+    const riskLevelKey = RiskLevelKey || 'Uncategorized';
+    const riskLevel = RiskLevel || LangHelper.getSingleResource('Uncategorized');
+
     const playerIsEditable = IsDeposit && !IsArchived && dataItem.Status != playerStatusByName.Closed;
     const customerClass = dataItem.CustomerClass == "0" || !dataItem.CustomerClass
         ? LangHelper.getSingleResource('None') : dataItem.CustomerClass;
@@ -60,6 +66,7 @@ export const PlayerRow = (props) => {
             {displayedColumn[fields.Currency] && <Cell className="center-align">{Currency}</Cell>}
             {displayedColumn[fields.CurrentBalance] && <Cell className="right-align" title={canShowMainColumn ? NumberFormat.roundDownFormatDecimal(CurrentBalance) : undefined}>{canShowMainColumn && NumberFormat.roundDownFormatDecimal(CurrentBalance)}</Cell>}
             {displayedColumn[fields.OutstandingBalance] && <Cell className="right-align" title={canShowMainColumn ? NumberFormat.roundDownFormatDecimal(OutstandingBalance) : undefined}>{canShowMainColumn && NumberFormat.roundDownFormatDecimal(OutstandingBalance)}</Cell>}
+            {displayedColumn[fields.RiskLevel] && <RiskLevelCell riskLevel={riskLevel} riskLevelKey={riskLevelKey} customerClass={customerClass}/>}
             {displayedColumn[fields.OddsGroup] && <Cell className="center-align">{canShowMainColumn && OddsGroup !== undefined && <OddsGroupCell dataItem={dataItem} />}</Cell>}
             {displayedColumn[fields.BaStatus] && <BaStatusCell dataItem={dataItem} />}
             {displayedColumn[fields.SpecialLevel] && <Cell className="center-align">{canShowMainColumn && SpecialLevel !== undefined && <SpecialLevelCell dataItem={dataItem} />}</Cell>}

@@ -6,9 +6,9 @@ import { buildColumnList } from '../lib/helpers/gridColumnBuilder';
 export const getSiteSetting = (licType, hasCommPermissionRead) => (dispatch) => {
     const service = new SettingService();
     service.getSiteSetting().then((response) => {
-        const { isAllowedBA, isEnableSingleWallet } = response.data;
+        const { isAllowedBA, isEnableSingleWallet, userLevel } = response.data;
         if (isAllowedBA || isEnableSingleWallet) {
-            const columnList = buildColumnList(licType, isAllowedBA, hasCommPermissionRead, isEnableSingleWallet);
+            const columnList = buildColumnList(licType, isAllowedBA, hasCommPermissionRead, isEnableSingleWallet, userLevel);
             dispatch(setDisplayedColumnList(columnList));
         }
 
@@ -30,7 +30,7 @@ export const getDepositSetting = () => (dispatch) => {
         dispatch(setDepositSetting(response.data));
     }).catch(() => {
         dispatch(setDepositSetting({
-            CustomerClass: [],
+            RiskLevels: [],
             CommGroups: [],
             OddsGroups: []
         }));

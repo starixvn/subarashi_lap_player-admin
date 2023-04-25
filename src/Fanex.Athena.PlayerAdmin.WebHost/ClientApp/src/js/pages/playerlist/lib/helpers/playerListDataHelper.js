@@ -51,7 +51,9 @@
             CurrencyId: lapItem.Currency || lrfItem.CurrencyId,
             CreatedDate: lapItem.CreatedDateString,
             CommissionGroup: lrfItem.CommissionGroup,
-            CustomerClass: lrfItem.CustomerClass
+            CustomerClass: lrfItem.CustomerClass,
+            RiskLevel: lrfItem.RiskLevel,
+            RiskLevelKey: lrfItem.RiskLevelKey
         };
     }
 

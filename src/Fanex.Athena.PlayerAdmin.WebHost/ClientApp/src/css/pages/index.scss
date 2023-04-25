@@ -329,3 +329,99 @@ input[disabled] {
 }
 
 /*End Batch Update*/
+
+
+.risk-level {
+    display: flex;
+    padding: 0;
+    border-radius: 3px;
+    border: 1px solid;
+
+    .text, .icon {
+        display: inline-flex;
+        align-items: center;
+        padding: 2px 5px;
+    }
+
+    .icon {
+        color: #FFF;
+
+        &.New {
+            background-color: #009D2C;
+        }
+
+        &.Healthy {
+            background-color: #92D050;
+        }
+
+        &.Moderate {
+            background-color: #C0B57B;
+        }
+
+        &.Suspicious {
+            background-color: #009D2C;
+        }
+
+        &.Dangerous {
+            background-color: #E46C0A;
+        }
+
+        &.Problems {
+            background-color: #FF0D0D;
+        }
+
+        &.Robot {
+            background-color: #FF0D0D;
+        }
+
+        &.Uncategorized {
+            background-color: #909090;
+        }
+    }
+
+    &.New {
+        border-color: #009D2C;
+        background: #DEFFE7;
+    }
+
+    &.Healthy {
+        border-color: #92D050;
+        background: #EBFFD6;
+    }
+
+    &.Moderate {
+        border-color: #C0B57B;
+        background: #FFE6D1;
+    }
+
+    &.Suspicious {
+        border-color: #009D2C;
+        background: #DEFFE7;
+    }
+
+    &.Dangerous {
+        border-color: #E46C0A;
+        background: #F2CBAC;
+    }
+
+    &.Problems {
+        border-color: #FF0D0D;
+        background: #FFC9C9;
+    }
+
+    &.Robot {
+        border-color: #FF0D0D;
+        background: #FFC9C9;
+    }
+
+    &.Uncategorized {
+        border-color: #909090;
+        background: #FFF;
+    }
+}
+
+
+label.risk-level {
+    margin-left: 5px;
+    padding-right: 5px;
+}

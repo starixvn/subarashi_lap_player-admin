@@ -1951,6 +1951,15 @@ namespace Fanex.Athena.PlayerAdmin.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Dangerous.
+        /// </summary>
+        public static string Dangerous {
+            get {
+                return ResourceManager.GetString("Dangerous", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to  data.
         /// </summary>
         public static string Data {
@@ -3189,6 +3198,15 @@ namespace Fanex.Athena.PlayerAdmin.Core.Resources {
         public static string HD {
             get {
                 return ResourceManager.GetString("HD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Healthy.
+        /// </summary>
+        public static string Healthy {
+            get {
+                return ResourceManager.GetString("Healthy", resourceCulture);
             }
         }
         
@@ -4507,6 +4525,15 @@ namespace Fanex.Athena.PlayerAdmin.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Moderate.
+        /// </summary>
+        public static string Moderate {
+            get {
+                return ResourceManager.GetString("Moderate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Monday.
         /// </summary>
         public static string Monday {
@@ -4629,6 +4656,15 @@ namespace Fanex.Athena.PlayerAdmin.Core.Resources {
         public static string NetTurnover {
             get {
                 return ResourceManager.GetString("NetTurnover", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New.
+        /// </summary>
+        public static string New {
+            get {
+                return ResourceManager.GetString("New", resourceCulture);
             }
         }
         
@@ -5497,6 +5533,15 @@ namespace Fanex.Athena.PlayerAdmin.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Problems.
+        /// </summary>
+        public static string Problems {
+            get {
+                return ResourceManager.GetString("Problems", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Product.
         /// </summary>
         public static string Product {
@@ -6154,11 +6199,38 @@ namespace Fanex.Athena.PlayerAdmin.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Risk Level.
+        /// </summary>
+        public static string RiskLevel {
+            get {
+                return ResourceManager.GetString("RiskLevel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Risk Level Information.
+        /// </summary>
+        public static string RiskLevelInformation {
+            get {
+                return ResourceManager.GetString("RiskLevelInformation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to RNG Casino Database is not currently available. Please try again later..
         /// </summary>
         public static string RNGCasinoUpdateSettingUnAvailableMsg {
             get {
                 return ResourceManager.GetString("RNGCasinoUpdateSettingUnAvailableMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Robot.
+        /// </summary>
+        public static string Robot {
+            get {
+                return ResourceManager.GetString("Robot", resourceCulture);
             }
         }
         
@@ -6667,6 +6739,15 @@ namespace Fanex.Athena.PlayerAdmin.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Suspicious.
+        /// </summary>
+        public static string Suspicious {
+            get {
+                return ResourceManager.GetString("Suspicious", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to System ID.
         /// </summary>
         public static string SystemId {
@@ -7158,6 +7239,15 @@ namespace Fanex.Athena.PlayerAdmin.Core.Resources {
         public static string Type {
             get {
                 return ResourceManager.GetString("Type", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Uncategorized.
+        /// </summary>
+        public static string Uncategorized {
+            get {
+                return ResourceManager.GetString("Uncategorized", resourceCulture);
             }
         }
         

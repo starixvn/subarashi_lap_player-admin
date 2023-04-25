@@ -48,6 +48,7 @@ export class FormFilter extends PureComponent {
             isMatchPrecise: true,
             customerClass: "",
             commGroups: "",
+            RiskLevels: "",
             subsidiarySearch: false,
             selectedSubsidiaryList: "",
         };
@@ -78,7 +79,8 @@ export class FormFilter extends PureComponent {
                 oddsGroup: this.props.depositSetting.OddsGroups.join(','),
                 specialLevel: this.allSpecialLevel,
                 baFilter: baStatusList.All,
-                customerClass: this.props.depositSetting.CustomerClass.join(','),
+                customerClass: this.props.depositSetting.RiskLevels.map(r => r.CustomerClassList.join(',')).join(','),
+                riskLevels: this.props.depositSetting.RiskLevels.map(r => r.Id).join(','),
                 commGroups: this.props.depositSetting.CommGroups.map(c => c.Id).join(',')
             });
         }
@@ -93,12 +95,12 @@ export class FormFilter extends PureComponent {
 
         const userName = this.userNameRef.current.value;
         const { pagingOption, searchPlayer, currencyList } = this.props;
-        const { specialLevel, currencyIdList, oddsGroup, customerClass, commGroups, subsidiarySearch, selectedSubsidiaryList, ...restParam } = this.state;
+        const { specialLevel, currencyIdList, oddsGroup, customerClass, riskLevels, commGroups, subsidiarySearch, selectedSubsidiaryList, ...restParam } = this.state;
 
         const actualSpecialLevel = specialLevel.trim() === '' ? this.allSpecialLevel : specialLevel;
         const actualCurrencyIdList = currencyIdList.trim().split(',').length === currencyList.length ? '' : currencyIdList;
         const actualOddsGroup = oddsGroup.trim().split(',').length === this.props.depositSetting.OddsGroups.length ? '' : oddsGroup;
-        const actualCustomerClass = customerClass.trim().split(',').length === this.props.depositSetting.CustomerClass.length ? '' : customerClass;
+        const actualCustomerClass = riskLevels.trim().split(',').length === this.props.depositSetting.RiskLevels.length ? '' : customerClass;
         const actualCommGroups = commGroups;
 
         const param = {

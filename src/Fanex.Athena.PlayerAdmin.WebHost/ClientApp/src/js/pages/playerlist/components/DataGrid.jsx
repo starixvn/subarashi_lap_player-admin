@@ -103,9 +103,9 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(state) {
     const { playerList, selectedPlayer, displayedColumnList, isFetchingData, sweetAlertOption, hasCommPermissionEdit, hasCommPermissionRead,
-        hasBaPermission, hasOddsGroupPermission, hasSpecialLevelPermission, siteSetting } = state;
+        hasBaPermission, hasOddsGroupPermission, hasSpecialLevelPermission, siteSetting, depositSetting } = state;
     return Object.assign({}, { playerList, selectedPlayer, displayedColumnList, isFetchingData, sweetAlertOption, hasCommPermissionEdit, hasCommPermissionRead,
-        hasBaPermission, hasOddsGroupPermission, hasSpecialLevelPermission, siteSetting });
+        hasBaPermission, hasOddsGroupPermission, hasSpecialLevelPermission, siteSetting, depositSetting });
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(DataGrid);
