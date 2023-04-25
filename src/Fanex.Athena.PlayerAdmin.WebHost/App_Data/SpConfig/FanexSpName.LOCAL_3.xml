@@ -64,6 +64,8 @@
 		<Setting Key="Lrf_CustomerSelStatus" SpName="Lrf_CustomerSelStatus" DbName="DBEXT.bodb02.bodbLicenseeNet" />
 		<Setting Key="Acc_Dep_CustSetting_NewBetLimitSettingSelect" SpName="Acc_Dep_CustSetting_NewBetLimitSettingSelect" DbName="DBCUST.CustDB.bodbLicenseeNet" />
 		<Setting Key="Acc_Dep_CustSetting_NewBetLimitUpd" SpName="Acc_Dep_CustSetting_NewBetLimitUpd" DbName="DBCUST.CustDB.bodbLicenseeNet" />
+    <Setting Key="Acc_Dep_CustSetting_Game_BetLimitSettingSelect" SpName="Acc_Dep_CustSetting_Game_BetLimitSettingSelect" DbName="DBCUST.CustDB.bodbLicenseeNet" />
+    <Setting Key="Acc_Dep_CustSetting_Game_BetLimitUpd" SpName="Acc_Dep_CustSetting_Game_BetLimitUpd" DbName="DBCUST.CustDB.bodbLicenseeNet" />
 	</Function>
 	<Function Name="CustomerSettingsThridParty">
 		<Setting Key="Lrf_3rdProductSelCustStatus" SpName="Lrf_3rdProductSelCustStatus" DbName="DBLIC.bodb_Licensee.bodbLicenseeNet" />
