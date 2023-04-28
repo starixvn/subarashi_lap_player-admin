@@ -69,7 +69,7 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Repositories
             { ProductTypes.BTC, (175, 7901) },
             { ProductTypes.FGGL, (176, 8201) },
             { ProductTypes.MXG, (237, 5401) },
-            { ProductTypes.JIG, (158, 5100 }
+            { ProductTypes.JIG, (158, 5100) }
         };
 
         public DcsBetLimitRepository(IDbFactory dbFactory, ILogger<DcsBetLimitRepository> logger)

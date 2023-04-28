@@ -70,7 +70,7 @@ namespace Fanex.Athena.PlayerAdmin.WebHost.UnitTests.Controllers
             //Arrange
             var request = FakeHelper.Create<LapTokenRequest>();
             var tokenReponse = ProtocolResponse.FromException<TokenResponse>(new ArgumentException("test"));
-            var content = new StringContent(JsonConvert.SerializeObject(tokenReponse, JsonSerializerSettings));
+            var content = new StringContent(JsonConvert.SerializeObject(tokenReponse));
             _httpClient.SendAsync(Arg.Any<HttpRequestMessage>(), Arg.Any<CancellationToken>())
                 .Returns(new HttpResponseMessage(HttpStatusCode.InternalServerError) { Content= content });
             var controller = CreateController();
