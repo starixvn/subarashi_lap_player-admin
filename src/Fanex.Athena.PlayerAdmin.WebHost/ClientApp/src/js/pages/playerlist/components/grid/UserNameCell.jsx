@@ -6,10 +6,16 @@ import GridHelper from '../../lib/helpers/gridHelper';
 import { buildSelectedPlayer, buildCurrentActivePlayer } from '../../lib/helpers/playerDataBuilder';
 import { getActiveTabList } from '../../lib/helpers/contextMenuHelper';
 import { playerStatusByName } from '../../lib/constants';
+import { apiInfo } from '../../lib/constants';
+import FactoryCommonService from '../../../../lib/factoryCommonService';
+import LangHelper from '@jsroot/lib/langHelper';
 
 const itemContextMenuHeight = 28;
 
 export const UserNameCell = (props) => {
+
+    const commonService = FactoryCommonService.createInstance();
+
     const {
         dataItem,
         hasCommPermissionRead,
@@ -20,7 +26,8 @@ export const UserNameCell = (props) => {
         setSelectedTabName,
         setSelectedSubTabName,
         getTabList,
-        type
+        type,
+        isShowSabaIntelligence
     } = props;
 
     const handleSelectPlayer = (event) => {
@@ -29,6 +36,14 @@ export const UserNameCell = (props) => {
         setSelectedPlayer(newSelectedPlayer);
         setSelectedTabName(null);
         setSelectedSubTabName(null);
+    }
+
+    const handleViewSabaIntelligence = (event) => {
+        event.preventDefault();
+        const {action, type} = apiInfo.lapSabaIntelligence;
+
+        const url = commonService.getLink(type, action + `?username=${dataItem.UserName}`);
+        window.open(url, "_blank").focus();
     }
 
     const handleEnterContextMenu = (event) => {
@@ -58,7 +73,7 @@ export const UserNameCell = (props) => {
         }
     }
 
-    const { Status } = dataItem;
+    const { Status, IsDeposit } = dataItem;
     const isClosedOrArchived = Status === playerStatusByName.Closed || Status === playerStatusByName.Archived;
 
     return (
@@ -67,14 +82,21 @@ export const UserNameCell = (props) => {
                 onClick={handleSelectPlayer}>
                 {dataItem.UserName}
             </button>
-            {
-                !isClosedOrArchived && (
-                    <button className="btn-default btn-link btn-icon cell-menu"
+
+            <div className='cell-menu'>
+                { IsDeposit && !isClosedOrArchived && isShowSabaIntelligence && (
+                    <button className="btn-default btn-link btn-icon"
+                        onClick={handleViewSabaIntelligence}>
+                        <i className="personal-card" title={LangHelper.getSingleResource('SabaIntelligenceTooltip')}></i>
+                    </button>)
+                }  
+                { !isClosedOrArchived && (
+                    <button className="btn-default btn-link btn-icon"
                         onMouseEnter={handleEnterContextMenu} onMouseLeave={handleLeaveContextMenu}>
                         <i className="material-icons">edit</i>
-                    </button>
-                )
-            }
+                    </button>)
+                }  
+            </div>
         </div>
     )
 }

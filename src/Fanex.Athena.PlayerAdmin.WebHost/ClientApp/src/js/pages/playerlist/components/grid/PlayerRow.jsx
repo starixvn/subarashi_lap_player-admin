@@ -20,7 +20,8 @@ export const PlayerRow = (props) => {
         dataItem,
         displayedColumn,
         canSelectPlayers,
-        hasCommPermissionRead
+        hasCommPermissionRead,
+        isShowSabaIntelligence
     } = props;
 
     const {
@@ -59,7 +60,7 @@ export const PlayerRow = (props) => {
                         data-custid={dataItem.IbcCustId} className="chk-cust" defaultChecked={dataItem.Selected} />
                 </Cell>}
             {displayedColumn[fields.Status] && <Cell><StatusCell dataItem={dataItem} /></Cell>}
-            {displayedColumn[fields.UserName] && <Cell><UserNameCell dataItem={dataItem} hasCommPermissionRead={hasCommPermissionRead} /></Cell>}
+            {displayedColumn[fields.UserName] && <Cell><UserNameCell dataItem={dataItem} hasCommPermissionRead={hasCommPermissionRead} isShowSabaIntelligence={isShowSabaIntelligence}/></Cell>}
             {displayedColumn[fields.SystemId] && <Cell title={SystemId}>{SystemId}</Cell>}
             {displayedColumn[fields.VendorMemberId] && <Cell>{VendorMemberId}</Cell>}
             {displayedColumn[fields.RealName] && <Cell>{RealName}</Cell>}

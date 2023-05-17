@@ -26,7 +26,7 @@ namespace Fanex.Athena.PlayerAdmin.API.Services
         private readonly AppSetting _appSetting;
         private readonly ILogger<DepositSettingService> _logger;
 
-        private readonly string[] RiskLevelKeyByOrder = new[] { "New", "Healthy", "Moderate", "Suspicious", "Dangerous", "Problems", "Robot", RiskLevel.Uncategorized };
+        private readonly string[] RiskLevelKeyByOrder = new[] { "Healthy", "New", "Moderate", "Suspicious", "Dangerous", "Problems", "Robot", RiskLevel.Uncategorized };
 
         public DepositSettingService(IDbFactory dbFactory, HttpClient httpClient,
             IMemoryCache cache,

@@ -56,12 +56,20 @@
     margin-top: -2px;
 }
 
-
 .icon-red-check {
     background-image: url("../images/red-check.jpg");
     width: 14px;
     height: 14px;
     margin-top: 3px;
+    display: inline-block;
+    background-size: 100% 100%;
+}
+
+.personal-card {
+    background-image: url("../images/personal-card.png");
+    width: 21px;
+    height: 21px;
+    cursor: pointer;
     display: inline-block;
     background-size: 100% 100%;
 }

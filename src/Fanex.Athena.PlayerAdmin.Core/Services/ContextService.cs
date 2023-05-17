@@ -87,6 +87,8 @@ namespace Fanex.Athena.PlayerAdmin.Core.Services
 
         public bool IsShowIpVN => IsInRoles("super_admin", "bl_view_ipvn");
 
+        public bool IsShowSabaIntelligence => IsInRoles("super_admin", "SabaIntelligence");
+
         public bool IsFakeLicensee => GetClaimValue("IsFakeLicensee", false);
 
         public IEnumerable<string> OfferedSubProductList
@@ -169,7 +171,7 @@ namespace Fanex.Athena.PlayerAdmin.Core.Services
         private T GetClaimValue<T>(string claimType, T _default)
         {
             var claimValue = GetClaimValue(claimType);
-            if(string.IsNullOrEmpty(claimValue))
+            if (string.IsNullOrEmpty(claimValue))
             {
                 return _default;
             }

@@ -330,7 +330,6 @@ input[disabled] {
 
 /*End Batch Update*/
 
-
 .risk-level {
     display: flex;
     padding: 0;
@@ -347,11 +346,11 @@ input[disabled] {
         color: #FFF;
 
         &.New {
-            background-color: #009D2C;
+            background-color: #E0CD18;
         }
 
         &.Healthy {
-            background-color: #92D050;
+            background-color: #009D2C;
         }
 
         &.Moderate {
@@ -359,7 +358,7 @@ input[disabled] {
         }
 
         &.Suspicious {
-            background-color: #009D2C;
+            background-color: #F2A96D;
         }
 
         &.Dangerous {
@@ -380,13 +379,13 @@ input[disabled] {
     }
 
     &.New {
-        border-color: #009D2C;
-        background: #DEFFE7;
+        border-color: #E0CD18;
+        background: #FEFFE7;
     }
 
     &.Healthy {
-        border-color: #92D050;
-        background: #EBFFD6;
+        border-color: #009D2C;
+        background: #DEFFE7;
     }
 
     &.Moderate {
@@ -395,8 +394,8 @@ input[disabled] {
     }
 
     &.Suspicious {
-        border-color: #009D2C;
-        background: #DEFFE7;
+        border-color: #F2A96D;
+        background: #FFE6D1;
     }
 
     &.Dangerous {
@@ -419,7 +418,6 @@ input[disabled] {
         background: #FFF;
     }
 }
-
 
 label.risk-level {
     margin-left: 5px;

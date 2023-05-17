@@ -216,7 +216,8 @@ export const apiInfo = {
     lrfArchivedSearch: { action: 'api/PlayerList/ArchivedSearch', type: systemType.playerAdmin },
     lapSearch: { action: 'PlayerAdminContainer/Search', type: systemType.newAdmin },
     lapDataById: { action: 'PlayerAdminContainer/GetPlayerListById', type: systemType.newAdmin },
-    lapGetPlayerByLicenseeId: { action: 'PlayerAdminContainer/GetPlayerById', type: systemType.newAdmin }
+    lapGetPlayerByLicenseeId: { action: 'PlayerAdminContainer/GetPlayerById', type: systemType.newAdmin },
+    lapSabaIntelligence: { action: 'verify/ApplySiToken', type: systemType.newAdmin }
 }
 
 export const apiUpdateInfo = {

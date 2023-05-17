@@ -38,7 +38,8 @@ namespace Fanex.Athena.PlayerAdmin.API.Controllers
                 IsAllowedCustomerComm = _contextService.IsAllowedCustomerComm,
                 IsAllowedBA = _contextService.IsEnableBA && (await licenseeService.CheckProductBelongsTo(siteName, ProductTypes.BA)),
                 UserLevel = _contextService.UserLevel,
-                IsEnableSingleWallet = _contextService.IsEnableSingleWallet
+                IsEnableSingleWallet = _contextService.IsEnableSingleWallet,
+                IsShowSabaIntelligence = _contextService.IsShowSabaIntelligence
             }, new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase });
         }
 
