@@ -335,6 +335,8 @@ input[disabled] {
     padding: 0;
     border-radius: 3px;
     border: 1px solid;
+    border-color: #909090;
+    background: #FFF;
 
     .text, .icon {
         display: inline-flex;
@@ -344,6 +346,11 @@ input[disabled] {
 
     .icon {
         color: #FFF;
+        background-color: #909090;
+
+        &.VIP {
+            background-color: #92D050;
+        }
 
         &.New {
             background-color: #E0CD18;
@@ -376,6 +383,11 @@ input[disabled] {
         &.Uncategorized {
             background-color: #909090;
         }
+    }
+
+    &.VIP {
+        border-color: #92D050;
+        background: #EBFFD6;
     }
 
     &.New {

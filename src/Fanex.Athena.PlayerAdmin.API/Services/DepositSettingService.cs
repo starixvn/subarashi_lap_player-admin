@@ -26,8 +26,6 @@ namespace Fanex.Athena.PlayerAdmin.API.Services
         private readonly AppSetting _appSetting;
         private readonly ILogger<DepositSettingService> _logger;
 
-        private readonly string[] RiskLevelKeyByOrder = new[] { "Healthy", "New", "Moderate", "Suspicious", "Dangerous", "Problems", "Robot", RiskLevel.Uncategorized };
-
         public DepositSettingService(IDbFactory dbFactory, HttpClient httpClient,
             IMemoryCache cache,
             IOptions<AppSetting> appSetting,
@@ -83,21 +81,27 @@ namespace Fanex.Athena.PlayerAdmin.API.Services
             {
                 using var request = new HttpRequestMessage(HttpMethod.Get, new Uri(_appSetting.CustomerClassUrl));
                 using var response = await _httpClient.SendAsync(request);
-                var RiskLevelList = new List<RiskLevel>();
                 response.EnsureSuccessStatusCode();
-                var customerClassList = JsonConvert.DeserializeObject<IEnumerable<CustomerClassApiModel>>(await response.Content.ReadAsStringAsync());
-                foreach (var key in RiskLevelKeyByOrder)
-                {
-                    RiskLevelList.Add(new RiskLevel
+                var customerClassList = JsonConvert.DeserializeObject<List<CustomerClassApiModel>>(await response.Content.ReadAsStringAsync());
+
+                customerClassList.Add(
+                    new CustomerClassApiModel
                     {
-                        Id = RiskLevelList.Count.ToString(),
-                        Key = key,
-                        Name = ViewResources.ResourceManager.GetString(key),
-                        CustomerClassList = key == RiskLevel.Uncategorized ? new[] { "0" }
-                            : customerClassList.Where(_ => _.CustomerClassName.Contains(key, StringComparison.OrdinalIgnoreCase)).Select(_ => _.CustomerClass.ToString()).Distinct()
-                    });
-                }
-                return RiskLevelList;
+                        CustomerClass = 0,
+                        CustomerClassName = RiskLevel.Uncategorized,
+                        SabaRiskLevel = RiskLevel.Uncategorized
+                    }
+                );
+
+                var riskLevelList = customerClassList.GroupBy(_ => _.SabaRiskLevel).Select((_, index) => new RiskLevel
+                {
+                    Id = index.ToString(),
+                    Key = _.Key,
+                    Name = ViewResources.ResourceManager.GetString(_.Key) ?? _.Key,
+                    CustomerClassList = _.Select(_ => _.CustomerClass.ToString())
+                }).OrderBy(_ => _, new RiskLevelComparer());
+
+                return riskLevelList;
             }
             catch (Exception ex)
             {

@@ -2870,7 +2870,7 @@
     <value>View Notification</value>
     <comment>84004</comment>
   </data>
-  <data name="Vip" xml:space="preserve">
+  <data name="VIP" xml:space="preserve">
     <value>VIP</value>
     <comment>#128082</comment>
   </data>
@@ -3070,5 +3070,8 @@
   </data>
   <data name="RiskLevelInformation" xml:space="preserve">
     <value>Risk Level Information</value>
+  </data>
+  <data name="SabaIntelligenceTooltip" xml:space="preserve">
+    <value>Click here to view User Profile tab of Saba Intelligence function</value>
   </data>
 </root>

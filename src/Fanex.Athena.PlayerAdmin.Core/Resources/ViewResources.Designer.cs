@@ -6262,6 +6262,15 @@ namespace Fanex.Athena.PlayerAdmin.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Click here to view User Profile tab of Saba Intelligence function.
+        /// </summary>
+        public static string SabaIntelligenceTooltip {
+            get {
+                return ResourceManager.GetString("SabaIntelligenceTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Saba Virtual Sports Win Loss.
         /// </summary>
         public static string SabaVirtualSportsWinLoss {
@@ -7776,9 +7785,9 @@ namespace Fanex.Athena.PlayerAdmin.Core.Resources {
         /// <summary>
         ///   Looks up a localized string similar to VIP.
         /// </summary>
-        public static string Vip {
+        public static string VIP {
             get {
-                return ResourceManager.GetString("Vip", resourceCulture);
+                return ResourceManager.GetString("VIP", resourceCulture);
             }
         }
         
