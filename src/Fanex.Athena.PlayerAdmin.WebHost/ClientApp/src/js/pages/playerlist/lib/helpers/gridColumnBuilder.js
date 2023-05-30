@@ -11,7 +11,7 @@ export const buildDefaultColumnList = (licType, hasCommPermissionRead) => {
     }).map(item => ({ ...item }))
 }
 
-export const buildColumnList = (licType, isAllowedBA, hasCommPermissionRead, isEnableSingleWallet, userLevel) => {
+export const buildColumnList = (licType, isAllowedBA, hasCommPermissionRead, isEnableSingleWallet, enableCustomerClass) => {
     const isApiType = licType === licenseeType.api;
     return columnList.filter(item => {
         if (item.key === fields.BaStatus) {
@@ -21,7 +21,7 @@ export const buildColumnList = (licType, isAllowedBA, hasCommPermissionRead, isE
         } else if (item.key === fields.CurrentBalance) {
             return !isEnableSingleWallet;
         } else if (item.key === fields.CustomerClass) {
-            return userLevel === 0;
+            return enableCustomerClass;
         } else {
             return _showByLicenseeType(isApiType, item.key);
         }

@@ -7,10 +7,10 @@ export const getSiteSetting = (licType, hasCommPermissionRead) => (dispatch) => 
     const service = new SettingService();
     service.getSiteSetting().then((response) => {
         const { isAllowedBA, isEnableSingleWallet, userLevel } = response.data;
-        if (isAllowedBA || isEnableSingleWallet) {
-            const columnList = buildColumnList(licType, isAllowedBA, hasCommPermissionRead, isEnableSingleWallet, userLevel);
-            dispatch(setDisplayedColumnList(columnList));
-        }
+        const enableCustomerClass = userLevel === 0;
+
+        const columnList = buildColumnList(licType, isAllowedBA, hasCommPermissionRead, isEnableSingleWallet, enableCustomerClass);
+        dispatch(setDisplayedColumnList(columnList));
 
         dispatch(setSiteSetting({ ...response.data }));
     }).catch(() => {

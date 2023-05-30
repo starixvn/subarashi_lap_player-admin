@@ -8,10 +8,11 @@ export const RiskLevelCell = (props) => {
     const riskLevel = props.riskLevel;
     const riskLevelKey = props.riskLevelKey;
     const customerClass = props.customerClass;
+    const currencyId = props.currencyId;
     const [isShowRiskLevelInformation, setIsShowRiskLevelInformation] = useState(false);
     const commonService = FactoryCommonService.createInstance();
     const lrfSystemId = 1;
-    var url = "RiskLevel/Information" + `?customerClass=${customerClass}` +"&time=" + (new Date().getTime());
+    var url = "RiskLevel/Information" + `?customerClass=${customerClass}` + `&currencyId=${currencyId}` +"&time=" + (new Date().getTime());
 
     const clickOnPopup = (e) => {
         e.stopPropagation();
