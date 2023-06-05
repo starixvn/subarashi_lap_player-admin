@@ -4,11 +4,13 @@ using Fanex.Athena.PlayerAdmin.API.Services.Interfaces;
 using Fanex.Athena.PlayerAdmin.API.ViewModels;
 using Fanex.Athena.PlayerAdmin.Core.Extensions;
 using Fanex.Athena.PlayerAdmin.Core.Repositories;
+using Fanex.Athena.PlayerAdmin.Core.Resources;
 using Fanex.Athena.PlayerAdmin.Core.Services;
 using Fanex.Athena.PlayerAdmin.Core.Settings;
 using Fanex.Data;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Fanex.Athena.PlayerAdmin.API.Services
@@ -17,17 +19,21 @@ namespace Fanex.Athena.PlayerAdmin.API.Services
     {
         private readonly IDbFactory _dbFactory;
         private readonly IContextService _contextService;
+        private readonly IDepositSettingService _depositSettingService;
 
-        public PlayerListService(IDbFactory dbFactory, IContextService contextService)
+        public PlayerListService(IDbFactory dbFactory, IContextService contextService, IDepositSettingService depositSettingService)
         {
             _dbFactory = dbFactory;
             _contextService = contextService;
+            _depositSettingService = depositSettingService;
         }
 
         public async Task<PlayerListResultViewModel> Search(PlayerSearchingMetaModel metaModel)
         {
             const string SpKey = "Shard_Lrf_CustomerSelByUsername";
             var result = new PlayerListResultViewModel { DataList = new List<Player>() };
+            var riskLevels = await _depositSettingService.GetRiskLevelList(_contextService.Language);
+
             if (metaModel.IsDeposited == 0)
             {
                 return result;
@@ -38,7 +44,7 @@ namespace Fanex.Athena.PlayerAdmin.API.Services
                 AssignCommonParam(objectDb, metaModel);
                 AssignParamByUserName(objectDb, metaModel);
 
-                result.DataList = await ReadPlayerList(objectDb);
+                result.DataList = await ReadPlayerList(objectDb, riskLevels);
                 result.TotalItem = GetTotalItem(objectDb);
             }
 
@@ -49,13 +55,14 @@ namespace Fanex.Athena.PlayerAdmin.API.Services
         {
             const string SpKey = "Shard_Lrf_CustomerSelByCustid";
             var result = new PlayerListResultViewModel();
+            var riskLevels = await _depositSettingService.GetRiskLevelList(_contextService.Language);
 
             using (var objectDb = _dbFactory.GetObjectDb(SpKey))
             {
                 AssignCommonParam(objectDb, metaModel);
                 AssignParamByCustId(objectDb, metaModel);
 
-                result.DataList = await ReadPlayerList(objectDb);
+                result.DataList = await ReadPlayerList(objectDb, riskLevels);
                 result.TotalItem = GetTotalItem(objectDb);
             }
 
@@ -122,7 +129,7 @@ namespace Fanex.Athena.PlayerAdmin.API.Services
             objectDb.SetParameterValue("TotalRows", 0);
         }
 
-        private static async Task<IEnumerable<Player>> ReadPlayerList(IObjectDb objectDb)
+        private static async Task<IEnumerable<Player>> ReadPlayerList(IObjectDb objectDb, IEnumerable<RiskLevel> riskLevels)
         {
             var playerList = new List<Player>();
 
@@ -130,6 +137,9 @@ namespace Fanex.Athena.PlayerAdmin.API.Services
             {
                 while (reader.Read())
                 {
+                    var customerClass = Convert.ToString(reader["CustomerClass"]);
+                    var riskLevelKey = riskLevels?.FirstOrDefault(r => r.CustomerClassList.Contains(customerClass))?.Key ?? RiskLevel.Uncategorized;
+
                     playerList.Add(new Player
                     {
                         IbcCustId = Convert.ToInt32(reader["CustId"]),
@@ -143,7 +153,9 @@ namespace Fanex.Athena.PlayerAdmin.API.Services
                         CurrentBalance = Convert.ToDecimal(reader["TotalBalance"]),
                         OutstandingBalance = Convert.ToDecimal(reader["Outstanding"]),
                         CommissionGroup = Convert.ToString(reader["GroupName"]),
-                        CustomerClass = Convert.ToString(reader["CustomerClass"])
+                        CustomerClass = customerClass,
+                        RiskLevelKey = riskLevelKey,
+                        RiskLevel = ViewResources.ResourceManager.GetString(riskLevelKey)
                     });
                 }
             }
@@ -157,7 +169,7 @@ namespace Fanex.Athena.PlayerAdmin.API.Services
             var currencyDic = _contextService.CurrencyList;
 
             using (var reader = await objectDb.ExecuteReaderAsync())
-            {                
+            {
                 while (reader.Read())
                 {
                     var currencyId = Convert.ToByte(reader["currency"]);

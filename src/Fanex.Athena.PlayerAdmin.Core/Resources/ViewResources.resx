@@ -2870,7 +2870,7 @@
     <value>View Notification</value>
     <comment>84004</comment>
   </data>
-  <data name="Vip" xml:space="preserve">
+  <data name="VIP" xml:space="preserve">
     <value>VIP</value>
     <comment>#128082</comment>
   </data>
@@ -3040,5 +3040,38 @@
   </data>
   <data name="ProductJIG" xml:space="preserve">
     <value>Jili</value>
+  </data>
+  <data name="Dangerous" xml:space="preserve">
+    <value>Dangerous</value>
+  </data>
+  <data name="Healthy" xml:space="preserve">
+    <value>Healthy</value>
+  </data>
+  <data name="Moderate" xml:space="preserve">
+    <value>Moderate</value>
+  </data>
+  <data name="New" xml:space="preserve">
+    <value>New</value>
+  </data>
+  <data name="Problems" xml:space="preserve">
+    <value>Problems</value>
+  </data>
+  <data name="Robot" xml:space="preserve">
+    <value>Robot</value>
+  </data>
+  <data name="Suspicious" xml:space="preserve">
+    <value>Suspicious</value>
+  </data>
+  <data name="Uncategorized" xml:space="preserve">
+    <value>Uncategorized</value>
+  </data>
+  <data name="RiskLevel" xml:space="preserve">
+    <value>Risk Level</value>
+  </data>
+  <data name="RiskLevelInformation" xml:space="preserve">
+    <value>Risk Level Information</value>
+  </data>
+  <data name="SabaIntelligenceTooltip" xml:space="preserve">
+    <value>Click here to view User Profile tab of Saba Intelligence function</value>
   </data>
 </root>

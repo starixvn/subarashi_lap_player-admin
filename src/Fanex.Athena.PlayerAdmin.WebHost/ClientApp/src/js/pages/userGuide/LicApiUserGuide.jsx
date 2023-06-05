@@ -22,6 +22,7 @@ const EngContent = ({isSingleWallet, exportOddsGroup})=> {
                 <li><b>Odds Group:</b> view players of an odds group.</li>
                 <li><b>Special Level:</b> view players of a specific special level.</li>
                 <li><b>BA:</b> view players of a BA.</li>
+                <li><b>Risk Level:</b> view players of a specific risk level.</li>
             </ul>
         </div>
         <div className="line" />
@@ -39,6 +40,7 @@ const EngContent = ({isSingleWallet, exportOddsGroup})=> {
                 </li>
                 {!isSingleWallet && <li><b>Current Balances: </b> indicate available amount to place bets.</li>}
                 <li><b>Outstanding Balance:</b> indicate total stakes of all running bets.</li>
+                <li><b>Risk Level:</b> view the assigned risk level bet setting and risk level odds group for player.</li>
                 <li><b>Odds Group:</b> view or set odds group for player.</li>
                 <li><b>BA Status:</b> switch on/off BA status for player.</li>
                 <li><b>Special Level:</b> view or set a special level for player.</li>
@@ -91,7 +93,7 @@ const ZnCNContent = ({isSingleWallet, exportOddsGroup}) => {
                 <li><b>Odds Group:</b> 查看玩家的 odds group。</li>
                 <li><b>特殊层级:</b> 查阅特殊层级里的玩家。</li>
                 <li><b>BA状态:</b> 查看玩家的BA状态。</li>
-
+                <li><b>风险等级:</b> 查看玩家的风险等级。</li>
             </ul>
         </div>
         <div className="line" />
@@ -109,6 +111,7 @@ const ZnCNContent = ({isSingleWallet, exportOddsGroup}) => {
                 </li>
                 {!isSingleWallet && <li><b>目前余额:</b> 显示可用于投注的金额。</li>}
                 <li><b>未结余额:</b> 显示所有投注中的总投注额。</li>
+                <li><b>风险等级:</b> 查看玩家被风控的投注限制和水位组别。</li>
                 <li><b>Odds Group:</b> 显示或设定玩家的odds group。</li>
                 <li><b>BA状态:</b> 开/关玩家的BA状态。</li>
                 <li><b>特殊层级:</b> 显示或设定玩家的特殊层级。</li>

@@ -6,5 +6,6 @@
         public bool IsAllowedCustomerComm { get; set; }
         public bool IsAllowedBA { get; set; }
         public bool IsEnableSingleWallet { get; set; }
+        public bool IsShowSabaIntelligence { get; set; }
     }
 }

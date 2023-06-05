@@ -35,6 +35,7 @@ export const fields = {
     Currency: 'Currency',
     CurrentBalance: 'CurrentBalance',
     OutstandingBalance: 'OutstandingBalance',
+    RiskLevel: 'RiskLevel',
     OddsGroup: 'OddsGroup',
     BaStatus: 'BaStatus',
     SpecialLevel: 'SpecialLevel',
@@ -54,6 +55,7 @@ export const columnList = [
     { key: fields.Currency, value: LangHelper.getSingleResource('Currency'), show: true },
     { key: fields.CurrentBalance, value: LangHelper.getSingleResource('CurrentBalance'), show: true },
     { key: fields.OutstandingBalance, value: LangHelper.getSingleResource('OutstandingBalance'), show: true },
+    { key: fields.RiskLevel, value: LangHelper.getSingleResource('RiskLevel'), show: true },
     { key: fields.OddsGroup, value: LangHelper.getSingleResource('OddsGroup'), show: true },
     { key: fields.BaStatus, value: LangHelper.getSingleResource('BAStatus'), show: true },
     { key: fields.SpecialLevel, value: LangHelper.getSingleResource('SpecialLevel'), show: true },
@@ -190,6 +192,7 @@ export const headerText = {
     Currency: LangHelper.getSingleResource('Currency'),
     CurrentBalance: LangHelper.getSingleResource('CurrentBalance'),
     OutstandingBalance: LangHelper.getSingleResource('OutstandingBalance'),
+    RiskLevel: LangHelper.getSingleResource('RiskLevel'),
     OddsGroup: LangHelper.getSingleResource('OddsGroup'),
     BaStatus: LangHelper.getSingleResource('BAStatus'),
     SpecialLevel: LangHelper.getSingleResource('SpecialLevel'),
@@ -213,7 +216,8 @@ export const apiInfo = {
     lrfArchivedSearch: { action: 'api/PlayerList/ArchivedSearch', type: systemType.playerAdmin },
     lapSearch: { action: 'PlayerAdminContainer/Search', type: systemType.newAdmin },
     lapDataById: { action: 'PlayerAdminContainer/GetPlayerListById', type: systemType.newAdmin },
-    lapGetPlayerByLicenseeId: { action: 'PlayerAdminContainer/GetPlayerById', type: systemType.newAdmin }
+    lapGetPlayerByLicenseeId: { action: 'PlayerAdminContainer/GetPlayerById', type: systemType.newAdmin },
+    lapSabaIntelligence: { action: 'verify/ApplySiToken', type: systemType.newAdmin }
 }
 
 export const apiUpdateInfo = {
@@ -260,7 +264,7 @@ export const responsiveFilterColumn = {
         [licenseeType.api]: "col-12 col-md-4 col-sm-6 col-lg-2 col-xl-2",
         [licenseeType.nonApi]: "col-12 col-md-4 col-sm-6 col-lg-3 col-xl-1"
     }, 
-    customerClass: {
+    riskLevel: {
         [licenseeType.api]: "col-12 col-md-4 col-sm-6 col-lg-2 col-xl-3",
         [licenseeType.nonApi]: "col-12 col-md-4 col-sm-6 col-lg-3 col-xl-2"
     }, 

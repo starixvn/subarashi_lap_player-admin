@@ -1,17 +1,17 @@
 ﻿import React from 'react';
-import MultipleSelect from '@9softstudio/react-multiselect';
+import MultipleSelect from '@legion-lib/react-multiselect';
 import PropTypes from 'prop-types';
 import Select from 'react-select';
 import { baStatusList, specialLevelListWithColor, responsiveFilterColumn } from '../../lib/constants';
 import LangHelper from '@jsroot/lib/langHelper';
-import { getSpecialLevelText, getCustomerClassText } from '../../lib/helpers/utils';
+import { getSpecialLevelText } from '../../lib/helpers/utils';
 
 export class AdvancedSearch extends React.Component {
     constructor(props) {
         super(props);
         this.specialLevelList = Object.keys(specialLevelListWithColor).map(item => ({ Id: item, Value: getSpecialLevelText(item), Status: true }));
         this.baStatusList = Object.keys(baStatusList).map(item => ({ value: baStatusList[item], label: LangHelper.getSingleResource(item) }));
-        this.customerClassList = props.depositSetting.CustomerClass.map(item => ({ Id: item, Value: getCustomerClassText(item), Status: true }));
+        this.riskLevelList = props.depositSetting.RiskLevels.map(item => ({ Id: item.Id, Value: item.Name, Status: true, valueDecoration: `risk-level ${item.Key}` }));
         this.commGroupList = props.depositSetting.CommGroups.map(item => ({ Id: item.Id, Value: item.Name, Status: true }));
         this.oddsGroupList = props.depositSetting.OddsGroups.map(item => ({ Id: item, Value: item, Status: true }));
     }
@@ -24,8 +24,22 @@ export class AdvancedSearch extends React.Component {
         });
     }
 
+    _createRiskLevelSelectData(originalList, selectedItemString) {
+        const selectedItemList = selectedItemString.split(',').filter(x => x !== '');
+        return originalList.map(item => {
+            const { Id, Value, valueDecoration } = item;
+            return { Id, Value, valueDecoration, Status: selectedItemList.indexOf(Id) !== -1 };
+        });
+    }
+
     handleChange = (name, value) => {
         this.props.onChange(name, value);
+    };
+
+    handleCustomerClassChange = value => {        
+        this.props.onChange("riskLevels", value);
+        var customerClassSelected = this.props.depositSetting.RiskLevels.filter(r => value.includes(r.Id)).map(r => r.CustomerClassList.join(',')).join(',');
+        this.props.onChange("customerClass", customerClassSelected);
     };
 
     handleChangeSingleDropdown = (name, item) => {
@@ -34,12 +48,12 @@ export class AdvancedSearch extends React.Component {
 
     render() {
         const { currencyList, param, isAllowedBA, isSubsidiary, type } = this.props;
-        const { currencyIdList, oddsGroup, specialLevel, baFilter, customerClass, commGroups } = param;
+        const { currencyIdList, oddsGroup, specialLevel, baFilter, riskLevels, commGroups } = param;
 
         const convertedCurrencyList = this._createSelectData(currencyList, currencyIdList);
         const oddsGroupList = this._createSelectData(this.oddsGroupList, oddsGroup);
         const specialLevelList = this._createSelectData(this.specialLevelList, specialLevel);
-        const customerClassList = this._createSelectData(this.customerClassList, customerClass);
+        const riskLevelList = this._createRiskLevelSelectData(this.riskLevelList, riskLevels);
         const commGroupList = this._createSelectData(this.commGroupList, commGroups);
 
         const selectedBaStatus = isAllowedBA ? this.baStatusList.find(x => x.value === baFilter) : null;
@@ -98,20 +112,20 @@ export class AdvancedSearch extends React.Component {
                     )
                 }
 
-                <div className={responsiveFilterColumn["customerClass"][type]}>
+                <div className={responsiveFilterColumn["riskLevel"][type]}>
                     <div className="form-group">
-                        <label className="label-text">{LangHelper.getSingleResource("CustomerClass")}</label>
-                        <MultipleSelect id="ddl-customer-class"
-                            dataSource={customerClassList}
+                        <label className="label-text">{LangHelper.getSingleResource("RiskLevel")}</label>
+                        <MultipleSelect id="ddl-risk-level"
+                            dataSource={riskLevelList}
                             keyField={"Id"}
                             valueField={"Value"}
                             statusField={"Status"}
-                            onChange={(currentItem, selectedItemsKey) => this.handleChange('customerClass', selectedItemsKey)} />
+                            onChange={(currentItem, selectedItemsKey) => this.handleCustomerClassChange(selectedItemsKey)} />
                     </div>
                 </div>
                 {!isSubsidiary && <div className={responsiveFilterColumn["groupCommission"][type]}>
                     <div className="form-group">
-                        <label className="label-text">{LangHelper.getSingleResource("GroupCommission")}</label>
+                        <label className="label-text">{LangHelper.getSingleResource("CommissionGroup")}</label>
                         <MultipleSelect id="ddl-comm-group"
                             dataSource={commGroupList}
                             keyField={"Id"}

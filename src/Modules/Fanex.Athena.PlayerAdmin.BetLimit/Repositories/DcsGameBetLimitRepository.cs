@@ -107,16 +107,14 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Repositories
         private static string BuildBetLimitParameter(int productId, IEnumerable<PlayerBetLimitMetaModel> setting)
         {
             const string XMLPattern = "<ROOT>{0}</ROOT>";
-            string XMLElement = productId switch
-            {
-                ProductTypes.Sportsbook => "<BetLimit SportType=\"{0}\" BetType=\"{1}\" MinBet=\"{2}\" MaxBet=\"{3}\" MaxPerMatch=\"{4}\" MaxPayoutPerMatch=\"{5}\"></BetLimit>",
-                _ => "<BetLimit SportType=\"{0}\" BetType=\"{1}\" MinBet=\"{2}\" MaxBet=\"{3}\" MaxPerMatch=\"{4}\" MaxPerNumber=\"{5}\"></BetLimit>",
-            };
+            string XMLElement = productId == ProductTypes.Sportsbook
+                ? "<BetLimit SportType=\"{0}\" BetType=\"{1}\" MinBet=\"{2}\" MaxBet=\"{3}\" MaxPerMatch=\"{4}\" MaxPayoutPerMatch=\"{5}\"></BetLimit>"
+                : "<BetLimit SportType=\"{0}\" BetType=\"{1}\" MinBet=\"{2}\" MaxBet=\"{3}\" MaxPerMatch=\"{4}\" MaxPerNumber=\"{5}\"></BetLimit>";
             var xmlElementBuilder = new StringBuilder();
             foreach (var item in setting)
             {
-                xmlElementBuilder.Append(productId == ProductTypes.Sportsbook 
-                    ? string.Format(XMLElement, item.SportType, item.BetType, item.MinBet, item.MaxBet, item.MaxPerMatch, item.MaxPayoutPerMatch) 
+                xmlElementBuilder.Append(productId == ProductTypes.Sportsbook
+                    ? string.Format(XMLElement, item.SportType, item.BetType, item.MinBet, item.MaxBet, item.MaxPerMatch, item.MaxPayoutPerMatch)
                     : string.Format(XMLElement, item.SportType, item.BetType, item.MinBet, item.MaxBet, item.MaxPerMatch, item.MaxPerBall)
                 );
             }

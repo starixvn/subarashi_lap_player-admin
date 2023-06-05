@@ -2581,8 +2581,8 @@
     <value>查看通知</value>
     <comment>84004</comment>
   </data>
-  <data name="Vip" xml:space="preserve">
-    <value>VIP</value>
+  <data name="VIP" xml:space="preserve">
+    <value>VIP会员</value>
     <comment>#128082</comment>
   </data>
   <data name="VipPlayerManagement" xml:space="preserve">
@@ -2703,5 +2703,38 @@
   <data name="WhiteLabel" xml:space="preserve">
     <value>包网商</value>
     <comment>#163255</comment>
+  </data>
+  <data name="Dangerous" xml:space="preserve">
+    <value>危險</value>
+  </data>
+  <data name="Healthy" xml:space="preserve">
+    <value>健康</value>
+  </data>
+  <data name="Moderate" xml:space="preserve">
+    <value>中等</value>
+  </data>
+  <data name="New" xml:space="preserve">
+    <value> 新會員</value>
+  </data>
+  <data name="Problems" xml:space="preserve">
+    <value>問題</value>
+  </data>
+  <data name="Robot" xml:space="preserve">
+    <value>機械</value>
+  </data>
+  <data name="Suspicious" xml:space="preserve">
+    <value>可疑</value>
+  </data>
+  <data name="Uncategorized" xml:space="preserve">
+    <value>未分类</value>
+  </data>
+  <data name="RiskLevel" xml:space="preserve">
+    <value>风险等级</value>
+  </data>
+  <data name="RiskLevelInformation" xml:space="preserve">
+    <value>风险等级资讯</value>
+  </data>
+  <data name="SabaIntelligenceTooltip" xml:space="preserve">
+    <value>单击此处查看沙巴数据神灯精灵的玩家档案分页</value>
   </data>
 </root>

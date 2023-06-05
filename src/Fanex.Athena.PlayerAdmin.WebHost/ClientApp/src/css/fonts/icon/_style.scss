@@ -1,7 +1,9 @@
-﻿@font-face {
+﻿$version: 5r178o;
+
+@font-face {
     font-family: 'icomoon';
-    src: url('../fonts/font-icon/fonts/icomoon.eot?74xi81');
-    src: url('../fonts/font-icon/fonts/icomoon.eot?74xi81#iefix') format('embedded-opentype'), url('../fonts/font-icon/fonts/icomoon.ttf?74xi81') format('truetype'), url('../fonts/font-icon/fonts/icomoon.woff?74xi81') format('woff'), url('../fonts/font-icon/fonts/icomoon.svg?74xi81#icomoon') format('svg');
+    src: url('../fonts/font-icon/fonts/icomoon.eot?#{$version}');
+    src: url('../fonts/font-icon/fonts/icomoon.eot?#{$version}#iefix') format('embedded-opentype'), url('../fonts/font-icon/fonts/icomoon.ttf?#{$version}') format('truetype'), url('../fonts/font-icon/fonts/icomoon.woff?#{$version}') format('woff'), url('../fonts/font-icon/fonts/icomoon.svg?#{$version}#icomoon') format('svg');
     font-weight: normal;
     font-style: normal;
 }
@@ -43,6 +45,10 @@
     content: "\2713";
 }
 
+.icon-moreinfo:before {
+    content: "\ea08";
+}
+
 .icon-info {
     background-image: url("../images/info.png");
     width: 14px;
@@ -52,12 +58,20 @@
     margin-top: -2px;
 }
 
-
 .icon-red-check {
     background-image: url("../images/red-check.jpg");
     width: 14px;
     height: 14px;
     margin-top: 3px;
+    display: inline-block;
+    background-size: 100% 100%;
+}
+
+.personal-card {
+    background-image: url("../images/personal-card.png");
+    width: 21px;
+    height: 21px;
+    cursor: pointer;
     display: inline-block;
     background-size: 100% 100%;
 }

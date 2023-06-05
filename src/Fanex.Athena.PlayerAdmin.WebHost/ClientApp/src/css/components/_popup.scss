@@ -47,12 +47,14 @@ $bgTitlebar: $bgHeaderTableLevel1;
             background-color: $bgTitlebar;
             padding: 8.5px 15px;
             position: relative;
+            text-align: center;
 
             .txt-title {
                 color: $colorTextTitle;
                 font-size: 14px;
                 text-transform: uppercase;
                 display: inline-block;
+                font-weight: 700;
             }
 
             .popup-close {

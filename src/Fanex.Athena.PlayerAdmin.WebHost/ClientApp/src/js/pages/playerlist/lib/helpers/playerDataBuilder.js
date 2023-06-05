@@ -82,7 +82,9 @@ export const buildLrfPlayerList = (playerList) => {
             SpecialLevel,
             CommissionGroup,
             CustomerClass,
-            Status
+            Status,
+            RiskLevelKey,
+            RiskLevel
         } = item;
 
         return {
@@ -100,7 +102,9 @@ export const buildLrfPlayerList = (playerList) => {
             SpecialLevel,
             CommissionGroup,
             CustomerClass,
-            Status
+            Status,
+            RiskLevelKey,
+            RiskLevel
         };
     });
 }

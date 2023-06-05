@@ -26,6 +26,10 @@
 
         public string CustomerClass { get; set; }
 
+        public string RiskLevel { get; set; }
+
+        public string RiskLevelKey { get; set; }
+
         public int? Status { get; set; }
     }
 }

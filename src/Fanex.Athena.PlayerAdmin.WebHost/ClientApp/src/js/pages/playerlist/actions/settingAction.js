@@ -6,11 +6,11 @@ import { buildColumnList } from '../lib/helpers/gridColumnBuilder';
 export const getSiteSetting = (licType, hasCommPermissionRead) => (dispatch) => {
     const service = new SettingService();
     service.getSiteSetting().then((response) => {
-        const { isAllowedBA, isEnableSingleWallet } = response.data;
-        if (isAllowedBA || isEnableSingleWallet) {
-            const columnList = buildColumnList(licType, isAllowedBA, hasCommPermissionRead, isEnableSingleWallet);
-            dispatch(setDisplayedColumnList(columnList));
-        }
+        const { isAllowedBA, isEnableSingleWallet, userLevel } = response.data;
+        const enableCustomerClass = userLevel === 0;
+
+        const columnList = buildColumnList(licType, isAllowedBA, hasCommPermissionRead, isEnableSingleWallet, enableCustomerClass);
+        dispatch(setDisplayedColumnList(columnList));
 
         dispatch(setSiteSetting({ ...response.data }));
     }).catch(() => {
@@ -18,6 +18,7 @@ export const getSiteSetting = (licType, hasCommPermissionRead) => (dispatch) => 
             isAllowedCustomerComm: false,
             isAllowedBA: false,
             isEnableSingleWallet: false,
+            isShowSabaIntelligence: false,
             userLevel: 2,
         }));
     });
@@ -30,7 +31,7 @@ export const getDepositSetting = () => (dispatch) => {
         dispatch(setDepositSetting(response.data));
     }).catch(() => {
         dispatch(setDepositSetting({
-            CustomerClass: [],
+            RiskLevels: [],
             CommGroups: [],
             OddsGroups: []
         }));

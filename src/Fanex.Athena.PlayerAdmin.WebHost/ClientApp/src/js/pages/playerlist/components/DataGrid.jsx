@@ -34,7 +34,7 @@ export class DataGrid extends PureComponent {
         batchUpdateManager.bindGridEvents();
     }
 
-    _renderDataSection(dataList, displayedColumn, canSelectPlayers, hasCommPermissionRead) {
+    _renderDataSection(dataList, displayedColumn, canSelectPlayers, hasCommPermissionRead, isShowSabaIntelligence) {
         const dataRows = [];
         for (let i = 0; i < dataList.length; i++) {
             const dataItem = dataList[i];
@@ -42,7 +42,8 @@ export class DataGrid extends PureComponent {
                 dataItem,
                 displayedColumn,
                 canSelectPlayers,
-                hasCommPermissionRead
+                hasCommPermissionRead,
+                isShowSabaIntelligence
             };
             dataRows.push(<PlayerRow key={`${dataItem.LicenseeCustId}_${dataItem.IbcCustId}`} {...rowProps} />);
         }
@@ -82,7 +83,7 @@ export class DataGrid extends PureComponent {
                     minWidth={1300}
                     autoHeight={true}
                     header={GridHelper.renderHeader(displayedColumn, this.canSelectPlayers, hasCommPermissionRead)}
-                    body={this._renderDataSection(dataList, displayedColumn, this.canSelectPlayers, hasCommPermissionRead)}
+                    body={this._renderDataSection(dataList, displayedColumn, this.canSelectPlayers, hasCommPermissionRead, this.props.siteSetting.isShowSabaIntelligence)}
                     containerPadding={30}
                     shouldResetScrollPosition={isFetchingData}
                     onSort={this.handleSort} />
@@ -103,9 +104,9 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(state) {
     const { playerList, selectedPlayer, displayedColumnList, isFetchingData, sweetAlertOption, hasCommPermissionEdit, hasCommPermissionRead,
-        hasBaPermission, hasOddsGroupPermission, hasSpecialLevelPermission, siteSetting } = state;
+        hasBaPermission, hasOddsGroupPermission, hasSpecialLevelPermission, siteSetting, depositSetting } = state;
     return Object.assign({}, { playerList, selectedPlayer, displayedColumnList, isFetchingData, sweetAlertOption, hasCommPermissionEdit, hasCommPermissionRead,
-        hasBaPermission, hasOddsGroupPermission, hasSpecialLevelPermission, siteSetting });
+        hasBaPermission, hasOddsGroupPermission, hasSpecialLevelPermission, siteSetting, depositSetting });
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(DataGrid);

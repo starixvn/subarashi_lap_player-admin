@@ -1,4 +1,5 @@
-﻿using Fanex.Athena.PlayerAdmin.API.Services;
+﻿using Fanex.Athena.PlayerAdmin.API.DTO;
+using Fanex.Athena.PlayerAdmin.API.Services;
 using Fanex.Athena.PlayerAdmin.API.ViewModels;
 using Fanex.Athena.PlayerAdmin.Core.Attributes;
 using Fanex.Athena.PlayerAdmin.Core.Constants;
@@ -37,7 +38,8 @@ namespace Fanex.Athena.PlayerAdmin.API.Controllers
                 IsAllowedCustomerComm = _contextService.IsAllowedCustomerComm,
                 IsAllowedBA = _contextService.IsEnableBA && (await licenseeService.CheckProductBelongsTo(siteName, ProductTypes.BA)),
                 UserLevel = _contextService.UserLevel,
-                IsEnableSingleWallet = _contextService.IsEnableSingleWallet
+                IsEnableSingleWallet = _contextService.IsEnableSingleWallet,
+                IsShowSabaIntelligence = _contextService.IsShowSabaIntelligence
             }, new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase });
         }
 
@@ -45,12 +47,12 @@ namespace Fanex.Athena.PlayerAdmin.API.Controllers
         public async Task<IActionResult> GetDepositSetting([FromServices] IDepositSettingService depositSettingService)
         {
             var commGroups = depositSettingService.GetCommGroupList(_contextService.LicenseeId);
-            var customerClass = depositSettingService.GetCustomerClassList();
+            var riskLevels = depositSettingService.GetRiskLevelList(_contextService.Language);
             var oddsGroups = _contextService.OfferedOddsGroupList;
 
             return Ok(new DepositSettingViewModel
             {
-                CustomerClass = await customerClass,
+                RiskLevels = await riskLevels,
                 CommGroups = await commGroups,
                 OddsGroups = oddsGroups
             });
