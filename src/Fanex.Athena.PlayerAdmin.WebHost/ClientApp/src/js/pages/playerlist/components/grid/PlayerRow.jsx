@@ -68,7 +68,7 @@ export const PlayerRow = (props) => {
             {displayedColumn[fields.Currency] && <Cell className="center-align">{Currency}</Cell>}
             {displayedColumn[fields.CurrentBalance] && <Cell className="right-align" title={canShowMainColumn ? NumberFormat.roundDownFormatDecimal(CurrentBalance) : undefined}>{canShowMainColumn && NumberFormat.roundDownFormatDecimal(CurrentBalance)}</Cell>}
             {displayedColumn[fields.OutstandingBalance] && <Cell className="right-align" title={canShowMainColumn ? NumberFormat.roundDownFormatDecimal(OutstandingBalance) : undefined}>{canShowMainColumn && NumberFormat.roundDownFormatDecimal(OutstandingBalance)}</Cell>}
-            {displayedColumn[fields.RiskLevel] && <RiskLevelCell riskLevel={riskLevel} riskLevelKey={riskLevelKey} customerClass={customerClass} currencyId={CurrencyId}/>}
+            {displayedColumn[fields.RiskLevel] && <RiskLevelCell riskLevel={riskLevel} riskLevelKey={riskLevelKey} customerClass={dataItem.CustomerClass} currencyId={CurrencyId}/>}
             {displayedColumn[fields.OddsGroup] && <Cell className="center-align">{canShowMainColumn && OddsGroup !== undefined && <OddsGroupCell dataItem={dataItem} />}</Cell>}
             {displayedColumn[fields.BaStatus] && <BaStatusCell dataItem={dataItem} />}
             {displayedColumn[fields.SpecialLevel] && <Cell className="center-align">{canShowMainColumn && SpecialLevel !== undefined && <SpecialLevelCell dataItem={dataItem} />}</Cell>}

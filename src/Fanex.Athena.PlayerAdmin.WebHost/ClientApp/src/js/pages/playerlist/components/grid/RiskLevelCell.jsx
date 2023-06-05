@@ -7,7 +7,7 @@ import FactoryCommonService from '@jsroot/lib/factoryCommonService';
 export const RiskLevelCell = (props) => {
     const riskLevel = props.riskLevel;
     const riskLevelKey = props.riskLevelKey;
-    const customerClass = props.customerClass;
+    const customerClass = !props.customerClass ? "" : props.customerClass;
     const currencyId = props.currencyId;
     const [isShowRiskLevelInformation, setIsShowRiskLevelInformation] = useState(false);
     const commonService = FactoryCommonService.createInstance();
