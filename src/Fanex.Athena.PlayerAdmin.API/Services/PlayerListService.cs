@@ -32,12 +32,13 @@ namespace Fanex.Athena.PlayerAdmin.API.Services
         {
             const string SpKey = "Shard_Lrf_CustomerSelByUsername";
             var result = new PlayerListResultViewModel { DataList = new List<Player>() };
-            var riskLevels = await _depositSettingService.GetRiskLevelList(_contextService.Language);
 
             if (metaModel.IsDeposited == 0)
             {
                 return result;
             }
+
+            var riskLevels = await _depositSettingService.GetRiskLevelList(_contextService.Language);
 
             using (var objectDb = _dbFactory.GetObjectDb(SpKey))
             {
