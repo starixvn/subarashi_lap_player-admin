@@ -2582,7 +2582,7 @@
     <comment>84004</comment>
   </data>
   <data name="VIP" xml:space="preserve">
-    <value>VIP会员</value>
+    <value>VIP玩家</value>
     <comment>#128082</comment>
   </data>
   <data name="VipPlayerManagement" xml:space="preserve">
@@ -2714,7 +2714,7 @@
     <value>中等</value>
   </data>
   <data name="New" xml:space="preserve">
-    <value> 新會員</value>
+    <value>新玩家</value>
   </data>
   <data name="Problems" xml:space="preserve">
     <value>問題</value>
