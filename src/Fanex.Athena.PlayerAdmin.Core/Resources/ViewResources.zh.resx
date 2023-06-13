@@ -2737,4 +2737,7 @@
   <data name="SabaIntelligenceTooltip" xml:space="preserve">
     <value>单击此处查看沙巴数据神灯精灵的玩家档案分页</value>
   </data>
+  <data name="ProductYB" xml:space="preserve">
+    <value>亿博</value>
+  </data>
 </root>

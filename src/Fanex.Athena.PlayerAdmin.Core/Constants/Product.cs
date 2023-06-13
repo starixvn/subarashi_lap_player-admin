@@ -83,6 +83,8 @@
         public const string MXG = "MXG";
 
         public const string JIG = "JIG";
+
+        public const string YB = "YB";
     }
 
     public static class ProductTypes
@@ -163,5 +165,7 @@
         public const int MXG = 60;
 
         public const int JIG = 75;
+
+        public const int YB = 76;
     }
 }
