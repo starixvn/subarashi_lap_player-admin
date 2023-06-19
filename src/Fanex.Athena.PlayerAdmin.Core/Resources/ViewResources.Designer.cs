@@ -3787,7 +3787,7 @@ namespace Fanex.Athena.PlayerAdmin.Core.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to TxID.
+        ///   Looks up a localized string similar to LicTxID.
         /// </summary>
         public static string LicenseeTxId {
             get {
