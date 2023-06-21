@@ -1464,7 +1464,8 @@
     <comment>84932</comment>
   </data>
   <data name="LicenseeTxId" xml:space="preserve">
-    <value>TxID</value>
+    <value>LicTxID</value>
+    <comment>189634</comment>
   </data>
   <data name="LicenseeWinLoss" xml:space="preserve">
     <value>Licensee Win Loss</value>
