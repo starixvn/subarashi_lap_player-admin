@@ -3075,4 +3075,7 @@
   <data name="SabaIntelligenceTooltip" xml:space="preserve">
     <value>Click here to view User Profile tab of Saba Intelligence function</value>
   </data>
+  <data name="ProductYB" xml:space="preserve">
+    <value>YeeBet</value>
+  </data>
 </root>
