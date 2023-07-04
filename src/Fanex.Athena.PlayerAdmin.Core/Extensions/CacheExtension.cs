@@ -18,5 +18,16 @@ namespace Fanex.Athena.PlayerAdmin.Core.Extensions
             }
             return data;
         }
+
+        public static T TryGetOrAddFromCache<T>(this IMemoryCache cache, string cacheKey, TimeSpan cacheTime, T dataSource)
+        {
+            if (dataSource is not null)
+            {
+                cache.Set(cacheKey, dataSource, cacheTime);
+                return dataSource;
+            }
+            cache.TryGetValue(cacheKey, out T data);
+            return data;
+        }
     }
 }
