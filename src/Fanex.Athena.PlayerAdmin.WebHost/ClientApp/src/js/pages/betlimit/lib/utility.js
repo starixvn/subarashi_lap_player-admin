@@ -36,7 +36,8 @@ const ConfirmationMsg = {
     [BetLimitProduct.FGGL]: { Msg: 'UpdateProductBetSettings', Product: 'ProductFGGL' },
     [BetLimitProduct.MXG]: { Msg: 'UpdateProductBetSettings', Product: 'ProductMXG' },
     [BetLimitProduct.JIG]: { Msg: 'UpdateProductBetSettings', Product: 'ProductJIG' },
-    [BetLimitProduct.YB]: { Msg: 'UpdateProductBetSettings', Product: 'ProductYB' }
+    [BetLimitProduct.YB]: { Msg: 'UpdateProductBetSettings', Product: 'ProductYB' },
+    [BetLimitProduct.MGRNG]: { Msg: 'UpdateProductBetSettings', Product: 'ProductMGRNG' }
 }
 
 const ConfirmationUpdateProductStatusMsg = {
@@ -70,7 +71,8 @@ const ConfirmationUpdateProductStatusMsg = {
     [BetLimitProduct.FGGL]: { Msg: 'UpdateProductStatus', Product: 'ProductFGGL' },
     [BetLimitProduct.MXG]: { Msg: 'UpdateProductStatus', Product: 'ProductMXG' },
     [BetLimitProduct.JIG]: { Msg: 'UpdateProductStatus', Product: 'ProductJIG' },
-    [BetLimitProduct.YB]: { Msg: 'UpdateProductStatus', Product: 'ProductYB' }
+    [BetLimitProduct.YB]: { Msg: 'UpdateProductStatus', Product: 'ProductYB' },
+    [BetLimitProduct.MGRNG]: { Msg: 'UpdateProductStatus', Product: 'ProductMGRNG' }
 }
 const ConfirmationUpdateProductChargeCommMsg = {
     [BetLimitProduct.BX]: { Msg: 'UpdateProductChargeComm', Product: 'ProductBX' },
