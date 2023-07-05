@@ -19,7 +19,6 @@ namespace Fanex.Athena.PlayerAdmin.API.Services
     public class DepositSettingService : IDepositSettingService
     {
         private static readonly TimeSpan FifteenMinutes = TimeSpan.FromMinutes(15);
-        private static readonly TimeSpan OneHour = TimeSpan.FromHours(1);
 
         private readonly IDbFactory _dbFactory;
         private readonly IMemoryCache _cache;
@@ -42,7 +41,7 @@ namespace Fanex.Athena.PlayerAdmin.API.Services
         public async Task<IEnumerable<RiskLevel>> GetRiskLevelList(string language)
         {
             var riskLevelFromAPI = await _cache.TryGetOrAddFromCache($"RiskLevelList_{language}", FifteenMinutes, GetRiskLevelFromApi);
-            var riskLevel = _cache.TryGetOrAddFromCache($"RiskLevelList_{language}_backup", OneHour, riskLevelFromAPI);
+            var riskLevel = _cache.TryGetOrAddFromCacheWithoutExpired($"RiskLevelList_{language}_backup", riskLevelFromAPI);
 
             var result = new List<RiskLevel> { new RiskLevel {
                 Id = riskLevel.Count().ToString(),

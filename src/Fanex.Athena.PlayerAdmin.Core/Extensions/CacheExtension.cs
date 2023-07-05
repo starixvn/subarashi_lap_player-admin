@@ -19,11 +19,11 @@ namespace Fanex.Athena.PlayerAdmin.Core.Extensions
             return data;
         }
 
-        public static T TryGetOrAddFromCache<T>(this IMemoryCache cache, string cacheKey, TimeSpan cacheTime, T dataSource)
+        public static T TryGetOrAddFromCacheWithoutExpired<T>(this IMemoryCache cache, string cacheKey, T dataSource)
         {
             if (dataSource is not null)
             {
-                cache.Set(cacheKey, dataSource, cacheTime);
+                cache.Set(cacheKey, dataSource, new MemoryCacheEntryOptions { Priority = CacheItemPriority.NeverRemove });
                 return dataSource;
             }
             cache.TryGetValue(cacheKey, out T data);
