@@ -19,7 +19,7 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Services
             ProductTypes.Lottery, ProductTypes.I4D, ProductTypes.SLT, ProductTypes.AllBet, ProductTypes.Voidbridge, ProductTypes.CashOut, ProductTypes.Exchange,
             ProductTypes.PP, ProductTypes.SXG, ProductTypes.HB, ProductTypes.JK, ProductTypes.SAG, ProductTypes.PGS, ProductTypes.SBC, ProductTypes.WM,
             ProductTypes.SG, ProductTypes.VRG, ProductTypes.CC, ProductTypes.CG, ProductTypes.VGA, ProductTypes.TG, ProductTypes.AP, ProductTypes.APM, ProductTypes.SabaCasino,
-            ProductTypes.BTC, ProductTypes.FGGL, ProductTypes.MXG, ProductTypes.JIG, ProductTypes.YB
+            ProductTypes.BTC, ProductTypes.FGGL, ProductTypes.MXG, ProductTypes.JIG, ProductTypes.YB, ProductTypes.MGRNG
         };
 
         private readonly IDcsBetLimitRepository _repository;
