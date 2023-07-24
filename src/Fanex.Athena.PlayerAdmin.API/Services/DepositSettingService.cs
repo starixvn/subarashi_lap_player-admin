@@ -40,7 +40,18 @@ namespace Fanex.Athena.PlayerAdmin.API.Services
 
         public async Task<IEnumerable<RiskLevel>> GetRiskLevelList(string language)
         {
-            return await _cache.TryGetOrAddFromCache($"RiskLevelList_{language}", FifteenMinutes, GetRiskLevelFromApi);
+            var riskLevelFromAPI = await _cache.TryGetOrAddFromCache($"RiskLevelList_{language}", FifteenMinutes, GetRiskLevelFromApi);
+            var riskLevel = _cache.TryGetOrAddFromCacheWithoutExpired($"RiskLevelList_{language}_backup", riskLevelFromAPI);
+
+            var result = new List<RiskLevel> { new RiskLevel {
+                Id = riskLevel.Count().ToString(),
+                Key = RiskLevel.Uncategorized,
+                Name = ViewResources.ResourceManager.GetString(RiskLevel.Uncategorized),
+                CustomerClassList = new[] { "0" }
+            }};
+            result.AddRange(riskLevel);
+
+            return result.OrderBy(_ => _, new RiskLevelComparer());
         }
 
         public async Task<IEnumerable<CommGroupViewModel>> GetCommGroupList(int licenseeId)
@@ -84,22 +95,13 @@ namespace Fanex.Athena.PlayerAdmin.API.Services
                 response.EnsureSuccessStatusCode();
                 var customerClassList = JsonConvert.DeserializeObject<List<CustomerClassApiModel>>(await response.Content.ReadAsStringAsync());
 
-                customerClassList.Add(
-                    new CustomerClassApiModel
-                    {
-                        CustomerClass = 0,
-                        CustomerClassName = RiskLevel.Uncategorized,
-                        SabaRiskLevel = RiskLevel.Uncategorized
-                    }
-                );
-
                 var riskLevelList = customerClassList.GroupBy(_ => _.SabaRiskLevel).Select((_, index) => new RiskLevel
                 {
                     Id = index.ToString(),
                     Key = _.Key,
                     Name = ViewResources.ResourceManager.GetString(_.Key) ?? _.Key,
-                    CustomerClassList = _.Select(_ => _.CustomerClass.ToString())
-                }).OrderBy(_ => _, new RiskLevelComparer());
+                    CustomerClassList = _.Select(_ => _.CustomerClass.ToString()).Distinct().ToList()
+                });
 
                 return riskLevelList;
             }
