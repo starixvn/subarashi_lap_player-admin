@@ -1,4 +1,5 @@
-﻿using Fanex.Athena.PlayerAdmin.BetLimit.MetaModel;
+﻿using Fanex.Athena.PlayerAdmin.BetLimit.Helpers;
+using Fanex.Athena.PlayerAdmin.BetLimit.MetaModel;
 using Fanex.Athena.PlayerAdmin.BetLimit.Services.Interfaces;
 using Fanex.Athena.PlayerAdmin.BetLimit.ViewModels;
 using Fanex.Athena.PlayerAdmin.Core.Attributes;
@@ -31,9 +32,10 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [CookieAuthorize(Roles.SuperAdmin, Roles.BetLimit)]
+        [AutoBindingMetaModel(bindSiteName: true)]
         public async Task<JsonResult> GetSetting([FromBody] PlayerBetLimitSelectMetaModel metaModel)
         {
-            var commResult = _chargeCommService.GetChargeCommission(metaModel.CustId, _contextService.Language);
+            var commResult = _chargeCommService.GetChargeCommission(metaModel.CustId, _contextService.Language, ExchangeProductHelper.GetGroupMode(metaModel.SiteName));
             var status = _dcsService.GetStatusAsync(metaModel.CustId, ProductTypes.Exchange);
 
             var viewModel = new PlayerChargeCommViewModel
