@@ -15,6 +15,7 @@ function generateConfig() {
             /*js*/
             [`${jsPath}/lib/langHelper`]: pathConfig.scriptPaths.languageResource,
             [`${jsPath}/lib/lang-zh-CN`]: pathConfig.scriptPaths.langCN,
+            [`${jsPath}/lib/lang-vi-VN`]: pathConfig.scriptPaths.langVN,
 
             [`${cssPath}/betlist/index`]: pathConfig.cssPaths.betlist,
             [`${cssPath}/betlist/bettingticketscenter`]: pathConfig.cssPaths.bettingticketscenter,

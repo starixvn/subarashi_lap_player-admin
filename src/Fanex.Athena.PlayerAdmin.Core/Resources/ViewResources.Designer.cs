@@ -331,7 +331,7 @@ namespace Fanex.Athena.PlayerAdmin.Core.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to set special level  for this customer?.
+        ///   Looks up a localized string similar to Are you sure you want to set special level for this customer?.
         /// </summary>
         public static string AlertSetSpecialLevelForCustomerMsg {
             get {
@@ -394,7 +394,7 @@ namespace Fanex.Athena.PlayerAdmin.Core.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Already NOT VIP, no update:  {0}.
+        ///   Looks up a localized string similar to Already NOT VIP, no update: {0}.
         /// </summary>
         public static string AlreadyUpdateNotVipStatus {
             get {
@@ -1546,7 +1546,7 @@ namespace Fanex.Athena.PlayerAdmin.Core.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to deactivate VIP  for the player(s) ?.
+        ///   Looks up a localized string similar to Are you sure you want to deactivate VIP for the player(s) ?.
         /// </summary>
         public static string ConfirmDeactivateVIPPlayer {
             get {
@@ -7486,7 +7486,7 @@ namespace Fanex.Athena.PlayerAdmin.Core.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Updating Functions is successul..
+        ///   Looks up a localized string similar to Updating Functions is successful..
         /// </summary>
         public static string UpdateFunctionSuccessfulMsg {
             get {

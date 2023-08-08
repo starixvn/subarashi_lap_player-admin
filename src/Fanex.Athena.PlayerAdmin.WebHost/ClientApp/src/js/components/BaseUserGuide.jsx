@@ -6,6 +6,8 @@ const BaseUserGuide = props => {
     const renderContentByLanguage = () => {
         if (lang === LangHelper.languageKeys.zhCN) {
             return contents.znCNContent(rest);
+        } else if (lang === LangHelper.languageKeys.viVN) {
+            return contents.viVNContent(rest);
         }
         return contents.engContent(rest);
     }

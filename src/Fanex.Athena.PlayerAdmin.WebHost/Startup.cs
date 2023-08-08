@@ -271,7 +271,8 @@ namespace Fanex.Athena.PlayerAdmin.WebHost
                 options.SupportedUICultures = new List<CultureInfo>
                 {
                     enCulture,
-                    csCulture
+                    csCulture,
+                    new CultureInfo("vi-VN")
                 };
                 options.RequestCultureProviders = new List<IRequestCultureProvider>
                 {
