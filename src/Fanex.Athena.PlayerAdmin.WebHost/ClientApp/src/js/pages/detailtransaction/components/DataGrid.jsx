@@ -21,7 +21,7 @@ export class DataGrid extends PureComponent {
                 <HeaderCell colWidth={120}>{LangHelper.getSingleResource('Transaction')}</HeaderCell>
                 <HeaderCell colWidth={60}>{LangHelper.getSingleResource('BalanceChange')}</HeaderCell>
                 {!AppData.isEnableSingleWallet && <HeaderCell colWidth={60}>{LangHelper.getSingleResource('AfterBalance')}</HeaderCell>}
-                <HeaderCell colWidth={40}>{LangHelper.getSingleResource('Resettled')}</HeaderCell>
+                <HeaderCell colWidth={60}>{LangHelper.getSingleResource('ResettledRecovered')}</HeaderCell>
                 <HeaderCell colWidth={160}>{LangHelper.getSingleResource('Remark')}</HeaderCell>
             </HeaderRow>
         )

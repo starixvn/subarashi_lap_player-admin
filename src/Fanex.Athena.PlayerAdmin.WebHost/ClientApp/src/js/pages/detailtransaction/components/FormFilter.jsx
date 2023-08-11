@@ -109,18 +109,18 @@ export class FormFilter extends PureComponent {
                     <div className='col-8 col-sm-5 col-md-3 col-xl-2'>
                         <div className='form-group'>
                             <label className='label-text'>{LangHelper.getSingleResource("TransactionID")}</label>
-                            <input className="input-text" id="txt-transction-id" name="TransactionId" type="text"
+                            <input className="input-text" id="txt-transction-id" name="TransactionId" type="text" maxLength="19"
                                 autoComplete="off"
                                 onChange={event => this.changeTransactionId(event.target.value)} />
                         </div>
                     </div>
-                    <div className='col-12 col-md-2 col-sm-2 col-lg-2 col-xl-1'>
+                    <div className='col-12 col-md-3 col-sm-3 col-lg-2 col-xl-2'>
                         <div className='form-group'>
                             <div class="chk-group">
                                 <input id="chk-resettled" name="IsResettled" type="checkbox"
                                     class="chk-resettled" autoComplete="off"
                                     onChange={event => this.changeResettled(event.target.checked)} />
-                                <label for="chk-resettled" class="lbl-resettled">{LangHelper.getSingleResource("Resettled")}</label>
+                                <label for="chk-resettled" class="lbl-resettled">{LangHelper.getSingleResource("ResettledRecovered")}</label>
                             </div>
                         </div>
                     </div>
