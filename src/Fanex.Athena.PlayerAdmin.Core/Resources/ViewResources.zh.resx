@@ -1556,8 +1556,8 @@
   <data name="MobileCompact" xml:space="preserve">
     <value>手机轻量版</value>
   </data>
-  <data name="MobileEuro" xml:space="preserve">
-    <value>手机欧洲版</value>
+  <data name="MobileGalaxy" xml:space="preserve">
+    <value>手机银河版</value>
   </data>
   <data name="MobileOthers" xml:space="preserve">
     <value>手机其他</value>
@@ -2742,6 +2742,14 @@
   </data>
   <data name="ProductMGRNG" xml:space="preserve">
     <value>MG-RNG</value>
+  </data>
+  <data name="ChatRoom" xml:space="preserve">
+    <value>聊天室</value>
+    <comment>#191840</comment>
+  </data>
+  <data name="DesktopGalaxy" xml:space="preserve">
+    <value>桌机银河版</value>
+    <comment>#191840</comment>
   </data>
   <data name="ResettledRecovered" xml:space="preserve">
     <value>重新结算/已恢复</value>

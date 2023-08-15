@@ -1704,8 +1704,9 @@
     <value>Mobile Compact</value>
     <comment>106088</comment>
   </data>
-  <data name="MobileEuro" xml:space="preserve">
-    <value>Mobile Euro</value>
+  <data name="MobileGalaxy" xml:space="preserve">
+    <value>Mobile Galaxy</value>
+    <comment>#191840</comment>
   </data>
   <data name="MobileOthers" xml:space="preserve">
     <value>Mobile Others</value>
@@ -3080,6 +3081,14 @@
   </data>
   <data name="ProductMGRNG" xml:space="preserve">
     <value>MG-RNG</value>
+  </data>
+  <data name="ChatRoom" xml:space="preserve">
+    <value>Chat Room</value>
+    <comment>#191840</comment>
+  </data>
+  <data name="DesktopGalaxy" xml:space="preserve">
+    <value>Desktop Galaxy</value>
+    <comment>#191840</comment>
   </data>
   <data name="ResettledRecovered" xml:space="preserve">
     <value>Resettled/Recovered</value>
