@@ -6172,6 +6172,15 @@ namespace Fanex.Athena.PlayerAdmin.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Resettled/Recovered.
+        /// </summary>
+        public static string ResettledRecovered {
+            get {
+                return ResourceManager.GetString("ResettledRecovered", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Result.
         /// </summary>
         public static string Result {

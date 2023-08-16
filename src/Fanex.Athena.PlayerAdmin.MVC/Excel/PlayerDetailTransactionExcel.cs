@@ -28,7 +28,7 @@ namespace Fanex.Athena.PlayerAdmin.MVC.Excel
             row.Cells[columnIndex++].SetCellValue(ViewResources.Transaction);
             row.Cells[columnIndex++].SetCellValue(ViewResources.BalanceChange);
             row.Cells[columnIndex++].SetCellValue(ViewResources.AfterBalance);
-            row.Cells[columnIndex++].SetCellValue(ViewResources.Resettled);
+            row.Cells[columnIndex++].SetCellValue(ViewResources.ResettledRecovered);
             row.Cells[columnIndex].SetCellValue(ViewResources.Remark);
         }
 

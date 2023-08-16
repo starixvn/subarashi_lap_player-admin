@@ -2743,4 +2743,7 @@
   <data name="ProductMGRNG" xml:space="preserve">
     <value>MG-RNG</value>
   </data>
+  <data name="ResettledRecovered" xml:space="preserve">
+    <value>重新结算/已恢复</value>
+  </data>
 </root>

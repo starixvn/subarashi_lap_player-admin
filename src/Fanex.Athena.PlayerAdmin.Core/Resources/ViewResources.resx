@@ -3081,4 +3081,7 @@
   <data name="ProductMGRNG" xml:space="preserve">
     <value>MG-RNG</value>
   </data>
+  <data name="ResettledRecovered" xml:space="preserve">
+    <value>Resettled/Recovered</value>
+  </data>
 </root>
