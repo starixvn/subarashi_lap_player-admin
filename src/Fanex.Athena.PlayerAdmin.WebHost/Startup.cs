@@ -277,7 +277,8 @@ namespace Fanex.Athena.PlayerAdmin.WebHost
                 {
                     new CustomRequestCultureProvider(context =>
                     {
-                        var culture = Languages.LanguageCodeMappers[context.User.FindFirst("Language")?.Value ?? "en"];
+                        var langCode = context.User.FindFirst("Language")?.Value ?? "en";
+                        var culture = Languages.LanguageCodeMappers.GetValueOrDefault(langCode, "en-US");
                         return Task.FromResult(new ProviderCultureResult(culture: EnCultureName, uiCulture: culture));
                     })
                 };
