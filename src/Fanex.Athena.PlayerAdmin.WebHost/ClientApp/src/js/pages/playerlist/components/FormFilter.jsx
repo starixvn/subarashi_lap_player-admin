@@ -20,7 +20,7 @@ import { encode } from '@jsroot/lib/htmlHelper';
 import LicAthenaUserGuide from '../../userGuide/LicAthenaUserGuide';
 import LicApiUserGuide from '../../userGuide/LicApiUserGuide';
 import Select from 'react-select';
-import { TreeViewSelect } from '@9softstudio/react-multiselect'
+import { TreeViewSelect } from '@legion-lib/react-multiselect'
 import { SubsidiaryViewType } from '@jsroot/constants/report';
 import { getOddsGroupPdf } from '../lib/helpers/utils'
 import Site from '@jsroot/lib/site';

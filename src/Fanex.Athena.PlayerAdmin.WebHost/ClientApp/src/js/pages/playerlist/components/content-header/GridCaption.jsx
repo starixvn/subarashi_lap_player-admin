@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux';
 
 import { ActionCreators } from '../../actions';
 import ReportTitle from '@jsroot/components/ReportTitle';
-import MultipleSelect from '@9softstudio/react-multiselect';
+import MultipleSelect from '@legion-lib/react-multiselect';
 import LangHelper from '@jsroot/lib/langHelper';
 import { buildDisplayedColumnObject } from '../../lib/helpers/utils';
 import { batchUpdateManager, batchUpdatePermission } from '../../batch-update/batch-update-manager';

@@ -1,6 +1,6 @@
 import React from 'react';
 import ReportTitle from '@jsroot/components/ReportTitle';
-import MultipleSelect from '@9softstudio/react-multiselect';
+import MultipleSelect from '@legion-lib/react-multiselect';
 import LangHelper from '@jsroot/lib/langHelper';
 
 const ArchivedGridCaption = ({ displayedColumnList, setDisplayedColumnList, handleExportExcel, playerCount }) => {
