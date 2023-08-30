@@ -45,6 +45,6 @@ function mapDispatchToProps(dispatch) {
 function mapStateToProps(state) {
     const { requestParam } = state;
     return Object.assign({}, { requestParam });
-};
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(React.memo(FormFilter));

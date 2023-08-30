@@ -158,7 +158,7 @@ const ViVNContent = ({isSingleWallet, exportOddsGroup})=> {
                 <li><b>Tên Người Dùng:</b> tìm kiếm theo tên người dùng (có hỗ trợ đề xuất tìm kiếm).</li>
                 <li><b>Tiền Tệ:</b> chọn đơn vị tiền tệ của người chơi mà bạn muốn quản lý.
                     <ul>
-                        <li><b>Tất Cả:</b> Liệt kê vé cược của tất cả đơn vị tiền tệ được hỗ trợ.</li>
+                        <li><b>Tất Cả:</b> Liệt kê tất cả đơn vị tiền tệ được hỗ trợ.</li>
                     </ul>
                 </li>
                 <li><b>Nhóm Tỷ Lệ Cược:</b> xem người chơi của một nhóm tỷ lệ cược.</li>
@@ -182,7 +182,7 @@ const ViVNContent = ({isSingleWallet, exportOddsGroup})=> {
                 </li>
                 {!isSingleWallet && <li><b>Số Dư Hiện Tại:</b> số tiền khả dụng để đặt cược.</li>}
                 <li><b>Tiền Chưa Xử Lý:</b> tổng số tiền cược trên tất cả cược đang diễn ra.</li>
-                <li><b>Cấp Độ Rủi Ro:</b> xem giới hạn cược và tỷ lệ cược theo cấp độ rủi ro tương ứng.</li>
+                <li><b>Mức Độ Rủi Ro:</b> xem giới hạn cược và nhóm tỷ lệ cược theo mức độ rủi ro đã được chỉ định cho người chơi.</li>
                 <li><b>Nhóm Tỷ Lệ Cược:</b> xem hoặc cài đặt nhóm tỷ lệ cược cho người chơi.</li>
                 <li><b>Trạng Thái BA:</b> bật/tắt trạng thái BA của người chơi.</li>
                 <li><b>Cấp Độ Đặc Biệt:</b> xem hoặc đặt cấp độ đặc biệt cho người chơi.</li>
@@ -205,7 +205,7 @@ const ViVNContent = ({isSingleWallet, exportOddsGroup})=> {
                 <li><b>Giới Hạn Cược:</b> xem cài đặt giới hạn cược cho Sportsbook, Number Game, Thể Thao Ảo, RNG Keno, Xổ Số và các sản phẩm khác.</li>
                 <li><b>Ghi Chú:</b> xem hoặc chỉnh sửa ghi chú cho người chơi.</li>
                 <li><b>Nhật Ký:</b> xem nhật ký cập nhật của người chơi.</li>
-                <li><b>Setting:</b> set fund transfer limit.</li>
+                <li><b>Cài đặt:</b> đặt giới hạn chuyển khoản.</li>
             </ul>
             <p>
                 <a className="hyper-link" onClick={exportOddsGroup}>Hướng dẫn sử dụng tính năng nhóm tỷ lệ cược</a>

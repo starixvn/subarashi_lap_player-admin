@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Fanex.Athena.PlayerAdmin.Commission.MetaModels;
+using Fanex.Athena.PlayerAdmin.Core.Resources;
 
 namespace Fanex.Athena.PlayerAdmin.Commission.ViewModels
 {
@@ -45,7 +46,7 @@ namespace Fanex.Athena.PlayerAdmin.Commission.ViewModels
             Groups.Insert(0, new PlayerCommissionViewModel
             {
                 GroupCommId = 0,
-                GroupName = "None",
+                GroupName = ViewResources.None,
                 CommValues = CurrentGroup.CommValues
             });
         }

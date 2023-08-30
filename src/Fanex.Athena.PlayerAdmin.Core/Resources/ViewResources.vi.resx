@@ -169,7 +169,7 @@
     <value>AG Casino</value>
   </data>
   <data name="AGCasinoBalance" xml:space="preserve">
-    <value>Số dư AG Casino</value>
+    <value>Số Dư AG Casino</value>
   </data>
   <data name="AGCasinoNotOfferCurrency" xml:space="preserve">
     <value>AG Casino không hỗ trợ đơn vị tiền tệ này.</value>
@@ -226,7 +226,7 @@
     <value>Tất cả loại cược</value>
   </data>
   <data name="AllCurrencies" xml:space="preserve">
-    <value>Tất cả các loại tiền tệ</value>
+    <value>Tất cả loại tiền tệ</value>
   </data>
   <data name="AlreadyUpdateNotVipStatus" xml:space="preserve">
     <value>Không phải VIP, không cập nhật: {0}</value>
@@ -397,10 +397,10 @@
     <value>Giới hạn cược</value>
   </data>
   <data name="BettingStatement" xml:space="preserve">
-    <value>Sao kê</value>
+    <value>Sao kê Cược</value>
   </data>
   <data name="BettingTicketCenter" xml:space="preserve">
-    <value>Trung tâm bán vé cá cược</value>
+    <value>Trung Tâm Vé Cược</value>
   </data>
   <data name="BettingTicketCenter_AdvancedSearchTabNote1" xml:space="preserve">
     <value>Tất cả các loại cược, bộ lọc Giải đấu và Trận đấu chỉ khả dụng khi có 1 ngày được chọn.</value>
@@ -499,7 +499,7 @@
     <value>Giá trị vé cược được bán</value>
   </data>
   <data name="CashOutWinLoss" xml:space="preserve">
-    <value>Thắng Thua của vé cược đã bán</value>
+    <value>Thắng Thua Của Vé Cược Đã Bán</value>
   </data>
   <data name="CasinoAPI_UpdateCommError" xml:space="preserve">
     <value>Gặp lỗi khi gọi CasinoAPI để cập nhật hoa hồng khách hàng.</value>
@@ -508,7 +508,7 @@
     <value>Chuyển khoản Casino</value>
   </data>
   <data name="CasinoTurnover" xml:space="preserve">
-    <value>Doanh thu Casino</value>
+    <value>Doanh Thu Casino</value>
   </data>
   <data name="Category" xml:space="preserve">
     <value>Danh mục</value>
@@ -524,6 +524,9 @@
   </data>
   <data name="ChargeCommission" xml:space="preserve">
     <value>Phí Hoa hồng</value>
+  </data>
+  <data name="ChatRoom" xml:space="preserve">
+    <value>Nhóm Chat</value>
   </data>
   <data name="Checkavailability" xml:space="preserve">
     <value>Kiếm tra tính khả dụng</value>
@@ -661,7 +664,7 @@
     <value>Khách hàng</value>
   </data>
   <data name="CustomerBalance" xml:space="preserve">
-    <value>Số dư Khách hàng</value>
+    <value>Số Dư Khách Hàng</value>
   </data>
   <data name="CustomerBetList" xml:space="preserve">
     <value>Danh sách cược của Khách Hàng</value>
@@ -700,7 +703,7 @@
     <value>Tùy chọn Khách Hàng</value>
   </data>
   <data name="CustomerPedingFunds" xml:space="preserve">
-    <value>Tiền đang chờ xử lý của Khách hàng</value>
+    <value>Tiền Chờ Xử Lý Của Khách Hàng</value>
   </data>
   <data name="CustomerPedingFundsTitle" xml:space="preserve">
     <value>Tiền khách hàng đang chờ xử lý - {0}</value>
@@ -718,7 +721,7 @@
     <value>Các khách hàng vừa chọn đã có trong nhóm này.</value>
   </data>
   <data name="CustomerTurnover" xml:space="preserve">
-    <value>Doanh thu Khách hàng</value>
+    <value>Doanh Thu Khách Hàng</value>
   </data>
   <data name="CustomerWinLoss" xml:space="preserve">
     <value>Thắng Thua Khách Hàng</value>
@@ -739,7 +742,7 @@
     <value>Hàng ngày</value>
   </data>
   <data name="DailyBets" xml:space="preserve">
-    <value>Cược hàng ngày</value>
+    <value>Cược Hằng Ngày</value>
   </data>
   <data name="DailyStatement" xml:space="preserve">
     <value>Sao kê hàng ngày</value>
@@ -784,7 +787,7 @@
     <value>Tháng 12</value>
   </data>
   <data name="December" xml:space="preserve">
-    <value>Tháng 12</value>
+    <value>Tháng Mười Hai</value>
   </data>
   <data name="DecimalOdds" xml:space="preserve">
     <value>tỷ lệ cược thập phân</value>
@@ -818,6 +821,9 @@
   </data>
   <data name="DesktopChina" xml:space="preserve">
     <value>Phiên bản máy tính Trung Quốc</value>
+  </data>
+  <data name="DesktopGalaxy" xml:space="preserve">
+    <value>Desktop Galaxy</value>
   </data>
   <data name="DesktopNewAsia" xml:space="preserve">
     <value>Nền tảng trên máy tính phiên bản Châu Á mới</value>
@@ -1015,7 +1021,7 @@
     <value>Tên</value>
   </data>
   <data name="Forecast" xml:space="preserve">
-    <value>Dự báo</value>
+    <value>Dự đoán</value>
   </data>
   <data name="ForecastAway" xml:space="preserve">
     <value>Dự đoán Đội Khách</value>
@@ -1024,7 +1030,7 @@
     <value>Dự đoán Đội Nhà</value>
   </data>
   <data name="Fr" xml:space="preserve">
-    <value>Thứ 6</value>
+    <value>T6</value>
   </data>
   <data name="FreePlay" xml:space="preserve">
     <value>Chơi miễn phí</value>
@@ -1084,7 +1090,7 @@
     <value>Số bàn thắng</value>
   </data>
   <data name="GodOfFortuneWinLoss" xml:space="preserve">
-    <value>Kết quả Thắng Thua God of Fortune</value>
+    <value>Thần Tài Thắng Thua</value>
   </data>
   <data name="GotoCustomerList" xml:space="preserve">
     <value>Đi đến Danh sách Khách hàng</value>
@@ -1201,19 +1207,19 @@
     <value>Bao gồm dữ liệu Hòa</value>
   </data>
   <data name="IncorrectMaxBet" xml:space="preserve">
-    <value>Mức cược tối đa không hợp lệ</value>
+    <value>Cược tối đa không hợp lệ</value>
   </data>
   <data name="IncorrectMaxBetPerDraw" xml:space="preserve">
     <value>Cược Tối Đa Cho Mỗi Lượt không hợp lệ</value>
   </data>
   <data name="IncorrectMaxPayoutPerMatch" xml:space="preserve">
-    <value>Thanh Toán Tối Đa Mỗi Trận không đúng</value>
+    <value>Thanh Toán Tối Đa Mỗi Trận không hợp lệ</value>
   </data>
   <data name="IncorrectMaxPerBall" xml:space="preserve">
-    <value>Cược tối đa mỗi lượt bóng không chính xác</value>
+    <value>Cược Tối Đa Cho Mỗi Lượt Bóng không hợp lệ</value>
   </data>
   <data name="IncorrectMaxPerMatch" xml:space="preserve">
-    <value>Cược Tối Đa Cho Mỗi Trận không đúng</value>
+    <value>Cược Tối Đa Cho Mỗi Trận không hợp lệ</value>
   </data>
   <data name="IncorrectMinBet" xml:space="preserve">
     <value>Cược tối thiểu không hợp lệ</value>
@@ -1273,13 +1279,13 @@
     <value>Tháng 7</value>
   </data>
   <data name="July" xml:space="preserve">
-    <value>Tháng 7</value>
+    <value>Tháng Bảy</value>
   </data>
   <data name="Jun" xml:space="preserve">
     <value>Tháng 6</value>
   </data>
   <data name="June" xml:space="preserve">
-    <value>Tháng 6</value>
+    <value>Tháng Sáu</value>
   </data>
   <data name="KeepCurrentComm" xml:space="preserve">
     <value>Giữ hoa hồng hiện tại</value>
@@ -1288,7 +1294,7 @@
     <value>Cuối cùng</value>
   </data>
   <data name="LastBetsMonitoring" xml:space="preserve">
-    <value>Quản lý cược gần nhất</value>
+    <value>Theo Dõi Cược Cuối Cùng</value>
   </data>
   <data name="LastGoal" xml:space="preserve">
     <value>Bàn thắng Cuối</value>
@@ -1354,7 +1360,7 @@
     <value>Hoa hồng Nhà Cái</value>
   </data>
   <data name="LicenseeIsNotExisted" xml:space="preserve">
-    <value>Không tìm thấy nhà cái</value>
+    <value>Không tìm thấy Nhà Cái</value>
   </data>
   <data name="LicenseeNetWL" xml:space="preserve">
     <value>Thắng Thua Thực của Nhà Cái</value>
@@ -1384,7 +1390,7 @@
     <value>Trận đấu trực tiếp</value>
   </data>
   <data name="LiveReport" xml:space="preserve">
-    <value>Báo cáo trực tiếp</value>
+    <value>Báo Cáo Trực Tiếp</value>
   </data>
   <data name="LiveReportTitle" xml:space="preserve">
     <value>Báo cáo trực tiếp - {0}, {1} --&gt; {2} - {3}</value>
@@ -1453,16 +1459,16 @@
     <value>Trận đấu</value>
   </data>
   <data name="MatchCase" xml:space="preserve">
-    <value>Trận đấu mẫu, ví dụ</value>
+    <value>Khớp chữ, ví dụ</value>
   </data>
   <data name="MatchPrecise" xml:space="preserve">
-    <value>Trận đấu chính xác</value>
+    <value>Khớp chính xác</value>
   </data>
   <data name="MatchPrefix" xml:space="preserve">
-    <value>Tiền tố trận đấu, ví dụ</value>
+    <value>Khớp chữ đầu, ví dụ</value>
   </data>
   <data name="MatchWinLoss" xml:space="preserve">
-    <value>Thắng thua theo trận</value>
+    <value>Thắng Thua Theo Trận</value>
   </data>
   <data name="MatchWinLossTitle" xml:space="preserve">
     <value>Thắng Thua theo Trận, {0} - {1}</value>
@@ -1489,10 +1495,10 @@
     <value>Tiền cược tối đa cho mỗi lượt</value>
   </data>
   <data name="MaxBetPerDrawLessThanOrEqual" xml:space="preserve">
-    <value>Giới hạn cược tối đa mỗi lượt phải nhỏ hơn hoặc bằng</value>
+    <value>Cược Tối Đa Mỗi Lượt phải nhỏ hơn hoặc bằng</value>
   </data>
   <data name="MaxBetPerDrawMoreThanOrEqual" xml:space="preserve">
-    <value>Cược tối đa cho mỗi lược phải lớn hơn hoặc bằng</value>
+    <value>Cược Tối Đa Mỗi Lượt phải lớn hơn hoặc bằng</value>
   </data>
   <data name="MaxBetPerMatch" xml:space="preserve">
     <value>Cược Tối Đa Mỗi Trận</value>
@@ -1576,7 +1582,7 @@
     <value>Cược tối thiểu không được lớn hơn Cược tối đa</value>
   </data>
   <data name="MinBetGreaterThanOrEqual" xml:space="preserve">
-    <value>Mức cược tối thiểu phải lớn hơn hoặc bằng</value>
+    <value>Cược Tối Thiểu phải lớn hơn hoặc bằng</value>
   </data>
   <data name="MinimumOdds" xml:space="preserve">
     <value>Tỷ lệ cược tối thiểu</value>
@@ -1588,7 +1594,7 @@
     <value>Cược xiên Thể Thao</value>
   </data>
   <data name="Mo" xml:space="preserve">
-    <value>Thứ 2</value>
+    <value>T2</value>
   </data>
   <data name="MobileApp" xml:space="preserve">
     <value>Ứng dụng di động</value>
@@ -1596,8 +1602,8 @@
   <data name="MobileCompact" xml:space="preserve">
     <value>Di động nhỏ gọn</value>
   </data>
-  <data name="MobileEuro" xml:space="preserve">
-    <value>Di động Euro</value>
+  <data name="MobileGalaxy" xml:space="preserve">
+    <value>Mobile Euro</value>
   </data>
   <data name="MobileOthers" xml:space="preserve">
     <value>Các thiết bị di động khác</value>
@@ -1732,13 +1738,13 @@
     <value>Tháng 11</value>
   </data>
   <data name="November" xml:space="preserve">
-    <value>Tháng 11</value>
+    <value>Tháng Mười Một</value>
   </data>
   <data name="NumberGameNo" xml:space="preserve">
     <value>Number Game số</value>
   </data>
   <data name="OANDANote" xml:space="preserve">
-    <value>Xin lưu ý rằng tất cả các chuyển đổi sang đơn vị tiền tệ cơ sờ (EURO, USD) chỉ dùng để tham khảo.</value>
+    <value>Xin lưu ý rằng tất cả các chuyển đổi sang đơn vị tiền tệ cơ sở (EURO, USD) chỉ dùng để tham khảo.</value>
   </data>
   <data name="Oct" xml:space="preserve">
     <value>Tháng 10</value>
@@ -2065,10 +2071,10 @@
     <value>Vgaming</value>
   </data>
   <data name="ProductVRG" xml:space="preserve">
-    <value>Thể Thao Ảo</value>
+    <value>Trò Chơi Ảo</value>
   </data>
   <data name="ProductVS" xml:space="preserve">
-    <value>Thể thao Ảo</value>
+    <value>Thể Thao Ảo</value>
   </data>
   <data name="ProductVS2" xml:space="preserve">
     <value>Thể Thao Ảo 2</value>
@@ -2158,13 +2164,13 @@
     <value>Tất toán lại/Khôi phục</value>
   </data>
   <data name="Result" xml:space="preserve">
-    <value>Kết quả</value>
+    <value>Kết Quả</value>
   </data>
   <data name="ResultPending" xml:space="preserve">
     <value>Đang chờ Kết quả</value>
   </data>
   <data name="Results" xml:space="preserve">
-    <value>Kết quả</value>
+    <value>Kết Quả</value>
   </data>
   <data name="RetractedPlayerUpdateVipStatus" xml:space="preserve">
     <value>Thu hồi Vip của người chơi: {0} ({1})</value>
@@ -2188,16 +2194,16 @@
     <value>Đang diễn ra</value>
   </data>
   <data name="Sa" xml:space="preserve">
-    <value>Thứ 7</value>
+    <value>T7</value>
   </data>
   <data name="Saba" xml:space="preserve">
-    <value>Saba</value>
+    <value>Saba </value>
   </data>
   <data name="SabaIntelligenceTooltip" xml:space="preserve">
     <value>Nhấn để xem Hồ Sơ Người Dùng của chức năng Saba Intelligence </value>
   </data>
   <data name="SabaVirtualSportsWinLoss" xml:space="preserve">
-    <value>Thắng thua Thể Thao Ảo Saba</value>
+    <value>Thắng Thua Thể Thao Ảo Saba</value>
   </data>
   <data name="Saturday" xml:space="preserve">
     <value>Thứ Bảy</value>
@@ -2218,7 +2224,7 @@
     <value>Tìm kiếm Tất cả Người chơi</value>
   </data>
   <data name="SearchResult" xml:space="preserve">
-    <value>Tìm kết quả</value>
+    <value>Kết quả tìm kiếm</value>
   </data>
   <data name="SelectAtLeastOneCurrencyMsg" xml:space="preserve">
     <value>Vui lòng chọn ít nhất một đơn vị tiền tệ!</value>
@@ -2266,7 +2272,7 @@
     <value>Số tiền thanh toán</value>
   </data>
   <data name="SettledMatchCount" xml:space="preserve">
-    <value>Số lượng trận đấu đã hoàn tất</value>
+    <value>Số Lượng Trận Đấu Đã Hoàn Tất</value>
   </data>
   <data name="Show" xml:space="preserve">
     <value>Hiển thị</value>
@@ -2320,7 +2326,7 @@
     <value>Trạng thái</value>
   </data>
   <data name="Su" xml:space="preserve">
-    <value>Chủ Nhật</value>
+    <value>CN</value>
   </data>
   <data name="Subject" xml:space="preserve">
     <value>Chủ thể</value>
@@ -2374,7 +2380,7 @@
     <value>Đội</value>
   </data>
   <data name="Th" xml:space="preserve">
-    <value>Thứ 5</value>
+    <value>T5</value>
   </data>
   <data name="ThereIsNoSelectedItem" xml:space="preserve">
     <value>Không có mục nào được chọn.</value>
@@ -2497,7 +2503,7 @@
     <value>Vui lòng thử đăng nhập lại:&lt;br/&gt;解决方法</value>
   </data>
   <data name="Tu" xml:space="preserve">
-    <value>Thứ 3</value>
+    <value>T3</value>
   </data>
   <data name="Tuesday" xml:space="preserve">
     <value>Thứ Ba</value>
@@ -2605,7 +2611,7 @@
     <value>Cập nhật Nhóm Tỷ lệ cược</value>
   </data>
   <data name="UpdateProductBetSettings" xml:space="preserve">
-    <value>Bạn có muốn cập nhật toàn bộ {0} giới hạn cược?</value>
+    <value>Bạn có muốn cập nhật toàn bộ giới hạn cược của {0} ?</value>
   </data>
   <data name="UpdateProductBetSettingSuccessMsg" xml:space="preserve">
     <value> {0} giới hạn cược của {1} đã được cập nhật thành công</value>
@@ -2755,7 +2761,7 @@
     <value>Đua Xe Ảo</value>
   </data>
   <data name="VirtualSports" xml:space="preserve">
-    <value>Thể thao Ảo</value>
+    <value>Thể Thao Ảo</value>
   </data>
   <data name="VirtualTennis" xml:space="preserve">
     <value>Quần vợt ảo</value>
@@ -2776,13 +2782,13 @@
     <value>Cảnh báo, người chơi này không thể đăng nhập và chuyển khoản!</value>
   </data>
   <data name="We" xml:space="preserve">
-    <value>Thứ 4</value>
+    <value>T4</value>
   </data>
   <data name="Wednesday" xml:space="preserve">
     <value>Thứ Tư</value>
   </data>
   <data name="WeeklyLiveMatches" xml:space="preserve">
-    <value>Trận đấu trực tiếp Hàng tuần</value>
+    <value>Trận Đấu Trực Tiếp Hàng Tuần</value>
   </data>
   <data name="Welcome" xml:space="preserve">
     <value>Chào mừng</value>
@@ -2794,7 +2800,7 @@
     <value>Thắng Thua</value>
   </data>
   <data name="WinLossByBetType" xml:space="preserve">
-    <value>Thắng Thua theo Loại cược</value>
+    <value>Thắng Thua Theo Loại Cược</value>
   </data>
   <data name="WinLossByBetTypeTitle" xml:space="preserve">
     <value>Thắng Thua theo Loại cược, {0} --&gt; {1} - {2}</value>

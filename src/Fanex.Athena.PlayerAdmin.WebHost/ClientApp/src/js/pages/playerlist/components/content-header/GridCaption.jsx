@@ -106,7 +106,8 @@ export class GridCaption extends React.Component {
         }
         else {
             const { playerCount } = this.props;
-            return (<span key="searchResult">{`${LangHelper.getSingleResource('SearchResult')}: ${playerCount} ${LangHelper.getSingleResource('Player')}(s)`}</span>);
+            const extraText = LangHelper.currentLanguage === LangHelper.languageKeys.eng ? '(s)':'';
+            return (<span key="searchResult">{`${LangHelper.getSingleResource('SearchResult')}: ${playerCount} ${LangHelper.getSingleResource('Player') + extraText}`}</span>);
         }
     }
 

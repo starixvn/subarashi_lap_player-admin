@@ -64,6 +64,7 @@ export class AdvancedSearch extends React.Component {
                     <div className="form-group">
                         <label className="label-text">{LangHelper.getSingleResource("Currency")}</label>
                         <MultipleSelect id="currency"
+                            language={LangHelper.currentLanguage}
                             dataSource={convertedCurrencyList}
                             keyField={"Id"}
                             valueField={"Value"}
@@ -76,6 +77,7 @@ export class AdvancedSearch extends React.Component {
                     <div className="form-group">
                         <label className="label-text">{LangHelper.getSingleResource("OddsGroup")}</label>
                         <MultipleSelect id="oddsGroup"
+                            language={LangHelper.currentLanguage}
                             dataSource={oddsGroupList}
                             keyField={"Id"}
                             valueField={"Value"}
@@ -88,6 +90,7 @@ export class AdvancedSearch extends React.Component {
                     <div className="form-group">
                         <label className="label-text">{LangHelper.getSingleResource("SpecialLevel")}</label>
                         <MultipleSelect id="specialLevel"
+                            language={LangHelper.currentLanguage}
                             dataSource={specialLevelList}
                             keyField={"Id"}
                             valueField={"Value"}
@@ -116,6 +119,7 @@ export class AdvancedSearch extends React.Component {
                     <div className="form-group">
                         <label className="label-text">{LangHelper.getSingleResource("RiskLevel")}</label>
                         <MultipleSelect id="ddl-risk-level"
+                            language={LangHelper.currentLanguage}
                             dataSource={riskLevelList}
                             keyField={"Id"}
                             valueField={"Value"}
@@ -127,6 +131,7 @@ export class AdvancedSearch extends React.Component {
                     <div className="form-group">
                         <label className="label-text">{LangHelper.getSingleResource("CommissionGroup")}</label>
                         <MultipleSelect id="ddl-comm-group"
+                            language={LangHelper.currentLanguage}
                             dataSource={commGroupList}
                             keyField={"Id"}
                             valueField={"Value"}

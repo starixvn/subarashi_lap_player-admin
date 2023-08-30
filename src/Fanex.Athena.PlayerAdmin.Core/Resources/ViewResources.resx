@@ -2818,7 +2818,7 @@
     <comment>112658</comment>
   </data>
   <data name="UpdateUnSuccess" xml:space="preserve">
-    <value>Update unsucessfully!</value>
+    <value>Update unsuccessfully!</value>
   </data>
   <data name="UploadFileError" xml:space="preserve">
     <value>Could not load the file, please check file's template again !</value>

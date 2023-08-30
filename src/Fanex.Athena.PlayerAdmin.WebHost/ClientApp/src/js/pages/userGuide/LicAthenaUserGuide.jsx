@@ -181,7 +181,7 @@ const ViVNContent = ({exportOddsGroup}) => {
                 <li><b>Email:</b> tìm chính xác theo Email.</li>
                 <li><b>Tiền Tệ:</b> chọn đơn vị tiền tệ của người chơi mà bạn muốn quản lý.
                     <ul>
-                        <li><b>Tất Cả:</b> Liệt kê vé cược của tất cả đơn vị tiền tệ được hỗ trợ.</li>
+                        <li><b>Tất Cả:</b> Liệt kê tất cả đơn vị tiền tệ được hỗ trợ.</li>
                     </ul>
                 </li>
                 <li><b>Nhóm Tỷ Lệ Cược:</b> xem người chơi của một nhóm tỷ lệ cược.</li>
@@ -209,7 +209,7 @@ const ViVNContent = ({exportOddsGroup}) => {
                 </li>
                 <li><b>Số Dư Hiện Tại:</b> số tiền khả dụng để đặt cược.</li>
                 <li><b>Tiền Chưa Xử Lý:</b> tổng số tiền cược trên tất cả cược đang diễn ra.</li>
-                <li><b>Cấp Độ Rủi Ro:</b> xem giới hạn cược và tỷ lệ cược theo cấp độ rủi ro tương ứng.</li>
+                <li><b>Mức Độ Rủi Ro:</b> xem giới hạn cược và nhóm tỷ lệ cược theo mức độ rủi ro đã được chỉ định cho người chơi.</li>
                 <li><b>Nhóm Hoa Hồng:</b> xem nhóm hoa hồng của người chơi.</li>
                 <li><b>Nhóm Tỷ Lệ Cược:</b> xem hoặc cài đặt nhóm tỷ lệ cược cho người chơi.</li>
                 <li><b>Trạng Thái BA:</b> bật/tắt trạng thái BA của người chơi.</li>
