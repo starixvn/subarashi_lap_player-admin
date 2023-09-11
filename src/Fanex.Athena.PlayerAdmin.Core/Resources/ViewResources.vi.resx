@@ -991,7 +991,7 @@
     <value>ID Ngoại Vi hoặc ID Hệ thống</value>
   </data>
   <data name="ExtraPayout" xml:space="preserve">
-    <value>Trả Thưởng Thêm</value>
+    <value>Thanh Toán Thêm</value>
   </data>
   <data name="Fail" xml:space="preserve">
     <value>Thất bại</value>
@@ -1210,16 +1210,16 @@
     <value>Cược tối đa không hợp lệ</value>
   </data>
   <data name="IncorrectMaxBetPerDraw" xml:space="preserve">
-    <value>Cược Tối Đa Cho Mỗi Lượt không hợp lệ</value>
+    <value>Cược Tối Đa Mỗi Lượt không hợp lệ</value>
   </data>
   <data name="IncorrectMaxPayoutPerMatch" xml:space="preserve">
     <value>Thanh Toán Tối Đa Mỗi Trận không hợp lệ</value>
   </data>
   <data name="IncorrectMaxPerBall" xml:space="preserve">
-    <value>Cược Tối Đa Cho Mỗi Lượt Bóng không hợp lệ</value>
+    <value>Cược Tối Đa Mỗi Lượt Bóng không hợp lệ</value>
   </data>
   <data name="IncorrectMaxPerMatch" xml:space="preserve">
-    <value>Cược Tối Đa Cho Mỗi Trận không hợp lệ</value>
+    <value>Cược Tối Đa Mỗi Trận không hợp lệ</value>
   </data>
   <data name="IncorrectMinBet" xml:space="preserve">
     <value>Cược tối thiểu không hợp lệ</value>
@@ -1477,13 +1477,13 @@
     <value>Cược tối đa</value>
   </data>
   <data name="MaxBetCanNotGreaterThanMaxBetPerDraw" xml:space="preserve">
-    <value>Cược Tối Đa không thể lớn hơn Cược Tối Đa Cho Mỗi Lượt</value>
+    <value>Cược Tối Đa không thể lớn hơn Cược Tối Đa Mỗi Lượt</value>
   </data>
   <data name="MaxBetCanNotGreaterThanMaxPerMatch" xml:space="preserve">
-    <value>Cược Tối Đa không thể lớn hơn Tiền Cược Tối Đa Mỗi Trận</value>
+    <value>Cược Tối Đa không thể lớn hơn Cược Tối Đa Mỗi Trận</value>
   </data>
   <data name="MaxBetLessThanOrEqual" xml:space="preserve">
-    <value>Cược Tối đa phải ít hơn hoặc bằng</value>
+    <value>Cược Tối Đa phải nhỏ hơn hoặc bằng</value>
   </data>
   <data name="MaxBetMatchLessThanOrEqual" xml:space="preserve">
     <value>Cược Tối Đa Mỗi Trận phải nhỏ hơn hoặc bằng</value>
@@ -1492,7 +1492,7 @@
     <value>Cược Tối Đa Mỗi Trận phải lớn hơn hoặc bằng</value>
   </data>
   <data name="MaxBetPerDraw" xml:space="preserve">
-    <value>Tiền cược tối đa cho mỗi lượt</value>
+    <value>Cược Tối Đa Mỗi Lượt</value>
   </data>
   <data name="MaxBetPerDrawLessThanOrEqual" xml:space="preserve">
     <value>Cược Tối Đa Mỗi Lượt phải nhỏ hơn hoặc bằng</value>
@@ -1516,7 +1516,7 @@
     <value>Cược tối đa mỗi lượt bóng</value>
   </data>
   <data name="MaxPerBallLessThanOrEqual" xml:space="preserve">
-    <value>Cược tối đa mỗi lượt bóng phải ít hơn hoặc bằng</value>
+    <value>Cược tối đa mỗi lượt bóng phải nhỏ hơn hoặc bằng</value>
   </data>
   <data name="MaxPerBet" xml:space="preserve">
     <value>Tối đa/Cược</value>
@@ -1532,6 +1532,9 @@
   </data>
   <data name="May" xml:space="preserve">
     <value>Tháng Năm</value>
+  </data>
+  <data name="May2" xml:space="preserve">
+    <value>Tháng 5</value>
   </data>
   <data name="Member" xml:space="preserve">
     <value>Thành viên</value>
@@ -2611,7 +2614,7 @@
     <value>Cập nhật Nhóm Tỷ lệ cược</value>
   </data>
   <data name="UpdateProductBetSettings" xml:space="preserve">
-    <value>Bạn có muốn cập nhật toàn bộ giới hạn cược của {0} ?</value>
+    <value>Bạn có muốn cập nhật toàn bộ giới hạn cược của {0}?</value>
   </data>
   <data name="UpdateProductBetSettingSuccessMsg" xml:space="preserve">
     <value> {0} giới hạn cược của {1} đã được cập nhật thành công</value>
@@ -2701,7 +2704,7 @@
     <value>Xem dữ liệu trong tháng</value>
   </data>
   <data name="Viewin" xml:space="preserve">
-    <value>Xem trong {0}</value>
+    <value>Xem theo {0}</value>
   </data>
   <data name="ViewNotification" xml:space="preserve">
     <value>Xem Thông báo</value>

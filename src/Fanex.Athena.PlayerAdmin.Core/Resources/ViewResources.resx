@@ -3093,4 +3093,7 @@
   <data name="ResettledRecovered" xml:space="preserve">
     <value>Resettled/Recovered</value>
   </data>
+  <data name="May2" xml:space="preserve">
+    <value>May</value>
+  </data>
 </root>
