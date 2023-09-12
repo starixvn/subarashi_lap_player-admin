@@ -45,7 +45,9 @@ namespace Fanex.Athena.PlayerAdmin.Commission.Helpers
             [ProductCode.VS3] = "VS3",
             [ProductCode.FGGL] = "FGG",
             [ProductCode.MXG] = "MaxGame",
-            [ProductCode.JIG] = "Jili"
+            [ProductCode.JIG] = "Jili",
+            [ProductCode.YB] = "YeeBet",
+            [ProductCode.MGRNG] = "MgRNG"
         };
 
         public static IDictionary<string, string> MapHardcodedNameFromDB(IDictionary<string, bool> permissions, bool isUpdate)
