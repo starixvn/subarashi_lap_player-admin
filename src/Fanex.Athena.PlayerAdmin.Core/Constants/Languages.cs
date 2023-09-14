@@ -8,7 +8,8 @@ namespace Fanex.Athena.PlayerAdmin.Core.Constants
         public static readonly IReadOnlyDictionary<string, string> LanguageCodeMappers = new Dictionary<string, string> (StringComparer.InvariantCultureIgnoreCase)
         {
             { "en", "en-US" },
-            { "cs", "zh-CN" }
+            { "cs", "zh-CN" },
+            { "vn", "vi-VN" }
         };
     }
 }

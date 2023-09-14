@@ -1,0 +1,2847 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AA" xml:space="preserve">
+    <value>Đội Khách/Đội Khách</value>
+  </data>
+  <data name="AbnormalBet" xml:space="preserve">
+    <value>Cược bất thường</value>
+  </data>
+  <data name="AccessDeniedMsg" xml:space="preserve">
+    <value>Xin lỗi, bạn không có quyền truy cập vào trang này.</value>
+  </data>
+  <data name="Account" xml:space="preserve">
+    <value>Tài khoản</value>
+  </data>
+  <data name="AccountManagement" xml:space="preserve">
+    <value>Quản lý Tài khoản</value>
+  </data>
+  <data name="Action" xml:space="preserve">
+    <value>Hành động</value>
+  </data>
+  <data name="ActivateVip" xml:space="preserve">
+    <value>Kích hoạt VIP</value>
+  </data>
+  <data name="Active" xml:space="preserve">
+    <value>Hoạt động</value>
+  </data>
+  <data name="ActiveCustomers" xml:space="preserve">
+    <value>Khách hàng đang hoạt động</value>
+  </data>
+  <data name="ActualStake" xml:space="preserve">
+    <value>Cược thực tế</value>
+  </data>
+  <data name="AD" xml:space="preserve">
+    <value>Đội Khách/Hòa</value>
+  </data>
+  <data name="Adjustment" xml:space="preserve">
+    <value>Điều chỉnh</value>
+  </data>
+  <data name="Administrator" xml:space="preserve">
+    <value>Quản trị viên</value>
+  </data>
+  <data name="AdvancedSearch" xml:space="preserve">
+    <value>Tìm kiếm nâng cao</value>
+  </data>
+  <data name="AffiliateTransfer" xml:space="preserve">
+    <value>Chuyển khoản Đối Tác Liên Kết</value>
+  </data>
+  <data name="AfterBalance" xml:space="preserve">
+    <value>Số dư còn lại</value>
+  </data>
+  <data name="AGCasino" xml:space="preserve">
+    <value>AG Casino</value>
+  </data>
+  <data name="AGCasinoBalance" xml:space="preserve">
+    <value>Số Dư AG Casino</value>
+  </data>
+  <data name="AGCasinoNotOfferCurrency" xml:space="preserve">
+    <value>AG Casino không hỗ trợ đơn vị tiền tệ này.</value>
+  </data>
+  <data name="AGCasinoWinLoss" xml:space="preserve">
+    <value>Thắng Thua AG Casino</value>
+  </data>
+  <data name="AGClosingBalance" xml:space="preserve">
+    <value>Số dư cuối kỳ AG</value>
+  </data>
+  <data name="AgentBetInterval" xml:space="preserve">
+    <value>Thời gian chờ đặt cược của Agent (giây)</value>
+  </data>
+  <data name="AGOpeningBalance" xml:space="preserve">
+    <value>Số dư đầu kỳ AG</value>
+  </data>
+  <data name="AH" xml:space="preserve">
+    <value>Đội Khách/Đội Nhà</value>
+  </data>
+  <data name="Alert" xml:space="preserve">
+    <value>Cảnh báo</value>
+  </data>
+  <data name="AlertChooseProductMsg" xml:space="preserve">
+    <value>Xin vui lòng chọn ít nhất một sản phẩm</value>
+  </data>
+  <data name="AlertInputOldPwdMsg" xml:space="preserve">
+    <value>Vui lòng nhập mật khẩu cũ!!!</value>
+  </data>
+  <data name="AlertPasswordEmptyMsg" xml:space="preserve">
+    <value>Xin lỗi, mật khẩu không thể để trống!!!</value>
+  </data>
+  <data name="AlertRemoveSpecialLevelForCustomerMsg" xml:space="preserve">
+    <value>Điều này sẽ xóa cấp độ đặc biệt của khách hàng này. Bạn có chắc không?</value>
+  </data>
+  <data name="AlertSetOddsGroupForCustomerMsg" xml:space="preserve">
+    <value>Bạn có muốn chuyển người chơi này vào nhóm tỷ lệ cược {0} không?</value>
+  </data>
+  <data name="AlertSetSpecialLevelForCustomerMsg" xml:space="preserve">
+    <value>Bạn có muốn đặt cấp độ đặc biệt cho khách hàng này?</value>
+  </data>
+  <data name="AlertTurnOffBAMsg" xml:space="preserve">
+    <value>Bạn có muốn tắt BA không?</value>
+  </data>
+  <data name="AlertTurnOnBAMsg" xml:space="preserve">
+    <value>Bạn có muốn bật BA không?</value>
+  </data>
+  <data name="AlertUserNameMsg" xml:space="preserve">
+    <value>Vui lòng nhập tên người dùng!</value>
+  </data>
+  <data name="All" xml:space="preserve">
+    <value>Tất cả</value>
+  </data>
+  <data name="AllBetTypes" xml:space="preserve">
+    <value>Tất cả loại cược</value>
+  </data>
+  <data name="AllCurrencies" xml:space="preserve">
+    <value>Tất cả loại tiền tệ</value>
+  </data>
+  <data name="AlreadyUpdateNotVipStatus" xml:space="preserve">
+    <value>Không phải VIP, không cập nhật: {0}</value>
+  </data>
+  <data name="AlreadyUpdateNotVipStatusSingle" xml:space="preserve">
+    <value>CHƯA LÀ VIP, không có cập nhật</value>
+  </data>
+  <data name="AlreadyUpdateVipStatus" xml:space="preserve">
+    <value>Đã là VIP, không cập nhật: {0}</value>
+  </data>
+  <data name="AlreadyUpdateVipStatusSingle" xml:space="preserve">
+    <value>Đã là VIP, không cập nhật</value>
+  </data>
+  <data name="Amendment" xml:space="preserve">
+    <value>Tất toán lại</value>
+  </data>
+  <data name="Amount" xml:space="preserve">
+    <value>Số tiền</value>
+  </data>
+  <data name="AmountDue" xml:space="preserve">
+    <value>Số tiền từ</value>
+  </data>
+  <data name="AmountDueTo" xml:space="preserve">
+    <value>Số tiền từ</value>
+  </data>
+  <data name="AmountDueToCB" xml:space="preserve">
+    <value>Số tiền từ Colossus Bets</value>
+  </data>
+  <data name="AmtDueTo" xml:space="preserve">
+    <value>Số tiền từ</value>
+  </data>
+  <data name="AmtDueToBA" xml:space="preserve">
+    <value>Tiền BA</value>
+  </data>
+  <data name="AmtDueToBetTrade" xml:space="preserve">
+    <value>Số tiền từ Bet Trade</value>
+  </data>
+  <data name="AmtGreaterThan30kGBP" xml:space="preserve">
+    <value>Số tiền ≥ 30K GBP</value>
+  </data>
+  <data name="AmtLessThan30kGBP" xml:space="preserve">
+    <value>Số tiền &lt; 30K GBP</value>
+  </data>
+  <data name="Apr" xml:space="preserve">
+    <value>Tháng 4</value>
+  </data>
+  <data name="April" xml:space="preserve">
+    <value>Tháng Tư</value>
+  </data>
+  <data name="Archived" xml:space="preserve">
+    <value>Lưu trữ</value>
+  </data>
+  <data name="ArchivedDate" xml:space="preserve">
+    <value>Ngày lưu trữ</value>
+  </data>
+  <data name="AreYouSure" xml:space="preserve">
+    <value>Bạn có muốn tiếp tục không?</value>
+  </data>
+  <data name="Asia" xml:space="preserve">
+    <value>Châu Á</value>
+  </data>
+  <data name="Aug" xml:space="preserve">
+    <value>Tháng 8</value>
+  </data>
+  <data name="August" xml:space="preserve">
+    <value>Tháng Tám</value>
+  </data>
+  <data name="AvailableFunds" xml:space="preserve">
+    <value>Tiền khả dụng</value>
+  </data>
+  <data name="Away" xml:space="preserve">
+    <value>Đội Khách</value>
+  </data>
+  <data name="AwayNoBet" xml:space="preserve">
+    <value>Đội Khách không cược</value>
+  </data>
+  <data name="BA" xml:space="preserve">
+    <value>BA</value>
+  </data>
+  <data name="Back" xml:space="preserve">
+    <value>Quay lại</value>
+  </data>
+  <data name="BackToCurrentReport" xml:space="preserve">
+    <value>Trở lại báo cáo hiện tại</value>
+  </data>
+  <data name="BACommission" xml:space="preserve">
+    <value>Hoa hồng BA</value>
+  </data>
+  <data name="Balance" xml:space="preserve">
+    <value>Số dư</value>
+  </data>
+  <data name="BalanceChange" xml:space="preserve">
+    <value>Thay đổi số dư</value>
+  </data>
+  <data name="BankAccountNumber" xml:space="preserve">
+    <value>Số tài khoản Ngân hàng</value>
+  </data>
+  <data name="BankInformation" xml:space="preserve">
+    <value>Thông tin ngân hàng</value>
+  </data>
+  <data name="BAPlayerNoUpdateVIP" xml:space="preserve">
+    <value>Người chơi BA, không có cập nhật: {0} ({1})</value>
+  </data>
+  <data name="BAPlayerNoUpdateVIPSingle" xml:space="preserve">
+    <value>Người chơi BA, không cập nhật</value>
+  </data>
+  <data name="BaseCurrency" xml:space="preserve">
+    <value>Tiền tệ cơ sở</value>
+  </data>
+  <data name="Based" xml:space="preserve">
+    <value>Dựa trên</value>
+  </data>
+  <data name="BAStatus" xml:space="preserve">
+    <value>Trạng thái BA</value>
+  </data>
+  <data name="BatchUpdate" xml:space="preserve">
+    <value>Cập nhật hàng loạt</value>
+  </data>
+  <data name="BAUpdatedBy" xml:space="preserve">
+    <value>BA được cập nhật bởi</value>
+  </data>
+  <data name="BBAmtComm" xml:space="preserve">
+    <value>Số tiền BB + Hoa hồng</value>
+  </data>
+  <data name="BetCount" xml:space="preserve">
+    <value>Số lượng cược</value>
+  </data>
+  <data name="BetCounts" xml:space="preserve">
+    <value>Số cược</value>
+  </data>
+  <data name="BetDelay" xml:space="preserve">
+    <value>Cược bị hoãn</value>
+  </data>
+  <data name="BetfromOthers" xml:space="preserve">
+    <value>Khác</value>
+  </data>
+  <data name="BetId" xml:space="preserve">
+    <value>ID Cược</value>
+  </data>
+  <data name="BetInterval" xml:space="preserve">
+    <value>Thời gian chờ đặt cược (giây)</value>
+  </data>
+  <data name="BetLimit" xml:space="preserve">
+    <value>Giới hạn cược</value>
+  </data>
+  <data name="BetList" xml:space="preserve">
+    <value>Danh sách cược</value>
+  </data>
+  <data name="BetListRunning" xml:space="preserve">
+    <value>Danh sách cược (Đang diễn ra)</value>
+  </data>
+  <data name="BetPlaced" xml:space="preserve">
+    <value>Đã đặt cược</value>
+  </data>
+  <data name="BetSetting" xml:space="preserve">
+    <value>Giới hạn cược</value>
+  </data>
+  <data name="BetSettingGroups" xml:space="preserve">
+    <value>Nhóm Giới Hạn Cược</value>
+  </data>
+  <data name="BetSettings" xml:space="preserve">
+    <value>Giới hạn cược</value>
+  </data>
+  <data name="BetTaken" xml:space="preserve">
+    <value>Đặt cược được chấp nhận</value>
+  </data>
+  <data name="BettingLimit" xml:space="preserve">
+    <value>Giới hạn cược</value>
+  </data>
+  <data name="BettingStatement" xml:space="preserve">
+    <value>Sao kê Cược</value>
+  </data>
+  <data name="BettingTicketCenter" xml:space="preserve">
+    <value>Trung Tâm Vé Cược</value>
+  </data>
+  <data name="BettingTicketCenter_AdvancedSearchTabNote1" xml:space="preserve">
+    <value>Tất cả các loại cược, bộ lọc Giải đấu và Trận đấu chỉ khả dụng khi có 1 ngày được chọn.</value>
+  </data>
+  <data name="BettingTicketCenter_AdvancedSearchTabNote2" xml:space="preserve">
+    <value>Dữ liệu có sẵn từ {0}</value>
+  </data>
+  <data name="BettingTicketCenter_RefnoTabNote1" xml:space="preserve">
+    <value>Đối với Sportsbook, kết quả tìm kiếm bao gồm vé Thưởng/Tiền mặt</value>
+  </data>
+  <data name="BettingTicketCenter_RefnoTabNote2" xml:space="preserve">
+    <value>Đối với {0}: Vui lòng nhập tên người dùng để tìm vé sau thời điểm {1}</value>
+  </data>
+  <data name="BetTradeCommission" xml:space="preserve">
+    <value>Hoa Hồng cho Bet Trade</value>
+  </data>
+  <data name="BetTradeNotOfferCurrency" xml:space="preserve">
+    <value>BetTrade không chấp nhận đơn vị tiền tệ này</value>
+  </data>
+  <data name="BetType" xml:space="preserve">
+    <value>Loại cược</value>
+  </data>
+  <data name="BONTeamToScore" xml:space="preserve">
+    <value>Cả hai/Một/Không đội nào ghi bàn</value>
+  </data>
+  <data name="Bonus" xml:space="preserve">
+    <value>Thưởng</value>
+  </data>
+  <data name="BoughtAmount" xml:space="preserve">
+    <value>Số tiền đã mua</value>
+  </data>
+  <data name="BoughtDetails" xml:space="preserve">
+    <value>Chi tiết đã mua</value>
+  </data>
+  <data name="BoughtStake" xml:space="preserve">
+    <value>Tiền cược đã đặt</value>
+  </data>
+  <data name="BoughtTicketsList" xml:space="preserve">
+    <value>Vé đã mua</value>
+  </data>
+  <data name="BTCExportExcelMsg1" xml:space="preserve">
+    <value>Kết quả tìm kiếm vượt quá giới hạn cho phép tải xuống</value>
+  </data>
+  <data name="BTCExportExcelMsg2" xml:space="preserve">
+    <value>Hãy thử thu hẹp phạm vi ngày, chọn đơn vị tiền tệ/loại cược riêng lẻ,v.v.</value>
+  </data>
+  <data name="BuyBackAmount" xml:space="preserve">
+    <value>Số tiền mua lại</value>
+  </data>
+  <data name="ByBetType" xml:space="preserve">
+    <value>Theo Loại Cược</value>
+  </data>
+  <data name="ByCurrency" xml:space="preserve">
+    <value>Theo Đơn vị tiền tệ</value>
+  </data>
+  <data name="BySportsType" xml:space="preserve">
+    <value>Theo Loại Thể Thao</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Hủy</value>
+  </data>
+  <data name="CannotUpdateBetLimitForProduct" xml:space="preserve">
+    <value>Bạn không thể cập nhật giới hạn cược của người chơi cho sản phẩm {0}.</value>
+  </data>
+  <data name="CashOutAmount" xml:space="preserve">
+    <value>Số tiền bán vé cược</value>
+  </data>
+  <data name="CashOutAmt" xml:space="preserve">
+    <value>Tiền bán vé cược</value>
+  </data>
+  <data name="CashOutCommission" xml:space="preserve">
+    <value>Hoa hồng vé cược đã bán</value>
+  </data>
+  <data name="CashOutDetails" xml:space="preserve">
+    <value>Chi tiết bán vé cược</value>
+  </data>
+  <data name="CashOutNotOfferCurrency" xml:space="preserve">
+    <value>Bán Vé Cược không được áp dụng cho loại tiền tệ này</value>
+  </data>
+  <data name="CashOutShare" xml:space="preserve">
+    <value>Chia sẻ bán vé cược</value>
+  </data>
+  <data name="CashOutStake" xml:space="preserve">
+    <value>Tiền cược của vé cược được bán</value>
+  </data>
+  <data name="CashOutTickets" xml:space="preserve">
+    <value>Vé cược đã bán</value>
+  </data>
+  <data name="CashOutTicketsList" xml:space="preserve">
+    <value>Bán vé cược</value>
+  </data>
+  <data name="CashOutTimes" xml:space="preserve">
+    <value>Thời gian bán vé cược</value>
+  </data>
+  <data name="CashOutValue" xml:space="preserve">
+    <value>Giá trị vé cược được bán</value>
+  </data>
+  <data name="CashOutWinLoss" xml:space="preserve">
+    <value>Thắng Thua Của Vé Cược Đã Bán</value>
+  </data>
+  <data name="CasinoAPI_UpdateCommError" xml:space="preserve">
+    <value>Gặp lỗi khi gọi CasinoAPI để cập nhật hoa hồng khách hàng.</value>
+  </data>
+  <data name="CasinoTransfer" xml:space="preserve">
+    <value>Chuyển khoản Casino</value>
+  </data>
+  <data name="CasinoTurnover" xml:space="preserve">
+    <value>Doanh Thu Casino</value>
+  </data>
+  <data name="Category" xml:space="preserve">
+    <value>Danh mục</value>
+  </data>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>Đổi Mật khẩu</value>
+  </data>
+  <data name="ChangeStatus" xml:space="preserve">
+    <value>Thay đổi trạng thái của {0}</value>
+  </data>
+  <data name="ChangeStatusOfThisCustomerMsg" xml:space="preserve">
+    <value>Bạn có muốn thay đổi trạng thái của khách hàng này?</value>
+  </data>
+  <data name="ChargeCommission" xml:space="preserve">
+    <value>Phí Hoa hồng</value>
+  </data>
+  <data name="ChatRoom" xml:space="preserve">
+    <value>Nhóm Chat</value>
+  </data>
+  <data name="Checkavailability" xml:space="preserve">
+    <value>Kiếm tra tính khả dụng</value>
+  </data>
+  <data name="Choice" xml:space="preserve">
+    <value>Lựa chọn</value>
+  </data>
+  <data name="ChooseGroupMsg" xml:space="preserve">
+    <value>Vui lòng chọn một nhóm</value>
+  </data>
+  <data name="ChooseGroupNameMsg" xml:space="preserve">
+    <value>Vui lòng chọn tên nhóm khác.</value>
+  </data>
+  <data name="CleanSheet" xml:space="preserve">
+    <value>Giữ sạch lưới</value>
+  </data>
+  <data name="ClearCurrentComm" xml:space="preserve">
+    <value>Xóa hoa hồng khách hàng</value>
+  </data>
+  <data name="ClickHere" xml:space="preserve">
+    <value>Nhấn vào đây</value>
+  </data>
+  <data name="ClickOrDropHere" xml:space="preserve">
+    <value>Nhấn hoặc thả ở đây</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>đóng</value>
+  </data>
+  <data name="Closed" xml:space="preserve">
+    <value>Đã đóng</value>
+  </data>
+  <data name="ClosingBalance" xml:space="preserve">
+    <value>Số dư cuối kỳ</value>
+  </data>
+  <data name="Columns" xml:space="preserve">
+    <value>Các cột</value>
+  </data>
+  <data name="Comm" xml:space="preserve">
+    <value>Hoa hồng</value>
+  </data>
+  <data name="CommIsClear" xml:space="preserve">
+    <value>Hoa hồng khách hàng đã được thanh toán</value>
+  </data>
+  <data name="Commission" xml:space="preserve">
+    <value>Hoa hồng</value>
+  </data>
+  <data name="CommissionGroup" xml:space="preserve">
+    <value>Nhóm hoa hồng</value>
+  </data>
+  <data name="CommissionGroupList" xml:space="preserve">
+    <value>Danh sách Nhóm Hoa hồng</value>
+  </data>
+  <data name="CommissionShare" xml:space="preserve">
+    <value>Hoa hồng chia sẻ</value>
+  </data>
+  <data name="CommIsUnChange" xml:space="preserve">
+    <value>Hoa hồng Khách hàng không thay đổi</value>
+  </data>
+  <data name="Confirm" xml:space="preserve">
+    <value>Xác nhận</value>
+  </data>
+  <data name="ConfirmActivateVIPPlayer" xml:space="preserve">
+    <value>Giới hạn cược sẽ được áp dụng lại nếu người chơi trở thành VIP. Bạn có muốn kích hoạt VIP không?</value>
+  </data>
+  <data name="Confirmation" xml:space="preserve">
+    <value>Xác nhận</value>
+  </data>
+  <data name="ConfirmBatchUpdateAccountStatus" xml:space="preserve">
+    <value>Bạn có muốn thay đổi trạng thái của những người chơi này không?</value>
+  </data>
+  <data name="ConfirmBatchUpdateBAStatus_Off" xml:space="preserve">
+    <value>Bạn có muốn tắt BA không?</value>
+  </data>
+  <data name="ConfirmBatchUpdateBAStatus_On" xml:space="preserve">
+    <value>Bạn có muốn bật BA không?</value>
+  </data>
+  <data name="ConfirmBatchUpdateOddsGroup" xml:space="preserve">
+    <value>Bạn có muốn chuyển những người chơi này sang nhóm tỷ lệ cược đã chọn không?</value>
+  </data>
+  <data name="ConfirmBatchUpdateSpecialLevel" xml:space="preserve">
+    <value>Bạn có chắc muốn thiết lập mức độ đặc biệt cho những người chơi này?</value>
+  </data>
+  <data name="ConfirmCommission" xml:space="preserve">
+    <value>Xác nhận Hoa hồng Khách hàng:</value>
+  </data>
+  <data name="ConfirmDeactivateVIPPlayer" xml:space="preserve">
+    <value>Bạn có muốn hủy kích hoạt VIP cho người chơi không?</value>
+  </data>
+  <data name="ConfirmPassword" xml:space="preserve">
+    <value>Xác nhận Mật khẩu</value>
+  </data>
+  <data name="Content" xml:space="preserve">
+    <value>Nội dung</value>
+  </data>
+  <data name="ConvertAllFiguresToBaseCurrency" xml:space="preserve">
+    <value>Chuyển đổi tất cả số liệu theo tiền tệ cơ sở</value>
+  </data>
+  <data name="CopyBetSettingFromSoccer" xml:space="preserve">
+    <value>Sao chép tất cả giới hạn cược của Bóng Đá</value>
+  </data>
+  <data name="CorrectScore" xml:space="preserve">
+    <value>Số điểm Chính xác</value>
+  </data>
+  <data name="CreatedDate" xml:space="preserve">
+    <value>Ngày tạo</value>
+  </data>
+  <data name="CreateNewGroup" xml:space="preserve">
+    <value>Tạo nhóm mới</value>
+  </data>
+  <data name="CreditDebit" xml:space="preserve">
+    <value>Ghi có/Ghi nợ</value>
+  </data>
+  <data name="CS" xml:space="preserve">
+    <value>Giữ sạch lưới</value>
+  </data>
+  <data name="CSComm" xml:space="preserve">
+    <value>Hoa hồng CS</value>
+  </data>
+  <data name="Currencies" xml:space="preserve">
+    <value>Tiền tệ</value>
+  </data>
+  <data name="Currency" xml:space="preserve">
+    <value>Tiền tệ</value>
+  </data>
+  <data name="CurrentBalance" xml:space="preserve">
+    <value>Số dư hiện tại</value>
+  </data>
+  <data name="Currentmonth" xml:space="preserve">
+    <value>Tháng này</value>
+  </data>
+  <data name="Currentweek" xml:space="preserve">
+    <value>Tuần hiện tại</value>
+  </data>
+  <data name="Customer" xml:space="preserve">
+    <value>Khách hàng</value>
+  </data>
+  <data name="CustomerBalance" xml:space="preserve">
+    <value>Số Dư Khách Hàng</value>
+  </data>
+  <data name="CustomerBetList" xml:space="preserve">
+    <value>Danh sách cược của Khách Hàng</value>
+  </data>
+  <data name="CustomerClass" xml:space="preserve">
+    <value>Hạng Khách hàng</value>
+  </data>
+  <data name="CustomerClassInformation" xml:space="preserve">
+    <value>Thông tin hạng Khách hàng</value>
+  </data>
+  <data name="CustomerClassSettingPolicy" xml:space="preserve">
+    <value>Chính sách cài đặt Hạng khách hàng</value>
+  </data>
+  <data name="CustomerClassSpreadSettingPolicy" xml:space="preserve">
+    <value>Chính sách phân loại khách hàng</value>
+  </data>
+  <data name="CustomerComm" xml:space="preserve">
+    <value>Hoa hồng Khách hàng</value>
+  </data>
+  <data name="CustomerCommission" xml:space="preserve">
+    <value>Hoa hồng Khách hàng</value>
+  </data>
+  <data name="CustomerHasNeverPlayed" xml:space="preserve">
+    <value>Khách hàng chưa từng chơi {0}.</value>
+  </data>
+  <data name="CustomerList" xml:space="preserve">
+    <value>Danh sách Khách hàng</value>
+  </data>
+  <data name="CustomerLog" xml:space="preserve">
+    <value>Nhật ký khách hàng</value>
+  </data>
+  <data name="CustomerNotBelongAnyGroupMsg" xml:space="preserve">
+    <value>Khách hàng được chọn không thuộc bất kỳ nhóm nào.</value>
+  </data>
+  <data name="CustomerOption" xml:space="preserve">
+    <value>Tùy chọn Khách Hàng</value>
+  </data>
+  <data name="CustomerPedingFunds" xml:space="preserve">
+    <value>Tiền Chờ Xử Lý Của Khách Hàng</value>
+  </data>
+  <data name="CustomerPedingFundsTitle" xml:space="preserve">
+    <value>Tiền khách hàng đang chờ xử lý - {0}</value>
+  </data>
+  <data name="Customers" xml:space="preserve">
+    <value>Khách hàng</value>
+  </data>
+  <data name="CustomersBelongGroupsBeRemovedMsg" xml:space="preserve">
+    <value>Chỉ có những khách hàng trong nhóm sẽ bị xóa khỏi nhóm của họ.</value>
+  </data>
+  <data name="CustomerSetting" xml:space="preserve">
+    <value>Cài đặt khách hàng</value>
+  </data>
+  <data name="CustomersExistedinGroupMsg" xml:space="preserve">
+    <value>Các khách hàng vừa chọn đã có trong nhóm này.</value>
+  </data>
+  <data name="CustomerTurnover" xml:space="preserve">
+    <value>Doanh Thu Khách Hàng</value>
+  </data>
+  <data name="CustomerWinLoss" xml:space="preserve">
+    <value>Thắng Thua Khách Hàng</value>
+  </data>
+  <data name="CustomerWinLossTitle" xml:space="preserve">
+    <value>Thắng thua Khách hàng, {0} --&gt; {1} - {2}</value>
+  </data>
+  <data name="CustomerWinnings" xml:space="preserve">
+    <value>Tiền thắng của khách hàng</value>
+  </data>
+  <data name="CustomerW_L" xml:space="preserve">
+    <value>Thắng Thua Khách Hàng</value>
+  </data>
+  <data name="DA" xml:space="preserve">
+    <value>Hoà/Đội khách</value>
+  </data>
+  <data name="Daily" xml:space="preserve">
+    <value>Hàng ngày</value>
+  </data>
+  <data name="DailyBets" xml:space="preserve">
+    <value>Cược Hằng Ngày</value>
+  </data>
+  <data name="DailyStatement" xml:space="preserve">
+    <value>Sao kê hàng ngày</value>
+  </data>
+  <data name="DailyStatementMsg" xml:space="preserve">
+    <value>Xem dữ liệu lên đến 4 tháng</value>
+  </data>
+  <data name="Dangerous" xml:space="preserve">
+    <value>Nguy hiểm</value>
+  </data>
+  <data name="Data" xml:space="preserve">
+    <value>dữ liệu</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>Ngày</value>
+  </data>
+  <data name="DateRange" xml:space="preserve">
+    <value>Phạm vi ngày</value>
+  </data>
+  <data name="DateRangeExceedMsg" xml:space="preserve">
+    <value>Phạm vi ngày vượt quá {0} tháng. Vui lòng thử lại!</value>
+  </data>
+  <data name="DateRangeLimitNote" xml:space="preserve">
+    <value>Dữ liệu có sẵn trong vòng 3 tháng, từ {0} đến {1}.</value>
+  </data>
+  <data name="DateRangeNote" xml:space="preserve">
+    <value>Dữ liệu có sẵn từ {0:d MMM yyyy}</value>
+  </data>
+  <data name="Day" xml:space="preserve">
+    <value>Ngày</value>
+  </data>
+  <data name="DayRangeExceedMsg" xml:space="preserve">
+    <value>Phạm vi ngày vượt quá {0} ngày. Vui lòng thử lại!</value>
+  </data>
+  <data name="DD" xml:space="preserve">
+    <value>Hòa/Hòa</value>
+  </data>
+  <data name="DeactivateVip" xml:space="preserve">
+    <value>Vô hiệu hóa VIP</value>
+  </data>
+  <data name="Dec" xml:space="preserve">
+    <value>Tháng 12</value>
+  </data>
+  <data name="December" xml:space="preserve">
+    <value>Tháng Mười Hai</value>
+  </data>
+  <data name="DecimalOdds" xml:space="preserve">
+    <value>tỷ lệ cược thập phân</value>
+  </data>
+  <data name="DeepLink" xml:space="preserve">
+    <value>Liên kết sâu</value>
+  </data>
+  <data name="DefaultGroup" xml:space="preserve">
+    <value>Nhóm mặc định</value>
+  </data>
+  <data name="DefaultGroupMsg" xml:space="preserve">
+    <value>Đây là nhóm mặc định. Bạn có muốn tiếp tục không?</value>
+  </data>
+  <data name="DelayedPayout" xml:space="preserve">
+    <value>Thanh toán bị trì hoãn</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Xóa</value>
+  </data>
+  <data name="DeleteCommissionGroup" xml:space="preserve">
+    <value>Xóa nhóm hoa hồng</value>
+  </data>
+  <data name="DeleteGroup" xml:space="preserve">
+    <value>Xóa Nhóm</value>
+  </data>
+  <data name="Deposit" xml:space="preserve">
+    <value>Nạp tiền</value>
+  </data>
+  <data name="Deposited" xml:space="preserve">
+    <value>Đã nạp tiền</value>
+  </data>
+  <data name="DesktopChina" xml:space="preserve">
+    <value>Phiên bản máy tính Trung Quốc</value>
+  </data>
+  <data name="DesktopGalaxy" xml:space="preserve">
+    <value>Desktop Galaxy</value>
+  </data>
+  <data name="DesktopNewAsia" xml:space="preserve">
+    <value>Nền tảng trên máy tính phiên bản Châu Á mới</value>
+  </data>
+  <data name="DesktopOthers" xml:space="preserve">
+    <value>Phiên bản máy tính khác</value>
+  </data>
+  <data name="DetailedBetlist" xml:space="preserve">
+    <value>Danh sách cược chi tiết</value>
+  </data>
+  <data name="Details" xml:space="preserve">
+    <value>Chi tiết</value>
+  </data>
+  <data name="DetailTransaction" xml:space="preserve">
+    <value>Chi tiết Giao dịch</value>
+  </data>
+  <data name="DH" xml:space="preserve">
+    <value>Hòa/Đội Nhà</value>
+  </data>
+  <data name="DisableAgCasino" xml:space="preserve">
+    <value>Vô hiệu hóa AG Casino</value>
+  </data>
+  <data name="DisableAllBet" xml:space="preserve">
+    <value>Vô hiệu hóa AllBet</value>
+  </data>
+  <data name="DisableMacau" xml:space="preserve">
+    <value>Vô hiệu hóa Macau</value>
+  </data>
+  <data name="DisableMacauGames" xml:space="preserve">
+    <value>Vô hiệu hóa Macau Games</value>
+  </data>
+  <data name="DisableProduct" xml:space="preserve">
+    <value>Vô hiệu hóa {0}</value>
+  </data>
+  <data name="DisableRNGCasino" xml:space="preserve">
+    <value>Vô hiệu hóa RNG Game Casino </value>
+  </data>
+  <data name="DiscountValue" xml:space="preserve">
+    <value>Giá trị chiết khấu</value>
+  </data>
+  <data name="Dontshowagain" xml:space="preserve">
+    <value>Không hiện lại</value>
+  </data>
+  <data name="DormantCustomers" xml:space="preserve">
+    <value>Khách hàng không hoạt động</value>
+  </data>
+  <data name="DormantPlayersSearch" xml:space="preserve">
+    <value>Tìm Người chơi không hoạt động</value>
+  </data>
+  <data name="DoubleChance" xml:space="preserve">
+    <value>Cơ hội kép</value>
+  </data>
+  <data name="Draw" xml:space="preserve">
+    <value>Hòa</value>
+  </data>
+  <data name="DrawFilter" xml:space="preserve">
+    <value>Bộ lọc Hòa</value>
+  </data>
+  <data name="DrawGame" xml:space="preserve">
+    <value>Trận hòa</value>
+  </data>
+  <data name="DrawNoBet" xml:space="preserve">
+    <value>Hòa hoàn tiền</value>
+  </data>
+  <data name="DrawNoDraw" xml:space="preserve">
+    <value>Hòa/Không Hòa</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Sửa</value>
+  </data>
+  <data name="EditAccount" xml:space="preserve">
+    <value>Sửa tài khoản</value>
+  </data>
+  <data name="Editedby" xml:space="preserve">
+    <value>Sửa bởi</value>
+  </data>
+  <data name="EditGroup" xml:space="preserve">
+    <value>Sửa nhóm</value>
+  </data>
+  <data name="EffectiveBettingValue" xml:space="preserve">
+    <value>Giá trị cược hiệu quả</value>
+  </data>
+  <data name="EffectiveBettingValueNote" xml:space="preserve">
+    <value>Giá trị cược có hiệu quả hỗ trợ dữ liệu từ 09/01/2024</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="EnableAgCasino" xml:space="preserve">
+    <value>Kích hoạt AG Casino</value>
+  </data>
+  <data name="EnableAllBet" xml:space="preserve">
+    <value>Kích hoạt AllBet</value>
+  </data>
+  <data name="EnableBetTrade" xml:space="preserve">
+    <value>Kích hoạt BetTrade</value>
+  </data>
+  <data name="EnableCashOut" xml:space="preserve">
+    <value>Kích hoạt bán vé cược</value>
+  </data>
+  <data name="EnableMacau" xml:space="preserve">
+    <value>Kích hoạt Macau</value>
+  </data>
+  <data name="EnableMacauGames" xml:space="preserve">
+    <value>Kích hoạt Macau Games</value>
+  </data>
+  <data name="EnableProduct" xml:space="preserve">
+    <value>Kích hoạt {0}</value>
+  </data>
+  <data name="EnableRNGCasino" xml:space="preserve">
+    <value>Kích hoạt RNG Game Casino</value>
+  </data>
+  <data name="EndDate" xml:space="preserve">
+    <value>Ngày cuối</value>
+  </data>
+  <data name="Entered" xml:space="preserve">
+    <value>Đã kết thúc</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Lỗi</value>
+  </data>
+  <data name="ErrorNotification" xml:space="preserve">
+    <value>Bạn ở đây vì một trong những lý do sau: &lt;br/&gt;遭遇问题了!</value>
+  </data>
+  <data name="ErrorProcessingMsg" xml:space="preserve">
+    <value>Xin lỗi, đã xảy ra lỗi trong quá trình thực hiện yêu cầu của bạn.</value>
+  </data>
+  <data name="ESportsApp" xml:space="preserve">
+    <value>Ứng dụng Thể Thao Điện Tử</value>
+  </data>
+  <data name="ESportsDesktop" xml:space="preserve">
+    <value>Phiên bản máy tính Thể Thao Điện Tử</value>
+  </data>
+  <data name="ESportsMobile" xml:space="preserve">
+    <value>Thể thao điện tử di động</value>
+  </data>
+  <data name="Euro" xml:space="preserve">
+    <value>Euro</value>
+  </data>
+  <data name="Event" xml:space="preserve">
+    <value>Sự kiện</value>
+  </data>
+  <data name="EventDate" xml:space="preserve">
+    <value>Ngày sự kiện</value>
+  </data>
+  <data name="EventType" xml:space="preserve">
+    <value>Loại sự kiện</value>
+  </data>
+  <data name="ExcelExceedRowsMsg" xml:space="preserve">
+    <value>Tệp này vượt quá 65535 mục nhập. Vui lòng liên hệ với quản trị viên để biết thêm chi tiết.</value>
+  </data>
+  <data name="ExchangeWinLoss" xml:space="preserve">
+    <value>Thắng Thua Exchange</value>
+  </data>
+  <data name="ExcludeTestData" xml:space="preserve">
+    <value>Loại trừ Dữ liệu Kiểm Thử</value>
+  </data>
+  <data name="ExportToExcel" xml:space="preserve">
+    <value>Xuất sang Excel</value>
+  </data>
+  <data name="ExternalId" xml:space="preserve">
+    <value>ID Ngoại Vi</value>
+  </data>
+  <data name="ExternalIdOrSystemId" xml:space="preserve">
+    <value>ID Ngoại Vi hoặc ID Hệ thống</value>
+  </data>
+  <data name="ExtraPayout" xml:space="preserve">
+    <value>Thanh Toán Thêm</value>
+  </data>
+  <data name="Fail" xml:space="preserve">
+    <value>Thất bại</value>
+  </data>
+  <data name="Feb" xml:space="preserve">
+    <value>Tháng 2</value>
+  </data>
+  <data name="February" xml:space="preserve">
+    <value>Tháng Hai</value>
+  </data>
+  <data name="FGLG" xml:space="preserve">
+    <value>Bàn thắng Đầu/Cuối</value>
+  </data>
+  <data name="FileExtensionIncorrect" xml:space="preserve">
+    <value>Phần mở rộng của tệp không chính xác, xin hãy chọn một tệp</value>
+  </data>
+  <data name="FileIsNotReady" xml:space="preserve">
+    <value>Tệp chưa sẵn sàng, vui lòng thử lại sau.</value>
+  </data>
+  <data name="FileUploadExceedSize" xml:space="preserve">
+    <value>Tệp tải lên phải nhỏ hơn</value>
+  </data>
+  <data name="FirstGoal" xml:space="preserve">
+    <value>Bàn thắng Đầu tiên</value>
+  </data>
+  <data name="FirstName" xml:space="preserve">
+    <value>Tên</value>
+  </data>
+  <data name="Forecast" xml:space="preserve">
+    <value>Dự đoán</value>
+  </data>
+  <data name="ForecastAway" xml:space="preserve">
+    <value>Dự đoán Đội Khách</value>
+  </data>
+  <data name="ForecastHome" xml:space="preserve">
+    <value>Dự đoán Đội Nhà</value>
+  </data>
+  <data name="Fr" xml:space="preserve">
+    <value>T6</value>
+  </data>
+  <data name="FreePlay" xml:space="preserve">
+    <value>Chơi miễn phí</value>
+  </data>
+  <data name="Freeze" xml:space="preserve">
+    <value>Đóng băng</value>
+  </data>
+  <data name="Friday" xml:space="preserve">
+    <value>Thứ Sáu</value>
+  </data>
+  <data name="From" xml:space="preserve">
+    <value>Từ</value>
+  </data>
+  <data name="Fromdate" xml:space="preserve">
+    <value>Từ ngày</value>
+  </data>
+  <data name="FT" xml:space="preserve">
+    <value>Toàn trận</value>
+  </data>
+  <data name="Full" xml:space="preserve">
+    <value>Đầy</value>
+  </data>
+  <data name="FullTime" xml:space="preserve">
+    <value>Toàn trận</value>
+  </data>
+  <data name="Function" xml:space="preserve">
+    <value>Chức năng</value>
+  </data>
+  <data name="FunctionDeniedMsg" xml:space="preserve">
+    <value>Rất tiếc, bạn không có quyền truy cập chức năng này.</value>
+  </data>
+  <data name="FunctionNoAvailableMsg" xml:space="preserve">
+    <value>Chức năng này không còn khả dụng!</value>
+  </data>
+  <data name="FunctionUMMessage" xml:space="preserve">
+    <value>Không thể cập nhật vì chức năng này đang trong quá trình bảo trì từ {0} đến {1} (theo Giờ Hồng Kông GMT+8) Chúng tôi xin lỗi vì sự bất tiện này!</value>
+  </data>
+  <data name="FundtransferLimit" xml:space="preserve">
+    <value>Hạn mức chuyển tiền</value>
+  </data>
+  <data name="GameKind" xml:space="preserve">
+    <value>Kiểu trò chơi</value>
+  </data>
+  <data name="GameType" xml:space="preserve">
+    <value>Loại trò chơi</value>
+  </data>
+  <data name="GameTypeName" xml:space="preserve">
+    <value>Tên loại Trò chơi</value>
+  </data>
+  <data name="General" xml:space="preserve">
+    <value>Chung</value>
+  </data>
+  <data name="GetAll" xml:space="preserve">
+    <value>Xem tất cả</value>
+  </data>
+  <data name="Go" xml:space="preserve">
+    <value>Số bàn thắng</value>
+  </data>
+  <data name="GodOfFortuneWinLoss" xml:space="preserve">
+    <value>Thần Tài Thắng Thua</value>
+  </data>
+  <data name="GotoCustomerList" xml:space="preserve">
+    <value>Đi đến Danh sách Khách hàng</value>
+  </data>
+  <data name="GrandPrizeNote" xml:space="preserve">
+    <value>Giải Đặc Biệt: số tiền thắng không được tính vào số dư của người chơi</value>
+  </data>
+  <data name="GrandTotal" xml:space="preserve">
+    <value>Tổng cộng</value>
+  </data>
+  <data name="Group" xml:space="preserve">
+    <value>Nhóm</value>
+  </data>
+  <data name="GroupBy" xml:space="preserve">
+    <value>Nhóm theo</value>
+  </data>
+  <data name="GroupColor" xml:space="preserve">
+    <value>Màu nhóm</value>
+  </data>
+  <data name="GroupCommission" xml:space="preserve">
+    <value>Hoa hồng nhóm</value>
+  </data>
+  <data name="GroupCommission_2" xml:space="preserve">
+    <value>Hoa hồng nhóm</value>
+  </data>
+  <data name="GroupCommNote" xml:space="preserve">
+    <value>Nếu nhóm mặc định được chọn, tất cả khách hàng mới đăng ký sẽ được tự động thêm vào nhóm hoa hồng này. Khách hàng hiện tại sẽ không bị ảnh hưởng.</value>
+  </data>
+  <data name="GroupId" xml:space="preserve">
+    <value>ID Nhóm</value>
+  </data>
+  <data name="GroupManagement" xml:space="preserve">
+    <value>Quản lý nhóm</value>
+  </data>
+  <data name="GroupName" xml:space="preserve">
+    <value>Tên Nhóm</value>
+  </data>
+  <data name="GroupNameExistedMsg" xml:space="preserve">
+    <value>Tên nhóm này đã tồn tại, vui lòng thử tên khác!</value>
+  </data>
+  <data name="GroupNameNotEmptyMsg" xml:space="preserve">
+    <value>Tên Nhóm không được trống</value>
+  </data>
+  <data name="GroupNameNotExceed100CharactersMsg" xml:space="preserve">
+    <value>Tên Nhóm không được vượt quá 100 kí tự.</value>
+  </data>
+  <data name="GroupNameOnlyContainCharactersAndNumberMsg" xml:space="preserve">
+    <value>Tên nhóm chỉ được chứa các ký tự và số.</value>
+  </data>
+  <data name="GroupNotExists" xml:space="preserve">
+    <value>Nhóm không tồn tại</value>
+  </data>
+  <data name="GroupSetAsDefaultMsg" xml:space="preserve">
+    <value>Một nhóm khác đang được đặt làm mặc định. Bạn muốn đặt nhóm này làm mặc định?</value>
+  </data>
+  <data name="HA" xml:space="preserve">
+    <value>Đội Nhà/Đội Khách</value>
+  </data>
+  <data name="Half" xml:space="preserve">
+    <value>Một nửa</value>
+  </data>
+  <data name="HalfTime" xml:space="preserve">
+    <value>Hiệp 1</value>
+  </data>
+  <data name="Handicap" xml:space="preserve">
+    <value>Cược chấp</value>
+  </data>
+  <data name="HandicapOverUnderLive" xml:space="preserve">
+    <value>Cược chấp/Tài Xỉu/Trực tiếp</value>
+  </data>
+  <data name="Happy5" xml:space="preserve">
+    <value>Happy 5</value>
+  </data>
+  <data name="Happy5LinkedGames" xml:space="preserve">
+    <value>Trò chơi đã liên kết với Happy 5</value>
+  </data>
+  <data name="HD" xml:space="preserve">
+    <value>Đội Nhà/Hòa</value>
+  </data>
+  <data name="Healthy" xml:space="preserve">
+    <value>Tốt</value>
+  </data>
+  <data name="HH" xml:space="preserve">
+    <value>Đội Nhà/Đội Nhà</value>
+  </data>
+  <data name="hide" xml:space="preserve">
+    <value>ẩn</value>
+  </data>
+  <data name="HistoricalReportDateRangeNote" xml:space="preserve">
+    <value>Dữ liệu có sẵn từ {0:MM/dd/ yyyy}. Xem thêm lịch sử dữ liệu</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Đội Nhà</value>
+  </data>
+  <data name="HomeDrawAwayNoBet" xml:space="preserve">
+    <value>Nhà/Hoà/Khách Không Tính</value>
+  </data>
+  <data name="HomeNoBet" xml:space="preserve">
+    <value>Đội nhà Không Cược</value>
+  </data>
+  <data name="HTFT" xml:space="preserve">
+    <value>Hiệp 1/Toàn Trận</value>
+  </data>
+  <data name="HttpError_403" xml:space="preserve">
+    <value>Xin lỗi, bạn không có quyền truy cập vào trang này.</value>
+  </data>
+  <data name="HttpError_404" xml:space="preserve">
+    <value>Không tìm thấy trang, vui lòng kiểm tra lại địa chỉ</value>
+  </data>
+  <data name="HttpError_Default" xml:space="preserve">
+    <value>Xin lỗi... Hiện tại hệ thống đang gặp sự cố, vui lòng thông báo cho các quản trị viên.</value>
+  </data>
+  <data name="IncludeDrawData" xml:space="preserve">
+    <value>Bao gồm dữ liệu Hòa</value>
+  </data>
+  <data name="IncorrectMaxBet" xml:space="preserve">
+    <value>Cược tối đa không hợp lệ</value>
+  </data>
+  <data name="IncorrectMaxBetPerDraw" xml:space="preserve">
+    <value>Cược Tối Đa Mỗi Lượt không hợp lệ</value>
+  </data>
+  <data name="IncorrectMaxPayoutPerMatch" xml:space="preserve">
+    <value>Thanh Toán Tối Đa Mỗi Trận không hợp lệ</value>
+  </data>
+  <data name="IncorrectMaxPerBall" xml:space="preserve">
+    <value>Cược Tối Đa Mỗi Lượt Bóng không hợp lệ</value>
+  </data>
+  <data name="IncorrectMaxPerMatch" xml:space="preserve">
+    <value>Cược Tối Đa Mỗi Trận không hợp lệ</value>
+  </data>
+  <data name="IncorrectMinBet" xml:space="preserve">
+    <value>Cược tối thiểu không hợp lệ</value>
+  </data>
+  <data name="InternalSystem" xml:space="preserve">
+    <value>Hệ thống nội bộ</value>
+  </data>
+  <data name="InvalidCaptchaMsg" xml:space="preserve">
+    <value>Bạn đã nhập một mã không hợp lệ.</value>
+  </data>
+  <data name="InvalidChargeCommission" xml:space="preserve">
+    <value>Phí hoa hồng không hợp lệ</value>
+  </data>
+  <data name="InvalidCurrencyPermission" xml:space="preserve">
+    <value>Quyền tiền tệ không hợp lệ.</value>
+  </data>
+  <data name="InvalidEmail" xml:space="preserve">
+    <value>Địa chỉ email không hợp lệ</value>
+  </data>
+  <data name="InvalidParams" xml:space="preserve">
+    <value>Tham số không hợp lệ</value>
+  </data>
+  <data name="InvalidPlayerUpdateVipStatusByExternalId" xml:space="preserve">
+    <value>ID Ngoại Vi không hợp lệ: {0} ({1})</value>
+  </data>
+  <data name="InvalidPlayerUpdateVipStatusBySystemId" xml:space="preserve">
+    <value>ID Hệ thống Không hợp lệ: {0} ({1})</value>
+  </data>
+  <data name="InvalidPlayerUpdateVipStatusSingle" xml:space="preserve">
+    <value>Người chơi không hợp lệ: {0}</value>
+  </data>
+  <data name="InvalidRequestMsg" xml:space="preserve">
+    <value>Yêu cầu không hợp lệ</value>
+  </data>
+  <data name="InvalidRequestOrNotAuthorizedMsg" xml:space="preserve">
+    <value>Yêu cầu không hợp lệ hoặc bạn không được phép truy cập!</value>
+  </data>
+  <data name="InvalidSubsidiaryNameMsg" xml:space="preserve">
+    <value>Vui lòng liên hệ quản trị viên để kiểm tra tên chi nhánh của bạn.</value>
+  </data>
+  <data name="IPLogin" xml:space="preserve">
+    <value>IP đăng nhập</value>
+  </data>
+  <data name="IsNeutral" xml:space="preserve">
+    <value>(N)</value>
+  </data>
+  <data name="JackpotWonDetails" xml:space="preserve">
+    <value>Chi tiết Thắng Jackpot</value>
+  </data>
+  <data name="Jan" xml:space="preserve">
+    <value>Tháng 1</value>
+  </data>
+  <data name="January" xml:space="preserve">
+    <value>Tháng Một</value>
+  </data>
+  <data name="Jul" xml:space="preserve">
+    <value>Tháng 7</value>
+  </data>
+  <data name="July" xml:space="preserve">
+    <value>Tháng Bảy</value>
+  </data>
+  <data name="Jun" xml:space="preserve">
+    <value>Tháng 6</value>
+  </data>
+  <data name="June" xml:space="preserve">
+    <value>Tháng Sáu</value>
+  </data>
+  <data name="KeepCurrentComm" xml:space="preserve">
+    <value>Giữ hoa hồng hiện tại</value>
+  </data>
+  <data name="Last" xml:space="preserve">
+    <value>Cuối cùng</value>
+  </data>
+  <data name="LastBetsMonitoring" xml:space="preserve">
+    <value>Theo Dõi Cược Cuối Cùng</value>
+  </data>
+  <data name="LastGoal" xml:space="preserve">
+    <value>Bàn thắng Cuối</value>
+  </data>
+  <data name="LastLogin" xml:space="preserve">
+    <value>Đăng nhập cuối cùng</value>
+  </data>
+  <data name="Lastmonth" xml:space="preserve">
+    <value>Tháng trước</value>
+  </data>
+  <data name="LastName" xml:space="preserve">
+    <value>Họ</value>
+  </data>
+  <data name="LastTransaction" xml:space="preserve">
+    <value>Giao dịch cuối cùng</value>
+  </data>
+  <data name="LastTransfer" xml:space="preserve">
+    <value>Chuyển tiền lần cuối</value>
+  </data>
+  <data name="LastTxn" xml:space="preserve">
+    <value>Giao dịch cuối cùng</value>
+  </data>
+  <data name="LastUpdatedBA" xml:space="preserve">
+    <value>Cập nhật cuối cùng của BA</value>
+  </data>
+  <data name="LastUpdatedMsg" xml:space="preserve">
+    <value>Cấp độ đặc biệt được cập nhật lần cuối</value>
+  </data>
+  <data name="Lastweek" xml:space="preserve">
+    <value>Tuần trước</value>
+  </data>
+  <data name="lbl1st" xml:space="preserve">
+    <value>Hiệp 1</value>
+  </data>
+  <data name="lbl1stHalf" xml:space="preserve">
+    <value>Hiệp 1</value>
+  </data>
+  <data name="lbl1stHandicap" xml:space="preserve">
+    <value>Cược chấp Hiệp 1</value>
+  </data>
+  <data name="lbl1stOver_Under" xml:space="preserve">
+    <value>Tài/Xỉu Hiệp 1</value>
+  </data>
+  <data name="lbl3WayHandicap" xml:space="preserve">
+    <value>Cược chấp 3 cửa</value>
+  </data>
+  <data name="lbl7Over" xml:space="preserve">
+    <value>7+</value>
+  </data>
+  <data name="League" xml:space="preserve">
+    <value>Giải đấu</value>
+  </data>
+  <data name="LeagueGroupId" xml:space="preserve">
+    <value>ID nhóm giải đấu</value>
+  </data>
+  <data name="Liability" xml:space="preserve">
+    <value>Trách nhiệm</value>
+  </data>
+  <data name="Licensee" xml:space="preserve">
+    <value>Nhà Cái</value>
+  </data>
+  <data name="LicenseeComm" xml:space="preserve">
+    <value>Hoa hồng Nhà Cái</value>
+  </data>
+  <data name="LicenseeIsNotExisted" xml:space="preserve">
+    <value>Không tìm thấy Nhà Cái</value>
+  </data>
+  <data name="LicenseeNetWL" xml:space="preserve">
+    <value>Thắng Thua Thực của Nhà Cái</value>
+  </data>
+  <data name="LicenseeTxId" xml:space="preserve">
+    <value>Mã giao dịch</value>
+  </data>
+  <data name="LicenseeWinLoss" xml:space="preserve">
+    <value>Thắng Thua Nhà Cái</value>
+  </data>
+  <data name="LicenseeWL" xml:space="preserve">
+    <value>Thắng Thua Nhà Cái</value>
+  </data>
+  <data name="LicenseeW_L" xml:space="preserve">
+    <value>Thắng Thua Nhà Cái</value>
+  </data>
+  <data name="Live" xml:space="preserve">
+    <value>Trực tiếp</value>
+  </data>
+  <data name="Live2" xml:space="preserve">
+    <value>Trực tiếp</value>
+  </data>
+  <data name="LiveAndNonLive" xml:space="preserve">
+    <value>Trực tiếp và không trực tiếp</value>
+  </data>
+  <data name="LiveGame" xml:space="preserve">
+    <value>Trận đấu trực tiếp</value>
+  </data>
+  <data name="LiveReport" xml:space="preserve">
+    <value>Báo Cáo Trực Tiếp</value>
+  </data>
+  <data name="LiveReportTitle" xml:space="preserve">
+    <value>Báo cáo trực tiếp - {0}, {1} --&gt; {2} - {3}</value>
+  </data>
+  <data name="LiveStatus" xml:space="preserve">
+    <value>Trạng thái trực tiếp</value>
+  </data>
+  <data name="LocationRestriction" xml:space="preserve">
+    <value>Giới hạn vị trí</value>
+  </data>
+  <data name="LocationRestrictionMsg" xml:space="preserve">
+    <value>Truy cập trực tiếp vào trang web này bị hạn chế. Vui lòng liên hệ với {0} để có thêm thông tin.</value>
+  </data>
+  <data name="Locked" xml:space="preserve">
+    <value>Đã khóa</value>
+  </data>
+  <data name="Log" xml:space="preserve">
+    <value>Nhật ký</value>
+  </data>
+  <data name="LogDate" xml:space="preserve">
+    <value>Ngày đăng nhập</value>
+  </data>
+  <data name="LogID" xml:space="preserve">
+    <value>ID Nhật ký</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Đăng nhập</value>
+  </data>
+  <data name="LogInfo" xml:space="preserve">
+    <value>Thông tin đăng nhập</value>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Đăng xuất</value>
+  </data>
+  <data name="Lose" xml:space="preserve">
+    <value>Thua</value>
+  </data>
+  <data name="LrfNotification" xml:space="preserve">
+    <value>Thông báo LRF</value>
+  </data>
+  <data name="MacauNotOfferCurrency" xml:space="preserve">
+    <value>Macau không hỗ trợ đơn vị tiền tệ này.</value>
+  </data>
+  <data name="Main" xml:space="preserve">
+    <value>Chính</value>
+  </data>
+  <data name="ManageAccount" xml:space="preserve">
+    <value>Quản lý Tài khoản</value>
+  </data>
+  <data name="Mar" xml:space="preserve">
+    <value>Tháng 3</value>
+  </data>
+  <data name="March" xml:space="preserve">
+    <value>Tháng Ba</value>
+  </data>
+  <data name="Margin" xml:space="preserve">
+    <value>Lợi nhuận</value>
+  </data>
+  <data name="MarkDate" xml:space="preserve">
+    <value>Đánh dấu ngày</value>
+  </data>
+  <data name="Market" xml:space="preserve">
+    <value>Thị trường</value>
+  </data>
+  <data name="Match" xml:space="preserve">
+    <value>Trận đấu</value>
+  </data>
+  <data name="MatchCase" xml:space="preserve">
+    <value>Khớp chữ, ví dụ</value>
+  </data>
+  <data name="MatchPrecise" xml:space="preserve">
+    <value>Khớp chính xác</value>
+  </data>
+  <data name="MatchPrefix" xml:space="preserve">
+    <value>Khớp chữ đầu, ví dụ</value>
+  </data>
+  <data name="MatchWinLoss" xml:space="preserve">
+    <value>Thắng Thua Theo Trận</value>
+  </data>
+  <data name="MatchWinLossTitle" xml:space="preserve">
+    <value>Thắng Thua theo Trận, {0} - {1}</value>
+  </data>
+  <data name="MaxBet" xml:space="preserve">
+    <value>Cược tối đa</value>
+  </data>
+  <data name="MaxBetCanNotGreaterThanMaxBetPerDraw" xml:space="preserve">
+    <value>Cược Tối Đa không thể lớn hơn Cược Tối Đa Mỗi Lượt</value>
+  </data>
+  <data name="MaxBetCanNotGreaterThanMaxPerMatch" xml:space="preserve">
+    <value>Cược Tối Đa không thể lớn hơn Cược Tối Đa Mỗi Trận</value>
+  </data>
+  <data name="MaxBetLessThanOrEqual" xml:space="preserve">
+    <value>Cược Tối Đa phải nhỏ hơn hoặc bằng</value>
+  </data>
+  <data name="MaxBetMatchLessThanOrEqual" xml:space="preserve">
+    <value>Cược Tối Đa Mỗi Trận phải nhỏ hơn hoặc bằng</value>
+  </data>
+  <data name="MaxBetMatchMoreThanOrEqual" xml:space="preserve">
+    <value>Cược Tối Đa Mỗi Trận phải lớn hơn hoặc bằng</value>
+  </data>
+  <data name="MaxBetPerDraw" xml:space="preserve">
+    <value>Cược Tối Đa Mỗi Lượt</value>
+  </data>
+  <data name="MaxBetPerDrawLessThanOrEqual" xml:space="preserve">
+    <value>Cược Tối Đa Mỗi Lượt phải nhỏ hơn hoặc bằng</value>
+  </data>
+  <data name="MaxBetPerDrawMoreThanOrEqual" xml:space="preserve">
+    <value>Cược Tối Đa Mỗi Lượt phải lớn hơn hoặc bằng</value>
+  </data>
+  <data name="MaxBetPerMatch" xml:space="preserve">
+    <value>Cược Tối Đa Mỗi Trận</value>
+  </data>
+  <data name="MaximumUploadFileSize" xml:space="preserve">
+    <value>Kích thước tệp tải lên tối đa</value>
+  </data>
+  <data name="MaxPayoutPerMatch" xml:space="preserve">
+    <value>Thanh Toán Tối Đa Mỗi Trận</value>
+  </data>
+  <data name="MaxPayoutPerMatchLessThanOrEqual" xml:space="preserve">
+    <value>Thanh Toán Tối Đa Mỗi Trận phải nhỏ hơn hoặc bằng</value>
+  </data>
+  <data name="MaxPerBall" xml:space="preserve">
+    <value>Cược tối đa mỗi lượt bóng</value>
+  </data>
+  <data name="MaxPerBallLessThanOrEqual" xml:space="preserve">
+    <value>Cược tối đa mỗi lượt bóng phải nhỏ hơn hoặc bằng</value>
+  </data>
+  <data name="MaxPerBet" xml:space="preserve">
+    <value>Tối đa/Cược</value>
+  </data>
+  <data name="MaxPerMatch" xml:space="preserve">
+    <value>Cược Tối Đa Mỗi Trận</value>
+  </data>
+  <data name="MaxPerMatch2" xml:space="preserve">
+    <value>Tối đa/Trận đấu</value>
+  </data>
+  <data name="MaxPerMatchNotGreaterMaxPayoutPerMatch" xml:space="preserve">
+    <value>Cược Tối Đa Mỗi Trận không thể lớn hơn Thanh Toán Tối Đa Mỗi Trận</value>
+  </data>
+  <data name="May" xml:space="preserve">
+    <value>Tháng Năm</value>
+  </data>
+  <data name="May2" xml:space="preserve">
+    <value>Tháng 5</value>
+  </data>
+  <data name="Member" xml:space="preserve">
+    <value>Thành viên</value>
+  </data>
+  <data name="MessageBatchUpdateAccountStatus_Close" xml:space="preserve">
+    <value>ĐÃ ĐÓNG: người chơi vĩnh viễn không được khôi phục!</value>
+  </data>
+  <data name="MessageBatchUpdateAccountStatus_Lock" xml:space="preserve">
+    <value>ĐÃ KHÓA: người chơi không thể đăng nhập!</value>
+  </data>
+  <data name="MessageCommCannotGreaterThan" xml:space="preserve">
+    <value>Hoa hồng không thể lớn hơn 15%</value>
+  </data>
+  <data name="MessageCommNoChange" xml:space="preserve">
+    <value>Hoa hồng không thay đổi</value>
+  </data>
+  <data name="MessageGroupCreationFail" xml:space="preserve">
+    <value>Tạo nhóm thất bại</value>
+  </data>
+  <data name="MessageGroupDoesNotExistMsg" xml:space="preserve">
+    <value>Nhóm này không tồn tại!</value>
+  </data>
+  <data name="MessageGroupHasAlreadyChoosen" xml:space="preserve">
+    <value>Tên nhóm này đã được chọn, vui lòng thử tên khác!</value>
+  </data>
+  <data name="MessageInvalidCommValue" xml:space="preserve">
+    <value>Giá trị hoa hồng không hợp lệ!</value>
+  </data>
+  <data name="MessageLimitTimeUpdateBA" xml:space="preserve">
+    <value>Chỉ có thể thay đổi trạng thái BA vào Thứ Hai từ 13h tới 17h (GMT+8).</value>
+  </data>
+  <data name="MessageSuccess" xml:space="preserve">
+    <value>Thành công</value>
+  </data>
+  <data name="MessageTurnOffVIPError" xml:space="preserve">
+    <value>Người chơi VIP không được mở BA.</value>
+  </data>
+  <data name="MessageUpdateOddsGroupForBAPlayers" xml:space="preserve">
+    <value>Người chơi BA không được phép thay đổi nhóm tỷ lệ cược.</value>
+  </data>
+  <data name="Message_RemoveCustomerLog" xml:space="preserve">
+    <value>Nhật ký khách hàng sẽ bị xóa vào lúc 11 giờ sáng ngày 21/04 (GMT+8). Vui lòng sử dụng Quản lý Người chơi thay thế. Cảm ơn!</value>
+  </data>
+  <data name="MinBet" xml:space="preserve">
+    <value>Cược tối thiểu</value>
+  </data>
+  <data name="MinBetCanNotGreaterThanMaxBet" xml:space="preserve">
+    <value>Cược tối thiểu không được lớn hơn Cược tối đa</value>
+  </data>
+  <data name="MinBetGreaterThanOrEqual" xml:space="preserve">
+    <value>Cược Tối Thiểu phải lớn hơn hoặc bằng</value>
+  </data>
+  <data name="MinimumOdds" xml:space="preserve">
+    <value>Tỷ lệ cược tối thiểu</value>
+  </data>
+  <data name="MixLiveAndNoneLive" xml:space="preserve">
+    <value>Kết Hợp Trực Tiếp &amp; Không Trực Tiếp</value>
+  </data>
+  <data name="MixSportsParlay" xml:space="preserve">
+    <value>Cược xiên Thể Thao</value>
+  </data>
+  <data name="Mo" xml:space="preserve">
+    <value>T2</value>
+  </data>
+  <data name="MobileApp" xml:space="preserve">
+    <value>Ứng dụng di động</value>
+  </data>
+  <data name="MobileCompact" xml:space="preserve">
+    <value>Di động nhỏ gọn</value>
+  </data>
+  <data name="MobileGalaxy" xml:space="preserve">
+    <value>Mobile Euro</value>
+  </data>
+  <data name="MobileOthers" xml:space="preserve">
+    <value>Các thiết bị di động khác</value>
+  </data>
+  <data name="MobileStandard" xml:space="preserve">
+    <value>Di động tiêu chuẩn</value>
+  </data>
+  <data name="Moderate" xml:space="preserve">
+    <value>Trung bình</value>
+  </data>
+  <data name="Monday" xml:space="preserve">
+    <value>Thứ Hai</value>
+  </data>
+  <data name="MoneyLine" xml:space="preserve">
+    <value>Cược Đội Thắng</value>
+  </data>
+  <data name="MoneyPlay" xml:space="preserve">
+    <value>Money Play</value>
+  </data>
+  <data name="Month" xml:space="preserve">
+    <value>Tháng</value>
+  </data>
+  <data name="Monthly" xml:space="preserve">
+    <value>Hàng tháng</value>
+  </data>
+  <data name="MoreThanOneCustomerFoundMsg" xml:space="preserve">
+    <value>Nhiều hơn 1 khách hàng được tìm thấy. Vui lòng tìm kiếm 1 khách hàng duy nhất.</value>
+  </data>
+  <data name="MoveCommissionGroup" xml:space="preserve">
+    <value>Đổi nhóm hoa hồng</value>
+  </data>
+  <data name="MoveSuccessfullyMsg" xml:space="preserve">
+    <value>Đã di chuyển thành công.</value>
+  </data>
+  <data name="MoveToCommissionGroup" xml:space="preserve">
+    <value>Chuyển sang nhóm hoa hồng</value>
+  </data>
+  <data name="MoveToGroup" xml:space="preserve">
+    <value>Chuyển đến Nhóm</value>
+  </data>
+  <data name="MultiCustomers" xml:space="preserve">
+    <value>Nhiều khách hàng</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Tên</value>
+  </data>
+  <data name="NativeApp" xml:space="preserve">
+    <value>Ứng dụng nội địa</value>
+  </data>
+  <data name="NetTurnover" xml:space="preserve">
+    <value>Doanh Thu Thực</value>
+  </data>
+  <data name="New" xml:space="preserve">
+    <value>Mới</value>
+  </data>
+  <data name="NewGroup" xml:space="preserve">
+    <value>Nhóm Mới</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Kế tiếp</value>
+  </data>
+  <data name="NG" xml:space="preserve">
+    <value>Number Game</value>
+  </data>
+  <data name="NGComm" xml:space="preserve">
+    <value>Hoa hồng cho Number Game</value>
+  </data>
+  <data name="NGCommission" xml:space="preserve">
+    <value>Hoa hồng cho Number Game</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>Không</value>
+  </data>
+  <data name="NoBettypeFound" xml:space="preserve">
+    <value>Không tìm thấy loại cược nào.</value>
+  </data>
+  <data name="NoCustomerFoundMsg" xml:space="preserve">
+    <value>Không tìm thấy khách hàng</value>
+  </data>
+  <data name="NoDraws" xml:space="preserve">
+    <value>Không Hòa</value>
+  </data>
+  <data name="NoDrawsForTurnoverOnly" xml:space="preserve">
+    <value>Không Tính Doanh Thu Vé Cược Hòa</value>
+  </data>
+  <data name="NoGoal" xml:space="preserve">
+    <value>Không có bàn thắng</value>
+  </data>
+  <data name="NoInfo" xml:space="preserve">
+    <value>Không có dữ liệu</value>
+  </data>
+  <data name="None" xml:space="preserve">
+    <value>Không có</value>
+  </data>
+  <data name="NoneCurrency" xml:space="preserve">
+    <value>Không có đơn vị tiền tệ</value>
+  </data>
+  <data name="NoneLevel" xml:space="preserve">
+    <value>Không có cấp độ</value>
+  </data>
+  <data name="NoneLive" xml:space="preserve">
+    <value>Không Trực tiếp</value>
+  </data>
+  <data name="NonEntered" xml:space="preserve">
+    <value>Chưa có kết quả</value>
+  </data>
+  <data name="NoOfCustmer" xml:space="preserve">
+    <value>Số Khách hàng</value>
+  </data>
+  <data name="NoProductFound" xml:space="preserve">
+    <value>Không tìm thấy sản phẩm</value>
+  </data>
+  <data name="Normal" xml:space="preserve">
+    <value>Bình thường</value>
+  </data>
+  <data name="NotAllowBA" xml:space="preserve">
+    <value>Nhà Cái này không được dùng BA</value>
+  </data>
+  <data name="NotAllowedBAPlayerTurnonVip" xml:space="preserve">
+    <value>Không được phép bật VIP cho người chơi BA</value>
+  </data>
+  <data name="Note" xml:space="preserve">
+    <value>Ghi chú</value>
+  </data>
+  <data name="Notification" xml:space="preserve">
+    <value>Thông báo</value>
+  </data>
+  <data name="NotificationDateRangeLimitNote" xml:space="preserve">
+    <value>Dữ liệu có sẵn trong vòng 6 tháng</value>
+  </data>
+  <data name="Nov" xml:space="preserve">
+    <value>Tháng 11</value>
+  </data>
+  <data name="November" xml:space="preserve">
+    <value>Tháng Mười Một</value>
+  </data>
+  <data name="NumberGameNo" xml:space="preserve">
+    <value>Number Game số</value>
+  </data>
+  <data name="OANDANote" xml:space="preserve">
+    <value>Xin lưu ý rằng tất cả các chuyển đổi sang đơn vị tiền tệ cơ sở (EURO, USD) chỉ dùng để tham khảo.</value>
+  </data>
+  <data name="Oct" xml:space="preserve">
+    <value>Tháng 10</value>
+  </data>
+  <data name="October" xml:space="preserve">
+    <value>Tháng Mười</value>
+  </data>
+  <data name="OddEven" xml:space="preserve">
+    <value>Lẻ/Chẵn</value>
+  </data>
+  <data name="OddEvenDND" xml:space="preserve">
+    <value>Lẻ/Chẵn + 1 X 2 + Hòa/Không Hòa</value>
+  </data>
+  <data name="Odds" xml:space="preserve">
+    <value>Tỷ lệ cược</value>
+  </data>
+  <data name="OddsAvg" xml:space="preserve">
+    <value>Tỷ lệ cược trung bình</value>
+  </data>
+  <data name="OddsGroup" xml:space="preserve">
+    <value>Nhóm tỷ lệ cược</value>
+  </data>
+  <data name="OddsMatched" xml:space="preserve">
+    <value>Tỷ lệ cược phù hợp</value>
+  </data>
+  <data name="OddsReq" xml:space="preserve">
+    <value>Yêu cầu tỷ lệ cược</value>
+  </data>
+  <data name="OddsType" xml:space="preserve">
+    <value>Loại tỷ lệ cược</value>
+  </data>
+  <data name="Odd_Dec" xml:space="preserve">
+    <value>Tháng 12</value>
+  </data>
+  <data name="Odd_MY" xml:space="preserve">
+    <value>Malay</value>
+  </data>
+  <data name="of" xml:space="preserve">
+    <value>của</value>
+  </data>
+  <data name="Off" xml:space="preserve">
+    <value>Tắt</value>
+  </data>
+  <data name="Offline" xml:space="preserve">
+    <value>Ngoại tuyến</value>
+  </data>
+  <data name="OK" xml:space="preserve">
+    <value>Đồng ý</value>
+  </data>
+  <data name="OldColor" xml:space="preserve">
+    <value>Màu cũ</value>
+  </data>
+  <data name="OldPassword" xml:space="preserve">
+    <value>Mật khẩu Cũ</value>
+  </data>
+  <data name="On" xml:space="preserve">
+    <value>Mở</value>
+  </data>
+  <data name="OneTokenRestrictionDefaultMsg" xml:space="preserve">
+    <value>Ai giới thiệu bạn đến đây?</value>
+  </data>
+  <data name="OneXTwo" xml:space="preserve">
+    <value>1 X 2</value>
+  </data>
+  <data name="Online" xml:space="preserve">
+    <value>Trực tuyến</value>
+  </data>
+  <data name="Open" xml:space="preserve">
+    <value>Mở</value>
+  </data>
+  <data name="OpeningBalance" xml:space="preserve">
+    <value>Số dư đầu kỳ</value>
+  </data>
+  <data name="OriginalBetTicket" xml:space="preserve">
+    <value>Vé Cược Gốc</value>
+  </data>
+  <data name="Others" xml:space="preserve">
+    <value>Khác</value>
+  </data>
+  <data name="OtherSport" xml:space="preserve">
+    <value>Các Môn Thể Thao Khác</value>
+  </data>
+  <data name="Outright" xml:space="preserve">
+    <value>Cược thắng</value>
+  </data>
+  <data name="OutstandingBalance" xml:space="preserve">
+    <value>Số dư chưa thanh toán</value>
+  </data>
+  <data name="Over" xml:space="preserve">
+    <value>Tài</value>
+  </data>
+  <data name="OverUnder" xml:space="preserve">
+    <value>Tài/Xỉu</value>
+  </data>
+  <data name="Page" xml:space="preserve">
+    <value>Trang</value>
+  </data>
+  <data name="Parlay" xml:space="preserve">
+    <value>Cược xiên</value>
+  </data>
+  <data name="ParlayComm" xml:space="preserve">
+    <value>Hoa hồng Cược xiên</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Mật khẩu</value>
+  </data>
+  <data name="PasswordChangedMsg" xml:space="preserve">
+    <value>Mật khẩu đã được thay đổi!</value>
+  </data>
+  <data name="PasswordConfirmErrorMsg" xml:space="preserve">
+    <value>Mật khẩu nhập lại không chính xác.</value>
+  </data>
+  <data name="PasswordNoteMsg" xml:space="preserve">
+    <value>Mật khẩu phải có ít nhất 6 ký tự, bao gồm ít nhất 2 chữ cái cùng 2 chữ số. (ví dụ: pass22)</value>
+  </data>
+  <data name="PayAttentionMsg" xml:space="preserve">
+    <value>Chú ý: Khách hàng sẽ bị xóa khỏi nhóm do khác Giá trị Hoa hồng.</value>
+  </data>
+  <data name="Pending" xml:space="preserve">
+    <value>Đang chờ xử lý</value>
+  </data>
+  <data name="PendingFunds" xml:space="preserve">
+    <value>Tiền đang chờ xử lý</value>
+  </data>
+  <data name="Permission" xml:space="preserve">
+    <value>Cấp phép</value>
+  </data>
+  <data name="PermissionForUser" xml:space="preserve">
+    <value>Quyền cho Người dùng</value>
+  </data>
+  <data name="PersonalMessage" xml:space="preserve">
+    <value>Tin nhắn Cá nhân</value>
+  </data>
+  <data name="PlaceholderBankAccount" xml:space="preserve">
+    <value>Tìm chính xác theo tài khoản ngân hàng</value>
+  </data>
+  <data name="PlaceholderEmail" xml:space="preserve">
+    <value>Tìm chính xác theo Địa chỉ Email</value>
+  </data>
+  <data name="PlaceholderIPLogin" xml:space="preserve">
+    <value>Tìm chính xác theo IP đăng nhập</value>
+  </data>
+  <data name="Platform" xml:space="preserve">
+    <value>Nền tảng</value>
+  </data>
+  <data name="PlatformWinLoss" xml:space="preserve">
+    <value>Thắng Thua Theo Nền Tảng</value>
+  </data>
+  <data name="PlatformWinLossNote" xml:space="preserve">
+    <value>Dữ liệu nền tảng có sẵn từ ngày 27/02/2016.</value>
+  </data>
+  <data name="PlatformWinLossTitle" xml:space="preserve">
+    <value>Thắng Thua Theo Nền Tảng - {0} --&gt; {1} - {2} - {3} - {4}</value>
+  </data>
+  <data name="Platform_1" xml:space="preserve">
+    <value>Phiên bản máy tính</value>
+  </data>
+  <data name="Platform_2" xml:space="preserve">
+    <value>Di động</value>
+  </data>
+  <data name="Player" xml:space="preserve">
+    <value>Người chơi</value>
+  </data>
+  <data name="PlayerAdministration" xml:space="preserve">
+    <value>Quản lý người chơi</value>
+  </data>
+  <data name="PlayerAdminUpdateFailedMsg" xml:space="preserve">
+    <value>Vui lòng thử lại!</value>
+  </data>
+  <data name="PlayerBettingStatisticsTitle" xml:space="preserve">
+    <value>Thống kê cá cược của người chơi (tháng này)</value>
+  </data>
+  <data name="PlayerName" xml:space="preserve">
+    <value>Tên người chơi</value>
+  </data>
+  <data name="PlayerSegmentation" xml:space="preserve">
+    <value>Phân khúc người chơi</value>
+  </data>
+  <data name="PlayerStatementSupportMonths" xml:space="preserve">
+    <value>Thời gian hỗ trợ báo cáo là 2 tháng</value>
+  </data>
+  <data name="PleaseSelectOne" xml:space="preserve">
+    <value>Vui lòng chọn một</value>
+  </data>
+  <data name="PreGame" xml:space="preserve">
+    <value>Trước trận đấu</value>
+  </data>
+  <data name="PreMatch" xml:space="preserve">
+    <value>Trước Trận đấu</value>
+  </data>
+  <data name="Prev" xml:space="preserve">
+    <value>Trước đó</value>
+  </data>
+  <data name="PreviousSearchResult" xml:space="preserve">
+    <value>Kết quả tìm kiếm trước đó</value>
+  </data>
+  <data name="ProblemDisplayBetSetting" xml:space="preserve">
+    <value>Đã xảy ra sự cố khi hiển thị chi tiết của nhóm giới hạn cược</value>
+  </data>
+  <data name="ProblemPlayer" xml:space="preserve">
+    <value>Người chơi có vấn đề</value>
+  </data>
+  <data name="Problems" xml:space="preserve">
+    <value>Vấn đề</value>
+  </data>
+  <data name="Product" xml:space="preserve">
+    <value>Sản phẩm</value>
+  </data>
+  <data name="ProductAB" xml:space="preserve">
+    <value>AllBet</value>
+  </data>
+  <data name="ProductAGC" xml:space="preserve">
+    <value>AG Casino</value>
+  </data>
+  <data name="ProductAP" xml:space="preserve">
+    <value>AdvantPlay</value>
+  </data>
+  <data name="ProductAPM" xml:space="preserve">
+    <value>AdvantPlay Mini</value>
+  </data>
+  <data name="ProductBA" xml:space="preserve">
+    <value>BA</value>
+  </data>
+  <data name="ProductBGG" xml:space="preserve">
+    <value>BG</value>
+  </data>
+  <data name="ProductBT" xml:space="preserve">
+    <value>Bet Trade</value>
+  </data>
+  <data name="ProductBTC" xml:space="preserve">
+    <value>Bitcoin</value>
+  </data>
+  <data name="ProductBX" xml:space="preserve">
+    <value>Exchange</value>
+  </data>
+  <data name="ProductCC" xml:space="preserve">
+    <value>Arcadia Gaming</value>
+  </data>
+  <data name="ProductCG" xml:space="preserve">
+    <value>CG</value>
+  </data>
+  <data name="ProductCO" xml:space="preserve">
+    <value>Bán vé cược</value>
+  </data>
+  <data name="ProductCS" xml:space="preserve">
+    <value>Saba Casino</value>
+  </data>
+  <data name="ProductFGGL" xml:space="preserve">
+    <value>FGG</value>
+  </data>
+  <data name="ProductHB" xml:space="preserve">
+    <value>Habanero</value>
+  </data>
+  <data name="ProductI4D" xml:space="preserve">
+    <value>Togel 4D</value>
+  </data>
+  <data name="ProductJIG" xml:space="preserve">
+    <value>Jili</value>
+  </data>
+  <data name="ProductJK" xml:space="preserve">
+    <value>Joker</value>
+  </data>
+  <data name="ProductKN" xml:space="preserve">
+    <value>RNG Keno</value>
+  </data>
+  <data name="ProductLC" xml:space="preserve">
+    <value>Casino trực tiếp</value>
+  </data>
+  <data name="ProductLT" xml:space="preserve">
+    <value>Xổ số</value>
+  </data>
+  <data name="ProductMGRNG" xml:space="preserve">
+    <value>MG-RNG</value>
+  </data>
+  <data name="ProductMXG" xml:space="preserve">
+    <value>MaxGame</value>
+  </data>
+  <data name="ProductNG" xml:space="preserve">
+    <value>Number Game</value>
+  </data>
+  <data name="ProductParlay" xml:space="preserve">
+    <value>Cược xiên Sportsbook</value>
+  </data>
+  <data name="ProductPGS" xml:space="preserve">
+    <value>PG Soft</value>
+  </data>
+  <data name="ProductPP" xml:space="preserve">
+    <value>PP</value>
+  </data>
+  <data name="ProductPTCS" xml:space="preserve">
+    <value>Playtech Casino </value>
+  </data>
+  <data name="ProductSAG" xml:space="preserve">
+    <value>SA Gaming</value>
+  </data>
+  <data name="ProductSB" xml:space="preserve">
+    <value>Sportsbook</value>
+  </data>
+  <data name="ProductSBC" xml:space="preserve">
+    <value>Saba.club</value>
+  </data>
+  <data name="ProductSBVS" xml:space="preserve">
+    <value>Thể Thao Ảo Saba</value>
+  </data>
+  <data name="ProductSG" xml:space="preserve">
+    <value>SG</value>
+  </data>
+  <data name="ProductSLT" xml:space="preserve">
+    <value>Thể Thao Xổ Số</value>
+  </data>
+  <data name="ProductSXG" xml:space="preserve">
+    <value>AE Sexy</value>
+  </data>
+  <data name="ProductTG" xml:space="preserve">
+    <value>Trò Chơi Trên Bàn</value>
+  </data>
+  <data name="ProductVB" xml:space="preserve">
+    <value>Macau Games</value>
+  </data>
+  <data name="ProductVG" xml:space="preserve">
+    <value>Macau</value>
+  </data>
+  <data name="ProductVGA" xml:space="preserve">
+    <value>Vgaming</value>
+  </data>
+  <data name="ProductVRG" xml:space="preserve">
+    <value>Trò Chơi Ảo</value>
+  </data>
+  <data name="ProductVS" xml:space="preserve">
+    <value>Thể Thao Ảo</value>
+  </data>
+  <data name="ProductVS2" xml:space="preserve">
+    <value>Thể Thao Ảo 2</value>
+  </data>
+  <data name="ProductVS3" xml:space="preserve">
+    <value>Thể Thao Ảo 3</value>
+  </data>
+  <data name="ProductWM" xml:space="preserve">
+    <value>WM</value>
+  </data>
+  <data name="ProductYB" xml:space="preserve">
+    <value>YeeBet</value>
+  </data>
+  <data name="Promotion" xml:space="preserve">
+    <value>Khuyến mãi</value>
+  </data>
+  <data name="PromotionPrize" xml:space="preserve">
+    <value>Thưởng khuyến mãi</value>
+  </data>
+  <data name="RB" xml:space="preserve">
+    <value>Rút Bỏ</value>
+  </data>
+  <data name="RealName" xml:space="preserve">
+    <value>Tên thật</value>
+  </data>
+  <data name="Reason" xml:space="preserve">
+    <value>Lý do</value>
+  </data>
+  <data name="RecommendBrowserOnReportPageMsg" xml:space="preserve">
+    <value>Vui lòng xem xét sử dụng trình duyệt Firefox hoặc Chrome để có trải nghiệm tốt hơn khi kích thước trang lớn hơn 1,000</value>
+  </data>
+  <data name="ReducedMaxPerBet" xml:space="preserve">
+    <value>Đã giảm Tiền Cược Tối Đa cho mỗi cược</value>
+  </data>
+  <data name="ReducedMaxPerEvent" xml:space="preserve">
+    <value>Đã giảm Tiền cược tối đa cho mỗi sự kiện</value>
+  </data>
+  <data name="RefNo" xml:space="preserve">
+    <value>Số tham chiếu</value>
+  </data>
+  <data name="Refresh" xml:space="preserve">
+    <value>Tải lại</value>
+  </data>
+  <data name="Refund" xml:space="preserve">
+    <value>Hoàn tiền</value>
+  </data>
+  <data name="Reject" xml:space="preserve">
+    <value>Từ chối</value>
+  </data>
+  <data name="Remark" xml:space="preserve">
+    <value>Ghi chú</value>
+  </data>
+  <data name="RemoveFromGroup" xml:space="preserve">
+    <value>Xóa khỏi nhóm</value>
+  </data>
+  <data name="RemoveGroupMsg" xml:space="preserve">
+    <value>Bạn có chắc muốn xóa (những) khách hàng này khỏi nhóm không?</value>
+  </data>
+  <data name="RemoveTheseCustomersFromGroupMsg" xml:space="preserve">
+    <value>Bạn có muốn xóa những khách hàng này ra khỏi nhóm không?</value>
+  </data>
+  <data name="RemoveThisCustomerFromGroupMsg" xml:space="preserve">
+    <value>Bạn có muốn xóa khách hàng này khỏi nhóm không?</value>
+  </data>
+  <data name="RepeatedBets" xml:space="preserve">
+    <value>Cược lặp lại</value>
+  </data>
+  <data name="Report" xml:space="preserve">
+    <value>Báo cáo</value>
+  </data>
+  <data name="ReportBy" xml:space="preserve">
+    <value>Báo cáo theo</value>
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value>Đặt lại</value>
+  </data>
+  <data name="ResetPassword" xml:space="preserve">
+    <value>Đặt lại mật khẩu</value>
+  </data>
+  <data name="ResetPasswordSuccessMsg" xml:space="preserve">
+    <value>Đặt lại mật khẩu thành công!</value>
+  </data>
+  <data name="Resettled" xml:space="preserve">
+    <value>Tất toán lại</value>
+  </data>
+  <data name="ResettledRecovered" xml:space="preserve">
+    <value>Tất toán lại/Khôi phục</value>
+  </data>
+  <data name="Result" xml:space="preserve">
+    <value>Kết Quả</value>
+  </data>
+  <data name="ResultPending" xml:space="preserve">
+    <value>Đang chờ Kết quả</value>
+  </data>
+  <data name="Results" xml:space="preserve">
+    <value>Kết Quả</value>
+  </data>
+  <data name="RetractedPlayerUpdateVipStatus" xml:space="preserve">
+    <value>Thu hồi Vip của người chơi: {0} ({1})</value>
+  </data>
+  <data name="RetractedPlayerUpdateVipStatusSingle" xml:space="preserve">
+    <value>Người chơi không còn là VIP: {0}</value>
+  </data>
+  <data name="RiskLevel" xml:space="preserve">
+    <value>Mức Độ Rủi Ro</value>
+  </data>
+  <data name="RiskLevelInformation" xml:space="preserve">
+    <value>Thông Tin Mức Độ Rủi Ro</value>
+  </data>
+  <data name="RNGCasinoUpdateSettingUnAvailableMsg" xml:space="preserve">
+    <value>Cơ sở dữ liệu RNG Game Casino hiện không khả dụng. Vui lòng thử lại sau.</value>
+  </data>
+  <data name="Robot" xml:space="preserve">
+    <value>Robot</value>
+  </data>
+  <data name="Running" xml:space="preserve">
+    <value>Đang diễn ra</value>
+  </data>
+  <data name="Sa" xml:space="preserve">
+    <value>T7</value>
+  </data>
+  <data name="Saba" xml:space="preserve">
+    <value>Saba </value>
+  </data>
+  <data name="SabaIntelligenceTooltip" xml:space="preserve">
+    <value>Nhấn để xem Hồ Sơ Người Dùng của chức năng Saba Intelligence </value>
+  </data>
+  <data name="SabaVirtualSportsWinLoss" xml:space="preserve">
+    <value>Thắng Thua Thể Thao Ảo Saba</value>
+  </data>
+  <data name="Saturday" xml:space="preserve">
+    <value>Thứ Bảy</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Lưu</value>
+  </data>
+  <data name="SB" xml:space="preserve">
+    <value>Sportsbook</value>
+  </data>
+  <data name="SBComm" xml:space="preserve">
+    <value>Hoa hồng SB</value>
+  </data>
+  <data name="Score" xml:space="preserve">
+    <value>Điểm</value>
+  </data>
+  <data name="SearchAllPlayers" xml:space="preserve">
+    <value>Tìm kiếm Tất cả Người chơi</value>
+  </data>
+  <data name="SearchResult" xml:space="preserve">
+    <value>Kết quả tìm kiếm</value>
+  </data>
+  <data name="SelectAtLeastOneCurrencyMsg" xml:space="preserve">
+    <value>Vui lòng chọn ít nhất một đơn vị tiền tệ!</value>
+  </data>
+  <data name="SelectedCustomers" xml:space="preserve">
+    <value>Khách hàng đã chọn</value>
+  </data>
+  <data name="SelectedItemCount" xml:space="preserve">
+    <value># đã chọn</value>
+  </data>
+  <data name="SelectGroup" xml:space="preserve">
+    <value>Chọn Nhóm</value>
+  </data>
+  <data name="Selection" xml:space="preserve">
+    <value>Lựa chọn</value>
+  </data>
+  <data name="SelectLicenseeMsg" xml:space="preserve">
+    <value>Vui lòng chọn một Nhà Cái</value>
+  </data>
+  <data name="SelectOptions" xml:space="preserve">
+    <value>Lựa chọn tùy chọn</value>
+  </data>
+  <data name="SelectTop" xml:space="preserve">
+    <value>Chọn Hàng đầu</value>
+  </data>
+  <data name="Sep" xml:space="preserve">
+    <value>Tháng 9</value>
+  </data>
+  <data name="SeparateSabaWinLoss" xml:space="preserve">
+    <value>Tách Saba Thể Thao Ảo ra khỏi Sportsbook</value>
+  </data>
+  <data name="September" xml:space="preserve">
+    <value>Tháng Chín</value>
+  </data>
+  <data name="ServerBusyMessage" xml:space="preserve">
+    <value>Yêu cầu của bạn chưa được xử lý do máy chủ đang bận. Vui lòng thử lại sau.</value>
+  </data>
+  <data name="SessionLoggedMsg" xml:space="preserve">
+    <value>Bạn đã đăng nhập từ một phiên khác hoặc phiên đăng nhập của bạn đã hết hạn</value>
+  </data>
+  <data name="SetAsDefaultGroup" xml:space="preserve">
+    <value>Đặt làm nhóm mặc định</value>
+  </data>
+  <data name="SettleAmount" xml:space="preserve">
+    <value>Số tiền thanh toán</value>
+  </data>
+  <data name="SettledMatchCount" xml:space="preserve">
+    <value>Số Lượng Trận Đấu Đã Hoàn Tất</value>
+  </data>
+  <data name="Show" xml:space="preserve">
+    <value>Hiển thị</value>
+  </data>
+  <data name="ShowAllLeagues" xml:space="preserve">
+    <value>Hiển thị Tất cả Giải đấu</value>
+  </data>
+  <data name="ShowOldValue" xml:space="preserve">
+    <value>Hiển thị giá trị cũ</value>
+  </data>
+  <data name="Sincelastmonth" xml:space="preserve">
+    <value>Từ tháng trước</value>
+  </data>
+  <data name="SingleCustomer" xml:space="preserve">
+    <value>Khách hàng cá nhân</value>
+  </data>
+  <data name="SoccerParlay" xml:space="preserve">
+    <value>Cược xiên Bóng đá</value>
+  </data>
+  <data name="SoccerPinGoal" xml:space="preserve">
+    <value>Bóng đá PinGoal</value>
+  </data>
+  <data name="SolutionForRestriction" xml:space="preserve">
+    <value>Đăng nhập Quản lý Nhà Cái.&lt;br/&gt;2. Truy cập các báo cáo/ chức năng bạn muốn. &lt;br/&gt;请洽你们的最高管理者替你设置币别权限</value>
+  </data>
+  <data name="SpecialLevel" xml:space="preserve">
+    <value>Cấp độ đặc biệt</value>
+  </data>
+  <data name="SpecificDate" xml:space="preserve">
+    <value>Ngày cụ thể</value>
+  </data>
+  <data name="Sport" xml:space="preserve">
+    <value>Thể thao</value>
+  </data>
+  <data name="Sportsbook" xml:space="preserve">
+    <value>Sportsbook</value>
+  </data>
+  <data name="SportType" xml:space="preserve">
+    <value>Loại thể thao</value>
+  </data>
+  <data name="Stake" xml:space="preserve">
+    <value>Tiền cược</value>
+  </data>
+  <data name="StakeFrom" xml:space="preserve">
+    <value>Cược Từ</value>
+  </data>
+  <data name="Statement" xml:space="preserve">
+    <value>Sao kê</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Trạng thái</value>
+  </data>
+  <data name="Su" xml:space="preserve">
+    <value>CN</value>
+  </data>
+  <data name="Subject" xml:space="preserve">
+    <value>Chủ thể</value>
+  </data>
+  <data name="Submit" xml:space="preserve">
+    <value>Gửi</value>
+  </data>
+  <data name="Subsidiary" xml:space="preserve">
+    <value>Chi nhánh</value>
+  </data>
+  <data name="SubsidiaryPerformance" xml:space="preserve">
+    <value>Hiệu suất Chi Nhánh</value>
+  </data>
+  <data name="SubsidiarySearch" xml:space="preserve">
+    <value>Tìm kiếm chi nhánh</value>
+  </data>
+  <data name="SubsidiaryWL" xml:space="preserve">
+    <value>Thắng Thua Chi nhánh</value>
+  </data>
+  <data name="SuccessUpdateVipStatus" xml:space="preserve">
+    <value>Cập nhật Thành công: {0}</value>
+  </data>
+  <data name="SuccessUpdateVipStatusSingle" xml:space="preserve">
+    <value>Cập nhật thành công</value>
+  </data>
+  <data name="Summary" xml:space="preserve">
+    <value>Tóm tắt</value>
+  </data>
+  <data name="Sunday" xml:space="preserve">
+    <value>Chủ Nhật</value>
+  </data>
+  <data name="Suspended" xml:space="preserve">
+    <value>Đình chỉ</value>
+  </data>
+  <data name="Suspicious" xml:space="preserve">
+    <value>Đáng ngờ</value>
+  </data>
+  <data name="SystemId" xml:space="preserve">
+    <value>ID hệ thống</value>
+  </data>
+  <data name="SystemParlay" xml:space="preserve">
+    <value>Cược Tổng Hợp</value>
+  </data>
+  <data name="SystemParlayDetailNote" xml:space="preserve">
+    <value>Số tiền Thắng Thua đã được làm tròn chỉ để tham khảo. Do đó, tổng số tiền Thắng Thua có thể khác với tổng số tiền sau khi cộng tất cả các số tiền Thắng Thua thực tế.</value>
+  </data>
+  <data name="Tablet" xml:space="preserve">
+    <value>Máy tính bảng</value>
+  </data>
+  <data name="Team" xml:space="preserve">
+    <value>Đội</value>
+  </data>
+  <data name="Th" xml:space="preserve">
+    <value>T5</value>
+  </data>
+  <data name="ThereIsNoSelectedItem" xml:space="preserve">
+    <value>Không có mục nào được chọn.</value>
+  </data>
+  <data name="Thursday" xml:space="preserve">
+    <value>Thứ Năm</value>
+  </data>
+  <data name="TicketDetailOf" xml:space="preserve">
+    <value>Chi tiết vé của {0}</value>
+  </data>
+  <data name="TicketFilter" xml:space="preserve">
+    <value>Bộ lọc vé</value>
+  </data>
+  <data name="TicketList" xml:space="preserve">
+    <value>Danh sách vé</value>
+  </data>
+  <data name="TicketNo" xml:space="preserve">
+    <value>Số vé</value>
+  </data>
+  <data name="TicketPayout" xml:space="preserve">
+    <value>Thanh toán vé cược</value>
+  </data>
+  <data name="TicketType" xml:space="preserve">
+    <value>Loại vé</value>
+  </data>
+  <data name="Time" xml:space="preserve">
+    <value>Thời gian</value>
+  </data>
+  <data name="TimeZone" xml:space="preserve">
+    <value>Múi giờ</value>
+  </data>
+  <data name="TipAmount" xml:space="preserve">
+    <value>Số tiền boa</value>
+  </data>
+  <data name="TipSharing" xml:space="preserve">
+    <value>Chia tiền boa</value>
+  </data>
+  <data name="To" xml:space="preserve">
+    <value>Đến</value>
+  </data>
+  <data name="Todate" xml:space="preserve">
+    <value>Đến ngày</value>
+  </data>
+  <data name="Today" xml:space="preserve">
+    <value>Hôm nay</value>
+  </data>
+  <data name="ToDowloadTemplate" xml:space="preserve">
+    <value>để tải mẫu</value>
+  </data>
+  <data name="TokenIsInValid" xml:space="preserve">
+    <value>Token không hợp lệ</value>
+  </data>
+  <data name="TokenWasExpired" xml:space="preserve">
+    <value>Token đã hết hạn</value>
+  </data>
+  <data name="Total" xml:space="preserve">
+    <value>Tổng</value>
+  </data>
+  <data name="TotalActiveCustomer" xml:space="preserve">
+    <value>Tổng số khách hàng hoạt động</value>
+  </data>
+  <data name="TotalAway" xml:space="preserve">
+    <value>Tổng Đội Khách</value>
+  </data>
+  <data name="TotalBets" xml:space="preserve">
+    <value>Tổng cược</value>
+  </data>
+  <data name="TotalGoal" xml:space="preserve">
+    <value>Tổng số bàn thắng</value>
+  </data>
+  <data name="TotalHome" xml:space="preserve">
+    <value>Tổng Đội Nhà</value>
+  </data>
+  <data name="Totalin" xml:space="preserve">
+    <value>Tổng cộng</value>
+  </data>
+  <data name="TotalTickets" xml:space="preserve">
+    <value>Tổng số vé</value>
+  </data>
+  <data name="TotalTransaction" xml:space="preserve">
+    <value>Tổng giao dịch</value>
+  </data>
+  <data name="TotalTurnover" xml:space="preserve">
+    <value>Tổng Doanh thu</value>
+  </data>
+  <data name="ToViewHistoryRptMsg" xml:space="preserve">
+    <value>Nhấn để xem lịch sử báo cáo</value>
+  </data>
+  <data name="ToWinToNil" xml:space="preserve">
+    <value>Thắng áp đảo</value>
+  </data>
+  <data name="Transaction" xml:space="preserve">
+    <value>Giao dịch</value>
+  </data>
+  <data name="TransactionDate" xml:space="preserve">
+    <value>Ngày giao dịch</value>
+  </data>
+  <data name="TransactionDetail" xml:space="preserve">
+    <value>Chi tiết giao dịch</value>
+  </data>
+  <data name="TransactionID" xml:space="preserve">
+    <value>Mã Giao dịch</value>
+  </data>
+  <data name="TransactionTime" xml:space="preserve">
+    <value>Thời gian giao dịch</value>
+  </data>
+  <data name="TransactionType" xml:space="preserve">
+    <value>Loại giao dịch</value>
+  </data>
+  <data name="TransferIn" xml:space="preserve">
+    <value>Chuyển vào</value>
+  </data>
+  <data name="TransferOut" xml:space="preserve">
+    <value>Chuyển ra</value>
+  </data>
+  <data name="TransTime" xml:space="preserve">
+    <value>Thời gian giao dịch</value>
+  </data>
+  <data name="TryLogin" xml:space="preserve">
+    <value>Vui lòng thử đăng nhập lại:&lt;br/&gt;解决方法</value>
+  </data>
+  <data name="Tu" xml:space="preserve">
+    <value>T3</value>
+  </data>
+  <data name="Tuesday" xml:space="preserve">
+    <value>Thứ Ba</value>
+  </data>
+  <data name="TurnOffBaTooltip" xml:space="preserve">
+    <value>Nhấn để tắt</value>
+  </data>
+  <data name="TurnOnBaTooltip" xml:space="preserve">
+    <value>Nhấn để bật</value>
+  </data>
+  <data name="Turnover" xml:space="preserve">
+    <value>Doanh Thu</value>
+  </data>
+  <data name="TurnoverPercent" xml:space="preserve">
+    <value>%Doanh Thu</value>
+  </data>
+  <data name="TurnoverTitle" xml:space="preserve">
+    <value>Doanh thu, {0} --&gt; {1} - {2} {3} ({4})</value>
+  </data>
+  <data name="TurnoverTitleNoUser" xml:space="preserve">
+    <value>Doanh thu, {0} --&gt; {1}, {2}</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Loại</value>
+  </data>
+  <data name="Uncategorized" xml:space="preserve">
+    <value>Chưa phân loại</value>
+  </data>
+  <data name="UncheckAll" xml:space="preserve">
+    <value>Bỏ chọn tất cả</value>
+  </data>
+  <data name="Under" xml:space="preserve">
+    <value>Xỉu</value>
+  </data>
+  <data name="UnderMaintenance" xml:space="preserve">
+    <value>Đang bảo trì</value>
+  </data>
+  <data name="UndermaintenanceMsg" xml:space="preserve">
+    <value>Chúng tôi đang bảo trì máy chủ, không thể truy cập trang web từ {0} cho đến {1}. Xin lỗi vì sự bất tiện này!</value>
+  </data>
+  <data name="UnderSettlement" xml:space="preserve">
+    <value>Đang chờ kết toán</value>
+  </data>
+  <data name="Unfreeze" xml:space="preserve">
+    <value>Mở đóng băng</value>
+  </data>
+  <data name="Unknown" xml:space="preserve">
+    <value>Không xác định</value>
+  </data>
+  <data name="Update" xml:space="preserve">
+    <value>Cập nhật</value>
+  </data>
+  <data name="UpdateAccountStatus" xml:space="preserve">
+    <value>Cập nhật Trạng thái Tài khoản</value>
+  </data>
+  <data name="UpdateAccountSuccessMsg" xml:space="preserve">
+    <value>Cập nhật tài khoản thành công!</value>
+  </data>
+  <data name="UpdateAgCasinoBetSettings" xml:space="preserve">
+    <value>Bạn có muốn cập nhật toàn bộ giới hạn cược của AG Casino?</value>
+  </data>
+  <data name="UpdateAgCasinoBetSettingSuccessMsg" xml:space="preserve">
+    <value>Giới hạn cược AG Casino của {0} đã được cập nhật thành công</value>
+  </data>
+  <data name="UpdateBAStatus" xml:space="preserve">
+    <value>Cập nhật Trạng thái BA</value>
+  </data>
+  <data name="UpdateBetLimit" xml:space="preserve">
+    <value>Cập nhật Giới hạn cược</value>
+  </data>
+  <data name="UpdateCommGroup_Warning" xml:space="preserve">
+    <value>Xin lưu ý: Khách hàng sẽ bị xóa khỏi (các) nhóm do khác giá trị chiết khấu.</value>
+  </data>
+  <data name="UpdateCommission" xml:space="preserve">
+    <value>Cập nhật Hoa hồng</value>
+  </data>
+  <data name="UpdateCommissionValue" xml:space="preserve">
+    <value>Cập nhật giá trị hoa hồng</value>
+  </data>
+  <data name="UpdateCommSucessfulMsg" xml:space="preserve">
+    <value>Hoa hồng được cập nhật thành công.</value>
+  </data>
+  <data name="UpdateCurrencySuccessfulMsg" xml:space="preserve">
+    <value>Cập nhật Đơn Vị Tiền Tệ thành công.</value>
+  </data>
+  <data name="UpdateCustomerCommission" xml:space="preserve">
+    <value>Cập nhật Hoa hồng Khách hàng</value>
+  </data>
+  <data name="UpdateFunctionSuccessfulMsg" xml:space="preserve">
+    <value>Cập nhật Chức năng thành công.</value>
+  </data>
+  <data name="UpdateKenoBetSettings" xml:space="preserve">
+    <value>Bạn có muốn cập nhật toàn bộ giới hạn cược của RNG Game Keno?</value>
+  </data>
+  <data name="UpdateKenoBetSettingSuccessMsg" xml:space="preserve">
+    <value>Giới hạn cược RNG Game Keno của {0} đã được cập nhật thành công</value>
+  </data>
+  <data name="UpdateNumberGameBetSettings" xml:space="preserve">
+    <value>Bạn có muốn cập nhật toàn bộ giới hạn cược của Number Game không?</value>
+  </data>
+  <data name="UpdateNumberGameBetSettingSuccessMsg" xml:space="preserve">
+    <value>Giới hạn cược Number Game của {0} đã được cập nhật thành công</value>
+  </data>
+  <data name="UpdateOddsGroup" xml:space="preserve">
+    <value>Cập nhật Nhóm Tỷ lệ cược</value>
+  </data>
+  <data name="UpdateProductBetSettings" xml:space="preserve">
+    <value>Bạn có muốn cập nhật toàn bộ giới hạn cược của {0}?</value>
+  </data>
+  <data name="UpdateProductBetSettingSuccessMsg" xml:space="preserve">
+    <value> {0} giới hạn cược của {1} đã được cập nhật thành công</value>
+  </data>
+  <data name="UpdateProductChargeComm" xml:space="preserve">
+    <value>Bạn có muốn cập nhật phí hoa hồng {0} không?</value>
+  </data>
+  <data name="UpdateProductStatus" xml:space="preserve">
+    <value>Bạn có muốn cập nhật trạng thái {0} không?</value>
+  </data>
+  <data name="UpdateRNGCasinoBetSettingFailMsg" xml:space="preserve">
+    <value>Cập nhật giới hạn cược cho RNG Game Casino của {0} thất bại</value>
+  </data>
+  <data name="UpdateRNGCasinoBetSettings" xml:space="preserve">
+    <value>Bạn có muốn cập nhật giới hạn cược của RNG Game Casino?</value>
+  </data>
+  <data name="UpdateRNGCasinoBetSettingSuccessMsg" xml:space="preserve">
+    <value>Giới hạn cược RNG Game Casino của {0} đã được cập nhật thành công</value>
+  </data>
+  <data name="UpdateSpecialLevel" xml:space="preserve">
+    <value>Cập nhật Cấp độ Đặc biệt</value>
+  </data>
+  <data name="UpdateSpecialLevelMsg" xml:space="preserve">
+    <value>Tham số không hợp lệ. ID khách hàng không hợp lệ.</value>
+  </data>
+  <data name="UpdateSportsbookBetSettings" xml:space="preserve">
+    <value>Bạn có muốn cập nhật toàn bộ giới hạn cược cho Sportsbook?</value>
+  </data>
+  <data name="UpdateSportsbookBetSettingSuccessMsg" xml:space="preserve">
+    <value>Giới hạn cược Sportsbook của {0} đã được cập nhật thành công</value>
+  </data>
+  <data name="UpdateSuccess" xml:space="preserve">
+    <value>Cập nhật thành công!</value>
+  </data>
+  <data name="UpdateToAccountStatus" xml:space="preserve">
+    <value>Cập nhật trạng thái tài khoản</value>
+  </data>
+  <data name="UpdateToActiveConfirmMsg" xml:space="preserve">
+    <value>Bạn có chắc muốn thay đổi trạng thái của người chơi này thành ĐANG HOẠT ĐỘNG?</value>
+  </data>
+  <data name="UpdateToClosedConfirmMsg" xml:space="preserve">
+    <value>Bạn có muốn thay đổi trạng thái của người chơi này thành ĐÃ ĐÓNG?</value>
+  </data>
+  <data name="UpdateToLockedConfirmMsg" xml:space="preserve">
+    <value>Bạn có muốn chuyển trạng thái của người chơi thành ĐÃ KHÓA?</value>
+  </data>
+  <data name="UpdateUnSuccess" xml:space="preserve">
+    <value>Cập nhật không thành công!</value>
+  </data>
+  <data name="UploadFileError" xml:space="preserve">
+    <value>Không thể tải tệp, vui lòng kiểm tra lại mẫu tệp!</value>
+  </data>
+  <data name="UploadVipList" xml:space="preserve">
+    <value>Tải lên danh sách Vip</value>
+  </data>
+  <data name="UserGuide" xml:space="preserve">
+    <value>Hướng dẫn sử dụng</value>
+  </data>
+  <data name="UserInformation" xml:space="preserve">
+    <value>Thông tin người dùng</value>
+  </data>
+  <data name="Username" xml:space="preserve">
+    <value>Tên người dùng</value>
+  </data>
+  <data name="UserNotExist" xml:space="preserve">
+    <value>Không tìm thấy người dùng</value>
+  </data>
+  <data name="UserNotHaveCurrency" xml:space="preserve">
+    <value>Bạn không thể xem báo cáo này do chưa được cấp quyền xem đơn vị tiền tệ nào, vui lòng liên hệ với quản trị viên của bạn. &lt;br/&gt;你尚未设置任何币别权限</value>
+  </data>
+  <data name="UserTooManyLicensees" xml:space="preserve">
+    <value>Tài khoản này được chỉ định cho nhiều Nhà Cái</value>
+  </data>
+  <data name="ValidBetAmount" xml:space="preserve">
+    <value>Số tiền cược hợp lệ</value>
+  </data>
+  <data name="VendorMemberID" xml:space="preserve">
+    <value>ID thành viên của Nhà Cái</value>
+  </data>
+  <data name="View" xml:space="preserve">
+    <value>Xem thêm</value>
+  </data>
+  <data name="ViewBy" xml:space="preserve">
+    <value>Xem theo</value>
+  </data>
+  <data name="ViewDataInMonth" xml:space="preserve">
+    <value>Xem dữ liệu trong tháng</value>
+  </data>
+  <data name="Viewin" xml:space="preserve">
+    <value>Xem theo {0}</value>
+  </data>
+  <data name="ViewNotification" xml:space="preserve">
+    <value>Xem Thông báo</value>
+  </data>
+  <data name="VIP" xml:space="preserve">
+    <value>VIP</value>
+  </data>
+  <data name="VipPlayerManagement" xml:space="preserve">
+    <value>Quản lý người chơi VIP</value>
+  </data>
+  <data name="VIPPlayerOnly" xml:space="preserve">
+    <value>Chỉ người chơi VIP</value>
+  </data>
+  <data name="VIPPlayerTooltipMsg" xml:space="preserve">
+    <value>Người chơi VIP được đánh dấu trong Phân khúc người chơi</value>
+  </data>
+  <data name="VirtualBasketball" xml:space="preserve">
+    <value>Bóng rổ Ảo</value>
+  </data>
+  <data name="VirtualCycling" xml:space="preserve">
+    <value>Đua xe ảo</value>
+  </data>
+  <data name="VirtualGreyhounds" xml:space="preserve">
+    <value>Đua Chó Ảo</value>
+  </data>
+  <data name="VirtualHorseRacing" xml:space="preserve">
+    <value>Đua ngựa ảo</value>
+  </data>
+  <data name="VirtualMotoRacing" xml:space="preserve">
+    <value>Đua xe ảo</value>
+  </data>
+  <data name="VirtualSoccer" xml:space="preserve">
+    <value>Bóng đá ảo</value>
+  </data>
+  <data name="VirtualSoccerAsianCup" xml:space="preserve">
+    <value>Cúp bóng đá ảo châu Á</value>
+  </data>
+  <data name="VirtualSoccerChampionsCup" xml:space="preserve">
+    <value>Cúp Vô địch Bóng đá ảo</value>
+  </data>
+  <data name="VirtualSoccerEnglishPremier" xml:space="preserve">
+    <value>Bóng đá ảo Ngoại hạng Anh</value>
+  </data>
+  <data name="VirtualSoccerEuroCup" xml:space="preserve">
+    <value>Cúp Bóng đá Euro Ảo</value>
+  </data>
+  <data name="VirtualSoccerLeague" xml:space="preserve">
+    <value>Giải đấu Bóng đá ảo</value>
+  </data>
+  <data name="VirtualSoccerNation" xml:space="preserve">
+    <value>Bóng đá ảo Nation</value>
+  </data>
+  <data name="VirtualSoccerWorldCup" xml:space="preserve">
+    <value>Bóng đá World Cup Ảo</value>
+  </data>
+  <data name="VirtualSpeedway" xml:space="preserve">
+    <value>Đua Xe Ảo</value>
+  </data>
+  <data name="VirtualSports" xml:space="preserve">
+    <value>Thể Thao Ảo</value>
+  </data>
+  <data name="VirtualTennis" xml:space="preserve">
+    <value>Quần vợt ảo</value>
+  </data>
+  <data name="Void" xml:space="preserve">
+    <value>Hủy</value>
+  </data>
+  <data name="Wap" xml:space="preserve">
+    <value>WAP</value>
+  </data>
+  <data name="WarningToActiveMsg" xml:space="preserve">
+    <value>Cảnh báo, người chơi này đã có thể đăng nhập và đặt cược.</value>
+  </data>
+  <data name="WarningToClosedMsg" xml:space="preserve">
+    <value>Cảnh báo, người chơi vĩnh viễn không được khôi phục!</value>
+  </data>
+  <data name="WarningToLockedMsg" xml:space="preserve">
+    <value>Cảnh báo, người chơi này không thể đăng nhập và chuyển khoản!</value>
+  </data>
+  <data name="We" xml:space="preserve">
+    <value>T4</value>
+  </data>
+  <data name="Wednesday" xml:space="preserve">
+    <value>Thứ Tư</value>
+  </data>
+  <data name="WeeklyLiveMatches" xml:space="preserve">
+    <value>Trận Đấu Trực Tiếp Hàng Tuần</value>
+  </data>
+  <data name="Welcome" xml:space="preserve">
+    <value>Chào mừng</value>
+  </data>
+  <data name="WhiteLabel" xml:space="preserve">
+    <value>Nhóm Chi Nhánh</value>
+  </data>
+  <data name="WinLoss" xml:space="preserve">
+    <value>Thắng Thua</value>
+  </data>
+  <data name="WinLossByBetType" xml:space="preserve">
+    <value>Thắng Thua Theo Loại Cược</value>
+  </data>
+  <data name="WinLossByBetTypeTitle" xml:space="preserve">
+    <value>Thắng Thua theo Loại cược, {0} --&gt; {1} - {2}</value>
+  </data>
+  <data name="WinLossByLeague" xml:space="preserve">
+    <value>Thắng Thua Theo Giải Đấu</value>
+  </data>
+  <data name="WinLossByProduct" xml:space="preserve">
+    <value>Thắng Thua Theo Sản Phẩm</value>
+  </data>
+  <data name="WinLossByProductTitle" xml:space="preserve">
+    <value>Thắng Thua theo Sản phẩm, {0} --&gt; {1}, {2}</value>
+  </data>
+  <data name="WinLossByTimeZone" xml:space="preserve">
+    <value>Thắng Thua Theo Múi Giờ</value>
+  </data>
+  <data name="Withdrawal" xml:space="preserve">
+    <value>Rút Tiền</value>
+  </data>
+  <data name="WL" xml:space="preserve">
+    <value>Thắng Thua</value>
+  </data>
+  <data name="Won" xml:space="preserve">
+    <value>Thắng</value>
+  </data>
+  <data name="WrongUserNamePassword" xml:space="preserve">
+    <value>Tên người dùng hoặc mật khẩu sai.</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Có</value>
+  </data>
+  <data name="Yesterday" xml:space="preserve">
+    <value>Hôm qua</value>
+  </data>
+  <data name="YouAreNotAllowToAccessThisPage" xml:space="preserve">
+    <value>Bạn không được phép truy cập trang này, vui lòng liên hệ với quản trị viên của bạn.</value>
+  </data>
+  <data name="YouNotChooseAnyCustomerMsg" xml:space="preserve">
+    <value>Bạn chưa chọn khách hàng.</value>
+  </data>
+</root>

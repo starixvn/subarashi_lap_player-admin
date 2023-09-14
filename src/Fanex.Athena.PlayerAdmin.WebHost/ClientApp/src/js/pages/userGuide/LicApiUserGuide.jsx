@@ -143,9 +143,81 @@ const ZnCNContent = ({isSingleWallet, exportOddsGroup}) => {
     </div>)
 };
 
+const ViVNContent = ({isSingleWallet, exportOddsGroup})=> {
+    return (<div>
+        <div className="rule">
+            <h4>Thông Tin Chung</h4>
+            <ul>
+                <li>Chức năng này hiển thị tất cả thông tin người chơi cùng với cài đặt của họ.</li>
+            </ul>
+        </div>
+        <div className="line" />
+        <div className="rule">
+            <h4>Bộ Lọc Tìm Kiếm</h4>
+            <ul>
+                <li><b>Tên Người Dùng:</b> tìm kiếm theo tên người dùng (có hỗ trợ đề xuất tìm kiếm).</li>
+                <li><b>Tiền Tệ:</b> chọn đơn vị tiền tệ của người chơi mà bạn muốn quản lý.
+                    <ul>
+                        <li><b>Tất Cả:</b> Liệt kê tất cả đơn vị tiền tệ được hỗ trợ.</li>
+                    </ul>
+                </li>
+                <li><b>Nhóm Tỷ Lệ Cược:</b> xem người chơi của một nhóm tỷ lệ cược.</li>
+                <li><b>Cấp Độ Đặc Biệt:</b> xem người chơi ở một cấp độ đặc biệt cụ thể.</li>
+                <li><b>BA:</b> xem người chơi của vé cược BA.</li>
+                <li><b>Mức Độ Rủi Ro:</b> xem người chơi ở một mức độ rủi ro cụ thể.</li>
+            </ul>
+        </div>
+        <div className="line" />
+        <div className="rule">
+            <h4>Hướng Dẫn Sử Dụng Báo Cáo</h4>
+            <ul>
+                <li><b>Trạng Thái:</b> xem hoặc đặt trạng thái cho người chơi.</li>
+                <li><b>Tên Người Dùng:</b> xem tên người dùng của người chơi và số lượng tùy chọn phím tắt bao gồm:
+                    <ul>
+                        <li>Ghi Chú</li>
+                        <li>Giới Hạn Chuyển Tiền</li>
+                        <li>Giới Hạn Cược</li>
+                        <li>Sao Kê</li>
+                    </ul>
+                </li>
+                {!isSingleWallet && <li><b>Số Dư Hiện Tại:</b> số tiền khả dụng để đặt cược.</li>}
+                <li><b>Tiền Chưa Xử Lý:</b> tổng số tiền cược trên tất cả cược đang diễn ra.</li>
+                <li><b>Mức Độ Rủi Ro:</b> xem giới hạn cược và nhóm tỷ lệ cược theo mức độ rủi ro đã được chỉ định cho người chơi.</li>
+                <li><b>Nhóm Tỷ Lệ Cược:</b> xem hoặc cài đặt nhóm tỷ lệ cược cho người chơi.</li>
+                <li><b>Trạng Thái BA:</b> bật/tắt trạng thái BA của người chơi.</li>
+                <li><b>Cấp Độ Đặc Biệt:</b> xem hoặc đặt cấp độ đặc biệt cho người chơi.</li>
+            </ul>
+        </div>
+        <div className="line" />
+        <div className="rule">
+            <h4>Chi Tiết Người Chơi</h4>
+            <ul>
+                <li><b>Thông Tin Người Chơi:</b> xem hồ sơ người chơi, thông tin ngân hàng và nhật ký hoạt động.
+                    <ul>
+                        <li>Thống Kê Đặt Cược Của Người Chơi</li>
+                        <li>Liên Kết Chéo Nhanh</li>
+                    </ul>
+                </li>
+                <li><b>Sao Kê:</b> xem sao kê theo ngày của người chơi. Tất cả giao dịch được tổng hợp và báo cáo hằng ngày. Mỗi báo cáo số dư hàng ngày sẽ được tích lũy cho đến ngày hiện tại để cho ra số dư mới nhất.</li>
+                <li><b>Giao Dịch Chi Tiết:</b> xem biến đổi số dư của người chơi và sắp xếp số dư theo thời gian.</li>
+                <li><b>Danh Sách Cược:</b> liệt kê các vé cược chưa kết toán của người chơi.</li>
+                <li><b>Chuyển Khoản:</b> xem nhật ký chuyển khoản và số dư ví của người chơi.</li>
+                <li><b>Giới Hạn Cược:</b> xem cài đặt giới hạn cược cho Sportsbook, Number Game, Thể Thao Ảo, RNG Keno, Xổ Số và các sản phẩm khác.</li>
+                <li><b>Ghi Chú:</b> xem hoặc chỉnh sửa ghi chú cho người chơi.</li>
+                <li><b>Nhật Ký:</b> xem nhật ký cập nhật của người chơi.</li>
+                <li><b>Cài đặt:</b> đặt giới hạn chuyển khoản.</li>
+            </ul>
+            <p>
+                <a className="hyper-link" onClick={exportOddsGroup}>Hướng dẫn sử dụng tính năng nhóm tỷ lệ cược</a>
+            </p>
+        </div>
+    </div>)
+};
+
 const Contents = {
     engContent: props => <EngContent {...props} />,
     znCNContent: props => <ZnCNContent {...props} />,
+    viVNContent: props => <ViVNContent {...props} />,
 };
 
 const LicApiUserGuide = props => {

@@ -220,7 +220,7 @@
     <comment>#26561</comment>
   </data>
   <data name="AlertSetSpecialLevelForCustomerMsg" xml:space="preserve">
-    <value>Are you sure you want to set special level  for this customer?</value>
+    <value>Are you sure you want to set special level for this customer?</value>
   </data>
   <data name="AlertTurnOffBAMsg" xml:space="preserve">
     <value>Are you sure you want to turn off BA?</value>
@@ -241,7 +241,7 @@
     <value>All Currencies</value>
   </data>
   <data name="AlreadyUpdateNotVipStatus" xml:space="preserve">
-    <value>Already NOT VIP, no update:  {0}</value>
+    <value>Already NOT VIP, no update: {0}</value>
     <comment>#128082</comment>
   </data>
   <data name="AlreadyUpdateNotVipStatusSingle" xml:space="preserve">
@@ -668,7 +668,7 @@
     <value>Confirm Customer's Commission:</value>
   </data>
   <data name="ConfirmDeactivateVIPPlayer" xml:space="preserve">
-    <value>Are you sure you want to deactivate VIP  for the player(s) ?</value>
+    <value>Are you sure you want to deactivate VIP for the player(s) ?</value>
     <comment>#128082</comment>
   </data>
   <data name="ConfirmPassword" xml:space="preserve">
@@ -2747,7 +2747,7 @@
     <value>Update Customer Commission</value>
   </data>
   <data name="UpdateFunctionSuccessfulMsg" xml:space="preserve">
-    <value>Updating Functions is successul.</value>
+    <value>Updating Functions is successful.</value>
   </data>
   <data name="UpdateKenoBetSettings" xml:space="preserve">
     <value>Are you sure you want to update all RNG Keno bet settings?</value>
@@ -2818,7 +2818,7 @@
     <comment>112658</comment>
   </data>
   <data name="UpdateUnSuccess" xml:space="preserve">
-    <value>Update unsucessfully!</value>
+    <value>Update unsuccessfully!</value>
   </data>
   <data name="UploadFileError" xml:space="preserve">
     <value>Could not load the file, please check file's template again !</value>
@@ -3092,5 +3092,8 @@
   </data>
   <data name="ResettledRecovered" xml:space="preserve">
     <value>Resettled/Recovered</value>
+  </data>
+  <data name="May2" xml:space="preserve">
+    <value>May</value>
   </data>
 </root>

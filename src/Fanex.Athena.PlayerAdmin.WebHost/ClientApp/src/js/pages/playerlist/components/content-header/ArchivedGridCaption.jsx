@@ -1,6 +1,6 @@
 import React from 'react';
 import ReportTitle from '@jsroot/components/ReportTitle';
-import MultipleSelect from '@9softstudio/react-multiselect';
+import MultipleSelect from '@legion-lib/react-multiselect';
 import LangHelper from '@jsroot/lib/langHelper';
 
 const ArchivedGridCaption = ({ displayedColumnList, setDisplayedColumnList, handleExportExcel, playerCount }) => {
@@ -28,7 +28,8 @@ const ArchivedGridCaption = ({ displayedColumnList, setDisplayedColumnList, hand
     }
 
     const _buildLeftPart = () => {
-        return (<span key="searchResult">{`${LangHelper.getSingleResource('SearchResult')}: ${playerCount} ${LangHelper.getSingleResource('Player')}(s)`}</span>);
+        const extraText = LangHelper.currentLanguage === LangHelper.languageKeys.eng ? '(s)':'';
+        return (<span key="searchResult">{`${LangHelper.getSingleResource('SearchResult')}: ${playerCount} ${LangHelper.getSingleResource('Player') + extraText}`}</span>);
     }
 
     const _buildRightPart = () => {

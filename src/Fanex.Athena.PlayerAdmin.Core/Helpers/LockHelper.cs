@@ -28,8 +28,12 @@ namespace Fanex.Athena.PlayerAdmin.Core.Helpers
 
             try
             {
-                var result = await doing?.Invoke();
-                return result;
+                if (doing != null)
+                {
+                    var result = await doing?.Invoke();
+                    return result;
+                }
+                return default;
             }
             finally
             {

@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux';
 
 import { ActionCreators } from '../../actions';
 import ReportTitle from '@jsroot/components/ReportTitle';
-import MultipleSelect from '@9softstudio/react-multiselect';
+import MultipleSelect from '@legion-lib/react-multiselect';
 import LangHelper from '@jsroot/lib/langHelper';
 import { buildDisplayedColumnObject } from '../../lib/helpers/utils';
 import { batchUpdateManager, batchUpdatePermission } from '../../batch-update/batch-update-manager';
@@ -106,7 +106,8 @@ export class GridCaption extends React.Component {
         }
         else {
             const { playerCount } = this.props;
-            return (<span key="searchResult">{`${LangHelper.getSingleResource('SearchResult')}: ${playerCount} ${LangHelper.getSingleResource('Player')}(s)`}</span>);
+            const extraText = LangHelper.currentLanguage === LangHelper.languageKeys.eng ? '(s)':'';
+            return (<span key="searchResult">{`${LangHelper.getSingleResource('SearchResult')}: ${playerCount} ${LangHelper.getSingleResource('Player') + extraText}`}</span>);
         }
     }
 

@@ -2755,4 +2755,7 @@
   <data name="ResettledRecovered" xml:space="preserve">
     <value>重新结算/已恢复</value>
   </data>
+  <data name="May2" xml:space="preserve">
+    <value>五月</value>
+  </data>
 </root>
