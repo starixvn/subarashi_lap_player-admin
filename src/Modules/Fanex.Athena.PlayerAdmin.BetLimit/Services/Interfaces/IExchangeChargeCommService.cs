@@ -6,7 +6,7 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Services.Interfaces
 {
     public interface IExchangeChargeCommService
     {
-        Task<IResultInfo<double?>> GetChargeCommission(int custId, string language);
+        Task<IResultInfo<double?>> GetChargeCommission(int custId, string language, int groupMode);
         Task<IResultInfo> UpdateChargeCommission(PlayerUpdateChargeCommMetaModel metaModel);
     }
 }
