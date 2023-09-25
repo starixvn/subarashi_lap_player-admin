@@ -5,7 +5,7 @@ import * as loaderReducer from '@jsroot/reducers/loaderReducer';
 
 const gridData = createReducer([], {
     [SET_GRID_DATA](preState, action) {
-        return [...action.data];
+        return action.data;
     }
 })
 

@@ -61,5 +61,6 @@ export const resource_en = {
     Cancelled: 'Cancelled',
     LastTransaction: 'Last Transaction',
     Whitelabel: "Whitelabel",
-    Subsidiary: "Subsidiary"
+    Subsidiary: "Subsidiary",
+    WinLossAnalysis: "Win Loss Analysis"
 }

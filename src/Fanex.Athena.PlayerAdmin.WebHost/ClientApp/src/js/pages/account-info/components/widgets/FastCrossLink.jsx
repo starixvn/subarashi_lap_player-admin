@@ -14,8 +14,8 @@ export const FastCrossLink = (props) => {
     const singleCustomerActionLink = `PlayerBtcSingleCustomer?userName=${userName}&currencyName=${currencyName}`;
     const singleCustomerUrl = getLink(systemType.playerAdmin, singleCustomerActionLink);
 
-    const customerWinLossActionLink = `PlayerWinLoss?userName=${userName}&currencyName=${currencyName}`;
-    const customerWinLossUrl = getLink(systemType.playerAdmin, customerWinLossActionLink);
+    const winLossAnalysisActionLink = `PlayerWinLoss?userName=${userName}&currencyName=${currencyName}`;
+    const winLossAnalysisUrl = getLink(systemType.playerAdmin, winLossAnalysisActionLink);
 
     const [popupInfo, setPopupInfo] = useState(defaultPopupInfo);
     const isShowPopup = !!popupInfo.url;
@@ -32,11 +32,11 @@ export const FastCrossLink = (props) => {
         height: window.innerHeight - 10
     };
 
-    const popupCustomerWinLoss = {
-        url: customerWinLossUrl, 
-        title: ClientResourceManager.getText('CustomerWinLoss'),
+    const popupWinLossAnalysis = {
+        url: winLossAnalysisUrl, 
+        title: ClientResourceManager.getText('WinLossAnalysis'),
         width: window.innerWidth - 10,
-        height: 300
+        height: 430
     };
 
     return (
@@ -48,7 +48,7 @@ export const FastCrossLink = (props) => {
                     <strong className="divider">{'>'}</strong>
                     <span><a className="link" onClick={e => handleClickLink(e, popupSingleCustomer)}>{ClientResourceManager.getText('SingleCustomer')}</a></span>
                 </div>
-                <div><span><a className="link" onClick={e => handleClickLink(e, popupCustomerWinLoss)}>{ClientResourceManager.getText('CustomerWinLoss')}</a></span></div>
+                <div><span><a className="link" onClick={e => handleClickLink(e, popupWinLossAnalysis)}>{ClientResourceManager.getText('WinLossAnalysis')}</a></span></div>
             </div>
 
             <Popup isShow={isShowPopup} 

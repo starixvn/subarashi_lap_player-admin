@@ -2758,4 +2758,16 @@
   <data name="May2" xml:space="preserve">
     <value>五月</value>
   </data>
+  <data name="WinLossAnalysis" xml:space="preserve">
+    <value>输赢分析</value>
+  </data>
+  <data name="AmountDueToBA" xml:space="preserve">
+    <value>BA金额</value>
+  </data>
+  <data name="PlayerWL" xml:space="preserve">
+    <value>玩家输赢</value>
+  </data>
+  <data name="PlayerComm" xml:space="preserve">
+    <value>玩家佣金</value>
+  </data>
 </root>

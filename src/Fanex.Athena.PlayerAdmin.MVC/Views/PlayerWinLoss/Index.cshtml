@@ -32,7 +32,7 @@
 @section globaljscode {
     window.initialState = {
     isLoading: false,
-    requestParam: {userName: '@Model.UserName'},
+    requestParam: {userName: '@Model.UserName', baseCurrency: '@Model.CurrencyName'},
     hasCustomerComm: '@Model.IsAllowedCustomerCommission.ToString()' === 'True',
     isAllowedBA: '@Model.IsAllowedBA.ToString()' === 'True'
     };

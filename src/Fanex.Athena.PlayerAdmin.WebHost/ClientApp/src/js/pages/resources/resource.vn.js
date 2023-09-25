@@ -61,5 +61,6 @@ export const resource_vn = {
     Cancelled: 'Hủy bỏ',
     LastTransaction: 'Giao dịch cuối cùng',
     Whitelabel: "Nhóm Chi Nhánh",
-    Subsidiary: "Chi nhánh"
+    Subsidiary: "Chi nhánh",
+    WinLossAnalysis: "Phân Tích Thắng Thua"
 }
