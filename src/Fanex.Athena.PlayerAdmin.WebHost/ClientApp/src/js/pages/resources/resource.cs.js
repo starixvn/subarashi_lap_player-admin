@@ -62,4 +62,5 @@ export const resource_cs = {
     LastTransaction: '最后交易',
     Whitelabel: "Whitelabel",
     Subsidiary: "子网站",
+    WinLossAnalysis: "输赢分析"
 }

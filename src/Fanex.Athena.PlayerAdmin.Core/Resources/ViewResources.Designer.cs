@@ -466,6 +466,15 @@ namespace Fanex.Athena.PlayerAdmin.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Amount Due To BA.
+        /// </summary>
+        public static string AmountDueToBA {
+            get {
+                return ResourceManager.GetString("AmountDueToBA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Amount Due To Colossus Bets.
         /// </summary>
         public static string AmountDueToCB {
@@ -5470,6 +5479,15 @@ namespace Fanex.Athena.PlayerAdmin.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Player Comm.
+        /// </summary>
+        public static string PlayerComm {
+            get {
+                return ResourceManager.GetString("PlayerComm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Player Name.
         /// </summary>
         public static string PlayerName {
@@ -5493,6 +5511,15 @@ namespace Fanex.Athena.PlayerAdmin.Core.Resources {
         public static string PlayerStatementSupportMonths {
             get {
                 return ResourceManager.GetString("PlayerStatementSupportMonths", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Player W/L.
+        /// </summary>
+        public static string PlayerWL {
+            get {
+                return ResourceManager.GetString("PlayerWL", resourceCulture);
             }
         }
         
@@ -8112,6 +8139,15 @@ namespace Fanex.Athena.PlayerAdmin.Core.Resources {
         public static string WinLoss {
             get {
                 return ResourceManager.GetString("WinLoss", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Win Loss Analysis.
+        /// </summary>
+        public static string WinLossAnalysis {
+            get {
+                return ResourceManager.GetString("WinLossAnalysis", resourceCulture);
             }
         }
         

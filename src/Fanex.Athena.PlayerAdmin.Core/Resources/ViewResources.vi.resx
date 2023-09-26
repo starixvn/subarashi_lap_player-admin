@@ -2844,4 +2844,16 @@
   <data name="YouNotChooseAnyCustomerMsg" xml:space="preserve">
     <value>Bạn chưa chọn khách hàng.</value>
   </data>
+  <data name="WinLossAnalysis" xml:space="preserve">
+    <value>Phân Tích Thắng Thua</value>
+  </data>
+  <data name="AmountDueToBA" xml:space="preserve">
+    <value>Tiền BA</value>
+  </data>
+  <data name="PlayerWL" xml:space="preserve">
+    <value>Thắng Thua Người Chơi </value>
+  </data>
+  <data name="PlayerComm" xml:space="preserve">
+    <value>Hoa hồng người chơi</value>
+  </data>
 </root>

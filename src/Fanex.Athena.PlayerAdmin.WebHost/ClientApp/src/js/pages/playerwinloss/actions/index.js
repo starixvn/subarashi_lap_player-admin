@@ -8,7 +8,7 @@ const getData = (param) => (dispatch) => {
     dispatch(toggleLoader(true));
     DataService.postData(url, param)
         .then(response => {
-            dispatch(setGridData(response.data.dataList));
+            dispatch(setGridData(response.data));
             dispatch(toggleLoader(false));
         })
         .catch(error => {

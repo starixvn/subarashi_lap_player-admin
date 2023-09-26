@@ -3096,4 +3096,16 @@
   <data name="May2" xml:space="preserve">
     <value>May</value>
   </data>
+  <data name="WinLossAnalysis" xml:space="preserve">
+    <value>Win Loss Analysis</value>
+  </data>
+  <data name="AmountDueToBA" xml:space="preserve">
+    <value>Amount Due To BA</value>
+  </data>
+  <data name="PlayerWL" xml:space="preserve">
+    <value>Player W/L</value>
+  </data>
+  <data name="PlayerComm" xml:space="preserve">
+    <value>Player Comm</value>
+  </data>
 </root>
