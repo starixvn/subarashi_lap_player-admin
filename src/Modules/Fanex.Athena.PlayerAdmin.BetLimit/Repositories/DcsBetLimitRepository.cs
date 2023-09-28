@@ -37,7 +37,8 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Repositories
             [ProductTypes.SLT] = new[] { "169" },
             [ProductTypes.AP] = new[] { "172" },
             [ProductTypes.APM] = new[] { "174" },
-            [ProductTypes.BTC] = new[] { "175" }
+            [ProductTypes.BTC] = new[] { "175" },
+            [ProductTypes.LG] = new[] { "178" }
         };
 
         private const string UpdateStatusXmlFormat = "<ROOT><ProductStatus SportType=\"{0}\" BetType=\"{1}\" IsDisabled=\"{2}\" IsDisabledDownline=\"0\" /></ROOT>";

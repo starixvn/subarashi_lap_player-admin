@@ -2758,6 +2758,9 @@
   <data name="May2" xml:space="preserve">
     <value>五月</value>
   </data>
+  <data name="ProductLG" xml:space="preserve">
+    <value>虚拟运动3</value>
+  </data>
   <data name="WinLossAnalysis" xml:space="preserve">
     <value>输赢分析</value>
   </data>

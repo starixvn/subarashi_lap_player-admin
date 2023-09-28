@@ -34,7 +34,7 @@ const Url = {
     [BetLimitProduct.VGA]: 'DcsBetLimit',
     [BetLimitProduct.AP]: 'DcsBetLimit',
     [BetLimitProduct.APM]: 'DcsBetLimit',
-    [BetLimitProduct.VS3]: 'DcsBetLimit',
+    [BetLimitProduct.LG]: 'DcsBetLimit',
     [BetLimitProduct.BTC]: 'DcsBetLimit',
     [BetLimitProduct.FGGL]: 'DcsBetLimit',
     [BetLimitProduct.MXG]: 'DcsBetLimit',
@@ -93,7 +93,6 @@ export default class DataTransfer {
                 callBack(LangHelper.getSingleResource('Error'), LangHelper.getSingleResource('ErrorProcessingMsg'), false);
             });
     }
-
 
     //Exchange only
     static updateExchangeChargeComm(param, callBack) {

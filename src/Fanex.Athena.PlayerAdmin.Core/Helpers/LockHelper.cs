@@ -30,7 +30,7 @@ namespace Fanex.Athena.PlayerAdmin.Core.Helpers
             {
                 if (doing != null)
                 {
-                    var result = await doing?.Invoke();
+                    var result = await doing.Invoke();
                     return result;
                 }
                 return default;
