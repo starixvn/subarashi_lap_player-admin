@@ -1704,9 +1704,9 @@
     <value>Mobile Compact</value>
     <comment>106088</comment>
   </data>
-  <data name="MobileGalaxy" xml:space="preserve">
+  <data name="MobileEuro" xml:space="preserve">
     <value>Mobile Euro</value>
-    <comment>revert</comment>
+    
   </data>
   <data name="MobileOthers" xml:space="preserve">
     <value>Mobile Others</value>
@@ -3110,5 +3110,8 @@
   </data>
   <data name="PlayerComm" xml:space="preserve">
     <value>Player Comm</value>
+  </data>
+  <data name="MobileGalaxy" xml:space="preserve">
+    <value>Mobile Galaxy</value>
   </data>
 </root>

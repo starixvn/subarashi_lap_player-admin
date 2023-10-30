@@ -1605,7 +1605,7 @@
   <data name="MobileCompact" xml:space="preserve">
     <value>Di động nhỏ gọn</value>
   </data>
-  <data name="MobileGalaxy" xml:space="preserve">
+  <data name="MobileEuro" xml:space="preserve">
     <value>Mobile Euro</value>
   </data>
   <data name="MobileOthers" xml:space="preserve">
@@ -2858,5 +2858,8 @@
   </data>
   <data name="PlayerComm" xml:space="preserve">
     <value>Hoa hồng người chơi</value>
+  </data>
+  <data name="MobileGalaxy" xml:space="preserve">
+    <value>Mobile Galaxy</value>
   </data>
 </root>
