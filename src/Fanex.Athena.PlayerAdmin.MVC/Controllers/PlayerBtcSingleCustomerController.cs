@@ -91,7 +91,6 @@ namespace Fanex.Athena.PlayerAdmin.MVC.Controllers
             metaModel.Status = GetStatus();
             metaModel.Platform = AllPlatform;
             metaModel.LiveStatus = GetLiveStatus();
-            metaModel.BaseCurrency = null;
             metaModel.FromDate = new DateTime(now.Year, now.Month, 1);
             metaModel.ToDate = now;
         }

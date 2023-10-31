@@ -1,6 +1,6 @@
-﻿using Fanex.Athena.PlayerAdmin.Core.Models;
+﻿using System;
+using Fanex.Athena.PlayerAdmin.Core.Models;
 using Fanex.Core.Utils;
-using System;
 
 namespace Fanex.Athena.PlayerAdmin.MVC.MetaModel
 {
@@ -77,6 +77,8 @@ namespace Fanex.Athena.PlayerAdmin.MVC.MetaModel
         public bool IsAllowTxIDColumn { get; set; }
         public bool IsShowIp { get; set; }
         public bool IsShowIpVN { get; set; }
+
+        public bool IsConvertAll { get; set; } = true;
 
         public bool IsValid => !string.IsNullOrEmpty(UserName);
 

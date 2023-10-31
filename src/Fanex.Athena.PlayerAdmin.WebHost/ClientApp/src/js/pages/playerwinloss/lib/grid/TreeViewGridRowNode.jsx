@@ -16,9 +16,9 @@ export const TreeViewGridRowNode = (props) => {
     }
     const renderDrillDownCell = (text) => {
         return <Cell className="left-align drill-down-cell" colSpan={groupByColumnColSpan}>
-        <div className='flex w100'>
+        <div className='flex w100' onClick={_onclick} style={{cursor: 'pointer'}}>
             <span className='w100 main-text' title={text}>{text}</span>
-            <span className={`arrow-icon ${arrowClass}`} onClick={_onclick}></span>
+            <span className={`arrow-icon ${arrowClass}`}></span>
         </div>
     </Cell> 
     }

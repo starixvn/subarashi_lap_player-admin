@@ -13,12 +13,11 @@
     var fromDate = new DateTime(now.Year, now.Month, 1).ToString("MM/dd/yyyy");
     var toDate = now.ToString("MM/dd/yyyy");
 
-    const string TitlePattern = "{0}: {1}, {2}→{3}, {4}: {5}, {6}: {7}";
+    const string TitlePattern = "{0}, {1}→{2}, {3}: {4}";
     var reportTitle = string.Format(TitlePattern,
-        ViewResources.Player, Model.UserName,
+        ViewResources.BettingTicketCenter,
         fromDate, toDate,
-        ViewResources.Currency, Model.CurrencyName,
-        ViewResources.Product, Model.ProductCodeListString);
+        ViewResources.BaseCurrency, Model.CurrencyName);
 
     var accessToken = await contextService.AccessToken;
 }
@@ -53,7 +52,7 @@
 @section globaljscode {
     window.initialState = {
     isLoading: false,
-    requestParam: {userName: '@Model.UserName'}
+    requestParam: {userName: '@Model.UserName', baseCurrency: '@Model.CurrencyName'}
     };
 
     window._AppData = {
