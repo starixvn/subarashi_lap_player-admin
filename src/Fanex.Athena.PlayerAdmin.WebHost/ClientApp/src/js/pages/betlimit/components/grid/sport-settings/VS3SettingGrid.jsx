@@ -73,6 +73,10 @@ const VS3SettingGrid = (props) => {
                         {buildCell(BetLimitType.MaxBet, item, disabled)}
                         {item.BetValueMax > 0 && <span>{` <= ${Utility.formatValue(item.BetValueMax)}`}</span>}
                     </td>
+                    <td className='pa-betlimit-cell'>
+                        {buildCell(BetLimitType.MaxPerMatch, item, disabled)}
+                        {item.MaxPerMatchMax > 0 && <span>{` <= ${Utility.formatValue(item.MaxPerMatchMax)}`}</span>}
+                    </td>
                 </tr>
             )
         }
@@ -88,6 +92,7 @@ const VS3SettingGrid = (props) => {
                         <th>{LangHelper.getSingleResource('Sport')}</th>
                         <th>{LangHelper.getSingleResource('MinBet')}</th>
                         <th>{LangHelper.getSingleResource('MaxBet')}</th>
+                        <th>{LangHelper.getSingleResource('MaxPerMatch')}</th>
                     </tr>
                 </thead>
                 {buildBody(setting.Editable, data)}

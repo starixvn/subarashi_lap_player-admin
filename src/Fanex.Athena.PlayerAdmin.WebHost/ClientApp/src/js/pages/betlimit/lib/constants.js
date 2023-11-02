@@ -29,7 +29,7 @@ export const BetLimitProduct = {
     VGA: 66,
     AP: 67,
     APM: 68,
-    VS3: 49,
+    LG: 77,
     BTC: 69,
     FGGL: 70,
     MXG: 60,

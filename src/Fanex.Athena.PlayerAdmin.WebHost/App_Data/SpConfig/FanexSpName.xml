@@ -17,7 +17,7 @@
 		<Setting Key="Shard_Lrf_CustomerSelByUsername" SpName="Lrf_CustomerSelByUsername" DbName="DBEXT.bodb02.bodbLicenseeNet" />
 		<Setting Key="Shard_Lrf_CustomerSelByCustid" SpName="Lrf_CustomerSelByCustid" DbName="DBEXT.bodb02.bodbLicenseeNet" />
 		<Setting Key="Lrf_DormantCustomerSel" SpName="Lrf_DormantCustomerSel_xtest" DbName="DBEXT.bodb02.bodbLicenseeNet" />
-		<Setting Key="Lrf_LicenseeProductByBetLimitSel" SpName="Lrf_LicenseeProductByBetLimitSel_UAT1" DbName="DBLIC.bodb_Licensee.bodbLicenseeNet" />
+		<Setting Key="Lrf_LicenseeProductByBetLimitSel" SpName="Lrf_LicenseeProductByBetLimitSel_UAT3" DbName="DBLIC.bodb_Licensee.bodbLicenseeNet" />
 		<Setting Key="Lrf_PlayerBettingStatistics" SpName="Lrf_PlayerBettingStatistics" DbName="DBACC.bodb02.bodbLicenseeNet" />
 		<Setting Key="Lrf_CustomerUpdMemberBAStatus" SpName="Lrf_CustomerUpdMemberBAStatus" DbName="DBCUST.CustDB.bodbLicenseeNet" />
 		<Setting Key="Lrf_CustomerUpdUgroup" SpName="Lrf_CustomerUpdUgroup" DbName="DBCUST.CustDB.bodbLicenseeNet" />

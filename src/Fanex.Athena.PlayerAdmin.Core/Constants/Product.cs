@@ -87,6 +87,8 @@
         public const string YB = "YB";
 
         public const string MGRNG = "MGRNG";
+
+        public const string LG = "LG";
     }
 
     public static class ProductTypes
@@ -171,5 +173,7 @@
         public const int YB = 76;
 
         public const int MGRNG = 73;
+
+        public const int LG = 77;
     }
 }

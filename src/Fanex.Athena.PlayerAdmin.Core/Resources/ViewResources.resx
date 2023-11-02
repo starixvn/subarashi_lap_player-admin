@@ -2220,7 +2220,7 @@
     <comment>#78241</comment>
   </data>
   <data name="ProductVS3" xml:space="preserve">
-    <value>Virtual Sports 3</value>
+    <value>Virtual Sports 3 (Old)</value>
   </data>
   <data name="ProductWM" xml:space="preserve">
     <value>WM</value>
@@ -3095,6 +3095,9 @@
   </data>
   <data name="May2" xml:space="preserve">
     <value>May</value>
+  </data>
+  <data name="ProductLG" xml:space="preserve">
+    <value>Virtual Sports 3</value>
   </data>
   <data name="WinLossAnalysis" xml:space="preserve">
     <value>Win Loss Analysis</value>
