@@ -1556,7 +1556,7 @@
   <data name="MobileCompact" xml:space="preserve">
     <value>手机轻量版</value>
   </data>
-  <data name="MobileGalaxy" xml:space="preserve">
+  <data name="MobileEuro" xml:space="preserve">
     <value>手机欧洲版</value>
     <comment>revert</comment>
   </data>
@@ -2772,5 +2772,8 @@
   </data>
   <data name="PlayerComm" xml:space="preserve">
     <value>玩家佣金</value>
+  </data>
+  <data name="MobileGalaxy" xml:space="preserve">
+    <value>手机银河版</value>
   </data>
 </root>
