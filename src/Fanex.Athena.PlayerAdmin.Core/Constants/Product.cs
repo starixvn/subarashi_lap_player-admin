@@ -89,6 +89,8 @@
         public const string MGRNG = "MGRNG";
 
         public const string LG = "LG";
+
+        public const string SEA = "SEA";
     }
 
     public static class ProductTypes
@@ -175,5 +177,7 @@
         public const int MGRNG = 73;
 
         public const int LG = 77;
+
+        public const int SEA = 72;
     }
 }

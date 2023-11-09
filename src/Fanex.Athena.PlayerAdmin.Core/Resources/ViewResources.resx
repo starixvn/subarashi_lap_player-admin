@@ -1706,7 +1706,6 @@
   </data>
   <data name="MobileEuro" xml:space="preserve">
     <value>Mobile Euro</value>
-    
   </data>
   <data name="MobileOthers" xml:space="preserve">
     <value>Mobile Others</value>
@@ -3113,6 +3112,9 @@
   </data>
   <data name="MobileGalaxy" xml:space="preserve">
     <value>Mobile Galaxy</value>
+  </data>
+  <data name="ProductSEA" xml:space="preserve">
+    <value>SEAL Entertainment</value>
   </data>
   <data name="Mobile" xml:space="preserve">
     <value>Mobile</value>

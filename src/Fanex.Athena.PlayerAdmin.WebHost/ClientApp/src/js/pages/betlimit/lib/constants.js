@@ -35,7 +35,8 @@ export const BetLimitProduct = {
     MXG: 60,
     JIG: 75,
     YB: 76,
-    MGRNG: 73
+    MGRNG: 73,
+    SEA: 72
 }
 
 export const BetLimitSport = {
