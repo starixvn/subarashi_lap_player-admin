@@ -49,7 +49,8 @@ const Setting = {
     [BetLimitProduct.JIG]: GameDataContent,
     [BetLimitProduct.YB]: GameDataContent,
     [BetLimitProduct.MGRNG]: GameDataContent,
-    [BetLimitProduct.SEA]: GameDataContent
+    [BetLimitProduct.SEA]: GameDataContent,
+    [BetLimitProduct.WE]: GameDataContent
 };
 
 const DataContent = (props) => {
