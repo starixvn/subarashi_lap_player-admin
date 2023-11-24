@@ -62,6 +62,8 @@ namespace Fanex.Athena.PlayerAdmin.MVC.MetaModel
 
         public bool IsAllowTxIDColumn { get; set; }
 
+        public int SpecialPlatform { get; set; }
+
         public bool IsShowIp { get; set; }
         public bool IsShowIpVN { get; set; }
     }

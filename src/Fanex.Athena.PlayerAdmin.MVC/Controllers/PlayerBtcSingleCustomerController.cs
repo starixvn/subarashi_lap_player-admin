@@ -1,15 +1,15 @@
-﻿using Fanex.Athena.PlayerAdmin.Core.ConsoleClient;
-using Fanex.Athena.PlayerAdmin.Core.Constants;
+﻿using System;
+using System.Net;
+using System.Threading.Tasks;
 using Fanex.Athena.PlayerAdmin.Core.Attributes;
+using Fanex.Athena.PlayerAdmin.Core.ConsoleClient;
+using Fanex.Athena.PlayerAdmin.Core.Constants;
+using Fanex.Athena.PlayerAdmin.Core.Extensions;
+using Fanex.Athena.PlayerAdmin.Core.Helpers;
 using Fanex.Athena.PlayerAdmin.Core.Services;
 using Fanex.Athena.PlayerAdmin.MVC.MetaModel;
 using Fanex.Athena.PlayerAdmin.MVC.ViewModels;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Net;
-using System.Threading.Tasks;
-using Fanex.Athena.PlayerAdmin.Core.Helpers;
-using Fanex.Athena.PlayerAdmin.Core.Extensions;
 
 namespace Fanex.Athena.PlayerAdmin.MVC.Controllers
 {
@@ -65,9 +65,7 @@ namespace Fanex.Athena.PlayerAdmin.MVC.Controllers
 
             if (metaModel.IsExport)
             {
-                var httpResponse = await betListApiClient.PostAsync("/BettingTicketCenter/GetBySingleCustomer",
-                metaModel,
-                _contextService.Language);
+                var httpResponse = await betListApiClient.PostAsync("/BettingTicketCenter/GetBySingleCustomer", metaModel, _contextService.Language);
 
                 if (httpResponse.StatusCode == HttpStatusCode.NoContent)
                 {
@@ -93,6 +91,7 @@ namespace Fanex.Athena.PlayerAdmin.MVC.Controllers
             metaModel.LiveStatus = GetLiveStatus();
             metaModel.FromDate = new DateTime(now.Year, now.Month, 1);
             metaModel.ToDate = now;
+            metaModel.SpecialPlatform = _contextService.SpecialPlatform;
         }
 
         private static string GetStatus()

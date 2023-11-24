@@ -78,6 +78,8 @@ namespace Fanex.Athena.PlayerAdmin.MVC.MetaModel
         public bool IsShowIp { get; set; }
         public bool IsShowIpVN { get; set; }
 
+        public int SpecialPlatform { get; set; }
+
         public bool IsConvertAll { get; set; } = true;
 
         public bool IsValid => !string.IsNullOrEmpty(UserName);
