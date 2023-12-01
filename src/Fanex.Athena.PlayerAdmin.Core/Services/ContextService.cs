@@ -1,14 +1,14 @@
-﻿using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Http;
-using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json;
 
 namespace Fanex.Athena.PlayerAdmin.Core.Services
 {
@@ -90,6 +90,8 @@ namespace Fanex.Athena.PlayerAdmin.Core.Services
         public bool IsShowSabaIntelligence => IsInRoles("super_admin", "SabaIntelligence");
 
         public bool IsFakeLicensee => GetClaimValue("IsFakeLicensee", false);
+
+        public int SpecialPlatform => GetClaimValue("SpecialPlatform", 0);
 
         public IEnumerable<string> OfferedSubProductList
         {

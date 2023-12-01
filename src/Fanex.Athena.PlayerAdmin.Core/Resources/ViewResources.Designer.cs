@@ -2176,6 +2176,15 @@ namespace Fanex.Athena.PlayerAdmin.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Desktop.
+        /// </summary>
+        public static string Desktop {
+            get {
+                return ResourceManager.GetString("Desktop", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Desktop China.
         /// </summary>
         public static string DesktopChina {
@@ -4512,6 +4521,15 @@ namespace Fanex.Athena.PlayerAdmin.Core.Resources {
         public static string Mo {
             get {
                 return ResourceManager.GetString("Mo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mobile.
+        /// </summary>
+        public static string Mobile {
+            get {
+                return ResourceManager.GetString("Mobile", resourceCulture);
             }
         }
         

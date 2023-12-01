@@ -2862,4 +2862,10 @@
   <data name="MobileGalaxy" xml:space="preserve">
     <value>Mobile Galaxy</value>
   </data>
+  <data name="Mobile" xml:space="preserve">
+    <value>Di động</value>
+  </data>
+  <data name="Desktop" xml:space="preserve">
+    <value>Máy tính</value>
+  </data>
 </root>

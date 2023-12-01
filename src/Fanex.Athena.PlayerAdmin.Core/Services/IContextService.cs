@@ -31,7 +31,7 @@ namespace Fanex.Athena.PlayerAdmin.Core.Services
         IEnumerable<string> OfferedSubProductList { get; }
         IEnumerable<string> OfferedOddsGroupList { get; }
         Task<string> AccessToken { get; }
-
+        int SpecialPlatform { get; }
         bool IsInRoles(params string[] roles);
     }
 }

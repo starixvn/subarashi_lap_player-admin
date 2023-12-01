@@ -2776,4 +2776,10 @@
   <data name="MobileGalaxy" xml:space="preserve">
     <value>手机银河版</value>
   </data>
+  <data name="Mobile" xml:space="preserve">
+    <value>手机</value>
+  </data>
+  <data name="Desktop" xml:space="preserve">
+    <value>桌机</value>
+  </data>
 </root>
