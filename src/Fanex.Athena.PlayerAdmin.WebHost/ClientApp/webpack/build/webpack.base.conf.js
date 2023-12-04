@@ -28,6 +28,8 @@ function generateConfig(environment) {
             [`${jsPath}/language`]: pathConfig.scriptPaths.language,
             [`${jsPath}/language-zh-CN`]: pathConfig.scriptPaths.languageCN,
             [`${jsPath}/language-vi-VN`]: pathConfig.scriptPaths.languageVN,
+            [`${jsPath}/language-th-TH`]: pathConfig.scriptPaths.languageTH,
+            [`${jsPath}/language-id-ID`]: pathConfig.scriptPaths.languageID,
             [`${jsPath}/pages/playercommission/multiplemovegroup`]: [pathConfig.scriptPaths.playercomissionmultiplemovegroup],
             [`${jsPath}/pages/playercommission/multipleremovefromgroup`]: [pathConfig.scriptPaths.playercomissionmultipleremovefromgroup],
             [`${jsPath}/pages/playercommission/multipleupdategroup`]: [pathConfig.scriptPaths.playercomissionmultipleupdategroup],

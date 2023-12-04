@@ -17,6 +17,8 @@ var scriptPaths = {
     language: "common/languages/ViewResources.js",
     languageCN: "common/languages/ViewResources.zh-CN.js",
     languageVN: "common/languages/ViewResources.vi-VN.js",
+    languageTH: "common/languages/ViewResources.th-TH.js",
+    languageID: "common/languages/ViewResources.id-ID.js",
     
     playercomissionmultiplemovegroup: "./ClientApp/src/jquery-pages/js/pages/playercommission/multiplemovegroup.js",
     playercomissionmultipleremovefromgroup: "./ClientApp/src/jquery-pages/js/pages/playercommission/multipleremovefromgroup.js",
