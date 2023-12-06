@@ -1036,7 +1036,7 @@
     <value>ทายเจ้าบ้าน</value>
   </data>
   <data name="Fr" xml:space="preserve">
-    <value>Fr</value>
+    <value>วันศุกร์</value>
   </data>
   <data name="FreePlay" xml:space="preserve">
     <value>เล่นฟรี</value>
@@ -1196,9 +1196,6 @@
   </data>
   <data name="HomeNoBet" xml:space="preserve">
     <value>เจ้าบ้าน ไม่มีการเดิมพัน</value>
-  </data>
-  <data name="HTFT" xml:space="preserve">
-    <value />
   </data>
   <data name="HttpError_403" xml:space="preserve">
     <value>ขออภัย คุณไม่ได้รับอนุญาตให้เข้าถึงหน้านี้</value>
@@ -1603,7 +1600,7 @@
     <value>สปอร์ตผสม พาร์เลย์</value>
   </data>
   <data name="Mo" xml:space="preserve">
-    <value>Mo</value>
+    <value>วันจันทร์</value>
   </data>
   <data name="Mobile" xml:space="preserve">
     <value>โทรศัพท์มือถือ</value>
@@ -1681,13 +1678,13 @@
     <value>ถัดไป</value>
   </data>
   <data name="NG" xml:space="preserve">
-    <value />
+    <value>เกมตัวเลข</value>
   </data>
   <data name="NGComm" xml:space="preserve">
-    <value />
+    <value>ค่าคอมมิชชั่นเกมตัวเลข</value>
   </data>
   <data name="NGCommission" xml:space="preserve">
-    <value />
+    <value>ค่าคอมมิชชั่นเกมตัวเลข</value>
   </data>
   <data name="No" xml:space="preserve">
     <value>เลขที่</value>
@@ -2073,9 +2070,6 @@
   <data name="ProductSBVS" xml:space="preserve">
     <value>Sabaกีฬาเสมือนจริง</value>
   </data>
-  <data name="ProductSG" xml:space="preserve">
-    <value />
-  </data>
   <data name="ProductSLT" xml:space="preserve">
     <value>ลอตเตอรีกีฬา</value>
   </data>
@@ -2103,14 +2097,8 @@
   <data name="ProductVS2" xml:space="preserve">
     <value>กีฬาเสมือนจริง 2</value>
   </data>
-  <data name="ProductVS3" xml:space="preserve">
-    <value />
-  </data>
   <data name="ProductWM" xml:space="preserve">
     <value>WM</value>
-  </data>
-  <data name="ProductYB" xml:space="preserve">
-    <value />
   </data>
   <data name="Promotion" xml:space="preserve">
     <value>โปรโมชั่น</value>
@@ -2218,7 +2206,7 @@
     <value>แข่งขัน</value>
   </data>
   <data name="Sa" xml:space="preserve">
-    <value />
+    <value>วันเสาร์</value>
   </data>
   <data name="Saba" xml:space="preserve">
     <value>Saba</value>
@@ -2275,7 +2263,7 @@
     <value>เลือกด้านบน</value>
   </data>
   <data name="Sep" xml:space="preserve">
-    <value />
+    <value>กันยายน</value>
   </data>
   <data name="SeparateSabaWinLoss" xml:space="preserve">
     <value>แยก Sabaกีฬาเสมือนจริงออกจากสปอร์ตบุ๊ค</value>
@@ -2350,7 +2338,7 @@
     <value>สถานะ</value>
   </data>
   <data name="Su" xml:space="preserve">
-    <value />
+    <value>วันอาทิตย์</value>
   </data>
   <data name="Subject" xml:space="preserve">
     <value>เรื่อง</value>
@@ -2404,7 +2392,7 @@
     <value>ทีม</value>
   </data>
   <data name="Th" xml:space="preserve">
-    <value />
+    <value>วันพฤหัสบดี</value>
   </data>
   <data name="ThereIsNoSelectedItem" xml:space="preserve">
     <value>ไม่มีรายการที่เลือก</value>
@@ -2527,7 +2515,7 @@
     <value>โปรดลองเข้าสู่ระบบอีกครั้ง:&lt;br/&gt;</value>
   </data>
   <data name="Tu" xml:space="preserve">
-    <value />
+    <value>วันอังคาร</value>
   </data>
   <data name="Tuesday" xml:space="preserve">
     <value>วันอังคาร</value>
@@ -2806,7 +2794,7 @@
     <value>คำเตือน ผู้เล่นนี้ไม่สามารถเข้าสู่ระบบและโอนได้!</value>
   </data>
   <data name="We" xml:space="preserve">
-    <value>We</value>
+    <value>วันพุธ</value>
   </data>
   <data name="Wednesday" xml:space="preserve">
     <value>วันพุธ</value>

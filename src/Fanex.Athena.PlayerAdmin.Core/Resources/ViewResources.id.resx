@@ -117,9 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AA" xml:space="preserve">
-    <value />
-  </data>
   <data name="AbnormalBet" xml:space="preserve">
     <value>Taruhan Abnormal</value>
   </data>
@@ -146,9 +143,6 @@
   </data>
   <data name="ActualStake" xml:space="preserve">
     <value>Jumlah Taruhan Sebenarnya</value>
-  </data>
-  <data name="AD" xml:space="preserve">
-    <value />
   </data>
   <data name="Adjustment" xml:space="preserve">
     <value>Penyesuaian</value>
@@ -185,9 +179,6 @@
   </data>
   <data name="AGOpeningBalance" xml:space="preserve">
     <value>Saldo Pembukaan AG</value>
-  </data>
-  <data name="AH" xml:space="preserve">
-    <value />
   </data>
   <data name="Alert" xml:space="preserve">
     <value>Peringatan</value>
@@ -642,9 +633,6 @@
   <data name="CreditDebit" xml:space="preserve">
     <value>Kredit/Debit</value>
   </data>
-  <data name="CS" xml:space="preserve">
-    <value />
-  </data>
   <data name="CSComm" xml:space="preserve">
     <value>Komisi CS</value>
   </data>
@@ -738,9 +726,6 @@
   <data name="CustomerW_L" xml:space="preserve">
     <value>Kemenangan dan Kerugian Pelanggan</value>
   </data>
-  <data name="DA" xml:space="preserve">
-    <value />
-  </data>
   <data name="Daily" xml:space="preserve">
     <value>Harian</value>
   </data>
@@ -779,9 +764,6 @@
   </data>
   <data name="DayRangeExceedMsg" xml:space="preserve">
     <value>Rentang tanggal melebihi {0} hari. Silakan coba lagi!</value>
-  </data>
-  <data name="DD" xml:space="preserve">
-    <value />
   </data>
   <data name="DeactivateVip" xml:space="preserve">
     <value>Nonaktifkan VIP</value>
@@ -845,9 +827,6 @@
   </data>
   <data name="DetailTransaction" xml:space="preserve">
     <value>Rincian Transaksi</value>
-  </data>
-  <data name="DH" xml:space="preserve">
-    <value />
   </data>
   <data name="DisableAgCasino" xml:space="preserve">
     <value>Nonaktifkan Kasino AG</value>
@@ -1036,7 +1015,7 @@
     <value>Prediksi Tuan Rumah</value>
   </data>
   <data name="Fr" xml:space="preserve">
-    <value>Fr</value>
+    <value>Jumat</value>
   </data>
   <data name="FreePlay" xml:space="preserve">
     <value>Permainan Gratis</value>
@@ -1091,9 +1070,6 @@
   </data>
   <data name="GetAll" xml:space="preserve">
     <value>Dapatkan Semua</value>
-  </data>
-  <data name="Go" xml:space="preserve">
-    <value />
   </data>
   <data name="GodOfFortuneWinLoss" xml:space="preserve">
     <value>Kemenangan dan Kerugian Dewa Keberuntungan</value>
@@ -1152,9 +1128,6 @@
   <data name="GroupSetAsDefaultMsg" xml:space="preserve">
     <value>Grup lain saat ini diatur sebagai default. Apakah Anda ingin mengatur grup ini sebagai default?</value>
   </data>
-  <data name="HA" xml:space="preserve">
-    <value />
-  </data>
   <data name="Half" xml:space="preserve">
     <value>Setengah</value>
   </data>
@@ -1173,14 +1146,8 @@
   <data name="Happy5LinkedGames" xml:space="preserve">
     <value>Happy 5 Linked Games</value>
   </data>
-  <data name="HD" xml:space="preserve">
-    <value />
-  </data>
   <data name="Healthy" xml:space="preserve">
     <value>Sehat</value>
-  </data>
-  <data name="HH" xml:space="preserve">
-    <value />
   </data>
   <data name="hide" xml:space="preserve">
     <value>sembunyi</value>
@@ -1196,9 +1163,6 @@
   </data>
   <data name="HomeNoBet" xml:space="preserve">
     <value>Tuan Rumah Tanpa Taruhan</value>
-  </data>
-  <data name="HTFT" xml:space="preserve">
-    <value />
   </data>
   <data name="HttpError_403" xml:space="preserve">
     <value>Maaf, Anda tidak memiliki izin untuk mengakses halaman ini.</value>
@@ -1603,7 +1567,7 @@
     <value>Parlay Olahraga Campuran</value>
   </data>
   <data name="Mo" xml:space="preserve">
-    <value>Mo</value>
+    <value>Senin</value>
   </data>
   <data name="Mobile" xml:space="preserve">
     <value>Ponsel</value>
@@ -1681,13 +1645,13 @@
     <value>Selanjutnya</value>
   </data>
   <data name="NG" xml:space="preserve">
-    <value />
+    <value>Number Game</value>
   </data>
   <data name="NGComm" xml:space="preserve">
-    <value />
+    <value>Komisi Number Game</value>
   </data>
   <data name="NGCommission" xml:space="preserve">
-    <value />
+    <value>Komisi Number Game</value>
   </data>
   <data name="No" xml:space="preserve">
     <value>Tidak</value>
@@ -1793,9 +1757,6 @@
   </data>
   <data name="Odd_Dec" xml:space="preserve">
     <value>Desember</value>
-  </data>
-  <data name="Odd_MY" xml:space="preserve">
-    <value />
   </data>
   <data name="of" xml:space="preserve">
     <value>dari</value>
@@ -1989,9 +1950,6 @@
   <data name="ProductBA" xml:space="preserve">
     <value>BA</value>
   </data>
-  <data name="ProductBGG" xml:space="preserve">
-    <value />
-  </data>
   <data name="ProductBT" xml:space="preserve">
     <value>Perdagangan Taruhan</value>
   </data>
@@ -2004,17 +1962,11 @@
   <data name="ProductCC" xml:space="preserve">
     <value>Permainan Arcadia</value>
   </data>
-  <data name="ProductCG" xml:space="preserve">
-    <value />
-  </data>
   <data name="ProductCO" xml:space="preserve">
     <value>Penarikan Tunai</value>
   </data>
   <data name="ProductCS" xml:space="preserve">
     <value>Casino Saba</value>
-  </data>
-  <data name="ProductFGGL" xml:space="preserve">
-    <value />
   </data>
   <data name="ProductHB" xml:space="preserve">
     <value>Habanero</value>
@@ -2073,9 +2025,6 @@
   <data name="ProductSBVS" xml:space="preserve">
     <value>Saba Virtual Sports</value>
   </data>
-  <data name="ProductSG" xml:space="preserve">
-    <value />
-  </data>
   <data name="ProductSLT" xml:space="preserve">
     <value>Lotre Olahraga</value>
   </data>
@@ -2103,23 +2052,14 @@
   <data name="ProductVS2" xml:space="preserve">
     <value>Virtual Sports 2</value>
   </data>
-  <data name="ProductVS3" xml:space="preserve">
-    <value />
-  </data>
   <data name="ProductWM" xml:space="preserve">
     <value>WM</value>
-  </data>
-  <data name="ProductYB" xml:space="preserve">
-    <value />
   </data>
   <data name="Promotion" xml:space="preserve">
     <value>Promosi</value>
   </data>
   <data name="PromotionPrize" xml:space="preserve">
     <value>Hadiah Promosi</value>
-  </data>
-  <data name="RB" xml:space="preserve">
-    <value />
   </data>
   <data name="RealName" xml:space="preserve">
     <value>Nama Asli</value>
@@ -2218,7 +2158,7 @@
     <value>Berjalan</value>
   </data>
   <data name="Sa" xml:space="preserve">
-    <value />
+    <value>Sabtu</value>
   </data>
   <data name="Saba" xml:space="preserve">
     <value>Saba</value>
@@ -2234,9 +2174,6 @@
   </data>
   <data name="Save" xml:space="preserve">
     <value>Simpan</value>
-  </data>
-  <data name="SB" xml:space="preserve">
-    <value />
   </data>
   <data name="SBComm" xml:space="preserve">
     <value>Komisi SB</value>
@@ -2275,7 +2212,7 @@
     <value>Pilih Teratas</value>
   </data>
   <data name="Sep" xml:space="preserve">
-    <value />
+    <value>September</value>
   </data>
   <data name="SeparateSabaWinLoss" xml:space="preserve">
     <value>Pisahkan Saba Virtual Sports dari Sportsbook</value>
@@ -2350,7 +2287,7 @@
     <value>Status</value>
   </data>
   <data name="Su" xml:space="preserve">
-    <value />
+    <value>Minggu</value>
   </data>
   <data name="Subject" xml:space="preserve">
     <value>Subjek</value>
@@ -2404,7 +2341,7 @@
     <value>Tim</value>
   </data>
   <data name="Th" xml:space="preserve">
-    <value />
+    <value>Kamis</value>
   </data>
   <data name="ThereIsNoSelectedItem" xml:space="preserve">
     <value>Tidak ada item yang dipilih.</value>
@@ -2527,7 +2464,7 @@
     <value>Silakan coba login kembali: &lt;br/&gt;解决方法</value>
   </data>
   <data name="Tu" xml:space="preserve">
-    <value />
+    <value>Selasa</value>
   </data>
   <data name="Tuesday" xml:space="preserve">
     <value>Selasa</value>
@@ -2793,9 +2730,6 @@
   <data name="Void" xml:space="preserve">
     <value>Void</value>
   </data>
-  <data name="Wap" xml:space="preserve">
-    <value />
-  </data>
   <data name="WarningToActiveMsg" xml:space="preserve">
     <value>Peringatan, pemain ini akan dapat login dan melakukan taruhan.</value>
   </data>
@@ -2806,7 +2740,7 @@
     <value>Peringatan, pemain ini tidak dapat login dan transfer!</value>
   </data>
   <data name="We" xml:space="preserve">
-    <value>We</value>
+    <value>Rabu</value>
   </data>
   <data name="Wednesday" xml:space="preserve">
     <value>Rabu</value>
