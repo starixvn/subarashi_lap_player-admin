@@ -8,7 +8,7 @@ const I4DSettingGrid = (props) => {
 
     const onInputChange = (type, id, value) => {
         const newData = data.map(e => {
-            if (e.BetType === id) {
+            if (e.Id === id) {
                 const newItem = { ...e };
                 newItem[type] = value;
 
@@ -26,7 +26,7 @@ const I4DSettingGrid = (props) => {
 
         if (newValue !== value) {
             const newData = data.map(e => {
-                if (e.BetType === id) {
+                if (e.Id === id) {
                     const newItem = { ...e };
                     newItem[type] = newValue;
 
@@ -42,15 +42,14 @@ const I4DSettingGrid = (props) => {
 
     const buildCell = (type, value, disabled) => {
         const isChanged = value[type] !== value['Original' + type];
-
         return <input className={isChanged ? InputClassName.OnChangedClassName : InputClassName.ClassName}
             type='text'
-            ref={(e) => setInputRef(type, value.BetType, e)}
+            ref={(e) => setInputRef(type, value.Id, e)}
             autoComplete='off'
             maxLength='14'
             value={value[type]}
-            onChange={(e) => onInputChange(type, value.BetType, e.target.value)}
-            onBlur={(e) => onInputBlur(type, value.BetType, e.target.value)}
+            onChange={(e) => onInputChange(type, value.Id, e.target.value)}
+            onBlur={(e) => onInputBlur(type, value.Id, e.target.value)}
             disabled={disabled} />
     }
 
