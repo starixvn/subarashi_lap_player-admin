@@ -13,7 +13,7 @@ export const AppContainer = (props) => {
             <FormFilter />
             <DataContent />
             <Alert
-                width={450}
+                width={500}
                 isHtml={false}
                 {...props.alertOption}
             />

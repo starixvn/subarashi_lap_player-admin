@@ -865,7 +865,7 @@
     <value>ปิดใช้งาน {0}</value>
   </data>
   <data name="DisableRNGCasino" xml:space="preserve">
-    <value>ปิดใช้งาน RNG คาสิโน</value>
+    <value>ปิดใช้งาน RNG เกมคีโน</value>
   </data>
   <data name="DiscountValue" xml:space="preserve">
     <value>มูลค่าส่วนลด</value>
@@ -940,7 +940,7 @@
     <value>เปิดใช้งาน {0}</value>
   </data>
   <data name="EnableRNGCasino" xml:space="preserve">
-    <value>เปิดใช้งาน RNG เกมคาสิโน</value>
+    <value>เปิดใช้งาน RNG เกมคีโน</value>
   </data>
   <data name="EndDate" xml:space="preserve">
     <value>วันที่สิ้นสุด</value>
@@ -1036,7 +1036,7 @@
     <value>ทายเจ้าบ้าน</value>
   </data>
   <data name="Fr" xml:space="preserve">
-    <value>วันศุกร์</value>
+    <value>ศ.</value>
   </data>
   <data name="FreePlay" xml:space="preserve">
     <value>เล่นฟรี</value>
@@ -1054,7 +1054,7 @@
     <value>จากวันที่</value>
   </data>
   <data name="FT" xml:space="preserve">
-    <value>FT</value>
+    <value>เต็มเวลา</value>
   </data>
   <data name="Full" xml:space="preserve">
     <value>เต็ม</value>
@@ -1196,6 +1196,9 @@
   </data>
   <data name="HomeNoBet" xml:space="preserve">
     <value>เจ้าบ้าน ไม่มีการเดิมพัน</value>
+  </data>
+  <data name="HTFT" xml:space="preserve">
+    <value>ที่1/เต็มเวลา</value>
   </data>
   <data name="HttpError_403" xml:space="preserve">
     <value>ขออภัย คุณไม่ได้รับอนุญาตให้เข้าถึงหน้านี้</value>
@@ -1600,7 +1603,7 @@
     <value>สปอร์ตผสม พาร์เลย์</value>
   </data>
   <data name="Mo" xml:space="preserve">
-    <value>วันจันทร์</value>
+    <value>จ.</value>
   </data>
   <data name="Mobile" xml:space="preserve">
     <value>โทรศัพท์มือถือ</value>
@@ -2026,7 +2029,7 @@
     <value>Joker</value>
   </data>
   <data name="ProductKN" xml:space="preserve">
-    <value>RNG Keno</value>
+    <value>RNG เกมคีโน</value>
   </data>
   <data name="ProductLC" xml:space="preserve">
     <value>คาสิโนแทงบอลสด</value>
@@ -2036,9 +2039,6 @@
   </data>
   <data name="ProductLT" xml:space="preserve">
     <value>ลอตเตอรี่</value>
-  </data>
-  <data name="ProductMGRNG" xml:space="preserve">
-    <value>MG-RNG</value>
   </data>
   <data name="ProductMXG" xml:space="preserve">
     <value>MaxGame</value>
@@ -2062,7 +2062,7 @@
     <value>SA Gaming</value>
   </data>
   <data name="ProductSB" xml:space="preserve">
-    <value>สปอร์ตบุ๊ค</value>
+    <value>Sportsbook</value>
   </data>
   <data name="ProductSBC" xml:space="preserve">
     <value>Saba.club</value>
@@ -2170,7 +2170,7 @@
     <value>รีเซ็ตรหัสผ่านสำเร็จ!</value>
   </data>
   <data name="Resettled" xml:space="preserve">
-    <value>ตั้งใหม่</value>
+    <value>การคำนวณใหม่</value>
   </data>
   <data name="ResettledRecovered" xml:space="preserve">
     <value>ถูกตั้งค่าใหม่/ฟื้นฟู</value>
@@ -2206,7 +2206,7 @@
     <value>แข่งขัน</value>
   </data>
   <data name="Sa" xml:space="preserve">
-    <value>วันเสาร์</value>
+    <value>ส.</value>
   </data>
   <data name="Saba" xml:space="preserve">
     <value>Saba</value>
@@ -2320,7 +2320,7 @@
     <value>กีฬา</value>
   </data>
   <data name="Sportsbook" xml:space="preserve">
-    <value>สปอร์ตบุ๊ค</value>
+    <value>Sportsbook</value>
   </data>
   <data name="SportType" xml:space="preserve">
     <value>ประเภทกีฬา</value>
@@ -2338,7 +2338,7 @@
     <value>สถานะ</value>
   </data>
   <data name="Su" xml:space="preserve">
-    <value>วันอาทิตย์</value>
+    <value>อา.</value>
   </data>
   <data name="Subject" xml:space="preserve">
     <value>เรื่อง</value>
@@ -2392,7 +2392,7 @@
     <value>ทีม</value>
   </data>
   <data name="Th" xml:space="preserve">
-    <value>วันพฤหัสบดี</value>
+    <value>พฤ.</value>
   </data>
   <data name="ThereIsNoSelectedItem" xml:space="preserve">
     <value>ไม่มีรายการที่เลือก</value>
@@ -2515,7 +2515,7 @@
     <value>โปรดลองเข้าสู่ระบบอีกครั้ง:&lt;br/&gt;</value>
   </data>
   <data name="Tu" xml:space="preserve">
-    <value>วันอังคาร</value>
+    <value>อ.</value>
   </data>
   <data name="Tuesday" xml:space="preserve">
     <value>วันอังคาร</value>
@@ -2794,7 +2794,7 @@
     <value>คำเตือน ผู้เล่นนี้ไม่สามารถเข้าสู่ระบบและโอนได้!</value>
   </data>
   <data name="We" xml:space="preserve">
-    <value>วันพุธ</value>
+    <value>พ.</value>
   </data>
   <data name="Wednesday" xml:space="preserve">
     <value>วันพุธ</value>

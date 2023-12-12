@@ -844,7 +844,7 @@
     <value>Nonaktifkan {0}</value>
   </data>
   <data name="DisableRNGCasino" xml:space="preserve">
-    <value>Nonaktifkan RNumber Permainan Kasino</value>
+    <value>Nonaktifkan Permainan Angka Keno</value>
   </data>
   <data name="DiscountValue" xml:space="preserve">
     <value>Nilai Diskon</value>
@@ -919,7 +919,7 @@
     <value>Aktifkan {0}</value>
   </data>
   <data name="EnableRNGCasino" xml:space="preserve">
-    <value>Aktifkan Casino Nomor Permainan R</value>
+    <value>Aktifkan Permainan Angka Keno</value>
   </data>
   <data name="EndDate" xml:space="preserve">
     <value>Tanggal Berakhir</value>
@@ -1015,7 +1015,7 @@
     <value>Prediksi Tuan Rumah</value>
   </data>
   <data name="Fr" xml:space="preserve">
-    <value>Jumat</value>
+    <value>Jum</value>
   </data>
   <data name="FreePlay" xml:space="preserve">
     <value>Permainan Gratis</value>
@@ -1033,7 +1033,7 @@
     <value>Dari tanggal</value>
   </data>
   <data name="FT" xml:space="preserve">
-    <value>FT</value>
+    <value>Waktu Penuh</value>
   </data>
   <data name="Full" xml:space="preserve">
     <value>Penuh</value>
@@ -1163,6 +1163,9 @@
   </data>
   <data name="HomeNoBet" xml:space="preserve">
     <value>Tuan Rumah Tanpa Taruhan</value>
+  </data>
+  <data name="HTFT" xml:space="preserve">
+    <value>Pertama/Waktu Penuh</value>
   </data>
   <data name="HttpError_403" xml:space="preserve">
     <value>Maaf, Anda tidak memiliki izin untuk mengakses halaman ini.</value>
@@ -1567,7 +1570,7 @@
     <value>Parlay Olahraga Campuran</value>
   </data>
   <data name="Mo" xml:space="preserve">
-    <value>Senin</value>
+    <value>Sen</value>
   </data>
   <data name="Mobile" xml:space="preserve">
     <value>Ponsel</value>
@@ -1981,7 +1984,7 @@
     <value>Joker</value>
   </data>
   <data name="ProductKN" xml:space="preserve">
-    <value>RNG Keno</value>
+    <value>Permainan Angka Keno</value>
   </data>
   <data name="ProductLC" xml:space="preserve">
     <value>Kasino Langsung</value>
@@ -1991,9 +1994,6 @@
   </data>
   <data name="ProductLT" xml:space="preserve">
     <value>Togel</value>
-  </data>
-  <data name="ProductMGRNG" xml:space="preserve">
-    <value>MG-RNG</value>
   </data>
   <data name="ProductMXG" xml:space="preserve">
     <value>MaxGame</value>
@@ -2122,7 +2122,7 @@
     <value>Berhasil mengatur ulang kata sandi!</value>
   </data>
   <data name="Resettled" xml:space="preserve">
-    <value>Direset</value>
+    <value>Re-settle</value>
   </data>
   <data name="ResettledRecovered" xml:space="preserve">
     <value>Dipindahkan/Dipulihkan</value>
@@ -2158,7 +2158,7 @@
     <value>Berjalan</value>
   </data>
   <data name="Sa" xml:space="preserve">
-    <value>Sabtu</value>
+    <value>Sab</value>
   </data>
   <data name="Saba" xml:space="preserve">
     <value>Saba</value>
@@ -2194,7 +2194,7 @@
     <value>Pelanggan yang Dipilih</value>
   </data>
   <data name="SelectedItemCount" xml:space="preserve">
-    <value>terpilih</value>
+    <value># terpilih</value>
   </data>
   <data name="SelectGroup" xml:space="preserve">
     <value>Pilih Grup</value>
@@ -2287,7 +2287,7 @@
     <value>Status</value>
   </data>
   <data name="Su" xml:space="preserve">
-    <value>Minggu</value>
+    <value>Min</value>
   </data>
   <data name="Subject" xml:space="preserve">
     <value>Subjek</value>
@@ -2341,7 +2341,7 @@
     <value>Tim</value>
   </data>
   <data name="Th" xml:space="preserve">
-    <value>Kamis</value>
+    <value>Kam</value>
   </data>
   <data name="ThereIsNoSelectedItem" xml:space="preserve">
     <value>Tidak ada item yang dipilih.</value>
@@ -2464,7 +2464,7 @@
     <value>Silakan coba login kembali: &lt;br/&gt;解决方法</value>
   </data>
   <data name="Tu" xml:space="preserve">
-    <value>Selasa</value>
+    <value>Sel</value>
   </data>
   <data name="Tuesday" xml:space="preserve">
     <value>Selasa</value>
@@ -2740,7 +2740,7 @@
     <value>Peringatan, pemain ini tidak dapat login dan transfer!</value>
   </data>
   <data name="We" xml:space="preserve">
-    <value>Rabu</value>
+    <value>Rab</value>
   </data>
   <data name="Wednesday" xml:space="preserve">
     <value>Rabu</value>
