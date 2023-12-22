@@ -8,6 +8,7 @@
     { value: -7, text: 'IDR' },
     { value: -8, text: 'INH' },
     { value: -11, text: 'PHP' },
+    { value: -12, text: 'MP' },
     //crypto currencies
     { value: -99, text: 'USDT' }
 ]
