@@ -30,4 +30,11 @@
     <ProjectReference Include="..\Fanex.Athena.PlayerAdmin.Core\Fanex.Athena.PlayerAdmin.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="Views\UserGuide\MaxPayoutPerMatch\th-TH.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>

@@ -169,7 +169,7 @@
     <value>AG Casino tidak ditawarkan untuk mata uang ini.</value>
   </data>
   <data name="AGCasinoWinLoss" xml:space="preserve">
-    <value>AG Casino Menang Kalah</value>
+    <value>AG Casino Win Loss</value>
   </data>
   <data name="AGClosingBalance" xml:space="preserve">
     <value>Saldo Penutupan AG</value>
@@ -232,7 +232,7 @@
     <value>Sudah VIP, tidak ada pembaruan</value>
   </data>
   <data name="Amendment" xml:space="preserve">
-    <value>Penyelesaian Ulang</value>
+    <value>Menyelesaikan kembali</value>
   </data>
   <data name="Amount" xml:space="preserve">
     <value>Jumlah</value>
@@ -1309,7 +1309,7 @@
     <value>Handicap Pertama</value>
   </data>
   <data name="lbl1stOver_Under" xml:space="preserve">
-    <value>1st Lebih/Kurang</value>
+    <value>Besar/Kecil Babak Pertama</value>
   </data>
   <data name="lbl3WayHandicap" xml:space="preserve">
     <value>Handicap 3-Way</value>
@@ -1441,10 +1441,10 @@
     <value>Cocokkan Awalan, contohnya</value>
   </data>
   <data name="MatchWinLoss" xml:space="preserve">
-    <value>Kemenangan/Kerugian Pertandingan</value>
+    <value>Match Win Loss</value>
   </data>
   <data name="MatchWinLossTitle" xml:space="preserve">
-    <value>Kemenangan/Kerugian Pertandingan, {0} - {1}</value>
+    <value>Match Win Loss, {0} - {1}</value>
   </data>
   <data name="MaxBet" xml:space="preserve">
     <value>Taruhan Maksimum</value>
@@ -1498,7 +1498,7 @@
     <value>Maksimum Per Pertandingan</value>
   </data>
   <data name="MaxPerMatch2" xml:space="preserve">
-    <value>Maksimum/Permainan</value>
+    <value>Maksimal Taruhan/Per Pertandingan</value>
   </data>
   <data name="MaxPerMatchNotGreaterMaxPayoutPerMatch" xml:space="preserve">
     <value>Max Per Pertandingan tidak dapat lebih besar dari Pembayaran Maksimum Per Pertandingan</value>
@@ -1816,7 +1816,7 @@
     <value>Lebih</value>
   </data>
   <data name="OverUnder" xml:space="preserve">
-    <value>Atas/Bawah</value>
+    <value>Besar/Kecil</value>
   </data>
   <data name="Page" xml:space="preserve">
     <value>Halaman</value>
@@ -1990,7 +1990,7 @@
     <value>Kasino Langsung</value>
   </data>
   <data name="ProductLG" xml:space="preserve">
-    <value>Virtual Sports 3</value>
+    <value>Olahraga Virtual 3</value>
   </data>
   <data name="ProductLT" xml:space="preserve">
     <value>Togel</value>
@@ -2050,7 +2050,7 @@
     <value>Olahraga Virtual</value>
   </data>
   <data name="ProductVS2" xml:space="preserve">
-    <value>Virtual Sports 2</value>
+    <value>Olahraga Virtual 2</value>
   </data>
   <data name="ProductWM" xml:space="preserve">
     <value>WM</value>
@@ -2161,7 +2161,7 @@
     <value>Sab</value>
   </data>
   <data name="Saba" xml:space="preserve">
-    <value>Saba</value>
+    <value>Saba </value>
   </data>
   <data name="SabaIntelligenceTooltip" xml:space="preserve">
     <value>Klik di sini untuk melihat tab Profil Pengguna dari fungsi Saba Intelligence</value>
@@ -2173,7 +2173,7 @@
     <value>Sabtu</value>
   </data>
   <data name="Save" xml:space="preserve">
-    <value>Simpan</value>
+    <value>Menyimpan</value>
   </data>
   <data name="SBComm" xml:space="preserve">
     <value>Komisi SB</value>
@@ -2662,7 +2662,7 @@
     <value>Lihat data dalam bulan</value>
   </data>
   <data name="Viewin" xml:space="preserve">
-    <value>Tampilan dalam {0}</value>
+    <value>Lihat {0}</value>
   </data>
   <data name="ViewNotification" xml:space="preserve">
     <value>Lihat Pemberitahuan</value>
@@ -2801,5 +2801,8 @@
   </data>
   <data name="YouNotChooseAnyCustomerMsg" xml:space="preserve">
     <value>Anda tidak memilih pelanggan apa pun.</value>
+  </data>
+  <data name="ProductVS3" xml:space="preserve">
+    <value>Olahraga Virtual 3 (old)</value>
   </data>
 </root>

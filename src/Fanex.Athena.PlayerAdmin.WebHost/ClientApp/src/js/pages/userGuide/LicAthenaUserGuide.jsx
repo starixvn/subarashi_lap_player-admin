@@ -262,7 +262,7 @@ const IndonesiaContent = ({exportOddsGroup}) => {
                 <li><b>Email:</b> dicari berdasarkan Email yang tepat.</li>
                 <li><b>Mata Uang:</b> pilih mata uang pemain yang ingin Anda kelola.
                     <ul>
-                        <li><b>Semua:</b> Semua mata uang yang didukung akan dicantumkan.</li>
+                        <li><b>Semua:</b> semua mata uang yang didukung akan terdaftar.</li>
                     </ul>
                 </li>
                 <li><b>Grup Odds:</b> melihat pemain dari grup odds tertentu.</li>
@@ -274,7 +274,7 @@ const IndonesiaContent = ({exportOddsGroup}) => {
         </div>
         <div className="line" />
         <div className="rule">
-            <h4>Pedoman Laporan</h4>
+            <h4>Panduan Laporan</h4>
             <ul>
                 <li><b>Status:</b> melihat atau mengatur status pemain.</li>
                 <li><b>Username:</b> melihat username pemain dan jumlah opsi pintasan termasuk:

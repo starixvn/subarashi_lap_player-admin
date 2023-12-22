@@ -166,13 +166,13 @@
     <value>หลังยอดคงเหลือ</value>
   </data>
   <data name="AGCasino" xml:space="preserve">
-    <value>AGคาสิโน</value>
+    <value>AG คาสิโน</value>
   </data>
   <data name="AGCasinoBalance" xml:space="preserve">
     <value>ยอดคงเหลือ AGคาสิโน</value>
   </data>
   <data name="AGCasinoNotOfferCurrency" xml:space="preserve">
-    <value>AGคาสิโน ไม่มีให้บริการของสกุลเงินนี้</value>
+    <value>AG คาสิโน ไม่มีให้บริการของสกุลเงินนี้.</value>
   </data>
   <data name="AGCasinoWinLoss" xml:space="preserve">
     <value>AGคาสิโน แพ้ชนะ</value>
@@ -214,7 +214,7 @@
     <value>คุณแน่ใจหรือว่าต้องการปิด BA?</value>
   </data>
   <data name="AlertTurnOnBAMsg" xml:space="preserve">
-    <value>คุณแน่ใจหรือไม่ว่าต้องการเปิด BA</value>
+    <value>คุณแน่ใจหรือไม่ว่าต้องการเปิด BA?</value>
   </data>
   <data name="AlertUserNameMsg" xml:space="preserve">
     <value>กรุณาใส่ชื่อผู้ใช้!</value>
@@ -604,13 +604,13 @@
     <value>คุณแน่ใจหรือว่าต้องการปิด BA?</value>
   </data>
   <data name="ConfirmBatchUpdateBAStatus_On" xml:space="preserve">
-    <value>คุณแน่ใจหรือไม่ว่าต้องการเปิด BA</value>
+    <value>คุณแน่ใจหรือไม่ว่าต้องการเปิด BA?</value>
   </data>
   <data name="ConfirmBatchUpdateOddsGroup" xml:space="preserve">
     <value>คุณแน่ใจหรือไม่ว่าต้องการย้ายผู้เล่นเหล่านี้ไปยังกลุ่มอัตราต่อรองที่เลือก?</value>
   </data>
   <data name="ConfirmBatchUpdateSpecialLevel" xml:space="preserve">
-    <value>คุณแน่ใจหรือไม่ว่าต้องการตั้งค่าระดับพิเศษของผู้เล่นเหล่านี้</value>
+    <value>คุณแน่ใจหรือไม่ว่าต้องการตั้งค่าระดับพิเศษของผู้เล่นเหล่านี้?</value>
   </data>
   <data name="ConfirmCommission" xml:space="preserve">
     <value>ยืนยันค่าคอมมิชชั่นของลูกค้า:</value>
@@ -700,7 +700,7 @@
     <value>ลูกค้าเข้าสู่ระบบ</value>
   </data>
   <data name="CustomerNotBelongAnyGroupMsg" xml:space="preserve">
-    <value>ลูกค้าที่เลือกไม่ได้อยู่ในกลุ่มใดๆ</value>
+    <value>ลูกค้าที่เลือกไม่ได้อยู่ในกลุ่มใดๆ.</value>
   </data>
   <data name="CustomerOption" xml:space="preserve">
     <value>ตัวเลือกของลูกค้า</value>
@@ -1342,7 +1342,7 @@
     <value>แฮนดิแคป ที่1</value>
   </data>
   <data name="lbl1stOver_Under" xml:space="preserve">
-    <value>อันดับ 1 สูง/ต่ำ</value>
+    <value>มากกว่า/น้อยกว่า (ครึ่งแรก)</value>
   </data>
   <data name="lbl3WayHandicap" xml:space="preserve">
     <value>แฮนดิแคป 3-ทีมเยือน</value>
@@ -1396,10 +1396,10 @@
     <value>เกมแทงบอลสด</value>
   </data>
   <data name="LiveReport" xml:space="preserve">
-    <value>รายงานแทงบอลสด</value>
+    <value>รายงานสด</value>
   </data>
   <data name="LiveReportTitle" xml:space="preserve">
-    <value>รายงานแทงบอลสด - {0}, {1} --&gt; {2} - {3}</value>
+    <value>รายงานสด - {0}, {1} --&gt; {2} - {3}</value>
   </data>
   <data name="LiveStatus" xml:space="preserve">
     <value>สถานะแทงบอลสด</value>
@@ -1474,10 +1474,10 @@
     <value>คำนำหน้าการแข่งขัน เช่น</value>
   </data>
   <data name="MatchWinLoss" xml:space="preserve">
-    <value>การแข่งขัน แพ้ชนะ</value>
+    <value>การแข่งขัน ชนะ แพ้</value>
   </data>
   <data name="MatchWinLossTitle" xml:space="preserve">
-    <value>การแข่งขัน แพ้ชนะ, {0} - {1}</value>
+    <value>การแข่งขัน ชนะ แพ้, {0} - {1}</value>
   </data>
   <data name="MaxBet" xml:space="preserve">
     <value>เดิมพันสูงสุด</value>
@@ -1852,7 +1852,7 @@
     <value>มากกว่า</value>
   </data>
   <data name="OverUnder" xml:space="preserve">
-    <value>สูง/ต่ำ</value>
+    <value>มากกว่า/น้อยกว่า</value>
   </data>
   <data name="Page" xml:space="preserve">
     <value>หน้า</value>
@@ -1933,7 +1933,7 @@
     <value>สถิติการเดิมพันของผู้เล่น (เดือนถึงวันที่)</value>
   </data>
   <data name="PlayerComm" xml:space="preserve">
-    <value>ผู้เล่น Comm</value>
+    <value>ค่าคอมมิชชั่นผู้เล่น</value>
   </data>
   <data name="PlayerName" xml:space="preserve">
     <value>ชื่อผู้เล่น</value>
@@ -1978,7 +1978,7 @@
     <value>เดิมพันทั้งหมด</value>
   </data>
   <data name="ProductAGC" xml:space="preserve">
-    <value>AGคาสิโน</value>
+    <value>AG คาสิโน</value>
   </data>
   <data name="ProductAP" xml:space="preserve">
     <value>AdvantPlay</value>
@@ -2146,7 +2146,7 @@
     <value>คุณแน่ใจหรือไม่ว่าต้องการนำลูกค้าเหล่านี้ออกจากกลุ่ม?</value>
   </data>
   <data name="RemoveTheseCustomersFromGroupMsg" xml:space="preserve">
-    <value>คุณแน่ใจหรือไม่ว่าต้องการนำลูกค้าเหล่านี้ออกจากกลุ่ม</value>
+    <value>คุณแน่ใจหรือไม่ว่าต้องการนำลูกค้าเหล่านี้ออกจากกลุ่ม?</value>
   </data>
   <data name="RemoveThisCustomerFromGroupMsg" xml:space="preserve">
     <value>คุณแน่ใจหรือไม่ว่าต้องการนำลูกค้ารายนี้ออกจากกลุ่ม</value>
@@ -2209,7 +2209,7 @@
     <value>ส.</value>
   </data>
   <data name="Saba" xml:space="preserve">
-    <value>Saba</value>
+    <value>Saba </value>
   </data>
   <data name="SabaIntelligenceTooltip" xml:space="preserve">
     <value>คลิกที่นี่เพื่อดูแท็บโปรไฟล์ผู้ใช้ของฟังก์ชัน Saba Intelligence</value>
@@ -2245,7 +2245,7 @@
     <value>ลูกค้าที่เลือก</value>
   </data>
   <data name="SelectedItemCount" xml:space="preserve">
-    <value># เลือกแล้ว</value>
+    <value># ลือกแล้ว</value>
   </data>
   <data name="SelectGroup" xml:space="preserve">
     <value>เลือกกลุ่ม</value>
@@ -2542,7 +2542,7 @@
     <value>ประเภท</value>
   </data>
   <data name="Uncategorized" xml:space="preserve">
-    <value>ไม่ได้จัดหมวดหมู่</value>
+    <value>ไม่จัดหมวดหมู่</value>
   </data>
   <data name="UncheckAll" xml:space="preserve">
     <value>ยกเลิกการเลือกทั้งหมด</value>
@@ -2575,7 +2575,7 @@
     <value>อัปเดตบัญชีสำเร็จแล้ว!</value>
   </data>
   <data name="UpdateAgCasinoBetSettings" xml:space="preserve">
-    <value>คุณแน่ใจหรือไม่ว่าต้องการอัปเดตการตั้งค่าการเดิมพัน AGคาสิโน ทั้งหมด</value>
+    <value>คุณแน่ใจหรือไม่ว่าต้องการอัปเดตการตั้งค่าการเดิมพัน AG คาสิโน ทั้งหมด?</value>
   </data>
   <data name="UpdateAgCasinoBetSettingSuccessMsg" xml:space="preserve">
     <value>อัปเดตการตั้งค่าเดิมพัน Agคาสิโน ของ {0} เรียบร้อยแล้ว</value>
@@ -2608,7 +2608,7 @@
     <value>การอัปเดตฟังก์ชันสำเร็จ</value>
   </data>
   <data name="UpdateKenoBetSettings" xml:space="preserve">
-    <value>คุณแน่ใจหรือไม่ว่าต้องการอัปเดตการตั้งค่าเดิมพัน RNG Game Keno ทั้งหมด</value>
+    <value>คุณแน่ใจหรือไม่ว่าต้องการอัปเดตการตั้งค่าเดิมพัน RNG Game Keno ทั้งหมด?</value>
   </data>
   <data name="UpdateKenoBetSettingSuccessMsg" xml:space="preserve">
     <value>อัปเดตการตั้งค่าเดิมพัน RNG เกมคีโนของ {0} สำเร็จแล้ว</value>
@@ -2629,10 +2629,10 @@
     <value>อัปเดตการตั้งค่าการเดิมพัน {0} ของ {1} เรียบร้อยแล้ว</value>
   </data>
   <data name="UpdateProductChargeComm" xml:space="preserve">
-    <value>คุณแน่ใจหรือไม่ว่าต้องการอัปเดตค่าคอมมิชชัน {0}</value>
+    <value>คุณแน่ใจหรือไม่ว่าต้องการอัปเดตค่าคอมมิชชัน {0}?</value>
   </data>
   <data name="UpdateProductStatus" xml:space="preserve">
-    <value>คุณแน่ใจหรือไม่ว่าต้องการอัปเดตสถานะ {0}</value>
+    <value>คุณแน่ใจหรือไม่ว่าต้องการอัปเดตสถานะ {0}?</value>
   </data>
   <data name="UpdateRNGCasinoBetSettingFailMsg" xml:space="preserve">
     <value>การตั้งค่าการเดิมพัน RNG เกมคาสิโนของ {0} อัปเดตล้มเหลว</value>
@@ -2855,5 +2855,8 @@
   </data>
   <data name="YouNotChooseAnyCustomerMsg" xml:space="preserve">
     <value>คุณไม่ได้เลือกลูกค้า</value>
+  </data>
+  <data name="ProductVS3" xml:space="preserve">
+    <value>กีฬาเสมือนจริง 3 (old)</value>
   </data>
 </root>
