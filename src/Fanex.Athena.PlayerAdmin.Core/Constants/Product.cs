@@ -91,6 +91,8 @@
         public const string LG = "LG";
 
         public const string SEA = "SEA";
+        
+        public const string WE = "WE";
     }
 
     public static class ProductTypes
@@ -179,5 +181,7 @@
         public const int LG = 77;
 
         public const int SEA = 72;
+        
+        public const int WE = 80;
     }
 }

@@ -6037,6 +6037,15 @@ namespace Fanex.Athena.PlayerAdmin.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to WE Live Casino.
+        /// </summary>
+        public static string ProductWE {
+            get {
+                return ResourceManager.GetString("ProductWE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to WM.
         /// </summary>
         public static string ProductWM {
