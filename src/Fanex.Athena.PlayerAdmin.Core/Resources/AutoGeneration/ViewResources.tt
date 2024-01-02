@@ -1,5 +1,5 @@
 ﻿<#@ template debug="true" hostSpecific="true" #>
-<#@ include file="TemplateFilemanager.CS.ttinclude" #>
+<#@ include file="$(TargetDir)\T4.FileManager.VisualStudio.ttinclude" #>
 <#@ Assembly Name="System.Core.dll" #>
 <#@ Assembly Name="System.Xml.Linq" #>
 <#@ assembly name="System.Xml" #>
@@ -11,18 +11,19 @@
 <#
 	string solutionPath = Host.ResolveAssemblyReference("$(SolutionDir)");
 	Directory.SetCurrentDirectory(solutionPath);
-	var manager = TemplateFileManager.Create(this);	
+	var manager = T4FileManager.Create(this);
+	var outputProject = "Fanex.Athena.PlayerAdmin.WebHost";
 	string[] filePaths = Directory.GetFiles(solutionPath, "ViewResources*.resx", SearchOption.AllDirectories);
 	string[] outputPaths = new [] { 
-				$"{solutionPath}\\src\\Fanex.Athena.PlayerAdmin.WebHost\\ClientApp\\src\\js\\lib\\languages",
-				$"{solutionPath}\\src\\Fanex.Athena.PlayerAdmin.WebHost\\ClientApp\\src\\jquery-pages\\js\\common\\languages"
+				"ClientApp\\src\\js\\lib\\languages",
+				"ClientApp\\src\\jquery-pages\\js\\common\\languages"
 	};
 	foreach(var filePath in filePaths)
 	{        
 		var fileName = Path.GetFileName(filePath.Replace("resx", "js").Replace("zh", "zh-CN").Replace("vi", "vi-VN").Replace("th", "th-TH").Replace("id", "id-ID"));
 		foreach (var outputPath in outputPaths)
 		{
-					manager.StartNewFile($"{outputPath}\\{fileName}");
+					manager.StartNewFile(fileName, outputProject, outputPath);
 					const string ignoreKey = "ignorejs";
 					using (var stream = new FileStream(filePath, FileMode.Open, FileAccess.Read))
 						{
