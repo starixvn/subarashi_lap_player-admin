@@ -114,23 +114,23 @@ export const CustomerBettingStatus = (props) => {
                 <div className="col-12 col-md-5 col-sm-5 col-lg-5 col-xl-5 statistics-group">
                     <p>{ClientResourceManager.getText('BasedOnSportsbook')}</p>
                     <div className="row">
-                        <div className="col-5 col-md-5 col-sm-5 col-lg-5 col-xl-5">{ClientResourceManager.getText('Margin')}:</div>
+                        <div className="col-7 col-md-7 col-sm-7 col-lg-7 col-xl-7">{ClientResourceManager.getText('Margin')}:</div>
                         <div className="col-4 col-md-4 col-sm-4 col-lg-4 col-xl-4">{NumberFormat.formatDecimal(marginPercent)}%</div>
                     </div>
                     <div className="row">
-                        <div className="col-5 col-md-5 col-sm-5 col-lg-5 col-xl-5">{ClientResourceManager.getText('AverageBetSize')}:</div>
+                        <div className="col-7 col-md-7 col-sm-7 col-lg-7 col-xl-7">{ClientResourceManager.getText('AverageBetSize')}:</div>
                         <div className="col-4 col-md-4 col-sm-4 col-lg-4 col-xl-4">{NumberFormat.formatDecimal(AverageBetSize)}</div>
                     </div>
                     <div className="row">
-                        <div className="col-5 col-md-5 col-sm-5 col-lg-5 col-xl-5">{ClientResourceManager.getText('Winnings')}:</div>
+                        <div className="col-7 col-md-7 col-sm-7 col-lg-7 col-xl-7">{ClientResourceManager.getText('Winnings')}:</div>
                         <div className="col-4 col-md-4 col-sm-4 col-lg-4 col-xl-4">{NumberFormat.formatDecimal(Winnings)}</div>
                     </div>
                     <div className="row">
-                        <div className="col-5 col-md-5 col-sm-5 col-lg-5 col-xl-5">{ClientResourceManager.getText('Loss')}:</div>
+                        <div className="col-7 col-md-7 col-sm-7 col-lg-7 col-xl-7">{ClientResourceManager.getText('Loss')}:</div>
                         <div className="col-4 col-md-4 col-sm-4 col-lg-4 col-xl-4">{NumberFormat.formatDecimal(Loss)}</div>
                     </div>
                     <div className="row">
-                        <div className="col-5 col-md-5 col-sm-5 col-lg-5 col-xl-5">{ClientResourceManager.getText('NetWinLoss')}:</div>
+                        <div className="col-7 col-md-7 col-sm-7 col-lg-7 col-xl-7">{ClientResourceManager.getText('NetWinLoss')}:</div>
                         <div className="col-4 col-md-4 col-sm-4 col-lg-4 col-xl-4">{NumberFormat.formatDecimal(NetWinLoss)}</div>
                     </div>
                 </div>
