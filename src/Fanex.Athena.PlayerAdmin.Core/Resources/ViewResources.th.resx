@@ -124,7 +124,7 @@
     <value>การเดิมพันที่ผิดปกติ</value>
   </data>
   <data name="AccessDeniedMsg" xml:space="preserve">
-    <value>ขออภัย คุณไม่ได้รับอนุญาตให้เข้าถึงหน้านี้</value>
+    <value>ขออภัย คุณไม่ได้รับอนุญาตให้เข้าถึงหน้านี้.</value>
   </data>
   <data name="Account" xml:space="preserve">
     <value>บัญชี</value>
@@ -199,16 +199,16 @@
     <value>กรุณาป้อนรหัสผ่านเก่า!!!</value>
   </data>
   <data name="AlertPasswordEmptyMsg" xml:space="preserve">
-    <value>ขออภัย รหัสผ่านไม่สามารถเว้นได้!</value>
+    <value>ขออภัย รหัสผ่านไม่สามารถเว้นได้!!!</value>
   </data>
   <data name="AlertRemoveSpecialLevelForCustomerMsg" xml:space="preserve">
     <value>จะลบระดับพิเศษที่ตั้งไว้ของลูกค้ารายนี้ คุณแน่ใจไหม?</value>
   </data>
   <data name="AlertSetOddsGroupForCustomerMsg" xml:space="preserve">
-    <value>คุณแน่ใจหรือไม่ว่าต้องการย้ายผู้เล่นรายนี้ไปยังกลุ่มอัตราต่อรอง {0}</value>
+    <value>คุณแน่ใจหรือไม่ว่าต้องการย้ายผู้เล่นรายนี้ไปยังกลุ่มอัตราต่อรอง {0}?</value>
   </data>
   <data name="AlertSetSpecialLevelForCustomerMsg" xml:space="preserve">
-    <value>คุณแน่ใจหรือไม่ว่าต้องการตั้งค่าระดับพิเศษของลูกค้ารายนี้</value>
+    <value>คุณแน่ใจหรือไม่ว่าต้องการตั้งค่าระดับพิเศษของลูกค้ารายนี้?</value>
   </data>
   <data name="AlertTurnOffBAMsg" xml:space="preserve">
     <value>คุณแน่ใจหรือว่าต้องการปิด BA?</value>
@@ -412,7 +412,7 @@
     <value>ข้อมูลจาก {0}</value>
   </data>
   <data name="BettingTicketCenter_RefnoTabNote1" xml:space="preserve">
-    <value>สำหรับสปอร์ตบุ๊ค ผลการค้นหาจะรวมตั๋วโบนัส/เงินสดที่เกี่ยวข้อง</value>
+    <value>สำหรับสปอร์ตบุ๊ค ผลการค้นหาจะรวมตั๋วโบนัส/เงินสดที่เกี่ยวข้อง.</value>
   </data>
   <data name="BettingTicketCenter_RefnoTabNote2" xml:space="preserve">
     <value>สำหรับ {0}: โปรดระบุชื่อผู้ใช้เพื่อค้นหาตั๋วหลังจาก {1}</value>
@@ -421,7 +421,7 @@
     <value>ค่าคอมมิชชั่นBet Trade</value>
   </data>
   <data name="BetTradeNotOfferCurrency" xml:space="preserve">
-    <value>ไม่มีบริการ BetTrade ของสกุลเงินนี้</value>
+    <value>ไม่มีบริการ BetTrade ของสกุลเงินนี้.</value>
   </data>
   <data name="BetType" xml:space="preserve">
     <value>ประเภทการเดิมพัน</value>
@@ -445,10 +445,10 @@
     <value>ซื้อตั๋วแล้ว[s]</value>
   </data>
   <data name="BTCExportExcelMsg1" xml:space="preserve">
-    <value>ผลการค้นหาของคุณเกินขีดจำกัดที่เราตั้งไว้ให้ดาวน์โหลด</value>
+    <value>ผลการค้นหาของคุณเกินขีดจำกัดที่เราตั้งไว้ให้ดาวน์โหลด.</value>
   </data>
   <data name="BTCExportExcelMsg2" xml:space="preserve">
-    <value>โปรดลองลดช่วงวันที่ เลือกสกุลเงิน/ประเภทการเดิมพัน ฯลฯ</value>
+    <value>โปรดลองลดช่วงวันที่ เลือกสกุลเงิน/ประเภทการเดิมพัน ฯลฯ.</value>
   </data>
   <data name="BuyBackAmount" xml:space="preserve">
     <value>ซื้อคืนจำนวน</value>
@@ -466,7 +466,7 @@
     <value>ยกเลิก</value>
   </data>
   <data name="CannotUpdateBetLimitForProduct" xml:space="preserve">
-    <value>คุณไม่สามารถอัปเดตวงเงินเดิมพันของผู้เล่นสำหรับผลิตภัณฑ์ {0}</value>
+    <value>คุณไม่สามารถอัปเดตวงเงินเดิมพันของผู้เล่นสำหรับผลิตภัณฑ์ {0}.</value>
   </data>
   <data name="CashOutAmount" xml:space="preserve">
     <value>จำนวนเงินออก</value>
@@ -481,7 +481,7 @@
     <value>รายละเอียดการจ่ายเงิน</value>
   </data>
   <data name="CashOutNotOfferCurrency" xml:space="preserve">
-    <value>ไม่มีการเสนอเงินออกของสกุลเงินนี้</value>
+    <value>ไม่มีการเสนอเงินออกของสกุลเงินนี้.</value>
   </data>
   <data name="CashOutShare" xml:space="preserve">
     <value>ส่วนแบ่งเงินสด</value>
@@ -505,7 +505,7 @@
     <value>เงินออก แพ้ชนะ</value>
   </data>
   <data name="CasinoAPI_UpdateCommError" xml:space="preserve">
-    <value>มีข้อผิดพลาดเมื่อเรียก APIคาสิโน เพื่ออัปเดตค่าคอมมิชชันของลูกค้า</value>
+    <value>มีข้อผิดพลาดเมื่อเรียก APIคาสิโน เพื่ออัปเดตค่าคอมมิชชันของลูกค้า.</value>
   </data>
   <data name="CasinoTransfer" xml:space="preserve">
     <value>การโอนย้ายคาสิโน</value>
@@ -523,7 +523,7 @@
     <value>เปลี่ยนสถานะของ {0}</value>
   </data>
   <data name="ChangeStatusOfThisCustomerMsg" xml:space="preserve">
-    <value>คุณแน่ใจหรือไม่ว่าต้องการเปลี่ยนสถานะของลูกค้ารายนี้</value>
+    <value>คุณแน่ใจหรือไม่ว่าต้องการเปลี่ยนสถานะของลูกค้ารายนี้?</value>
   </data>
   <data name="ChargeCommission" xml:space="preserve">
     <value>หักค่าคอมมิชชั่น</value>
@@ -538,10 +538,10 @@
     <value>การเลือก</value>
   </data>
   <data name="ChooseGroupMsg" xml:space="preserve">
-    <value>กรุณาเลือกกลุ่ม</value>
+    <value>กรุณาเลือกกลุ่ม.</value>
   </data>
   <data name="ChooseGroupNameMsg" xml:space="preserve">
-    <value>โปรดเลือกชื่อกลุ่มอื่น</value>
+    <value>โปรดเลือกชื่อกลุ่มอื่น.</value>
   </data>
   <data name="CleanSheet" xml:space="preserve">
     <value>เคลียร์ชีท</value>
@@ -571,7 +571,7 @@
     <value>ค่าคอมมิชชั่น</value>
   </data>
   <data name="CommIsClear" xml:space="preserve">
-    <value>เคลียร์ค่าคอมมิชชั่นของลูกค้าแล้ว</value>
+    <value>เคลียร์ค่าคอมมิชชั่นของลูกค้าแล้ว.</value>
   </data>
   <data name="Commission" xml:space="preserve">
     <value>ค่าคอมมิชชั่น</value>
@@ -586,7 +586,7 @@
     <value>ส่วนแบ่งค่าคอมมิชชัน</value>
   </data>
   <data name="CommIsUnChange" xml:space="preserve">
-    <value>ค่าคอมมิชชั่นของลูกค้าไม่เปลี่ยนแปลง</value>
+    <value>ค่าคอมมิชชั่นของลูกค้าไม่เปลี่ยนแปลง.</value>
   </data>
   <data name="Confirm" xml:space="preserve">
     <value>ยืนยัน</value>
@@ -2149,7 +2149,7 @@
     <value>คุณแน่ใจหรือไม่ว่าต้องการนำลูกค้าเหล่านี้ออกจากกลุ่ม?</value>
   </data>
   <data name="RemoveThisCustomerFromGroupMsg" xml:space="preserve">
-    <value>คุณแน่ใจหรือไม่ว่าต้องการนำลูกค้ารายนี้ออกจากกลุ่ม</value>
+    <value>คุณแน่ใจหรือไม่ว่าต้องการนำลูกค้ารายนี้ออกจากกลุ่ม?</value>
   </data>
   <data name="RepeatedBets" xml:space="preserve">
     <value>เดิมพันซ้ำ</value>
