@@ -1,6 +1,18 @@
 {
   "FilesToGenerate": [
     {
+      "Filename": "ViewResources.id-ID.js",
+      "Project": "Fanex.Athena.PlayerAdmin.WebHost",
+      "Path": "ClientApp\\src\\js\\lib\\languages",
+      "Properties": {}
+    },
+    {
+      "Filename": "ViewResources.id-ID.js",
+      "Project": "Fanex.Athena.PlayerAdmin.WebHost",
+      "Path": "ClientApp\\src\\jquery-pages\\js\\common\\languages",
+      "Properties": {}
+    },
+    {
       "Filename": "ViewResources.js",
       "Project": "Fanex.Athena.PlayerAdmin.WebHost",
       "Path": "ClientApp\\src\\js\\lib\\languages",
@@ -8,6 +20,18 @@
     },
     {
       "Filename": "ViewResources.js",
+      "Project": "Fanex.Athena.PlayerAdmin.WebHost",
+      "Path": "ClientApp\\src\\jquery-pages\\js\\common\\languages",
+      "Properties": {}
+    },
+    {
+      "Filename": "ViewResources.th-TH.js",
+      "Project": "Fanex.Athena.PlayerAdmin.WebHost",
+      "Path": "ClientApp\\src\\js\\lib\\languages",
+      "Properties": {}
+    },
+    {
+      "Filename": "ViewResources.th-TH.js",
       "Project": "Fanex.Athena.PlayerAdmin.WebHost",
       "Path": "ClientApp\\src\\jquery-pages\\js\\common\\languages",
       "Properties": {}
