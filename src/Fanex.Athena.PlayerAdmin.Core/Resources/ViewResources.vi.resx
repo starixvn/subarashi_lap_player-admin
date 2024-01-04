@@ -409,7 +409,7 @@
     <value>Dữ liệu có sẵn từ {0}</value>
   </data>
   <data name="BettingTicketCenter_RefnoTabNote1" xml:space="preserve">
-    <value>Đối với Sportsbook, kết quả tìm kiếm bao gồm vé Thưởng/Tiền mặt</value>
+    <value>Đối với Sportsbook, kết quả tìm kiếm bao gồm vé Thưởng/Tiền mặt.</value>
   </data>
   <data name="BettingTicketCenter_RefnoTabNote2" xml:space="preserve">
     <value>Đối với {0}: Vui lòng nhập tên người dùng để tìm vé sau thời điểm {1}</value>
@@ -418,7 +418,7 @@
     <value>Hoa Hồng cho Bet Trade</value>
   </data>
   <data name="BetTradeNotOfferCurrency" xml:space="preserve">
-    <value>BetTrade không chấp nhận đơn vị tiền tệ này</value>
+    <value>BetTrade không chấp nhận đơn vị tiền tệ này.</value>
   </data>
   <data name="BetType" xml:space="preserve">
     <value>Loại cược</value>
@@ -442,7 +442,7 @@
     <value>Vé đã mua</value>
   </data>
   <data name="BTCExportExcelMsg1" xml:space="preserve">
-    <value>Kết quả tìm kiếm vượt quá giới hạn cho phép tải xuống</value>
+    <value>Kết quả tìm kiếm vượt quá giới hạn cho phép tải xuống.</value>
   </data>
   <data name="BTCExportExcelMsg2" xml:space="preserve">
     <value>Hãy thử thu hẹp phạm vi ngày, chọn đơn vị tiền tệ/loại cược riêng lẻ,v.v.</value>
@@ -478,7 +478,7 @@
     <value>Chi tiết bán vé cược</value>
   </data>
   <data name="CashOutNotOfferCurrency" xml:space="preserve">
-    <value>Bán Vé Cược không được áp dụng cho loại tiền tệ này</value>
+    <value>Bán Vé Cược không được áp dụng cho loại tiền tệ này.</value>
   </data>
   <data name="CashOutShare" xml:space="preserve">
     <value>Chia sẻ bán vé cược</value>
@@ -535,7 +535,7 @@
     <value>Lựa chọn</value>
   </data>
   <data name="ChooseGroupMsg" xml:space="preserve">
-    <value>Vui lòng chọn một nhóm</value>
+    <value>Vui lòng chọn một nhóm.</value>
   </data>
   <data name="ChooseGroupNameMsg" xml:space="preserve">
     <value>Vui lòng chọn tên nhóm khác.</value>
@@ -568,7 +568,7 @@
     <value>Hoa hồng</value>
   </data>
   <data name="CommIsClear" xml:space="preserve">
-    <value>Hoa hồng khách hàng đã được thanh toán</value>
+    <value>Hoa hồng khách hàng đã được thanh toán.</value>
   </data>
   <data name="Commission" xml:space="preserve">
     <value>Hoa hồng</value>
@@ -583,7 +583,7 @@
     <value>Hoa hồng chia sẻ</value>
   </data>
   <data name="CommIsUnChange" xml:space="preserve">
-    <value>Hoa hồng Khách hàng không thay đổi</value>
+    <value>Hoa hồng Khách hàng không thay đổi.</value>
   </data>
   <data name="Confirm" xml:space="preserve">
     <value>Xác nhận</value>
@@ -2206,7 +2206,7 @@
     <value>Saba </value>
   </data>
   <data name="SabaIntelligenceTooltip" xml:space="preserve">
-    <value>Nhấn để xem Hồ Sơ Người Dùng của chức năng Saba Intelligence </value>
+    <value>Nhấn để xem Hồ Sơ Người Dùng của chức năng Saba Intelligence</value>
   </data>
   <data name="SabaVirtualSportsWinLoss" xml:space="preserve">
     <value>Thắng Thua Thể Thao Ảo Saba</value>

@@ -272,7 +272,9 @@ namespace Fanex.Athena.PlayerAdmin.WebHost
                 {
                     enCulture,
                     csCulture,
-                    new CultureInfo("vi-VN")
+                    new CultureInfo("vi-VN"),
+                    new CultureInfo("id-ID"),
+                    new CultureInfo("th-TH"),
                 };
                 options.RequestCultureProviders = new List<IRequestCultureProvider>
                 {

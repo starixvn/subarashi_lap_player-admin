@@ -26,6 +26,8 @@ var scriptPaths = {
     ],
     langCN: "./ClientApp/src/js/lib/languages/ViewResources.zh-CN.js",
     langVN: "./ClientApp/src/js/lib/languages/ViewResources.vi-VN.js",
+    langID: "./ClientApp/src/js/lib/languages/ViewResources.id-ID.js",
+    langTH: "./ClientApp/src/js/lib/languages/ViewResources.th-TH.js",
 
     playerlist: "./ClientApp/src/js/pages/playerlist/components/index.jsx",
     accountinfo: "./ClientApp/src/js/pages/account-info/components/index.jsx",

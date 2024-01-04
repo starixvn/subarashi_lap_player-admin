@@ -245,10 +245,174 @@ const ViVNContent = ({exportOddsGroup}) => {
     </div>)
 };
 
+const IndonesiaContent = ({exportOddsGroup}) => {
+    return (<div>
+        <div className="rule">
+            <h4>Informasi Umum</h4>
+            <ul>
+                <li>Fungsi ini menampilkan informasi semua pemain beserta pengaturan mereka.</li>
+            </ul>
+        </div>
+        <div className="line" />
+        <div className="rule">
+            <h4>Filter Pencarian</h4>
+            <ul>
+                <li><b>Username:</b> dicari berdasarkan Username (Dukungan pencarian awalan).</li>
+                <li><b>Nomor Rekening Bank:</b> dicari berdasarkan nomor rekening bank yang tepat.</li>
+                <li><b>Email:</b> dicari berdasarkan Email yang tepat.</li>
+                <li><b>Mata Uang:</b> pilih mata uang pemain yang ingin Anda kelola.
+                    <ul>
+                        <li><b>Semua:</b> semua mata uang yang didukung akan terdaftar.</li>
+                    </ul>
+                </li>
+                <li><b>Grup Odds:</b> melihat pemain dari grup odds tertentu.</li>
+                <li><b>Level Khusus:</b> melihat pemain dengan level khusus tertentu.</li>
+                <li><b>BA:</b> melihat pemain dari BA tertentu.</li>
+                <li><b>Level Risiko:</b> melihat pemain dengan level risiko tertentu.</li>
+                <li><b>Grup Komisi:</b> melihat pemain dari grup komisi tertentu.</li>
+            </ul>
+        </div>
+        <div className="line" />
+        <div className="rule">
+            <h4>Panduan Laporan</h4>
+            <ul>
+                <li><b>Status:</b> melihat atau mengatur status pemain.</li>
+                <li><b>Username:</b> melihat username pemain dan jumlah opsi pintasan termasuk:
+                    <ul>
+                        <li>Catatan</li>
+                        <li>Kata Sandi</li>
+                        <li>Informasi Bank</li>
+                        <li>Batas Transfer Dana</li>
+                        <li>Pengaturan Taruhan</li>
+                        <li>Rekapan</li>
+                        <li>Pesan Pribadi</li>
+                    </ul>
+                </li>
+                <li><b>Saldo Saat Ini:</b> menunjukkan jumlah yang tersedia untuk melakukan taruhan.</li>
+                <li><b>Saldo Belum Lunas:</b> menunjukkan total taruhan dari semua tiket yang sedang berjalan.</li>
+                <li><b>Level Risiko:</b> melihat pengaturan taruhan risiko yang ditetapkan dan level risiko odds.</li>
+                <li><b>Grup Komisi:</b> melihat grup komisi untuk pemain.</li>
+                <li><b>Grup Odds:</b> melihat atau mengatur grup odds untuk pemain.</li>
+                <li><b>Status BA:</b> mengaktifkan/mematikan status BA untuk pemain.</li>
+                <li><b>Level Khusus:</b> melihat atau mengatur level khusus untuk pemain.</li>
+                <li><b>Transfer Terakhir:</b> menunjukkan waktu transfer terakhir pemain.</li>
+                <li><b>Email:</b> menunjukkan Email pemain.</li>
+            </ul>
+        </div>
+        <div className="line" />
+        <div className="rule">
+            <h4>Rincian Pemain</h4>
+            <ul>
+                <li><b>Info Pemain:</b> melihat profil pemain, informasi bank, dan catatan aktivitas.
+                    <ul>
+                        <li>Statistik Taruhan Pemain</li>
+                        <li>Fast Cross-Link</li>
+                    </ul>
+                </li>
+                <li><b>Rekapan:</b> melihat rekapan harian pemain. Semua transaksi dirangkum dan kemudian dimasukkan ke dalam catatan harian. Setiap saldo catatan harian akan dijumlahkan hingga tanggal saat ini sebagai saldo terbaru.</li>
+                <li><b>Transaksi Detail:</b> melihat perubahan saldo pemain dan diurutkan berdasarkan waktu.</li>
+                <li><b>Daftar Taruhan:</b> menampilkan tiket yang belum diselesaikan dari pemain.</li>
+                <li><b>Transfer Dana:</b> melihat log transfer dan saldo dompet pemain.</li>
+                <li><b>Pengaturan Taruhan:</b> melihat pengaturan taruhan untuk Sportsbook, Number Game, Virtual Sports, RNumber Game Keno, Lottery, dan produk lainnya.</li>
+                <li><b>Catatan:</b> melihat atau mengedit catatan untuk pemain.</li>
+                <li><b>Log:</b> melihat log pembaruan pemain.</li>
+                <li><b>Pengaturan:</b> mengatur kata sandi, batas transfer dana, dan informasi bank.</li>
+                <li><b>Pesan:</b> melihat pengumuman normal/special dan menambahkan pesan pribadi.</li>
+            </ul>
+            <p>
+                <a className="hyper-link" onClick={exportOddsGroup}>Panduan pengguna untuk fitur grup odds</a>
+            </p>
+        </div>
+    </div>)
+};
+
+const ThailandContent = ({exportOddsGroup}) => {
+    return (<div>
+        <div className="rule">
+            <h4>ข้อมูลทั่วไป</h4>
+            <ul>
+                <li>ฟังก์ชั่นนี้แสดงข้อมูลผู้เล่นทั้งหมดพร้อมกับการตั้งค่า.</li>
+            </ul>
+        </div>
+        <div className="line" />
+        <div className="rule">
+            <h4>ตัวกรองการค้นหา</h4>
+            <ul>
+                <li><b>ชื่อผู้ใช้:</b> ค้นหาโดยชื่อผู้ใช้ (รองรับการค้นหาคำนำหน้า).</li>
+                <li><b>หมายเลขบัญชีธนาคาร:</b> ค้นหาจากเลขที่บัญชีธนาคาร.</li>
+                <li><b>อีเมล:</b> ค้นหาจากอีเมลทั้งหมด.</li>
+                <li><b>สกุลเงิน:</b> เลือกสกุลเงินของผู้เล่นที่คุณต้องการจัดการ.
+                    <ul>
+                        <li><b>ทั้งหมด:</b> สกุลเงินที่รองรับทั้งหมดจะแสดงออกมา.</li>
+                    </ul>
+                </li>
+                <li><b>กลุ่มอัตราต่อรอง:</b> ดูผู้เล่นของกลุ่มอัตราต่อรอง.</li>
+                <li><b>ระดับพิเศษ:</b> ดูผู้เล่นในระดับพิเศษเฉพาะ.</li>
+                <li><b>BA:</b> ดูผู้เล่นของ BA.</li>
+                <li><b>ระดับความเสี่ยง:</b> ดูผู้เล่นในระดับความเสี่ยงเฉพาะ.</li>
+                <li><b>กลุ่มค่าคอมมิชชัน:</b> ดูผู้เล่นของกลุ่มค่าคอมมิชชันเฉพาะ.</li>
+            </ul>
+        </div>
+        <div className="line" />
+        <div className="rule">
+            <h4>ตัวชี้การรายงาน</h4>
+            <ul>
+                <li><b>สถานะ:</b> ดูหรือตั้งค่าสถานะของผู้เล่น.</li>
+                <li><b>ชื่อผู้ใช้:</b> ดูชื่อผู้ใช้ของผู้เล่นและจำนวนตัวเลือกทางลัดรวมถึง:
+                    <ul>
+                        <li>หมายเหตุ</li>
+                        <li>รหัสผ่าน</li>
+                        <li>ข้อมูลธนาคาร</li>
+                        <li>วงเงินการโอน</li>
+                        <li>การตั้งค่าเดิมพัน</li>
+                        <li>รายงานการเงิน</li>
+                        <li>ข้อความส่วนตัว</li>
+                    </ul>
+                </li>
+                <li><b>ยอดคงเหลือปัจจุบัน:</b> ระบุจำนวนเงินที่สามารถวางเดิมพันได้.</li>
+                <li><b>ยอดคงค้าง:</b> ระบุเงินเดิมพันรวมของการเดิมพันที่กำลังดำเนินอยู่ทั้งหมด.</li>
+                <li><b>ระดับความเสี่ยง:</b> ดูตั้งค่าการเดิมพันระดับความเสี่ยงที่กำหนดและอัตราต่อรองระดับความเสี่ยง.</li>
+                <li><b>กลุ่มค่าคอมมิชชัน:</b> ดูกลุ่มค่าคอมมิชชั่นของผู้เล่น.</li>
+                <li><b>กลุ่มอัตราต่อรอง:</b> ดูหรือกำหนดกลุ่มอัตราต่อรองของผู้เล่น.</li>
+                <li><b>สถานะBA:</b> เปิด/ปิดสถานะ BA ของผู้เล่น.</li>
+                <li><b>ระดับพิเศษ:</b> ดูหรือตั้งค่าระดับพิเศษของผู้เล่น.</li>
+                <li><b>การโอนครั้งล่าสุด:</b> ระบุเวลาโอนล่าสุดของผู้เล่น.</li>
+                <li><b>อีเมล:</b> ระบุอีเมลของผู้เล่น.</li>
+            </ul>
+        </div>
+        <div className="line" />
+        <div className="rule">
+            <h4>รายละเอียดผู้เล่น</h4>
+            <ul>
+                <li><b>ข้อมูลผู้เล่น:</b> ดูโปรไฟล์ของผู้เล่น ข้อมูลธนาคาร และบันทึกกิจกรรม.
+                    <ul>
+                        <li>สถิติการเดิมพันของผู้เล่น</li>
+                        <li>เชื่อมโยงอย่างเร็ว</li>
+                    </ul>
+                </li>
+                <li><b>รายงานการเงิน:</b> ดูรายงานการเงินประจำวันของผู้เล่น สรุปรายการทั้งหมดแล้วลงบันทึกประจำวัน ยอดบันทึกรายวันแต่ละรายการจะถูกรวมเข้ากับวันที่ปัจจุบันเป็นยอดล่าสุด.</li>
+                <li><b>รายละเอียดการทำธุรกรรม:</b> ดูการเปลี่ยนแปลงยอดคงเหลือของผู้เล่นและจัดเรียงตามเวลา.</li>
+                <li><b>รายการเดิมพัน:</b> แสดงรายการตั๋วที่ยังไม่ตัดสินของผู้เล่น.</li>
+                <li><b>การโอนเงิน:</b> ดูบันทึกการโอนและยอดเงินคงเหลือของผู้เล่น.</li>
+                <li><b>ตั้งค่าการเดิมพัน:</b> ดูการตั้งค่าการเดิมพันสำหรับ สปอร์ตบุ๊ค, เกมตัวเลข, กีฬาเสมือนจริง, RNumber เกมคีโน, ลอตเตอรี่ และผลิตภัณฑ์อื่น ๆ.</li>
+                <li><b>หมายเหตุ:</b> ดูหรือแก้ไขบันทึกของผู้เล่น.</li>
+                <li><b>บันทึก:</b> ดูบันทึกวันที่ของผู้เล่น.</li>
+                <li><b>ตั้งค่า:</b> ตั้งรหัสผ่าน วงเงินโอน และข้อมูลธนาคาร.</li>
+                <li><b>ข้อความ:</b> ดูประกาศทั่วไป/พิเศษและเพิ่มข้อความส่วนตัว.</li>
+            </ul>
+            <p>
+                <a className="hyper-link" onClick={exportOddsGroup}>คู่มือผู้ใช้สำหรับคุณสมบัติกลุ่มอัตราต่อรอง</a>
+            </p>
+        </div>
+    </div>)
+};
+
 const Contents = {
     engContent: props => <EngContent {...props} />,
     znCNContent: props => <ZnCNContent {...props} />,
     viVNContent: props => <ViVNContent {...props} />,
+    thTHContent: props => <ThailandContent {...props} />,
+    idIDContent: props => <IndonesiaContent {...props} />,
 };
 
 const LicAthenaUserGuide = props => {

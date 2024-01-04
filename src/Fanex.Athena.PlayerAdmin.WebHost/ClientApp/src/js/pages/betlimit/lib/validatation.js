@@ -4,7 +4,7 @@ import NumberFormat from "@jsroot/lib/numberFormat";
 
 export default class Validatation {
     static validateMinMaxBet(current, limitData) {
-        const { MinBet, MaxBet, MaxPerMatch } = current;
+        const { MinBet, MaxBet } = current;
         const Id = current.SportType === BetLimitSport.I4D ? current.SportType : current.Id;
 
         if (isNaN(MinBet)) {

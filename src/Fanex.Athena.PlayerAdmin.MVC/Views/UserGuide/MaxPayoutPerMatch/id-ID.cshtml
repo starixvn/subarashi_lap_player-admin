@@ -1,0 +1,62 @@
+﻿<div class='container'>
+    <div class='title'>
+        <h3>Informasi Pengaturan Pembayaran Maksimal</h3>
+    </div>
+    <div class='main-content'>
+        <p> Max Payout Per Match adalah pengaturan yang mengontrol total pembayaran maksimal dari semua tiket pertandingan yang sama.</p>
+        <div class='paragraph'>
+            <h4>Sebagai Contoh: </h4>
+            <ol>
+                <li>Diketahui bahwa pembayaran maksimum per pertandingan = 1,000</li>
+                <li>
+                    Jika anggota menempatkan tiket pertama dengan Odds = 10, Stake = 70, tiket akan memiliki:
+                    <ul>
+                        <li>Taruhan Maks = Pembayaran Maks Per Pertandingan / Peluang = 1.000 / 10 = 100.</li>
+                        <li>Max Pembayaran = Taruhan * Peluang = 70 * 10 = 700 = Akumulasi Max Pembayaran*</li>
+                    </ul>
+                </li>
+                <li>
+                    Jika anggota menempatkan tiket kedua dengan Peluang = 5, tiket akan memiliki:
+                    <ul>
+                        <li>Taruhan Maks = (Pembayaran Maks Per Pertandingan - Pembayaran Maks Terakumulasi) / Peluang = (1,000 - 700) / 5 = 60.</li>
+                    </ul>
+                    <p class='note'>Catatan: Pembayaran Maksimum Terakumulasi adalah Pembayaran Maksimum dari semua tiket pertandingan yang sama, tidak termasuk tiket Void/Tolak. Oleh karena itu, jika tiket pertama dibatalkan, Taruhan Maksimum dari tiket kedua = (1.000 - 0)/5 = 200.</p>
+                </li>
+            </ol>
+        </div>
+        <ul>
+            <li class="style-double-asterisk">
+                <p><b>Untuk tiket Parlay:</b> Pembayaran Maksimum diterapkan untuk semua jenis taruhan.</p>
+                <p>
+                    Parlay Max Pembayaran Per Pertandingan: Sistem mengakumulasi pembayaran maksimum dari semua tiket parlay yang berjalan dan menggunakannya bersama dengan nilai pengaturan untuk menghitung taruhan maksimum tiket berikutnya. Perhitungan taruhan maksimum berbeda antara Parlay Pertandingan Tunggal dan Parlay Campuran/Kombo.
+                </p>
+                <ul>
+                    <li>
+                        <b>Pertandingan Tunggal Parlay:</b> Taruhan Maks = (Pengaturan Pembayaran Maks Parlay Per Pertandingan - Pembayaran Maks Terakumulasi dari pertandingan yang sama) / Peluang
+                        <div class='note'>Catatan: Parlay Pertandingan Tunggal tidak menghitung tiket Parlay Campuran/Kombo</div>
+                    </li>
+                    <li>
+                        <b>Mix/Combo Parlay:</b> Taruhan Maks = (Pengaturan Pembayaran Maks Parlay Per Pertandingan - Pembayaran Maks Terakumulasi dari semua pertandingan) / Peluang
+                        <div class='note'>Catatan: Mix/Combo Parlay tidak menghitung tiket Parlay Pertandingan Tunggal</div>
+                    </li>
+                </ul>
+                <p>
+                    Akumulasi pembayaran maksimum menghitung semua tiket yang berjalan. Ini akan dirilis jika ada tiket yang berjalan diselesaikan/ditolak/dikembalikan/dibatalkan.
+                </p>
+            </li>
+            <li class="style-double-asterisk">
+                <b>Untuk tiket Normal:</b>
+                <p> Pengaturan Max Payout diterapkan untuk semua jenis taruhan di Sportsbook kecuali jenis taruhan yang tercantum dalam tabel di bawah ini.</p>
+                <div class='table-content'>
+                    <table>
+                        <tr>
+                            <th>Jenis taruhan yang tidak berlaku pengaturan Max Pembayaran</th>
+                        </tr>
+                        @Html.Partial("bettype-table.cshtml")
+                    </table>
+                </div>
+
+            </li>
+        </ul>
+    </div>
+</div>

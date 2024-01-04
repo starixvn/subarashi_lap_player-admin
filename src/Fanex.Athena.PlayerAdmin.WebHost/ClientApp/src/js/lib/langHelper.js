@@ -7,7 +7,9 @@ export default class LangHelper {
     static languageKeys = {
         eng: "en-US", 
         zhCN: "zh-CN",
-        viVN: "vi-VN"
+        viVN: "vi-VN",
+        idID: "id-ID",
+        thTH: "th-TH",
     }
 
     static get currentLanguage() {

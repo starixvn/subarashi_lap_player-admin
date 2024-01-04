@@ -2,7 +2,9 @@ const DEFAULT_RESOURCE_KEY = 'en';
 const resources = {
     'en': {},
     'cs': {},
-    'vn': {}
+    'vn': {},
+    'th': {},
+    'id': {},
 }
 const currentLangKey = window._langKey || DEFAULT_RESOURCE_KEY;
 

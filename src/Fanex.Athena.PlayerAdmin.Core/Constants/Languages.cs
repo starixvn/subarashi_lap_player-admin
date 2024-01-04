@@ -9,7 +9,9 @@ namespace Fanex.Athena.PlayerAdmin.Core.Constants
         {
             { "en", "en-US" },
             { "cs", "zh-CN" },
-            { "vn", "vi-VN" }
+            { "vn", "vi-VN" },
+            { "th", "th-TH" },
+            { "id", "id-ID" },
         };
     }
 }
