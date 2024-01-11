@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Fanex.Athena.PlayerAdmin.Core.Helpers;
+using System;
+using System.Runtime.Serialization;
 
 namespace Fanex.Athena.PlayerAdmin.MVC.ViewModels
 {
@@ -16,15 +18,10 @@ namespace Fanex.Athena.PlayerAdmin.MVC.ViewModels
         public string TransactionTimeStr => TransactionTime.ToString("MM/dd/yyyy HH:mm:ss");
 
         public string BalanceChangeStr =>
-            (BalanceChange > 0 ? "+" : string.Empty) + CutOffValue(BalanceChange).ToString("#,##0.##");
+            (BalanceChange > 0 ? "+" : string.Empty) + CutOffValue(BalanceChange);
 
-        public string AfterBalanceStr => CutOffValue(AfterBalance).ToString("N2");
+        public string AfterBalanceStr => CutOffValue(AfterBalance);
 
-        private static decimal CutOffValue(decimal value, int digits = 2)
-        {
-            var power = (decimal)Math.Pow(10, digits);
-            var result = Math.Floor(Math.Abs(value) * power) / 100;
-            return value >= 0 ? result : -result;
-        }
+        private static string CutOffValue(decimal value) => string.Format(DataFormatHelper.DECIMALFORMAT20, DataFormatHelper.AsDecimal(value));
     }
 }
