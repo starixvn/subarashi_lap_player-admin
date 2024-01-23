@@ -1,15 +1,1 @@
-﻿
-
-// Generated helper templates
-// Generated items
-// Fanex.Athena.PlayerAdmin.WebHost\ClientApp\src\jquery-pages\js\common\languages\ViewResources.zh-CN.js
-// Fanex.Athena.PlayerAdmin.WebHost\ClientApp\src\js\lib\languages\ViewResources.zh-CN.js
-// Fanex.Athena.PlayerAdmin.WebHost\ClientApp\src\jquery-pages\js\common\languages\ViewResources.vi-VN.js
-// Fanex.Athena.PlayerAdmin.WebHost\ClientApp\src\js\lib\languages\ViewResources.vi-VN.js
-// Fanex.Athena.PlayerAdmin.WebHost\ClientApp\src\jquery-pages\js\common\languages\ViewResources.th-TH.js
-// Fanex.Athena.PlayerAdmin.WebHost\ClientApp\src\js\lib\languages\ViewResources.th-TH.js
-// Fanex.Athena.PlayerAdmin.WebHost\ClientApp\src\jquery-pages\js\common\languages\ViewResources.js
-// Fanex.Athena.PlayerAdmin.WebHost\ClientApp\src\js\lib\languages\ViewResources.js
-// Fanex.Athena.PlayerAdmin.WebHost\ClientApp\src\jquery-pages\js\common\languages\ViewResources.id-ID.js
-// Fanex.Athena.PlayerAdmin.WebHost\ClientApp\src\js\lib\languages\ViewResources.id-ID.js
-
+﻿.NET Core placeholder content to avoid ignoring the output extension directive

@@ -1,9 +1,9 @@
 ﻿{
   "FunctionAllowedProducts": {
-    "CustomerWinLoss": [ "SB", "BA", "NG", "VS", "CS", "KN", "BT", "AGC", "VB", "AB", "CO", "VS2", "LT", "SG", "PP", "CC", "VRG", "TG", "I4D", "SXG", "SBC", "SAG", "PGS", "JK", "HB", "WM", "BGG", "VGA", "CG", "AP", "APM", "VS3", "FGGL", "MXG", "JIG", "YB", "MGRNG", "LG", "SEA", "WE" ],
-    "WinLossAnalysis": [ "SB", "BA", "NG", "VS", "CS", "KN", "VB", "AB", "VS2", "LT", "SG", "PP", "CC", "VRG", "TG", "SXG", "SBC", "SAG", "PGS", "JK", "HB", "WM", "BGG", "VGA", "CG", "AP", "APM", "VS3", "FGGL", "MXG", "JIG", "YB", "MGRNG", "LG", "SEA", "WE" ],
+    "CustomerWinLoss": [ "SB", "BA", "NG", "VS", "CS", "KN", "BT", "AGC", "VB", "AB", "CO", "VS2", "LT", "SG", "PP", "CC", "VRG", "TG", "I4D", "SXG", "SBC", "SAG", "PGS", "JK", "HB", "WM", "BGG", "VGA", "CG", "AP", "APM", "VS3", "FGGL", "MXG", "JIG", "YB", "MGRNG", "LG", "SEA", "WE", "L22" ],
+    "WinLossAnalysis": [ "SB", "BA", "NG", "VS", "CS", "KN", "VB", "AB", "VS2", "LT", "SG", "PP", "CC", "VRG", "TG", "SXG", "SBC", "SAG", "PGS", "JK", "HB", "WM", "BGG", "VGA", "CG", "AP", "APM", "VS3", "FGGL", "MXG", "JIG", "YB", "MGRNG", "LG", "SEA", "WE", "L22" ],
     "CommissionGroups": [ "SB", "Parlay", "NG", "CS", "VB", "PP", "SXG", "SG", "KN", "LT", "TG", "VS", "VS2", "VRG", "CC", "SBC", "SAG", "PGS", "AB", "WM", "BGG", "JK", "HB", "VGA", "CG", "AP", "APM", "FGGL", "MXG", "JIG", "YB", "MGRNG", "LG" ],
-    "BettingTicketCenter": [ "SB", "BA", "NG", "VS", "VS2", "KN", "LT", "CO", "TG", "I4D", "VRG", "CS", "HB", "BGG", "JK", "PGS", "WM", "SXG", "SBC", "SAG", "SG", "VGA", "CG", "AP", "APM", "AB", "VB", "CC", "PP", "VS3", "FGGL", "MXG", "JIG", "YB", "MGRNG", "LG", "SEA", "WE" ],
-    "Default": [ "SB", "BA", "NG", "VS", "CS", "KN", "AGC", "PTCS", "VG", "BT", "VB", "AB", "CO", "VS2", "LT", "SG", "BX", "PP", "CC", "VRG", "TG", "I4D", "SXG", "SBC", "SAG", "PGS", "JK", "HB", "WM", "BGG", "VGA", "CG", "AP", "APM", "VS3", "FGGL", "MXG", "JIG", "YB", "MGRNG", "LG", "SEA", "WE" ]
+    "BettingTicketCenter": [ "SB", "BA", "NG", "VS", "VS2", "KN", "LT", "CO", "TG", "I4D", "VRG", "CS", "HB", "BGG", "JK", "PGS", "WM", "SXG", "SBC", "SAG", "SG", "VGA", "CG", "AP", "APM", "AB", "VB", "CC", "PP", "VS3", "FGGL", "MXG", "JIG", "YB", "MGRNG", "LG", "SEA", "WE", "L22" ],
+    "Default": [ "SB", "BA", "NG", "VS", "CS", "KN", "AGC", "PTCS", "VG", "BT", "VB", "AB", "CO", "VS2", "LT", "SG", "BX", "PP", "CC", "VRG", "TG", "I4D", "SXG", "SBC", "SAG", "PGS", "JK", "HB", "WM", "BGG", "VGA", "CG", "AP", "APM", "VS3", "FGGL", "MXG", "JIG", "YB", "MGRNG", "LG", "SEA", "WE", "L22" ]
   }
 }
