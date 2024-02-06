@@ -77,7 +77,7 @@ export class DataGrid extends PureComponent {
 
         return (
             <>
-                <Table
+                <Table key={this.props.fetchDataTime}
                     autoWidth={true}
                     maxWidth={this.maxWidth}
                     minWidth={1300}
@@ -104,9 +104,9 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(state) {
     const { playerList, selectedPlayer, displayedColumnList, isFetchingData, sweetAlertOption, hasCommPermissionEdit, hasCommPermissionRead,
-        hasBaPermission, hasOddsGroupPermission, hasSpecialLevelPermission, siteSetting, depositSetting } = state;
+        hasBaPermission, hasOddsGroupPermission, hasSpecialLevelPermission, siteSetting, depositSetting, fetchDataTime } = state;
     return Object.assign({}, { playerList, selectedPlayer, displayedColumnList, isFetchingData, sweetAlertOption, hasCommPermissionEdit, hasCommPermissionRead,
-        hasBaPermission, hasOddsGroupPermission, hasSpecialLevelPermission, siteSetting, depositSetting });
+        hasBaPermission, hasOddsGroupPermission, hasSpecialLevelPermission, siteSetting, depositSetting, fetchDataTime });
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(DataGrid);

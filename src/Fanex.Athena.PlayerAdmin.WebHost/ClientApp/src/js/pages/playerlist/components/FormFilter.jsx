@@ -135,6 +135,8 @@ export class FormFilter extends PureComponent {
         } else {
             this.searchPlayer();
         }
+
+        this.props.setFetchDataTime();
     };
 
     handlePressEnter = (event) => {
@@ -313,10 +315,10 @@ export class FormFilter extends PureComponent {
 
 function mapDispatchToProps(dispatch) {
     const { searchPlayer, setAdvancedSearch, setParam, setCollapseFilter, getSuggestionList,
-        getSinglePlayer, getSiteSetting, getDepositSetting, getSubsidiarySetting } = ActionCreators;
+        getSinglePlayer, getSiteSetting, getDepositSetting, getSubsidiarySetting, setFetchDataTime } = ActionCreators;
     return bindActionCreators({
         searchPlayer, setAdvancedSearch, setParam, setCollapseFilter, getSuggestionList,
-        getSinglePlayer, getSiteSetting, getDepositSetting, getSubsidiarySetting
+        getSinglePlayer, getSiteSetting, getDepositSetting, getSubsidiarySetting, setFetchDataTime
     }, dispatch);
 }
 

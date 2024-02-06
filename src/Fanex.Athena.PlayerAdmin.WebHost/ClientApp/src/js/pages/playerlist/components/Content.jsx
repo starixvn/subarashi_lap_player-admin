@@ -15,7 +15,7 @@ export const Content = (props) => {
     }
 
     const handlePaging = (pageIndex, pageSize) => {
-        const { param, searchPlayer } = props;
+        const { param, searchPlayer, setFetchDataTime } = props;
         const newParam = {
             ...param,
             pageIndex,
@@ -23,6 +23,7 @@ export const Content = (props) => {
         }
 
         searchPlayer(newParam);
+        setFetchDataTime();
     }
 
     return (
@@ -35,8 +36,8 @@ export const Content = (props) => {
 }
 
 function mapDispatchToProps(dispatch) {
-    const { searchPlayer } = ActionCreators;
-    return bindActionCreators({ searchPlayer }, dispatch);
+    const { searchPlayer, setFetchDataTime } = ActionCreators;
+    return bindActionCreators({ searchPlayer, setFetchDataTime }, dispatch);
 }
 function mapStateToProps(state) {
     const { pagingOption, param } = state;
