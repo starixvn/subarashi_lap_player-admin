@@ -10,7 +10,7 @@ import LangHelper from '@jsroot/lib/langHelper';
 import { buildArchivedColumnList,  } from '../lib/helpers/gridColumnBuilder';
 
 
-const ArchivedContent = ({ archivedSearch, isLoading, isEnableSingleWallet, toggleLoader }) => {
+const ArchivedContent = ({ archivedSearch, isLoading, isEnableSingleWallet, toggleLoader, fetchDataTime, setFetchDataTime }) => {
     const [pagingOption, setPagingOption] = useState(defaultPagingOption);
     const [displayedColumnList, setDisplayedColumnList] = useState(buildArchivedColumnList(isEnableSingleWallet));
     const [archivedPlayerList, setArchivedPlayerList] = useState([]);
@@ -31,7 +31,8 @@ const ArchivedContent = ({ archivedSearch, isLoading, isEnableSingleWallet, togg
             ...defaultParams,
             pageIndex,
             pageSize,
-        })
+        });
+        setFetchDataTime();
     }
 
     const handleExportExcel = () => {
@@ -66,8 +67,18 @@ const ArchivedContent = ({ archivedSearch, isLoading, isEnableSingleWallet, togg
     return (
         <div className="result-content">
             <Pager pageOption={pagingOption} onPaging={handlePaging} />
-            <ArchivedGridCaption displayedColumnList={displayedColumnList} setDisplayedColumnList={setDisplayedColumnList} handleExportExcel={handleExportExcel} playerCount={archivedPlayerList.length} />
-            <ArchivedDataGrid playerList={archivedPlayerList} setPlayerList={setArchivedPlayerList} toggleLoader={toggleLoader} displayedColumnList={displayedColumnList} isLoading={isLoading} />
+            <ArchivedGridCaption 
+                displayedColumnList={displayedColumnList} 
+                setDisplayedColumnList={setDisplayedColumnList} 
+                handleExportExcel={handleExportExcel} 
+                playerCount={archivedPlayerList.length} />
+            <ArchivedDataGrid 
+                playerList={archivedPlayerList} 
+                setPlayerList={setArchivedPlayerList} 
+                toggleLoader={toggleLoader} 
+                displayedColumnList={displayedColumnList} 
+                isLoading={isLoading} 
+                fetchDataTime={fetchDataTime}/>
         </div>
     )
 }

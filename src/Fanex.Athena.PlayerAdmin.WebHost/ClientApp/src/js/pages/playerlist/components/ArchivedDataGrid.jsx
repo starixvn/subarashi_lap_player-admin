@@ -49,7 +49,7 @@ const ArchivedDataGrid = props => {
     const displayedColumn = buildDisplayedColumnObject(displayedColumnList);
 
     return (
-        <Table
+        <Table key={props.fetchDataTime}
             autoWidth={true}
             maxWidth={maxWidth}
             minWidth={1300}

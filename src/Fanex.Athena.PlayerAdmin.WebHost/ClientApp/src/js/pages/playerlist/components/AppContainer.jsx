@@ -9,13 +9,19 @@ import AppLayout from '@jsroot/layouts/AppLayout';
 import PlayerDetail from './PlayerDetail';
 import ArchivedContent from './ArchivedContent';
 
-export const AppContainer = ({ isLoading, isArchivedPlayersSearch, archivedSearch, isEnableSingleWallet, toggleLoader }) => {
+export const AppContainer = ({ isLoading, isArchivedPlayersSearch, archivedSearch, isEnableSingleWallet, toggleLoader, fetchDataTime, setFetchDataTime }) => {
     const _renderContent = () => {
         return !isArchivedPlayersSearch ?
             <>
                 <Content />
                 <PlayerDetail />
-            </> : <ArchivedContent archivedSearch={archivedSearch} isEnableSingleWallet={isEnableSingleWallet} isLoading={isLoading} toggleLoader={toggleLoader} />
+            </> : <ArchivedContent 
+                    archivedSearch={archivedSearch} 
+                    isEnableSingleWallet={isEnableSingleWallet} 
+                    isLoading={isLoading} 
+                    toggleLoader={toggleLoader}
+                    fetchDataTime={fetchDataTime}
+                    setFetchDataTime={setFetchDataTime}/>
     }
     return (
         <AppLayout>
@@ -27,19 +33,20 @@ export const AppContainer = ({ isLoading, isArchivedPlayersSearch, archivedSearc
 }
 
 function mapDispatchToProps(dispatch) {
-    const { toggleLoader } = ActionCreators;
+    const { toggleLoader, setFetchDataTime } = ActionCreators;
     return bindActionCreators({
-        toggleLoader
+        toggleLoader, setFetchDataTime
     }, dispatch);
 }
 
 function mapStateToProps(state) {
-    const { isLoading, param, siteSetting } = state;
+    const { isLoading, param, siteSetting, fetchDataTime } = state;
     return Object.assign({}, { 
         isLoading,
         isArchivedPlayersSearch: !!param.isArchivedPlayersSearch,
         isEnableSingleWallet: siteSetting.isEnableSingleWallet,
-        archivedSearch: !!param.isArchivedPlayersSearch ? param: {}
+        archivedSearch: !!param.isArchivedPlayersSearch ? param: {},
+        fetchDataTime
     });
 }
 

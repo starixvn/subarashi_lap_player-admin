@@ -1,6 +1,6 @@
 ﻿import {
     SET_DISPLAYED_COLUMN_LIST, SET_PLAYER_LIST, SET_CURRENT_ACTIVE_PLAYER, SET_PAGING,
-    SET_IS_FETCHING_DATA, SET_SWEET_ALERT_OPTION
+    SET_IS_FETCHING_DATA, SET_SWEET_ALERT_OPTION, SET_FETCH_DATA_TIME
 } from './types';
 
 import PlayerQueryService from '../lib/services/playerQueryService';
@@ -49,5 +49,12 @@ export const setSweetAlertOption = (data) => {
     return {
         type: SET_SWEET_ALERT_OPTION,
         data
+    }
+}
+
+export const setFetchDataTime = () => {
+    return {
+        type: SET_FETCH_DATA_TIME,
+        data: Date.parse(new Date())
     }
 }
