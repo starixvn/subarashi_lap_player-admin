@@ -124,8 +124,6 @@
 
         public const int CashOut = 25;
 
-        public const int VirtualSports2 = 27;
-
         public const int Lottery = 28;
 
         public const int Exchange = 31;
@@ -179,8 +177,6 @@
         public const int YB = 76;
 
         public const int MGRNG = 73;
-
-        public const int LG = 77;
 
         public const int SEA = 72;
 

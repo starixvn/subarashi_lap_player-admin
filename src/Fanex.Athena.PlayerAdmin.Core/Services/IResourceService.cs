@@ -5,5 +5,7 @@
         string GetBettype(object bettypeId);
 
         string GetSportName(object sportId, string languageCode = null);
+
+        string GettResourceData(object refId, object resourceId);
     }
 }

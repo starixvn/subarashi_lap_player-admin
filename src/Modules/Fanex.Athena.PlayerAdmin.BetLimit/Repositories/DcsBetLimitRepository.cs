@@ -28,8 +28,7 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Repositories
 
         private static readonly IDictionary<int, string[]> ProductSportList = new Dictionary<int, string[]>
         {
-            [ProductTypes.VirtualSports] = new[] { "180", "181", "182", "183", "184", "185", "186" },
-            [ProductTypes.VirtualSports2] = new[] { "190", "191", "192", "193", "199" },
+            [ProductTypes.VirtualSports] = new[] { "9908" },
             [ProductTypes.Lottery] = new[] { "220" },
             [ProductTypes.Sportsbooks2] = new[] { "43" },
             [ProductTypes.TG] = new[] { "222" },
@@ -37,8 +36,7 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Repositories
             [ProductTypes.SLT] = new[] { "169" },
             [ProductTypes.AP] = new[] { "172" },
             [ProductTypes.APM] = new[] { "174" },
-            [ProductTypes.BTC] = new[] { "175" },
-            [ProductTypes.LG] = new[] { "178" }
+            [ProductTypes.BTC] = new[] { "175" }
         };
 
         private const string UpdateStatusXmlFormat = "<ROOT><ProductStatus SportType=\"{0}\" BetType=\"{1}\" IsDisabled=\"{2}\" IsDisabledDownline=\"0\" /></ROOT>";
