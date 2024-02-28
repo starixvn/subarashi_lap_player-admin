@@ -1813,7 +1813,7 @@
     <value>Saldo Tertunda</value>
   </data>
   <data name="Over" xml:space="preserve">
-    <value>Lebih</value>
+    <value>Besar</value>
   </data>
   <data name="OverUnder" xml:space="preserve">
     <value>Besar/Kecil</value>
@@ -1966,7 +1966,7 @@
     <value>Permainan Arcadia</value>
   </data>
   <data name="ProductCO" xml:space="preserve">
-    <value>Penarikan Tunai</value>
+    <value>Penukaran Instan</value>
   </data>
   <data name="ProductCS" xml:space="preserve">
     <value>Casino Saba</value>
@@ -2497,7 +2497,7 @@
     <value>Hapus centang semua</value>
   </data>
   <data name="Under" xml:space="preserve">
-    <value>Di bawah</value>
+    <value>Kecil</value>
   </data>
   <data name="UnderMaintenance" xml:space="preserve">
     <value>Sedang dalam Pemeliharaan</value>
@@ -2755,7 +2755,7 @@
     <value>Whitelabel</value>
   </data>
   <data name="WinLoss" xml:space="preserve">
-    <value>Menang atau kalah</value>
+    <value>Menang-Kalah</value>
   </data>
   <data name="WinLossAnalysis" xml:space="preserve">
     <value>Analisis Menang Kalah</value>
