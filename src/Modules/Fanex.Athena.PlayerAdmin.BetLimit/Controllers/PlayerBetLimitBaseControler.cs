@@ -65,6 +65,11 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Controllers
                 var sportName = _resourceService.GetSportName(SportType.Cricket);
                 return $"{ViewResources.Saba}{sportName}";
             }
+            if (sportId == SportType.VirtualSports.ToString())
+            {
+                return _resourceService.GettResourceData("DummySport", sportId);
+            }
+
             return _resourceService.GetSportName(sportId);
         }
 

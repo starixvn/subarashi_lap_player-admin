@@ -23,6 +23,16 @@ namespace Fanex.Athena.PlayerAdmin.Core.Services
             return _remotingRefService.GetBetTypeName(bettypeId.ToString(), GetCurrentIBCLanguageCode());
         }
 
+        public string GettResourceData(object refId, object resourceId)
+        {
+            if (!IsValidId(refId) || !IsValidId(resourceId))
+            {
+                return string.Empty;
+            }
+
+            return _remotingRefService.GetResourceDataByRefIdAndResourceId(refId.ToString(), resourceId.ToString(), GetCurrentIBCLanguageCode(), string.Empty);
+        }
+
         public string GetSportName(object sportId, string languageCode = null)
         {
             if (!IsValidId(sportId))

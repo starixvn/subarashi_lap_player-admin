@@ -42,7 +42,6 @@ namespace Fanex.Athena.PlayerAdmin.Commission.Helpers
             [ProductCode.CG] = "CG",
             [ProductCode.AP] = "Advant",
             [ProductCode.APM] = "AdvantMini",
-            [ProductCode.LG] = "VS3",
             [ProductCode.FGGL] = "FGG",
             [ProductCode.MXG] = "MaxGame",
             [ProductCode.JIG] = "Jili",
