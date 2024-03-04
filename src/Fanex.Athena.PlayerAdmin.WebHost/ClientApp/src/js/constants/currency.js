@@ -9,6 +9,8 @@
     { value: -8, text: 'INH' },
     { value: -11, text: 'PHP' },
     { value: -12, text: 'MP' },
+    { value: -14, text: 'NPR' },
+    { value: -15, text: 'TRY' },
     //crypto currencies
     { value: -99, text: 'USDT' }
 ]
