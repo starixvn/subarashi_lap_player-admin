@@ -1,4 +1,8 @@
-﻿using Fanex.Athena.PlayerAdmin.API.DTO;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Fanex.Athena.PlayerAdmin.API.DTO;
 using Fanex.Athena.PlayerAdmin.API.MetaModel;
 using Fanex.Athena.PlayerAdmin.API.Services.Interfaces;
 using Fanex.Athena.PlayerAdmin.API.ViewModels;
@@ -6,12 +10,7 @@ using Fanex.Athena.PlayerAdmin.Core.Extensions;
 using Fanex.Athena.PlayerAdmin.Core.Repositories;
 using Fanex.Athena.PlayerAdmin.Core.Resources;
 using Fanex.Athena.PlayerAdmin.Core.Services;
-using Fanex.Athena.PlayerAdmin.Core.Settings;
 using Fanex.Data;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Fanex.Athena.PlayerAdmin.API.Services
 {
@@ -42,7 +41,7 @@ namespace Fanex.Athena.PlayerAdmin.API.Services
 
             using (var objectDb = _dbFactory.GetObjectDb(SpKey))
             {
-                AssignCommonParam(objectDb, metaModel);
+                AssignCommonParam(objectDb, metaModel, riskLevels);
                 AssignParamByUserName(objectDb, metaModel);
 
                 result.DataList = await ReadPlayerList(objectDb, riskLevels);
@@ -60,7 +59,7 @@ namespace Fanex.Athena.PlayerAdmin.API.Services
 
             using (var objectDb = _dbFactory.GetObjectDb(SpKey))
             {
-                AssignCommonParam(objectDb, metaModel);
+                AssignCommonParam(objectDb, metaModel, riskLevels);
                 AssignParamByCustId(objectDb, metaModel);
 
                 result.DataList = await ReadPlayerList(objectDb, riskLevels);
@@ -97,12 +96,13 @@ namespace Fanex.Athena.PlayerAdmin.API.Services
             return result;
         }
 
-        private static void AssignCommonParam(IObjectDb objectDb, PlayerListBaseMetaModel metaModel)
+        private static void AssignCommonParam(IObjectDb objectDb, PlayerListBaseMetaModel metaModel, IEnumerable<RiskLevel> riskLevels)
         {
             objectDb.SetParameterValue("LicenseeName", metaModel.SiteName);
             objectDb.SetParameterValue("AgentList", metaModel.AgentListXml);
             objectDb.SetParameterValue("CustomerClass", metaModel.CustomerClass);
             objectDb.SetParameterValue("CommGroups", metaModel.CommGroups);
+            objectDb.SetParameterValue("FullCustomerClass", string.Join(",", riskLevels.Select(_ => string.Join(",", _.CustomerClassList))));
         }
 
         private static void AssignParamByUserName(IObjectDb objectDb, PlayerSearchingMetaModel metaModel)
