@@ -1431,7 +1431,7 @@
   <data name="Logout" xml:space="preserve">
     <value>ออกจากระบบ</value>
   </data>
-  <data name="Lose" xml:space="preserve">
+  <data name="Lost" xml:space="preserve">
     <value>เสีย</value>
   </data>
   <data name="LrfNotification" xml:space="preserve">
