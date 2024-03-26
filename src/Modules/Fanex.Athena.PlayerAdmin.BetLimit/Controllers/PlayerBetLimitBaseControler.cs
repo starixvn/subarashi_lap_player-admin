@@ -1,10 +1,10 @@
-﻿using Fanex.Athena.PlayerAdmin.BetLimit.DTO;
+﻿using System.Collections.Generic;
+using Fanex.Athena.PlayerAdmin.BetLimit.DTO;
 using Fanex.Athena.PlayerAdmin.Core.Constants;
-using Fanex.Athena.PlayerAdmin.Core.Services;
+using Fanex.Athena.PlayerAdmin.Core.Helpers;
 using Fanex.Athena.PlayerAdmin.Core.Resources;
+using Fanex.Athena.PlayerAdmin.Core.Services;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
-using System;
 
 namespace Fanex.Athena.PlayerAdmin.BetLimit.Controllers
 {
@@ -31,8 +31,14 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Controllers
         }
 
         private string GetNormalSettingTypeName(PlayerBetLimit item)
-
-            => (item.SportType == I4DId) ? GetBetTypeName(item.BetType) : GetSportName(item.SportType);
+        {
+            var isHideSaba = SabaHelper.IsHideSaba(_contextService.SpecialPlatform);
+            if (item.SportType == I4DId)
+            {
+                return GetBetTypeName(item.BetType);
+            }
+            return GetSportName(item.SportType, isHideSaba);
+        }
 
         protected string GetParlaySettingTypeName(string id)
         {
@@ -48,22 +54,24 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Controllers
 
         protected bool HasEditPermission() => _contextService.IsInRoles(Roles.SuperAdmin, Roles.BetLimit_Write);
 
-        protected string GetSportName(string sportId)
+        protected string GetSportName(string sportId, bool isHideSaba)
         {
+            var prefixText = isHideSaba ? ViewResources.Virtual : ViewResources.Saba;
+
             if (sportId == SportType.SabaSoccer.ToString())
             {
                 var sportName = _resourceService.GetSportName(SportType.Soccer);
-                return $"{ViewResources.Saba} {sportName}";
+                return $"{prefixText} {sportName}";
             }
             if (sportId == SportType.SabaBasketBall.ToString())
             {
                 var sportName = _resourceService.GetSportName(SportType.BasketBall);
-                return $"{ViewResources.Saba}{sportName}";
+                return $"{prefixText}{sportName}";
             }
             if (sportId == SportType.SabaCricket.ToString())
             {
                 var sportName = _resourceService.GetSportName(SportType.Cricket);
-                return $"{ViewResources.Saba}{sportName}";
+                return $"{prefixText}{sportName}";
             }
             if (sportId == SportType.VirtualSports.ToString())
             {
