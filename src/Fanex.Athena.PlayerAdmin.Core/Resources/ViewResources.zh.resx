@@ -1390,7 +1390,7 @@
   <data name="Logout" xml:space="preserve">
     <value>注销</value>
   </data>
-  <data name="Lose" xml:space="preserve">
+  <data name="Lost" xml:space="preserve">
     <value>输</value>
   </data>
   <data name="LrfNotification" xml:space="preserve">

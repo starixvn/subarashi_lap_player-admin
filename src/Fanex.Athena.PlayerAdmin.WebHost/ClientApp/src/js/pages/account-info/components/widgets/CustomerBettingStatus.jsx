@@ -15,9 +15,9 @@ const defaultDataSetItem = {
 }
 const defaultChartData = {
     labels: [
-        ClientResourceManager.getText('Won'), 
-        ClientResourceManager.getText('Lose'), 
-        ClientResourceManager.getText('Draw'), 
+        ClientResourceManager.getText('Won'),
+        ClientResourceManager.getText('Lost'),
+        ClientResourceManager.getText('Draw'),
         ClientResourceManager.getText('Cancelled')
     ],
     datasets: [],
@@ -32,7 +32,7 @@ const legendOpts = {
         boxWidth: 15,
         usePointStyle: true
     },
-    onClick: () => {}
+    onClick: () => { }
 };
 
 const option = {

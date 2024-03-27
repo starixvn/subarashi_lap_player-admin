@@ -1525,8 +1525,8 @@
   <data name="Logout" xml:space="preserve">
     <value>Logout</value>
   </data>
-  <data name="Lose" xml:space="preserve">
-    <value>Lose</value>
+  <data name="Lost" xml:space="preserve">
+    <value>Lost</value>
   </data>
   <data name="LrfNotification" xml:space="preserve">
     <value>LRF-Notification</value>

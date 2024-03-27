@@ -4003,11 +4003,11 @@ namespace Fanex.Athena.PlayerAdmin.Core.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Lose.
+        ///   Looks up a localized string similar to Lost.
         /// </summary>
-        public static string Lose {
+        public static string Lost {
             get {
-                return ResourceManager.GetString("Lose", resourceCulture);
+                return ResourceManager.GetString("Lost", resourceCulture);
             }
         }
         
