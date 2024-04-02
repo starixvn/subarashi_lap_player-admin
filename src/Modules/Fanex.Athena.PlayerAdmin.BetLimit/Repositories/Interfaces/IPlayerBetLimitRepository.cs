@@ -6,6 +6,6 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Repositories.Interfaces
 {
     public interface IPlayerBetLimitRepository
     {
-        Task<IEnumerable<PlayerBetLimitProduct>> GetEnableBetLimitProducts(string siteName);
+        Task<IEnumerable<PlayerBetLimitProduct>> GetEnableBetLimitProducts(string siteName, string environment);
     }
 }

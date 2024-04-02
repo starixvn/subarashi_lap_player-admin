@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Fanex.Athena.PlayerAdmin.Core.Settings;
+using Microsoft.Extensions.Options;
 
 namespace Fanex.Athena.PlayerAdmin.BetLimit.Controllers
 {
@@ -23,9 +25,9 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Controllers
         [HttpGet]
         [ReferrerValidation]
         [CookieAuthorize(Roles.SuperAdmin, Roles.BetLimit)]
-        public async Task<ViewResult> Index([FromServices] IContextService contextService, int custId, int currencyId, int licenseeCustId)
+        public async Task<ViewResult> Index([FromServices] IContextService contextService, [FromServices] IOptions<AppSetting> appSetting, int custId, int currencyId, int licenseeCustId)
         {
-            var productList = await GetProducts(contextService.SiteName);
+            var productList = await GetProducts(contextService.SiteName, appSetting.Value.Env);
             var viewModel = new PlayerBetLimitProductViewModel
             {
                 CustId = custId,
@@ -38,9 +40,9 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Controllers
             return View(viewModel);
         }
 
-        private async Task<IDictionary<int, string>> GetProducts(string siteName)
+        private async Task<IDictionary<int, string>> GetProducts(string siteName, string environment)
         {
-            var products = await _playerBetLimitRepository.GetEnableBetLimitProducts(siteName);
+            var products = await _playerBetLimitRepository.GetEnableBetLimitProducts(siteName, environment);
             return products.ToDictionary(x => x.ProductId, x => ProductHelper.GetProductName(x.ProductCode));
         }
     }

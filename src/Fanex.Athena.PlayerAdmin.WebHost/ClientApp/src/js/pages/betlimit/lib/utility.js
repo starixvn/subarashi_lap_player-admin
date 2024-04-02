@@ -76,7 +76,8 @@ const ConfirmationUpdateProductStatusMsg = {
     [BetLimitProduct.MGRNG]: { Msg: 'UpdateProductStatus', Product: 'ProductMGRNG' },
     [BetLimitProduct.SEA]: { Msg: 'UpdateProductStatus', Product: 'ProductSEA' },
     [BetLimitProduct.WE]: { Msg: 'UpdateProductStatus', Product: 'ProductWE' },
-    [BetLimitProduct.L22]: { Msg: 'UpdateProductStatus', Product: 'ProductL22' }
+    [BetLimitProduct.L22]: { Msg: 'UpdateProductStatus', Product: 'ProductL22' },
+    [BetLimitProduct.UUSL]: { Msg: 'UpdateProductStatus', Product: 'ProductUUSL' }
 }
 
 const ConfirmationUpdateProductChargeCommMsg = {
