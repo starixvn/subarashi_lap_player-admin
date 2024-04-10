@@ -5983,6 +5983,15 @@ namespace Fanex.Athena.PlayerAdmin.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to UU SLOTS.
+        /// </summary>
+        public static string ProductUUSL {
+            get {
+                return ResourceManager.GetString("ProductUUSL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Macau Games.
         /// </summary>
         public static string ProductVB {
