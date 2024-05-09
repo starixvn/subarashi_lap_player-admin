@@ -22,7 +22,10 @@ namespace Fanex.Athena.PlayerAdmin.MVC.MetaModel
         public int CurrencyId { get; set; }
 
         public bool IsShowIp { get; set; }
+
         public bool IsShowIpVN { get; set; }
+
+        public byte ViewType { get; set; }
 
         public bool IsValid => ToDate >= FromDate
                 && FromDate.Year >= (DateTimeHelper.DatabaseServerToDay.Year - MaximumYear);

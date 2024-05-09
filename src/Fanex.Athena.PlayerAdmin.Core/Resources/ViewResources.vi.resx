@@ -2868,4 +2868,10 @@
   <data name="Desktop" xml:space="preserve">
     <value>Máy tính</value>
   </data>
+  <data name="MainWallet" xml:space="preserve">
+    <value>Ví Chính</value>
+  </data>
+  <data name="SabaCoins" xml:space="preserve">
+    <value>Saba Xu</value>
+  </data>
 </root>

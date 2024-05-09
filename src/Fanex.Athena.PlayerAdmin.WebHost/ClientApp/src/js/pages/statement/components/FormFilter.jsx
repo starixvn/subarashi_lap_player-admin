@@ -6,13 +6,20 @@ import LangHelper from '@jsroot/lib/langHelper';
 import AppData from '@jsroot/lib/AppData';
 import { DateRange } from '@jsroot/components/date-range';
 import Site from '@jsroot/lib/site'
+import { ViewTypeOptions } from '../../../lib/constants'
 
 const FormFilter = (props) => {
     const [dateRange, setDateRange] = useState({ startDate: props.requestParam.fromDate, endDate: props.requestParam.toDate });
+    const [viewType, setViewType] = useState(props.requestParam.viewType);
     const dateConstraint = AppData.dateConstraint;
 
     const onSubmit = () => {
-        const param = Object.assign({}, props.requestParam, {fromDate: Site.convertDateToString(dateRange.startDate), toDate: Site.convertDateToString(dateRange.endDate)});
+        const param = Object.assign({}, props.requestParam, 
+            {
+                fromDate: Site.convertDateToString(dateRange.startDate),
+                toDate: Site.convertDateToString(dateRange.endDate),
+                viewType
+            });
 
         props.setRequestParam(param);
     }
@@ -38,6 +45,17 @@ const FormFilter = (props) => {
     return (
         <div className='page-filter'>
             <div className="row">
+                {AppData.isShowSabaCoins && 
+                <div className="col-12">
+                        <div className="form-group">
+                                <input type="radio" value={ViewTypeOptions.MainWallet} checked={viewType == ViewTypeOptions.MainWallet} name="ViewType" id="viewtypebymain"
+                                    onChange={() => setViewType(ViewTypeOptions.MainWallet)} />
+                                <label htmlFor="viewtypebymain">{LangHelper.getSingleResource("MainWallet")}</label>
+                                <input type="radio" value={ViewTypeOptions.SabaCoins} name="ViewType" id="viewtypebysabacoins" checked={viewType == ViewTypeOptions.SabaCoins}
+                                        onChange={() => setViewType(ViewTypeOptions.SabaCoins)} />
+                                <label htmlFor="viewtypebysabacoins">{LangHelper.getSingleResource("SabaCoins")}</label>
+                        </div>
+                </div>}
                 <div className="col-12 col-md-3 col-sm-6 col-lg-4 col-xl-2">
                     <div className="form-group">
                         <label className="label-text">{LangHelper.getSingleResource("Date")}</label>

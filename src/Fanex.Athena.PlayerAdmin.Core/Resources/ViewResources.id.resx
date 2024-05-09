@@ -2805,4 +2805,10 @@
   <data name="ProductVS3" xml:space="preserve">
     <value>Olahraga Virtual 3 (old)</value>
   </data>
+  <data name="MainWallet" xml:space="preserve">
+    <value>Dompet Utama</value>
+  </data>
+  <data name="SabaCoins" xml:space="preserve">
+    <value>Koin SABA</value>
+  </data>
 </root>

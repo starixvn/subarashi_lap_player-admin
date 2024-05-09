@@ -12,11 +12,12 @@
 }
 @section globaljscode {
     window.initialState = {
-    requestParam: { custId: @Model.CustId, currencyId: @Model.CurrencyId, fromDate: '@Model.FromDate.ToString("MM/dd/yyyy")', toDate: '@Model.ToDate.ToString("MM/dd/yyyy")' },
+        requestParam: { custId: @Model.CustId, currencyId: @Model.CurrencyId, fromDate: '@Model.FromDate.ToString("MM/dd/yyyy")', toDate: '@Model.ToDate.ToString("MM/dd/yyyy")', viewType: 1 },
     };
 
     window._AppData = {
-    dateConstraint: { minDate: '@Model.MinDate.ToString("MM/dd/yyyy")', maxDate: '@Model.MaxDate.ToString("MM/dd/yyyy")', limitedMonthRange: 2 }
+    dateConstraint: { minDate: '@Model.MinDate.ToString("MM/dd/yyyy")', maxDate: '@Model.MaxDate.ToString("MM/dd/yyyy")', limitedMonthRange: 2 },
+    isShowSabaCoins: '@Model.IsShowSabaCoins.ToString()' === 'True'
     };
 }
 <div id="app-container">
