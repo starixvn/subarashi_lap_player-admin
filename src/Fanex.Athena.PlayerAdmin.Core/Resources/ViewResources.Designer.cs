@@ -4039,6 +4039,15 @@ namespace Fanex.Athena.PlayerAdmin.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Main Wallet.
+        /// </summary>
+        public static string MainWallet {
+            get {
+                return ResourceManager.GetString("MainWallet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Manage Account.
         /// </summary>
         public static string ManageAccount {
@@ -6411,6 +6420,15 @@ namespace Fanex.Athena.PlayerAdmin.Core.Resources {
         public static string Saba {
             get {
                 return ResourceManager.GetString("Saba", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Saba Coins.
+        /// </summary>
+        public static string SabaCoins {
+            get {
+                return ResourceManager.GetString("SabaCoins", resourceCulture);
             }
         }
         

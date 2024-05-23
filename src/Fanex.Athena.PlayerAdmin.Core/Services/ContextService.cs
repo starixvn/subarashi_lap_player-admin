@@ -89,6 +89,8 @@ namespace Fanex.Athena.PlayerAdmin.Core.Services
 
         public bool IsShowSabaIntelligence => IsInRoles("super_admin", "SabaIntelligence");
 
+        public bool IsShowSabaCoins => IsInRoles("super_admin", "SabaCoins");
+
         public bool IsFakeLicensee => GetClaimValue("IsFakeLicensee", false);
 
         public int SpecialPlatform => GetClaimValue("SpecialPlatform", 0);

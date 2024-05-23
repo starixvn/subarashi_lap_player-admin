@@ -31,13 +31,14 @@ namespace Fanex.Athena.PlayerAdmin.MVC.Services
 
         public async Task<string> GetUrl(PlayerStatementMetaModel metaModel)
         {
-            const string GetStatementPath = @"{0}Statement/Summary?cid={1}&fd={2}&td={3}&ps={4}&sb={5}&lang={6}&access_token={7}&isDesktopViewOnly=true";
+            const string GetStatementPath = @"{0}Statement/Summary?vt={1}&cid={2}&fd={3}&td={4}&ps={5}&sb={6}&lang={7}&access_token={8}&isDesktopViewOnly=true";
 
             var token = await GetToken(GetAuthenticationObjectAsString(metaModel)).ConfigureAwait(false);
 
             return string.Format(
                 GetStatementPath,
                 _setting.ExternalHost,
+                metaModel.ViewType,
                 metaModel.CustId,
                 metaModel.FromDate.ToString(FormatDate),
                 metaModel.ToDate.ToString(FormatDate),

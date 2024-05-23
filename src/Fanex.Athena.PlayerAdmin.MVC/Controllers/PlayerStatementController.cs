@@ -15,10 +15,12 @@ namespace Fanex.Athena.PlayerAdmin.MVC.Controllers
     public class PlayerStatementController : Controller
     {
         private readonly IPlayerStatementService _playerStatementService;
+        private readonly IContextService _contextService;
 
-        public PlayerStatementController(IPlayerStatementService playerStatementService)
+        public PlayerStatementController(IPlayerStatementService playerStatementService, IContextService contextService)
         {
             _playerStatementService = playerStatementService;
+            _contextService = contextService;
         }
 
         [HttpGet]
@@ -36,7 +38,8 @@ namespace Fanex.Athena.PlayerAdmin.MVC.Controllers
                 FromDate = new DateTime(today.Year, today.Month, 1),
                 ToDate = today,
                 MinDate = new DateTime(today.Year - MinYearRange, 1, 1),
-                MaxDate = new DateTime(today.Year + MaxYearRange, 12, 31)
+                MaxDate = new DateTime(today.Year + MaxYearRange, 12, 31),
+                IsShowSabaCoins = _contextService.IsShowSabaCoins
             };
 
             return View(viewModel);
