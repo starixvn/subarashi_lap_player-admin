@@ -7990,6 +7990,15 @@ namespace Fanex.Athena.PlayerAdmin.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Virtual .
+        /// </summary>
+        public static string Virtual {
+            get {
+                return ResourceManager.GetString("Virtual", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Virtual Basketball.
         /// </summary>
         public static string VirtualBasketball {

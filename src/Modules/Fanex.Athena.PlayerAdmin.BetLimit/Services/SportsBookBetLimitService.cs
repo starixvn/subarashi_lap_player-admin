@@ -1,5 +1,6 @@
-﻿using Fanex.Athena.PlayerAdmin.Core.Constants;
-using Fanex.Athena.PlayerAdmin.Core.Models;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Fanex.Athena.PlayerAdmin.BetLimit.DataDomains;
 using Fanex.Athena.PlayerAdmin.BetLimit.DTO;
 using Fanex.Athena.PlayerAdmin.BetLimit.Helpers;
@@ -7,11 +8,9 @@ using Fanex.Athena.PlayerAdmin.BetLimit.Mediator;
 using Fanex.Athena.PlayerAdmin.BetLimit.MetaModel;
 using Fanex.Athena.PlayerAdmin.BetLimit.Repositories.Interfaces;
 using Fanex.Athena.PlayerAdmin.BetLimit.Services.Interfaces;
+using Fanex.Athena.PlayerAdmin.Core.Constants;
+using Fanex.Athena.PlayerAdmin.Core.Models;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Fanex.Athena.PlayerAdmin.BetLimit.Services
 {
@@ -66,8 +65,12 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Services
                  setting,
                  x => x.Id,
                  isSuccessful,
-                 new[] { LogActionDetailId.UpdatingMinBet, LogActionDetailId.UpdatingMaxBet, LogActionDetailId.UpdatingMaxPerMatch,
-                     LogActionDetailId.UpdatingMaxPayoutPerMatch, LogActionDetailId.UpdatingMaxPayoutPerMatch });
+                 new[] {
+                     LogActionDetailId.UpdatingMinBet,
+                     LogActionDetailId.UpdatingMaxBet,
+                     LogActionDetailId.UpdatingMaxPerMatch,
+                     LogActionDetailId.UpdatingMaxPayoutPerMatch,
+                 });
         }
 
         private async Task PublishLogEvent(PlayerUpdatedBetLimitEvent logEvent)

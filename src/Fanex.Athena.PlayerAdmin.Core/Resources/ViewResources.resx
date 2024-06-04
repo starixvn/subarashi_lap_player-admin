@@ -3128,6 +3128,9 @@
   <data name="ProductL22" xml:space="preserve">
     <value>Live22</value>
   </data>
+  <data name="Virtual" xml:space="preserve">
+    <value>Virtual </value>
+  </data>
   <data name="ProductUUSL" xml:space="preserve">
     <value>UU SLOTS</value>
   </data>
