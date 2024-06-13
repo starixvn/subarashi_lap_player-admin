@@ -2811,4 +2811,7 @@
   <data name="SabaCoins" xml:space="preserve">
     <value>Koin SABA</value>
   </data>
+  <data name="DesktopCompact" xml:space="preserve">
+    <value>Desktop Kompak</value>
+  </data>
 </root>

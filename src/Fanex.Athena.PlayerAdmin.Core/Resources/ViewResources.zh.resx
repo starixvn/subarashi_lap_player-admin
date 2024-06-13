@@ -2797,4 +2797,7 @@
   <data name="SabaCoins" xml:space="preserve">
     <value>沙巴点数</value>
   </data>
+  <data name="DesktopCompact" xml:space="preserve">
+    <value>桌机轻量版</value>
+  </data>
 </root>

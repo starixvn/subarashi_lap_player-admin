@@ -2874,4 +2874,7 @@
   <data name="SabaCoins" xml:space="preserve">
     <value>Saba Xu</value>
   </data>
+  <data name="DesktopCompact" xml:space="preserve">
+    <value>Desktop nhỏ gọn</value>
+  </data>
 </root>
