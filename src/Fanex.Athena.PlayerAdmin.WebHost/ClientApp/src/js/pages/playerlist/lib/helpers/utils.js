@@ -77,6 +77,7 @@ export const getOddsGroupPdf = (fileName) => {
         },
         withCredentials: false,
         responseType: 'arraybuffer',
+        transformResponse: [],
         cancelToken: new axios.CancelToken(function(cancel) {})
     }
 
