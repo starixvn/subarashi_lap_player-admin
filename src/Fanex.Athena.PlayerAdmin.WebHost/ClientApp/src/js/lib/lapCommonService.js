@@ -12,8 +12,11 @@ const defaultAjaxConfig = {
         'content-type': 'application/json;charset=UTF-8'
     },
     withCredentials: false,
-    responseType: 'json',
-    cancelToken: new axios.CancelToken(function(cancel) {})
+    responseType: 'text',
+    transformResponse: [function (data) {
+        return JSON.parse(data.replace(/[\u0000-\u0009\u000B-\u001F]/g, "")); // remove control characters
+    }],
+    cancelToken: new axios.CancelToken(function (cancel) { })
 }
 
 class LapCommonService extends BaseCommonService {
@@ -63,12 +66,12 @@ class LapCommonService extends BaseCommonService {
 
     _fetchAccessToken(sysType, action) {
         return locker.acquire(sysType, async () => {
-            if(!window.top['playeradmin_' + sysType]) {
+            if (!window.top['playeradmin_' + sysType]) {
                 const { ApiUrl, Token } = await this.fetchTokenFromLap(sysType, action);
                 const ajaxConfig = this._getConfigParam({ ...defaultAjaxConfig, url: `${ApiUrl}/api/Auth/Token` }, { token: Token });
-                const response = await  axios(ajaxConfig);
+                const response = await axios(ajaxConfig);
                 const { status, data } = response;
-                if(status === 200 && data.IsSuccess) {
+                if (status === 200 && data.IsSuccess) {
                     window.top['playeradmin_' + sysType] = {
                         accessToken: data.AccessToken,
                         apiUrl: ApiUrl
@@ -100,14 +103,14 @@ class LapCommonService extends BaseCommonService {
         }
     }
 
-    async fetchTokenFromLap(sysType, action)  {
+    async fetchTokenFromLap(sysType, action) {
         const apiToken = `${this._applyApiTokenUrl}?${this._buildApplyTokenQueryString(sysType, action)}`;
         const tokenFromLap = await axios.get(apiToken);
         return tokenFromLap.data;
     }
 
     fetchData(sysType, action, params, configOption = defaultAjaxConfig) {
-        const config = {...defaultAjaxConfig, ...configOption };
+        const config = { ...defaultAjaxConfig, ...configOption };
         if (sysType === systemType.newAdmin) {
             const relativeUrl = this._baseUrl + action;
             const ajaxConfig = this._buildCommonAjaxConfig(config, relativeUrl, params);
