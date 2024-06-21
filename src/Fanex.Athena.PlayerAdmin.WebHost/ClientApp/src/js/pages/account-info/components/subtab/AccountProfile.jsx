@@ -17,12 +17,12 @@ export const AccountProfile = (props) => {
         props.getAccountProfile(param).then(setData);
         props.getSubsidiaryViewType(param).then(setSubsidiaryViewType);
     }, [licenseeCustId]);
-    
+
     return (
         <div className="left-side-content account-profile-container">
             <table className="table">
-                {props.licenseeType === licenseeType.api ? 
-                <ApiProfile data={data} subsidiaryViewType={subsidiaryViewType} /> : <AthenaProfile data={data} />}
+                {props.licenseeType === licenseeType.api ?
+                    <ApiProfile data={data} subsidiaryViewType={subsidiaryViewType} /> : <AthenaProfile data={data} />}
             </table>
         </div>
     );

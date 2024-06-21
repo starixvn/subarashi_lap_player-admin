@@ -51,6 +51,7 @@ export const resource_en = {
     CustomerWinLoss: 'Customer Win Loss',
     PlayerBettingStatisticsTitle: 'Player Betting Statistics (month to date)',
     PlayerProfile: 'Player Profile',
+    PlayerKYC: 'Player KYC',
     ActivityRecord: 'Activity Record',
     PlaceholderBankAccount: 'Search by Exactly Bank Account Number',
     PlaceholderEmail: 'Search by Exactly Email',

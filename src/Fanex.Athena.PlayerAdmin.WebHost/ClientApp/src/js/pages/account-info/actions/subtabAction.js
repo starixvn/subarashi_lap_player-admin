@@ -24,3 +24,13 @@ export const getActivityRecord = (param) => () => {
     const service = new PlayerAccountService();
     return service.getActivityRecord(param);
 }
+
+export const getAccountKYC = (param) => () => {
+    const service = new PlayerAccountService();
+    return service.getAccountKYC(param).then(result => {
+        if (result) {
+            return window.URL.createObjectURL(new Blob([result]));
+        }
+        return null
+    });
+}
