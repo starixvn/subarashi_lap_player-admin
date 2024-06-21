@@ -32,7 +32,8 @@ namespace Fanex.Athena.PlayerAdmin.MVC.Controllers
             {
                 CustId = custId,
                 CurrencyId = currencyId,
-                IsEnableSingleWallet = _contextService.IsEnableSingleWallet
+                IsEnableSingleWallet = _contextService.IsEnableSingleWallet,
+                IsShowSabaCoins = _contextService.IsShowSabaCoins
             };
             return View(viewModel);
         }

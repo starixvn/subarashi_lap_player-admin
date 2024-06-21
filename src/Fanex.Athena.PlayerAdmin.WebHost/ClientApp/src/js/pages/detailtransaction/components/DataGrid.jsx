@@ -7,6 +7,7 @@ import ReportTitle from '@jsroot/components/ReportTitle';
 import NoDataTitle from '@jsroot/components/NoDataTitle';
 import AppData from '@jsroot/lib/AppData';
 import { ActionCreators } from '../actions/index.js';
+import { ViewTypeOptions } from '../../../lib/constants'
 
 export class DataGrid extends PureComponent {
     constructor(props) {
@@ -60,7 +61,8 @@ export class DataGrid extends PureComponent {
             FromDate: oldParam.FromDateStr,
             ToDate: oldParam.ToDateStr,
             TransactionId: oldParam.TransactionId,
-            IsResettled: oldParam.IsResettled
+            IsResettled: oldParam.IsResettled,
+            ViewType: oldParam.ViewType
         };
 
         props.getDetailTransactionReport(newRequestParam);
@@ -73,7 +75,9 @@ export class DataGrid extends PureComponent {
             return null;
         }
 
-        const reportTitle = <>{LangHelper.getSingleResource('DetailTransaction')}, {detailTransactionReport.FromDateStr} -> {detailTransactionReport.ToDateStr}</>;
+        var viewInText = detailTransactionReport.ViewType === ViewTypeOptions.MainWallet ? '' : `, ${LangHelper.getSingleResource("Viewin").replace("{0}", LangHelper.getSingleResource("SabaCoins"))}`;
+
+        const reportTitle = <>{LangHelper.getSingleResource('DetailTransaction')}, {detailTransactionReport.FromDateStr} -> {detailTransactionReport.ToDateStr}{viewInText}</>;
 
         if (!detailTransactionReport.DetailTransactions.length) {
             return (
