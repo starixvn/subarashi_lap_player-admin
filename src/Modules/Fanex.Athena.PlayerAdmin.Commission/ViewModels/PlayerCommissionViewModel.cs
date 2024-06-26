@@ -1,4 +1,5 @@
-﻿using Fanex.Athena.PlayerAdmin.Core.Extensions;
+﻿using Fanex.Athena.PlayerAdmin.Commission.Helpers;
+using Fanex.Athena.PlayerAdmin.Core.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -13,25 +14,29 @@ namespace Fanex.Athena.PlayerAdmin.Commission.ViewModels
 
         public string GroupName { get; set; }
 
-        public Dictionary<string, decimal> CommValues { get; set; }
+        public Dictionary<string, decimal> CommValues2 { get; set; }
 
-        public void MapData(IDataReader reader, IDictionary<string, string> columns, IDictionary<string, bool> visibility)
-        {
-            // Support config for new products
-            GroupCommId = reader.ToInt("GroupCommId");
-            CommValues = new Dictionary<string, decimal>();
-            foreach (var c in columns)
-            {
-                CommValues[c.Key] = visibility[c.Key] ? reader.ToDecimal(c.Value + "Comm") : 0;
-            }
-        }
+        public Dictionary<string, PlayerCommissionSettingViewModel> CommValues { get; set; }
 
         public void InitDefaultValue(IDictionary<string, bool> permissions)
         {
-            CommValues = new Dictionary<string, decimal>();
-            foreach (var p in permissions)
+            CommValues = new Dictionary<string, PlayerCommissionSettingViewModel>();
+
+            foreach (var permission in permissions)
             {
-                CommValues.Add(p.Key, 0);
+                var setting = CommissionGroupHelper.GetSetting(permission.Key);
+
+                if (setting != null)
+                {
+                    CommValues.Add(
+                        permission.Key,
+                        new PlayerCommissionSettingViewModel
+                        {
+                            Sporttype = setting.Item1,
+                            Bettype = setting.Item2
+                        }
+                    );
+                }
             }
         }
     }

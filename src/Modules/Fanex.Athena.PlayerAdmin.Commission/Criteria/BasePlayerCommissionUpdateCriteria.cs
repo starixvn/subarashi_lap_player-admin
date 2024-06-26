@@ -37,7 +37,6 @@ namespace Fanex.Athena.PlayerAdmin.Commission.Criteria
             db.SetParameterValue("Ip", IP);
             db.SetParameterValue("langkey", Language);
             db.SetParameterValue("strCustIDOriginal", CustIds);
-            db.SetParameterValue("strCustID", null);
             db.SetParameterValue("ErrCode", null);
             db.SetParameterValue("ErrMsg", null);
         }

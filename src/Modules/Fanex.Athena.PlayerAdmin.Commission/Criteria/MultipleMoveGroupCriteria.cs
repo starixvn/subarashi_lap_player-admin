@@ -19,13 +19,7 @@ namespace Fanex.Athena.PlayerAdmin.Commission.Criteria
         {
             base.SetParameterValues(db);
 
-            var permissions = CommissionGroupHelper.MapHardcodedNameFromDB(Permissions, isUpdate: true);
-            foreach (var p in permissions)
-            {
-                db.SetParameterValue("IsUpdate" + p.Value, Permissions[p.Key]);
-            }
-
-            db.SetParameterValue("GroupCommId", GroupCommId);
+            db.SetParameterValue("GroupDiscountID", GroupCommId);
         }
     }
 }

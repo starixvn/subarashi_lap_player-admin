@@ -11,6 +11,53 @@ namespace Fanex.Athena.PlayerAdmin.Commission.Helpers
     {
         public const string ParlayName = "Parlay";
 
+        private static readonly IReadOnlyDictionary<Tuple<int, int>, string> ProductSettingMapper = new Dictionary<Tuple<int, int>, string>
+        {
+            { Tuple.Create(1, 1), ProductCode.SB },
+            { Tuple.Create(1, 9), ParlayName },
+            { Tuple.Create(212, 4001), ProductCode.VB },
+            { Tuple.Create(248, 4101), ProductCode.PP },
+            { Tuple.Create(243, 3101), ProductCode.SXG },
+            { Tuple.Create(247, 4301), ProductCode.SG },
+            { Tuple.Create(220, 1021), ProductCode.LT },
+            { Tuple.Create(9908, 1201), ProductCode.VS },
+            { Tuple.Create(222, 4901), ProductCode.TG },
+            { Tuple.Create(245, 4601), ProductCode.VRG },
+            { Tuple.Create(165, 1901), ProductCode.CC },
+            { Tuple.Create(200, 1611), ProductCode.SBC },
+            { Tuple.Create(244, 3001), ProductCode.SAG },
+            { Tuple.Create(232, 6001), ProductCode.PGS },
+            { Tuple.Create(211, 2401), ProductCode.AB },
+            { Tuple.Create(208, 2101), ProductCode.CS },
+            { Tuple.Create(233, 3401), ProductCode.WM },
+            { Tuple.Create(239, 3501), ProductCode.BGG },
+            { Tuple.Create(234, 6401), ProductCode.JK },
+            { Tuple.Create(238, 7001), ProductCode.HB },
+            { Tuple.Create(171, 3801), ProductCode.VGA },
+            { Tuple.Create(167, 7301), ProductCode.CG },
+            { Tuple.Create(172, 7701), ProductCode.AP },
+            { Tuple.Create(174, 7801), ProductCode.APM },
+            { Tuple.Create(237, 5401), ProductCode.MXG },
+            { Tuple.Create(176, 8201), ProductCode.FGGL },
+            { Tuple.Create(158, 5100), ProductCode.JIG },
+            { Tuple.Create(159, 3151), ProductCode.YB },
+            { Tuple.Create(155, 8400), ProductCode.MGRNG },
+            { Tuple.Create(161, 81), ProductCode.NG },
+            { Tuple.Create(202, 1501), ProductCode.KN }
+        };
+
+        public static string GetProductCode(int sportype, int bettype)
+        {
+            var key = Tuple.Create(sportype, bettype);
+
+            return ProductSettingMapper.TryGetValue(key, out string value) ? value : string.Empty;
+        }
+
+        public static Tuple<int, int> GetSetting(string productCode)
+        {
+            return ProductSettingMapper.FirstOrDefault(x => x.Value == productCode).Key;
+        }
+
         private static readonly Dictionary<string, string> FollowPermissions = new Dictionary<string, string>
         {
             [ParlayName] = ProductCode.SB

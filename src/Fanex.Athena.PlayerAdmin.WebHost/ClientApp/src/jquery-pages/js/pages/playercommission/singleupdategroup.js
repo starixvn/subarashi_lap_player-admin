@@ -45,7 +45,6 @@ define(
                     $(comm2).selectList('disabled', null);
                     $(comm3).selectList('disabled', null);
                 } else {
-
                     $(comm2).val(0);
                     $(comm2).selectList('update', {
                         isDisabled: true,
@@ -83,17 +82,24 @@ define(
                 _me.elements.btnSave.attr("disabled", isEnable ? null : "disabled");
             },
             saveClick: function () {
-                var comms = [];
+                var comms = {};
                 _me.elements.products.forEach((id) => {
                     var commElement = $("#comm4-" + id);
                     const comm = commElement.length ? parseFloat(commElement.val()).toFixed(4) : 0;
-                    comms.push(comm);
+
+                    var commBettype = $("#comm-bettype-" + id).val();
+                    var commSporttype = $("#comm-sporttype-" + id).val();
+
+                    comms[id] = {
+                        Sporttype : commSporttype, 
+                        Bettype : commBettype,
+                        Discount : comm
+                    };
                 });
 
                 var param = {
                     CustIds: _me.elements.custIds.val(),
-                    Products: _me.elements.products,
-                    Comms: comms
+                    CommValues: comms
                 };
 
                 $.ajax({
@@ -116,7 +122,7 @@ define(
                         _me.elements.btnSave.addClass("completed");
                         _me.showMsg(Site.getSingleResource('MessageSuccess'), result.IsSuccessful);
 
-                        let message =  {
+                        let message = {
                             isSuccess: true,
                             oldCustIds: _me.elements.oldCustIds,
                             custIds: param.CustIds,

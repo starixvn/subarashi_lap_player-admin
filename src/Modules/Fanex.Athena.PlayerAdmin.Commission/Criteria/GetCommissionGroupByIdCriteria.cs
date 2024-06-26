@@ -24,7 +24,7 @@ namespace Fanex.Athena.PlayerAdmin.Commission.Criteria
         public void SetParameterValues(IObjectDb db)
         {
             db.SetParameterValue("LicenseeID", LicenseeId);
-            db.SetParameterValue("GroupCommID", GroupCommId);
+            db.SetParameterValue("GroupDiscountID", GroupCommId);
         }
     }
 }

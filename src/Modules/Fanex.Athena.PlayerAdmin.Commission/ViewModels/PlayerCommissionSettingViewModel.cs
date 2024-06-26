@@ -1,0 +1,26 @@
+﻿using Fanex.Athena.PlayerAdmin.Core.Extensions;
+using System;
+using System.Collections.Generic;
+using System.Data;
+
+namespace Fanex.Athena.PlayerAdmin.Commission.ViewModels
+{
+    public class PlayerCommissionSettingViewModel
+    {
+        public int GroupCommId { get; set; }
+
+        public int Sporttype { get; set; }
+
+        public int Bettype { get; set; }
+
+        public decimal Discount { get; set; }
+
+        public void MapData(IDataReader reader)
+        {
+            Sporttype = Convert.ToInt32(reader["Sporttype"]);
+            Bettype = Convert.ToInt32(reader["Bettype"]);
+            Discount = Convert.ToDecimal(reader["Discount"]);
+            GroupCommId = Convert.ToInt32(reader["GroupDiscountID"]);
+        }
+    }
+}
