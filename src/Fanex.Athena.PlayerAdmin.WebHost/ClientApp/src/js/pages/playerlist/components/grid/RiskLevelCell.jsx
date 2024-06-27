@@ -22,9 +22,8 @@ export const RiskLevelCell = (props) => {
     };
 
     return (<><Cell>
-        <button type="button" className={`risk-level ${riskLevelKey}`} onClick={(e) => { setIsShowRiskLevelInformation(true) }}>
+        <button type="button" className={`risk-level ${riskLevelKey}`} >
             <div className="text">{riskLevel}</div>
-            <div className={`icon icon-moreinfo ${riskLevelKey}`}></div>
         </button>
         {isShowRiskLevelInformation
             ? (<Popup width={1000} height={600} isShow="true"
