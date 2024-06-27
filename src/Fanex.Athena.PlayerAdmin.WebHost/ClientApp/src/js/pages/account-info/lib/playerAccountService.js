@@ -41,7 +41,7 @@ export default class PlayerAccountService {
         return this.commonService.fetchData(lapAccountKYC.type, lapAccountKYC.action, param, ajaxConfig)
             .then(response => {
                 const { data, headers } = response;
-                if (!headers.get("content-type").includes("application/json")) {
+                if (headers["content-type"].includes("image")) {
                     return data;
                 }
                 return null;
