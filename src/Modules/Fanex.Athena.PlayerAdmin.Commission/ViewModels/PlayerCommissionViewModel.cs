@@ -14,8 +14,6 @@ namespace Fanex.Athena.PlayerAdmin.Commission.ViewModels
 
         public string GroupName { get; set; }
 
-        public Dictionary<string, decimal> CommValues2 { get; set; }
-
         public Dictionary<string, PlayerCommissionSettingViewModel> CommValues { get; set; }
 
         public void InitDefaultValue(IDictionary<string, bool> permissions)

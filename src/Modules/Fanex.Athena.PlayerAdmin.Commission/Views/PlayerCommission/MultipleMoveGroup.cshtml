@@ -107,10 +107,11 @@
         <div class="comm-values hide">
             @foreach (var group in Model.Groups)
             {
-                var comms = group.CommValues2;
+                var comms = group.CommValues;
                 foreach (var p in Model.ProductPermissions)
                 {
-                    @Html.Hidden("com-" + p.Key + "-" + group.GroupCommId, (comms[p.Key] * 100).ToString("N2"))
+                    var comm = comms != null && comms.ContainsKey(p.Key) ? comms[p.Key].Discount * 100 : 0;
+                    @Html.Hidden("com-" + p.Key + "-" + group.GroupCommId, comm.ToString("N2"))
                 }
             }
         </div>

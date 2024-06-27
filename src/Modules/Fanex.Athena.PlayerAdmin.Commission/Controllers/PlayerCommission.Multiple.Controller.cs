@@ -47,6 +47,8 @@ namespace Fanex.Athena.PlayerAdmin.Commission.Controllers
         {
             await AssignSessionToQuery(query);
             var viewModel = new MultipleUpdateGroupViewModel(query);
+            viewModel.InitDefaultValue(query.Permissions);
+
             return View(viewModel);
         }
     }
