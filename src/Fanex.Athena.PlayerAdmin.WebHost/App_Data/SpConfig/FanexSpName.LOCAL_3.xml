@@ -64,26 +64,18 @@
 		<Setting Key="Lrf_CustomerSelStatus" SpName="Lrf_CustomerSelStatus" DbName="DBEXT.bodb02.wsv_lap" />
 		<Setting Key="Acc_Dep_CustSetting_NewBetLimitSettingSelect" SpName="Acc_Dep_CustSetting_NewBetLimitSettingSelect" DbName="DBCUST.CustDB.wsv_lap" />
 		<Setting Key="Acc_Dep_CustSetting_NewBetLimitUpd" SpName="Acc_Dep_CustSetting_NewBetLimitUpd" DbName="DBCUST.CustDB.wsv_lap" />
-    <Setting Key="Acc_Dep_CustSetting_Game_BetLimitSettingSelect" SpName="Acc_Dep_CustSetting_Game_BetLimitSettingSelect" DbName="DBCUST.CustDB.wsv_lap" />
-    <Setting Key="Acc_Dep_CustSetting_Game_BetLimitUpd" SpName="Acc_Dep_CustSetting_Game_BetLimitUpd" DbName="DBCUST.CustDB.wsv_lap" />
+		<Setting Key="Acc_Dep_CustSetting_Game_BetLimitSettingSelect" SpName="Acc_Dep_CustSetting_Game_BetLimitSettingSelect" DbName="DBCUST.CustDB.wsv_lap" />
+		<Setting Key="Acc_Dep_CustSetting_Game_BetLimitUpd" SpName="Acc_Dep_CustSetting_Game_BetLimitUpd" DbName="DBCUST.CustDB.wsv_lap" />
 	</Function>
 	<Function Name="CustomerSettingsThridParty">
 		<Setting Key="Lrf_3rdProductSelCustStatus" SpName="Lrf_3rdProductSelCustStatus" DbName="DBLIC.bodb_Licensee.wsv_lap" />
 		<Setting Key="Lrf_3rdProductUpdCustStatus" SpName="Lrf_3rdProductUpdCustStatus" DbName="DBCUST.CustDB.wsv_lap" />
 	</Function>
 	<Function Name="Commission">
-		<Setting Key="Lrf_LicenseeGroupCommSel" SpName="Lrf_LicenseeGroupCommSel" DbName="DBCUST.bodb_Licensee.wsv_lap">
-			<Mapping DataField="Parlaycomm" ObjectProperty="ParlayComm" />
-			<Mapping DataField="RNGComm" ObjectProperty="CSComm" />
-			<Mapping DataField="IsDefault" ObjectProperty="IsDefaultGroup" />
-		</Setting>
-		<Setting Key="Lrf_GroupCommGetById" SpName="Lrf_GroupCommGetById" DbName="DBLIC.bodb_Licensee.wsv_lap">
-			<Mapping DataField="Parlaycomm" ObjectProperty="ParlayComm" />
-			<Mapping DataField="RNGComm" ObjectProperty="CSComm" />
-			<Mapping DataField="IsDefault" ObjectProperty="IsDefaultGroup" />
-		</Setting>
+		<Setting Key="Lrf_LicenseeGroupCommSel" SpName="Lrf_LicenseeGroupCommSel" DbName="DBCUST.bodb_Licensee.wsv_lap"></Setting>
+		<Setting Key="Lrf_GroupCommGetById" SpName="Lrf_GroupCommGetById" DbName="DBLIC.bodb_Licensee.wsv_lap"></Setting>
 		<Setting Key="Lrf_GroupCommCheckByName" SpName="Lrf_GroupCommCheckByName" DbName="DBLIC.bodb_Licensee.wsv_lap" />
-		<Setting Key="Lrf_LicenseeCustCommSel" SpName="Lrf_LicenseeCustCommSel" DbName="DBLIC.bodb_Licensee.wsv_lap" TimeOut="240" />
+		<Setting Key="Lrf_LicenseeCustCommSel" SpName="Lrf_LicenseeCustCommSel" DbName="DBCUST.bodb_Licensee.wsv_lap" TimeOut="240" />
 		<Setting Key="Lrf_LicenseeCustCommUpd" SpName="Lrf_LicenseeCustCommUpd" DbName="DBCUST.bodb_Licensee.wsv_lap" TimeOut="240" />
 		<Setting Key="Lrf_CustomerRemoveGroupComm" SpName="Lrf_CustomerRemoveGroupComm" DbName="DBCUST.bodb_Licensee.wsv_lap" TimeOut="240" />
 		<Setting Key="Lrf_CustomerMoveGroupComm" SpName="Lrf_CustomerMoveGroupComm" DbName="DBCUST.bodb_Licensee.wsv_lap" TimeOut="240" />
