@@ -1,4 +1,5 @@
 import PlayerAccountService from "../lib/playerAccountService";
+import { SET_SWEET_ALERT_OPTION } from "./types"
 
 export const getPlayerInfoSetting = () => () => {
     const service = new PlayerAccountService();
@@ -34,4 +35,16 @@ export const getAccountKYC = (param) => () => {
         }
         return null
     });
+}
+
+export const deleteKYCImage = (param) => () => {
+    const service = new PlayerAccountService();
+    return service.deleteKYCImage(param);
+}
+
+export const setSweetAlertOption = (data) => {
+    return {
+        type: SET_SWEET_ALERT_OPTION,
+        data
+    }
 }

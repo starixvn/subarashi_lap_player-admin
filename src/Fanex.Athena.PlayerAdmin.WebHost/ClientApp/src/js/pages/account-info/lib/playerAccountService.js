@@ -1,5 +1,5 @@
 import FactoryCommonService from '../../../lib/factoryCommonService';
-import { lapAccountProfile, lapBankInfo, lrfActivityRecord, lrfSubsidiaryViewType, custBettingStatus, playerInfoSettings, lapAccountKYC } from './apiInfo';
+import { lapAccountProfile, lapBankInfo, lrfActivityRecord, lrfSubsidiaryViewType, custBettingStatus, playerInfoSettings, lapAccountKYC, lapDeleteKYCImage } from './apiInfo';
 
 export default class PlayerAccountService {
     constructor() {
@@ -45,6 +45,29 @@ export default class PlayerAccountService {
                     return data;
                 }
                 return null;
+            })
+            .catch(error => {
+                console.log(error.message);
+                return null;
+            });
+    }
+
+    deleteKYCImage(param) {
+        const ajaxConfig = {
+            method: 'get',
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest',
+                'content-type': 'application/json;charset=UTF-8'
+            },
+            transformResponse: [],
+            withCredentials: false,
+            responseType: 'json',
+        }
+
+        return this.commonService.fetchData(lapDeleteKYCImage.type, lapDeleteKYCImage.action, param, ajaxConfig)
+            .then(response => {
+                const { data } = response;
+                return data;
             })
             .catch(error => {
                 console.log(error.message);
