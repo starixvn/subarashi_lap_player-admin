@@ -38,6 +38,7 @@ using System.Threading.Tasks;
 using Polly;
 using Microsoft.Extensions.Logging;
 using Fanex.Athena.PlayerAdmin.Core.Services;
+using Fanex.Athena.PlayerAdmin.Core.Middlewares;
 
 namespace Fanex.Athena.PlayerAdmin.WebHost
 {
@@ -155,6 +156,9 @@ namespace Fanex.Athena.PlayerAdmin.WebHost
         public void Configure(IApplicationBuilder app)
         {
             app.UsePing();
+
+            app.UsePreflight();
+
             app.UseForwardedHeaders();
 
             if (string.Equals(Configuration["UseErrorHandler"], "1"))

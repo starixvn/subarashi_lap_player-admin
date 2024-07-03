@@ -120,6 +120,11 @@ namespace Fanex.Athena.PlayerAdmin.Core.Extensions
             app.UseMiddleware<UnderMaintenanceHandler>();
         }
 
+        public static void UsePreflight(this IApplicationBuilder app)
+        {
+            app.UseMiddleware<PreflightHandler>();
+        }
+
         public static void UseErrorHandler(this IApplicationBuilder app)
         {
             //mvc
