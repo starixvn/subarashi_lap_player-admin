@@ -13,7 +13,6 @@ namespace Fanex.Athena.PlayerAdmin.Commission.Criteria
             UserId = query.UserId;
             IP = query.Ip;
             Language = query.Language;
-            Permissions = query.Permissions;
         }
 
         public int LicenseeId { get; set; }
@@ -25,8 +24,6 @@ namespace Fanex.Athena.PlayerAdmin.Commission.Criteria
         public string IP { get; set; }
 
         public string Language { get; set; }
-
-        public IDictionary<string, bool> Permissions { get; set; }
 
         public virtual string GetSPName() => string.Empty;
 

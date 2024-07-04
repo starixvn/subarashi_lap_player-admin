@@ -21,6 +21,31 @@ namespace Fanex.Athena.PlayerAdmin.Commission.Repositories
             this.dbFactory = dbFactory;
         }
 
+        public async Task<IEnumerable<PlayerCommissionSettingViewModel>> GetAllCommSettingAsync()
+        {
+            const string UspName = "Lrf_LicenseeCommProductList";
+
+            var comSettings = new List<PlayerCommissionSettingViewModel>();
+
+            using (var db = dbFactory.GetObjectDb(UspName))
+            {
+                using (var reader = await db.ExecuteReaderAsync().ConfigureAwait(false))
+                {
+                    while (reader.Read())
+                    {
+                        comSettings.Add(new PlayerCommissionSettingViewModel
+                        {
+                            Sporttype = Convert.ToInt32(reader["Sporttype"]),
+                            Bettype = Convert.ToInt32(reader["Bettype"]),
+                            ProductCode = Convert.ToString(reader["ProductCode"]),
+                        });
+                    }
+                }
+            }
+
+            return comSettings;
+        }
+
         public async Task<(IEnumerable<PlayerCommissionViewModel>, IEnumerable<PlayerCommissionSettingViewModel>)> GetAllCommGroups(GetAllCommGroupsCriteria criteria)
         {
             var comms = new List<PlayerCommissionViewModel>();
@@ -48,6 +73,7 @@ namespace Fanex.Athena.PlayerAdmin.Commission.Repositories
                     {
                         Sporttype = Convert.ToInt32(reader["Sporttype"]),
                         Bettype = Convert.ToInt32(reader["Bettype"]),
+                        ProductCode = Convert.ToString(reader["ProductCode"]),
                         Discount = Convert.ToDecimal(reader["Discount"]),
                         GroupCommId = Convert.ToInt32(reader["GroupDiscountID"])
                     });
@@ -81,6 +107,7 @@ namespace Fanex.Athena.PlayerAdmin.Commission.Repositories
                     {
                         Sporttype = Convert.ToInt32(reader["Sporttype"]),
                         Bettype = Convert.ToInt32(reader["Bettype"]),
+                        ProductCode = Convert.ToString(reader["ProductCode"]),
                         Discount = Convert.ToDecimal(reader["Discount"])
                     });
                 }
@@ -150,6 +177,7 @@ namespace Fanex.Athena.PlayerAdmin.Commission.Repositories
                     {
                         Sporttype = Convert.ToInt32(reader["Sporttype"]),
                         Bettype = Convert.ToInt32(reader["Bettype"]),
+                        ProductCode = Convert.ToString(reader["ProductCode"]),
                         Discount = Convert.ToDecimal(reader["PlayerDiscount"])
                     });
                 }

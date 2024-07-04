@@ -7,7 +7,7 @@ define(
                 custIds: null,
                 custNames: null,
                 ddlCustomer: null,
-                products: null,
+                comms: null,
                 btnCancel: null,
                 btnSave: null,
                 divResult: null,
@@ -29,7 +29,7 @@ define(
 
                 _me.elements.custNames = $("#CustNames");
                 _me.elements.ddlCustomer = $("#ddl-customers");
-                _me.elements.products = $("#Products").val().split(",");
+                _me.elements.comms = $("[id$='-comm-discount']");
                 _me.elements.btnCancel = $(".btn-cancel");
                 _me.elements.btnSave = $(".btn-submit");
                 _me.elements.divResult = $("#div-result");
@@ -77,14 +77,15 @@ define(
                 _me.elements.ddlCustomer = $("#ddl-customers");
             },
             initCommSelection: function () {
-                _me.elements.products.forEach((e) => {
-                    $('#comm1-' + e).on('change', function () {
-                        _me.commissionOnChange($(this).val(), e);
+                _me.elements.comms.each(function () {
+                    const id = $(this).attr("id");
+                    $('#' + id + 1).on('change', function () {
+                        _me.commissionOnChange($(this).val(), id);
                     });
                 });
             },
             commissionOnChange: function (value, idName) {
-                const comm2 = '#comm2-' + idName, comm3 = '#comm3-' + idName;
+                const comm2 = '#' + idName + 2, comm3 = '#' + idName + 3;
 
                 if (Number(value) < 15) {
                     $(comm2).selectList('disabled', null);
@@ -93,13 +94,13 @@ define(
                     $(comm2).val(0);
                     $(comm2).selectList('update', {
                         isDisabled: true,
-                        selectionId: 'select-list-comm2' + idName,
+                        selectionId: 'select-list-' + idName + 2,
                         labelText: '0'
                     });
                     $(comm3).val(0);
                     $(comm3).selectList('update', {
                         isDisabled: true,
-                        selectionId: 'select-list-comm3' + idName,
+                        selectionId: 'select-list-' + idName + 3,
                         labelText: '0'
                     });
                 }
@@ -113,26 +114,27 @@ define(
                 _me.elements.btnSave.attr("disabled", isEnable ? null : "disabled");
             },
             saveClick: function () {
-                var comms = {};
-                _me.elements.products.forEach((id) => {
-                    if ($("#comm1-" + id).length == 0) {
-                        comms.push(0);
-                        return;
+                var comms = [];
+                _me.elements.comms.each(function () {
+                    const id = $(this).attr("id");
+                    let comm = 0;
+
+                    if ($('#' + id + 1).length != 0) {
+                        const comm1 = parseInt($('#' + id + 1).val(), 10);
+                        const comm2 = parseInt($('#' + id + 2).val(), 10);
+                        const comm3 = parseInt($('#' + id + 3).val(), 10);
+
+                        comm = parseFloat((comm1 + comm2 / 10 + comm3 / 100) / 100).toFixed(4);
                     }
 
-                    const comm1 = parseInt($("#comm1-" + id).val(), 10);
-                    const comm2 = parseInt($("#comm2-" + id).val(), 10);
-                    const comm3 = parseInt($("#comm3-" + id).val(), 10);
-                    const comm = parseFloat((comm1 + comm2 / 10 + comm3 / 100) / 100).toFixed(4);
+                    var commBettype = $("#" + id + "bettype").val();
+                    var commSporttype = $("#" + id + "sporttype").val();
 
-                    var commBettype = $("#comm-bettype-" + id).val();
-                    var commSporttype = $("#comm-sporttype-" + id).val();
-
-                    comms[id] = {
+                    comms.push({
                         Sporttype: commSporttype,
                         Bettype: commBettype,
                         Discount: comm
-                    };
+                    });
                 });
 
                 var param = {

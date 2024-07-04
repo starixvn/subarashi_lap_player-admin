@@ -9,12 +9,9 @@ namespace Fanex.Athena.PlayerAdmin.Commission.Criteria
         public GetPlayerCommissionGroupCriteria(SingleMoveGroupQuery query)
         {
             CustId = query.CustId;
-            Permissions = query.Permissions;
         }
 
         public int CustId { get; set; }
-
-        public IDictionary<string, bool> Permissions { get; set; }
 
         public string SPName => "Lrf_LicenseeCustCommSel";
 

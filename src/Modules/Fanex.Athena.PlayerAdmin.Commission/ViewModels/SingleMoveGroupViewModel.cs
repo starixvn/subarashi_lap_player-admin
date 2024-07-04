@@ -16,7 +16,6 @@ namespace Fanex.Athena.PlayerAdmin.Commission.ViewModels
             CustId = query.CustId;
             Groups = groups.ToList();
             CurrentGroup = currentGroup;
-            ProductPermissions = query.Permissions;
             HasCommPermissionWrite = hasCommPermissionWrite;
             InsertGroupNone();
         }
@@ -29,18 +28,11 @@ namespace Fanex.Athena.PlayerAdmin.Commission.ViewModels
 
         public bool HasCommPermissionWrite { get; set; }
 
-        public IDictionary<string, bool> ProductPermissions { get; }
-
         private void InsertGroupNone()
         {
             if (CurrentGroup.GroupCommId != 0)
             {
                 return;
-            }
-
-            if (CurrentGroup.CommValues == null)
-            {
-                CurrentGroup.InitDefaultValue(ProductPermissions);
             }
 
             Groups.Insert(0, new PlayerCommissionViewModel

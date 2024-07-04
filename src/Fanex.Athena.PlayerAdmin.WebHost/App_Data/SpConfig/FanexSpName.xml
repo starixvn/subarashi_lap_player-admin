@@ -71,6 +71,7 @@
 		<Setting Key="Lrf_3rdProductUpdCustStatus" SpName="Lrf_3rdProductUpdCustStatus" DbName="DBCUST.CustDB.wsv_lap" />
 	</Function>
 	<Function Name="Commission">
+		<Setting Key="Lrf_LicenseeCommProductList" SpName="Lrf_LicenseeCommProductList_xpre" DbName="DBCUST.bodb_Licensee.wsv_lap" />
 		<Setting Key="Lrf_LicenseeGroupCommSel" SpName="Lrf_LicenseeGroupCommSel_xpre" DbName="DBCUST.bodb_Licensee.wsv_lap"></Setting>
 		<Setting Key="Lrf_GroupCommGetById" SpName="Lrf_GroupCommGetById_xpre" DbName="DBLIC.bodb_Licensee.wsv_lap"></Setting>
 		<Setting Key="Lrf_GroupCommCheckByName" SpName="Lrf_GroupCommCheckByName_xpre" DbName="DBLIC.bodb_Licensee.wsv_lap" />

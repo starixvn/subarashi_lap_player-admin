@@ -5,7 +5,7 @@ define(
         const _me = {
             elements: {
                 custIds: null,
-                products: null,
+                comms: null,
                 btnCancel: null,
                 btnSave: null,
                 divResult: null,
@@ -22,24 +22,25 @@ define(
                 _me.elements.custIds = $("#CustIds");
                 _me.elements.oldCustIds = _me.elements.custIds.val();
 
-                _me.elements.products = $("#Products").val().split(",");
+                _me.elements.comms = $("[id$='-comm-discount']");
                 _me.elements.btnCancel = $(".btn-cancel");
                 _me.elements.btnSave = $(".btn-submit");
                 _me.elements.divResult = $("#div-result");
             },
             initCommSelection: function () {
-                _me.elements.products.forEach((e) => {
-                    $('#comm1-' + e).on('change', function () {
-                        _me.commissionOnChange($(this).val(), e);
+                _me.elements.comms.each(function () {
+                    const id = $(this).attr("id");
+                    $('#' + id + 1).on('change', function () {
+                        _me.commissionOnChange($(this).val(), id);
                         _me.enableSubmit();
                     }).change();
 
-                    $('#comm2-' + e).on('change', _me.enableSubmit);
-                    $('#comm3-' + e).on('change', _me.enableSubmit);
+                    $('#' + id + 2).on('change', _me.enableSubmit);
+                    $('#' + id + 3).on('change', _me.enableSubmit);
                 });
             },
             commissionOnChange: function (value, idName) {
-                const comm2 = '#comm2-' + idName, comm3 = '#comm3-' + idName;
+                const comm2 = '#' + idName + 2, comm3 = '#' + idName + 3;
 
                 if (Number(value) < 15) {
                     $(comm2).selectList('disabled', null);
@@ -48,13 +49,13 @@ define(
                     $(comm2).val(0);
                     $(comm2).selectList('update', {
                         isDisabled: true,
-                        selectionId: 'select-list-comm2' + idName,
+                        selectionId: 'select-list-' + idName + 2,
                         labelText: '0'
                     });
                     $(comm3).val(0);
                     $(comm3).selectList('update', {
                         isDisabled: true,
-                        selectionId: 'select-list-comm3' + idName,
+                        selectionId: 'select-list-' + idName + 3,
                         labelText: '0'
                     });
                 }
@@ -67,34 +68,40 @@ define(
             },
             enableSubmit: function () {
                 var isEnable = false;
-                _me.elements.products.forEach((id) => {
-                    const comm1 = parseInt($("#comm1-" + id).val(), 10);
-                    const comm2 = parseInt($("#comm2-" + id).val(), 10);
-                    const comm3 = parseInt($("#comm3-" + id).val(), 10);
+                _me.elements.comms.each(function () {
+                    const id = $(this).attr("id");
+
+                    const comm1 = parseInt($('#' + id + 1).val(), 10);
+                    const comm2 = parseInt($('#' + id + 2).val(), 10);
+                    const comm3 = parseInt($('#' + id + 3).val(), 10);
                     const comm = parseFloat((comm1 + comm2 / 10 + comm3 / 100) / 100).toFixed(4);
-                    if (comm != parseFloat($("#comm0-" + id).val())) {
+
+                    if (comm != parseFloat($('#' + id).val())) {
                         isEnable = true;
                     }
 
-                    $("#comm4-" + id).val(comm);
+                    $('#' + id + 4).val(comm);
                 });
 
                 _me.elements.btnSave.attr("disabled", isEnable ? null : "disabled");
             },
             saveClick: function () {
-                var comms = {};
-                _me.elements.products.forEach((id) => {
-                    var commElement = $("#comm4-" + id);
+                var comms = [];
+
+                _me.elements.comms.each(function () {
+                    const id = $(this).attr("id");
+
+                    var commElement = $('#' + id + 4);
                     const comm = commElement.length ? parseFloat(commElement.val()).toFixed(4) : 0;
 
-                    var commBettype = $("#comm-bettype-" + id).val();
-                    var commSporttype = $("#comm-sporttype-" + id).val();
+                    var commBettype = $("#" + id + "bettype").val();
+                    var commSporttype = $("#" + id + "sporttype").val();
 
-                    comms[id] = {
-                        Sporttype : commSporttype, 
-                        Bettype : commBettype,
-                        Discount : comm
-                    };
+                    comms.push({
+                        Sporttype: commSporttype,
+                        Bettype: commBettype,
+                        Discount: comm
+                    });
                 });
 
                 var param = {

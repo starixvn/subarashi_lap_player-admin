@@ -54,7 +54,6 @@
             </div>
             @Html.Hidden("CustNames", Model.CustNamesStr)
             @Html.Hidden("CustIds", Model.CustIdsStr)
-            @Html.Hidden("Products", string.Join(",", Model.ProductPermissions.Select(p => p.Key)))
             @Html.Hidden("GroupCommId", 0)
         </form>
     </div>
@@ -79,16 +78,15 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach (var p in Model.ProductPermissions)
+                        @foreach (var comm in Model.Groups[0].CommValues)
                         {
-                            if (!p.Value)
-                            {
-                                continue;
-                            }
+                            var productName = ViewResources.ResourceManager.GetString("Product" + comm.ProductCode);
+                            productName = string.IsNullOrEmpty(productName) ? comm.ProductCode : productName;
+
                             <tr>
-                                <td>@ViewResources.ResourceManager.GetString("Product" + p.Key)</td>
+                                <td>@productName</td>
                                 <td class="text-center">
-                                    <div class="comm-@p.Key">0.00</div>
+                                    <div class="comm-@comm.ProductCode">0.00</div>
                                 </td>
                             </tr>
                         }
@@ -107,11 +105,9 @@
         <div class="comm-values hide">
             @foreach (var group in Model.Groups)
             {
-                var comms = group.CommValues;
-                foreach (var p in Model.ProductPermissions)
+                @foreach (var comm in group.CommValues)
                 {
-                    var comm = comms != null && comms.ContainsKey(p.Key) ? comms[p.Key].Discount * 100 : 0;
-                    @Html.Hidden("com-" + p.Key + "-" + group.GroupCommId, comm.ToString("N2"))
+                    @Html.Hidden($"comm-{comm.ProductCode}-{group.GroupCommId}", (comm.Discount * 100).ToString("N2"))
                 }
             }
         </div>

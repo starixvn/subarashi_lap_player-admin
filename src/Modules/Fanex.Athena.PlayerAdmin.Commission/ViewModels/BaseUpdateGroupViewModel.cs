@@ -11,7 +11,6 @@ namespace Fanex.Athena.PlayerAdmin.Commission.ViewModels
             CustNamesStr = query.CustNames ?? string.Empty;
             CustIds = CustIdsStr.Split(',');
             CustNames = CustNamesStr.Split(',');
-            ProductPermissions = query.Permissions;
         }
 
         public string[] CustIds { get; set; }
@@ -21,7 +20,5 @@ namespace Fanex.Athena.PlayerAdmin.Commission.ViewModels
         public string CustIdsStr { get; set; }
 
         public string CustNamesStr { get; set; }
-
-        public IDictionary<string, bool> ProductPermissions { get; }
     }
 }

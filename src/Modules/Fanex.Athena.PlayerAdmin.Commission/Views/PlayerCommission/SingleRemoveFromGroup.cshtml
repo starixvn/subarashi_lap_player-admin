@@ -24,7 +24,6 @@
 @section Content
 {
     @Html.Hidden("CustIds", Model.CustIdsStr)
-    @Html.Hidden("Products", string.Join(",", Model.ProductPermissions.Select(p => p.Key)))
     <div class="div-content">
         <div class="row">
             <div class="col l4 m8 s12">

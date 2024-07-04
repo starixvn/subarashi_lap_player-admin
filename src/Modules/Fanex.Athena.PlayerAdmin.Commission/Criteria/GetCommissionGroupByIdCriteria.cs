@@ -10,14 +10,11 @@ namespace Fanex.Athena.PlayerAdmin.Commission.Criteria
         {
             LicenseeId = query.LicenseeId;
             GroupCommId = query.GroupCommId;
-            Permissions = query.Permissions;
         }
 
         public int LicenseeId { get; set; }
 
         public string GroupCommId { get; set; }
-
-        public IDictionary<string, bool> Permissions { get; set; }
 
         public string SPName => "Lrf_GroupCommGetById";
 

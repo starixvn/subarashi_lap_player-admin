@@ -17,7 +17,6 @@ namespace Fanex.Athena.PlayerAdmin.Commission.Controllers
         [AutoBindingMetaModel(bindLicenseeId: true, bindUsername: true, bindClientIP: true, bindLanguage: true, bindUserId: true)]
         public async Task<JsonResult> PostMultipleMoveGroup([FromForm] MultipleMoveGroupQuery query)
         {
-            await AssignSessionToQuery(query);
             var result = await _playerCommService.MultipleMoveGroup(query);
             return Json(result);
         }
@@ -30,7 +29,6 @@ namespace Fanex.Athena.PlayerAdmin.Commission.Controllers
         [AutoBindingMetaModel(bindLicenseeId: true, bindUsername: true, bindClientIP: true, bindLanguage: true, bindUserId: true)]
         public async Task<JsonResult> PostMultipleUpdateGroup([FromForm] MultipleUpdateGroupQuery query)
         {
-            await AssignSessionToQuery(query);
             var result = await _playerCommService.MultipleUpdateGroup(query);
 
             return Json(result);
@@ -44,7 +42,6 @@ namespace Fanex.Athena.PlayerAdmin.Commission.Controllers
         [AutoBindingMetaModel(bindLicenseeId: true, bindUsername: true, bindClientIP: true, bindLanguage: true, bindUserId: true)]
         public async Task<JsonResult> PostMultipleRemoveFromGroup([FromForm] MultipleRemoveFromGroupQuery query)
         {
-            await AssignSessionToQuery(query);
             var result = await _playerCommService.MultipleRemoveFromGroup(query);
 
             return Json(result);

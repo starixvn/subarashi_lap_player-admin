@@ -15,7 +15,7 @@ namespace Fanex.Athena.PlayerAdmin.Commission.Criteria
             CommValues = query.CommValues;
         }
 
-        public Dictionary<string, PlayerCommissionSettingViewModel> CommValues { get; set; }
+        public IEnumerable<PlayerCommissionSettingViewModel> CommValues { get; set; }
 
         public override string GetSPName() => "Lrf_LicenseeCustCommUpd";
 
@@ -35,9 +35,9 @@ namespace Fanex.Athena.PlayerAdmin.Commission.Criteria
             {
                 xmlElementBuilder.Append(string.Format(
                     XmlElementPattern,
-                    setting.Value.Sporttype,
-                    setting.Value.Bettype,
-                    setting.Value.Discount));
+                    setting.Sporttype,
+                    setting.Bettype,
+                    setting.Discount));
             }
 
             return string.Format(XmlPattern, xmlElementBuilder);

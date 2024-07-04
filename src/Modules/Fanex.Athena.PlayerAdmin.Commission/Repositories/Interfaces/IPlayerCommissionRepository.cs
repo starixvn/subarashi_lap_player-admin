@@ -8,6 +8,8 @@ namespace Fanex.Athena.PlayerAdmin.Commission.Repositories.Interfaces
 {
     public interface IPlayerCommissionRepository
     {
+        Task<IEnumerable<PlayerCommissionSettingViewModel>> GetAllCommSettingAsync();
+
         Task<(IEnumerable<PlayerCommissionViewModel>, IEnumerable<PlayerCommissionSettingViewModel>)> GetAllCommGroups(GetAllCommGroupsCriteria criteria);
 
         Task<(PlayerCommissionViewModel, IEnumerable<PlayerCommissionSettingViewModel>)> GetCommissionGroupById(GetCommissionGroupByIdCriteria criteria);

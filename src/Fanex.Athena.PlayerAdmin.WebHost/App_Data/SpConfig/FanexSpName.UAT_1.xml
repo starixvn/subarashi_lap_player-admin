@@ -71,9 +71,10 @@
 		<Setting Key="Lrf_3rdProductSelCustStatus" SpName="Lrf_3rdProductSelCustStatus" DbName="DBLIC.bodb_Licensee.wsv_lap" />
 		<Setting Key="Lrf_3rdProductUpdCustStatus" SpName="Lrf_3rdProductUpdCustStatus" DbName="DBCUST.CustDB.wsv_lap" />
 	</Function>
-		<Function Name="Commission">
+	<Function Name="Commission">
+		<Setting Key="Lrf_LicenseeCommProductList" SpName="Lrf_LicenseeCommProductList" DbName="DBCUST.bodb_Licensee.wsv_lap" />
 		<Setting Key="Lrf_LicenseeGroupCommSel" SpName="Lrf_LicenseeGroupCommSel" DbName="DBCUST.bodb_Licensee.wsv_lap"></Setting>
-		<Setting Key="Lrf_GroupCommGetById" SpName="Lrf_GroupCommGetById" DbName="DBLIC.bodb_Licensee.wsv_lap"></Setting>
+		<Setting Key="Lrf_GroupCommGetById" SpName="Lrf_GroupCommGetById" DbName="DBCUST.bodb_Licensee.wsv_lap"></Setting>
 		<Setting Key="Lrf_GroupCommCheckByName" SpName="Lrf_GroupCommCheckByName" DbName="DBLIC.bodb_Licensee.wsv_lap" />
 		<Setting Key="Lrf_LicenseeCustCommSel" SpName="Lrf_LicenseeCustCommSel" DbName="DBCUST.bodb_Licensee.wsv_lap" TimeOut="240" />
 		<Setting Key="Lrf_LicenseeCustCommUpd" SpName="Lrf_LicenseeCustCommUpd" DbName="DBCUST.bodb_Licensee.wsv_lap" TimeOut="240" />
