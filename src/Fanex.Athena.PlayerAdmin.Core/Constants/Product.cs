@@ -97,6 +97,8 @@
         public const string L22 = "L22";
 
         public const string UUSL = "UUSL";
+
+        public const string FS = "FS";
     }
 
     public static class ProductTypes
@@ -187,5 +189,7 @@
         public const int L22 = 79;
 
         public const int UUSL = 78;
+
+        public const int FS = 87;
     }
 }
