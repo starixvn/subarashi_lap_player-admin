@@ -1,4 +1,5 @@
-﻿using Fanex.Athena.PlayerAdmin.Core.Helpers;
+﻿using Fanex.Athena.PlayerAdmin.Core.Constants;
+using Fanex.Athena.PlayerAdmin.Core.Helpers;
 using Fanex.Athena.PlayerAdmin.MVC.MetaModel;
 using System;
 using System.Collections.Generic;
@@ -22,6 +23,7 @@ namespace Fanex.Athena.PlayerAdmin.MVC.ViewModels
             DetailTransactions = Enumerable.Empty<PlayerDetailTransactionViewModel>();
             PageSize = DefaultPageSize;
             PageIndex = DefaultPageIndex;
+            ViewType = ViewTypes.MainWallet;
         }
 
         public PlayerDetailTransactionReportViewModel(
@@ -35,12 +37,15 @@ namespace Fanex.Athena.PlayerAdmin.MVC.ViewModels
             MinDate = criteria.MinDate;
             PageSize = criteria.PageSize ?? DefaultPageSize;
             PageIndex = criteria.PageIndex ?? DefaultPageIndex;
+            ViewType = criteria.ViewType;
             DetailTransactions = detailTransactions;
         }
 
         public int CustId { get; set; }
 
         public int CurrencyId { get; set; }
+
+        public byte ViewType { get; set; }
 
         public DateTime FromDate { get; set; }
 
@@ -62,5 +67,8 @@ namespace Fanex.Athena.PlayerAdmin.MVC.ViewModels
 
         [JsonIgnore]
         public bool IsEnableSingleWallet { get; set; }
+
+        [JsonIgnore]
+        public bool IsShowSabaCoins { get; set; }
     }
 }

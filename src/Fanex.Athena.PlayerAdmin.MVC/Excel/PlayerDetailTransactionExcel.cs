@@ -3,6 +3,7 @@ using Fanex.Athena.PlayerAdmin.Core.Excel;
 using Fanex.Athena.PlayerAdmin.MVC.ViewModels;
 using Fanex.Athena.PlayerAdmin.Core.Resources;
 using NPOI.SS.UserModel;
+using Fanex.Athena.PlayerAdmin.Core.Constants;
 
 namespace Fanex.Athena.PlayerAdmin.MVC.Excel
 {
@@ -34,7 +35,8 @@ namespace Fanex.Athena.PlayerAdmin.MVC.Excel
 
         protected override void AssignTitle(ISheet sheet)
         {
-            var title = $"{ViewResources.DetailTransaction}, {_data.FromDateStr} -> {_data.ToDateStr}";
+            var viewInText = _data.ViewType == ViewTypes.MainWallet ? string.Empty : $", {string.Format(ViewResources.Viewin, ViewResources.SabaCoins)}";
+            var title = $"{ViewResources.DetailTransaction}, {_data.FromDateStr} -> {_data.ToDateStr}" + viewInText;
             sheet.SetTextRowValue(TemplateSheet, RowTitleTemplate, ColumnTemplateCount, title);
             sheet.CreateFreezePane(0, RowContentTemplate);
             ClearTemplate(sheet, RowContentTemplate);

@@ -7,6 +7,7 @@ import { DateRange } from '@jsroot/components/date-range/index';
 import AppData from '@jsroot/lib/AppData';
 import { ActionCreators } from '../actions/index.js';
 import Site from '@jsroot/lib/site';
+import { ViewTypeOptions } from '../../../lib/constants'
 import $ from 'jquery';
 
 const RANGE_MONTH_CONSTRAINT = 3;
@@ -18,7 +19,8 @@ export class FormFilter extends PureComponent {
     constructor(props) {
         super(props);
         this.state = {
-            requestParam: this.props.requestParam
+            requestParam: this.props.requestParam,
+            viewType: ViewTypeOptions.MainWallet
         };
 
         this.exportForm = React.createRef();
@@ -46,22 +48,25 @@ export class FormFilter extends PureComponent {
             ToDate: moment(date.endDate).format(dateFormatStr)
         };
 
-        this.setState({
+        this.setState(state => ({
+            ...state,
             requestParam: Object.assign(this.props.requestParam, newRequestParam)
-        });
+        }));
     };
     changeResettled = (checked) => {
-        this.setState({
+        this.setState(state => ({
+            ...state,
             requestParam: Object.assign(this.props.requestParam, { IsResettled: checked })
-        });
+        }));
     };
     changeTransactionId = (value) => {
-        this.setState({
+        this.setState(state => ({
+            ...state,
             requestParam: Object.assign(this.props.requestParam, { TransactionId: value })
-        });
+        }));
     };
     onSubmit = () => {
-        const param = Object.assign({}, this.props.requestParam, { PageSize: DEFAULT_PAGE_SIZE, PageIndex: DEFAULT_PAGE_INDEX });
+        const param = Object.assign({}, this.props.requestParam, { PageSize: DEFAULT_PAGE_SIZE, PageIndex: DEFAULT_PAGE_INDEX, ViewType: this.state.viewType });
 
         if (!this.isValidTransactionId(param.TransactionId)) {
             return;
@@ -93,6 +98,13 @@ export class FormFilter extends PureComponent {
         this.exportForm.current.submit();
     };
 
+    onViewTypeChange = (value) => {
+        this.setState(state => ({
+            ...state,
+            viewType: value
+        }));
+    }
+
     render() {
         const relativeUrl = 'PlayerDetailTransaction/ExportDetailTransactionReport';
         const url = Site.resolveClientUrl(relativeUrl);
@@ -100,6 +112,18 @@ export class FormFilter extends PureComponent {
         return (
             <div className='page-filter'>
                 <div className='row'>
+                    {AppData.isShowSabaCoins && 
+                    <div className="col-12">
+                        <div className="form-group radio-group">
+                            <input type="radio" value={ViewTypeOptions.MainWallet} checked={this.state.viewType  == ViewTypeOptions.MainWallet} name="ViewType" id="viewtypebymain"
+                                    onChange={event => this.onViewTypeChange(ViewTypeOptions.MainWallet)}/>
+                            <label htmlFor="viewtypebymain">{LangHelper.getSingleResource("MainWallet")}</label>
+                            <input type="radio" value={ViewTypeOptions.SabaCoins} name="ViewType" id="viewtypebysabacoins" checked={this.state.viewType  == ViewTypeOptions.SabaCoins}
+                                onChange={event => this.onViewTypeChange(ViewTypeOptions.SabaCoins)}/>
+                            <label htmlFor="viewtypebysabacoins">{LangHelper.getSingleResource("SabaCoins")}</label>
+                        </div>
+                    </div>}
+
                     <div className='col-12 col-sm-7 col-md-4 col-xl-3'>
                         <div className='form-group'>
                             <label className='label-text'>{LangHelper.getSingleResource("TransactionDate")}</label>
@@ -134,6 +158,7 @@ export class FormFilter extends PureComponent {
                     <div className="caret-block">
                         <i className="icon-excel right" onClick={this.exportExcel} title={LangHelper.getSingleResource("ExportToExcel")}></i>
                         <form ref={this.exportForm} id="form-excel-detail-transaction" action={url}>
+                            <input type="hidden" id="ViewType" name="ViewType" value={this.state.viewType} />
                             <input type="hidden" id="CustId" name="CustId" value={this.state.requestParam.CustId} />
                             <input type="hidden" id="FromDate" name="FromDate" value={this.state.requestParam.FromDate} />
                             <input type="hidden" id="ToDate" name="ToDate" value={this.state.requestParam.ToDate} />
