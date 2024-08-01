@@ -58,7 +58,7 @@ const Setting = {
 
 const DataContent = (props) => {
     const { ProductId } = props.requestParam;
-    const Content = Setting[ProductId];
+    const Content = !!Setting[ProductId] ? Setting[ProductId] : GameDataContent;
 
     return <Content />
 }

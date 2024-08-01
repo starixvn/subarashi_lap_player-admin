@@ -99,6 +99,8 @@
         public const string UUSL = "UUSL";
 
         public const string FS = "FS";
+
+        public const string FAC = "FAC";
     }
 
     public static class ProductTypes
@@ -191,5 +193,7 @@
         public const int UUSL = 78;
 
         public const int FS = 87;
+
+        public const int FAC = 89;
     }
 }

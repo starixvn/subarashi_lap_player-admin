@@ -49,8 +49,10 @@ const Url = {
 };
 
 export default class DataTransfer {
+    static getControllerName = ProductId =>  !!Url[ProductId] ? Url[ProductId] : 'DcsBetLimit';
+
     static getData(param, callBack) {
-        const url = Site.resolveClientUrl(Url[param.ProductId] + '/GetSetting');
+        const url = Site.resolveClientUrl(this.getControllerName(param.ProductId) + '/GetSetting');
         DataService.postData(url, param)
             .then(response => {
                 const { Data, ...setting } = response.data;
@@ -64,7 +66,7 @@ export default class DataTransfer {
     }
 
     static updateData(param, callBack) {
-        const url = Site.resolveClientUrl(Url[param.ProductId] + '/UpdateSetting');
+        const url = Site.resolveClientUrl(this.getControllerName(param.ProductId) + '/UpdateSetting');
         DataService.postData(url, param)
             .then(response => {
                 const result = response.data;
@@ -82,7 +84,7 @@ export default class DataTransfer {
     }
 
     static updateStatus(param, callBack) {
-        const url = Site.resolveClientUrl(Url[param.ProductId] + '/UpdateStatus');
+        const url = Site.resolveClientUrl(this.getControllerName(param.ProductId) + '/UpdateStatus');
         DataService.postData(url, param)
             .then(response => {
                 const result = response.data;
