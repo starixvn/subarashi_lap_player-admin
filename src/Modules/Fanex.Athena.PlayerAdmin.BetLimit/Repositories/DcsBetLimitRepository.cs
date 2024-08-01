@@ -75,7 +75,8 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Repositories
             { ProductTypes.SEA, 156 },
             { ProductTypes.WE, 228 },
             { ProductTypes.L22, 227 },
-            { ProductTypes.UUSL, 216 }
+            { ProductTypes.UUSL, 216 },
+            { ProductTypes.FS, 230 }
         };
 
         private static readonly IDictionary<int, int> ProductBetTypeMap = new Dictionary<int, int>
@@ -112,7 +113,8 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Repositories
             { ProductTypes.SEA, 8900 },
             { ProductTypes.WE, 10300 },
             { ProductTypes.L22, 7601 },
-            { ProductTypes.UUSL, 10000 }
+            { ProductTypes.UUSL, 10000 },
+            { ProductTypes.FS, 11100 }
         };
 
         public DcsBetLimitRepository(IDbFactory dbFactory, ILogger<DcsBetLimitRepository> logger)

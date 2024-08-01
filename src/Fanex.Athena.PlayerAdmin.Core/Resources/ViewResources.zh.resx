@@ -2800,4 +2800,7 @@
   <data name="DesktopCompact" xml:space="preserve">
     <value>桌机轻量版</value>
   </data>
+  <data name="ProductFS" xml:space="preserve">
+    <value>FS电子</value>
+  </data>
 </root>

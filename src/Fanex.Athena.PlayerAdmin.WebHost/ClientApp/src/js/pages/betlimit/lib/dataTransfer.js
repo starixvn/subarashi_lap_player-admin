@@ -44,7 +44,8 @@ const Url = {
     [BetLimitProduct.SEA]: 'DcsBetLimit',
     [BetLimitProduct.WE]: 'DcsBetLimit',
     [BetLimitProduct.L22]: 'DcsBetLimit',
-    [BetLimitProduct.UUSL]: 'DcsBetLimit'
+    [BetLimitProduct.UUSL]: 'DcsBetLimit',
+    [BetLimitProduct.FS]: 'DcsBetLimit'
 };
 
 export default class DataTransfer {
