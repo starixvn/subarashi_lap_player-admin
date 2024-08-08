@@ -92,6 +92,9 @@ namespace Fanex.Athena.PlayerAdmin.MVC.Controllers
             metaModel.FromDate = new DateTime(now.Year, now.Month, 1);
             metaModel.ToDate = now;
             metaModel.SpecialPlatform = _contextService.SpecialPlatform;
+            metaModel.SportListXML = "All";
+            metaModel.BetTypeIds = "All";
+            metaModel.CashOutMode = 0;
         }
 
         private static string GetStatus()

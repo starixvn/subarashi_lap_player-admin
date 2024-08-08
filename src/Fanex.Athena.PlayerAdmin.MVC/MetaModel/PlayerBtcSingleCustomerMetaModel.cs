@@ -47,6 +47,12 @@ namespace Fanex.Athena.PlayerAdmin.MVC.MetaModel
 
         public string LiveStatus { get; set; }
 
+        public string SportListXML { get; set; }
+
+        public string BetTypeIds { get; set; }
+
+        public int CashOutMode { get; set; }
+
         public string Platform { get; set; }
 
         public bool IsExport { get; set; }
