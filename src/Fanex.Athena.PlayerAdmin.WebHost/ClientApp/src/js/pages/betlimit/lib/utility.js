@@ -79,7 +79,8 @@ const ConfirmationUpdateProductStatusMsg = {
     [BetLimitProduct.L22]: { Msg: 'UpdateProductStatus', Product: 'ProductL22' },
     [BetLimitProduct.UUSL]: { Msg: 'UpdateProductStatus', Product: 'ProductUUSL' },
     [BetLimitProduct.FS]: { Msg: 'UpdateProductStatus', Product: 'ProductFS' },
-    [BetLimitProduct.FAC]: { Msg: 'UpdateProductStatus', Product: 'ProductFAC' }
+    [BetLimitProduct.FAC]: { Msg: 'UpdateProductStatus', Product: 'ProductFAC' },
+    [BetLimitProduct.NS]: { Msg: 'UpdateProductStatus', Product: 'ProductNS' }
 }
 
 const ConfirmationUpdateProductChargeCommMsg = {

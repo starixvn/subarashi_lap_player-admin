@@ -101,6 +101,8 @@
         public const string FS = "FS";
 
         public const string FAC = "FAC";
+        
+        public const string NS = "NS";
     }
 
     public static class ProductTypes
@@ -195,5 +197,7 @@
         public const int FS = 87;
 
         public const int FAC = 89;
+        
+        public const int NS = 85;
     }
 }
