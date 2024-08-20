@@ -3152,4 +3152,7 @@
   <data name="ProductNS" xml:space="preserve">
     <value>Nextspin</value>
   </data>
+  <data name="SinglePlayer" xml:space="preserve">
+    <value>Single Player</value>
+  </data>
 </root>

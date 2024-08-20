@@ -6739,6 +6739,15 @@ namespace Fanex.Athena.PlayerAdmin.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Single Player.
+        /// </summary>
+        public static string SinglePlayer {
+            get {
+                return ResourceManager.GetString("SinglePlayer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Soccer Parlay.
         /// </summary>
         public static string SoccerParlay {

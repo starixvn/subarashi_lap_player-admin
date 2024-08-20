@@ -2809,4 +2809,7 @@
   <data name="ProductNS" xml:space="preserve">
     <value>虎游</value>
   </data>
+  <data name="SinglePlayer" xml:space="preserve">
+    <value>单一玩家</value>
+  </data>
 </root>

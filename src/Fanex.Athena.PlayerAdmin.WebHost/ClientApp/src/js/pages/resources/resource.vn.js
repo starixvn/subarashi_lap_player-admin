@@ -46,6 +46,7 @@ export const resource_vn = {
     NoSportsbookData: 'Không tìm thấy dữ liệu Sportsbook.',
     FastCrossLink: 'Liên kết nhanh',
     SingleCustomer: 'Khách hàng cá nhân',
+    SinglePlayer:"Người chơi cá nhân",
     BettingTicketCenter: 'Trung tâm vé cược',
     CustomerWinLoss: 'Thắng Thua Khách Hàng',
     PlayerBettingStatisticsTitle: 'Thống kê cá cược của người chơi (tháng này)',

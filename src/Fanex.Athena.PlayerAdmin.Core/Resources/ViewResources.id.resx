@@ -2814,4 +2814,7 @@
   <data name="DesktopCompact" xml:space="preserve">
     <value>Desktop Kompak</value>
   </data>
+  <data name="SinglePlayer" xml:space="preserve">
+    <value>Pemain Tunggal</value>
+  </data>
 </root>
