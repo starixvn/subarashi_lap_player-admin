@@ -46,6 +46,7 @@ export const resource_en = {
     NoSportsbookData: 'There is no Sportsbook data.',
     FastCrossLink: 'Fast Cross-Link',
     SingleCustomer: 'Single Customer',
+    SinglePlayer:"Single Player",
     BettingTicketCenter: 'Betting Ticket Center',
     CustomerWinLoss: 'Customer Win Loss',
     PlayerBettingStatisticsTitle: 'Player Betting Statistics (month to date)',

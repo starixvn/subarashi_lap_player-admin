@@ -27,7 +27,7 @@ export const FastCrossLink = (props) => {
 
     const popupSingleCustomer = {
         url: singleCustomerUrl,
-        title: ClientResourceManager.getText('BettingTicketCenter') + ' - ' + ClientResourceManager.getText('SingleCustomer'),
+        title: ClientResourceManager.getText('BettingTicketCenter') + ' - ' + ClientResourceManager.getText('SinglePlayer'),
         width: window.innerWidth - 10,
         height: window.innerHeight - 10
     };
@@ -46,7 +46,7 @@ export const FastCrossLink = (props) => {
                 <div>
                     <span>{ClientResourceManager.getText('BettingTicketCenter')}</span>
                     <strong className="divider">{'>'}</strong>
-                    <span><a className="link" onClick={e => handleClickLink(e, popupSingleCustomer)}>{ClientResourceManager.getText('SingleCustomer')}</a></span>
+                    <span><a className="link" onClick={e => handleClickLink(e, popupSingleCustomer)}>{ClientResourceManager.getText('SinglePlayer')}</a></span>
                 </div>
                 <div><span><a className="link" onClick={e => handleClickLink(e, popupWinLossAnalysis)}>{ClientResourceManager.getText('WinLossAnalysis')}</a></span></div>
             </div>

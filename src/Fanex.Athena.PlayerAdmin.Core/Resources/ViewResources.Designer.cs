@@ -5902,6 +5902,15 @@ namespace Fanex.Athena.PlayerAdmin.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Nextspin.
+        /// </summary>
+        public static string ProductNS {
+            get {
+                return ResourceManager.GetString("ProductNS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sportsbook Parlay.
         /// </summary>
         public static string ProductParlay {
@@ -6726,6 +6735,15 @@ namespace Fanex.Athena.PlayerAdmin.Core.Resources {
         public static string SingleCustomer {
             get {
                 return ResourceManager.GetString("SingleCustomer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Single Player.
+        /// </summary>
+        public static string SinglePlayer {
+            get {
+                return ResourceManager.GetString("SinglePlayer", resourceCulture);
             }
         }
         

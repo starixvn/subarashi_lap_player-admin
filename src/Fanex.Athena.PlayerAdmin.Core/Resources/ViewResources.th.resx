@@ -2868,4 +2868,7 @@
   <data name="DesktopCompact" xml:space="preserve">
     <value>เดสก์ท็อปคอมแพค</value>
   </data>
+  <data name="SinglePlayer" xml:space="preserve">
+    <value>นักเดิมพันเดี่ยว</value>
+  </data>
 </root>

@@ -46,6 +46,7 @@ export const resource_th = {
     NoSportsbookData: "ไม่มีข้อมูลสมุดกีฬา",
     FastCrossLink: "ความเร็วในการเชื่อมโยงข้าม",
     SingleCustomer: "ลูกค้าเดี่ยว",
+    SinglePlayer:"นักเดิมพันเดี่ยว",
     BettingTicketCenter: "ศูนย์ตั๋วเดิมพัน",
     CustomerWinLoss: "ลูกค้าแพ้ชนะ",
     PlayerBettingStatisticsTitle: "สถิติการเดิมพันของผู้เล่น (เดือนถึงวันที่)",

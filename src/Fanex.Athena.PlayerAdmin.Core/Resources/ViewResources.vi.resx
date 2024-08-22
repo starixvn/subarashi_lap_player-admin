@@ -2877,4 +2877,7 @@
   <data name="DesktopCompact" xml:space="preserve">
     <value>Desktop nhỏ gọn</value>
   </data>
+  <data name="SinglePlayer" xml:space="preserve">
+    <value>Người chơi cá nhân</value>
+  </data>
 </root>
