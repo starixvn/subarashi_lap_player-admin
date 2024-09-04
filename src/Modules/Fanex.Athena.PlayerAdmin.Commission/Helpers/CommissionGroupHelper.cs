@@ -11,6 +11,12 @@ namespace Fanex.Athena.PlayerAdmin.Commission.Helpers
     {
         public const string ParlayName = "Parlay";
 
+        public static readonly string[] ProductSettingOrder = new string[] {ProductCode.SB, ParlayName, ProductCode.NG, ProductCode.CS, ProductCode.VB, ProductCode.PP, ProductCode.SXG,
+            ProductCode.SG, ProductCode.KN, ProductCode.LT, ProductCode.TG, ProductCode.VS, ProductCode.VRG, ProductCode.CC, ProductCode.SBC, ProductCode.SAG, ProductCode.PGS, ProductCode.AB, ProductCode.WM,
+            ProductCode.BGG, ProductCode.JK, ProductCode.HB, ProductCode.VGA, ProductCode.CG, ProductCode.AP, ProductCode.APM, ProductCode.FGGL, ProductCode.MXG, ProductCode.JIG, ProductCode.YB, ProductCode.MGRNG };
+
+        public static int ProductListComparer(string productCode) => Array.IndexOf(ProductSettingOrder, productCode);
+
         private static readonly Dictionary<string, string> FollowPermissions = new Dictionary<string, string>
         {
             [ParlayName] = ProductCode.SB
@@ -18,81 +24,11 @@ namespace Fanex.Athena.PlayerAdmin.Commission.Helpers
 
         public static readonly string[] ExcludeProductsSPParam = new[] { "SB", "Parlay" };
 
-        public static readonly IReadOnlyDictionary<string, string> ProductCodeMapper = new Dictionary<string, string>
+        public static bool GetProductPermissions(ProductAccess productAccess, string productCode)
         {
-            [ProductCode.CS] = "RNG",
-            [ProductCode.VB] = "Macau",
-            [ProductCode.AGC] = "AG",
-            [ProductCode.SXG] = "SexyGaming",
-            [ProductCode.SG] = "SpadeGaming",
-            [ProductCode.KN] = "Keno",
-            [ProductCode.LT] = "Lottery",
-            [ProductCode.TG] = "TableGame",
-            [ProductCode.AB] = "Allbet",
-            [ProductCode.VRG] = "VirtualGames",
-            [ProductCode.CC] = "ArcadiaGaming",
-            [ProductCode.SBC] = "Sabaclub",
-            [ProductCode.SAG] = "SAGaming",
-            [ProductCode.PGS] = "PGSoft",
-            [ProductCode.WM] = "WMCasino",
-            [ProductCode.BGG] = "BigGaming",
-            [ProductCode.JK] = "Joker",
-            [ProductCode.HB] = "Habanero",
-            [ProductCode.VGA] = "VGaming",
-            [ProductCode.CG] = "CG",
-            [ProductCode.AP] = "Advant",
-            [ProductCode.APM] = "AdvantMini",
-            [ProductCode.FGGL] = "FGG",
-            [ProductCode.MXG] = "MaxGame",
-            [ProductCode.JIG] = "Jili",
-            [ProductCode.YB] = "YeeBet",
-            [ProductCode.MGRNG] = "MgRNG"
-        };
+            var code = FollowPermissions.ContainsKey(productCode) ? FollowPermissions[productCode] : productCode;
 
-        public static IDictionary<string, string> MapHardcodedNameFromDB(IDictionary<string, bool> permissions, bool isUpdate)
-        {
-            var result = new Dictionary<string, string>();
-
-            foreach (var p in permissions)
-            {
-                var code = ProductCodeMapper.ContainsKey(p.Key) ? ProductCodeMapper[p.Key] : p.Key;
-                if (isUpdate && ExcludeProductsSPParam.Any(s => string.Equals(s, code)))
-                {
-                    continue;
-                }
-
-                result.Add(p.Key, code);
-            }
-
-            return result;
-        }
-
-        public static IDictionary<string, bool> GetProductPermissions(string[] supportedProducts, ProductAccess productAccess)
-        {
-            var result = new Dictionary<string, bool>();
-
-            foreach (var p in supportedProducts)
-            {
-                var code = FollowPermissions.ContainsKey(p) ? FollowPermissions[p] : p;
-                result.Add(p, productAccess.IsAllow(code));
-            }
-
-            return result;
-        }
-
-        public static IDictionary<string, bool> GetProductColumns(IDataReader reader, IDictionary<string, string> hardcodedColumns)
-        {
-            var columnsInTable = new Dictionary<string, bool>();
-            var schema = reader.GetSchemaTable()
-               .Rows
-               .OfType<DataRow>();
-
-            foreach (var p in hardcodedColumns)
-            {
-                columnsInTable.Add(p.Key, schema.Any(row => string.Equals(row["ColumnName"].ToString(), p.Value + "Comm", StringComparison.OrdinalIgnoreCase)));
-            }
-
-            return columnsInTable;
+            return productAccess.IsAllow(code);
         }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Major Code Smell", "S109:Magic numbers should not be used", Justification = "Howard")]

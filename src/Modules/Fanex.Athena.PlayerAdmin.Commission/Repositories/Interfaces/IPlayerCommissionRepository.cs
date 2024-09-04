@@ -8,9 +8,11 @@ namespace Fanex.Athena.PlayerAdmin.Commission.Repositories.Interfaces
 {
     public interface IPlayerCommissionRepository
     {
-        Task<IEnumerable<PlayerCommissionViewModel>> GetAllCommGroups(GetAllCommGroupsCriteria criteria);
+        Task<IEnumerable<PlayerCommissionSettingViewModel>> GetAllCommSettingAsync();
 
-        Task<PlayerCommissionViewModel> GetCommissionGroupById(GetCommissionGroupByIdCriteria criteria);
+        Task<(IEnumerable<PlayerCommissionViewModel>, IEnumerable<PlayerCommissionSettingViewModel>)> GetAllCommGroups(GetAllCommGroupsCriteria criteria);
+
+        Task<(PlayerCommissionViewModel, IEnumerable<PlayerCommissionSettingViewModel>)> GetCommissionGroupById(GetCommissionGroupByIdCriteria criteria);
 
         Task<IResultInfo> MultipleMoveGroup(MultipleMoveGroupCriteria criteria);
 
@@ -18,6 +20,6 @@ namespace Fanex.Athena.PlayerAdmin.Commission.Repositories.Interfaces
 
         Task<IResultInfo> MultipleUpdateGroup(MultipleUpdateGroupCriteria criteria);
 
-        Task<PlayerCommissionViewModel> GetPlayerCommissionGroup(GetPlayerCommissionGroupCriteria criteria);
+        Task<(PlayerCommissionViewModel, IEnumerable<PlayerCommissionSettingViewModel>)> GetPlayerCommissionGroup(GetPlayerCommissionGroupCriteria criteria);
     }
 }

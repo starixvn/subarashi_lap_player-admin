@@ -1,7 +1,10 @@
 ﻿using Fanex.Athena.PlayerAdmin.Commission.Helpers;
 using Fanex.Athena.PlayerAdmin.Commission.MetaModels;
+using Fanex.Athena.PlayerAdmin.Commission.ViewModels;
 using Fanex.Athena.PlayerAdmin.Core.Constants;
 using Fanex.Data;
+using System.Collections.Generic;
+using System.Text;
 
 namespace Fanex.Athena.PlayerAdmin.Commission.Criteria
 {
@@ -9,33 +12,35 @@ namespace Fanex.Athena.PlayerAdmin.Commission.Criteria
     {
         public MultipleUpdateGroupCriteria(MultipleUpdateGroupQuery query) : base(query)
         {
-            Products = query.Products;
-            Comms = query.Comms;
+            CommValues = query.CommValues;
         }
 
-        public string[] Products { get; set; }
-
-        public decimal[] Comms { get; set; }
+        public IEnumerable<PlayerCommissionSettingViewModel> CommValues { get; set; }
 
         public override string GetSPName() => "Lrf_LicenseeCustCommUpd";
 
         public override void SetParameterValues(IObjectDb db)
         {
             base.SetParameterValues(db);
+            db.SetParameterValue("DiscountSettings", BuildDiscountSettingsXmlString());
+        }
 
-            var hardcodedColumnNames = CommissionGroupHelper.MapHardcodedNameFromDB(Permissions, isUpdate: false);
-            for (var i = 0; i < Products.Length; i++)
+        private string BuildDiscountSettingsXmlString()
+        {
+            const string XmlPattern = "<Root>{0}</Root>";
+            const string XmlElementPattern = "<r SportType=\"{0}\" BetType=\"{1}\" Discount=\"{2}\" />";
+            var xmlElementBuilder = new StringBuilder();
+
+            foreach (var setting in CommValues)
             {
-                var p = Products[i];
-                var code = hardcodedColumnNames[p];
-                db.SetParameterValue(code + "Comm", Comms[i]);
-                if (p == ProductCode.SB || p == "Parlay")
-                {
-                    continue;
-                }
-
-                db.SetParameterValue("IsUpdate" + code, Permissions[p]);
+                xmlElementBuilder.Append(string.Format(
+                    XmlElementPattern,
+                    setting.Sporttype,
+                    setting.Bettype,
+                    setting.Discount));
             }
+
+            return string.Format(XmlPattern, xmlElementBuilder);
         }
     }
 }

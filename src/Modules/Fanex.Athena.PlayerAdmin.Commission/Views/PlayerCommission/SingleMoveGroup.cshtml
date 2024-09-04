@@ -66,7 +66,6 @@
                 </div>
             </div>
             @Html.Hidden("CustIds", Model.CustId)
-            @Html.Hidden("Products", string.Join(",", Model.ProductPermissions.Select(p => p.Key)))
             @Html.Hidden("GroupCommId", Model.CurrentGroup.GroupCommId)
         </form>
     </div>
@@ -90,18 +89,16 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach (var p in Model.ProductPermissions)
+                        @for (int i = 0; i < currentComms.Count(); i++)
                         {
-                            if (!p.Value)
-                            {
-                                continue;
-                            }
+                            var comm = currentComms.ElementAt(i);
+                            var productName = ViewResources.ResourceManager.GetString("Product" + comm.ProductCode);
+                            productName = string.IsNullOrEmpty(productName) ? comm.ProductCode : productName;
 
-                            var comm = currentComms[p.Key] * 100;
                             <tr>
-                                <td>@ViewResources.ResourceManager.GetString("Product" + p.Key)</td>
+                                <td>@productName</td>
                                 <td class="text-center">
-                                    <div class="comm-@p.Key">@(comm.ToString("N2"))</div>
+                                    <div class="comm-@comm.ProductCode">@((comm.Discount * 100).ToString("N2"))</div>
                                 </td>
                             </tr>
                         }
@@ -122,11 +119,9 @@
         <div class="comm-values hide">
             @foreach (var group in Model.Groups)
             {
-                var comms = group.CommValues;
-                foreach (var p in Model.ProductPermissions)
+                @foreach (var comm in group.CommValues)
                 {
-                    var comm = comms == null ? 0 : comms[p.Key] * 100;
-                    @Html.Hidden("com-" + p.Key + "-" + group.GroupCommId, comm.ToString("N2"))
+                    @Html.Hidden($"comm-{comm.ProductCode}-{group.GroupCommId}", (comm.Discount * 100).ToString("N2"))
                 }
             }
         </div>

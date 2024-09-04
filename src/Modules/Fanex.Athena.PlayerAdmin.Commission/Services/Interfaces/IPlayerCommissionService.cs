@@ -8,6 +8,8 @@ namespace Fanex.Athena.PlayerAdmin.Commission.Services.Interfaces
 {
     public interface IPlayerCommissionService
     {
+        Task<IEnumerable<PlayerCommissionSettingViewModel>> InitCommValues(ProductAccess productAccess);
+
         Task<IEnumerable<PlayerCommissionViewModel>> GetAllCommGroups(BasePlayerCommissionUpdateQuery query);
 
         Task<IResultInfo> MultipleMoveGroup(MultipleMoveGroupQuery query);

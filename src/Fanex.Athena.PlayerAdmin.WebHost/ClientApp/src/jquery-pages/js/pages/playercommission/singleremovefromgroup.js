@@ -5,7 +5,6 @@ define(
         const _me = {
             elements: {
                 custIds: null,
-                products: null,
                 btnCancel: null,
                 btnSave: null,
                 divResult: null,
@@ -22,7 +21,6 @@ define(
                 _me.elements.custIds = $("#CustIds");
                 _me.elements.oldCustIds = _me.elements.custIds.val();
 
-                _me.elements.products = $("#Products").val().split(",");
                 _me.elements.btnCancel = $(".btn-cancel");
                 _me.elements.btnSave = $(".btn-submit");
                 _me.elements.divResult = $("#div-result");

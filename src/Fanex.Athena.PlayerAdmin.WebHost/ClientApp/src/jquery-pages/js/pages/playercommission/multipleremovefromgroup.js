@@ -7,7 +7,6 @@ define(
                 custIds: null,
                 custNames: null,
                 ddlCustomer: null,
-                products: null,
                 btnCancel: null,
                 btnSave: null,
                 divResult: null,
@@ -31,7 +30,6 @@ define(
 
                 _me.elements.custNames = $("#CustNames");
                 _me.elements.ddlCustomer = $("#ddl-customers");
-                _me.elements.products = $("#Products").val().split(",");
                 _me.elements.btnCancel = $(".btn-cancel");
                 _me.elements.btnSave = $(".btn-submit");
                 _me.elements.divResult = $("#div-result");

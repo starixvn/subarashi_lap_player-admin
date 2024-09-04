@@ -13,7 +13,6 @@ namespace Fanex.Athena.PlayerAdmin.Commission.Criteria
             UserId = query.UserId;
             IP = query.Ip;
             Language = query.Language;
-            Permissions = query.Permissions;
         }
 
         public int LicenseeId { get; set; }
@@ -26,8 +25,6 @@ namespace Fanex.Athena.PlayerAdmin.Commission.Criteria
 
         public string Language { get; set; }
 
-        public IDictionary<string, bool> Permissions { get; set; }
-
         public virtual string GetSPName() => string.Empty;
 
         public virtual void SetParameterValues(IObjectDb db)
@@ -37,7 +34,6 @@ namespace Fanex.Athena.PlayerAdmin.Commission.Criteria
             db.SetParameterValue("Ip", IP);
             db.SetParameterValue("langkey", Language);
             db.SetParameterValue("strCustIDOriginal", CustIds);
-            db.SetParameterValue("strCustID", null);
             db.SetParameterValue("ErrCode", null);
             db.SetParameterValue("ErrMsg", null);
         }

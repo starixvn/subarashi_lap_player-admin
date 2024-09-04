@@ -1,4 +1,5 @@
 ﻿@using System.Linq;
+@using Fanex.Athena.PlayerAdmin.Commission.Helpers;
 
 @model MultipleUpdateGroupViewModel
 @{
@@ -42,7 +43,6 @@
             </div>
             @Html.Hidden("CustNames", Model.CustNamesStr)
             @Html.Hidden("CustIds", Model.CustIdsStr)
-            @Html.Hidden("Products", string.Join(",", Model.ProductPermissions.Select(p => p.Key)))
         </form>
     </div>
 }
@@ -59,23 +59,36 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach (var p in Model.ProductPermissions)
+                        @for (int i = 0; i < Model.CommValues.Count(); i++)
                         {
-                            if (!p.Value)
-                            {
-                                continue;
-                            }
+                            var comm = Model.CommValues.ElementAt(i);
+                            var productName = ViewResources.ResourceManager.GetString("Product" + comm.ProductCode);
+                            productName = string.IsNullOrEmpty(productName) ? comm.ProductCode : productName;
+
                             <tr>
-                                <td>@ViewResources.ResourceManager.GetString("Product" + p.Key)</td>
+                                <td>@productName</td>
                                 <td class="text-center">
+                                    @{
+                                        var commId = $"{comm.ProductCode}-comm-discount";
+                                    }
+                                    @Html.Hidden($"{commId}", comm.Discount, new { id = $"{commId}"})
+                                    @Html.Hidden($"{commId}sporttype", comm.Sporttype, new { id = $"{commId}sporttype" })
+                                    @Html.Hidden($"{commId}bettype", comm.Bettype, new { id = $"{commId}bettype" })
+
                                     <div class="col l4 m4 s4 input-field first-value">
-                                        @{ await GroupComSettingDropDownList("comm1-" + p.Key, GetCommValue(15, 1)); }
+                                        @{
+                                            await GroupComSettingDropDownList($"{commId}1", GetCommValue(15, 1), CommissionGroupHelper.GetCommPart(comm.Discount, 1));
+                                        }
                                     </div>
                                     <div class="col l4 m4 s4 input-field">
-                                        @{ await GroupComSettingDropDownList("comm2-" + p.Key, GetCommValue(9, 1)); }
+                                        @{
+                                            await GroupComSettingDropDownList($"{commId}2", GetCommValue(9, 1), CommissionGroupHelper.GetCommPart(comm.Discount, 2));
+                                        }
                                     </div>
                                     <div class="col l4 m4 s4 input-field third-value">
-                                        @{ await GroupComSettingDropDownList("comm3-" + p.Key, GetCommValue(1, 5)); }
+                                        @{
+                                            await GroupComSettingDropDownList($"{commId}3", GetCommValue(1, 5), CommissionGroupHelper.GetCommPart(comm.Discount, 3));
+                                        }
                                     </div>
                                 </td>
                             </tr>

@@ -21,7 +21,6 @@ namespace Fanex.Athena.PlayerAdmin.Commission.MetaModels
 
         public string Username { get; set; }
 
-        public IDictionary<string, bool> Permissions { get; set; }
         public string CustIdsStr { get; set; }
 
         public virtual bool IsValid

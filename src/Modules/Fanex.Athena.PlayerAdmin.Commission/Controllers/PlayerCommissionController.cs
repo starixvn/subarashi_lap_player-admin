@@ -3,6 +3,8 @@ using Fanex.Athena.PlayerAdmin.Commission.MetaModels;
 using Fanex.Athena.PlayerAdmin.Commission.Services.Interfaces;
 using Fanex.Athena.PlayerAdmin.Core.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Memory;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -13,25 +15,20 @@ namespace Fanex.Athena.PlayerAdmin.Commission.Controllers
         private readonly IContextService _contextService;
         private readonly ILicenseeService _licenseeService;
         private readonly IPlayerCommissionService _playerCommService;
+        private readonly IMemoryCache _cache;
 
-        public PlayerCommissionController(IContextService contextService, ILicenseeService licenseeService,
-            IPlayerCommissionService playerCommService)
+        private static readonly TimeSpan ThirtyMinutes = TimeSpan.FromMinutes(30);
+
+        public PlayerCommissionController(
+            IContextService contextService,
+            ILicenseeService licenseeService,
+            IPlayerCommissionService playerCommService,
+            IMemoryCache cache)
         {
             _contextService = contextService;
             _licenseeService = licenseeService;
             _playerCommService = playerCommService;
-        }
-
-        private async Task<IDictionary<string, bool>> GetProductPermissions()
-        {
-            var productAccess = await _licenseeService.GetProductAccess(_contextService.LicenseeId);
-            var supportedProducts = _licenseeService.GetAllowedProductsByFunction("CommissionGroups");
-            return CommissionGroupHelper.GetProductPermissions(supportedProducts, productAccess);
-        }
-
-        private async Task AssignSessionToQuery(BasePlayerCommissionUpdateQuery query)
-        {
-            query.Permissions = await GetProductPermissions();
+            _cache = cache;
         }
     }
 }

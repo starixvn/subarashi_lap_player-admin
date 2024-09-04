@@ -1,11 +1,14 @@
 ﻿using Fanex.Athena.PlayerAdmin.Commission.Criteria;
+using Fanex.Athena.PlayerAdmin.Commission.Helpers;
 using Fanex.Athena.PlayerAdmin.Commission.MetaModels;
 using Fanex.Athena.PlayerAdmin.Commission.Repositories.Interfaces;
 using Fanex.Athena.PlayerAdmin.Commission.Services.Interfaces;
 using Fanex.Athena.PlayerAdmin.Commission.ViewModels;
 using Fanex.Athena.PlayerAdmin.Core.Models;
 using Fanex.Athena.PlayerAdmin.Core.Resources;
+using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Fanex.Athena.PlayerAdmin.Commission.Services
@@ -19,15 +22,46 @@ namespace Fanex.Athena.PlayerAdmin.Commission.Services
             _repository = repository;
         }
 
-        public Task<IEnumerable<PlayerCommissionViewModel>> GetAllCommGroups(BasePlayerCommissionUpdateQuery query)
+        public async Task<IEnumerable<PlayerCommissionSettingViewModel>> InitCommValues(ProductAccess productAccess)
+        {
+            var commSettings = await _repository.GetAllCommSettingAsync().ConfigureAwait(false);
+            commSettings = commSettings.Where(_ => CommissionGroupHelper.GetProductPermissions(productAccess, _.ProductCode))
+                .OrderBy(_ => CommissionGroupHelper.ProductListComparer(_.ProductCode)).ThenBy(_ => _.ProductCode); ;
+
+            return commSettings;
+        }
+
+        public async Task<IEnumerable<PlayerCommissionViewModel>> GetAllCommGroups(BasePlayerCommissionUpdateQuery query)
         {
             var criteria = new GetAllCommGroupsCriteria(query);
-            return _repository.GetAllCommGroups(criteria);
+            var (comms, commValues) = await _repository.GetAllCommGroups(criteria).ConfigureAwait(false);
+
+            return MergeCommSetting(comms, commValues);
+        }
+
+        private static IList<PlayerCommissionViewModel> MergeCommSetting(IEnumerable<PlayerCommissionViewModel> comms, IEnumerable<PlayerCommissionSettingViewModel> comValues)
+        {
+            return comms.GroupJoin(comValues, c => c.GroupCommId, d => d.GroupCommId,
+                (c, ds) => new PlayerCommissionViewModel
+                {
+                    GroupCommId = c.GroupCommId,
+                    GroupName = c.GroupName,
+                    CommValues = ds.OrderBy(_ => _, new GroupCommSettingComparer()).ThenBy(_ => _.ProductCode),
+                }).ToList();
+        }
+
+        private static PlayerCommissionViewModel MergeCommSetting(PlayerCommissionViewModel comm, IEnumerable<PlayerCommissionSettingViewModel> commValues)
+        {
+            comm.CommValues = commValues.OrderBy(_ => _, new GroupCommSettingComparer()).ThenBy(_ => _.ProductCode);
+
+            return comm;
         }
 
         public async Task<IResultInfo> MultipleMoveGroup(MultipleMoveGroupQuery query)
         {
-            var groupInfo = await _repository.GetCommissionGroupById(new GetCommissionGroupByIdCriteria(query));
+            var (comm, commValues) = await _repository.GetCommissionGroupById(new GetCommissionGroupByIdCriteria(query));
+            var groupInfo = MergeCommSetting(comm, commValues);
+
             if (groupInfo?.CommValues == null)
             {
                 return new ResultInfo { Code = 1, Message = ViewResources.GroupNotExists };
@@ -52,11 +86,13 @@ namespace Fanex.Athena.PlayerAdmin.Commission.Services
             return result;
         }
 
-        public Task<PlayerCommissionViewModel> GetPlayerCommissionGroup(SingleMoveGroupQuery query)
+        public async Task<PlayerCommissionViewModel> GetPlayerCommissionGroup(SingleMoveGroupQuery query)
         {
             var criteria = new GetPlayerCommissionGroupCriteria(query);
 
-            return _repository.GetPlayerCommissionGroup(criteria);
+            var (comms, commValues) = await _repository.GetPlayerCommissionGroup(criteria).ConfigureAwait(false);
+
+            return MergeCommSetting(comms, commValues);
         }
     }
 }

@@ -76,7 +76,7 @@ namespace Fanex.Athena.PlayerAdmin.API.Services
                     {
                         commGroupsFromDB.Add(new CommGroupViewModel
                         {
-                            Id = reader.ToString("GroupCommId"),
+                            Id = reader.ToString("GroupDiscountID"),
                             Name = reader.ToString("GroupName")
                         });
                     }

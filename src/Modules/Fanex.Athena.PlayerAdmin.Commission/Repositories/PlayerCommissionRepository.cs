@@ -1,12 +1,13 @@
 ﻿using Fanex.Athena.PlayerAdmin.Commission.Criteria;
-using Fanex.Athena.PlayerAdmin.Commission.Helpers;
 using Fanex.Athena.PlayerAdmin.Commission.Repositories.Interfaces;
 using Fanex.Athena.PlayerAdmin.Commission.ViewModels;
 using Fanex.Athena.PlayerAdmin.Core.Extensions;
 using Fanex.Athena.PlayerAdmin.Core.Models;
 using Fanex.Athena.PlayerAdmin.Core.Repositories;
 using Fanex.Data;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Fanex.Athena.PlayerAdmin.Commission.Repositories
@@ -20,52 +21,99 @@ namespace Fanex.Athena.PlayerAdmin.Commission.Repositories
             this.dbFactory = dbFactory;
         }
 
-        public async Task<IEnumerable<PlayerCommissionViewModel>> GetAllCommGroups(GetAllCommGroupsCriteria criteria)
+        public async Task<IEnumerable<PlayerCommissionSettingViewModel>> GetAllCommSettingAsync()
         {
-            var comms = new List<PlayerCommissionViewModel>();
-            var hardcodedColumns = CommissionGroupHelper.MapHardcodedNameFromDB(criteria.Permissions, isUpdate: false);
+            const string UspName = "Lrf_LicenseeCommProductList";
 
-            using (var db = dbFactory.GetObjectDb(criteria.SPName))
+            var comSettings = new List<PlayerCommissionSettingViewModel>();
+
+            using (var db = dbFactory.GetObjectDb(UspName))
             {
-                criteria.SetParameterValues(db);
-                using (var reader = await db.ExecuteReaderAsync())
+                using (var reader = await db.ExecuteReaderAsync().ConfigureAwait(false))
                 {
-                    var visibility = CommissionGroupHelper.GetProductColumns(reader, hardcodedColumns);
-
                     while (reader.Read())
                     {
-                        var comm = new PlayerCommissionViewModel();
-                        comm.GroupName = Converter.ToString(reader["GroupName"]);
-                        comm.MapData(reader, hardcodedColumns, visibility);
-                        comms.Add(comm);
+                        comSettings.Add(new PlayerCommissionSettingViewModel
+                        {
+                            Sporttype = Convert.ToInt32(reader["Sporttype"]),
+                            Bettype = Convert.ToInt32(reader["Bettype"]),
+                            ProductCode = Convert.ToString(reader["ProductCode"]),
+                        });
                     }
                 }
             }
 
-            return comms;
+            return comSettings;
         }
 
-        public async Task<PlayerCommissionViewModel> GetCommissionGroupById(GetCommissionGroupByIdCriteria criteria)
+        public async Task<(IEnumerable<PlayerCommissionViewModel>, IEnumerable<PlayerCommissionSettingViewModel>)> GetAllCommGroups(GetAllCommGroupsCriteria criteria)
         {
-            var comm = new PlayerCommissionViewModel();
-            var hardcodedColumns = CommissionGroupHelper.MapHardcodedNameFromDB(criteria.Permissions, isUpdate: false);
+            var comms = new List<PlayerCommissionViewModel>();
+            var commValues = new List<PlayerCommissionSettingViewModel>();
 
             using (var db = dbFactory.GetObjectDb(criteria.SPName))
             {
                 criteria.SetParameterValues(db);
-                using (var reader = await db.ExecuteReaderAsync())
-                {
-                    var visibility = CommissionGroupHelper.GetProductColumns(reader, hardcodedColumns);
+                using var reader = await db.ExecuteReaderAsync();
 
-                    while (reader.Read())
+                while (reader.Read())
+                {
+                    comms.Add(new PlayerCommissionViewModel
                     {
-                        comm.GroupName = Converter.ToString(reader["GroupName"]);
-                        comm.MapData(reader, hardcodedColumns, visibility);
-                    }
+                        GroupName = Converter.ToString(reader["GroupName"]),
+                        GroupCommId = reader.ToInt("GroupDiscountID")
+                    });
+                }
+
+                reader.NextResult();
+
+                while (comms.Any() && reader.Read())
+                {
+                    commValues.Add(new PlayerCommissionSettingViewModel
+                    {
+                        Sporttype = Convert.ToInt32(reader["Sporttype"]),
+                        Bettype = Convert.ToInt32(reader["Bettype"]),
+                        ProductCode = Convert.ToString(reader["ProductCode"]),
+                        Discount = Convert.ToDecimal(reader["Discount"]),
+                        GroupCommId = Convert.ToInt32(reader["GroupDiscountID"])
+                    });
                 }
             }
 
-            return comm;
+            return (comms, commValues);
+        }
+
+        public async Task<(PlayerCommissionViewModel, IEnumerable<PlayerCommissionSettingViewModel>)> GetCommissionGroupById(GetCommissionGroupByIdCriteria criteria)
+        {
+            var comm = new PlayerCommissionViewModel();
+            var commValues = new List<PlayerCommissionSettingViewModel>();
+
+            using (var db = dbFactory.GetObjectDb(criteria.SPName))
+            {
+                criteria.SetParameterValues(db);
+                using var reader = await db.ExecuteReaderAsync();
+
+                while (reader.Read())
+                {
+                    comm.GroupName = Converter.ToString(reader["GroupName"]);
+                    comm.GroupCommId = reader.ToInt("GroupDiscountID");
+                }
+
+                reader.NextResult();
+
+                while (reader.Read())
+                {
+                    commValues.Add(new PlayerCommissionSettingViewModel
+                    {
+                        Sporttype = Convert.ToInt32(reader["Sporttype"]),
+                        Bettype = Convert.ToInt32(reader["Bettype"]),
+                        ProductCode = Convert.ToString(reader["ProductCode"]),
+                        Discount = Convert.ToDecimal(reader["Discount"])
+                    });
+                }
+            }
+
+            return (comm, commValues);
         }
 
         public async Task<IResultInfo> MultipleMoveGroup(MultipleMoveGroupCriteria criteria)
@@ -107,26 +155,35 @@ namespace Fanex.Athena.PlayerAdmin.Commission.Repositories
             }
         }
 
-        public async Task<PlayerCommissionViewModel> GetPlayerCommissionGroup(GetPlayerCommissionGroupCriteria criteria)
+        public async Task<(PlayerCommissionViewModel, IEnumerable<PlayerCommissionSettingViewModel>)> GetPlayerCommissionGroup(GetPlayerCommissionGroupCriteria criteria)
         {
             var comm = new PlayerCommissionViewModel();
-            var hardcodedColumns = CommissionGroupHelper.MapHardcodedNameFromDB(criteria.Permissions, isUpdate: false);
+            var commValues = new List<PlayerCommissionSettingViewModel>();
 
             using (var db = dbFactory.GetObjectDb(criteria.SPName))
             {
                 criteria.SetParameterValues(db);
-                using (var reader = await db.ExecuteReaderAsync())
+                using var reader = await db.ExecuteReaderAsync();
+                while (reader.Read())
                 {
-                    var visibility = CommissionGroupHelper.GetProductColumns(reader, hardcodedColumns);
+                    comm.GroupCommId = reader.ToInt("GroupDiscountID");
+                }
 
-                    while (reader.Read())
+                reader.NextResult();
+
+                while (reader.Read())
+                {
+                    commValues.Add(new PlayerCommissionSettingViewModel
                     {
-                        comm.MapData(reader, hardcodedColumns, visibility);
-                    }
+                        Sporttype = Convert.ToInt32(reader["Sporttype"]),
+                        Bettype = Convert.ToInt32(reader["Bettype"]),
+                        ProductCode = Convert.ToString(reader["ProductCode"]),
+                        Discount = Convert.ToDecimal(reader["PlayerDiscount"])
+                    });
                 }
             }
 
-            return comm;
+            return (comm, commValues);
         }
 
         private static void AssignResult(IObjectDb db, IResultInfo result)
@@ -136,7 +193,6 @@ namespace Fanex.Athena.PlayerAdmin.Commission.Repositories
 
             result.Code = Converter.ToInt(errorCode);
             result.Message = Converter.ToString(errorMessage);
-            result.ExtendedData = Converter.ToString(db.GetParameterValue("strCustId"));
         }
     }
 }

@@ -41,7 +41,6 @@
             </div>
             @Html.Hidden("CustNames", Model.CustNamesStr)
             @Html.Hidden("CustIds", Model.CustIdsStr)
-            @Html.Hidden("Products", string.Join(",", Model.ProductPermissions.Select(p => p.Key)))
         </form>
     </div>
 }

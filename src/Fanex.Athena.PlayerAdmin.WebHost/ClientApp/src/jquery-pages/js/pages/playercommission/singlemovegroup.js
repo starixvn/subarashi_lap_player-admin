@@ -5,7 +5,6 @@ define(
         const _me = {
             elements: {
                 custIds: null,
-                products: null,
                 ddlGroup: null,
                 commValues: null,
                 tblComm: null,
@@ -44,7 +43,6 @@ define(
                 _me.elements.ddlGroup = $("#ddl-group");
                 _me.elements.commValues = $(".comm-values");
                 _me.elements.tblComm = $("#tbl-comm");
-                _me.elements.products = $("#Products").val().split(",");
                 _me.elements.btnSave = $(".btn-save-comm");
                 _me.elements.groupCommId = $("#GroupCommId");
                 _me.elements.divResult = $("#div-result");
@@ -53,11 +51,14 @@ define(
             },
             changeGroup: function () {
                 var id = _me.elements.ddlGroup.val();
-                for (var i = 0; i < _me.elements.products.length; i++) {
-                    var p = _me.elements.products[i];
-                    var value = _me.elements.commValues.find("#com-" + p + "-" + id).val();
-                    _me.elements.tblComm.find(".comm-" + p).html(value);
-                }
+
+                var newCommValues = $(`[id$='-${id}']`);;
+
+                newCommValues.each(function () {
+                    const commClass = "." + $(this).attr("id").replace("-" + id, "");
+
+                    _me.elements.tblComm.find(commClass).html($(this).val());
+                });
 
                 _me.elements.groupCommId.val(id);
                 _me.enableSubmit();
