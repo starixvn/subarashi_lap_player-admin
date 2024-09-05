@@ -1,6 +1,4 @@
-﻿
-
-namespace Fanex.Athena.PlayerAdmin.Core.Constants
+﻿namespace Fanex.Athena.PlayerAdmin.Core.Constants
 {
     public static class BetType
     {
@@ -33,5 +31,31 @@ namespace Fanex.Athena.PlayerAdmin.Core.Constants
         public const int Away1stInnsRuns = 9407;
         public const int Home2ndInnsRuns = 9408;
         public const int Away2ndInnsRuns = 9409;
+        public const int Handicap_Dec = 9522;
+        public const int OverUnder_dec = 9604;
+        public const int RunLine = 8800;
+        public const int TotalRuns = 8801;
+        public const int HomeTeamTotalRuns = 8802;
+        public const int AwayTeamTotalRuns = 8803;
+        public const int FirstXInningsMoneyline = 8804;
+        public const int FirstXInningsResult = 8805;
+        public const int FirstXInningsRunLine = 8806;
+        public const int FirstXInningsTotalRuns = 8807;
+        public const int FirstXInningsHomeTeamTotalRuns = 8808;
+        public const int FirstXInningsAwayTeamTotalRuns = 8809;
+        public const int XInningResult = 8810;
+        public const int XInningRunLine = 8811;
+        public const int XInningTotalRuns = 8812;
+        public const int BothTeamToScoreXRuns = 8814;
+        public const int ExtraInningYesNo = 8815;
+        public const int TotalHits = 8816;
+        public const int HitsResult = 8817;
+        public const int TeamWithHighestInningScore = 8818;
+        public const int LeadAfterXInnings = 8819;
+        public const int RaceToXRuns = 8820;
+        public const int FirstTeamToScore = 8821;
+        public const int XInningHitsHandicap = 8823;
+        public const int XInningTotalHits = 8824;
+        public const int LastTeamToScoreBaseball = 8827;
     }
 }
