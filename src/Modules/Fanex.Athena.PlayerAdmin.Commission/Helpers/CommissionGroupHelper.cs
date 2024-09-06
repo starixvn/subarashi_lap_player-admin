@@ -15,7 +15,12 @@ namespace Fanex.Athena.PlayerAdmin.Commission.Helpers
             ProductCode.SG, ProductCode.KN, ProductCode.LT, ProductCode.TG, ProductCode.VS, ProductCode.VRG, ProductCode.CC, ProductCode.SBC, ProductCode.SAG, ProductCode.PGS, ProductCode.AB, ProductCode.WM,
             ProductCode.BGG, ProductCode.JK, ProductCode.HB, ProductCode.VGA, ProductCode.CG, ProductCode.AP, ProductCode.APM, ProductCode.FGGL, ProductCode.MXG, ProductCode.JIG, ProductCode.YB, ProductCode.MGRNG };
 
-        public static int ProductListComparer(string productCode) => Array.IndexOf(ProductSettingOrder, productCode);
+        public static int ProductListComparer(string productCode)
+        {
+            var index = Array.IndexOf(ProductSettingOrder, productCode);
+
+            return index >= 0 ? index : int.MaxValue;
+        }
 
         private static readonly Dictionary<string, string> FollowPermissions = new Dictionary<string, string>
         {
