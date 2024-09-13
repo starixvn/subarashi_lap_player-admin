@@ -9,10 +9,12 @@ export const RiskLevelCell = (props) => {
     const riskLevelKey = props.riskLevelKey;
     const customerClass = !props.customerClass ? "" : props.customerClass;
     const currencyId = props.currencyId;
+    const custId = props.custId;
+
     const [isShowRiskLevelInformation, setIsShowRiskLevelInformation] = useState(false);
     const commonService = FactoryCommonService.createInstance();
     const lrfSystemId = 1;
-    var url = "RiskLevel/Information" + `?customerClass=${customerClass}` + `&currencyId=${currencyId}` +"&time=" + (new Date().getTime());
+    var url = "RiskLevel/Information" + `?customerClass=${customerClass}` + `&currencyId=${currencyId}` + `&custId=${custId}` + "&time=" + (new Date().getTime());
 
     const clickOnPopup = (e) => {
         e.stopPropagation();
@@ -20,19 +22,19 @@ export const RiskLevelCell = (props) => {
     };
 
     return (<><Cell>
-                <button type="button" className={`risk-level ${riskLevelKey}`} onClick={(e) => {setIsShowRiskLevelInformation(true)}}>
-                    <div className="text">{riskLevel}</div>
-                    <div className={`icon icon-moreinfo ${riskLevelKey}`}></div>
-                </button>
-                {isShowRiskLevelInformation
-                ? (<Popup width={1000} height={600} isShow="true"
-                    title={LangHelper.getSingleResource('RiskLevelInformation')}
-                    onClose={(e) => {setIsShowRiskLevelInformation(false)}}
-                    onClick={clickOnPopup} isHtml="false"
-                    iframeUrl={commonService.getLink(lrfSystemId, url)}></Popup>)
-                : ""}
-            </Cell>
-            </>)
+        <button type="button" className={`risk-level ${riskLevelKey}`} onClick={(e) => { setIsShowRiskLevelInformation(true) }}>
+            <div className="text">{riskLevel}</div>
+            <div className={`icon icon-moreinfo ${riskLevelKey}`}></div>
+        </button>
+        {isShowRiskLevelInformation
+            ? (<Popup width={1000} height={600} isShow="true"
+                title={LangHelper.getSingleResource('RiskLevelInformation')}
+                onClose={(e) => { setIsShowRiskLevelInformation(false) }}
+                onClick={clickOnPopup} isHtml="false"
+                iframeUrl={commonService.getLink(lrfSystemId, url)}></Popup>)
+            : ""}
+    </Cell>
+    </>)
 }
 
 export default RiskLevelCell;
