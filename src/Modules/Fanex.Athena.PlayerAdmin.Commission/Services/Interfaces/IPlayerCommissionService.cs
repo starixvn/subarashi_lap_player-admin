@@ -10,14 +10,14 @@ namespace Fanex.Athena.PlayerAdmin.Commission.Services.Interfaces
     {
         Task<IEnumerable<PlayerCommissionSettingViewModel>> InitCommValues(ProductAccess productAccess);
 
-        Task<IEnumerable<PlayerCommissionViewModel>> GetAllCommGroups(BasePlayerCommissionUpdateQuery query);
+        Task<IEnumerable<PlayerCommissionViewModel>> GetAllCommGroups(BasePlayerCommissionUpdateQuery query, ProductAccess productAccess);
 
-        Task<IResultInfo> MultipleMoveGroup(MultipleMoveGroupQuery query);
+        Task<IResultInfo> MultipleMoveGroup(MultipleMoveGroupQuery query, ProductAccess productAccess);
 
         Task<IResultInfo> MultipleRemoveFromGroup(MultipleRemoveFromGroupQuery query);
 
         Task<IResultInfo> MultipleUpdateGroup(MultipleUpdateGroupQuery query);
 
-        Task<PlayerCommissionViewModel> GetPlayerCommissionGroup(SingleMoveGroupQuery query);
+        Task<PlayerCommissionViewModel> GetPlayerCommissionGroup(SingleMoveGroupQuery query, ProductAccess productAccess);
     }
 }

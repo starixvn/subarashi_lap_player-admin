@@ -17,7 +17,8 @@ namespace Fanex.Athena.PlayerAdmin.Commission.Controllers
         [AutoBindingMetaModel(bindLicenseeId: true, bindUsername: true, bindClientIP: true, bindLanguage: true, bindUserId: true)]
         public async Task<JsonResult> PostMultipleMoveGroup([FromForm] MultipleMoveGroupQuery query)
         {
-            var result = await _playerCommService.MultipleMoveGroup(query);
+            var productAccess = await _licenseeService.GetProductAccess(_contextService.LicenseeId);
+            var result = await _playerCommService.MultipleMoveGroup(query, productAccess);
             return Json(result);
         }
 

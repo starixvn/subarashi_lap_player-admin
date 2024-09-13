@@ -17,7 +17,7 @@ namespace Fanex.Athena.PlayerAdmin.Commission.Controllers
         private readonly IPlayerCommissionService _playerCommService;
         private readonly IMemoryCache _cache;
 
-        private static readonly TimeSpan ThirtyMinutes = TimeSpan.FromMinutes(30);
+        private static readonly TimeSpan FifteenMinutes = TimeSpan.FromMinutes(15);
 
         public PlayerCommissionController(
             IContextService contextService,

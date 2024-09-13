@@ -17,7 +17,8 @@ namespace Fanex.Athena.PlayerAdmin.Commission.Controllers
         [DecompressModelStateAndMetaModel("query", new[] { "CustIds", "CustNames" })]
         public async Task<ViewResult> MultipleMoveGroup([FromQuery] MultipleMoveGroupQuery query)
         {
-            var groups = await _playerCommService.GetAllCommGroups(query);
+            var productAccess = await _licenseeService.GetProductAccess(_contextService.LicenseeId);
+            var groups = await _playerCommService.GetAllCommGroups(query, productAccess);
 
             var viewModel = new MultipleMoveGroupViewModel(query, groups);
 
@@ -44,7 +45,7 @@ namespace Fanex.Athena.PlayerAdmin.Commission.Controllers
         public async Task<ViewResult> MultipleUpdateGroup([FromQuery] MultipleUpdateGroupQuery query)
         {
             var productAccess = await _licenseeService.GetProductAccess(_contextService.LicenseeId);
-            var commValues = await _cache.TryGetOrAddFromCache($"CommSettings_{query.LicenseeId}", ThirtyMinutes,
+            var commValues = await _cache.TryGetOrAddFromCache($"CommSettings_{query.LicenseeId}", FifteenMinutes,
                 () => _playerCommService.InitCommValues(productAccess));
 
             var viewModel = new MultipleUpdateGroupViewModel(query)
