@@ -9,9 +9,9 @@ namespace Fanex.Athena.PlayerAdmin.Commission.Helpers
 {
     public static class CommissionGroupHelper
     {
-        public const string ParlayName = "Parlay";
+        private const string ParlayName = "Parlay";
 
-        public static readonly string[] ProductSettingOrder = new string[] {ProductCode.SB, ParlayName, ProductCode.NG, ProductCode.CS, ProductCode.VB, ProductCode.PP, ProductCode.SXG,
+        private static readonly string[] ProductSettingOrder = new string[] {ProductCode.SB, ParlayName, ProductCode.NG, ProductCode.CS, ProductCode.VB, ProductCode.PP, ProductCode.SXG,
             ProductCode.SG, ProductCode.KN, ProductCode.LT, ProductCode.TG, ProductCode.VS, ProductCode.VRG, ProductCode.CC, ProductCode.SBC, ProductCode.SAG, ProductCode.PGS, ProductCode.AB, ProductCode.WM,
             ProductCode.BGG, ProductCode.JK, ProductCode.HB, ProductCode.VGA, ProductCode.CG, ProductCode.AP, ProductCode.APM, ProductCode.FGGL, ProductCode.MXG, ProductCode.JIG, ProductCode.YB, ProductCode.MGRNG };
 
@@ -26,8 +26,6 @@ namespace Fanex.Athena.PlayerAdmin.Commission.Helpers
         {
             [ParlayName] = ProductCode.SB
         };
-
-        public static readonly string[] ExcludeProductsSPParam = new[] { "SB", "Parlay" };
 
         public static bool GetProductPermissions(ProductAccess productAccess, string productCode)
         {
