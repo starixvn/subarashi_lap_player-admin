@@ -42,7 +42,8 @@ export const BetLimitProduct = {
     UUSL: 78,
     FS: 87,
     FAC: 89,
-    NS: 85
+    NS: 85,
+    ON: 96
 }
 
 export const BetLimitSport = {

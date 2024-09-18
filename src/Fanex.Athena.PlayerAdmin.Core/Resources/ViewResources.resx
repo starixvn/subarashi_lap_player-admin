@@ -3155,4 +3155,7 @@
   <data name="SinglePlayer" xml:space="preserve">
     <value>Single Player</value>
   </data>
+  <data name="ProductON" xml:space="preserve">
+    <value>ON Casino</value>
+  </data>
 </root>
