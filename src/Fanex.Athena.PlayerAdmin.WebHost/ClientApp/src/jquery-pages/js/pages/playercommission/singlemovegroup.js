@@ -52,7 +52,7 @@ define(
             changeGroup: function () {
                 var id = _me.elements.ddlGroup.val();
 
-                var newCommValues = $(`[id$='-${id}']`);;
+                var newCommValues = $(`[id$='-${id}']`);
 
                 newCommValues.each(function () {
                     const commClass = "." + $(this).attr("id").replace("-" + id, "");

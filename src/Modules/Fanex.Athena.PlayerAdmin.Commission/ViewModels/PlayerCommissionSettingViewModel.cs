@@ -30,10 +30,7 @@ namespace Fanex.Athena.PlayerAdmin.Commission.ViewModels
 
         public static int GetComparerValue(PlayerCommissionSettingViewModel setting)
         {
-            const int defaultValue = 999;
-            var sortValue = Array.IndexOf(CommissionGroupHelper.ProductSettingOrder, setting.ProductCode);
-
-            return sortValue == -1 ? defaultValue : sortValue;
+            return CommissionGroupHelper.ProductListComparer(setting.ProductCode);
         }
     }
 
