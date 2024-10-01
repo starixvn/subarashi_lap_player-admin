@@ -67,6 +67,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="App_Data\SpConfig\FanexSpName.UAT_2.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="App_Data\SpConfig\FanexSpName.KLDR.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

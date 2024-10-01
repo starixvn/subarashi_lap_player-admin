@@ -57,5 +57,10 @@
         public const int XInningHitsHandicap = 8823;
         public const int XInningTotalHits = 8824;
         public const int LastTeamToScoreBaseball = 8827;
+        public const int ToWinSeries = 8828;
+        public const int SeriesGamesHandicap = 8829;
+        public const int SeriesTotalGames = 8830;
+        public const int SeriesLeaderAfterGame3 = 8832;
+        public const int SeriesLeaderAfterGame4 = 8833;
     }
 }
