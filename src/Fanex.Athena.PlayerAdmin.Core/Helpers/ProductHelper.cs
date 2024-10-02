@@ -71,7 +71,8 @@ namespace Fanex.Athena.PlayerAdmin.Core.Helpers
                 { ProductCode.UUSL, nameof(ViewResources.ProductUUSL) },
                 { ProductCode.FS, nameof(ViewResources.ProductFS) },
                 { ProductCode.FAC, nameof(ViewResources.ProductFAC) },
-                { ProductCode.NS, nameof(ViewResources.ProductNS) }
+                { ProductCode.NS, nameof(ViewResources.ProductNS) },
+                { ProductCode.ON, nameof(ViewResources.ProductON) }
             };
 
         public static string GetProductName(string productCode, string defaultValue = null)
