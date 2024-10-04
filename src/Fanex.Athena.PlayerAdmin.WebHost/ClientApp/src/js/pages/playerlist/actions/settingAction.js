@@ -19,6 +19,7 @@ export const getSiteSetting = (licType, hasCommPermissionRead) => (dispatch) => 
             isAllowedBA: false,
             isEnableSingleWallet: false,
             isShowSabaIntelligence: false,
+            isSearchWithMatchPreciseOnly: false,
             userLevel: 2,
         }));
     });
