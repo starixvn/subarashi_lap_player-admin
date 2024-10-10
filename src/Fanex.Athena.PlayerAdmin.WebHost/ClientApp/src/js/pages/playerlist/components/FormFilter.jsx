@@ -94,10 +94,9 @@ export class FormFilter extends PureComponent {
             return;
         }
 
-        const userName = this.userNameRef.current.value;
+        const userName = encode(this.userNameRef.current.value);
         const { pagingOption, searchPlayer, currencyList } = this.props;
         const { specialLevel, currencyIdList, oddsGroup, customerClass, riskLevels, commGroups, subsidiarySearch, selectedSubsidiaryList, ...restParam } = this.state;
-
         const actualSpecialLevel = specialLevel.trim() === '' ? this.allSpecialLevel : specialLevel;
         const actualCurrencyIdList = currencyIdList.trim().split(',').length === currencyList.length ? '' : currencyIdList;
         const actualOddsGroup = oddsGroup.trim().split(',').length === this.props.depositSetting.OddsGroups.length ? '' : oddsGroup;
@@ -106,7 +105,7 @@ export class FormFilter extends PureComponent {
 
         const param = {
             ...restParam,
-            userName: encode(userName),
+            userName,
             currencyIdList: actualCurrencyIdList,
             oddsGroup: actualOddsGroup,
             specialLevel: actualSpecialLevel,
@@ -124,6 +123,7 @@ export class FormFilter extends PureComponent {
 
     handleSubmit = (event) => {
         event.preventDefault();
+
         if (this.state.isArchivedPlayersSearch) {
             const { subsidiarySearch, selectedSubsidiaryList, searchOption } = this.state;
             this.props.setParam({

@@ -3,7 +3,7 @@ import { toggleLoader } from '@jsroot/actions/loaderAction';
 import PlayerQueryService from '../lib/services/playerQueryService';
 import { setSelectedPlayer } from './commonAction';
 import { setPlayerList, setPagingOption, setIsFetchingData } from './gridHandlerAction';
-import { defaultPagingOption } from '../lib/constants.js';
+import { defaultPagingOption, invalidUsernameString } from '../lib/constants.js';
 import { buildSelectedPlayer } from '../lib/helpers/playerDataBuilder';
 import PlayerSuggestionService from '../lib/services/playerSuggestionService';
 import { setSelectedTabName, setSelectedSubTabName } from './playerDetailHandlerAction';
@@ -20,8 +20,21 @@ export const searchPlayer = (param) => (dispatch) => {
     const service = new PlayerQueryService();
 
     processBeforeGettingData(dispatch);
-    dispatch(setParam(param));
 
+    if(invalidUsernameString.some(_ => param.userName.includes(_))){
+        const noinfoPagingOption = {
+            ...defaultPagingOption,
+            TotalItem: 0
+        }
+
+        dispatch(setIsFetchingData(false));
+        dispatch(setPagingOption(noinfoPagingOption));
+        dispatch(setPlayerList([]));
+        dispatch(toggleLoader(false));
+        return;
+    }
+
+    dispatch(setParam(param));
     service.getPlayerList(param).then(result => {
         const { playerList, totalItem } = result;
         dispatch(setPlayerList(playerList));

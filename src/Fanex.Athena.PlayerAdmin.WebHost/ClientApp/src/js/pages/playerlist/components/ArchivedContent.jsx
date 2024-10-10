@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Pager } from '@9softstudio/react-grid';
-import { defaultPagingOption } from '../lib/constants';
+import { defaultPagingOption, invalidUsernameString } from '../lib/constants';
 import ArchivedGridCaption from './content-header/ArchivedGridCaption';
 import ArchivedDataGrid from './ArchivedDataGrid';
 import PlayerQueryService from '../lib/services/playerQueryService';
@@ -45,10 +45,19 @@ const ArchivedContent = ({ archivedSearch, isLoading, isEnableSingleWallet, togg
         service.exportExcel(archivedPlayerList, displayedColumn, 'ArchivedPlayerList');
     }
 
+    const isValidUserName = (userName) => {
+        return !invalidUsernameString.some(_ => userName.includes(_));
+    }
+
     const _fetchPlayerList = async (params) => {
         const service = new PlayerQueryService();
         toggleLoader(true);
-        const { playerList, totalItem } = await service.getArchivedPlayerList(params);
+        var playerList = [], totalItem = 0;
+
+        if (isValidUserName(params.userName)) {
+            ({ playerList, totalItem } = await service.getArchivedPlayerList(params));
+        }
+
         setArchivedPlayerList(playerList);
         const newPagingOption = {
             ...pagingOption,
