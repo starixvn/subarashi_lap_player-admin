@@ -6,7 +6,8 @@ const defaultSiteSetting = {
     isAllowedBA: false,
     isAllowedCustomerComm: false,
     userLevel: 2,
-    isEnableSingleWallet: false
+    isEnableSingleWallet: false,
+    isSearchWithMatchPreciseOnly: true
 }
 
 export const siteSetting = createReducer(defaultSiteSetting, {

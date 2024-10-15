@@ -27,6 +27,7 @@ namespace Fanex.Athena.PlayerAdmin.Core.Services
         bool IsShowIP { get; }
         bool IsShowIpVN { get; }
         bool IsShowSabaIntelligence { get; }
+        bool IsSearchWithMatchPreciseOnly { get; }
         bool IsShowSabaCoins { get; }
         bool IsFakeLicensee { get; }
         IEnumerable<string> OfferedSubProductList { get; }

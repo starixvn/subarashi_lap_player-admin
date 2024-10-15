@@ -51,6 +51,7 @@ export class FormFilter extends PureComponent {
             RiskLevels: "",
             subsidiarySearch: false,
             selectedSubsidiaryList: "",
+            isValidUsername: false
         };
     }
 
@@ -93,10 +94,9 @@ export class FormFilter extends PureComponent {
             return;
         }
 
-        const userName = this.userNameRef.current.value;
+        const userName = encode(this.userNameRef.current.value);
         const { pagingOption, searchPlayer, currencyList } = this.props;
         const { specialLevel, currencyIdList, oddsGroup, customerClass, riskLevels, commGroups, subsidiarySearch, selectedSubsidiaryList, ...restParam } = this.state;
-
         const actualSpecialLevel = specialLevel.trim() === '' ? this.allSpecialLevel : specialLevel;
         const actualCurrencyIdList = currencyIdList.trim().split(',').length === currencyList.length ? '' : currencyIdList;
         const actualOddsGroup = oddsGroup.trim().split(',').length === this.props.depositSetting.OddsGroups.length ? '' : oddsGroup;
@@ -105,7 +105,7 @@ export class FormFilter extends PureComponent {
 
         const param = {
             ...restParam,
-            userName: encode(userName),
+            userName,
             currencyIdList: actualCurrencyIdList,
             oddsGroup: actualOddsGroup,
             specialLevel: actualSpecialLevel,
@@ -123,6 +123,7 @@ export class FormFilter extends PureComponent {
 
     handleSubmit = (event) => {
         event.preventDefault();
+
         if (this.state.isArchivedPlayersSearch) {
             const { subsidiarySearch, selectedSubsidiaryList, searchOption } = this.state;
             this.props.setParam({
@@ -161,6 +162,7 @@ export class FormFilter extends PureComponent {
 
     handleUserNameChange = (value) => {
         this.userNameRef.current.value = value;
+        this.setState({ isValidUsername: !!value });
     };
 
     handleExportUserOddsGroup = (event) => {
@@ -219,8 +221,9 @@ export class FormFilter extends PureComponent {
         const userGuide = this._renderUserGuide();
 
         const isValidParam = !!currencyIdList && !!oddsGroup && !!specialLevel 
-            && !!customerClass && !!commGroups &&
-            (!subsidiarySearch || selectedSubsidiaryList);
+            && !!customerClass && !!commGroups
+            && (!subsidiarySearch || selectedSubsidiaryList)
+            && (!this.props.siteSetting.isSearchWithMatchPreciseOnly || this.state.isValidUsername);
 
         const iconToggle = {
             tag: 'div',
@@ -245,9 +248,10 @@ export class FormFilter extends PureComponent {
                         <div className="form-group">
                             <label className="label-text">
                                 {this._getUserNameLabel()}<span className={this.state.isMatchPrecise ? "" : "hide"}>/{LangHelper.getSingleResource("SystemId")}</span>
+                                {!this.props.siteSetting.isSearchWithMatchPreciseOnly &&
                                 <div className="search-option-container">
                                     <SearchOption value={searchOption} onChange={this.handleChange} />
-                                </div>
+                                </div>}
                             </label>
                             <UserNameInput ref={this.userNameRef} onSelectItem={(value) => this.handleUserNameChange(value)}
                                 minChar={3} getSuggestionList={isArchivedPlayersSearch ? null : getSuggestionList} searchOption={searchOption}

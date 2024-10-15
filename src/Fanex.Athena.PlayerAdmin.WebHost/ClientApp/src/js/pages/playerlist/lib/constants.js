@@ -274,6 +274,8 @@ export const responsiveFilterColumn = {
     }, 
 }
 
+export const invalidUsernameString = ['	',' ', '%', '％'];
+
 export const emailPattern = '^([a-zA-Z0-9_\\.\\-])+\\@(([a-zA-Z0-9\\-])+\\.)+([a-zA-Z0-9]{2,4})+$';
 
 export const maxLapPageSize = 250;

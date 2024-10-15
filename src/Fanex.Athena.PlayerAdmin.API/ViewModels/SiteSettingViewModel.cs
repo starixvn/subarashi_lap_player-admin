@@ -7,5 +7,6 @@
         public bool IsAllowedBA { get; set; }
         public bool IsEnableSingleWallet { get; set; }
         public bool IsShowSabaIntelligence { get; set; }
+        public bool IsSearchWithMatchPreciseOnly { get; set; }
     }
 }
