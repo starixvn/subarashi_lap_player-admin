@@ -3167,4 +3167,7 @@
   <data name="FinancialDate" xml:space="preserve">
     <value>Financial Date</value>
   </data>
+  <data name="ProductGPIRNG" xml:space="preserve">
+    <value>GPI</value>
+  </data>
 </root>
