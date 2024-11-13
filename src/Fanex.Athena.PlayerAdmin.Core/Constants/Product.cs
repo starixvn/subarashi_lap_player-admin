@@ -105,6 +105,8 @@
         public const string NS = "NS";
 
         public const string ON = "ON";
+
+        public const string PTRNG = "PTRNG";
     }
 
     public static class ProductTypes
@@ -203,5 +205,7 @@
         public const int NS = 85;
 
         public const int ON = 96;
+
+        public const int PTRNG = 100;
     }
 }
