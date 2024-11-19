@@ -2817,4 +2817,7 @@
   <data name="SinglePlayer" xml:space="preserve">
     <value>Pemain Tunggal</value>
   </data>
+  <data name="FinancialDate" xml:space="preserve">
+    <value>Tanggal Keuanga</value>
+  </data>
 </root>

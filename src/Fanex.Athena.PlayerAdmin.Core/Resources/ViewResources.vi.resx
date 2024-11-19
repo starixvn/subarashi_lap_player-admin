@@ -2880,4 +2880,7 @@
   <data name="SinglePlayer" xml:space="preserve">
     <value>Người chơi cá nhân</value>
   </data>
+  <data name="FinancialDate" xml:space="preserve">
+    <value>Ngày Tài Chính</value>
+  </data>
 </root>

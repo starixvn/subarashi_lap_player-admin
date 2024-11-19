@@ -46,7 +46,7 @@ export const resource_en = {
     NoSportsbookData: 'There is no Sportsbook data.',
     FastCrossLink: 'Fast Cross-Link',
     SingleCustomer: 'Single Customer',
-    SinglePlayer:"Single Player",
+    SinglePlayer: "Single Player",
     BettingTicketCenter: 'Betting Ticket Center',
     CustomerWinLoss: 'Customer Win Loss',
     PlayerBettingStatisticsTitle: 'Player Betting Statistics (month to date)',
@@ -63,5 +63,7 @@ export const resource_en = {
     LastTransaction: 'Last Transaction',
     Whitelabel: "Whitelabel",
     Subsidiary: "Subsidiary",
-    WinLossAnalysis: "Win Loss Analysis"
+    WinLossAnalysis: "Win Loss Analysis",
+    FinancialDate: "Financial Date",
+    Viewin: "View in {0}"
 }

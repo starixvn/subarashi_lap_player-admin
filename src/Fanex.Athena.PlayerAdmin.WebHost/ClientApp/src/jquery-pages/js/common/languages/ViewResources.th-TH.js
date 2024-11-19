@@ -305,6 +305,7 @@ FGLG:"ทีมที่ทำประตูแรกของเกมกา�
 FileExtensionIncorrect:"นามสกุลไฟล์ของคุณไม่ถูกต้อง โปรดเลือกไฟล์",
 FileIsNotReady:"ไฟล์ยังไม่พร้อม โปรดลองอีกครั้งภายหลัง",
 FileUploadExceedSize:"ไฟล์ที่อัปโหลดควรมีขนาดน้อยกว่า",
+FinancialDate:"วันที่การเงิน",
 FirstGoal:"ประตูแรก",
 FirstName:"ชื่อตัว",
 Forecast:"ทาย",

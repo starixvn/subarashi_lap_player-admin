@@ -3161,4 +3161,10 @@
   <data name="ProductPTRNG" xml:space="preserve">
     <value>Playtech</value>
   </data>
+  <data name="ViewInFinancialDate" xml:space="preserve">
+    <value>View In Financial Date</value>
+  </data>
+  <data name="FinancialDate" xml:space="preserve">
+    <value>Financial Date</value>
+  </data>
 </root>

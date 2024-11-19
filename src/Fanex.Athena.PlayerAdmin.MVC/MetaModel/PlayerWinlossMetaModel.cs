@@ -38,6 +38,8 @@ namespace Fanex.Athena.PlayerAdmin.MVC.MetaModel
 
         public BreakdownMode BreakdownMode { get; set; }
 
+        public ViewInTimeMode ViewInTime { get; set; }
+
         public string ProductCodes { get; set; }
 
         public string SportIds { get; set; }
@@ -60,7 +62,7 @@ namespace Fanex.Athena.PlayerAdmin.MVC.MetaModel
 
         public bool IsExcludedTestData { get; set; } = true;
 
-        public bool IsViewCashOutOnly { get; set; } 
+        public bool IsViewCashOutOnly { get; set; }
 
         public bool SubsidiarySearch { get; set; }
 

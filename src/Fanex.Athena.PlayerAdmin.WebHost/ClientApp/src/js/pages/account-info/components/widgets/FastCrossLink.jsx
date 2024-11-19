@@ -34,7 +34,7 @@ export const FastCrossLink = (props) => {
 
     const popupWinLossAnalysis = {
         url: winLossAnalysisUrl, 
-        title: ClientResourceManager.getText('WinLossAnalysis'),
+        title: ClientResourceManager.getText('WinLossAnalysis') + ' - ' + ClientResourceManager.getText('Viewin').replace('{0}', ClientResourceManager.getText('FinancialDate')),
         width: window.innerWidth - 10,
         height: 430
     };

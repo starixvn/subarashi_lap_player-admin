@@ -46,7 +46,7 @@ export const resource_id = {
     NoSportsbookData: "Tidak ada data Sportsbook.",
     FastCrossLink: "Tautan Silang Cepat",
     SingleCustomer: "Pelanggan Individu",
-    SinglePlayer:"Pemain Tunggal",
+    SinglePlayer: "Pemain Tunggal",
     BettingTicketCenter: "Pusat Tiket Taruhan",
     CustomerWinLoss: "Kemenangan dan Kerugian Pelanggan",
     PlayerBettingStatisticsTitle: "Statistik Taruhan Pemain (bulan ini)",
@@ -63,5 +63,7 @@ export const resource_id = {
     LastTransaction: "Transaksi Terakhir",
     Whitelabel: "Whitelabel",
     Subsidiary: "Cabang",
+    FinancialDate: "Tanggal Keuangan",
     WinLossAnalysis: "Analisis Menang Kalah",
+    Viewin: "Lihat {0}"
 }
