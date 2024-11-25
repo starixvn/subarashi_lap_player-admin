@@ -46,7 +46,7 @@ export const resource_vn = {
     NoSportsbookData: 'Không tìm thấy dữ liệu Sportsbook.',
     FastCrossLink: 'Liên kết nhanh',
     SingleCustomer: 'Khách hàng cá nhân',
-    SinglePlayer:"Người chơi cá nhân",
+    SinglePlayer: "Người chơi cá nhân",
     BettingTicketCenter: 'Trung tâm vé cược',
     CustomerWinLoss: 'Thắng Thua Khách Hàng',
     PlayerBettingStatisticsTitle: 'Thống kê cá cược của người chơi (tháng này)',
@@ -63,5 +63,7 @@ export const resource_vn = {
     LastTransaction: 'Giao dịch cuối cùng',
     Whitelabel: "Nhóm Chi Nhánh",
     Subsidiary: "Chi nhánh",
-    WinLossAnalysis: "Phân Tích Thắng Thua"
+    WinLossAnalysis: "Phân Tích Thắng Thua",
+    FinancialDate: "Ngày Tài Chính",
+    Viewin: "Xem theo {0}"
 }

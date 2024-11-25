@@ -2779,6 +2779,15 @@ namespace Fanex.Athena.PlayerAdmin.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Financial Date.
+        /// </summary>
+        public static string FinancialDate {
+            get {
+                return ResourceManager.GetString("FinancialDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to First Goal.
         /// </summary>
         public static string FirstGoal {
@@ -8004,6 +8013,15 @@ namespace Fanex.Athena.PlayerAdmin.Core.Resources {
         public static string Viewin {
             get {
                 return ResourceManager.GetString("Viewin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to View In Financial Date.
+        /// </summary>
+        public static string ViewInFinancialDate {
+            get {
+                return ResourceManager.GetString("ViewInFinancialDate", resourceCulture);
             }
         }
         

@@ -14,7 +14,7 @@ export const resource_cs = {
     LastUpdatedSpecialLevel: '最近更新的特殊级别',
     Margin: '杀数',
     SingleCustomer: '单一会员',
-    SinglePlayer:"单一玩家",
+    SinglePlayer: "单一玩家",
     BettingTicketCenter: '注单中心',
     CustomerWinLoss: '会员輸贏',
     NoSportsbookData: '没有体育平台资料',
@@ -63,5 +63,7 @@ export const resource_cs = {
     LastTransaction: '最后交易',
     Whitelabel: "Whitelabel",
     Subsidiary: "子网站",
-    WinLossAnalysis: "输赢分析"
+    WinLossAnalysis: "输赢分析",
+    FinancialDate: "依财务日期时间搜寻",
+    Viewin: "以{0}查看"
 }

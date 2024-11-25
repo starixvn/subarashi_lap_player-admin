@@ -72,6 +72,7 @@ namespace Fanex.Athena.PlayerAdmin.MVC.Controllers
             metaModel.IsViewCashOutOnly = false;
             metaModel.GroupMode = GroupByMode.Player;
             metaModel.BreakdownMode = BreakdownMode.Product;
+            metaModel.ViewInTime = ViewInTimeMode.Financial;
             metaModel.IsShowInOrginalCurrency = true;
             metaModel.IsExcludedTestData = false;
             metaModel.IsVipOnly = false;

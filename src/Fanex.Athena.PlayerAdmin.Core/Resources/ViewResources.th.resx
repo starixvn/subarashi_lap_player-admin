@@ -2871,4 +2871,7 @@
   <data name="SinglePlayer" xml:space="preserve">
     <value>นักเดิมพันเดี่ยว</value>
   </data>
+  <data name="FinancialDate" xml:space="preserve">
+    <value>วันที่การเงิน</value>
+  </data>
 </root>
