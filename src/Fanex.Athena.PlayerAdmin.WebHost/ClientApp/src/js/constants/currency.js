@@ -14,6 +14,7 @@
     { value: -16, text: 'JPY' },
     { value: -17, text: 'MXN' },
     { value: -18, text: 'NGN' },
+    { value: -19, text: 'BRL' },
 
     //crypto currencies
     { value: -99, text: 'USDT' }
