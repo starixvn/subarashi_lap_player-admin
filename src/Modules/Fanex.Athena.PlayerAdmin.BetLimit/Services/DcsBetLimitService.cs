@@ -1,34 +1,41 @@
-﻿using Fanex.Athena.PlayerAdmin.BetLimit.DataDomains;
-using Fanex.Athena.PlayerAdmin.BetLimit.DTO;
-using Fanex.Athena.PlayerAdmin.BetLimit.Helpers;
-using Fanex.Athena.PlayerAdmin.BetLimit.MetaModel;
-using Fanex.Athena.PlayerAdmin.BetLimit.Repositories.Interfaces;
-using Fanex.Athena.PlayerAdmin.BetLimit.Services.Interfaces;
-using Fanex.Athena.PlayerAdmin.Core.Constants;
-using Fanex.Athena.PlayerAdmin.Core.Models;
-using MediatR;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace Fanex.Athena.PlayerAdmin.BetLimit.Services
+﻿namespace Fanex.Athena.PlayerAdmin.BetLimit.Services
 {
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using Core.Constants;
+    using Core.Models;
+    using DataDomains;
+    using DTO;
+    using Helpers;
+    using Interfaces;
+    using MediatR;
+    using MetaModel;
+    using Repositories.Interfaces;
+
     public class DcsBetLimitService : IDcsBetLimitService
     {
-        public static readonly IEnumerable<int> ProductsHasControlStatus = new[] {
-            ProductTypes.Lottery, ProductTypes.I4D, ProductTypes.SLT, ProductTypes.AllBet, ProductTypes.Voidbridge, ProductTypes.CashOut, ProductTypes.Exchange,
-            ProductTypes.PP, ProductTypes.SXG, ProductTypes.HB, ProductTypes.JK, ProductTypes.SAG, ProductTypes.PGS, ProductTypes.SBC, ProductTypes.WM,
-            ProductTypes.SG, ProductTypes.VRG, ProductTypes.CC, ProductTypes.CG, ProductTypes.VGA, ProductTypes.TG, ProductTypes.AP, ProductTypes.APM, ProductTypes.SabaCasino,
-            ProductTypes.BTC, ProductTypes.FGGL, ProductTypes.MXG, ProductTypes.JIG, ProductTypes.YB, ProductTypes.MGRNG, ProductTypes.SEA, ProductTypes.WE, ProductTypes.L22,
-            ProductTypes.UUSL, ProductTypes.FS, ProductTypes.FAC, ProductTypes.NS, ProductTypes.ON, ProductTypes.PTRNG, ProductTypes.GPIRNG
+        public static readonly IEnumerable<int> ProductsHasControlStatus = new[]
+        {
+            ProductTypes.Lottery, ProductTypes.I4D, ProductTypes.SLT, ProductTypes.AllBet, ProductTypes.Voidbridge, ProductTypes.CashOut,
+            ProductTypes.Exchange, ProductTypes.PP, ProductTypes.SXG, ProductTypes.HB, ProductTypes.JK, ProductTypes.SAG, ProductTypes.PGS,
+            ProductTypes.SBC, ProductTypes.WM, ProductTypes.SG, ProductTypes.VRG, ProductTypes.CC, ProductTypes.CG, ProductTypes.VGA,
+            ProductTypes.TG, ProductTypes.AP, ProductTypes.APM, ProductTypes.SabaCasino, ProductTypes.BTC, ProductTypes.FGGL, ProductTypes.MXG,
+            ProductTypes.JIG, ProductTypes.YB, ProductTypes.MGRNG, ProductTypes.SEA, ProductTypes.WE, ProductTypes.L22, ProductTypes.UUSL,
+            ProductTypes.FS, ProductTypes.FAC, ProductTypes.NS, ProductTypes.ON, ProductTypes.PTRNG, ProductTypes.GPIRNG, ProductTypes.GPILC
         };
 
-        private readonly IDcsBetLimitRepository _repository;
-        private readonly INewDcsBetLimitRepository _newRepository;
         private readonly IDcsGameBetLimitRepository _gameBetLimitRepository;
+        private readonly INewDcsBetLimitRepository _newRepository;
         private readonly IPublisher _publisher;
 
-        public DcsBetLimitService(IDcsBetLimitRepository repository, INewDcsBetLimitRepository newRepository, IDcsGameBetLimitRepository dcsGameBetLimitRepository, IPublisher publisher)
+        private readonly IDcsBetLimitRepository _repository;
+
+        public DcsBetLimitService(
+            IDcsBetLimitRepository repository,
+            INewDcsBetLimitRepository newRepository,
+            IDcsGameBetLimitRepository dcsGameBetLimitRepository,
+            IPublisher publisher)
         {
             _repository = repository;
             _newRepository = newRepository;
@@ -42,7 +49,7 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Services
             {
                 ProductTypes.Sportsbook or ProductTypes.NumberGame => await _gameBetLimitRepository.GetSettingAsync(custId, productId),
                 ProductTypes.VS3 => await _newRepository.GetSettingAsync(custId, productId),
-                _ => await _repository.GetSettingAsync(custId, productId),
+                _ => await _repository.GetSettingAsync(custId, productId)
             };
         }
 
@@ -62,7 +69,7 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Services
             {
                 ProductTypes.Sportsbook or ProductTypes.NumberGame => await _gameBetLimitRepository.UpdateSettingAsync(metaModel),
                 ProductTypes.VS3 => await _newRepository.UpdateSettingAsync(metaModel),
-                _ => await _repository.UpdateSettingAsync(metaModel),
+                _ => await _repository.UpdateSettingAsync(metaModel)
             };
 
             var logEvent = BetLimitLogHelper.CreateLogEvent(
@@ -93,12 +100,37 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Services
         {
             return productId switch
             {
-                ProductTypes.Lottery or ProductTypes.Keno => new[] { LogActionDetailId.UpdatingMinBet, LogActionDetailId.UpdatingMaxBet, LogActionDetailId.UpdatingMaxBetPerDraw },
-                ProductTypes.NumberGame => new[] { LogActionDetailId.UpdatingMinBet, LogActionDetailId.UpdatingMaxBet, LogActionDetailId.UpdatingMaxPerMatch, LogActionDetailId.UpdatingMaxPerBall },
-                ProductTypes.Sportsbook => new[] { LogActionDetailId.UpdatingMinBet, LogActionDetailId.UpdatingMaxBet,
-                    LogActionDetailId.UpdatingMaxPerMatch, LogActionDetailId.UpdatingMaxPayoutPerMatch },
-                ProductTypes.VS3 => new[] { LogActionDetailId.UpdatingMinBet, LogActionDetailId.UpdatingMaxBet },
-                _ => new[] { LogActionDetailId.UpdatingMinBet, LogActionDetailId.UpdatingMaxBet, LogActionDetailId.UpdatingMaxPerMatch },
+                ProductTypes.Lottery or ProductTypes.Keno => new[]
+                {
+                    LogActionDetailId.UpdatingMinBet,
+                    LogActionDetailId.UpdatingMaxBet,
+                    LogActionDetailId.UpdatingMaxBetPerDraw
+                },
+                ProductTypes.NumberGame => new[]
+                {
+                    LogActionDetailId.UpdatingMinBet,
+                    LogActionDetailId.UpdatingMaxBet,
+                    LogActionDetailId.UpdatingMaxPerMatch,
+                    LogActionDetailId.UpdatingMaxPerBall
+                },
+                ProductTypes.Sportsbook => new[]
+                {
+                    LogActionDetailId.UpdatingMinBet,
+                    LogActionDetailId.UpdatingMaxBet,
+                    LogActionDetailId.UpdatingMaxPerMatch,
+                    LogActionDetailId.UpdatingMaxPayoutPerMatch
+                },
+                ProductTypes.VS3 => new[]
+                {
+                    LogActionDetailId.UpdatingMinBet,
+                    LogActionDetailId.UpdatingMaxBet
+                },
+                _ => new[]
+                {
+                    LogActionDetailId.UpdatingMinBet,
+                    LogActionDetailId.UpdatingMaxBet,
+                    LogActionDetailId.UpdatingMaxPerMatch
+                }
             };
         }
     }
