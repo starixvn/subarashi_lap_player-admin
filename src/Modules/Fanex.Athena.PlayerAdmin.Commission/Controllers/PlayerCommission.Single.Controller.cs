@@ -28,7 +28,7 @@ namespace Fanex.Athena.PlayerAdmin.Commission.Controllers
         [ReferrerValidation]
         [CookieAuthorize(Roles.SuperAdmin, Roles.CommissionGroup_Write, Policy = Policy.NotAllowSubsidiary)]
         [AutoBindingMetaModel(bindLicenseeId: true, bindUsername: true, bindClientIP: true, bindLanguage: true, bindUserId: true)]
-        public async Task<ViewResult> SingleRemoveFromGroup([FromQuery] SingleRemoveFromGroupQuery query)
+        public ViewResult SingleRemoveFromGroup([FromQuery] SingleRemoveFromGroupQuery query)
         {
             query.CustIds = query.CustId.ToString();
             var viewModel = new MultipleRemoveFromGroupViewModel(query);
@@ -46,6 +46,7 @@ namespace Fanex.Athena.PlayerAdmin.Commission.Controllers
             var groups = await _playerCommService.GetAllCommGroups(query, productAccess);
             var currentGroup = await _playerCommService.GetPlayerCommissionGroup(query, productAccess);
             var viewModel = new SingleMoveGroupViewModel(query, groups, currentGroup, true);
+
             return View(viewModel);
         }
     }
