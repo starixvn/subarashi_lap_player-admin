@@ -6,7 +6,6 @@ using Fanex.Athena.PlayerAdmin.Commission.Services.Interfaces;
 using Fanex.Athena.PlayerAdmin.Commission.ViewModels;
 using Fanex.Athena.PlayerAdmin.Core.Models;
 using Fanex.Athena.PlayerAdmin.Core.Resources;
-using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -68,22 +67,22 @@ namespace Fanex.Athena.PlayerAdmin.Commission.Services
             }
 
             var criteria = new MultipleMoveGroupCriteria(query);
-            var result = await _repository.MultipleMoveGroup(criteria);
-            return result;
+
+            return await _repository.MultipleMoveGroup(criteria);
         }
 
         public async Task<IResultInfo> MultipleRemoveFromGroup(MultipleRemoveFromGroupQuery query)
         {
             var criteria = new MultipleRemoveFromGroupCriteria(query);
-            var result = await _repository.MultipleRemoveFromGroup(criteria);
-            return result;
+
+            return await _repository.MultipleRemoveFromGroup(criteria);
         }
 
         public async Task<IResultInfo> MultipleUpdateGroup(MultipleUpdateGroupQuery query)
         {
             var criteria = new MultipleUpdateGroupCriteria(query);
-            var result = await _repository.MultipleUpdateGroup(criteria);
-            return result;
+
+            return await _repository.MultipleUpdateGroup(criteria);
         }
 
         public async Task<PlayerCommissionViewModel> GetPlayerCommissionGroup(SingleMoveGroupQuery query, ProductAccess productAccess)
