@@ -43,7 +43,7 @@ export default class Service {
             if (response.status === NoContentStatusCode) {
                 alert(LangHelper.getSingleResource("NoInfo"));
             } else {
-                Site.downloadFile(response.data, 'PlayerAdministratorBetList.xls');
+                Site.downloadFile(response.data, 'PlayerAdministratorBetList.xlsx');
             }
 
             callback();

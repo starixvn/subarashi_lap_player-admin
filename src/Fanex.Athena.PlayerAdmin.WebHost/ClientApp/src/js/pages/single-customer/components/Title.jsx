@@ -21,7 +21,7 @@ export const Title = (props) => {
                 if (response.status === NoContentStatusCode) {
                     alert(LangHelper.getSingleResource("NoInfo"));
                 } else {
-                    Site.downloadFile(response.data, 'BettingTicketsCenter_SingleCustomer.xls');
+                    Site.downloadFile(response.data, 'BettingTicketsCenter_SingleCustomer.xlsx');
                 }
                 toggleLoader(false);
             })
