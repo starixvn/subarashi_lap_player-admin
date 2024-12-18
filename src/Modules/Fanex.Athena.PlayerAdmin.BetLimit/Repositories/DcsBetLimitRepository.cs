@@ -1,30 +1,29 @@
-﻿using Fanex.Athena.PlayerAdmin.BetLimit.DTO;
-using Fanex.Athena.PlayerAdmin.BetLimit.MetaModel;
-using Fanex.Athena.PlayerAdmin.BetLimit.Repositories.Interfaces;
-using Fanex.Athena.PlayerAdmin.Core.Constants;
-using Fanex.Athena.PlayerAdmin.Core.Extensions;
-using Fanex.Athena.PlayerAdmin.Core.Models;
-using Fanex.Athena.PlayerAdmin.Core.Repositories;
-using Fanex.Data;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-
-namespace Fanex.Athena.PlayerAdmin.BetLimit.Repositories
+﻿namespace Fanex.Athena.PlayerAdmin.BetLimit.Repositories
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using System.Xml.Linq;
+    using Core.Constants;
+    using Core.Extensions;
+    using Core.Models;
+    using Core.Repositories;
+    using Data;
+    using DTO;
+    using Interfaces;
+    using MetaModel;
+    using Microsoft.Extensions.Logging;
+
     public class DcsBetLimitRepository : IDcsBetLimitRepository
     {
-        private readonly IDbFactory _db;
-
-        private readonly ILogger<DcsBetLimitRepository> _logger;
-
         private const int MemberRoleId = 1;
 
         private const int ProductStatusSettingType = 4;
+
+        private const string UpdateStatusXmlFormat =
+            "<ROOT><ProductStatus SportType=\"{0}\" BetType=\"{1}\" IsDisabled=\"{2}\" IsDisabledDownline=\"0\" /></ROOT>";
 
         private static readonly IDictionary<int, string[]> ProductSportList = new Dictionary<int, string[]>
         {
@@ -38,8 +37,6 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Repositories
             [ProductTypes.APM] = new[] { "174" },
             [ProductTypes.BTC] = new[] { "175" }
         };
-
-        private const string UpdateStatusXmlFormat = "<ROOT><ProductStatus SportType=\"{0}\" BetType=\"{1}\" IsDisabled=\"{2}\" IsDisabledDownline=\"0\" /></ROOT>";
 
         private static readonly IDictionary<int, int> ProductSportTypeMap = new Dictionary<int, int>
         {
@@ -81,7 +78,8 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Repositories
             { ProductTypes.NS, 229 },
             { ProductTypes.ON, 138 },
             { ProductTypes.PTRNG, 148 },
-            { ProductTypes.GPIRNG, 145 }
+            { ProductTypes.GPIRNG, 145 },
+            { ProductTypes.GPILC, 144 }
         };
 
         private static readonly IDictionary<int, int> ProductBetTypeMap = new Dictionary<int, int>
@@ -124,8 +122,13 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Repositories
             { ProductTypes.NS, 10450 },
             { ProductTypes.ON, 11850 },
             { ProductTypes.PTRNG, 12500 },
-            { ProductTypes.GPIRNG, 11400 }
+            { ProductTypes.GPIRNG, 11400 },
+            { ProductTypes.GPILC, 11500 }
         };
+
+        private readonly IDbFactory _db;
+
+        private readonly ILogger<DcsBetLimitRepository> _logger;
 
         public DcsBetLimitRepository(IDbFactory dbFactory, ILogger<DcsBetLimitRepository> logger)
         {
@@ -285,6 +288,6 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Repositories
         }
 
         private static string BuildProductStatusXml(int productId, bool status)
-           => string.Format(UpdateStatusXmlFormat, ProductSportTypeMap[productId], ProductBetTypeMap[productId], status ? 0 : 1);
+            => string.Format(UpdateStatusXmlFormat, ProductSportTypeMap[productId], ProductBetTypeMap[productId], status ? 0 : 1);
     }
 }

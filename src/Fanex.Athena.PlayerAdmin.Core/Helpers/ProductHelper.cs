@@ -1,10 +1,10 @@
-﻿using Fanex.Athena.PlayerAdmin.Core.Resources;
-using System;
-using System.Collections.Generic;
-using Fanex.Athena.PlayerAdmin.Core.Constants;
-
-namespace Fanex.Athena.PlayerAdmin.Core.Helpers
+﻿namespace Fanex.Athena.PlayerAdmin.Core.Helpers
 {
+    using System;
+    using System.Collections.Generic;
+    using Constants;
+    using Resources;
+
     public static class ProductHelper
     {
         private static readonly IDictionary<string, string> ProductNameMap =
@@ -74,17 +74,17 @@ namespace Fanex.Athena.PlayerAdmin.Core.Helpers
                 { ProductCode.NS, nameof(ViewResources.ProductNS) },
                 { ProductCode.ON, nameof(ViewResources.ProductON) },
                 { ProductCode.PTRNG, nameof(ViewResources.ProductPTRNG) },
-                { ProductCode.GPIRNG, nameof(ViewResources.ProductGPIRNG) }
+                { ProductCode.GPIRNG, nameof(ViewResources.ProductGPIRNG) },
+                { ProductCode.GPILC, nameof(ViewResources.ProductGPILC) }
             };
 
         public static string GetProductName(string productCode, string defaultValue = null)
         {
-            if (!ProductNameMap.ContainsKey(productCode))
+            if (!ProductNameMap.TryGetValue(productCode, out var resourceKey))
             {
                 return defaultValue ?? productCode;
             }
 
-            var resourceKey = ProductNameMap[productCode];
             return ViewResources.ResourceManager.GetString(resourceKey);
         }
     }

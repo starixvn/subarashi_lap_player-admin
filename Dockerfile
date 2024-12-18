@@ -1,17 +1,22 @@
-FROM hub.nexdev.net/base/dotnet/core/sdk:5.0.102-ca-patch-buster-slim AS builder
+ARG CI_REGISTRY_IMAGE
 
-RUN apt-get update  \
-	&& curl --silent --location https://deb.nodesource.com/setup_14.x | bash -  \
-	&& apt-get install -y nodejs
+FROM $CI_REGISTRY_IMAGE:builder as deps
 
-RUN node -v
-RUN npm -v
+RUN mkdir -p /src/packages
+
+FROM hub.nexdev.net/base/dotnet/core/sdk:5.0.102-node14-ca-patch-buster-slim AS builder
+
+ENV NUGET_PACKAGES=/src/packages
+
+COPY --from=deps $NUGET_PACKAGES/. $NUGET_PACKAGES/
 
 WORKDIR /src/Fanex.Athena.PlayerAdmin.WebHost
 
 COPY src/Fanex.Athena.PlayerAdmin.WebHost/package.json ./
 COPY src/Fanex.Athena.PlayerAdmin.WebHost/package-lock.json ./
 
+RUN node -v
+RUN npm -v
 RUN npm install
 
 WORKDIR /src

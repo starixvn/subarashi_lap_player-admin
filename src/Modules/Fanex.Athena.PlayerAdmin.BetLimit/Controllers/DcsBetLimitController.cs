@@ -1,30 +1,38 @@
-﻿using Fanex.Athena.PlayerAdmin.BetLimit.MetaModel;
-using Fanex.Athena.PlayerAdmin.BetLimit.Services.Interfaces;
-using Fanex.Athena.PlayerAdmin.BetLimit.ViewModels;
-using Fanex.Athena.PlayerAdmin.Core.Constants;
-using Fanex.Athena.PlayerAdmin.Core.Attributes;
-using Fanex.Athena.PlayerAdmin.Core.Resources;
-using Fanex.Athena.PlayerAdmin.Core.Services;
-using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-
-namespace Fanex.Athena.PlayerAdmin.BetLimit.Controllers
+﻿namespace Fanex.Athena.PlayerAdmin.BetLimit.Controllers
 {
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+    using Core.Attributes;
+    using Core.Constants;
+    using Core.Resources;
+    using Core.Services;
+    using MetaModel;
+    using Microsoft.AspNetCore.Mvc;
+    using Services.Interfaces;
+    using ViewModels;
+
     [RequestValidation(
-    validateCustId: true,
-    validateProductId: -1,
-    limitedProductIds: new[] { ProductTypes.VirtualSports, ProductTypes.Lottery, ProductTypes.TG, ProductTypes.I4D, ProductTypes.SLT, ProductTypes.I4D, ProductTypes.SLT,
+        true,
+        validateProductId: -1,
+        limitedProductIds: new[]
+        {
+            ProductTypes.VirtualSports, ProductTypes.Lottery, ProductTypes.TG, ProductTypes.I4D, ProductTypes.SLT, ProductTypes.I4D, ProductTypes.SLT,
             ProductTypes.AllBet, ProductTypes.Voidbridge, ProductTypes.CashOut, ProductTypes.PP, ProductTypes.SXG, ProductTypes.HB, ProductTypes.JK,
-            ProductTypes.SAG, ProductTypes.PGS, ProductTypes.SBC, ProductTypes.WM, ProductTypes.SG, ProductTypes.VRG, ProductTypes.CC, ProductTypes.CG, ProductTypes.VGA, ProductTypes.AP,
-            ProductTypes.APM, ProductTypes.SabaCasino, ProductTypes.BTC, ProductTypes.FGGL, ProductTypes.MXG, ProductTypes.Keno, ProductTypes.NumberGame, ProductTypes.JIG,
-            ProductTypes.YB, ProductTypes.MGRNG, ProductTypes.SEA, ProductTypes.WE, ProductTypes.L22, ProductTypes.UUSL, ProductTypes.FS, ProductTypes.FAC, ProductTypes.NS, ProductTypes.ON,
-            ProductTypes.PTRNG, ProductTypes.GPIRNG })]
+            ProductTypes.SAG, ProductTypes.PGS, ProductTypes.SBC, ProductTypes.WM, ProductTypes.SG, ProductTypes.VRG, ProductTypes.CC,
+            ProductTypes.CG, ProductTypes.VGA, ProductTypes.AP,
+            ProductTypes.APM, ProductTypes.SabaCasino, ProductTypes.BTC, ProductTypes.FGGL, ProductTypes.MXG, ProductTypes.Keno,
+            ProductTypes.NumberGame, ProductTypes.JIG,
+            ProductTypes.YB, ProductTypes.MGRNG, ProductTypes.SEA, ProductTypes.WE, ProductTypes.L22, ProductTypes.UUSL, ProductTypes.FS,
+            ProductTypes.FAC, ProductTypes.NS, ProductTypes.ON,
+            ProductTypes.PTRNG, ProductTypes.GPIRNG, ProductTypes.GPILC
+        })]
     public class DcsBetLimitController : PlayerBetLimitBaseControler
     {
         private readonly IDcsBetLimitService _service;
 
-        public DcsBetLimitController(IContextService contextService, IResourceService resourceService,
+        public DcsBetLimitController(
+            IContextService contextService,
+            IResourceService resourceService,
             IDcsBetLimitService dcsBetLimitService) : base(contextService, resourceService)
         {
             _service = dcsBetLimitService;
