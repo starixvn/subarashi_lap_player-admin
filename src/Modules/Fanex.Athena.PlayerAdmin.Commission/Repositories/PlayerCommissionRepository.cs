@@ -29,17 +29,16 @@ namespace Fanex.Athena.PlayerAdmin.Commission.Repositories
 
             using (var db = dbFactory.GetObjectDb(UspName))
             {
-                using (var reader = await db.ExecuteReaderAsync().ConfigureAwait(false))
+                using var reader = await db.ExecuteReaderAsync().ConfigureAwait(false);
+
+                while (reader.Read())
                 {
-                    while (reader.Read())
+                    comSettings.Add(new PlayerCommissionSettingViewModel
                     {
-                        comSettings.Add(new PlayerCommissionSettingViewModel
-                        {
-                            Sporttype = Convert.ToInt32(reader["Sporttype"]),
-                            Bettype = Convert.ToInt32(reader["Bettype"]),
-                            ProductCode = Convert.ToString(reader["ProductCode"]),
-                        });
-                    }
+                        Sporttype = Convert.ToInt32(reader["Sporttype"]),
+                        Bettype = Convert.ToInt32(reader["Bettype"]),
+                        ProductCode = Convert.ToString(reader["ProductCode"]),
+                    });
                 }
             }
 
@@ -120,39 +119,39 @@ namespace Fanex.Athena.PlayerAdmin.Commission.Repositories
         {
             var result = new ResultInfo();
 
-            using (var db = dbFactory.GetObjectDb(criteria.GetSPName()))
-            {
-                criteria.SetParameterValues(db);
-                await db.ExecuteNonQueryAsync().ConfigureAwait(false);
-                AssignResult(db, result);
-                return result;
-            }
+            using var db = dbFactory.GetObjectDb(criteria.GetSPName());
+            criteria.SetParameterValues(db);
+
+            await db.ExecuteNonQueryAsync().ConfigureAwait(false);
+            AssignResult(db, result);
+
+            return result;
         }
 
         public async Task<IResultInfo> MultipleRemoveFromGroup(MultipleRemoveFromGroupCriteria criteria)
         {
             var result = new ResultInfo();
 
-            using (var db = dbFactory.GetObjectDb(criteria.GetSPName()))
-            {
-                criteria.SetParameterValues(db);
-                await db.ExecuteNonQueryAsync().ConfigureAwait(false);
-                AssignResult(db, result);
-                return result;
-            }
+            using var db = dbFactory.GetObjectDb(criteria.GetSPName());
+            criteria.SetParameterValues(db);
+
+            await db.ExecuteNonQueryAsync().ConfigureAwait(false);
+            AssignResult(db, result);
+
+            return result;
         }
 
         public async Task<IResultInfo> MultipleUpdateGroup(MultipleUpdateGroupCriteria criteria)
         {
             var result = new ResultInfo();
 
-            using (var db = dbFactory.GetObjectDb(criteria.GetSPName()))
-            {
-                criteria.SetParameterValues(db);
-                await db.ExecuteNonQueryAsync();
-                AssignResult(db, result);
-                return result;
-            }
+            using var db = dbFactory.GetObjectDb(criteria.GetSPName());
+            criteria.SetParameterValues(db);
+
+            await db.ExecuteNonQueryAsync();
+            AssignResult(db, result);
+
+            return result;
         }
 
         public async Task<(PlayerCommissionViewModel, IEnumerable<PlayerCommissionSettingViewModel>)> GetPlayerCommissionGroup(GetPlayerCommissionGroupCriteria criteria)
