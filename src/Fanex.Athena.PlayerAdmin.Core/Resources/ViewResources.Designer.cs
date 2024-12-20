@@ -6190,6 +6190,15 @@ namespace Fanex.Athena.PlayerAdmin.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Quick Bet Widget.
+        /// </summary>
+        public static string QuickBetWidget {
+            get {
+                return ResourceManager.GetString("QuickBetWidget", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to RB.
         /// </summary>
         public static string RB {

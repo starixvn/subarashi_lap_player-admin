@@ -2815,4 +2815,7 @@
   <data name="FinancialDate" xml:space="preserve">
     <value>依财务日期时间搜寻</value>
   </data>
+  <data name="QuickBetWidget" xml:space="preserve">
+    <value>快捷投注元件</value>
+  </data>
 </root>
