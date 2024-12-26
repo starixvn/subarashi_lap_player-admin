@@ -2820,4 +2820,7 @@
   <data name="FinancialDate" xml:space="preserve">
     <value>Tanggal Keuanga</value>
   </data>
+  <data name="QuickBetWidget" xml:space="preserve">
+    <value>Widget Taruhan Cepat</value>
+  </data>
 </root>

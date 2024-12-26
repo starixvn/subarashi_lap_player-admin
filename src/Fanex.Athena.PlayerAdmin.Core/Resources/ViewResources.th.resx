@@ -2874,4 +2874,7 @@
   <data name="FinancialDate" xml:space="preserve">
     <value>วันที่การเงิน</value>
   </data>
+  <data name="QuickBetWidget" xml:space="preserve">
+    <value>วิดเจ็ตเดิมพันด่วน</value>
+  </data>
 </root>
