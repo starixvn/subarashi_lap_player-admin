@@ -85,6 +85,7 @@ const ConfirmationUpdateProductStatusMsg = {
     [BetLimitProduct.PTRNG]: { Msg: 'UpdateProductStatus', Product: 'ProductPTRNG' },
     [BetLimitProduct.GPIRNG]: { Msg: 'UpdateProductStatus', Product: 'ProductGPIRNG' },
     [BetLimitProduct.GPILC]: { Msg: 'UpdateProductStatus', Product: 'ProductGPILC' },
+    [BetLimitProduct.PS]: { Msg: 'UpdateProductStatus', Product: 'ProductPS' }
 }
 
 const ConfirmationUpdateProductChargeCommMsg = {

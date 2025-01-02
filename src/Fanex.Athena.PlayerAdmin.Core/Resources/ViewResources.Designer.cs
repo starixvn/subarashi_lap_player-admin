@@ -5974,6 +5974,15 @@ namespace Fanex.Athena.PlayerAdmin.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to PLAYSTAR.
+        /// </summary>
+        public static string ProductPS {
+            get {
+                return ResourceManager.GetString("ProductPS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Playtech Casino.
         /// </summary>
         public static string ProductPTCS {
