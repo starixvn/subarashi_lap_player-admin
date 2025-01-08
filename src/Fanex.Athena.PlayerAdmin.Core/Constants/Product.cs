@@ -111,6 +111,8 @@
         public const string GPIRNG = "GPIRNG";
 
         public const string GPILC = "GPILC";
+
+        public const string PS = "PS";
     }
 
     public static class ProductTypes
@@ -215,5 +217,7 @@
         public const int GPIRNG = 48;
 
         public const int GPILC = 90;
+
+        public const int PS = 91;
     }
 }

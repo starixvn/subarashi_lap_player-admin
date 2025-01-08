@@ -24,7 +24,7 @@
             ProductTypes.NumberGame, ProductTypes.JIG,
             ProductTypes.YB, ProductTypes.MGRNG, ProductTypes.SEA, ProductTypes.WE, ProductTypes.L22, ProductTypes.UUSL, ProductTypes.FS,
             ProductTypes.FAC, ProductTypes.NS, ProductTypes.ON,
-            ProductTypes.PTRNG, ProductTypes.GPIRNG, ProductTypes.GPILC
+            ProductTypes.PTRNG, ProductTypes.GPIRNG, ProductTypes.GPILC, ProductTypes.PS
         })]
     public class DcsBetLimitController : PlayerBetLimitBaseControler
     {

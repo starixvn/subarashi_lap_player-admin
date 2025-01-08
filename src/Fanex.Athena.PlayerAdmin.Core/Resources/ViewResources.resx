@@ -3176,4 +3176,7 @@
   <data name="QuickBetWidget" xml:space="preserve">
     <value>Quick Bet Widget</value>
   </data>
+  <data name="ProductPS" xml:space="preserve">
+    <value>PLAYSTAR</value>
+  </data>
 </root>
