@@ -68,7 +68,7 @@ namespace Fanex.Athena.PlayerAdmin.MVC.Excel
 
         protected override void ProcessUI(ISheet sheet)
         {
-            if (_data.IsEnableSingleWallet)
+            if (_data.IsEnableSingleWallet || _data.ViewType == ViewTypes.SabaCoins)
             {
                 sheet.HideColumn(ColumnAfterBalanceIndex);
             }

@@ -14,14 +14,15 @@ export class DataGrid extends PureComponent {
         super(props);
     }
 
-    _renderHeader() {
+    _renderHeader(detailTransactionReport) {
         return (
             <HeaderRow style={{ height: 32 }}>
                 <HeaderCell colWidth={60}>{LangHelper.getSingleResource('TransactionID')}</HeaderCell>
                 <HeaderCell colWidth={80}>{LangHelper.getSingleResource('TransactionTime')}</HeaderCell>
                 <HeaderCell colWidth={120}>{LangHelper.getSingleResource('Transaction')}</HeaderCell>
                 <HeaderCell colWidth={60}>{LangHelper.getSingleResource('BalanceChange')}</HeaderCell>
-                {!AppData.isEnableSingleWallet && <HeaderCell colWidth={60}>{LangHelper.getSingleResource('AfterBalance')}</HeaderCell>}
+                {!AppData.isEnableSingleWallet && detailTransactionReport.ViewType !== ViewTypeOptions.SabaCoins
+                    && <HeaderCell colWidth={60}>{LangHelper.getSingleResource('AfterBalance')}</HeaderCell>}
                 <HeaderCell colWidth={60}>{LangHelper.getSingleResource('ResettledRecovered')}</HeaderCell>
                 <HeaderCell colWidth={160}>{LangHelper.getSingleResource('Remark')}</HeaderCell>
             </HeaderRow>
@@ -39,7 +40,8 @@ export class DataGrid extends PureComponent {
                     <Cell className="center-text">{dataItem.TransactionTimeStr}</Cell>
                     <Cell>{dataItem.TransactionType}</Cell>
                     <Cell className="right-text">{dataItem.BalanceChangeStr}</Cell>
-                    {!AppData.isEnableSingleWallet && <Cell className="right-text">{dataItem.AfterBalanceStr}</Cell>}
+                    {!AppData.isEnableSingleWallet && detailTransactionReport.ViewType !== ViewTypeOptions.SabaCoins
+                        && <Cell className="right-text">{dataItem.AfterBalanceStr}</Cell>}
                     <Cell className="center-text">
                         {dataItem.IsResettled ? <div class="icon-red-check"></div> : ""}
                     </Cell>
@@ -99,10 +101,12 @@ export class DataGrid extends PureComponent {
             <>
                 <Pager pageOption={pagingOption} onPaging={(i, s) => this._handlePaging(i, s, this.props)} />
                 <ReportTitle tag="div" content={reportTitle} />
-                <Table minWidth={650}
+                <Table
+                    key={`data-grid-${detailTransactionReport.ViewType}-${detailTransactionReport.FromDateStr}-${detailTransactionReport.ToDateStr}-${detailTransactionReport.TotalRow}`}
+                    minWidth={650}
                     autoWidth={true}
                     autoHeight={true}
-                    header={this._renderHeader()}
+                    header={this._renderHeader(detailTransactionReport)}
                     body={this._renderDataSection(detailTransactionReport)}
                     containerPadding={30}
                 />
