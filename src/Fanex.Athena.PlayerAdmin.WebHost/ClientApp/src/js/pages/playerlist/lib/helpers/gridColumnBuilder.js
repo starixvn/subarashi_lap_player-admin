@@ -6,17 +6,15 @@ const excludedKeyForAthenaType = [fields.VendorMemberId];
 export const buildDefaultColumnList = (licType, hasCommPermissionRead) => {
     const isApiType = licType === licenseeType.api;
     return columnList.filter(item => {
-        const show = item.key === fields.CommissionGroup ? hasCommPermissionRead : item.key !== fields.BaStatus;
+        const show = item.key === fields.CommissionGroup && hasCommPermissionRead;
         return show && _showByLicenseeType(isApiType, item.key);
     }).map(item => ({ ...item }))
 }
 
-export const buildColumnList = (licType, isAllowedBA, hasCommPermissionRead, isEnableSingleWallet, enableCustomerClass) => {
+export const buildColumnList = (licType, hasCommPermissionRead, isEnableSingleWallet, enableCustomerClass) => {
     const isApiType = licType === licenseeType.api;
     return columnList.filter(item => {
-        if (item.key === fields.BaStatus) {
-            return isAllowedBA;
-        } else if (item.key === fields.CommissionGroup) {
+        if (item.key === fields.CommissionGroup) {
             return hasCommPermissionRead;
         } else if (item.key === fields.CurrentBalance) {
             return !isEnableSingleWallet;

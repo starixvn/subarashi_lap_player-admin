@@ -22,8 +22,6 @@ namespace Fanex.Athena.PlayerAdmin.Core.Models
 
         public IEnumerable<ProductOption> ProductOptionList => ProductList.Select(p => new ProductOption { Code = p.ProductCode, Name = p.ProductName, Status = true });
 
-        public bool IsAllowBA => _productList.Any(p => p.ProductCode == ProductCode.BA);
-
         public bool IsAllow(string productCode) => _productList.Any(p => p.ProductCode == productCode);
     }
 }

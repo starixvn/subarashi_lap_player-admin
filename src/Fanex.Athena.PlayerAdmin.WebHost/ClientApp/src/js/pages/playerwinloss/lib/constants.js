@@ -49,7 +49,6 @@ export const SortBy = {
     MemComm: 5,
     LicWinloss: 6,
     LicComm: 7,
-    AmtDueToBA: 8,
     BetEffective: 9,
     Margin: 10
 }

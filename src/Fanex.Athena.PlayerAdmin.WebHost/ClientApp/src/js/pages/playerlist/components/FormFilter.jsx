@@ -73,7 +73,7 @@ export class FormFilter extends PureComponent {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        if (prevProps.depositSetting !== this.props.depositSetting 
+        if (prevProps.depositSetting !== this.props.depositSetting
             || (prevProps.isAdvancedSearch && !this.props.isAdvancedSearch)) {
             this.setState({
                 currencyIdList: this.allCurrencyString,
@@ -167,7 +167,7 @@ export class FormFilter extends PureComponent {
 
     handleExportUserOddsGroup = (event) => {
         event.preventDefault();
-        var fileName = this.props.siteSetting.isAllowedBA ? "Odds Group Feature_Licensee_BA.pdf" : "Odds Group Feature_Licensee.pdf";
+        var fileName = "Odds Group Feature_Licensee.pdf";
 
         getOddsGroupPdf(fileName).then(response => {
             Site.downloadFile(response.data, fileName);
@@ -220,10 +220,10 @@ export class FormFilter extends PureComponent {
 
         const userGuide = this._renderUserGuide();
 
-        const isValidParam = !!currencyIdList && !!oddsGroup && !!specialLevel 
+        const isValidParam = !!currencyIdList && !!oddsGroup && !!specialLevel
             && !!customerClass && !!commGroups
             && (!subsidiarySearch || selectedSubsidiaryList)
-            && (!this.props.siteSetting.isSearchWithMatchPreciseOnly || this.state.isValidUsername);
+            && (!siteSetting.isSearchWithMatchPreciseOnly || this.state.isValidUsername);
 
         const iconToggle = {
             tag: 'div',
@@ -248,7 +248,7 @@ export class FormFilter extends PureComponent {
                         <div className="form-group">
                             <label className="label-text">
                                 {this._getUserNameLabel()}<span className={this.state.isMatchPrecise ? "" : "hide"}>/{LangHelper.getSingleResource("SystemId")}</span>
-                                {!this.props.siteSetting.isSearchWithMatchPreciseOnly &&
+                                {!siteSetting.isSearchWithMatchPreciseOnly &&
                                 <div className="search-option-container">
                                     <SearchOption value={searchOption} onChange={this.handleChange} />
                                 </div>}
@@ -276,7 +276,6 @@ export class FormFilter extends PureComponent {
                     {!isArchivedPlayersSearch && isAdvancedSearch && <AdvancedSearch
                         currencyList={currencyList}
                         param={advancedSearchParam}
-                        isAllowedBA={siteSetting.isAllowedBA}
                         isSubsidiary={isSubsidiary}
                         onChange={this.handleSpecificInputChange}
                         type={type}

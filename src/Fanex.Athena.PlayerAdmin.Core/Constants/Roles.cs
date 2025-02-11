@@ -5,7 +5,6 @@
         public const string SuperAdmin = "super_admin";
 
         public const string PlayerAdmin = "PlayerAdmin";
-        public const string UpdateBaStatus = "pa_BA_ctl";
         public const string UpdateSpecialLevel = "pa_lv_ctl";
         public const string UpdateOddsGroup = "pa_odds_g_ctl";
 

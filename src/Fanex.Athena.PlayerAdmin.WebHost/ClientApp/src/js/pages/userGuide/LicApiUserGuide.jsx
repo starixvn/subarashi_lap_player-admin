@@ -21,7 +21,6 @@ const EngContent = ({isSingleWallet, exportOddsGroup})=> {
                 </li>
                 <li><b>Odds Group:</b> view players of an odds group.</li>
                 <li><b>Special Level:</b> view players of a specific special level.</li>
-                <li><b>BA:</b> view players of a BA.</li>
                 <li><b>Risk Level:</b> view players of a specific risk level.</li>
             </ul>
         </div>
@@ -42,7 +41,6 @@ const EngContent = ({isSingleWallet, exportOddsGroup})=> {
                 <li><b>Outstanding Balance:</b> indicate total stakes of all running bets.</li>
                 <li><b>Risk Level:</b> view the assigned risk level bet setting and risk level odds group for player.</li>
                 <li><b>Odds Group:</b> view or set odds group for player.</li>
-                <li><b>BA Status:</b> switch on/off BA status for player.</li>
                 <li><b>Special Level:</b> view or set a special level for player.</li>
             </ul>
         </div>
@@ -92,7 +90,6 @@ const ZnCNContent = ({isSingleWallet, exportOddsGroup}) => {
                 </li>
                 <li><b>Odds Group:</b> 查看玩家的 odds group。</li>
                 <li><b>特殊层级:</b> 查阅特殊层级里的玩家。</li>
-                <li><b>BA状态:</b> 查看玩家的BA状态。</li>
                 <li><b>风险等级:</b> 查看玩家的风险等级。</li>
             </ul>
         </div>
@@ -113,7 +110,6 @@ const ZnCNContent = ({isSingleWallet, exportOddsGroup}) => {
                 <li><b>未结余额:</b> 显示所有投注中的总投注额。</li>
                 <li><b>风险等级:</b> 查看玩家被风控的投注限制和水位组别。</li>
                 <li><b>Odds Group:</b> 显示或设定玩家的odds group。</li>
-                <li><b>BA状态:</b> 开/关玩家的BA状态。</li>
                 <li><b>特殊层级:</b> 显示或设定玩家的特殊层级。</li>
             </ul>
         </div>
@@ -163,7 +159,6 @@ const ViVNContent = ({isSingleWallet, exportOddsGroup})=> {
                 </li>
                 <li><b>Nhóm Tỷ Lệ Cược:</b> xem người chơi của một nhóm tỷ lệ cược.</li>
                 <li><b>Cấp Độ Đặc Biệt:</b> xem người chơi ở một cấp độ đặc biệt cụ thể.</li>
-                <li><b>BA:</b> xem người chơi của vé cược BA.</li>
                 <li><b>Mức Độ Rủi Ro:</b> xem người chơi ở một mức độ rủi ro cụ thể.</li>
             </ul>
         </div>
@@ -184,7 +179,6 @@ const ViVNContent = ({isSingleWallet, exportOddsGroup})=> {
                 <li><b>Tiền Chưa Xử Lý:</b> tổng số tiền cược trên tất cả cược đang diễn ra.</li>
                 <li><b>Mức Độ Rủi Ro:</b> xem giới hạn cược và nhóm tỷ lệ cược theo mức độ rủi ro đã được chỉ định cho người chơi.</li>
                 <li><b>Nhóm Tỷ Lệ Cược:</b> xem hoặc cài đặt nhóm tỷ lệ cược cho người chơi.</li>
-                <li><b>Trạng Thái BA:</b> bật/tắt trạng thái BA của người chơi.</li>
                 <li><b>Cấp Độ Đặc Biệt:</b> xem hoặc đặt cấp độ đặc biệt cho người chơi.</li>
             </ul>
         </div>
@@ -234,7 +228,6 @@ const IndonesiaContent = ({isSingleWallet, exportOddsGroup})=> {
                 </li>
                 <li><b>Grup Odds:</b> melihat pemain dari grup odds tertentu.</li>
                 <li><b>Level Khusus:</b> melihat pemain dengan level khusus tertentu.</li>
-                <li><b>BA:</b>melihat pemain dari BA tertentu.</li>
                 <li><b>Level Risiko:</b> melihat pemain dengan level risiko tertentu.</li>
             </ul>
         </div>
@@ -255,7 +248,6 @@ const IndonesiaContent = ({isSingleWallet, exportOddsGroup})=> {
                 <li><b>Saldo Belum Lunas:</b> menunjukkan total taruhan dari semua tiket yang sedang berjalan.</li>
                 <li><b>Level Risiko:</b> melihat pengaturan taruhan risiko yang ditetapkan dan level risiko odds.</li>
                 <li><b>Grup Komisi:</b> melihat grup komisi untuk pemain.</li>
-                <li><b>Status BA:</b> mengaktifkan/mematikan status BA untuk pemain.</li>
                 <li><b>Level Khusus:</b> melihat atau mengatur level khusus untuk pemain.</li>
             </ul>
         </div>
@@ -306,7 +298,6 @@ const ThailandContent = ({isSingleWallet, exportOddsGroup})=> {
                 </li>
                 <li><b>กลุ่มอัตราต่อรอง:</b> ดูผู้เล่นของกลุ่มอัตราต่อรอง.</li>
                 <li><b>ระดับพิเศษ:</b> ดูผู้เล่นในระดับพิเศษเฉพาะ.</li>
-                <li><b>BA:</b> ดูผู้เล่นของ BA.</li>
                 <li><b>ระดับความเสี่ยง:</b> ดูผู้เล่นในระดับความเสี่ยงเฉพาะ.</li>
             </ul>
         </div>
@@ -327,7 +318,6 @@ const ThailandContent = ({isSingleWallet, exportOddsGroup})=> {
                 <li><b>ยอดคงค้าง:</b> ระบุเงินเดิมพันรวมของการเดิมพันที่กำลังดำเนินอยู่ทั้งหมด.</li>
                 <li><b>ระดับความเสี่ยง:</b> ดูตั้งค่าการเดิมพันระดับความเสี่ยงที่กำหนดและอัตราต่อรองระดับความเสี่ยง.</li>
                 <li><b>กลุ่มอัตราต่อรอง:</b> ดูหรือกำหนดกลุ่มอัตราต่อรองของผู้เล่น.</li>
-                <li><b>สถานะBA:</b> เปิด/ปิดสถานะ BA ของผู้เล่น.</li>
                 <li><b>ระดับพิเศษ:</b> ดูหรือตั้งค่าระดับพิเศษของผู้เล่น.</li>
             </ul>
         </div>

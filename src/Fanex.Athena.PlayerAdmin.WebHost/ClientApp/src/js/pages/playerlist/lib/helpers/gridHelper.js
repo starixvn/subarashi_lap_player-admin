@@ -6,7 +6,7 @@ import HeaderCustomerClassCell from '../../components/grid/HeaderCustomerClassCe
 export default class GridHelper {
     static renderHeader(displayedColumn, canSelectPlayers, hasCommPermissionRead) {
         const { Index, Status, UserName, SystemId, VendorMemberId, RealName, Currency, CurrentBalance, OutstandingBalance,
-            OddsGroup, BaStatus, SpecialLevel, LastTransaction, Email, CommissionGroup, CustomerClass, RiskLevel } = fields;
+            OddsGroup, SpecialLevel, LastTransaction, Email, CommissionGroup, CustomerClass, RiskLevel } = fields;
 
         return (
             <HeaderRow style={{ height: 32 }}>
@@ -21,7 +21,6 @@ export default class GridHelper {
                 {displayedColumn[OutstandingBalance] && <HeaderCell colWidth={80} sortBy={OutstandingBalance}>{headerText.OutstandingBalance}</HeaderCell>}
                 {displayedColumn[RiskLevel] && <HeaderCell colWidth={100}>{headerText.RiskLevel}</HeaderCell>}
                 {displayedColumn[OddsGroup] && <HeaderCell colWidth={50} sortBy={OddsGroup}>{headerText.OddsGroup}</HeaderCell>}
-                {displayedColumn[BaStatus] && <HeaderCell colWidth={50} sortBy={BaStatus}>{headerText.BaStatus}</HeaderCell>}
                 {displayedColumn[SpecialLevel] && <HeaderCell colWidth={50} sortBy={SpecialLevel}>{headerText.SpecialLevel}</HeaderCell>}
                 {displayedColumn[LastTransaction] && <HeaderCell colWidth={60} sortBy={LastTransaction}>{headerText.LastTransaction}</HeaderCell>}
                 {displayedColumn[Email] && <HeaderCell colWidth={100}>{headerText.Email}</HeaderCell>}

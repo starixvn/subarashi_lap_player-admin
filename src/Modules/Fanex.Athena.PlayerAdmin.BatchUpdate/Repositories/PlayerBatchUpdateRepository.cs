@@ -56,27 +56,6 @@ namespace Fanex.Athena.PlayerAdmin.BatchUpdate.Repositories
             }
         }
 
-        public async Task<IResultInfo> UpdateBAStatus(UpdateBAStatusCriteria criteria)
-        {
-            var result = new ResultInfo();
-
-            using (var db = _dbFactory.GetObjectDb(criteria.GetSPName()))
-            {
-                criteria.SetParameterValues(db);
-                await db.ExecuteNonQueryAsync();
-
-                var errorCode = db.GetParameterValue("ErrCode");
-                var errorMessage = db.GetParameterValue("ErrMsg");
-                var extendedData = db.GetParameterValue("OddsGroup");
-
-                result.Code = Converter.ToInt(errorCode);
-                result.Message = Converter.ToString(errorMessage);
-                result.ExtendedData = Converter.ToString(extendedData);
-
-                return result;
-            }
-        }
-
         private static void AssignOutputResult(IObjectDb db, IResultInfo result)
         {
             var errorCode = db.GetParameterValue("ErrCode");

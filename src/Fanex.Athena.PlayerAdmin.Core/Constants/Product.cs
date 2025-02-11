@@ -6,8 +6,6 @@
 
         public const string NG = "NG";
 
-        public const string BA = "BA";
-
         public const string VS = "VS";
 
         public const string CS = "CS";
@@ -120,9 +118,8 @@
         public const int Sportsbook = 0;
 
         public const int Sportsbooks2 = 16;
-        public const int NumberGame = 2;
 
-        public const int BA = 3;
+        public const int NumberGame = 2;
 
         public const int VirtualSports = 5;
 

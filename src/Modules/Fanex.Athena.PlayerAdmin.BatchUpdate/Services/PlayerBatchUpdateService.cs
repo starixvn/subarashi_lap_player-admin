@@ -33,77 +33,6 @@ namespace Fanex.Athena.PlayerAdmin.BatchUpdate.Services
             _repository = repository;
         }
 
-        public async Task<IResultInfo> UpdateBAStatus(UpdateBAStatusApiMetaModel metaModel)
-        {
-            var result = new ResultInfo();
-            var errors = new List<string>();
-
-            var customers = ToCustomerList(metaModel.CustIds, metaModel.CustNames);
-            var validCustIds = await _licenseeService.GetCustomersBelongTo(_contextService.AgentList, metaModel.CustIds);
-            var oldValues = await _repository.GetOldValues(validCustIds, GetOldValuesCriteria.BAStatusType);
-            var addTurnOffVIPError = false;
-            var hasError = false;
-            var extendedData = new List<string>();
-
-            foreach (var cust in customers)
-            {
-                var custId = cust.Id.ToString();
-                var custName = cust.Name;
-
-                if (!validCustIds.Contains(cust.Id))
-                {
-                    errors.Add($"Access Denied. ({custName})");
-                    continue;
-                }
-
-                var oldValue = oldValues.ContainsKey(custId) ? oldValues[custId] : string.Empty;
-                if (string.Equals(metaModel.BAStatusId, oldValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    continue;
-                }
-
-                var criteria = new UpdateBAStatusCriteria(metaModel, custId);
-                var tempResult = await _repository.Update(criteria);
-                if (tempResult.Code == TurnOffVIPErrorCode)
-                {
-                    addTurnOffVIPError = true;
-                    continue;
-                }
-                else if (!tempResult.IsSuccessful)
-                {
-                    hasError = true;
-                    errors.Add($"{tempResult.Message} ({custName})");
-                }
-                else
-                {
-                    extendedData.Add(custId);
-                }
-
-                var @event = new PlayerUpdatedBAEvent
-                {
-                    LicenseeCustId = metaModel.LicenseeId,
-                    SiteName = metaModel.SiteName,
-                    UserId = metaModel.UserId,
-                    CustID = cust.Id,
-                    Status = tempResult.IsSuccessful ? LogText.Success : LogText.False,
-                    NewValue = metaModel.BAStatusId == "1" ? LogText.On : LogText.Off,
-                    OldValue = oldValue,
-                    IgnoreCTSEvent = true
-                };
-
-                await _publisher.Publish(@event);
-            }
-
-            var listSuccessfulCust = string.Join(",", extendedData);
-            await PublishCTSBAEvent(listSuccessfulCust, metaModel.BAStatusId);
-
-            result.Code = hasError ? 1 : 0;
-            var mssg = errors.Any() ? string.Join("<br />", errors) : ViewResources.UpdateSuccess;
-            result.Message = addTurnOffVIPError ? $"{ViewResources.MessageTurnOffVIPError}<br />{mssg}" : mssg;
-            result.ExtendedData = listSuccessfulCust;
-            return result;
-        }
-
         private async Task PublishCTSBAEvent(string listCust, string statusId)
         {
             if (!string.IsNullOrEmpty(listCust))
@@ -125,8 +54,6 @@ namespace Fanex.Athena.PlayerAdmin.BatchUpdate.Services
             var customers = ToCustomerList(metaModel.CustIds, metaModel.CustNames);
             var validCustIds = await _licenseeService.GetCustomersBelongTo(_contextService.AgentList, metaModel.CustIds);
             var oldValues = await _repository.GetOldValues(validCustIds, GetOldValuesCriteria.OddsGroupType);
-            var oldBAs = await _repository.GetOldValues(validCustIds, GetOldValuesCriteria.BAStatusType);
-            var addBAError = false;
 
             foreach (var cust in customers)
             {
@@ -141,12 +68,6 @@ namespace Fanex.Athena.PlayerAdmin.BatchUpdate.Services
                 var oldValue = oldValues.ContainsKey(custId) ? oldValues[custId] : string.Empty;
                 if (string.Equals(metaModel.OddsGroupId, oldValue, StringComparison.OrdinalIgnoreCase))
                 {
-                    continue;
-                }
-
-                if (oldBAs[custId] == "1")
-                {
-                    addBAError = true;
                     continue;
                 }
 
@@ -177,7 +98,7 @@ namespace Fanex.Athena.PlayerAdmin.BatchUpdate.Services
 
             result.Code = errors.Any() ? 1 : 0;
             var msg = errors.Any() ? string.Join("<br />", errors) : ViewResources.UpdateSuccess;
-            result.Message = addBAError ? $"{ViewResources.MessageUpdateOddsGroupForBAPlayers}<br />{msg}" : msg;
+            result.Message = msg;
             result.ExtendedData = string.Join(",", extendedData);
             return result;
         }

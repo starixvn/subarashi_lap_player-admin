@@ -7,7 +7,6 @@ namespace Fanex.Athena.PlayerAdmin.BatchUpdate.Criteria
     {
         public const int SpecialLevelType = 1;
         public const int OddsGroupType = 2;
-        public const int BAStatusType = 3;
 
         public GetOldValuesCriteria(IEnumerable<int> custIds, int valueType)
         {
@@ -29,9 +28,6 @@ namespace Fanex.Athena.PlayerAdmin.BatchUpdate.Criteria
                 case OddsGroupType:
                     return "Lrf_CustomerUgroupSel";
 
-                case BAStatusType:
-                    return "Lrf_CustomerBAStatusSel";
-
                 default:
                     return string.Empty;
             }
@@ -51,9 +47,6 @@ namespace Fanex.Athena.PlayerAdmin.BatchUpdate.Criteria
 
                 case OddsGroupType:
                     return "ugroup";
-
-                case BAStatusType:
-                    return "isBA";
 
                 default:
                     return string.Empty;

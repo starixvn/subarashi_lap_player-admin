@@ -19,7 +19,7 @@ var scriptPaths = {
     languageVN: "common/languages/ViewResources.vi-VN.js",
     languageTH: "common/languages/ViewResources.th-TH.js",
     languageID: "common/languages/ViewResources.id-ID.js",
-    
+
     playercomissionmultiplemovegroup: "./ClientApp/src/jquery-pages/js/pages/playercommission/multiplemovegroup.js",
     playercomissionmultipleremovefromgroup: "./ClientApp/src/jquery-pages/js/pages/playercommission/multipleremovefromgroup.js",
     playercomissionmultipleupdategroup: "./ClientApp/src/jquery-pages/js/pages/playercommission/multipleupdategroup.js",
@@ -28,8 +28,7 @@ var scriptPaths = {
     playercomissionsingleupdategroup: "./ClientApp/src/jquery-pages/js/pages/playercommission/singleupdategroup.js",
 
     playerBatchUpdateSpecialLevel: "./ClientApp/src/jquery-pages/js/pages/playerBatchUpdate/special-level.js",
-    playerBatchUpdateOddsGroup: "./ClientApp/src/jquery-pages/js/pages/playerBatchUpdate/odds-group.js",
-    playerBatchUpdateBAStatus: "./ClientApp/src/jquery-pages/js/pages/playerBatchUpdate/ba-status.js"
+    playerBatchUpdateOddsGroup: "./ClientApp/src/jquery-pages/js/pages/playerBatchUpdate/odds-group.js"
 };
 
 module.exports = {

@@ -18,7 +18,6 @@ namespace Fanex.Athena.PlayerAdmin.API
             services.AddSingleton<IDepositSettingService, DepositSettingService>();
 
             services.AddTransient<IPlayerActivityRecordService, PlayerActivityRecordService>();
-            services.AddTransient<IPlayerBaStatusService, PlayerBaStatusService>();
             services.AddTransient<IPlayerBettingStatisticsService, PlayerBettingStatisticsService>();
             services.AddTransient<IPlayerListService, PlayerListService>();
             services.AddTransient<IPlayerOddsGroupService, PlayerOddsGroupService>();

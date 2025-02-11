@@ -6,12 +6,6 @@ export default class PlayerCommandService {
         this.commonService = FactoryCommonService.createInstance();
     }
 
-    updateBaStatus(param) {
-        const { updateBaStatus } = apiUpdateInfo;
-
-        return this.commonService.fetchData(updateBaStatus.type, updateBaStatus.action, { ...param });
-    }
-
     updateOddsGroup(param) {
         const { updateOddsGroup } = apiUpdateInfo;
 

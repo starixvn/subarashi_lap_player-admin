@@ -8,7 +8,7 @@ let defaultData = null;
 
 export const ActivityRecord = ({ ibcCustId, createdDate, getActivityRecord }) => {
     const [data, setData] = useState(defaultData);
-    
+
     useEffect(() => {
         if (data === null) {
             const param = { custId: ibcCustId };
@@ -29,17 +29,6 @@ export const ActivityRecord = ({ ibcCustId, createdDate, getActivityRecord }) =>
                     <tr>
                         <td>{ClientResourceManager.getText('LastTransaction')}</td>
                         <td>{LastTxn}</td>
-                    </tr>
-                    <tr>
-                        <td colSpan="2"></td>
-                    </tr>
-                    <tr>
-                        <td>{ClientResourceManager.getText('BAUpdatedBy')}</td>
-                        <td>{BAUpdatedBy}</td>
-                    </tr>
-                    <tr>
-                        <td>{ClientResourceManager.getText('LastUpdatedBA')}</td>
-                        <td>{LastUpdateBAString}</td>
                     </tr>
                     <tr>
                         <td colSpan="2"></td>

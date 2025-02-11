@@ -9,8 +9,7 @@ export const batchUpdatePermission = {
     accountStatus: "accountStatus",
     betSetting: "betSetting",
     specialLevel: "specialLevel",
-    oddsGroup: "oddsGroup",
-    baStatus: "baStatus"
+    oddsGroup: "oddsGroup"
 };
 
 export const batchUpdatePopups = {
@@ -62,13 +61,6 @@ export const batchUpdatePopups = {
         width: 600,
         height: 400,
         compressParam: true
-    },
-    popupOption_8: {
-        url: 'PlayerBatchUpdate/UpdateBAStatus',
-        title: LangHelper.getSingleResource('BatchUpdate') + " - " + LangHelper.getSingleResource('UpdateBAStatus'),
-        width: 600,
-        height: 400,
-        compressParam: true
     }
 };
 
@@ -80,8 +72,7 @@ export const batchUpdateManager = {
         { value: 4, label: LangHelper.getSingleResource('UpdateAccountStatus'), permission: batchUpdatePermission.accountStatus },
         { value: 5, label: LangHelper.getSingleResource('UpdateBetSetting'), permission: batchUpdatePermission.betSetting },
         { value: 6, label: LangHelper.getSingleResource('UpdateSpecialLevel'), permission: batchUpdatePermission.specialLevel },
-        { value: 7, label: LangHelper.getSingleResource('UpdateOddsGroup'), permission: batchUpdatePermission.oddsGroup },
-        { value: 8, label: LangHelper.getSingleResource('UpdateBAStatus'), permission: batchUpdatePermission.baStatus }
+        { value: 7, label: LangHelper.getSingleResource('UpdateOddsGroup'), permission: batchUpdatePermission.oddsGroup }
     ],
     updateTableInterval: null,
     isReloadingGrid: null,
@@ -189,7 +180,7 @@ export const batchUpdateManager = {
             custIds: opt.compressParam ? LZString.compressToEncodedURIComponent(custIds.join(",")) : custIds.join(","),
             custNames: opt.compressParam ? LZString.compressToEncodedURIComponent(custNames.join(",")) : custNames.join(",")
         });
-  
+
         opt.url = batchUpdateManager.getLink(opt.url + query);
         return opt;
     },

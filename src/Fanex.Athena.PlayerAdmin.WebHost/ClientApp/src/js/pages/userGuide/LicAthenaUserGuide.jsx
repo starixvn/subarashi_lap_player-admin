@@ -24,7 +24,6 @@ const EngContent = ({exportOddsGroup}) => {
                 </li>
                 <li><b>Odds Group:</b> view players of an odds group.</li>
                 <li><b>Special Level:</b> view players of a specific special level.</li>
-                <li><b>BA:</b> view players of a BA.</li>
                 <li><b>Risk Level:</b> view players of a specific risk level.</li>
                 <li><b>Commission Group:</b> view players of a specific commission group.</li>
             </ul>
@@ -50,7 +49,6 @@ const EngContent = ({exportOddsGroup}) => {
                 <li><b>Risk Level:</b> view the assigned risk level bet setting and risk level odds group for player.</li>
                 <li><b>Commission Group:</b> view commission group for player.</li>
                 <li><b>Odds Group:</b> view or set odds group for player.</li>
-                <li><b>BA Status:</b> switch on/off BA status for player.</li>
                 <li><b>Special Level:</b> view or set a special level for player.</li>
                 <li><b>Last Transfer:</b> indicate player’s last transfer time.</li>
                 <li><b>Email:</b> indicate player’s Email.</li>
@@ -105,7 +103,6 @@ const ZnCNContent = ({exportOddsGroup}) => {
                 </li>
                 <li><b>Odds Group:</b> 查看玩家的 odds group。</li>
                 <li><b>特殊层级:</b> 查阅特殊层级里的玩家。</li>
-                <li><b>BA状态:</b> 查看玩家的BA状态。</li>
                 <li><b>风险等级:</b> 查看玩家的风险等级。</li>
                 <li><b>佣金组别:</b> 查看特定佣金组别的玩家。</li>
             </ul>
@@ -131,7 +128,6 @@ const ZnCNContent = ({exportOddsGroup}) => {
                 <li><b>风险等级:</b> 查看玩家被风控的投注限制和水位组别。</li>
                 <li><b>佣金组别:</b> 查看特定玩家的佣金组别。</li>
                 <li><b>Odds Group:</b> 显示或设定玩家的odds group。</li>
-                <li><b>BA状态:</b> 开/关玩家的BA状态。</li>
                 <li><b>特殊层级:</b> 显示或设定玩家的特殊层级。</li>
                 <li><b>最后转帐:</b> 显示玩家的最后转帐的时间。</li>
                 <li><b>信箱:</b> 显示玩家的信箱。</li>
@@ -186,7 +182,6 @@ const ViVNContent = ({exportOddsGroup}) => {
                 </li>
                 <li><b>Nhóm Tỷ Lệ Cược:</b> xem người chơi của một nhóm tỷ lệ cược.</li>
                 <li><b>Cấp Độ Đặc Biệt:</b> xem người chơi ở một cấp độ đặc biệt cụ thể.</li>
-                <li><b>BA:</b> xem người chơi của vé cược BA.</li>
                 <li><b>Mức Độ Rủi Ro:</b> xem người chơi ở một mức độ rủi ro cụ thể.</li>
                 <li><b>Nhóm Hoa hồng:</b> xem người chơi của một nhóm hoa hồng cụ thể.</li>
             </ul>
@@ -212,7 +207,6 @@ const ViVNContent = ({exportOddsGroup}) => {
                 <li><b>Mức Độ Rủi Ro:</b> xem giới hạn cược và nhóm tỷ lệ cược theo mức độ rủi ro đã được chỉ định cho người chơi.</li>
                 <li><b>Nhóm Hoa Hồng:</b> xem nhóm hoa hồng của người chơi.</li>
                 <li><b>Nhóm Tỷ Lệ Cược:</b> xem hoặc cài đặt nhóm tỷ lệ cược cho người chơi.</li>
-                <li><b>Trạng Thái BA:</b> bật/tắt trạng thái BA của người chơi.</li>
                 <li><b>Cấp Độ Đặc Biệt:</b> xem hoặc đặt cấp độ đặc biệt cho người chơi.</li>
                 <li><b>Lần Chuyển Khoản Gần Nhất:</b> cho biết thời gian chuyển khoản gần nhất của người chơi.</li>
                 <li><b>Email:</b> cho biết Email của người chơi.</li>
@@ -267,7 +261,6 @@ const IndonesiaContent = ({exportOddsGroup}) => {
                 </li>
                 <li><b>Grup Odds:</b> melihat pemain dari grup odds tertentu.</li>
                 <li><b>Level Khusus:</b> melihat pemain dengan level khusus tertentu.</li>
-                <li><b>BA:</b> melihat pemain dari BA tertentu.</li>
                 <li><b>Level Risiko:</b> melihat pemain dengan level risiko tertentu.</li>
                 <li><b>Grup Komisi:</b> melihat pemain dari grup komisi tertentu.</li>
             </ul>
@@ -293,7 +286,6 @@ const IndonesiaContent = ({exportOddsGroup}) => {
                 <li><b>Level Risiko:</b> melihat pengaturan taruhan risiko yang ditetapkan dan level risiko odds.</li>
                 <li><b>Grup Komisi:</b> melihat grup komisi untuk pemain.</li>
                 <li><b>Grup Odds:</b> melihat atau mengatur grup odds untuk pemain.</li>
-                <li><b>Status BA:</b> mengaktifkan/mematikan status BA untuk pemain.</li>
                 <li><b>Level Khusus:</b> melihat atau mengatur level khusus untuk pemain.</li>
                 <li><b>Transfer Terakhir:</b> menunjukkan waktu transfer terakhir pemain.</li>
                 <li><b>Email:</b> menunjukkan Email pemain.</li>
@@ -348,7 +340,6 @@ const ThailandContent = ({exportOddsGroup}) => {
                 </li>
                 <li><b>กลุ่มอัตราต่อรอง:</b> ดูผู้เล่นของกลุ่มอัตราต่อรอง.</li>
                 <li><b>ระดับพิเศษ:</b> ดูผู้เล่นในระดับพิเศษเฉพาะ.</li>
-                <li><b>BA:</b> ดูผู้เล่นของ BA.</li>
                 <li><b>ระดับความเสี่ยง:</b> ดูผู้เล่นในระดับความเสี่ยงเฉพาะ.</li>
                 <li><b>กลุ่มค่าคอมมิชชัน:</b> ดูผู้เล่นของกลุ่มค่าคอมมิชชันเฉพาะ.</li>
             </ul>
@@ -374,7 +365,6 @@ const ThailandContent = ({exportOddsGroup}) => {
                 <li><b>ระดับความเสี่ยง:</b> ดูตั้งค่าการเดิมพันระดับความเสี่ยงที่กำหนดและอัตราต่อรองระดับความเสี่ยง.</li>
                 <li><b>กลุ่มค่าคอมมิชชัน:</b> ดูกลุ่มค่าคอมมิชชั่นของผู้เล่น.</li>
                 <li><b>กลุ่มอัตราต่อรอง:</b> ดูหรือกำหนดกลุ่มอัตราต่อรองของผู้เล่น.</li>
-                <li><b>สถานะBA:</b> เปิด/ปิดสถานะ BA ของผู้เล่น.</li>
                 <li><b>ระดับพิเศษ:</b> ดูหรือตั้งค่าระดับพิเศษของผู้เล่น.</li>
                 <li><b>การโอนครั้งล่าสุด:</b> ระบุเวลาโอนล่าสุดของผู้เล่น.</li>
                 <li><b>อีเมล:</b> ระบุอีเมลของผู้เล่น.</li>

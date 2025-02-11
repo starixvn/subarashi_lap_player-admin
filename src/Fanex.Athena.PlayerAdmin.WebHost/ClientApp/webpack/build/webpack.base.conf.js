@@ -37,8 +37,7 @@ function generateConfig(environment) {
             [`${jsPath}/pages/playercommission/singleremovefromgroup`]: [pathConfig.scriptPaths.playercomissionsingleremovefromgroup],
             [`${jsPath}/pages/playercommission/singleupdategroup`]: [pathConfig.scriptPaths.playercomissionsingleupdategroup],
             [`${jsPath}/pages/playerBatchUpdate/specialLevel`]: [pathConfig.scriptPaths.playerBatchUpdateSpecialLevel],
-            [`${jsPath}/pages/playerBatchUpdate/oddsGroup`]: [pathConfig.scriptPaths.playerBatchUpdateOddsGroup],
-            [`${jsPath}/pages/playerBatchUpdate/baStatus`]: [pathConfig.scriptPaths.playerBatchUpdateBAStatus]
+            [`${jsPath}/pages/playerBatchUpdate/oddsGroup`]: [pathConfig.scriptPaths.playerBatchUpdateOddsGroup]
         },
         output: {
             path: pathConfig.projectRoot,

@@ -10,7 +10,6 @@
         private static readonly IDictionary<string, string> ProductNameMap =
             new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
             {
-                { ProductCode.BA, nameof(ViewResources.ProductBA) },
                 { ProductCode.NG, nameof(ViewResources.ProductNG) },
                 { ProductCode.SB, nameof(ViewResources.Sportsbook) },
                 { ProductCode.VS, nameof(ViewResources.ProductVS) },

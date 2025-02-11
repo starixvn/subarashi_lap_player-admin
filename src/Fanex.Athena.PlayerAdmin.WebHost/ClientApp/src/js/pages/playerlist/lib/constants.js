@@ -37,7 +37,6 @@ export const fields = {
     OutstandingBalance: 'OutstandingBalance',
     RiskLevel: 'RiskLevel',
     OddsGroup: 'OddsGroup',
-    BaStatus: 'BaStatus',
     SpecialLevel: 'SpecialLevel',
     LastTransaction: 'LastTransaction',
     Email: 'Email',
@@ -57,7 +56,6 @@ export const columnList = [
     { key: fields.OutstandingBalance, value: LangHelper.getSingleResource('OutstandingBalance'), show: true },
     { key: fields.RiskLevel, value: LangHelper.getSingleResource('RiskLevel'), show: true },
     { key: fields.OddsGroup, value: LangHelper.getSingleResource('OddsGroup'), show: true },
-    { key: fields.BaStatus, value: LangHelper.getSingleResource('BAStatus'), show: true },
     { key: fields.SpecialLevel, value: LangHelper.getSingleResource('SpecialLevel'), show: true },
     { key: fields.LastTransaction, value: LangHelper.getSingleResource('LastTransfer'), show: true },
     { key: fields.Email, value: LangHelper.getSingleResource('Email'), show: true },
@@ -194,7 +192,6 @@ export const headerText = {
     OutstandingBalance: LangHelper.getSingleResource('OutstandingBalance'),
     RiskLevel: LangHelper.getSingleResource('RiskLevel'),
     OddsGroup: LangHelper.getSingleResource('OddsGroup'),
-    BaStatus: LangHelper.getSingleResource('BAStatus'),
     SpecialLevel: LangHelper.getSingleResource('SpecialLevel'),
     LastTransaction: LangHelper.getSingleResource('LastTransfer'),
     Email: LangHelper.getSingleResource('Email'),
@@ -221,7 +218,6 @@ export const apiInfo = {
 }
 
 export const apiUpdateInfo = {
-    updateBaStatus: { action: 'api/PlayerBaStatus/Update', type: systemType.playerAdmin },
     updateOddsGroup: { action: 'api/PlayerOddsGroup/Update', type: systemType.playerAdmin },
     updateSpecialLevel: { action: 'api/PlayerSpecialLevel/Update', type: systemType.playerAdmin },
     updatePlayerStatus: { action: 'PlayerAdminContainer/UpdatePlayerStatus', type: systemType.newAdmin }
@@ -259,19 +255,19 @@ export const responsiveFilterColumn = {
     currency: {
         [licenseeType.api]: "col-12 col-md-4 col-sm-6 col-lg-2 col-xl-2",
         [licenseeType.nonApi]: "col-12 col-md-4 col-sm-6 col-lg-3 col-xl-2"
-    }, 
+    },
     oddsGroup: {
         [licenseeType.api]: "col-12 col-md-4 col-sm-6 col-lg-2 col-xl-2",
         [licenseeType.nonApi]: "col-12 col-md-4 col-sm-6 col-lg-3 col-xl-1"
-    }, 
+    },
     riskLevel: {
         [licenseeType.api]: "col-12 col-md-4 col-sm-6 col-lg-2 col-xl-3",
         [licenseeType.nonApi]: "col-12 col-md-4 col-sm-6 col-lg-3 col-xl-2"
-    }, 
+    },
     groupCommission: {
         [licenseeType.api]: "col-12 col-md-4 col-sm-6 col-lg-2 col-xl-3",
         [licenseeType.nonApi]: "col-12 col-md-4 col-sm-6 col-lg-3 col-xl-2"
-    }, 
+    },
 }
 
 export const invalidUsernameString = ['	',' ', '%', '％'];

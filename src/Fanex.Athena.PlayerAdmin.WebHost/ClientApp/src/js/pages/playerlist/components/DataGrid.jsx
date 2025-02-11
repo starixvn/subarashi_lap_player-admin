@@ -22,8 +22,7 @@ export class DataGrid extends PureComponent {
     constructor(props) {
         super(props);
         this.maxWidth = Math.min(document.body.clientWidth, MAX_WIDTH_PAGE);
-        this.canSelectPlayers = props.hasCommPermissionEdit || props.hasSpecialLevelPermission || props.hasOddsGroupPermission
-            || (props.siteSetting.isAllowedBA && props.hasBaPermission);
+        this.canSelectPlayers = props.hasCommPermissionEdit || props.hasSpecialLevelPermission || props.hasOddsGroupPermission;
     }
 
     componentDidMount() {

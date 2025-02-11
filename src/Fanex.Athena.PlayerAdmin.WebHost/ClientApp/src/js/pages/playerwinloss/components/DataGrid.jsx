@@ -8,7 +8,7 @@ import { renderHeader, renderDataSection, renderFooter } from "../lib/gridHelper
 import { BreakdownByMode, GroupByMode } from '../lib/constants';
 
 export const DataGrid = (props) => {
-    const { requestParam, gridData, getData, isAllowedBA } = props;
+    const { requestParam, gridData, getData } = props;
     const { data, sumTotal } = gridData;
 
     useEffect(() => {
@@ -17,7 +17,6 @@ export const DataGrid = (props) => {
     }, []);
 
     const renderOption = {
-        isShowBAField: isAllowedBA,
         isGroupByPlayerMode: true,
         isBreakDownPlayerMode: false
     }
@@ -48,8 +47,8 @@ function mapDispatchToProps(dispatch) {
     return bindActionCreators({ getData }, dispatch);
 }
 function mapStateToProps(state) {
-    const { requestParam, gridData, hasCustomerComm, isAllowedBA } = state;
-    return Object.assign({}, { requestParam, gridData, hasCustomerComm, isAllowedBA });
+    const { requestParam, gridData, hasCustomerComm } = state;
+    return Object.assign({}, { requestParam, gridData, hasCustomerComm });
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(DataGrid);

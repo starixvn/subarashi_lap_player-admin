@@ -39,7 +39,6 @@
             CurrentBalance: lapItem.CurrentBalance || lrfItem.CurrentBalance,
             OutstandingBalance: lapItem.OutBalance || lrfItem.OutstandingBalance,
             OddsGroup: lrfItem.OddsGroup,
-            BaStatus: lrfItem.BaStatus,
             SpecialLevel: lrfItem.SpecialLevel,
             Status: lapItem.Status,
             RealName: lapItem.RealName,

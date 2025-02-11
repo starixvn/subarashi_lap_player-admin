@@ -11,7 +11,6 @@ import UserNameCell from './UserNameCell';
 import OddsGroupCell from './OddsGroupCell';
 import SpecialLevelCell from './SpecialLevelCell';
 import StatusCell from './StatusCell';
-import BaStatusCell from './BaStatusCell';
 import RiskLevelCell from './RiskLevelCell';
 import LangHelper from '@jsroot/lib/langHelper';
 
@@ -70,7 +69,6 @@ export const PlayerRow = (props) => {
             {displayedColumn[fields.OutstandingBalance] && <Cell className="right-align" title={canShowMainColumn ? NumberFormat.roundDownFormatDecimal(OutstandingBalance) : undefined}>{canShowMainColumn && NumberFormat.roundDownFormatDecimal(OutstandingBalance)}</Cell>}
             {displayedColumn[fields.RiskLevel] && <RiskLevelCell riskLevel={riskLevel} riskLevelKey={riskLevelKey} customerClass={dataItem.CustomerClass} currencyId={CurrencyId} custId={dataItem.IbcCustId} />}
             {displayedColumn[fields.OddsGroup] && <Cell className="center-align">{canShowMainColumn && OddsGroup !== undefined && <OddsGroupCell dataItem={dataItem} />}</Cell>}
-            {displayedColumn[fields.BaStatus] && <BaStatusCell dataItem={dataItem} />}
             {displayedColumn[fields.SpecialLevel] && <Cell className="center-align">{canShowMainColumn && SpecialLevel !== undefined && <SpecialLevelCell dataItem={dataItem} />}</Cell>}
             {displayedColumn[fields.LastTransaction] && <Cell>{LastTransaction}</Cell>}
             {displayedColumn[fields.Email] && <Cell>{Email}</Cell>}

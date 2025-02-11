@@ -39,8 +39,7 @@ namespace Fanex.Athena.PlayerAdmin.MVC.Controllers
             {
                 UserName = userName?.Trim(),
                 CurrencyName = currencyName?.Trim(),
-                ProductCodeListString = productAccess.ProductCodeListString,
-                IsAllowedBA = _contextService.IsEnableBA && productAccess.IsAllowBA
+                ProductCodeListString = productAccess.ProductCodeListString
             };
 
             return View(viewModel);
