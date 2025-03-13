@@ -76,7 +76,8 @@
                 { ProductCode.GPIRNG, nameof(ViewResources.ProductGPIRNG) },
                 { ProductCode.GPILC, nameof(ViewResources.ProductGPILC) },
                 { ProductCode.PS, nameof(ViewResources.ProductPS) },
-                { ProductCode.ASK, nameof(ViewResources.ProductASK) }
+                { ProductCode.ASK, nameof(ViewResources.ProductASK) },
+                { ProductCode.FG, nameof(ViewResources.ProductFG) }
             };
 
         public static string GetProductName(string productCode, string defaultValue = null)

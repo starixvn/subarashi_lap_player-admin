@@ -1,7 +1,7 @@
 ﻿{
   "FunctionAllowedProducts": {
-    "WinLossAnalysis": [ "SB", "NG", "VS", "CS", "KN", "VB", "AB", "LT", "SG", "PP", "CC", "VRG", "TG", "SXG", "SBC", "SAG", "PGS", "JK", "HB", "WM", "BGG", "VGA", "CG", "AP", "APM", "VS3", "FGGL", "MXG", "JIG", "YB", "MGRNG", "SEA", "WE", "L22", "UUSL", "FS", "FAC", "NS", "ON", "PTRNG", "GPIRNG", "GPILC", "PS", "ASK" ],
-    "BettingTicketCenter": [ "SB", "NG", "VS", "KN", "LT", "CO", "TG", "I4D", "VRG", "CS", "HB", "BGG", "JK", "PGS", "WM", "SXG", "SBC", "SAG", "SG", "VGA", "CG", "AP", "APM", "AB", "VB", "CC", "PP", "VS3", "FGGL", "MXG", "JIG", "YB", "MGRNG", "SEA", "WE", "L22", "UUSL", "FS", "FAC", "NS", "ON", "PTRNG", "GPIRNG", "GPILC", "PS", "ASK" ],
-    "Default": [ "SB", "NG", "VS", "CS", "KN", "AGC", "PTCS", "VG", "BT", "VB", "AB", "CO", "LT", "SG", "BX", "PP", "CC", "VRG", "TG", "I4D", "SXG", "SBC", "SAG", "PGS", "JK", "HB", "WM", "BGG", "VGA", "CG", "AP", "APM", "VS3", "FGGL", "MXG", "JIG", "YB", "MGRNG", "SEA", "WE", "L22", "UUSL", "FS", "FAC", "NS", "ON", "PTRNG", "GPIRNG", "GPILC", "PS", "ASK" ]
+    "WinLossAnalysis": [ "SB", "NG", "VS", "CS", "KN", "VB", "AB", "LT", "SG", "PP", "CC", "VRG", "TG", "SXG", "SBC", "SAG", "PGS", "JK", "HB", "WM", "BGG", "VGA", "CG", "AP", "APM", "VS3", "FGGL", "MXG", "JIG", "YB", "MGRNG", "SEA", "WE", "L22", "UUSL", "FS", "FAC", "NS", "ON", "PTRNG", "GPIRNG", "GPILC", "PS", "ASK", "FG" ],
+    "BettingTicketCenter": [ "SB", "NG", "VS", "KN", "LT", "CO", "TG", "I4D", "VRG", "CS", "HB", "BGG", "JK", "PGS", "WM", "SXG", "SBC", "SAG", "SG", "VGA", "CG", "AP", "APM", "AB", "VB", "CC", "PP", "VS3", "FGGL", "MXG", "JIG", "YB", "MGRNG", "SEA", "WE", "L22", "UUSL", "FS", "FAC", "NS", "ON", "PTRNG", "GPIRNG", "GPILC", "PS", "ASK", "FG" ],
+    "Default": [ "SB", "NG", "VS", "CS", "KN", "AGC", "PTCS", "VG", "BT", "VB", "AB", "CO", "LT", "SG", "BX", "PP", "CC", "VRG", "TG", "I4D", "SXG", "SBC", "SAG", "PGS", "JK", "HB", "WM", "BGG", "VGA", "CG", "AP", "APM", "VS3", "FGGL", "MXG", "JIG", "YB", "MGRNG", "SEA", "WE", "L22", "UUSL", "FS", "FAC", "NS", "ON", "PTRNG", "GPIRNG", "GPILC", "PS", "ASK", "FG" ]
   }
 }
