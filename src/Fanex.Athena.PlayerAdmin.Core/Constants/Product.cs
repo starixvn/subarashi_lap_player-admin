@@ -111,6 +111,8 @@
         public const string GPILC = "GPILC";
 
         public const string PS = "PS";
+
+        public const string ASK = "ASK";
     }
 
     public static class ProductTypes
@@ -118,6 +120,7 @@
         public const int Sportsbook = 0;
 
         public const int Sportsbooks2 = 16;
+
 
         public const int NumberGame = 2;
 
@@ -216,5 +219,7 @@
         public const int GPILC = 90;
 
         public const int PS = 91;
+
+        public const int ASK = 103;
     }
 }
