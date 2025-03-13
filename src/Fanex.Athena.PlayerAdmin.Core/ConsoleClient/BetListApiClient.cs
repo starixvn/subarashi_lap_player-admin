@@ -16,10 +16,10 @@ namespace Fanex.Athena.PlayerAdmin.Core.ConsoleClient
 
         protected override string ApiName => "Bet List";
 
-        protected override Task PrepareHeaders(HttpRequestHeaders headers)
+        protected override async Task PrepareHeaders(HttpRequestHeaders headers)
         {
             headers.Add("X-SiteDBServer", _contextService.SiteDBServer);
-            return Task.CompletedTask;
+            headers.Authorization = new AuthenticationHeaderValue("Bearer", await _contextService.AccessToken);
         }
 
         public async Task<HttpResponseMessage> PostAsync(string path, object value, string language, int timeOut = 100)
