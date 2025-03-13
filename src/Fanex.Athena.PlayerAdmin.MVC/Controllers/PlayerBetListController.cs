@@ -55,7 +55,7 @@ namespace Fanex.Athena.PlayerAdmin.MVC.Controllers
 
         private async Task<IActionResult> GetRunningBetListDataAsync(IBetListApiClient betListApiClient, PlayerRunningBetListMetaModel metaModel)
         {
-            var json = await betListApiClient.PostStringAsync("/PlayerAdminBetList/GetBetList", metaModel, _contextService.Language);
+            var json = await betListApiClient.PostStringAsync("api/PlayerAdminBetList/GetBetList", metaModel, _contextService.Language);
             return this.ToJsonResult(json);
         }
 
@@ -63,7 +63,7 @@ namespace Fanex.Athena.PlayerAdmin.MVC.Controllers
         {
             metaModel.IsAllowTxIDColumn = _contextService.IsEnableSingleWallet;
 
-            var httpResponse = await betListApiClient.PostAsync("/PlayerAdminBetList/Export", metaModel, _contextService.Language);
+            var httpResponse = await betListApiClient.PostAsync("api/PlayerAdminBetList/Export", metaModel, _contextService.Language);
 
             return File(await httpResponse.Content.ReadAsStreamAsync(), "application/octet-stream");
         }

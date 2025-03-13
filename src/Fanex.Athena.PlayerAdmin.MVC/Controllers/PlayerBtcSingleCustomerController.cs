@@ -65,7 +65,7 @@ namespace Fanex.Athena.PlayerAdmin.MVC.Controllers
 
             if (metaModel.IsExport)
             {
-                var httpResponse = await betListApiClient.PostAsync("/BettingTicketCenter/GetBySingleCustomer", metaModel, _contextService.Language);
+                var httpResponse = await betListApiClient.PostAsync("/api/BettingTicketCenter/GetBySingleCustomer", metaModel, _contextService.Language);
 
                 if (httpResponse.StatusCode == HttpStatusCode.NoContent)
                 {
@@ -74,7 +74,7 @@ namespace Fanex.Athena.PlayerAdmin.MVC.Controllers
                 return File(await httpResponse.Content.ReadAsStreamAsync(), "application/octet-stream");
             }
 
-            var json = await betListApiClient.PostStringAsync("/BettingTicketCenter/GetBySingleCustomer", metaModel, _contextService.Language);
+            var json = await betListApiClient.PostStringAsync("/api/BettingTicketCenter/GetBySingleCustomer", metaModel, _contextService.Language);
             return this.ToJsonResult(json);
         }
 
@@ -82,17 +82,13 @@ namespace Fanex.Athena.PlayerAdmin.MVC.Controllers
         {
             var now = DateTimeHelper.DatabaseServerNow;
 
-            metaModel.HasPlayerCom = _contextService.IsAllowedCustomerComm;
             metaModel.IsAllowTxIDColumn = _contextService.IsEnableSingleWallet;
-            metaModel.IsShowIp = _contextService.IsShowIP;
-            metaModel.IsShowIpVN = _contextService.IsShowIpVN;
             metaModel.Status = GetStatus();
             metaModel.Platform = AllPlatform;
             metaModel.LiveStatus = GetLiveStatus();
             metaModel.FromDate = new DateTime(now.Year, now.Month, 1);
             metaModel.ToDate = now;
-            metaModel.SpecialPlatform = _contextService.SpecialPlatform;
-            metaModel.SportListXML = "All";
+            metaModel.SportIds = "All";
             metaModel.BetTypeIds = "All";
             metaModel.CashOutMode = 0;
         }

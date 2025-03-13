@@ -200,7 +200,6 @@ namespace Fanex.Athena.PlayerAdmin.WebHost
             services.AddHttpClient<IBetListApiClient, BetListApiClient>(client =>
             {
                 client.BaseAddress = new Uri(Configuration["ConsoleClient:BetList:Host"]);
-                client.DefaultRequestHeaders.Add("BETLIST_TOKEN_KEY", Configuration["ConsoleClient:BetList:AuthKey"]);
             }).SetHandlerLifetime(OneDay);
 
             services.AddHttpClient<ILgApiClient, LgApiClient>(client =>
