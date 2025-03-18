@@ -30,13 +30,11 @@ namespace Fanex.Athena.PlayerAdmin.API.Controllers
         }
 
         [HttpPost]
-        public async Task<JsonResult> GetSiteSetting([FromServices] ILicenseeService licenseeService)
+        public JsonResult GetSiteSetting()
         {
-            var siteName = _contextService.SiteName;
             return new JsonResult(new SiteSettingViewModel
             {
                 IsAllowedCustomerComm = _contextService.IsAllowedCustomerComm,
-                IsAllowedBA = _contextService.IsEnableBA && (await licenseeService.CheckProductBelongsTo(siteName, ProductTypes.BA)),
                 UserLevel = _contextService.UserLevel,
                 IsEnableSingleWallet = _contextService.IsEnableSingleWallet,
                 IsShowSabaIntelligence = _contextService.IsShowSabaIntelligence,

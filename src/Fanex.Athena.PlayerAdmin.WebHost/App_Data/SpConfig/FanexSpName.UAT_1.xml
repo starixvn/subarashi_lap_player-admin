@@ -8,7 +8,6 @@
 			<Mapping DataField="LicenseeID" ObjectProperty="Id" />
 			<Mapping DataField="LicenseeName" ObjectProperty="Name" />
 			<Mapping DataField="IsAllowedMemberComm" ObjectProperty="IsAllowedCustomerComm" />
-			<Mapping DataField="EnableBA" ObjectProperty="IsEnableBA" />
 		</Setting>
 		<Setting Key="Lrf_SelBalanceUpDay" SpName="Lrf_SelBalanceUpDay" DbName="DBEXT.bodb02.wsv_lap" />
 		<Setting Key="Lrf_LicenseeProduct3rdSel" SpName="Lrf_LicenseeProduct3rdSel" DbName="DBLIC.bodb_Licensee.wsv_lap" />

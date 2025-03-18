@@ -9,7 +9,5 @@ namespace Fanex.Athena.PlayerAdmin.BatchUpdate.Services
         Task<IResultInfo> UpdateSpecialLevel(UpdateSpecialLevelApiMetaModel metaModel);
 
         Task<IResultInfo> UpdateOddsGroup(UpdateOddsGroupApiMetaModel metaModel);
-
-        Task<IResultInfo> UpdateBAStatus(UpdateBAStatusApiMetaModel metaModel);
     }
 }

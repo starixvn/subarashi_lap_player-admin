@@ -3,7 +3,6 @@ import { SET_SITE_SETTING, SET_DEPOSIT_SETTING, SET_SUBSIDIARY_SETTING } from '.
 import { SubsidiaryViewType } from '@jsroot/constants/report'
 
 const defaultSiteSetting = {
-    isAllowedBA: false,
     isAllowedCustomerComm: false,
     userLevel: 2,
     isEnableSingleWallet: false,

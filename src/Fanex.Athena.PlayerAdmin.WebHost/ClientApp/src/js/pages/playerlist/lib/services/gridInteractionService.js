@@ -28,12 +28,6 @@ export default class GridInteractionService {
         return [...playerList];
     }
 
-    static updatePlayerWithBaStatus(playerList, ibcCustId, isBa, oddsGroup) {
-        const itemIndex = playerList.findIndex(x => x.IbcCustId === ibcCustId);
-        const newPlayerItem = { ...playerList[itemIndex], BaStatus: isBa, OddsGroup: oddsGroup };
-        return updateObjectInArray(playerList, itemIndex, newPlayerItem);
-    }
-
     static sortPlayerList(dataList, sortBy, sortOrder) {
         if (!dataList || dataList.length === 0) {
             return [];

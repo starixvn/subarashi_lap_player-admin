@@ -10,7 +10,6 @@
         private static readonly IDictionary<string, string> ProductNameMap =
             new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
             {
-                { ProductCode.BA, nameof(ViewResources.ProductBA) },
                 { ProductCode.NG, nameof(ViewResources.ProductNG) },
                 { ProductCode.SB, nameof(ViewResources.Sportsbook) },
                 { ProductCode.VS, nameof(ViewResources.ProductVS) },
@@ -76,7 +75,8 @@
                 { ProductCode.PTRNG, nameof(ViewResources.ProductPTRNG) },
                 { ProductCode.GPIRNG, nameof(ViewResources.ProductGPIRNG) },
                 { ProductCode.GPILC, nameof(ViewResources.ProductGPILC) },
-                { ProductCode.PS, nameof(ViewResources.ProductPS) }
+                { ProductCode.PS, nameof(ViewResources.ProductPS) },
+                { ProductCode.ASK, nameof(ViewResources.ProductASK) }
             };
 
         public static string GetProductName(string productCode, string defaultValue = null)

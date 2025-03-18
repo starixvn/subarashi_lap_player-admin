@@ -11,14 +11,12 @@ const gridData = createReducer([], {
 
 const requestParam = createReducer({}, {});
 const hasCustomerComm = createReducer(false, {});
-const isAllowedBA = createReducer(false, {});
 
 export default combineReducers(Object.assign({},
     loaderReducer,
     {
         gridData,
         requestParam,
-        hasCustomerComm,
-        isAllowedBA
+        hasCustomerComm
     }
 ));

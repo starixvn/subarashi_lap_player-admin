@@ -78,7 +78,6 @@ export const buildLrfPlayerList = (playerList) => {
             OutstandingBalance,
             CurrencyId,
             OddsGroup,
-            BaStatus,
             SpecialLevel,
             CommissionGroup,
             CustomerClass,
@@ -98,7 +97,6 @@ export const buildLrfPlayerList = (playerList) => {
             IsDeposit: IbcCustId > 0, // always true
             CurrencyId,
             OddsGroup,
-            BaStatus,
             SpecialLevel,
             CommissionGroup,
             CustomerClass,

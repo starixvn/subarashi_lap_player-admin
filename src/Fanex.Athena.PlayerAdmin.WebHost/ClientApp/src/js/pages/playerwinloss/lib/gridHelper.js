@@ -6,7 +6,7 @@ import TreeViewGridRowNode from './grid/TreeViewGridRowNode';
 import LangHelper from '@jsroot/lib/langHelper'
 
 export const renderHeader = (option) => {
-    const { isGroupByPlayerMode, isShowBAField, isBreakDownPlayerMode } = option;
+    const { isGroupByPlayerMode, isBreakDownPlayerMode } = option;
 
     const _renderDefaultHeader = () => {
         const prefixKey = 'hearder-default';
@@ -52,7 +52,6 @@ export const renderHeader = (option) => {
             <HeaderCell key={`${prefixKey}-${HeaderText.PlayerComm}`} rowSpan={rowSpan} colWidth={110}>{HeaderText.PlayerComm}</HeaderCell>,
             <HeaderCell key={`${prefixKey}-${HeaderText.LicenseeWL}`} rowSpan={rowSpan} colWidth={110}>{HeaderText.LicenseeWL}</HeaderCell>,
             <HeaderCell key={`${prefixKey}-${HeaderText.LicenseeComm}`} rowSpan={rowSpan} colWidth={110}>{HeaderText.LicenseeComm}</HeaderCell>,
-            isShowBAField && <HeaderCell key={`${prefixKey}-${HeaderText.AmountDueToBA}`} rowSpan={rowSpan} colWidth={110}>{HeaderText.AmountDueToBA}</HeaderCell>,
             <HeaderCell key={`${prefixKey}-${HeaderText.Margin}`} rowSpan={rowSpan} colWidth={110}>{HeaderText.Margin}</HeaderCell>
         ]
         let effectiveBetCell = <HeaderCell key={`${prefixKey}-${HeaderText.EffectiveBettingValue}`} rowSpan={rowSpan} colWidth={110}>{HeaderText.EffectiveBettingValue}</HeaderCell>;
@@ -83,8 +82,8 @@ export const renderFooter = (dataItem, option) => {
     {
         return null;
     }
-    const { isGroupByPlayerMode, isShowBAField, isBreakDownPlayerMode } = option;
-    const { betCount, turnover, netTurnover, playerWinloss, playerComm, betEffective, licWinloss, licComm, amtDueToBA, margin } = dataItem;
+    const { isGroupByPlayerMode, isBreakDownPlayerMode } = option;
+    const { betCount, turnover, netTurnover, playerWinloss, playerComm, betEffective, licWinloss, licComm, margin } = dataItem;
     const totalCellColSpan = isGroupByPlayerMode || isBreakDownPlayerMode ? 3 : 2;
     return (
         <Row className="grant-total-row" key="grantTotal-row">
@@ -97,7 +96,6 @@ export const renderFooter = (dataItem, option) => {
             <Cell className="right-align">{NumberFormat.formatDecimal(playerComm)}</Cell>
             <Cell className={`right-align ${licWinloss < 0 ? "negative" : ""}`}>{NumberFormat.formatDecimal(licWinloss)}</Cell>
             <Cell className="right-align">{NumberFormat.formatDecimal(licComm)}</Cell>
-            {isShowBAField && <Cell className="right-align">{NumberFormat.formatDecimal(amtDueToBA)}</Cell>}
             <Cell className={`right-align ${margin < 0 ? "negative" : ""}`}>{NumberFormat.formatDecimal(margin * 100)}%</Cell>
         </Row>
     )

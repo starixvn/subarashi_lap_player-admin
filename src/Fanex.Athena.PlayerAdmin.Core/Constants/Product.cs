@@ -6,8 +6,6 @@
 
         public const string NG = "NG";
 
-        public const string BA = "BA";
-
         public const string VS = "VS";
 
         public const string CS = "CS";
@@ -113,6 +111,8 @@
         public const string GPILC = "GPILC";
 
         public const string PS = "PS";
+
+        public const string ASK = "ASK";
     }
 
     public static class ProductTypes
@@ -120,9 +120,9 @@
         public const int Sportsbook = 0;
 
         public const int Sportsbooks2 = 16;
-        public const int NumberGame = 2;
 
-        public const int BA = 3;
+
+        public const int NumberGame = 2;
 
         public const int VirtualSports = 5;
 
@@ -219,5 +219,7 @@
         public const int GPILC = 90;
 
         public const int PS = 91;
+
+        public const int ASK = 103;
     }
 }

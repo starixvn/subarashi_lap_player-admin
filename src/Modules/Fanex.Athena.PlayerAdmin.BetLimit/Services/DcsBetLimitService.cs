@@ -23,7 +23,7 @@
             ProductTypes.TG, ProductTypes.AP, ProductTypes.APM, ProductTypes.SabaCasino, ProductTypes.BTC, ProductTypes.FGGL, ProductTypes.MXG,
             ProductTypes.JIG, ProductTypes.YB, ProductTypes.MGRNG, ProductTypes.SEA, ProductTypes.WE, ProductTypes.L22, ProductTypes.UUSL,
             ProductTypes.FS, ProductTypes.FAC, ProductTypes.NS, ProductTypes.ON, ProductTypes.PTRNG, ProductTypes.GPIRNG, ProductTypes.GPILC,
-            ProductTypes.PS
+            ProductTypes.PS, ProductTypes.ASK
         };
 
         private readonly IDcsGameBetLimitRepository _gameBetLimitRepository;

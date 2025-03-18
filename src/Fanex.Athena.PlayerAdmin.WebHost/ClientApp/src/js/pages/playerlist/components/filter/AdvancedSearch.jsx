@@ -1,8 +1,7 @@
 ﻿import React from 'react';
 import MultipleSelect from '@legion-lib/react-multiselect';
 import PropTypes from 'prop-types';
-import Select from 'react-select';
-import { baStatusList, specialLevelListWithColor, responsiveFilterColumn } from '../../lib/constants';
+import { specialLevelListWithColor, responsiveFilterColumn } from '../../lib/constants';
 import LangHelper from '@jsroot/lib/langHelper';
 import { getSpecialLevelText } from '../../lib/helpers/utils';
 
@@ -10,7 +9,6 @@ export class AdvancedSearch extends React.Component {
     constructor(props) {
         super(props);
         this.specialLevelList = Object.keys(specialLevelListWithColor).map(item => ({ Id: item, Value: getSpecialLevelText(item), Status: true }));
-        this.baStatusList = Object.keys(baStatusList).map(item => ({ value: baStatusList[item], label: LangHelper.getSingleResource(item) }));
         this.riskLevelList = props.depositSetting.RiskLevels.map(item => ({ Id: item.Id, Value: item.Name, Status: true, valueDecoration: `risk-level ${item.Key}` }));
         this.commGroupList = props.depositSetting.CommGroups.map(item => ({ Id: item.Id, Value: item.Name, Status: true }));
         this.oddsGroupList = props.depositSetting.OddsGroups.map(item => ({ Id: item, Value: item, Status: true }));
@@ -36,7 +34,7 @@ export class AdvancedSearch extends React.Component {
         this.props.onChange(name, value);
     };
 
-    handleCustomerClassChange = value => {        
+    handleCustomerClassChange = value => {
         this.props.onChange("riskLevels", value);
         var customerClassSelected = this.props.depositSetting.RiskLevels.filter(r => value.includes(r.Id)).map(r => r.CustomerClassList.join(',')).join(',');
         this.props.onChange("customerClass", customerClassSelected);
@@ -47,16 +45,14 @@ export class AdvancedSearch extends React.Component {
     };
 
     render() {
-        const { currencyList, param, isAllowedBA, isSubsidiary, type } = this.props;
-        const { currencyIdList, oddsGroup, specialLevel, baFilter, riskLevels, commGroups } = param;
+        const { currencyList, param, isSubsidiary, type } = this.props;
+        const { currencyIdList, oddsGroup, specialLevel, riskLevels, commGroups } = param;
 
         const convertedCurrencyList = this._createSelectData(currencyList, currencyIdList);
         const oddsGroupList = this._createSelectData(this.oddsGroupList, oddsGroup);
         const specialLevelList = this._createSelectData(this.specialLevelList, specialLevel);
         const riskLevelList = this._createRiskLevelSelectData(this.riskLevelList, riskLevels);
         const commGroupList = this._createSelectData(this.commGroupList, commGroups);
-
-        const selectedBaStatus = isAllowedBA ? this.baStatusList.find(x => x.value === baFilter) : null;
 
         return (
             <>
@@ -99,22 +95,6 @@ export class AdvancedSearch extends React.Component {
                     </div>
                 </div>
 
-                {
-                    selectedBaStatus !== null &&
-                    (
-                        <div className="col-12 col-md-4 col-sm-6 col-lg-3 col-xl-2">
-                            <div className="form-group">
-                                <label className="label-text">{LangHelper.getSingleResource("BA")}</label>
-                                <Select instanceId='ddlBaStatus'
-                                    name='form-field-name'
-                                    value={selectedBaStatus}
-                                    options={this.baStatusList}
-                                    onChange={(item) => this.handleChangeSingleDropdown('baFilter', item)} />
-                            </div>
-                        </div>
-                    )
-                }
-
                 <div className={responsiveFilterColumn["riskLevel"][type]}>
                     <div className="form-group">
                         <label className="label-text">{LangHelper.getSingleResource("RiskLevel")}</label>
@@ -127,6 +107,7 @@ export class AdvancedSearch extends React.Component {
                             onChange={(currentItem, selectedItemsKey) => this.handleCustomerClassChange(selectedItemsKey)} />
                     </div>
                 </div>
+
                 {!isSubsidiary && <div className={responsiveFilterColumn["groupCommission"][type]}>
                     <div className="form-group">
                         <label className="label-text">{LangHelper.getSingleResource("CommissionGroup")}</label>
@@ -149,7 +130,6 @@ const propTypes = {
         currencyIdList: PropTypes.string.isRequired,
         oddsGroup: PropTypes.string.isRequired,
         specialLevel: PropTypes.string.isRequired,
-        baFilter: PropTypes.number.isRequired,
         customerClass: PropTypes.string.isRequired,
         commGroups: PropTypes.string.isRequired
     }).isRequired,

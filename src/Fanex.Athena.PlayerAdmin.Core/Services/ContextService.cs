@@ -28,8 +28,6 @@ namespace Fanex.Athena.PlayerAdmin.Core.Services
 
         public bool IsAllowedCustomerComm => GetClaimValue<bool>("IsAllowedCustomerComm");
 
-        public bool IsEnableBA => GetClaimValue<bool>("IsEnableBA");
-
         public bool IsEnableSingleWallet => GetClaimValue<bool>("IsEnableSingleWallet");
 
         public bool IsEnabledSubsidiary => GetClaimValue<bool>("IsEnabledSubsidiary");

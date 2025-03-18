@@ -9,8 +9,6 @@ namespace Fanex.Athena.PlayerAdmin.BatchUpdate.Repositories
     {
         Task<IResultInfo> Update(BasePlayerBatchUpdateCriteria criteria);
 
-        Task<IResultInfo> UpdateBAStatus(UpdateBAStatusCriteria criteria);
-
         Task<IDictionary<string, string>> GetOldValues(IEnumerable<int> custIds, int type);
     }
 }
