@@ -82,7 +82,7 @@
             { ProductTypes.GPILC, 144 },
             { ProductTypes.PS, 143 },
             { ProductTypes.ASK, 130 },
-            { ProductTypes.FG, 104 }
+            { ProductTypes.FG, 131 }
         };
 
         private static readonly IDictionary<int, int> ProductBetTypeMap = new Dictionary<int, int>
