@@ -48,7 +48,8 @@ export const BetLimitProduct = {
     GPIRNG: 48,
     GPILC: 90,
     PS: 91,
-    ASK: 103
+    ASK: 103,
+    FG: 104,
 }
 
 export const BetLimitSport = {

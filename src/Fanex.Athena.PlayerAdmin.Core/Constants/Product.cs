@@ -113,6 +113,8 @@
         public const string PS = "PS";
 
         public const string ASK = "ASK";
+
+        public const string FG = "FG";
     }
 
     public static class ProductTypes
@@ -221,5 +223,7 @@
         public const int PS = 91;
 
         public const int ASK = 103;
+
+        public const int FG = 104;
     }
 }
