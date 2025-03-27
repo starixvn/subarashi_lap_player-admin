@@ -32,6 +32,7 @@ export const PlayerRow = (props) => {
         OutstandingBalance,
         LastTransaction,
         Email,
+        Phone,
         OddsGroup,
         SpecialLevel,
         IsDeposit,
@@ -72,6 +73,7 @@ export const PlayerRow = (props) => {
             {displayedColumn[fields.SpecialLevel] && <Cell className="center-align">{canShowMainColumn && SpecialLevel !== undefined && <SpecialLevelCell dataItem={dataItem} />}</Cell>}
             {displayedColumn[fields.LastTransaction] && <Cell>{LastTransaction}</Cell>}
             {displayedColumn[fields.Email] && <Cell>{Email}</Cell>}
+            {displayedColumn[fields.Phone] && <Cell>{Phone}</Cell>}
             {hasCommPermissionRead && displayedColumn[fields.CommissionGroup] && <Cell className={"text-center td-comm-" + dataItem.IbcCustId} title={commissionGroup}>{commissionGroup}</Cell>}
             {displayedColumn[fields.CustomerClass] && <Cell className="text-center">{customerClass}</Cell>}
         </Row>

@@ -16,7 +16,7 @@
     };
 }
 
-export const  buildLapPlayerList = (playerList) => {
+export const buildLapPlayerList = (playerList) => {
     if (!playerList) {
         return [];
     }
@@ -30,6 +30,7 @@ export const  buildLapPlayerList = (playerList) => {
             Status,
             RealName,
             email,
+            Phone,
             isOnline,
             IBCCustId,
             isArchived,
@@ -54,6 +55,7 @@ export const  buildLapPlayerList = (playerList) => {
             RealName,
             LastTransaction,
             Email: email,
+            Phone: Phone,
             IsOnline: isOnline,
             IsDeposit: IBCCustId > 0,
             IsArchived: !!isArchived,

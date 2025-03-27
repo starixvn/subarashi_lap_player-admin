@@ -44,6 +44,7 @@
             RealName: lapItem.RealName,
             LastTransaction: lapItem.LastTransaction,
             Email: lapItem.email,
+            Phone: lapItem.Phone,
             IsOnline: !!lapItem.isOnline,
             IsDeposit: IbcCustId > 0,
             IsArchived: !!lapItem.isArchived,

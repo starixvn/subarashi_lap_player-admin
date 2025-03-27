@@ -1,6 +1,6 @@
 ﻿import { fields, columnList, columnListForArchived, licenseeType } from '../constants';
 
-const excludedKeyForApiType = [fields.RealName, fields.Email, fields.LastTransaction];
+const excludedKeyForApiType = [fields.RealName, fields.Email, fields.LastTransaction, fields.Phone];
 const excludedKeyForAthenaType = [fields.VendorMemberId];
 
 export const buildDefaultColumnList = (licType, hasCommPermissionRead) => {

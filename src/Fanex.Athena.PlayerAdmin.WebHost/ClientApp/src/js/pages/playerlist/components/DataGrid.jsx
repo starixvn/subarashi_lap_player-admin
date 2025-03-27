@@ -61,8 +61,7 @@ export class DataGrid extends PureComponent {
     }
 
     render() {
-        const { playerList, selectedPlayer, isFetchingData,
-            displayedColumnList, sweetAlertOption, hasCommPermissionRead } = this.props;
+        const { playerList, selectedPlayer, isFetchingData, displayedColumnList, sweetAlertOption, hasCommPermissionRead } = this.props;
         if (!playerList) {
             return null;
         }
@@ -106,6 +105,6 @@ function mapStateToProps(state) {
         hasBaPermission, hasOddsGroupPermission, hasSpecialLevelPermission, siteSetting, depositSetting, fetchDataTime } = state;
     return Object.assign({}, { playerList, selectedPlayer, displayedColumnList, isFetchingData, sweetAlertOption, hasCommPermissionEdit, hasCommPermissionRead,
         hasBaPermission, hasOddsGroupPermission, hasSpecialLevelPermission, siteSetting, depositSetting, fetchDataTime });
-};
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(DataGrid);
