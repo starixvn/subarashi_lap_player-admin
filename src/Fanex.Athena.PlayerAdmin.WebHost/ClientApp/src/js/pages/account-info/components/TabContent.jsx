@@ -7,9 +7,6 @@ import BankInformation from './subtab/BankInformation';
 import ActivityRecord from './subtab/ActivityRecord';
 import { ActionCreators } from '../actions/index.js';
 import SubTab from './SubTab';
-import NoDataTitle from '@jsroot/components/NoDataTitle';
-import ClientResourceManager from '@jsroot/lib/clientResourceManager';
-
 
 export const TabContent = (props) => {
     const [selectedTab, setSelectedTab] = useState(null);
@@ -37,21 +34,19 @@ export const TabContent = (props) => {
 
     const getStyle = (tabKey) => ({ display: selectedTab === tabKey ? 'block' : 'none' })
 
+    if (tabListByLicenseeType.length == 0) return null;
+    
     return (
         <div className="outer-col-1">
             <div className="left-side">
-                {tabListByLicenseeType.length == 0 ?
-                    <NoDataTitle title={ClientResourceManager.getText('NoInfo')} />:
-                    <>
-                        <div className="subtab">
-                            <SubTab dataList={tabListByLicenseeType} selectedTab={selectedTab} onChangeTab={setSelectedTab} />
-                        </div>
-                        <div className="tab-panel">
-                            <div style={getStyle(tabKeys.playerProfile)}><AccountProfile /></div>
-                            <div style={getStyle(tabKeys.bankInformation)}><BankInformation /></div>
-                            <div style={getStyle(tabKeys.activityRecord)}><ActivityRecord /></div>
-                        </div>
-                    </>}
+                <div className="subtab">
+                    <SubTab dataList={tabListByLicenseeType} selectedTab={selectedTab} onChangeTab={setSelectedTab} />
+                </div>
+                <div className="tab-panel">
+                    <div style={getStyle(tabKeys.playerProfile)}><AccountProfile /></div>
+                    <div style={getStyle(tabKeys.bankInformation)}><BankInformation /></div>
+                    <div style={getStyle(tabKeys.activityRecord)}><ActivityRecord /></div>
+                </div>
             </div>
         </div>
     )
