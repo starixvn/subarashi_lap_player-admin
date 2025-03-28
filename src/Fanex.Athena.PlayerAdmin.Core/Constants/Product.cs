@@ -115,6 +115,8 @@
         public const string ASK = "ASK";
 
         public const string FG = "FG";
+
+        public const string HOT = "HOT";
     }
 
     public static class ProductTypes
@@ -225,5 +227,7 @@
         public const int ASK = 103;
 
         public const int FG = 104;
+
+        public const int HOT = 95;
     }
 }

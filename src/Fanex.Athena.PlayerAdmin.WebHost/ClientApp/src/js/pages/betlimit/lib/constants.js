@@ -50,6 +50,7 @@ export const BetLimitProduct = {
     PS: 91,
     ASK: 103,
     FG: 104,
+    HOT: 95,
 }
 
 export const BetLimitSport = {
