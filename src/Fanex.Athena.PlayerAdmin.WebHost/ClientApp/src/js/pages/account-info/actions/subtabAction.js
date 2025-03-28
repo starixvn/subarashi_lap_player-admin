@@ -1,5 +1,10 @@
 import PlayerAccountService from "../lib/playerAccountService";
 
+export const getPlayerInfoSetting = () => () => {
+    const service = new PlayerAccountService();
+    return service.getPlayerInfoSetting();
+}
+
 export const getAccountProfile = (param) => () => {
     const service = new PlayerAccountService();
     return service.getAccountProfile(param);

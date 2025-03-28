@@ -55,6 +55,6 @@ function mapDispatchToProps(dispatch) {
 function mapStateToProps(state) {
     const { ibcCustId, createdDate } = state;
     return Object.assign({}, { ibcCustId, createdDate });
-};
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(ActivityRecord);

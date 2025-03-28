@@ -6,10 +6,10 @@ import { buildColumnList } from '../lib/helpers/gridColumnBuilder';
 export const getSiteSetting = (licType, hasCommPermissionRead) => (dispatch) => {
     const service = new SettingService();
     service.getSiteSetting().then((response) => {
-        const { isEnableSingleWallet, userLevel } = response.data;
+        const { isEnableSingleWallet, userLevel, isShowMobile } = response.data;
         const enableCustomerClass = userLevel === 0;
 
-        const columnList = buildColumnList(licType, hasCommPermissionRead, isEnableSingleWallet, enableCustomerClass);
+        const columnList = buildColumnList(licType, hasCommPermissionRead, isEnableSingleWallet, enableCustomerClass, isShowMobile);
         dispatch(setDisplayedColumnList(columnList));
 
         dispatch(setSiteSetting({ ...response.data }));

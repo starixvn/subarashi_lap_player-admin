@@ -109,6 +109,6 @@ function mapDispatchToProps(dispatch) {
 function mapStateToProps(state) {
     const { contextMenu, type } = state;
     return Object.assign({}, { contextMenu, type });
-};
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserNameCell);

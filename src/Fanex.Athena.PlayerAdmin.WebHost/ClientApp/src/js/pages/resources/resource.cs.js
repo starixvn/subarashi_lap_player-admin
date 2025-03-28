@@ -65,5 +65,6 @@ export const resource_cs = {
     Subsidiary: "子网站",
     WinLossAnalysis: "输赢分析",
     FinancialDate: "依财务日期时间搜寻",
-    Viewin: "以{0}查看"
+    Viewin: "以{0}查看",
+    NoInfo: "没资料显示"
 }
