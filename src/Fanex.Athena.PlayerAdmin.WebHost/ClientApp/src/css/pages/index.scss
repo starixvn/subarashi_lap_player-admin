@@ -235,6 +235,10 @@ iframe {
         .oddsgroup-item {
             border-top: 1px solid #ddd;
         }
+        .odds-group-select {
+            max-height: 150px;
+            overflow-y: scroll;
+        }
     }
 
     .disabled {
