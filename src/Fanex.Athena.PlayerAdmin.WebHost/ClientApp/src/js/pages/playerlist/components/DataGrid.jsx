@@ -70,7 +70,7 @@ export class DataGrid extends PureComponent {
             return <NoDataTitle />;
         }
 
-        const dataList = selectedPlayer ? [playerList.find(item => item.IbcCustId === selectedPlayer.ibcCustId)] : playerList;
+        const dataList = selectedPlayer ? [playerList.find(item => item.UserName === selectedPlayer.userName)] : playerList;
         const displayedColumn = buildDisplayedColumnObject(displayedColumnList);
 
         return (
