@@ -83,7 +83,7 @@ export const OddsGroupDropdown = (props) => {
 
     return (
         <div className="dropdown oddsgroup-menu" style={style}>
-            <DropdownMenu isOpen={isOpen} onClose={handleClose}>
+            <DropdownMenu isOpen={isOpen} onClose={handleClose} className='odds-group-select'>
                 {
                     oddsGroups.map(item => {
                         const style = oddsGroupListWithStyle[item];
@@ -104,6 +104,6 @@ function mapDispatchToProps(dispatch) {
 function mapStateToProps(state) {
     const { oddsGroupDropdownPosition, currentActivePlayer, playerList, depositSetting } = state;
     return Object.assign({}, { oddsGroups: depositSetting.OddsGroups, oddsGroupDropdownPosition, currentActivePlayer, playerList });
-};
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(OddsGroupDropdown);
