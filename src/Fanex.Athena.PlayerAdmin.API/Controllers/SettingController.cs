@@ -38,7 +38,19 @@ namespace Fanex.Athena.PlayerAdmin.API.Controllers
                 UserLevel = _contextService.UserLevel,
                 IsEnableSingleWallet = _contextService.IsEnableSingleWallet,
                 IsShowSabaIntelligence = _contextService.IsShowSabaIntelligence,
-                IsSearchWithMatchPreciseOnly = _contextService.IsSearchWithMatchPreciseOnly
+                IsSearchWithMatchPreciseOnly = _contextService.IsSearchWithMatchPreciseOnly,
+                IsShowMobile = _contextService.IsInRoles(Roles.SuperAdmin, Roles.PlayerProfile)
+            }, new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase });
+        }
+
+        [HttpPost]
+        public JsonResult GetPlayerInfoSetting()
+        {
+            return new JsonResult(new PlayerInfoSettingViewModel
+            {
+                IsShowPlayerProfile =_contextService.IsInRoles(Roles.SuperAdmin, Roles.PlayerProfile),
+                IsShowBankInformation = _contextService.IsInRoles(Roles.SuperAdmin, Roles.BankInfo),
+                IsShowActivityRecord = _contextService.IsInRoles(Roles.SuperAdmin, Roles.ActivityRecord),
             }, new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase });
         }
 

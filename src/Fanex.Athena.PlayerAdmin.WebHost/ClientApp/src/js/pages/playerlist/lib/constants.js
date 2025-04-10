@@ -40,6 +40,7 @@ export const fields = {
     SpecialLevel: 'SpecialLevel',
     LastTransaction: 'LastTransaction',
     Email: 'Email',
+    Phone: 'Phone',
     CommissionGroup: 'CommissionGroup',
     CustomerClass: 'CustomerClass'
 }
@@ -59,6 +60,7 @@ export const columnList = [
     { key: fields.SpecialLevel, value: LangHelper.getSingleResource('SpecialLevel'), show: true },
     { key: fields.LastTransaction, value: LangHelper.getSingleResource('LastTransfer'), show: true },
     { key: fields.Email, value: LangHelper.getSingleResource('Email'), show: true },
+    { key: fields.Phone, value: LangHelper.getSingleResource('Mobile'), show: true },
     { key: fields.CommissionGroup, value: LangHelper.getSingleResource('CommissionGroup'), show: true },
     { key: fields.CustomerClass, value: LangHelper.getSingleResource('CustomerClass'), show: true }
 ];
@@ -195,6 +197,7 @@ export const headerText = {
     SpecialLevel: LangHelper.getSingleResource('SpecialLevel'),
     LastTransaction: LangHelper.getSingleResource('LastTransfer'),
     Email: LangHelper.getSingleResource('Email'),
+    Phone: LangHelper.getSingleResource('Mobile'),
     CommissionGroup: LangHelper.getSingleResource('CommissionGroup'),
     CustomerClass: LangHelper.getSingleResource('CustomerClass')
 }
@@ -270,7 +273,7 @@ export const responsiveFilterColumn = {
     },
 }
 
-export const invalidUsernameString = ['	',' ', '%', '％'];
+export const invalidUsernameString = ['	', ' ', '%', '％'];
 
 export const emailPattern = '^([a-zA-Z0-9_\\.\\-])+\\@(([a-zA-Z0-9\\-])+\\.)+([a-zA-Z0-9]{2,4})+$';
 

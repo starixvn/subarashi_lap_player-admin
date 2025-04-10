@@ -133,6 +133,6 @@ function mapDispatchToProps(dispatch) {
 function mapStateToProps(state) {
     const { selectedPlayer, isSubsidiary, isAdvancedSearch, isFilterCollapsing, selectedTabName, selectedSubTabName } = state;
     return Object.assign({}, { selectedPlayer, isSubsidiary, isAdvancedSearch, isFilterCollapsing, selectedTabName, selectedSubTabName });
-};
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(PlayerDetail);

@@ -11,5 +11,7 @@
         public bool IsShowSabaIntelligence { get; set; }
 
         public bool IsSearchWithMatchPreciseOnly { get; set; }
+
+        public bool IsShowMobile { get; set; }
     }
 }

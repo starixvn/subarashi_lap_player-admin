@@ -15,6 +15,9 @@
         public const string Log = "pa_log";
 
         public const string AccountInfo = "pa_acc_Info";
+        public const string PlayerProfile = "pa_player_profile_ctl";
+        public const string BankInfo = "pa_bank_info_ctl";
+        public const string ActivityRecord = "pa_activity_record_ctl";
         public const string DetailTransaction = "pa_detail_transaction";
         public const string CommissionGroup = "PlayerAdminCommissionGroup";
         public const string CommissionGroup_Write = "PlayerAdminCommissionGroup_Write";

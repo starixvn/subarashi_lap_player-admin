@@ -42,6 +42,6 @@ function mapDispatchToProps(dispatch) {
 function mapStateToProps(state) {
     const { pagingOption, param } = state;
     return Object.assign({}, { pagingOption, param });
-};
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(Content);

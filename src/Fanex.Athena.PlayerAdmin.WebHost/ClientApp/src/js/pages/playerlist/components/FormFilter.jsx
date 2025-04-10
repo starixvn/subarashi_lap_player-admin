@@ -328,6 +328,6 @@ function mapDispatchToProps(dispatch) {
 function mapStateToProps(state) {
     const { type, isSubsidiary, hasCommPermissionRead, isAdvancedSearch, isFilterCollapsing, pagingOption, currencyList, siteSetting, depositSetting, subsidiarySetting } = state;
     return Object.assign({}, { type, isSubsidiary, hasCommPermissionRead, isAdvancedSearch, isFilterCollapsing, pagingOption, currencyList, siteSetting, depositSetting, subsidiarySetting });
-};
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(FormFilter);

@@ -165,7 +165,7 @@ function mapStateToProps(state) {
     const playerCount = pagingOption.TotalItem || (playerList && playerList.length) || 0;
     return Object.assign({}, { playerList, playerCount, selectedPlayer, displayedColumnList, param, hasCommPermissionEdit, hasCommPermissionRead,
         hasBaPermission, hasOddsGroupPermission, hasSpecialLevelPermission, siteSetting });
-};
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(GridCaption);
 

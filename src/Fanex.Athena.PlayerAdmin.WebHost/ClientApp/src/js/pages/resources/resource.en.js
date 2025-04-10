@@ -65,5 +65,6 @@ export const resource_en = {
     Subsidiary: "Subsidiary",
     WinLossAnalysis: "Win Loss Analysis",
     FinancialDate: "Financial Date",
-    Viewin: "View in {0}"
+    Viewin: "View in {0}",
+    NoInfo: "No information is available"
 }

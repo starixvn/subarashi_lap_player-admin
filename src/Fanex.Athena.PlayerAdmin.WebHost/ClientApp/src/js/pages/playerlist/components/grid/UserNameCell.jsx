@@ -27,7 +27,8 @@ export const UserNameCell = (props) => {
         setSelectedSubTabName,
         getTabList,
         type,
-        isShowSabaIntelligence
+        isShowSabaIntelligence,
+        setFetchDataTime
     } = props;
 
     const handleSelectPlayer = (event) => {
@@ -36,6 +37,7 @@ export const UserNameCell = (props) => {
         setSelectedPlayer(newSelectedPlayer);
         setSelectedTabName(null);
         setSelectedSubTabName(null);
+        setFetchDataTime();
     }
 
     const handleViewSabaIntelligence = (event) => {
@@ -102,13 +104,13 @@ export const UserNameCell = (props) => {
 }
 
 function mapDispatchToProps(dispatch) {
-    const { setSelectedPlayer, setCurrentActivePlayer, setContextMenu, setSelectedTabName, setSelectedSubTabName, getTabList } = ActionCreators;
-    return bindActionCreators({ setSelectedPlayer, setCurrentActivePlayer, setContextMenu, setSelectedTabName, setSelectedSubTabName, getTabList }, dispatch);
+    const { setSelectedPlayer, setCurrentActivePlayer, setContextMenu, setSelectedTabName, setSelectedSubTabName, getTabList, setFetchDataTime } = ActionCreators;
+    return bindActionCreators({ setSelectedPlayer, setCurrentActivePlayer, setContextMenu, setSelectedTabName, setSelectedSubTabName, getTabList, setFetchDataTime }, dispatch);
 }
 
 function mapStateToProps(state) {
     const { contextMenu, type } = state;
     return Object.assign({}, { contextMenu, type });
-};
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserNameCell);

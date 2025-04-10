@@ -1,9 +1,13 @@
 import FactoryCommonService from '../../../lib/factoryCommonService';
-import { lapAccountProfile, lapBankInfo, lrfActivityRecord, lrfSubsidiaryViewType, custBettingStatus } from './apiInfo';
+import { lapAccountProfile, lapBankInfo, lrfActivityRecord, lrfSubsidiaryViewType, custBettingStatus, playerInfoSettings } from './apiInfo';
 
 export default class PlayerAccountService {
     constructor() {
         this.commonService = FactoryCommonService.createInstance();
+    }
+
+    getPlayerInfoSetting() {
+        return this._getData(playerInfoSettings.type, playerInfoSettings.action, {});
     }
 
     getAccountProfile(param) {
@@ -35,7 +39,7 @@ export default class PlayerAccountService {
     }
 
     getCustomerBettingStatus(param) {
-        const params = {...param };
+        const params = { ...param };
 
         return this.commonService.fetchData(custBettingStatus.type, custBettingStatus.action, params);
     }

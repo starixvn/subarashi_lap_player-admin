@@ -61,8 +61,7 @@ export class DataGrid extends PureComponent {
     }
 
     render() {
-        const { playerList, selectedPlayer, isFetchingData,
-            displayedColumnList, sweetAlertOption, hasCommPermissionRead } = this.props;
+        const { playerList, selectedPlayer, isFetchingData, displayedColumnList, sweetAlertOption, hasCommPermissionRead, fetchDataTime, siteSetting } = this.props;
         if (!playerList) {
             return null;
         }
@@ -71,18 +70,18 @@ export class DataGrid extends PureComponent {
             return <NoDataTitle />;
         }
 
-        const dataList = selectedPlayer ? [playerList.find(item => item.IbcCustId === selectedPlayer.ibcCustId)] : playerList;
+        const dataList = selectedPlayer ? [playerList.find(item => item.UserName === selectedPlayer.userName)] : playerList;
         const displayedColumn = buildDisplayedColumnObject(displayedColumnList);
 
         return (
             <>
-                <Table key={this.props.fetchDataTime}
+                <Table key={fetchDataTime}
                     autoWidth={true}
                     maxWidth={this.maxWidth}
                     minWidth={1300}
                     autoHeight={true}
                     header={GridHelper.renderHeader(displayedColumn, this.canSelectPlayers, hasCommPermissionRead)}
-                    body={this._renderDataSection(dataList, displayedColumn, this.canSelectPlayers, hasCommPermissionRead, this.props.siteSetting.isShowSabaIntelligence)}
+                    body={this._renderDataSection(dataList, displayedColumn, this.canSelectPlayers, hasCommPermissionRead, siteSetting.isShowSabaIntelligence)}
                     containerPadding={30}
                     shouldResetScrollPosition={isFetchingData}
                     onSort={this.handleSort} />
@@ -106,6 +105,6 @@ function mapStateToProps(state) {
         hasBaPermission, hasOddsGroupPermission, hasSpecialLevelPermission, siteSetting, depositSetting, fetchDataTime } = state;
     return Object.assign({}, { playerList, selectedPlayer, displayedColumnList, isFetchingData, sweetAlertOption, hasCommPermissionEdit, hasCommPermissionRead,
         hasBaPermission, hasOddsGroupPermission, hasSpecialLevelPermission, siteSetting, depositSetting, fetchDataTime });
-};
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(DataGrid);

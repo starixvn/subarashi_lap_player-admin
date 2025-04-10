@@ -187,6 +187,10 @@ export default class ReportExcel {
             [MAIN_SECTION_STYLE]: bodyCellStyle.left,
             width: 200
         }, {
+            field: fields.Phone,
+            [MAIN_SECTION_STYLE]: bodyCellStyle.left,
+            width: 70
+        }, {
             field: fields.CommissionGroup,
             [MAIN_SECTION_STYLE]: bodyCellStyle.center,
             width: 120

@@ -1,6 +1,6 @@
 ﻿import { fields, columnList, columnListForArchived, licenseeType } from '../constants';
 
-const excludedKeyForApiType = [fields.RealName, fields.Email, fields.LastTransaction];
+const excludedKeyForApiType = [fields.RealName, fields.Email, fields.LastTransaction, fields.Phone];
 const excludedKeyForAthenaType = [fields.VendorMemberId];
 
 export const buildDefaultColumnList = (licType, hasCommPermissionRead) => {
@@ -11,7 +11,7 @@ export const buildDefaultColumnList = (licType, hasCommPermissionRead) => {
     }).map(item => ({ ...item }))
 }
 
-export const buildColumnList = (licType, hasCommPermissionRead, isEnableSingleWallet, enableCustomerClass) => {
+export const buildColumnList = (licType, hasCommPermissionRead, isEnableSingleWallet, enableCustomerClass, isShowMobile) => {
     const isApiType = licType === licenseeType.api;
     return columnList.filter(item => {
         if (item.key === fields.CommissionGroup) {
@@ -20,6 +20,8 @@ export const buildColumnList = (licType, hasCommPermissionRead, isEnableSingleWa
             return !isEnableSingleWallet;
         } else if (item.key === fields.CustomerClass) {
             return enableCustomerClass;
+        } else if (item.key === fields.Phone) {
+            return isShowMobile && !isApiType;
         } else {
             return _showByLicenseeType(isApiType, item.key);
         }

@@ -65,5 +65,6 @@ export const resource_id = {
     Subsidiary: "Cabang",
     FinancialDate: "Tanggal Keuangan",
     WinLossAnalysis: "Analisis Menang Kalah",
-    Viewin: "Lihat {0}"
+    Viewin: "Lihat {0}",
+    NoInfo: "Tidak ada informasi yang tersedia",
 }

@@ -40,10 +40,6 @@ export const AthenaProfile = ({ data }) => {
                 <td>{Birthday}</td>
             </tr>
             <tr>
-                <td>{ClientResourceManager.getText('Mobile')}</td>
-                <td>{Phone}</td>
-            </tr>
-            <tr>
                 <td>{ClientResourceManager.getText('Country')}</td>
                 <td>{Country}</td>
             </tr>

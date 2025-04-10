@@ -65,5 +65,6 @@ export const resource_th = {
     Subsidiary: "บริษัทย่อย",
     WinLossAnalysis: "วิเคราะห์ผลแพ้ชนะ",
     FinancialDate: "วันที่การเงิน",
-    Viewin: "ดูใน {0}"
+    Viewin: "ดูใน {0}",
+    NoInfo: "ไม่มีข้อมูล"
 }

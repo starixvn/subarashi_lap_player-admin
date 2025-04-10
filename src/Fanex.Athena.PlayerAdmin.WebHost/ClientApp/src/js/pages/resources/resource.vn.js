@@ -65,5 +65,6 @@ export const resource_vn = {
     Subsidiary: "Chi nhánh",
     WinLossAnalysis: "Phân Tích Thắng Thua",
     FinancialDate: "Ngày Tài Chính",
-    Viewin: "Xem theo {0}"
+    Viewin: "Xem theo {0}",
+    NoInfo: "Không có dữ liệu"
 }
