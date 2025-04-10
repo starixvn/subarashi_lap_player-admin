@@ -3185,4 +3185,7 @@
   <data name="ProductFG" xml:space="preserve">
     <value>Funky Games</value>
   </data>
+  <data name="ProductHOT" xml:space="preserve">
+    <value>HOTDOG</value>
+  </data>
 </root>
