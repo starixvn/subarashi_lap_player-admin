@@ -78,7 +78,8 @@
                 { ProductCode.PS, nameof(ViewResources.ProductPS) },
                 { ProductCode.ASK, nameof(ViewResources.ProductASK) },
                 { ProductCode.FG, nameof(ViewResources.ProductFG) },
-                { ProductCode.HOT, nameof(ViewResources.ProductHOT) }
+                { ProductCode.HOT, nameof(ViewResources.ProductHOT) },
+                { ProductCode.MGLC, nameof(ViewResources.ProductMGLC) }
             };
 
         public static string GetProductName(string productCode, string defaultValue = null)

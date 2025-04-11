@@ -117,6 +117,8 @@
         public const string FG = "FG";
 
         public const string HOT = "HOT";
+        
+        public const string MGLC = "MGLC";
     }
 
     public static class ProductTypes
@@ -124,7 +126,6 @@
         public const int Sportsbook = 0;
 
         public const int Sportsbooks2 = 16;
-
 
         public const int NumberGame = 2;
 
@@ -229,5 +230,7 @@
         public const int FG = 104;
 
         public const int HOT = 95;
+        
+        public const int MGLC = 107;
     }
 }
