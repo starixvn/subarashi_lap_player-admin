@@ -51,6 +51,7 @@ export const BetLimitProduct = {
     ASK: 103,
     FG: 104,
     HOT: 95,
+    MGLC: 107
 }
 
 export const BetLimitSport = {

@@ -61,7 +61,8 @@
             ProductTypes.PS,
             ProductTypes.ASK,
             ProductTypes.FG,
-            ProductTypes.HOT
+            ProductTypes.HOT,
+            ProductTypes.MGLC
         };
 
         private readonly IDcsGameBetLimitRepository _gameBetLimitRepository;
