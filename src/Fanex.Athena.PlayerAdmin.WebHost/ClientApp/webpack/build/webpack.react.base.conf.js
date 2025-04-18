@@ -1,15 +1,24 @@
-﻿var alias = require('../config/aliasReact');
-var pathConfig = require('../config/pathReact');
-var pluginGenerator = require('../config/pluginReact');
-const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+﻿const path = require("path");
+const TerserPlugin = require("terser-webpack-plugin");
+const alias = require("../config/aliasReact");
+const pathConfig = require("../config/pathReact");
+const pluginGenerator = require("../config/pluginReact");
 
 function generateConfig() {
-    var jsPath = pathConfig.scriptPaths.build;
-    var cssPath = pathConfig.cssPaths.build;
-    var commonConfigs = {
+    const jsPath = pathConfig.scriptPaths.build;
+    const cssPath = pathConfig.cssPaths.build;
+
+    return {
         resolve: {
             alias: alias,
-            extensions: ['.js', '.jsx']
+            extensions: [".js", ".jsx"],
+            fallback: {
+                fs: false,
+                crypto: require.resolve("crypto-browserify"),
+                stream: require.resolve("stream-browserify"),
+                buffer: require.resolve("buffer/"),
+                vm: require.resolve("vm-browserify")
+            }
         },
         entry: {
             /*js*/
@@ -45,14 +54,16 @@ function generateConfig() {
         output: {
             path: pathConfig.projectRoot,
             filename: "[name].chunk.js",
-            chunkFilename: jsPath + '/[name].chunk.js',
+            chunkFilename: `${jsPath}/[name].chunk.js`
         },
         module: {
-            rules: [{
-                test: /\.(js|jsx)$/,
-                loader: ["babel-loader"],
-                exclude: /node_modules/
-            }]
+            rules: [
+                {
+                    test: /\.(js|jsx)$/,
+                    use: ["babel-loader"],
+                    exclude: /node_modules/
+                }
+            ]
         },
         plugins: pluginGenerator(),
         stats: {
@@ -65,35 +76,36 @@ function generateConfig() {
             chunkModules: false,
             children: true
         },
-        node: {
-            fs: 'empty'
-        },
         externals: [
-            { './jszip': 'jszip' },
-            { './ods': 'ods' },
-            { './cptable': 'var cptable' }
+            { "./jszip": "jszip" },
+            { "./ods": "ods" },
+            { "./cptable": "var cptable" },
+            { "asn1.js": "asn1.js" }
         ],
         optimization: {
             minimizer: [
-                new UglifyJsPlugin({
-                    sourceMap: true
+                new TerserPlugin({
+                    parallel: true,
+                    terserOptions: {
+                        format: { comments: false },
+                        compress: { drop_console: true }
+                    },
+                    extractComments: false
                 })
             ],
             splitChunks: {
                 chunks: 'all',
                 minSize: 30000,
-                maxSize: 0,
                 minChunks: 2,
                 maxAsyncRequests: 5,
                 maxInitialRequests: 3,
-                name: false,
                 cacheGroups: {
                     // disable default cache group
                     default: false,
                     vendors: false,
                     common: {
-                        name: 'lib/vendor',
-                        test: /(node_modules)/,
+                        name: `${pathConfig.scriptPaths.build}/lib/vendor`,
+                        test: /[\\/]node_modules[\\/]/,
                         minChunks: 2,
                         priority: -10
                     }
@@ -101,8 +113,6 @@ function generateConfig() {
             }
         }
     };
-
-    return commonConfigs;
 }
 
 module.exports = generateConfig;

@@ -1,29 +1,25 @@
-﻿var merge = require('webpack-merge');
-var utils = require('./utils');
-var baseWebpackConfigGenerator = require('./webpack.react.base.conf');
-var CleanWebpackPlugin = require('clean-webpack-plugin');
+﻿const { merge } = require("webpack-merge");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const utils = require("./utils");
+const pathConfig = require("../config/pathReact");
+const baseWebpackConfigGenerator = require("./webpack.react.base.conf");
 
-var pathConfig = require('../config/pathReact');
-var baseConfigs = baseWebpackConfigGenerator();
+const baseConfigs = baseWebpackConfigGenerator();
+const cssRootPath = pathConfig.cssPaths.build;
+const jsRootPath = pathConfig.scriptPaths.build;
 
-var cssRootPath = pathConfig.cssPaths.build;
-var jsRootPath = pathConfig.scriptPaths.build;
-
-module.exports = merge(baseConfigs,
-    utils.setDefinePlugin('process.env.NODE_ENV', 'development'),
+module.exports = merge(
+    baseConfigs,
+    utils.setDefinePlugin("process.env.NODE_ENV", "development"),
     {
-        mode: 'development',
-        devtool: 'source-map',
+        mode: "development",
+        devtool: "source-map",
         watch: true,
         plugins: [
-            new CleanWebpackPlugin([`${jsRootPath}/`], {
-                root: process.cwd()
-            }),
-            new CleanWebpackPlugin([`${cssRootPath}/`], {
-                root: process.cwd()
-            }),
+            new CleanWebpackPlugin({
+                cleanOnceBeforeBuildPatterns: [jsRootPath, cssRootPath]
+            })
         ]
     },
-
     utils.extractCSS(false)
 );
