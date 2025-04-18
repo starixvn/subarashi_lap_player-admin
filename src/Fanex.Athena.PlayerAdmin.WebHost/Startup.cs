@@ -38,6 +38,8 @@ using System.Threading.Tasks;
 using Polly;
 using Microsoft.Extensions.Logging;
 using Fanex.Athena.PlayerAdmin.Core.Services;
+using Fanex.Data.Vault;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace Fanex.Athena.PlayerAdmin.WebHost
 {
@@ -109,7 +111,6 @@ namespace Fanex.Athena.PlayerAdmin.WebHost
                 .FromApplication("LAP.PlayerAdmin");
 
             SetupMediatR(services);
-
 
             services.AddCore()
                 .AddAPI()
@@ -229,7 +230,7 @@ namespace Fanex.Athena.PlayerAdmin.WebHost
         private void ConfigCustomerClassApi(IServiceCollection services)
         {
             const int NumberOfRetry = 2;
-            const int RetryDelayTime = 1; 
+            const int RetryDelayTime = 1;
 
             var configuration = Configuration.GetSection("CustomerClassApi");
             services.Configure<CustomerClassApiSetting>(configuration);
@@ -335,20 +336,13 @@ namespace Fanex.Athena.PlayerAdmin.WebHost
 
         private void ConfigFanexData(IServiceCollection services)
         {
-            var listConnectionName = Configuration.GetSection("ConnectionStrings").GetChildren().Select(_ => _.Key);
-            var connectionStrings = new Dictionary<string, ConnectionConfiguration>(listConnectionName
-                .Select(connectionName => new KeyValuePair<string, ConnectionConfiguration>(connectionName,
-                    new ConnectionConfiguration(connectionName, Configuration.GetConnectionString(connectionName)))
-                ));
-
             DbSettingProviderManager
                 .StartNewSession()
-                .WithSqlServer()
-                .Use(connectionStrings)
-                .Use(new ShardDbSettingProvider(new ShardInfoAccessor(
-                    new ContextService(services.BuildServiceProvider().GetRequiredService<IHttpContextAccessor>())),
-                    resourcePath: "~/App_Data/SpConfig/FanexSpName.xml"))
+                .WithSqlServer(Configuration)
+                .UseDefaultDbSettingProvider("~/App_Data/SpConfig", true)
                 .Run();
+
+            services.TryAddSingleton<VaultDbAliasService, VaultDbAliasServiceImp>();
         }
 
         private static IServiceCollection ConfigAuthentication(IServiceCollection services, CookieSetting cookie, IdentityServerSetting identityServer)
