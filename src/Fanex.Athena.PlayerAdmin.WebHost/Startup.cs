@@ -339,7 +339,7 @@ namespace Fanex.Athena.PlayerAdmin.WebHost
             DbSettingProviderManager
                 .StartNewSession()
                 .WithSqlServer(Configuration)
-                .UseDefaultDbSettingProvider("~/App_Data/SpConfig", true)
+                .UseDefaultDbSettingProvider("~/App_Data/SpConfig/FanexSpName.xml", true)
                 .Run();
 
             services.TryAddSingleton<VaultDbAliasService, VaultDbAliasServiceImp>();
