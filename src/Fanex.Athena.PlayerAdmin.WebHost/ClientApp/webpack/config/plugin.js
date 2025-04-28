@@ -1,4 +1,5 @@
 ﻿const webpack = require("webpack");
+const RemoveEmptyScriptsPlugin = require('webpack-remove-empty-scripts');
 const WebpackBuildNotifierPlugin = require("webpack-build-notifier");
 const Visualizer = require("webpack-visualizer-plugin2");
 
@@ -16,6 +17,7 @@ function generatePlugins() {
             "window.jQuery": "jquery",
             "root.jQuery": "jquery"
         }),
+        new RemoveEmptyScriptsPlugin(),
         new WebpackBuildNotifierPlugin({
             title: "New UI Webpack Build",
             suppressSuccess: true

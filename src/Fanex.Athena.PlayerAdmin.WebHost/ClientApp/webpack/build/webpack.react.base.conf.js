@@ -1,5 +1,4 @@
-﻿const path = require("path");
-const TerserPlugin = require("terser-webpack-plugin");
+﻿const TerserPlugin = require("terser-webpack-plugin");
 const alias = require("../config/aliasReact");
 const pathConfig = require("../config/pathReact");
 const pluginGenerator = require("../config/pluginReact");
@@ -77,10 +76,9 @@ function generateConfig() {
             children: true
         },
         externals: [
-            { "./jszip": "jszip" },
+            { './jszip': 'JSZip' },
             { "./ods": "ods" },
-            { "./cptable": "var cptable" },
-            { "asn1.js": "asn1.js" }
+            { "./cptable": "var cptable" }
         ],
         optimization: {
             minimizer: [
@@ -94,7 +92,7 @@ function generateConfig() {
                 })
             ],
             splitChunks: {
-                chunks: 'all',
+                chunks: "all",
                 minSize: 30000,
                 minChunks: 2,
                 maxAsyncRequests: 5,
@@ -104,10 +102,12 @@ function generateConfig() {
                     default: false,
                     vendors: false,
                     common: {
-                        name: `${pathConfig.scriptPaths.build}/lib/vendor`,
+                        name: "lib/vendor",
+                        filename: `${jsPath}/[name].chunk.js`,
                         test: /[\\/]node_modules[\\/]/,
                         minChunks: 2,
-                        priority: -10
+                        priority: -10,
+                        reuseExistingChunk: true
                     }
                 }
             }

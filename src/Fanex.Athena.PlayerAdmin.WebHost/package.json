@@ -38,6 +38,7 @@
     "webpack-build-notifier": "^3.1.0",
     "webpack-cli": "^5.1.4",
     "webpack-merge": "^5.10.0",
+    "webpack-remove-empty-scripts": "^1.0.4",
     "webpack-visualizer-plugin2": "^1.2.0"
   },
   "scripts": {
@@ -46,7 +47,6 @@
     "build-pro": "webpack --config ClientApp/webpack/build/webpack.pro.conf.js",
     "build-react-dev": "webpack --config ClientApp/webpack/build/webpack.react.dev.conf.js",
     "build-react-pro": "webpack --config ClientApp/webpack/build/webpack.react.pro.conf.js",
-    "build-react-both": "webpack --config www/webpackconfig/build/webpack.react.pro.conf.js && webpack --config www/webpackconfig/build/webpack.react.dev.conf.js",
     "lint": "eslint ./ClientApp/src/js"
   },
   "author": "legion",

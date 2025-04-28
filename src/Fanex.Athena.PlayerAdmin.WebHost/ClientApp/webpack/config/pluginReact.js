@@ -1,4 +1,5 @@
 ﻿const webpack = require("webpack");
+const RemoveEmptyScriptsPlugin = require('webpack-remove-empty-scripts');
 const WebpackBuildNotifierPlugin = require("webpack-build-notifier");
 const Visualizer = require("webpack-visualizer-plugin2"); // ✅ Dùng phiên bản mới cho Webpack 5
 
@@ -6,6 +7,9 @@ let _buildNumber = 1;
 
 function generatePlugins() {
     return [
+        new webpack.ProvidePlugin({
+            JSZip: 'jszip'
+        }),
         new Visualizer({
             filename: "./wwwroot/webpack-stats-react.html"
         }),
@@ -13,6 +17,7 @@ function generatePlugins() {
             resourceRegExp: /^\.\/locale$/,
             contextRegExp: /moment/
         }),
+        new RemoveEmptyScriptsPlugin(),
         new WebpackBuildNotifierPlugin({
             title: "React Webpack Build",
             suppressSuccess: true

@@ -1,110 +1,70 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
-  <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
-    <DockerfileContext>..\..</DockerfileContext>
-    <CodeAnalysisRuleSet>..\..\.sonarlint\lap_playeradmincsharp.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+		<DockerfileContext>..\..</DockerfileContext>
+		<CodeAnalysisRuleSet>..\..\.sonarlint\lap_playeradmincsharp.ruleset</CodeAnalysisRuleSet>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <Content Remove="jshint.json" />
-    <Content Remove="package-lock.json" />
-    <Content Remove="package.json" />
-  </ItemGroup>
+	<ItemGroup>
+		<Content Remove="jshint.json" />
+		<Content Remove="package-lock.json" />
+		<Content Remove="package.json" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <None Remove="App_Data\UserGuide\pdf\en-US\Odds Group Feature_Licensee.pdf" />
-    <None Remove="App_Data\UserGuide\pdf\zh-CN\Odds Group Feature_Licensee.pdf" />
-  </ItemGroup>
-  
-  <ItemGroup>
-    <AdditionalFiles Include="..\..\.sonarlint\lap_playeradmin\CSharp\SonarLint.xml" Link="SonarLint.xml" />
-    <Content Include="App_Data\ExcelTemplate\DetailTransaction.xls">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="App_Data\UserGuide\pdf\en-US\Odds Group Feature_Licensee.pdf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="App_Data\UserGuide\pdf\zh-CN\Odds Group Feature_Licensee.pdf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-  
-  <ItemGroup>
-    <None Include="jshint.json" />
-    <None Include="package-lock.json" />
-    <None Include="package.json" />
-  </ItemGroup>
+	<ItemGroup>
+		<None Remove="App_Data\UserGuide\pdf\en-US\Odds Group Feature_Licensee.pdf" />
+		<None Remove="App_Data\UserGuide\pdf\zh-CN\Odds Group Feature_Licensee.pdf" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Fanex.Data.SqlServer" Version="4.3.2.1" />
-    <PackageReference Include="IdentityModel.AspNetCore.OAuth2Introspection" Version="5.1.0" />
-    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
-    <PackageReference Include="Microsoft.AspNetCore.DataProtection.StackExchangeRedis" Version="5.0.4" />
-    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.HealthChecks" Version="2.2.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="5.0.4" />
-    <PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="5.0.1" />
-    <PackageReference Include="Microsoft.Extensions.Http.Polly" Version="5.0.0" />
-    <PackageReference Include="Sentry.AspNetCore" Version="2.1.6" />
-  </ItemGroup>
+	<ItemGroup>
+		<AdditionalFiles Include="..\..\.sonarlint\lap_playeradmin\CSharp\SonarLint.xml" Link="SonarLint.xml" />
+		<Content Include="App_Data\ExcelTemplate\DetailTransaction.xls">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+		<Content Include="App_Data\UserGuide\pdf\en-US\Odds Group Feature_Licensee.pdf">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+		<Content Include="App_Data\UserGuide\pdf\zh-CN\Odds Group Feature_Licensee.pdf">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Fanex.Athena.PlayerAdmin.API\Fanex.Athena.PlayerAdmin.API.csproj" />
-    <ProjectReference Include="..\Fanex.Athena.PlayerAdmin.Core\Fanex.Athena.PlayerAdmin.Core.csproj" />
-    <ProjectReference Include="..\Fanex.Athena.PlayerAdmin.MVC\Fanex.Athena.PlayerAdmin.MVC.csproj" />
-    <ProjectReference Include="..\Modules\Fanex.Athena.PlayerAdmin.BatchUpdate\Fanex.Athena.PlayerAdmin.BatchUpdate.csproj" />
-    <ProjectReference Include="..\Modules\Fanex.Athena.PlayerAdmin.BetLimit\Fanex.Athena.PlayerAdmin.BetLimit.csproj" />
-    <ProjectReference Include="..\Modules\Fanex.Athena.PlayerAdmin.Commission\Fanex.Athena.PlayerAdmin.Commission.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<None Include="jshint.json" />
+		<None Include="package-lock.json" />
+		<None Include="package.json" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <None Update="App_Data\SpConfig\FanexSpName.UAT_2.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="App_Data\SpConfig\FanexSpName.KLDR.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="App_Data\SpConfig\FanexSpName.LOCAL_2.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="App_Data\SpConfig\FanexSpName.AWS.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="App_Data\SpConfig\FanexSpName.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="App_Data\SpConfig\FanexSpName.PROD.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="App_Data\SpConfig\FanexSpName.UAT_1.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="App_Data\SpConfig\FanexSpName.UAT.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="App_Data\SpConfig\FanexSpName.SIT_1.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="App_Data\SpConfig\FanexSpName.SIT.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="App_Data\SpConfig\FanexSpName.LOCAL_1.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="App_Data\SpConfig\FanexSpName.LOCAL.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="App_Data\UserGuide\pdf\id-ID\Odds Group Feature_Licensee.pdf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="App_Data\UserGuide\pdf\th-TH\Odds Group Feature_Licensee.pdf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Fanex.Data.SqlServer" Version="4.3.2.1" />
+		<PackageReference Include="IdentityModel.AspNetCore.OAuth2Introspection" Version="5.1.0" />
+		<PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
+		<PackageReference Include="Microsoft.AspNetCore.DataProtection.StackExchangeRedis" Version="5.0.4" />
+		<PackageReference Include="Microsoft.AspNetCore.Diagnostics.HealthChecks" Version="2.2.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="5.0.4" />
+		<PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="5.0.1" />
+		<PackageReference Include="Microsoft.Extensions.Http.Polly" Version="5.0.0" />
+		<PackageReference Include="Sentry.AspNetCore" Version="2.1.6" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="App_Data\UserGuide\pdf\id-ID\" />
-    <Folder Include="App_Data\UserGuide\pdf\th-TH\" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Fanex.Athena.PlayerAdmin.API\Fanex.Athena.PlayerAdmin.API.csproj" />
+		<ProjectReference Include="..\Fanex.Athena.PlayerAdmin.Core\Fanex.Athena.PlayerAdmin.Core.csproj" />
+		<ProjectReference Include="..\Fanex.Athena.PlayerAdmin.MVC\Fanex.Athena.PlayerAdmin.MVC.csproj" />
+		<ProjectReference Include="..\Modules\Fanex.Athena.PlayerAdmin.BatchUpdate\Fanex.Athena.PlayerAdmin.BatchUpdate.csproj" />
+		<ProjectReference Include="..\Modules\Fanex.Athena.PlayerAdmin.BetLimit\Fanex.Athena.PlayerAdmin.BetLimit.csproj" />
+		<ProjectReference Include="..\Modules\Fanex.Athena.PlayerAdmin.Commission\Fanex.Athena.PlayerAdmin.Commission.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Update="App_Data\**\*.*">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
+	<ItemGroup>
+		<AdditionalFiles Include="..\..\Dockerfile" Link="Dockerfile" />
+		<AdditionalFiles Include="..\..\.dockerignore" Link=".dockerignore" />
+	</ItemGroup>
 </Project>
