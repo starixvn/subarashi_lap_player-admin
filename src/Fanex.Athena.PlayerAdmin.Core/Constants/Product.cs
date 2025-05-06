@@ -117,8 +117,12 @@
         public const string FG = "FG";
 
         public const string HOT = "HOT";
-        
+
         public const string MGLC = "MGLC";
+
+        public const string PTLC = "PTLC";
+
+        public const string RGRNG = "RGRNG";
     }
 
     public static class ProductTypes
@@ -230,7 +234,11 @@
         public const int FG = 104;
 
         public const int HOT = 95;
-        
+
         public const int MGLC = 107;
+
+        public const int PTLC = 101;
+
+        public const int RGRNG = 108;
     }
 }

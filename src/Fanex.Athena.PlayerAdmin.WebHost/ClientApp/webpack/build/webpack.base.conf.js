@@ -1,17 +1,17 @@
-﻿var path = require('path');
-var merge = require('webpack-merge');
+﻿const path = require("path");
+const { merge } = require("webpack-merge");
+const TerserPlugin = require("terser-webpack-plugin");
 
-var pathConfig = require('../config/path');
-var alias = require('../config/alias');
-var rules = require('../config/rule');
-var pluginGenerator = require('../config/plugin');
-const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+const pathConfig = require("../config/path");
+const alias = require("../config/alias");
+const rules = require("../config/rule");
+const pluginGenerator = require("../config/plugin");
 
 function generateConfig(environment) {
     var jsPath = `${pathConfig.scriptPaths.build}/${environment}`;
     var cssPath = `${pathConfig.cssPaths.build}/${environment}`;
 
-    var commonConfigs = {
+    return {
         resolve: {
             alias: alias,
             modules: [
@@ -59,19 +59,22 @@ function generateConfig(environment) {
         },
         optimization: {
             minimizer: [
-                new UglifyJsPlugin({
-                    sourceMap: true
+                new TerserPlugin({
+                    parallel: true,
+                    terserOptions: {
+                        format: { comments: false },
+                        compress: { drop_console: true }
+                    },
+                    extractComments: false
                 })
             ],
             splitChunks: {
                 chunks: 'all',
                 minSize: 30000,
-                maxSize: 0,
                 minChunks: 2,
                 maxAsyncRequests: 5,
                 maxInitialRequests: 3,
                 automaticNameDelimiter: '~',
-                name: true,
                 cacheGroups: {
                     // disable default cache group
                     default: false,
@@ -92,8 +95,6 @@ function generateConfig(environment) {
             }
         }
     };
-
-    return commonConfigs;
 }
 
 module.exports = generateConfig;

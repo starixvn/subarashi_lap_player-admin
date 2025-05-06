@@ -89,7 +89,9 @@ const ConfirmationUpdateProductStatusMsg = {
     [BetLimitProduct.ASK]: { Msg: 'UpdateProductStatus', Product: 'ProductASK' },
     [BetLimitProduct.FG]: { Msg: 'UpdateProductStatus', Product: 'ProductFG' },
     [BetLimitProduct.HOT]: { Msg: 'UpdateProductStatus', Product: 'ProductHOT' },
-    [BetLimitProduct.MGLC]: { Msg: 'UpdateProductStatus', Product: 'ProductMGLC' }
+    [BetLimitProduct.MGLC]: { Msg: 'UpdateProductStatus', Product: 'ProductMGLC' },
+    [BetLimitProduct.PTLC]: { Msg: 'UpdateProductStatus', Product: 'ProductPTLC' },
+    [BetLimitProduct.RGRNG]: { Msg: 'UpdateProductStatus', Product: 'ProductRGRNG' }
 }
 
 const ConfirmationUpdateProductChargeCommMsg = {

@@ -1,28 +1,37 @@
-﻿var webpack = require('webpack');
-var WebpackBuildNotifierPlugin = require('webpack-build-notifier');
-var Visualizer = require('webpack-visualizer-plugin');
+﻿const webpack = require("webpack");
+const RemoveEmptyScriptsPlugin = require('webpack-remove-empty-scripts');
+const WebpackBuildNotifierPlugin = require("webpack-build-notifier");
+const Visualizer = require("webpack-visualizer-plugin2"); // ✅ Dùng phiên bản mới cho Webpack 5
 
 let _buildNumber = 1;
+
 function generatePlugins() {
-    var commonPlugins = [
-        new Visualizer({
-            filename: './wwwroot/webpack-stats-react.html'
+    return [
+        new webpack.ProvidePlugin({
+            JSZip: 'jszip'
         }),
-        new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+        new Visualizer({
+            filename: "./wwwroot/webpack-stats-react.html"
+        }),
+        new webpack.IgnorePlugin({
+            resourceRegExp: /^\.\/locale$/,
+            contextRegExp: /moment/
+        }),
+        new RemoveEmptyScriptsPlugin(),
         new WebpackBuildNotifierPlugin({
             title: "React Webpack Build",
             suppressSuccess: true
         }),
-         function () {
-             this.plugin('done', function (stats) {
-                 setTimeout(function () {
-                     console.log('\n ////////// Build version: #' + (_buildNumber++) + ' (' + new Date().toLocaleString() + ').//////////\n');
-                 }, 150);
-             });
-         }
+        {
+            apply: (compiler) => {
+                compiler.hooks.done.tap("BuildNotifier", (stats) => {
+                    setTimeout(() => {
+                        console.log(`\n ////////// Build version: #${_buildNumber++} (${new Date().toLocaleString()}).//////////\n`);
+                    }, 150);
+                });
+            }
+        }
     ];
-
-    return commonPlugins;
 }
 
 module.exports = generatePlugins;

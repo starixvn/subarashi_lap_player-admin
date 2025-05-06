@@ -1,25 +1,22 @@
-﻿var merge = require('webpack-merge');
-var utils = require('./utils');
-var baseWebpackConfigGenerator = require('./webpack.react.base.conf');
-var CleanWebpackPlugin = require('clean-webpack-plugin');
-var pathConfig = require('../config/pathReact');
+﻿const { merge } = require("webpack-merge");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const utils = require("./utils");
+const pathConfig = require("../config/pathReact");
+const baseWebpackConfigGenerator = require("./webpack.react.base.conf");
 
-var baseConfigs = baseWebpackConfigGenerator();
+const baseConfigs = baseWebpackConfigGenerator();
+const cssRootPath = pathConfig.cssPaths.build;
+const jsRootPath = pathConfig.scriptPaths.build;
 
-var cssRootPath = pathConfig.cssPaths.build;
-var jsRootPath = pathConfig.scriptPaths.build;
-
-module.exports = merge(baseConfigs,
-    utils.setDefinePlugin('process.env.NODE_ENV', 'production'),
+module.exports = merge(
+    baseConfigs,
+    utils.setDefinePlugin("process.env.NODE_ENV", "production"),
     {
-        mode: 'production',
+        mode: "production",
         watch: false,
         plugins: [
-            new CleanWebpackPlugin([`${jsRootPath}/`], {
-                root: process.cwd()               
-            }),
-            new CleanWebpackPlugin([`${cssRootPath}/`], {
-                root: process.cwd()               
+            new CleanWebpackPlugin({
+                cleanOnceBeforeBuildPatterns: [jsRootPath, cssRootPath]
             })
         ]
     },

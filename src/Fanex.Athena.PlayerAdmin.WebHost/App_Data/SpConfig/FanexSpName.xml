@@ -42,7 +42,7 @@
 	</Function>
 	<Function Name="SiteConfig">
 		<Setting Key="Lrf_SubsidiarySel" SpName="Lrf_SubsidiarySel" DbName="DBCUST.SiteConfig.wsv_lap" />
-		<Setting Key="Portal_Sub_GetSubsidiaryList" SpName="Portal_Sub_GetSubsidiaryList" DbName="DBCUST.SiteConfig.Dot_Admin_Portal" />
+		<Setting Key="Portal_Sub_GetSubsidiaryList" SpName="Portal_Sub_GetSubsidiaryList" DbName="DBCUST.SiteConfig.wsv_lap" />
 	</Function>
 	<Function Name="AG Casino">
 		<Setting Key="Lrf_AGC_SelCustSetting" SpName="Lrf_AGC_SelCustSetting" DbName="DBCUST.CustDB.wsv_lap" />
@@ -80,7 +80,7 @@
 		<Setting Key="Lrf_CustomerMoveGroupComm" SpName="Lrf_CustomerMoveGroupComm_xpre" DbName="DBCUST.bodb_Licensee.wsv_lap" TimeOut="240" />
 	</Function>
 	<SiteDB>
-		<Setting Key="SiteDB_Lrf_CustomerSelByUsername" SpName="SiteDB_Lrf_CustomerSelByUsername_xtest" DbName="DBSID.bodb02.wsv_lap" />
-		<Setting Key="SiteDB_Lrf_CustomerSelByCustid" SpName="SiteDB_Lrf_CustomerSelByCustid_xtest" DbName="DBSID.bodb02.wsv_lap" />
+		<Setting Key="SiteDB_Lrf_CustomerSelByUsername" SpName="SiteDB_Lrf_CustomerSelByUsername_xtest" DbName="Shard_DBSID.bodb02.wsv_lap" />
+		<Setting Key="SiteDB_Lrf_CustomerSelByCustid" SpName="SiteDB_Lrf_CustomerSelByCustid_xtest" DbName="Shard_DBSID.bodb02.wsv_lap" />
 	</SiteDB>
 </Functions>

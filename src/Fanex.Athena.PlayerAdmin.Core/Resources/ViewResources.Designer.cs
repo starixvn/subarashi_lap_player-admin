@@ -4516,7 +4516,7 @@ namespace Fanex.Athena.PlayerAdmin.Core.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Minimum odds.
+        ///   Looks up a localized string similar to Minimum odds.
         /// </summary>
         public static string MinimumOdds {
             get {
@@ -6028,11 +6028,29 @@ namespace Fanex.Athena.PlayerAdmin.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Playtech Live.
+        /// </summary>
+        public static string ProductPTLC {
+            get {
+                return ResourceManager.GetString("ProductPTLC", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Playtech.
         /// </summary>
         public static string ProductPTRNG {
             get {
                 return ResourceManager.GetString("ProductPTRNG", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to RichGaming.
+        /// </summary>
+        public static string ProductRGRNG {
+            get {
+                return ResourceManager.GetString("ProductRGRNG", resourceCulture);
             }
         }
         

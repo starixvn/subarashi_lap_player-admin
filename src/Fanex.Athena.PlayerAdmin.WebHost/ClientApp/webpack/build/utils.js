@@ -1,13 +1,12 @@
 ﻿const webpack = require('webpack');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
-exports.setDefinePlugin = function(key, value) {
-    const env = {};
-    env[key] = JSON.stringify(value);
-
+exports.setDefinePlugin = function (key, value) {
     return {
         plugins: [
-            new webpack.DefinePlugin(env)
+            new webpack.DefinePlugin({
+                [key]: JSON.stringify(value)
+            })
         ]
     };
 };
@@ -23,8 +22,11 @@ exports.extractCSS = function(isProduction) {
                     test: /\.(sc|c)ss$/,
                     use: [
                         MiniCssExtractPlugin.loader,
-                          'css-loader?url=false',
-                          'sass-loader',
+                        {
+                            loader: "css-loader",
+                            options: { url: false }
+                        },
+                        "sass-loader"
                     ]
                 }
             ]
