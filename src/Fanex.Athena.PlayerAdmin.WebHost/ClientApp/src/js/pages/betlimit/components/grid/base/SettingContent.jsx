@@ -215,7 +215,7 @@ const SettingContent = (Grid, DataHandling) => {
                     className: 'btn btn-cancel'
                 }];
 
-            const msg = (<p className="center-align">{Utility.getConfirmationUpdateStatusMsg(this.props.requestParam.ProductId)}</p>);
+            const msg = (<p className="center-align">{Utility.getConfirmationUpdateStatusMsg(this.props.requestParam.ProductId, this.props.productLabel)}</p>);
 
             this.setState({ disabledButton: !this.state.setting.StatusEnable }, () => this.props.setAlertOption({
                 isShow: true,

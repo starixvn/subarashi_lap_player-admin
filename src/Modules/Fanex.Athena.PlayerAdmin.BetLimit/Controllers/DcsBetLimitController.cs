@@ -67,7 +67,8 @@
             ProductTypes.HOT,
             ProductTypes.MGLC,
             ProductTypes.PTLC,
-            ProductTypes.RGRNG
+            ProductTypes.RGRNG,
+            ProductTypes.WLC
         })]
     public class DcsBetLimitController : PlayerBetLimitBaseControler
     {

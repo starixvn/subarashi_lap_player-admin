@@ -123,6 +123,8 @@
         public const string PTLC = "PTLC";
 
         public const string RGRNG = "RGRNG";
+
+        public const string WLC = "WLC";
     }
 
     public static class ProductTypes
@@ -240,5 +242,7 @@
         public const int PTLC = 101;
 
         public const int RGRNG = 108;
+
+        public const int WLC = 98;
     }
 }

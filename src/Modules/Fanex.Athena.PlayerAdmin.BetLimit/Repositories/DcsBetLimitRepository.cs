@@ -86,7 +86,8 @@
             { ProductTypes.HOT, 139 },
             { ProductTypes.MGLC, 124 },
             { ProductTypes.PTLC, 129 },
-            { ProductTypes.RGRNG, 123 }
+            { ProductTypes.RGRNG, 123 },
+            { ProductTypes.WLC, 136 }
         };
 
         private static readonly IDictionary<int, int> ProductBetTypeMap = new Dictionary<int, int>
@@ -137,7 +138,8 @@
             { ProductTypes.HOT, 11900 },
             { ProductTypes.MGLC, 13900 },
             { ProductTypes.PTLC, 15600 },
-            { ProductTypes.RGRNG, 15800 }
+            { ProductTypes.RGRNG, 15800 },
+            { ProductTypes.WLC, 12000 }
         };
 
         private readonly IDbFactory _db;
