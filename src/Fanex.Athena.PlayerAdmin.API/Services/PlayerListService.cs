@@ -142,7 +142,7 @@ namespace Fanex.Athena.PlayerAdmin.API.Services
                     playerList.Add(new Player
                     {
                         IbcCustId = Convert.ToInt32(reader["CustId"]),
-                        CurrencyId = Convert.ToByte(reader["ExchangeId"]),
+                        CurrencyId = Convert.ToInt32(reader["ExchangeId"]),
                         Currency = reader["Currency"].ToString(),
                         SystemId = reader["UserName"].ToString(),
                         UserName = reader["NickName"].ToString(),
@@ -170,7 +170,7 @@ namespace Fanex.Athena.PlayerAdmin.API.Services
             {
                 while (reader.Read())
                 {
-                    var currencyId = Convert.ToByte(reader["currency"]);
+                    var currencyId = Convert.ToInt32(reader["currency"]);
                     var currency = currencyDic.ContainsKey(currencyId) ? currencyDic[currencyId] : string.Empty;
                     const int ArchivedStatus = 3;
 
