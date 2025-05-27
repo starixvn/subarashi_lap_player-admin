@@ -109,7 +109,11 @@ export default class Utility {
         return message.replace('{0}', LangHelper.getSingleResource(ConfirmationMsg[productId].Product));
     }
 
-    static getConfirmationUpdateStatusMsg(productId) {
+    static getConfirmationUpdateStatusMsg(productId, productName) {
+        if (!ConfirmationUpdateProductStatusMsg[productId] && !!productName) {
+            return LangHelper.getSingleResource("UpdateProductStatus").replace('{0}', productName);
+        }
+
         const message = LangHelper.getSingleResource(ConfirmationUpdateProductStatusMsg[productId].Msg);
 
         if (!ConfirmationUpdateProductStatusMsg[productId].Product) {
