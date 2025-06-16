@@ -125,6 +125,10 @@
         public const string RGRNG = "RGRNG";
 
         public const string WLC = "WLC";
+
+        public const string AIG = "AIG";
+
+        public const string CPRNG = "CPRNG";
     }
 
     public static class ProductTypes
@@ -244,5 +248,9 @@
         public const int RGRNG = 108;
 
         public const int WLC = 98;
+
+        public const int AIG = 110;
+
+        public const int CPRNG = 109;
     }
 }

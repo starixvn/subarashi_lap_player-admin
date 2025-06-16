@@ -82,7 +82,9 @@
                 { ProductCode.MGLC, nameof(ViewResources.ProductMGLC) },
                 { ProductCode.PTLC, nameof(ViewResources.ProductPTLC) },
                 { ProductCode.RGRNG, nameof(ViewResources.ProductRGRNG) },
-                { ProductCode.WLC, nameof(ViewResources.ProductWLC) }
+                { ProductCode.WLC, nameof(ViewResources.ProductWLC) },
+                { ProductCode.AIG, nameof(ViewResources.ProductAIG) },
+                { ProductCode.CPRNG, nameof(ViewResources.ProductCPRNG) }
             };
 
         public static string GetProductName(string productCode, string defaultValue = null)
