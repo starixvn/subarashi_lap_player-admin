@@ -18,8 +18,6 @@ namespace Fanex.Athena.PlayerAdmin.Core.Services
 
         Task<ProductAccess> GetProductAccess(int licenseeId, string function = "Default");
 
-        string[] GetAllowedProductsByFunction(string function);
-
         Task<ProductAccess> GetSingleWalletProductAccess(int licenseeId, string function = "Default");
 
         IEnumerable<ProductOption> GetAllowedSubProductOptions(IEnumerable<string> offeredSubProductList, IEnumerable<ProductOption> productOptions);
