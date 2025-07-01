@@ -14,11 +14,13 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Fanex.Data" Version="*" />
   </ItemGroup>
   
   <ItemGroup>
     <ProjectReference Include="..\..\src\Fanex.Athena.PlayerAdmin.Core\Fanex.Athena.PlayerAdmin.Core.csproj" />
     <ProjectReference Include="..\..\src\Modules\Fanex.Athena.PlayerAdmin.BatchUpdate\Fanex.Athena.PlayerAdmin.BatchUpdate.csproj" />
+    <ProjectReference Include="..\..\src\Fanex.Data\Fanex.Data.csproj" />
   </ItemGroup>
 
 </Project>

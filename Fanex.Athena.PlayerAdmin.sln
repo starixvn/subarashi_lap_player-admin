@@ -1,5 +1,4 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30717.126
 MinimumVisualStudioVersion = 10.0.40219.1
@@ -24,6 +23,18 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.Athena.PlayerAdmin.Core", "src\Fanex.Athena.PlayerAdmin.Core\Fanex.Athena.PlayerAdmin.Core.csproj", "{8D76DD4F-011C-43DE-88BE-4CDDA0CAC77C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.Athena.PlayerAdmin.Core.UnitTests", "test\Fanex.Athena.PlayerAdmin.Core.UnitTests\Fanex.Athena.PlayerAdmin.Core.UnitTests.csproj", "{77D0E28C-9086-477E-9871-B018D4CDD862}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.Athena.PlayerAdmin.API.UnitTests", "test\Fanex.Athena.PlayerAdmin.API.UnitTests\Fanex.Athena.PlayerAdmin.API.UnitTests.csproj", "{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.Athena.PlayerAdmin.MVC.UnitTests", "test\Fanex.Athena.PlayerAdmin.MVC.UnitTests\Fanex.Athena.PlayerAdmin.MVC.UnitTests.csproj", "{245DDDD0-6ED5-4ED2-995B-BD755D1E9FC9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.Athena.PlayerAdmin.BetLimit.UnitTests", "test\Modules\Fanex.Athena.PlayerAdmin.BetLimit.UnitTests\Fanex.Athena.PlayerAdmin.BetLimit.UnitTests.csproj", "{546937CD-BAF9-4FE3-998F-61933AB74B72}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.Athena.PlayerAdmin.WebHost.UnitTests", "test\Fanex.Athena.PlayerAdmin.WebHost.UnitTests\Fanex.Athena.PlayerAdmin.WebHost.UnitTests.csproj", "{C0390BCA-32BA-477A-8D3E-66F772634036}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{B5FA33D4-9648-474B-A03C-DC879E7998F6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.Athena.PlayerAdmin.Commission.UnitTests", "test\Modules\Fanex.Athena.PlayerAdmin.Commission.UnitTests\Fanex.Athena.PlayerAdmin.Commission.UnitTests.csproj", "{76E001FD-CE54-4251-AACF-A7581FC5F531}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +74,26 @@ Global
 		{77D0E28C-9086-477E-9871-B018D4CDD862}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{77D0E28C-9086-477E-9871-B018D4CDD862}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{77D0E28C-9086-477E-9871-B018D4CDD862}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}.Release|Any CPU.Build.0 = Release|Any CPU
+		{245DDDD0-6ED5-4ED2-995B-BD755D1E9FC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{245DDDD0-6ED5-4ED2-995B-BD755D1E9FC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{245DDDD0-6ED5-4ED2-995B-BD755D1E9FC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{245DDDD0-6ED5-4ED2-995B-BD755D1E9FC9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{546937CD-BAF9-4FE3-998F-61933AB74B72}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{546937CD-BAF9-4FE3-998F-61933AB74B72}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{546937CD-BAF9-4FE3-998F-61933AB74B72}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{546937CD-BAF9-4FE3-998F-61933AB74B72}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0390BCA-32BA-477A-8D3E-66F772634036}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0390BCA-32BA-477A-8D3E-66F772634036}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0390BCA-32BA-477A-8D3E-66F772634036}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0390BCA-32BA-477A-8D3E-66F772634036}.Release|Any CPU.Build.0 = Release|Any CPU
+		{76E001FD-CE54-4251-AACF-A7581FC5F531}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76E001FD-CE54-4251-AACF-A7581FC5F531}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76E001FD-CE54-4251-AACF-A7581FC5F531}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76E001FD-CE54-4251-AACF-A7581FC5F531}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -77,6 +108,12 @@ Global
 		{1733FADB-8149-4888-B4D5-42D80C74022F} = {23A7457E-411B-4812-A100-38A2D46F3C7E}
 		{8D76DD4F-011C-43DE-88BE-4CDDA0CAC77C} = {C1AD4681-23B2-4754-9557-BDAAD5AB42E7}
 		{77D0E28C-9086-477E-9871-B018D4CDD862} = {D361649C-3A9F-4A62-A4E5-AC9127054C0B}
+		{A1B2C3D4-E5F6-7890-ABCD-EF1234567890} = {D361649C-3A9F-4A62-A4E5-AC9127054C0B}
+		{245DDDD0-6ED5-4ED2-995B-BD755D1E9FC9} = {D361649C-3A9F-4A62-A4E5-AC9127054C0B}
+		{546937CD-BAF9-4FE3-998F-61933AB74B72} = {D361649C-3A9F-4A62-A4E5-AC9127054C0B}
+		{C0390BCA-32BA-477A-8D3E-66F772634036} = {D361649C-3A9F-4A62-A4E5-AC9127054C0B}
+		{B5FA33D4-9648-474B-A03C-DC879E7998F6} = {D361649C-3A9F-4A62-A4E5-AC9127054C0B}
+		{76E001FD-CE54-4251-AACF-A7581FC5F531} = {B5FA33D4-9648-474B-A03C-DC879E7998F6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {765C8FB1-5F05-431C-884A-C8DF3DCA0C32}
