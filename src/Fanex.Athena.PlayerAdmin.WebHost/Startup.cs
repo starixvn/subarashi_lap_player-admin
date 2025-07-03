@@ -40,6 +40,7 @@ using Microsoft.Extensions.Logging;
 using Fanex.Athena.PlayerAdmin.Core.Services;
 using Fanex.Data.Vault;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using System.Configuration;
 
 namespace Fanex.Athena.PlayerAdmin.WebHost
 {
@@ -54,6 +55,8 @@ namespace Fanex.Athena.PlayerAdmin.WebHost
         public IConfiguration Configuration { get; }
 
         public IWebHostEnvironment HostingEnvironment { get; }
+
+        private const string SqlProviderName = "Microsoft.Data.SqlClient";
 
         public void ConfigureServices(IServiceCollection services)
         {
@@ -336,10 +339,21 @@ namespace Fanex.Athena.PlayerAdmin.WebHost
 
         private void ConfigFanexData(IServiceCollection services)
         {
+            var connectionStrings = Configuration
+                .GetSection("ConnectionStrings")
+                .GetChildren().AsEnumerable()
+                .ToDictionary((IConfigurationSection x) => x.GetValue<string>("Name"), (IConfigurationSection y) => new ConnectionConfiguration(y.GetValue<string>("Name"), y.GetValue<string>("ConnectionString"), y.GetValue<string>("ProviderName")));
+
+            var vaultOptions = Configuration.GetSection("VaultOptions").Get<VaultOptions>();
+
             DbSettingProviderManager
                 .StartNewSession()
-                .WithSqlServer(Configuration)
-                .UseDefaultDbSettingProvider("~/App_Data/SpConfig/FanexSpName.xml", true)
+                .Use(connectionStrings)
+                .Use(vaultOptions)
+                .Register(SqlProviderName,
+                    new ShardDbSettingProvider(new ShardInfoAccessor(new ContextService(services.BuildServiceProvider().GetRequiredService<IHttpContextAccessor>())))
+                    .CreateObjectDbFunc)
+                .UseDefaultDbSettingProvider("~/App_Data/SpConfig/FanexSpName.xml")
                 .Run();
 
             services.TryAddSingleton<VaultDbAliasService, VaultDbAliasServiceImp>();
