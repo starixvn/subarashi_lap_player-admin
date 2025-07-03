@@ -80,11 +80,8 @@
                     <tbody>
                         @foreach (var comm in Model.Groups[0].CommValues)
                         {
-                            var productName = ViewResources.ResourceManager.GetString("Product" + comm.ProductCode);
-                            productName = string.IsNullOrEmpty(productName) ? comm.ProductCode : productName;
-
                             <tr>
-                                <td>@productName</td>
+                                <td>@comm.ProductName</td>
                                 <td class="text-center">
                                     <div class="comm-@comm.ProductCode">0.00</div>
                                 </td>

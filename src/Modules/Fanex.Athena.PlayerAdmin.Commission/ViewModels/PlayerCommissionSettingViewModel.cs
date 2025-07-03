@@ -19,6 +19,8 @@ namespace Fanex.Athena.PlayerAdmin.Commission.ViewModels
 
         public string ProductCode { get; set; }
 
+        public string ProductName { get; set; }
+
         public void MapData(IDataReader reader)
         {
             Sporttype = Convert.ToInt32(reader["Sporttype"]);

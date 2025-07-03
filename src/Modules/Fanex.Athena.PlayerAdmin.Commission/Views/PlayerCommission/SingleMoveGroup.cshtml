@@ -92,11 +92,9 @@
                         @for (int i = 0; i < currentComms.Count(); i++)
                         {
                             var comm = currentComms.ElementAt(i);
-                            var productName = ViewResources.ResourceManager.GetString("Product" + comm.ProductCode);
-                            productName = string.IsNullOrEmpty(productName) ? comm.ProductCode : productName;
 
                             <tr>
-                                <td>@productName</td>
+                                <td>@comm.ProductName</td>
                                 <td class="text-center">
                                     <div class="comm-@comm.ProductCode">@((comm.Discount * 100).ToString("N2"))</div>
                                 </td>

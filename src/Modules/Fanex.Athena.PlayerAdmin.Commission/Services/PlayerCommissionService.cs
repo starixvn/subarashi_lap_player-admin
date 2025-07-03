@@ -23,7 +23,7 @@ namespace Fanex.Athena.PlayerAdmin.Commission.Services
 
         public async Task<IEnumerable<PlayerCommissionSettingViewModel>> InitCommValues(ProductAccess productAccess)
         {
-            var commSettings = await _repository.GetAllCommSettingAsync().ConfigureAwait(false);
+            var commSettings = await _repository.GetAllCommSettingAsync(productAccess).ConfigureAwait(false);
             commSettings = commSettings.Where(_ => CommissionGroupHelper.GetProductPermissions(productAccess, _.ProductCode))
                 .OrderBy(_ => CommissionGroupHelper.ProductListComparer(_.ProductCode)).ThenBy(_ => _.ProductCode); ;
 
@@ -33,7 +33,7 @@ namespace Fanex.Athena.PlayerAdmin.Commission.Services
         public async Task<IEnumerable<PlayerCommissionViewModel>> GetAllCommGroups(BasePlayerCommissionUpdateQuery query, ProductAccess productAccess)
         {
             var criteria = new GetAllCommGroupsCriteria(query);
-            var (comms, commValues) = await _repository.GetAllCommGroups(criteria).ConfigureAwait(false);
+            var (comms, commValues) = await _repository.GetAllCommGroups(criteria, productAccess).ConfigureAwait(false);
 
             return MergeCommSetting(comms, commValues, productAccess);
         }
@@ -58,7 +58,7 @@ namespace Fanex.Athena.PlayerAdmin.Commission.Services
 
         public async Task<IResultInfo> MultipleMoveGroup(MultipleMoveGroupQuery query, ProductAccess productAccess)
         {
-            var (comm, commValues) = await _repository.GetCommissionGroupById(new GetCommissionGroupByIdCriteria(query));
+            var (comm, commValues) = await _repository.GetCommissionGroupById(new GetCommissionGroupByIdCriteria(query), productAccess);
             var groupInfo = MergeCommSetting(comm, commValues, productAccess);
 
             if (groupInfo?.CommValues == null)
@@ -89,7 +89,7 @@ namespace Fanex.Athena.PlayerAdmin.Commission.Services
         {
             var criteria = new GetPlayerCommissionGroupCriteria(query);
 
-            var (comms, commValues) = await _repository.GetPlayerCommissionGroup(criteria).ConfigureAwait(false);
+            var (comms, commValues) = await _repository.GetPlayerCommissionGroup(criteria, productAccess).ConfigureAwait(false);
 
             return MergeCommSetting(comms, commValues, productAccess);
         }

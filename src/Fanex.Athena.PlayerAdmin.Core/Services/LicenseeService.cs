@@ -157,35 +157,6 @@ namespace Fanex.Athena.PlayerAdmin.Core.Services
             }
         }
 
-        private async Task<IList<Product>> GetProductListFromDB(int licenseeId)
-        {
-            // All licensees have product Sb
-            var allowedProducts = new List<Product> { new Product { IsOfferedSingleWallet = true, ProductCode = ProductCode.SB, ProductName = "Sportsbook" } };
-
-            using (var db = _dbFactory.GetObjectDb("Lrf_LicenseeProduct3rdSel"))
-            {
-                db.SetParameterValue("licenseeid", licenseeId);
-
-                using (var reader = await db.ExecuteReaderAsync())
-                {
-                    while (reader.Read())
-                    {
-                        allowedProducts.Add(new Product
-                        {
-                            ProductID = Convert.ToInt32(reader["ProductID"]),
-                            ProductName = Convert.ToString(reader["productprefix"]), //DataHelper.GetProductName(Convert.ToString(reader["productprefix"])),
-                            ProductCode = Convert.ToString(reader["productprefix"]),
-                            AllowCommission = Convert.ToBoolean(reader["comm"]),
-                            AllowWinloss = Convert.ToBoolean(reader["winloss"]),
-                            IsOfferedSingleWallet = Convert.ToBoolean(reader["IsOfferedSingleWallet"])
-                        });
-                    }
-                }
-
-                return allowedProducts;
-            }
-        }
-
         private async Task<BalanceUpData> GetBalanceUpDayFromDb()
         {
             const string UspName = "Lrf_SelBalanceUpDay";
