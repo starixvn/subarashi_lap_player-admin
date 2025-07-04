@@ -252,5 +252,7 @@
         public const int AIG = 110;
 
         public const int CPRNG = 109;
+
+        public const int GPILT = 84;
     }
 }
