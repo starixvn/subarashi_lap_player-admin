@@ -7,6 +7,10 @@ namespace Fanex.Athena.PlayerAdmin.API.MetaModel
     {
         public string SiteName { get; set; }
 
+        public string OddsGroup { get; set; }
+
+        public string SpecialLevel { get; set; }
+
         public string CurrencyIdList { get; set; }
 
         public string AgentListXml { get; set; }
