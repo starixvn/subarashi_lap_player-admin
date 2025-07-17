@@ -10,34 +10,11 @@ namespace Fanex.Athena.PlayerAdmin.MVC.MetaModel
 
         private int _pageSize;
 
-        private string _sortBy;
-
-        private string _sortOrder;
-
         public int CustId { get; set; }
 
-        public string SortBy
-        {
-            get { return _sortBy; }
-            set
-            {
-                _sortBy = !string.IsNullOrWhiteSpace(value) && value.Equals("stake", StringComparison.InvariantCultureIgnoreCase)
-                    ? value
-                    : null;
-            }
-        }
+        public byte SortType { get; set; }
 
-        public string SortOrder
-        {
-            get { return _sortOrder; }
-            set
-            {
-                var normalizedValue = value?.Trim();
-                _sortOrder = string.Equals(normalizedValue, "asc", StringComparison.InvariantCultureIgnoreCase) ||
-                    string.Equals(normalizedValue, "desc", StringComparison.InvariantCultureIgnoreCase) ?
-                    normalizedValue : null;
-            }
-        }
+        public byte SortOrder { get; set; } = 1;
 
         public int PageSize
         {
@@ -65,6 +42,7 @@ namespace Fanex.Athena.PlayerAdmin.MVC.MetaModel
         public int SpecialPlatform { get; set; }
 
         public bool IsShowIp { get; set; }
+
         public bool IsShowIpVN { get; set; }
     }
 }
