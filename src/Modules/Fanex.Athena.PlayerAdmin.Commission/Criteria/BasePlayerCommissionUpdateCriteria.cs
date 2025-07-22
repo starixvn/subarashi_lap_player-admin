@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Fanex.Athena.PlayerAdmin.Commission.MetaModels;
+﻿using Fanex.Athena.PlayerAdmin.Commission.MetaModels;
 using Fanex.Data;
 
 namespace Fanex.Athena.PlayerAdmin.Commission.Criteria

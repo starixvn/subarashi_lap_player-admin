@@ -2,7 +2,6 @@
 using Fanex.Athena.PlayerAdmin.BetLimit.ViewModels;
 using Fanex.Athena.PlayerAdmin.Core.Constants;
 using Fanex.Athena.PlayerAdmin.Core.Attributes;
-using Fanex.Athena.PlayerAdmin.Core.Helpers;
 using Fanex.Athena.PlayerAdmin.Core.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
@@ -10,7 +9,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using Fanex.Athena.PlayerAdmin.Core.Settings;
 using Microsoft.Extensions.Options;
-using NPOI.HSSF.Record.Chart;
 
 namespace Fanex.Athena.PlayerAdmin.BetLimit.Controllers
 {

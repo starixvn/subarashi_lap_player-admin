@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoFixture;
 using Fanex.Athena.PlayerAdmin.BatchUpdate.Controllers;
 using Fanex.Athena.PlayerAdmin.BatchUpdate.MetaModels;
 using Fanex.Athena.PlayerAdmin.BatchUpdate.Services;
 using Fanex.Athena.PlayerAdmin.Core.Attributes;
-using Fanex.Athena.PlayerAdmin.Core.Services;
 using LZStringCSharp;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;

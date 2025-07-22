@@ -5,7 +5,7 @@ namespace Fanex.Athena.PlayerAdmin.BatchUpdate.Criteria
 {
     public class UpdateOddsGroupCriteria : BasePlayerBatchUpdateCriteria
     {
-        public UpdateOddsGroupCriteria(UpdateOddsGroupApiMetaModel metaModel, string custId) 
+        public UpdateOddsGroupCriteria(UpdateOddsGroupApiMetaModel metaModel, string custId)
             : base(metaModel, custId)
         {
             OddsGroupId = metaModel.OddsGroupId;

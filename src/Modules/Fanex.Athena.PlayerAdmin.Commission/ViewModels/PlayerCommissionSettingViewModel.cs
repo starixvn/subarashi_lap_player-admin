@@ -1,6 +1,4 @@
 ﻿using Fanex.Athena.PlayerAdmin.Commission.Helpers;
-using Fanex.Athena.PlayerAdmin.Core.Constants;
-using Fanex.Athena.PlayerAdmin.Core.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Data;

@@ -127,7 +127,7 @@ namespace Fanex.Athena.PlayerAdmin.Core.Attributes
                 await BindBalanceUp(balanceUpAndMoveBetMetaModel);
             }
 
-            if(_bindProductList)
+            if (_bindProductList)
             {
                 await BindProductList(context);
             }
@@ -160,7 +160,7 @@ namespace Fanex.Athena.PlayerAdmin.Core.Attributes
             if (MetaModelHelper.IsMetaModel(context.ActionArguments, out IProductCodeListMetaModel productCodeListMetaModel))
             {
                 await BindProductCodeList(productCodeListMetaModel, functionKey);
-            } 
+            }
             else
             {
                 //nothing

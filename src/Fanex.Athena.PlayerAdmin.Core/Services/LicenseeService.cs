@@ -1,12 +1,9 @@
 ﻿using Fanex.Athena.PlayerAdmin.Core.ConsoleClient;
 using Fanex.Athena.PlayerAdmin.Core.Constants;
 using Fanex.Athena.PlayerAdmin.Core.Extensions;
-using Fanex.Athena.PlayerAdmin.Core.Helpers;
 using Fanex.Athena.PlayerAdmin.Core.Models;
 using Fanex.Athena.PlayerAdmin.Core.Repositories;
-using Fanex.Athena.PlayerAdmin.Core.Settings;
 using Microsoft.Extensions.Caching.Memory;
-using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Linq;

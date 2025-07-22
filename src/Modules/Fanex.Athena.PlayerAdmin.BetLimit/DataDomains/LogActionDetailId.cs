@@ -17,7 +17,7 @@
         public const int UpdatingProductStatus = 36;
 
         public const int UpdatingChargeComm = 37;
-        
+
         public const int UpdatingMaxPayoutPerMatch = 2047;
     }
 }

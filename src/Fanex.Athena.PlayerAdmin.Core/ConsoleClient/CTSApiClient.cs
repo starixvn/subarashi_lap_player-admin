@@ -11,7 +11,7 @@ namespace Fanex.Athena.PlayerAdmin.Core.ConsoleClient
         {
         }
 
-        public async Task<HttpResponseMessage> PostAsync(string path, object value, string language, int timeOut = 100)        
+        public async Task<HttpResponseMessage> PostAsync(string path, object value, string language, int timeOut = 100)
             => await HandleAsync(path, value, language, MediaType.Json,
                  (response) => Task.FromResult(response)
                 , false, timeOut);

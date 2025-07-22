@@ -111,7 +111,7 @@ namespace Fanex.Athena.PlayerAdmin.WebHost.Controllers
             };
 
             var tokenResponse = await _client.RequestTokenAsync(request);
-         
+
             return tokenResponse.Exception != null ? throw tokenResponse.Exception : tokenResponse;
         }
 
@@ -125,7 +125,7 @@ namespace Fanex.Athena.PlayerAdmin.WebHost.Controllers
 
             var userInfo = await _client.GetUserInfoAsync(request);
             return userInfo;
-        } 
+        }
 
         [HttpGet]
         [Route("auth/RedirectToLAP/{lapUrl}/{lapVer?}")]

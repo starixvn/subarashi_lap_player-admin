@@ -1,5 +1,4 @@
-﻿using System.Net.Http;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
 namespace Fanex.Athena.PlayerAdmin.Core.ConsoleClient
 {

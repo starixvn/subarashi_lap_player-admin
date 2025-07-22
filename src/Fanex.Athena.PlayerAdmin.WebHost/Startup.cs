@@ -13,7 +13,6 @@ using Fanex.Athena.PlayerAdmin.MVC.Extensions;
 using Fanex.Athena.PlayerAdmin.MVC.Services;
 using Fanex.Athena.PlayerAdmin.MVC.Services.Interfaces;
 using Fanex.Data;
-using Fanex.Data.SqlServer;
 using Fanex.RemotingRef;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -40,7 +39,6 @@ using Microsoft.Extensions.Logging;
 using Fanex.Athena.PlayerAdmin.Core.Services;
 using Fanex.Data.Vault;
 using Microsoft.Extensions.DependencyInjection.Extensions;
-using System.Configuration;
 
 namespace Fanex.Athena.PlayerAdmin.WebHost
 {

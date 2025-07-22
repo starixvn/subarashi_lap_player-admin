@@ -6,7 +6,6 @@ using Fanex.Athena.PlayerAdmin.BetLimit.DTO;
 using Fanex.Athena.PlayerAdmin.BetLimit.MetaModel;
 using Fanex.Athena.PlayerAdmin.BetLimit.Repositories.Interfaces;
 using Fanex.Data;
-using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;

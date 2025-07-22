@@ -1,5 +1,4 @@
-﻿using Fanex.Athena.PlayerAdmin.BetLimit.DataDomains;
-using Fanex.Athena.PlayerAdmin.BetLimit.DTO;
+﻿using Fanex.Athena.PlayerAdmin.BetLimit.DTO;
 using Fanex.Athena.PlayerAdmin.BetLimit.DTO.BetLimits;
 using Fanex.Athena.PlayerAdmin.BetLimit.Helpers;
 using Fanex.Athena.PlayerAdmin.BetLimit.MetaModel;
