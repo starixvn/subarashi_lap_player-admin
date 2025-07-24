@@ -1,6 +1,4 @@
-﻿using Fanex.Athena.PlayerAdmin.Core.Constants;
-using Fanex.Athena.PlayerAdmin.Core.DataDomains;
-using MediatR;
+﻿using MediatR;
 
 namespace Fanex.Athena.PlayerAdmin.Core.Mediator
 {

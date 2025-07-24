@@ -20,6 +20,7 @@ namespace Fanex.Athena.PlayerAdmin.Core.Extensions
         {
             services.AddTransient<IReportApiClient, ReportApiClient>();
             services.AddTransient<IBetListApiClient, BetListApiClient>();
+            services.AddTransient<ICommonApiClient, CommonApiClient>();
 
             services.AddScoped<IContextService, ContextService>();
 
@@ -29,7 +30,7 @@ namespace Fanex.Athena.PlayerAdmin.Core.Extensions
             services.AddSingleton<IRemotingRefService, RemotingRefService>();
             services.AddSingleton<IMetaModelBindingService, BaseMetaModelBindingService>();
             services.AddSingleton<IFunctionUMService, FunctionUMService>();
-            
+
             return services;
         }
 

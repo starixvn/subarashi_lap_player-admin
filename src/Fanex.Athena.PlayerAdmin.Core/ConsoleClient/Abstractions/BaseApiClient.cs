@@ -39,7 +39,6 @@ namespace Fanex.Athena.PlayerAdmin.Core.ConsoleClient
             _client = client;
         }
 
-
         protected virtual Task PrepareHeaders(HttpRequestHeaders headers) => Task.CompletedTask;
 
         protected virtual async Task<T> HandleAsync<T>(string path, object value, string language, MediaType mediaType, Func<HttpResponseMessage, Task<T>> codeBlock,
@@ -106,6 +105,54 @@ namespace Fanex.Athena.PlayerAdmin.Core.ConsoleClient
             }
         }
 
+        public virtual async Task<string> GetStringAsync(string path, int timeOut = 100)
+        {
+            using var cancelToken = new CancellationTokenSource(new TimeSpan(0, 0, timeOut));
+            using var request = new HttpRequestMessage(HttpMethod.Get, new Uri(_client.BaseAddress + path));
+            await PrepareHeaders(request.Headers).ConfigureAwait(false);
+            request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue(JsonContentType));
+
+            HttpResponseMessage response = null;
+            try
+            {
+                response = await _client.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, cancelToken.Token).ConfigureAwait(false);
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    await HandleUnSuccessRequestAsync(response);
+                }
+
+                using (response)
+                {
+                    using var stream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
+                    using var streamReader = new StreamReader(stream);
+                    using var textWriter = new StringWriter();
+                    const int chunkLength = 4096;
+                    var buffer = new char[chunkLength];
+                    int readChunkLength;
+
+                    do
+                    {
+                        readChunkLength = streamReader.ReadBlock(buffer, 0, chunkLength);
+                        textWriter.Write(buffer, 0, readChunkLength);
+                    } while (readChunkLength > 0);
+
+                    return textWriter.ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new ServiceException(ex.Message, ApiName, ex);
+            }
+            finally
+            {
+                if (response != null)
+                {
+                    response.Dispose();
+                }
+            }
+        }
+
         public virtual async Task<T> PostAsync<T>(string path, object value, string language) where T : class
         {
             return await HandleAsync(
@@ -163,7 +210,7 @@ namespace Fanex.Athena.PlayerAdmin.Core.ConsoleClient
                 timeOut: timeOut
             );
         }
-        
+
         protected virtual Task HandleUnSuccessRequestAsync(HttpResponseMessage response)
         {
             response?.EnsureSuccessStatusCode();

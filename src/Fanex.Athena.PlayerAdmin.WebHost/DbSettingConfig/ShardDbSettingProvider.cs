@@ -1,6 +1,5 @@
 ﻿using Fanex.Data;
 using Fanex.Data.SqlServer;
-using System.Data.SqlClient;
 
 namespace Fanex.Athena.PlayerAdmin.WebHost
 {

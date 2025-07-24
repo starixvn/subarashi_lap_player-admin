@@ -1,15 +1,10 @@
-﻿using Fanex.Athena.PlayerAdmin.API.DTO;
-using Fanex.Athena.PlayerAdmin.API.Services;
+﻿using Fanex.Athena.PlayerAdmin.API.Services;
 using Fanex.Athena.PlayerAdmin.API.ViewModels;
 using Fanex.Athena.PlayerAdmin.Core.Attributes;
 using Fanex.Athena.PlayerAdmin.Core.Constants;
-using Fanex.Athena.PlayerAdmin.Core.Extensions;
 using Fanex.Athena.PlayerAdmin.Core.Services;
-using Fanex.Athena.PlayerAdmin.Core.Settings;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Options;
-using System;
 using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -48,7 +43,7 @@ namespace Fanex.Athena.PlayerAdmin.API.Controllers
         {
             return new JsonResult(new PlayerInfoSettingViewModel
             {
-                IsShowPlayerProfile =_contextService.IsInRoles(Roles.SuperAdmin, Roles.PlayerProfile),
+                IsShowPlayerProfile = _contextService.IsInRoles(Roles.SuperAdmin, Roles.PlayerProfile),
                 IsShowBankInformation = _contextService.IsInRoles(Roles.SuperAdmin, Roles.BankInfo),
                 IsShowActivityRecord = _contextService.IsInRoles(Roles.SuperAdmin, Roles.ActivityRecord),
             }, new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase });

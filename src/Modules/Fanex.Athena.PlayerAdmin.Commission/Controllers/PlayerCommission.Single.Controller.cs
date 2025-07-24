@@ -15,7 +15,7 @@ namespace Fanex.Athena.PlayerAdmin.Commission.Controllers
         [AutoBindingMetaModel(bindLicenseeId: true, bindUsername: true, bindClientIP: true, bindLanguage: true, bindUserId: true)]
         public async Task<ViewResult> SingleMoveGroup([FromQuery] SingleMoveGroupQuery query)
         {
-            var productAccess = await _licenseeService.GetProductAccess(_contextService.LicenseeId);
+            var productAccess = await _licenseeService.GetProductAccess(_contextService.LicenseeId, "CommissionGroups");
             var groups = await _playerCommService.GetAllCommGroups(query, productAccess);
             var currentGroup = await _playerCommService.GetPlayerCommissionGroup(query, productAccess);
             var hasCommPermissionWrite = _contextService.IsInRoles(Roles.SuperAdmin, Roles.CommissionGroup_Write);
@@ -42,7 +42,7 @@ namespace Fanex.Athena.PlayerAdmin.Commission.Controllers
         [AutoBindingMetaModel(bindLicenseeId: true, bindUsername: true, bindClientIP: true, bindLanguage: true, bindUserId: true)]
         public async Task<ViewResult> SingleUpdateGroup([FromQuery] SingleUpdateGroupQuery query)
         {
-            var productAccess = await _licenseeService.GetProductAccess(_contextService.LicenseeId);
+            var productAccess = await _licenseeService.GetProductAccess(_contextService.LicenseeId, "CommissionGroups");
             var groups = await _playerCommService.GetAllCommGroups(query, productAccess);
             var currentGroup = await _playerCommService.GetPlayerCommissionGroup(query, productAccess);
             var viewModel = new SingleMoveGroupViewModel(query, groups, currentGroup, true);

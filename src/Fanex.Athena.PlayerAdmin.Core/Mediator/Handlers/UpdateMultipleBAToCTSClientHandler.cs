@@ -1,5 +1,4 @@
 ﻿using Fanex.Athena.PlayerAdmin.Core.ConsoleClient;
-using Fanex.Athena.PlayerAdmin.Core.DataDomains;
 using Fanex.Athena.PlayerAdmin.Core.Settings;
 using MediatR;
 using Microsoft.Extensions.Options;

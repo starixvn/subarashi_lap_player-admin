@@ -1,6 +1,4 @@
 ﻿using Fanex.Athena.PlayerAdmin.Commission.Helpers;
-using Fanex.Athena.PlayerAdmin.Core.Constants;
-using Fanex.Athena.PlayerAdmin.Core.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -18,6 +16,8 @@ namespace Fanex.Athena.PlayerAdmin.Commission.ViewModels
         public decimal Discount { get; set; }
 
         public string ProductCode { get; set; }
+
+        public string ProductName { get; set; }
 
         public void MapData(IDataReader reader)
         {

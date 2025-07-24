@@ -5,7 +5,7 @@ namespace Fanex.Athena.PlayerAdmin.BatchUpdate.Criteria
 {
     public class UpdateSpecialLevelCriteria : BasePlayerBatchUpdateCriteria
     {
-        public UpdateSpecialLevelCriteria(UpdateSpecialLevelApiMetaModel metaModel, string custId) 
+        public UpdateSpecialLevelCriteria(UpdateSpecialLevelApiMetaModel metaModel, string custId)
             : base(metaModel, custId)
         {
             SpecialLevelId = metaModel.SpecialLevelId;

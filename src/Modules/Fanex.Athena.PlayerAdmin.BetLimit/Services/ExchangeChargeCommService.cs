@@ -9,7 +9,6 @@ using Fanex.Athena.PlayerAdmin.Core.Resources;
 using Fanex.Athena.PlayerAdmin.Core.Settings;
 using MediatR;
 using Microsoft.Extensions.Options;
-using System.Security.Policy;
 using System.Threading.Tasks;
 
 namespace Fanex.Athena.PlayerAdmin.BetLimit.Services
@@ -34,12 +33,12 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Services
         public async Task<IResultInfo<double?>> GetChargeCommission(int custId, string language, int groupMode)
         {
             const string apiPath = "/Exchange/GetCommission";
-            var result = await _lgApiClient.PostAsync<ApiData<ExchangeCommissionData>>(apiPath, new 
-            { 
-                custId, 
+            var result = await _lgApiClient.PostAsync<ApiData<ExchangeCommissionData>>(apiPath, new
+            {
+                custId,
                 environment = _appSetting.Env,
                 groupMode
-                }, language);
+            }, language);
             return result.Data == null ? CreateApiErrorResult() : CreateApiResult(result.Data.Status, result.Data.Commission);
         }
 

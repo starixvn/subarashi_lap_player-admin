@@ -1,6 +1,5 @@
 ﻿using Fanex.Athena.PlayerAdmin.Core.Helpers;
 using System;
-using System.Runtime.Serialization;
 
 namespace Fanex.Athena.PlayerAdmin.MVC.ViewModels
 {

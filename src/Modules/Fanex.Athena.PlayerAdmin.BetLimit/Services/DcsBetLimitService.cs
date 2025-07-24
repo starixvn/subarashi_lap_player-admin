@@ -67,7 +67,8 @@
             ProductTypes.RGRNG,
             ProductTypes.WLC,
             ProductTypes.AIG,
-            ProductTypes.CPRNG
+            ProductTypes.CPRNG,
+            ProductTypes.GPILT
         };
 
         private readonly IDcsGameBetLimitRepository _gameBetLimitRepository;

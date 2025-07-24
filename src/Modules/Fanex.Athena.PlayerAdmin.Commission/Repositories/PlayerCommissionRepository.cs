@@ -21,7 +21,7 @@ namespace Fanex.Athena.PlayerAdmin.Commission.Repositories
             this.dbFactory = dbFactory;
         }
 
-        public async Task<IEnumerable<PlayerCommissionSettingViewModel>> GetAllCommSettingAsync()
+        public async Task<IEnumerable<PlayerCommissionSettingViewModel>> GetAllCommSettingAsync(ProductAccess productAccess)
         {
             const string UspName = "Lrf_LicenseeCommProductList";
 
@@ -33,11 +33,14 @@ namespace Fanex.Athena.PlayerAdmin.Commission.Repositories
 
                 while (reader.Read())
                 {
+                    var productCode = Convert.ToString(reader["ProductCode"]);
+
                     comSettings.Add(new PlayerCommissionSettingViewModel
                     {
                         Sporttype = Convert.ToInt32(reader["Sporttype"]),
                         Bettype = Convert.ToInt32(reader["Bettype"]),
-                        ProductCode = Convert.ToString(reader["ProductCode"]),
+                        ProductCode = productCode,
+                        ProductName = productAccess.GetProductName(productCode)
                     });
                 }
             }
@@ -45,7 +48,7 @@ namespace Fanex.Athena.PlayerAdmin.Commission.Repositories
             return comSettings;
         }
 
-        public async Task<(IEnumerable<PlayerCommissionViewModel>, IEnumerable<PlayerCommissionSettingViewModel>)> GetAllCommGroups(GetAllCommGroupsCriteria criteria)
+        public async Task<(IEnumerable<PlayerCommissionViewModel>, IEnumerable<PlayerCommissionSettingViewModel>)> GetAllCommGroups(GetAllCommGroupsCriteria criteria, ProductAccess productAccess)
         {
             var comms = new List<PlayerCommissionViewModel>();
             var commValues = new List<PlayerCommissionSettingViewModel>();
@@ -68,11 +71,14 @@ namespace Fanex.Athena.PlayerAdmin.Commission.Repositories
 
                 while (comms.Any() && reader.Read())
                 {
+                    var productCode = Convert.ToString(reader["ProductCode"]);
+
                     commValues.Add(new PlayerCommissionSettingViewModel
                     {
                         Sporttype = Convert.ToInt32(reader["Sporttype"]),
                         Bettype = Convert.ToInt32(reader["Bettype"]),
-                        ProductCode = Convert.ToString(reader["ProductCode"]),
+                        ProductCode = productCode,
+                        ProductName = productAccess.GetProductName(productCode),
                         Discount = Convert.ToDecimal(reader["Discount"]),
                         GroupCommId = Convert.ToInt32(reader["GroupDiscountID"])
                     });
@@ -82,7 +88,7 @@ namespace Fanex.Athena.PlayerAdmin.Commission.Repositories
             return (comms, commValues);
         }
 
-        public async Task<(PlayerCommissionViewModel, IEnumerable<PlayerCommissionSettingViewModel>)> GetCommissionGroupById(GetCommissionGroupByIdCriteria criteria)
+        public async Task<(PlayerCommissionViewModel, IEnumerable<PlayerCommissionSettingViewModel>)> GetCommissionGroupById(GetCommissionGroupByIdCriteria criteria, ProductAccess productAccess)
         {
             var comm = new PlayerCommissionViewModel();
             var commValues = new List<PlayerCommissionSettingViewModel>();
@@ -102,11 +108,14 @@ namespace Fanex.Athena.PlayerAdmin.Commission.Repositories
 
                 while (reader.Read())
                 {
+                    var productCode = Convert.ToString(reader["ProductCode"]);
+
                     commValues.Add(new PlayerCommissionSettingViewModel
                     {
                         Sporttype = Convert.ToInt32(reader["Sporttype"]),
                         Bettype = Convert.ToInt32(reader["Bettype"]),
-                        ProductCode = Convert.ToString(reader["ProductCode"]),
+                        ProductCode = productCode,
+                        ProductName = productAccess.GetProductName(productCode),
                         Discount = Convert.ToDecimal(reader["Discount"])
                     });
                 }
@@ -154,7 +163,7 @@ namespace Fanex.Athena.PlayerAdmin.Commission.Repositories
             return result;
         }
 
-        public async Task<(PlayerCommissionViewModel, IEnumerable<PlayerCommissionSettingViewModel>)> GetPlayerCommissionGroup(GetPlayerCommissionGroupCriteria criteria)
+        public async Task<(PlayerCommissionViewModel, IEnumerable<PlayerCommissionSettingViewModel>)> GetPlayerCommissionGroup(GetPlayerCommissionGroupCriteria criteria, ProductAccess productAccess)
         {
             var comm = new PlayerCommissionViewModel();
             var commValues = new List<PlayerCommissionSettingViewModel>();
@@ -172,11 +181,14 @@ namespace Fanex.Athena.PlayerAdmin.Commission.Repositories
 
                 while (reader.Read())
                 {
+                    var productCode = Convert.ToString(reader["ProductCode"]);
+
                     commValues.Add(new PlayerCommissionSettingViewModel
                     {
                         Sporttype = Convert.ToInt32(reader["Sporttype"]),
                         Bettype = Convert.ToInt32(reader["Bettype"]),
-                        ProductCode = Convert.ToString(reader["ProductCode"]),
+                        ProductCode = productCode,
+                        ProductName = productAccess.GetProductName(productCode),
                         Discount = Convert.ToDecimal(reader["PlayerDiscount"])
                     });
                 }

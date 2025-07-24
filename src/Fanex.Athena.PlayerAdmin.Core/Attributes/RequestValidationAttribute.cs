@@ -70,9 +70,9 @@ namespace Fanex.Athena.PlayerAdmin.Core.Attributes
             result &= !_validateCustId || (MetaModelHelper.IsMetaModel(actionArguments, out ICustomerIdentityMetaModel customerIdentityMetaModel)
                 && await _licenseeService.CheckCustomerBelongTo(_contextService.AgentList, customerIdentityMetaModel.CustId, customerIdentityMetaModel.CurrencyId));
 
-            result &= !_validateClientIP || string.Equals(_contextService.CurrentRequestClientIP, _contextService.OwnerClientIP, StringComparison.InvariantCultureIgnoreCase);  
+            result &= !_validateClientIP || string.Equals(_contextService.CurrentRequestClientIP, _contextService.OwnerClientIP, StringComparison.InvariantCultureIgnoreCase);
 
-            result &= _validateProductId == NoValidationProductId 
+            result &= _validateProductId == NoValidationProductId
                 || await _licenseeService.CheckProductBelongsTo(_contextService.SiteName, GetProductId(actionArguments, _validateProductId), _limitedProductIds);
 
             return result;

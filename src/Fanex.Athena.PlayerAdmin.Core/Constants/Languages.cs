@@ -5,7 +5,7 @@ namespace Fanex.Athena.PlayerAdmin.Core.Constants
 {
     public static class Languages
     {
-        public static readonly IReadOnlyDictionary<string, string> LanguageCodeMappers = new Dictionary<string, string> (StringComparer.InvariantCultureIgnoreCase)
+        public static readonly IReadOnlyDictionary<string, string> LanguageCodeMappers = new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase)
         {
             { "en", "en-US" },
             { "cs", "zh-CN" },

@@ -1,5 +1,3 @@
-using System;
-
 namespace Fanex.Athena.PlayerAdmin.WebHost.Models
 {
     public class ErrorViewModel
