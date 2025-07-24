@@ -16,6 +16,7 @@
     { value: -18, text: 'NGN' },
     { value: -19, text: 'BRL' },
     { value: -20, text: 'PKR' },
+    { value: -21, text: 'ZAR' },
 
     //crypto currencies
     { value: -99, text: 'USDT' }
