@@ -71,7 +71,8 @@
             ProductTypes.WLC,
             ProductTypes.AIG,
             ProductTypes.CPRNG,
-            ProductTypes.GPILT
+            ProductTypes.GPILT,
+            ProductTypes.ODG
         })]
     public class DcsBetLimitController : PlayerBetLimitBaseControler
     {
