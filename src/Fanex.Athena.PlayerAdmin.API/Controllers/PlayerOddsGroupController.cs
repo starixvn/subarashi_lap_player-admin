@@ -38,7 +38,7 @@
         [HttpPost]
         [ReferrerValidation]
         [BearerAuthorize(Roles.SuperAdmin, Roles.UpdateOddsGroup)]
-        [RequestValidation(validateCustId: true, validateClientIP: true)]
+        [RequestValidation(validateCustId: true, validateClientIP: false)]
         [AutoBindingMetaModel(bindUserId: true, bindClientIP: true, bindLanguage: true, bindSiteName: true)]
         public async Task<IActionResult> Update(OddsGroupUpdatingMetaModel metaModel)
         {

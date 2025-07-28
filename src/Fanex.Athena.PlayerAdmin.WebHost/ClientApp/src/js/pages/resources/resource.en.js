@@ -51,6 +51,7 @@ export const resource_en = {
     CustomerWinLoss: 'Customer Win Loss',
     PlayerBettingStatisticsTitle: 'Player Betting Statistics (month to date)',
     PlayerProfile: 'Player Profile',
+    PlayerKYC: 'Player KYC',
     ActivityRecord: 'Activity Record',
     PlaceholderBankAccount: 'Search by Exactly Bank Account Number',
     PlaceholderEmail: 'Search by Exactly Email',
@@ -66,5 +67,9 @@ export const resource_en = {
     WinLossAnalysis: "Win Loss Analysis",
     FinancialDate: "Financial Date",
     Viewin: "View in {0}",
-    NoInfo: "No information is available"
+    NoInfo: "No information is available",
+    ConfirmDeleteKYCImage: "Are you sure you want to delete the KYC?",
+    ErrorProcessingMsg: "Sorry, an error occurred while processing your request.",
+    DeleteSuccessMsg: "Delete successfully!",
+    Confirmation: "Confirmation",
 }

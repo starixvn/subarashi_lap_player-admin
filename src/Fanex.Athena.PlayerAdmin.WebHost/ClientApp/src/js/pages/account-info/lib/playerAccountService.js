@@ -1,5 +1,5 @@
 import FactoryCommonService from '../../../lib/factoryCommonService';
-import { lapAccountProfile, lapBankInfo, lrfActivityRecord, lrfSubsidiaryViewType, custBettingStatus, playerInfoSettings } from './apiInfo';
+import { lapAccountProfile, lapBankInfo, lrfActivityRecord, lrfSubsidiaryViewType, custBettingStatus, playerInfoSettings, lapAccountKYC, lapDeleteKYCImage } from './apiInfo';
 
 export default class PlayerAccountService {
     constructor() {
@@ -24,6 +24,55 @@ export default class PlayerAccountService {
 
     getActivityRecord(param) {
         return this._getData(lrfActivityRecord.type, lrfActivityRecord.action, param);
+    }
+
+    getAccountKYC(param) {
+        const ajaxConfig = {
+            method: 'get',
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest',
+                'content-type': 'application/json;charset=UTF-8'
+            },
+            transformResponse: [],
+            withCredentials: false,
+            responseType: 'arraybuffer',
+        }
+
+        return this.commonService.fetchData(lapAccountKYC.type, lapAccountKYC.action, param, ajaxConfig)
+            .then(response => {
+                const { data, headers } = response;
+                if (headers["content-type"].includes("image")) {
+                    return data;
+                }
+                return null;
+            })
+            .catch(error => {
+                console.log(error.message);
+                return null;
+            });
+    }
+
+    deleteKYCImage(param) {
+        const ajaxConfig = {
+            method: 'get',
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest',
+                'content-type': 'application/json;charset=UTF-8'
+            },
+            transformResponse: [],
+            withCredentials: false,
+            responseType: 'json',
+        }
+
+        return this.commonService.fetchData(lapDeleteKYCImage.type, lapDeleteKYCImage.action, param, ajaxConfig)
+            .then(response => {
+                const { data } = response;
+                return data;
+            })
+            .catch(error => {
+                console.log(error.message);
+                return null;
+            });
     }
 
     _getData(licType, action, param) {

@@ -4,11 +4,13 @@ const getText = (resourceKey) => ClientResourceManager.getText(resourceKey);
 
 export const tabKeys = {
     playerProfile: 'playerProfile',
+    playerKYC: 'playerKYC',
     bankInformation: 'bankInformation',
     activityRecord: 'activityRecord'
 }
 export const tabList = [
     { name: tabKeys.playerProfile, text: getText('PlayerProfile') },
+    { name: tabKeys.playerKYC, text: getText('PlayerKYC') },
     { name: tabKeys.bankInformation, text: getText('BankInformation') },
     { name: tabKeys.activityRecord, text: getText('ActivityRecord') }
 ]

@@ -66,7 +66,6 @@
 
         private static readonly Dictionary<string, string> FollowPermissions = new()
         {
-            [ParlayName] = ProductCode.SB
         };
 
         public static int ProductListComparer(string productCode)

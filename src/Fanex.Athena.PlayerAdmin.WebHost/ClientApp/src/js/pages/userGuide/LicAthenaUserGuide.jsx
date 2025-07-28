@@ -68,7 +68,7 @@ const EngContent = ({exportOddsGroup}) => {
                 <li><b>Detail Transaction:</b> view player balance changes and sort by time.</li>
                 <li><b>Bet List:</b> lists out non-settled tickets of player.</li>
                 <li><b>Fund Transfer:</b> view transfer log and wallets balance for player.</li>
-                <li><b>Bet Setting:</b> view bet setting for Sportsbook, Number Game, Virtual Sports, RNG Keno, Lottery and other products.</li>
+                <li><b>Bet Setting:</b> view bet setting for Sportsbook.</li>
                 <li><b>Note:</b> view or edit the note for player.</li>
                 <li><b>Log:</b> view update log of player.</li>
                 <li><b>Setting:</b> set password, fund transfer limit and bank info.</li>
@@ -147,7 +147,7 @@ const ZnCNContent = ({exportOddsGroup}) => {
                 <li><b>交易记录:</b> 查看玩家余额变化并按时间排序。</li>
                 <li><b>投注历史:</b> 列出玩家的未结算注单。</li>
                 <li><b>转帐:</b> 查看玩家的转帐日志和钱包余额。</li>
-                <li><b>投注设定:</b> 查看体育博彩，数字游戏，虚拟体育，基诺，彩票和其他产品的投注设置。</li>
+                <li><b>投注设定:</b> 查看体育博彩。</li>
                 <li><b>记录:</b> 查看和编辑玩家记录。</li>
                 <li><b>日志:</b> 查看玩家的登入资讯和更新日志。</li>
                 <li><b>设定:</b> 设置密码，转账限额和银行信息。</li>
@@ -226,7 +226,7 @@ const ViVNContent = ({exportOddsGroup}) => {
                 <li><b>Giao Dịch Chi Tiết:</b> xem biến đổi số dư của người chơi và sắp xếp số dư theo thời gian.</li>
                 <li><b>Danh Sách Cược:</b> liệt kê các vé cược chưa kết toán của người chơi.</li>
                 <li><b>Chuyển Khoản:</b> xem nhật ký chuyển khoản và số dư ví của người chơi.</li>
-                <li><b>Giới Hạn Cược:</b> xem cài đặt giới hạn cược cho Sportsbook, Number Game, Thể Thao Ảo, RNG Keno, Xổ Số và các sản phẩm khác.</li>
+                <li><b>Giới Hạn Cược:</b> xem cài đặt giới hạn cược cho Sportsbook.</li>
                 <li><b>Ghi Chú:</b> xem hoặc chỉnh sửa ghi chú cho người chơi.</li>
                 <li><b>Nhật Ký:</b> xem nhật ký cập nhật của người chơi.</li>
                 <li><b>Cài Đặt:</b> đặt mật khẩu, giới hạn chuyển khoản và thông tin ngân hàng.</li>
@@ -305,7 +305,7 @@ const IndonesiaContent = ({exportOddsGroup}) => {
                 <li><b>Transaksi Detail:</b> melihat perubahan saldo pemain dan diurutkan berdasarkan waktu.</li>
                 <li><b>Daftar Taruhan:</b> menampilkan tiket yang belum diselesaikan dari pemain.</li>
                 <li><b>Transfer Dana:</b> melihat log transfer dan saldo dompet pemain.</li>
-                <li><b>Pengaturan Taruhan:</b> melihat pengaturan taruhan untuk Sportsbook, Number Game, Virtual Sports, RNumber Game Keno, Lottery, dan produk lainnya.</li>
+                <li><b>Pengaturan Taruhan:</b> melihat pengaturan taruhan untuk Sportsbook.</li>
                 <li><b>Catatan:</b> melihat atau mengedit catatan untuk pemain.</li>
                 <li><b>Log:</b> melihat log pembaruan pemain.</li>
                 <li><b>Pengaturan:</b> mengatur kata sandi, batas transfer dana, dan informasi bank.</li>
@@ -384,7 +384,7 @@ const ThailandContent = ({exportOddsGroup}) => {
                 <li><b>รายละเอียดการทำธุรกรรม:</b> ดูการเปลี่ยนแปลงยอดคงเหลือของผู้เล่นและจัดเรียงตามเวลา.</li>
                 <li><b>รายการเดิมพัน:</b> แสดงรายการตั๋วที่ยังไม่ตัดสินของผู้เล่น.</li>
                 <li><b>การโอนเงิน:</b> ดูบันทึกการโอนและยอดเงินคงเหลือของผู้เล่น.</li>
-                <li><b>ตั้งค่าการเดิมพัน:</b> ดูการตั้งค่าการเดิมพันสำหรับ สปอร์ตบุ๊ค, เกมตัวเลข, กีฬาเสมือนจริง, RNumber เกมคีโน, ลอตเตอรี่ และผลิตภัณฑ์อื่น ๆ.</li>
+                <li><b>ตั้งค่าการเดิมพัน:</b> ดูการตั้งค่าการเดิมพันสำหรับ สปอร์ตบุ๊ค.</li>
                 <li><b>หมายเหตุ:</b> ดูหรือแก้ไขบันทึกของผู้เล่น.</li>
                 <li><b>บันทึก:</b> ดูบันทึกวันที่ของผู้เล่น.</li>
                 <li><b>ตั้งค่า:</b> ตั้งรหัสผ่าน วงเงินโอน และข้อมูลธนาคาร.</li>

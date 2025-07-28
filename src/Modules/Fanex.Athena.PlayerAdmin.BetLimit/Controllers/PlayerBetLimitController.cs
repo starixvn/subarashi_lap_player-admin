@@ -46,7 +46,9 @@
             var products = await _playerBetLimitRepository.GetEnableBetLimitProducts(siteName, environment);
             var productAccess = await _licenseeService.GetProductAccess(licenseeId);
 
-            return products.ToDictionary(x => x.ProductId, x => productAccess.GetProductName(x.ProductCode));
+            return products
+                .Where(x => x.ProductCode == ProductCode.SB)
+                .ToDictionary(x => x.ProductId, x => productAccess.GetProductName(x.ProductCode));
         }
     }
 }

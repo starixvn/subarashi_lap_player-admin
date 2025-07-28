@@ -36,7 +36,7 @@
 
         [HttpPost]
         [BearerAuthorize(Roles.SuperAdmin, Roles.UpdateSpecialLevel)]
-        [RequestValidation(validateCustId: true, validateClientIP: true)]
+        [RequestValidation(validateCustId: true, validateClientIP: false)]
         [AutoBindingMetaModel(bindUserId: true, bindClientIP: true, bindLanguage: true, bindSiteName: true)]
         public async Task<IActionResult> Update(SpecialLevelUpdatingMetaModel metaModel)
         {

@@ -71,10 +71,11 @@ export const getOddsGroupPdf = (fileName) => {
             'X-Requested-With': 'XMLHttpRequest',
             'content-type': 'application/json;charset=UTF-8'
         },
+        transformResponse: [],
         withCredentials: false,
         responseType: 'arraybuffer',
         transformResponse: [],
-        cancelToken: new axios.CancelToken(function(cancel) {})
+        cancelToken: new axios.CancelToken(function (cancel) { })
     }
 
     return commonService.fetchData(playerAdminSystemId, url, {}, ajaxConfig);
