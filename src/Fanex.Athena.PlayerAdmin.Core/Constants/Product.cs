@@ -254,5 +254,7 @@
         public const int CPRNG = 109;
 
         public const int GPILT = 84;
+
+        public const int ODG = 105;
     }
 }
