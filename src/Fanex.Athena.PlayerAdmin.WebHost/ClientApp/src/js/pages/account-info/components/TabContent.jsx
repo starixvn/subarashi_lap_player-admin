@@ -25,6 +25,9 @@ export const TabContent = (props) => {
                 if (tab.name == tabKeys.activityRecord) {
                     return result.isShowActivityRecord;
                 }
+                if (tab.name == tabKeys.playerKYC) {
+                    return true;
+                }
                 return false;
             });
             const initialSubtab = tabListFilter.length > 0 ? tabListFilter[0].name : null;
@@ -36,7 +39,7 @@ export const TabContent = (props) => {
     const getStyle = (tabKey) => ({ display: selectedTab === tabKey ? 'block' : 'none' })
 
     if (tabListByLicenseeType.length == 0) return null;
-    
+
     return (
         <div className="outer-col-1">
             <div className="left-side">
