@@ -12,7 +12,7 @@ define(['jquery', 'common/querystring', 'common/popup', 'extensions/prototype', 
             'npr': '-14', 'try': '-15',
             'jpy': '-16', 'mxn': '-17',
             'ngn': '-18', 'brl': '-19',
-            'pkr': '-20',
+            'pkr': '-20', 'zar': '-21',
             'usdt': '-99'
         };
         let REQUEST_VERIFICATION_TOKEN;
