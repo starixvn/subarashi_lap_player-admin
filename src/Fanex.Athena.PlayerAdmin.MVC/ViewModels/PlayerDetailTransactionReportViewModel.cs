@@ -18,7 +18,7 @@ namespace Fanex.Athena.PlayerAdmin.MVC.ViewModels
         {
             var today = DateTimeHelper.DatabaseServerToDay;
             MinDate = DateTimeHelper.DatabaseServerNow.AddMonths(-MaximumMonth);
-            FromDate = new DateTime(today.Year, today.Month, 1);
+            FromDate = DateTimeHelper.CreateDateTime(today.Year, today.Month, 1);
             ToDate = today;
             DetailTransactions = Enumerable.Empty<PlayerDetailTransactionViewModel>();
             PageSize = DefaultPageSize;

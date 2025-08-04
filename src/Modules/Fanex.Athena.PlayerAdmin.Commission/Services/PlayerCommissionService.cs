@@ -24,8 +24,10 @@ namespace Fanex.Athena.PlayerAdmin.Commission.Services
         public async Task<IEnumerable<PlayerCommissionSettingViewModel>> InitCommValues(ProductAccess productAccess)
         {
             var commSettings = await _repository.GetAllCommSettingAsync(productAccess).ConfigureAwait(false);
-            commSettings = commSettings.Where(_ => CommissionGroupHelper.GetProductPermissions(productAccess, _.ProductCode))
-                .OrderBy(_ => CommissionGroupHelper.ProductListComparer(_.ProductCode)).ThenBy(_ => _.ProductCode); ;
+            commSettings = commSettings
+                .Where(_ => CommissionGroupHelper.GetProductPermissions(productAccess, _.ProductCode))
+                .OrderBy(_ => CommissionGroupHelper.ProductListComparer(_.ProductCode))
+                .ThenBy(_ => _.ProductCode);
 
             return commSettings;
         }
@@ -38,7 +40,10 @@ namespace Fanex.Athena.PlayerAdmin.Commission.Services
             return MergeCommSetting(comms, commValues, productAccess);
         }
 
-        private static IList<PlayerCommissionViewModel> MergeCommSetting(IEnumerable<PlayerCommissionViewModel> comms, IEnumerable<PlayerCommissionSettingViewModel> comValues, ProductAccess productAccess)
+        private static IList<PlayerCommissionViewModel> MergeCommSetting(
+            IEnumerable<PlayerCommissionViewModel> comms, 
+            IEnumerable<PlayerCommissionSettingViewModel> comValues, 
+            ProductAccess productAccess)
         {
             return comms.GroupJoin(comValues, c => c.GroupCommId, d => d.GroupCommId,
                 (c, ds) => new PlayerCommissionViewModel
@@ -49,9 +54,15 @@ namespace Fanex.Athena.PlayerAdmin.Commission.Services
                 }).ToList();
         }
 
-        private static PlayerCommissionViewModel MergeCommSetting(PlayerCommissionViewModel comm, IEnumerable<PlayerCommissionSettingViewModel> commValues, ProductAccess productAccess)
+        private static PlayerCommissionViewModel MergeCommSetting(
+            PlayerCommissionViewModel comm, 
+            IEnumerable<PlayerCommissionSettingViewModel> commValues, 
+            ProductAccess productAccess)
         {
-            comm.CommValues = commValues.Where(_ => CommissionGroupHelper.GetProductPermissions(productAccess, _.ProductCode)).OrderBy(_ => _, new GroupCommSettingComparer()).ThenBy(_ => _.ProductCode);
+            comm.CommValues = commValues
+                .Where(_ => CommissionGroupHelper.GetProductPermissions(productAccess, _.ProductCode))
+                .OrderBy(_ => _, new GroupCommSettingComparer())
+                .ThenBy(_ => _.ProductCode);
 
             return comm;
         }

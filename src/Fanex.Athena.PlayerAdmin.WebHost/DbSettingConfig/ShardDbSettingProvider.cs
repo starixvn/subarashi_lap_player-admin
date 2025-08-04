@@ -18,8 +18,7 @@ namespace Fanex.Athena.PlayerAdmin.WebHost
         {
             if (_shardInfoAccessor.TryUseShardDB(settingKey, out var dbServer))
             {
-                serverIp = dbServer;
-                settingKey = _shardInfoAccessor.GetShardSPKey(settingKey);
+                return new SqlObjectDb(_shardInfoAccessor.GetShardSPKey(settingKey), commandTimeout, dbServer);
             }
 
             return new SqlObjectDb(settingKey, commandTimeout, serverIp);

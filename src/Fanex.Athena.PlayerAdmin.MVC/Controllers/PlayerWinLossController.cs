@@ -59,7 +59,7 @@ namespace Fanex.Athena.PlayerAdmin.MVC.Controllers
             const string AllOption = "All";
             var now = DateTimeHelper.DatabaseServerNow;
             var productAccess = await _licenseeService.GetSingleWalletProductAccess(_contextService.LicenseeId, FunctionName);
-            metaModel.FromDate = new DateTime(now.Year, now.Month, 1);
+            metaModel.FromDate = DateTimeHelper.CreateDateTime(now.Year, now.Month, 1);
             metaModel.ToDate = now.Date;
             metaModel.CurrencyIdList = string.Join(",", _contextService.CurrencyList.Keys);
             metaModel.ProductCodes = productAccess.ProductCodeListString;

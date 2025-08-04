@@ -22,18 +22,15 @@ namespace Fanex.Athena.PlayerAdmin.API.Controllers
     public class PlayerOddsGroupController : ControllerBase
     {
         private readonly IPlayerOddsGroupService _playerOddsGroupService;
-        private readonly ILicenseeService _licenseeService;
         private readonly IContextService _contextService;
         private readonly ILogger<PlayerOddsGroupController> _logger;
 
         public PlayerOddsGroupController(
             IPlayerOddsGroupService playerOddsGroupService,
-            ILicenseeService licenseeService,
             IContextService contextService,
             ILogger<PlayerOddsGroupController> logger)
         {
             _playerOddsGroupService = playerOddsGroupService;
-            _licenseeService = licenseeService;
             _contextService = contextService;
             _logger = logger;
         }

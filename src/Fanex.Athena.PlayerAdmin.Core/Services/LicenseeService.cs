@@ -129,7 +129,7 @@ namespace Fanex.Athena.PlayerAdmin.Core.Services
 
         public string GetAllowedSubProductCodeList(IEnumerable<string> offeredSubProductList, string productCodes)
         {
-            if (!offeredSubProductList.IsPresent() || !productCodes.Split(',').Any(_ => _ == ProductCode.SB))
+            if (!offeredSubProductList.IsPresent() || !Array.Exists(productCodes.Split(','),code => code == ProductCode.SB))
             {
                 return productCodes;
             }

@@ -4,11 +4,18 @@ using System.Text.Json.Serialization;
 
 namespace Fanex.Athena.PlayerAdmin.Core.JsonConverter
 {
+    using System.Globalization;
+
     public class StringToDateTimeConverter : JsonConverter<DateTime>
     {
         public override DateTime Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
-            return DateTime.Parse(reader.GetString());
+            string str = reader.GetString();
+            if (DateTime.TryParse(str, CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime dt))
+            {
+                return dt;
+            }
+            throw new JsonException($"Invalid date format: '{str}'");
         }
 
         public override void Write(Utf8JsonWriter writer, DateTime value, JsonSerializerOptions options)

@@ -35,10 +35,10 @@ namespace Fanex.Athena.PlayerAdmin.MVC.Controllers
             {
                 CustId = custId,
                 CurrencyId = currencyId,
-                FromDate = new DateTime(today.Year, today.Month, 1),
+                FromDate = DateTimeHelper.CreateDateTime(today.Year, today.Month, 1),
                 ToDate = today,
-                MinDate = new DateTime(today.Year - MinYearRange, 1, 1),
-                MaxDate = new DateTime(today.Year + MaxYearRange, 12, 31),
+                MinDate = DateTimeHelper.CreateDateTime(today.Year - MinYearRange, 1, 1),
+                MaxDate = DateTimeHelper.CreateDateTime(today.Year + MaxYearRange, 12, 31),
                 IsShowSabaCoins = _contextService.IsShowSabaCoins
             };
 

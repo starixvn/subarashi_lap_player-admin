@@ -102,13 +102,11 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Repositories
 
             var xmlElementBuilder = new StringBuilder();
             var sports = ProductSportList[productId];
+            var applySettings = setting.Where(e => sports.Contains(e.SportType));
 
-            foreach (var item in setting)
+            foreach (var item in applySettings)
             {
-                if (sports.Contains(item.SportType))
-                {
-                    xmlElementBuilder.Append(string.Format(XMLElement, item.SportType, item.BetType, item.MinBet, item.MaxBet));
-                }
+                xmlElementBuilder.Append(string.Format(XMLElement, item.SportType, item.BetType, item.MinBet, item.MaxBet));
             }
 
             return string.Format(XMLPattern, xmlElementBuilder);
@@ -116,7 +114,7 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.Repositories
 
         private string GetErrorMessage(string xmlErrorMessage)
         {
-            if (!string.IsNullOrEmpty(xmlErrorMessage) && xmlErrorMessage.StartsWith("<"))
+            if (!string.IsNullOrEmpty(xmlErrorMessage) && xmlErrorMessage.StartsWith('<'))
             {
                 try
                 {

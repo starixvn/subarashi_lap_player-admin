@@ -86,7 +86,7 @@ namespace Fanex.Athena.PlayerAdmin.MVC.Controllers
             metaModel.Status = GetStatus();
             metaModel.Platform = AllPlatform;
             metaModel.LiveStatus = GetLiveStatus();
-            metaModel.FromDate = new DateTime(now.Year, now.Month, 1);
+            metaModel.FromDate = DateTimeHelper.CreateDateTime(now.Year, now.Month, 1);
             metaModel.ToDate = now;
             metaModel.SportIds = "All";
             metaModel.BetTypeIds = "All";

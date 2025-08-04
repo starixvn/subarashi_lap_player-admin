@@ -295,7 +295,7 @@
 
         private string GetErrorMessage(string xmlErrorMessage)
         {
-            if (!string.IsNullOrEmpty(xmlErrorMessage) && xmlErrorMessage.StartsWith("<"))
+            if (!string.IsNullOrEmpty(xmlErrorMessage) && xmlErrorMessage.StartsWith('<'))
             {
                 try
                 {

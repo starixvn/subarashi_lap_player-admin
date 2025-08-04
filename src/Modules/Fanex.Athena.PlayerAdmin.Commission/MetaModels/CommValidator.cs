@@ -3,6 +3,8 @@ using System.Linq;
 
 namespace Fanex.Athena.PlayerAdmin.Commission.MetaModels
 {
+    using System;
+
     public static class CommValidator
     {
         private const decimal MinValue = 0;
@@ -28,7 +30,7 @@ namespace Fanex.Athena.PlayerAdmin.Commission.MetaModels
                 BuildCommValues();
             }
 
-            return !checkValues.Any(val => !_commissions.Any(x => x == val));
+            return Array.TrueForAll(checkValues,val => _commissions.Contains(val));
         }
     }
 }

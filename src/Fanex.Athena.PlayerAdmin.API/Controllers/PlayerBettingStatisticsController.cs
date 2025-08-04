@@ -29,7 +29,7 @@ namespace Fanex.Athena.PlayerAdmin.API.Controllers
         public async Task<IActionResult> GetData(PlayerBettingStatisticsMetaModel metaModel)
         {
             var now = DateTimeHelper.DatabaseServerNow;
-            metaModel.FromDate = new DateTime(now.Year, now.Month, 1);
+            metaModel.FromDate = DateTimeHelper.CreateDateTime(now.Year, now.Month, 1);
             metaModel.ToDate = now;
 
             return Ok(await _playerBettingStatisticsService.GetPlayerBettingStatistics(metaModel));

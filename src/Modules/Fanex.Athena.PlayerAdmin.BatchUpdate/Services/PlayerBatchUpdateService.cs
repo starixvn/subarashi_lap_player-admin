@@ -16,8 +16,6 @@ namespace Fanex.Athena.PlayerAdmin.BatchUpdate.Services
 {
     public class PlayerBatchUpdateService : IPlayerBatchUpdateService
     {
-        private const int TurnOffVIPErrorCode = 105;
-
         private readonly IPublisher _publisher;
         private readonly IPlayerBatchUpdateRepository _repository;
         private readonly ILicenseeService _licenseeService;
@@ -31,18 +29,6 @@ namespace Fanex.Athena.PlayerAdmin.BatchUpdate.Services
             _contextService = contextService;
             _licenseeService = licenseeService;
             _repository = repository;
-        }
-
-        private async Task PublishCTSBAEvent(string listCust, string statusId)
-        {
-            if (!string.IsNullOrEmpty(listCust))
-            {
-                await _publisher.Publish(new PlayerUpdatedMultipleBAToCTSEvent
-                {
-                    CustIDList = listCust,
-                    NewValue = statusId
-                });
-            }
         }
 
         public async Task<IResultInfo> UpdateOddsGroup(UpdateOddsGroupApiMetaModel metaModel)
@@ -163,8 +149,8 @@ namespace Fanex.Athena.PlayerAdmin.BatchUpdate.Services
         private static IEnumerable<Customer> ToCustomerList(string custIds, string custNames)
         {
             var result = new List<Customer>();
-            var ids = custIds.Split(new[] { ',' });
-            var names = custNames.Split(new[] { ',' });
+            var ids = custIds.Split(',');
+            var names = custNames.Split(',');
             for (var i = 0; i < ids.Length; i++)
             {
                 var id = ids[i];

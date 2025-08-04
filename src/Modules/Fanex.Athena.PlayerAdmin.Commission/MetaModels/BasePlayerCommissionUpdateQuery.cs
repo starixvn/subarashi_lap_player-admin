@@ -1,9 +1,10 @@
 ﻿using Fanex.Athena.PlayerAdmin.Core.Models;
 using Fanex.Core.Utils;
-using System.Linq;
 
 namespace Fanex.Athena.PlayerAdmin.Commission.MetaModels
 {
+    using System;
+
     public class BasePlayerCommissionUpdateQuery : IValidationMetaModel, IClientIPMetaModel, ILicenseeIdMetaModel, ILanguageMetaModel, IUserIdMetaModel, IUsernameMetaModel
     {
         public string CustIds { get; set; }
@@ -23,7 +24,6 @@ namespace Fanex.Athena.PlayerAdmin.Commission.MetaModels
         public string CustIdsStr { get; set; }
 
         public virtual bool IsValid
-            => !string.IsNullOrWhiteSpace(CustIds) &&
-            !CustIds.Split(new[] { ',' }).Any(s => !int.TryParse(s, out _));
+            => !string.IsNullOrWhiteSpace(CustIds) && Array.TrueForAll(CustIds.Split(','),s => int.TryParse(s, out _));
     }
 }

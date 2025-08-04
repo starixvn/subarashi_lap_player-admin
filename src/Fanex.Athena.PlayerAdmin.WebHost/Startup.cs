@@ -345,7 +345,12 @@ namespace Fanex.Athena.PlayerAdmin.WebHost
             var connectionStrings = Configuration
                 .GetSection("ConnectionStrings")
                 .GetChildren().AsEnumerable()
-                .ToDictionary((IConfigurationSection x) => x.GetValue<string>("Name"), (IConfigurationSection y) => new ConnectionConfiguration(y.GetValue<string>("Name"), y.GetValue<string>("ConnectionString"), y.GetValue<string>("ProviderName")));
+                .ToDictionary(
+                    x => x.GetValue<string>("Name"), 
+                    y => new ConnectionConfiguration(
+                        y.GetValue<string>("Name"), 
+                        y.GetValue<string>("ConnectionString"), 
+                        y.GetValue<string>("ProviderName")));
 
             var vaultOptions = Configuration.GetSection("VaultOptions").Get<VaultOptions>();
 

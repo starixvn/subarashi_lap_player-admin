@@ -115,7 +115,7 @@ namespace Fanex.Athena.PlayerAdmin.Core.Services
 
         public Task<string> AccessToken => Context.GetTokenAsync(CookieAuthenticationDefaults.AuthenticationScheme, "access_token");
 
-        public bool IsInRoles(params string[] roles) => roles?.Any(_ => User.IsInRole(_)) ?? false;
+        public bool IsInRoles(params string[] roles) => Array.Exists(roles, User.IsInRole);
 
         public string CurrentRequestClientIP => Context.Connection.RemoteIpAddress.ToString();
 

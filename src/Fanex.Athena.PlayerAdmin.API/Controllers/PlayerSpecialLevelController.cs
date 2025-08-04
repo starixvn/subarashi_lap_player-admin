@@ -21,18 +21,15 @@ namespace Fanex.Athena.PlayerAdmin.API.Controllers
     public class PlayerSpecialLevelController : ControllerBase
     {
         private readonly IPlayerSpecialLevelService _playerSpecialLevelService;
-        private readonly ILicenseeService _licenseeService;
         private readonly IContextService _contextService;
         private readonly ILogger<PlayerSpecialLevelController> _logger;
 
         public PlayerSpecialLevelController(
             IPlayerSpecialLevelService playerSpecialLevelService,
-            ILicenseeService licenseeService,
             IContextService contextService,
             ILogger<PlayerSpecialLevelController> logger)
         {
             _playerSpecialLevelService = playerSpecialLevelService;
-            _licenseeService = licenseeService;
             _contextService = contextService;
             _logger = logger;
         }
