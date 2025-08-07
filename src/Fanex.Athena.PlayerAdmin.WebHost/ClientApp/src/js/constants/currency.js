@@ -17,6 +17,7 @@
     { value: -19, text: 'BRL' },
     { value: -20, text: 'PKR' },
     { value: -21, text: 'ZAR' },
+    { value: -22, text: 'KRW' },
 
     //crypto currencies
     { value: -99, text: 'USDT' }
