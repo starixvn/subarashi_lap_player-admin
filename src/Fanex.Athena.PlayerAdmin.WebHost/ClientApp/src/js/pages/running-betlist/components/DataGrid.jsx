@@ -43,8 +43,8 @@ export class DataGrid extends Component {
         this.props.toggleLoader(false);
     }
 
-    onSort = (sortBy, sortOrder) => {
-        const param = Object.assign({}, this.props.requestParam, { SortBy: sortBy, SortOrder: sortOrder });
+    onSort = (sortType, sortOrder) => {
+        const param = Object.assign({}, this.props.requestParam, { SortType: sortType, SortOrder: sortOrder });
 
         this._getData(param);
         this.props.setRequestParam(param);

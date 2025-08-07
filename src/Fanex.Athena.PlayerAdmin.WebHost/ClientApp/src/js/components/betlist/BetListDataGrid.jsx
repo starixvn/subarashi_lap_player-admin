@@ -7,6 +7,19 @@ class BetListDataGrid extends Component {
         super(props);
     }
 
+    sortOrderMapper = {
+        asc: 1,
+        desc: 2
+    };
+
+    sortTypeMapper = {
+        transdate: 0,
+        stake: 1,
+        winloss: 2,
+        licenseewl: 3,
+        betplaced: 4
+    };
+
     componentDidUpdate(prevProps) {
         if (this.props.data !== prevProps.data) {
             this.props.afterLoad && this.props.afterLoad();
@@ -16,7 +29,7 @@ class BetListDataGrid extends Component {
     _getResource(key) {
         return this.props.getResourceFunc ? this.props.getResourceFunc(key) : key;
     }
-    
+
     _getTotalCellClassName(column, value) {
         if (this.props.getTotalCellClassNameFunc) {
             return this.props.getTotalCellClassNameFunc(column, value);
@@ -115,8 +128,11 @@ class BetListDataGrid extends Component {
         )
     }
 
-    onSort = (sortBy, sortOrder) => {
-        this.props.onSort && this.props.onSort(sortBy, sortOrder);
+    onSort = (sortType, sortOrder) => {
+        const newSortOrder = this.sortOrderMapper[sortOrder.toLowerCase()] ?? this.sortOrderMapper.asc;
+        const newSortType = this.sortTypeMapper[sortType.toLowerCase()] ?? this.sortTypeMapper.transdate;
+
+        this.props.onSort && this.props.onSort(newSortType, newSortOrder);
     }
 
     onPaging = (index, size) => {
@@ -129,7 +145,7 @@ class BetListDataGrid extends Component {
         }
 
         const { data } = this.props;
-        
+
         if (!data.length) {
             return this._renderNodata();
         }

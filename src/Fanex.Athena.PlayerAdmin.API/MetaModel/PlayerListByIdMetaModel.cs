@@ -4,10 +4,6 @@
     {
         public string IdList { get; set; }
 
-        public string OddsGroup { get; set; }
-
-        public string SpecialLevel { get; set; }
-
         public byte BaFilter { get; set; }
 
         public int PageSize { get; set; }

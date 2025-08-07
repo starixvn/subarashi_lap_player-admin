@@ -16,6 +16,7 @@ namespace Fanex.Athena.PlayerAdmin.MVC.MetaModel
         {
             PageIndex = 1;
             PageSize = DefaultPageSize;
+            SortOrder = 1;
         }
 
         public string ProductCodeList { get; set; }
@@ -80,8 +81,8 @@ namespace Fanex.Athena.PlayerAdmin.MVC.MetaModel
             }
         }
 
-        public string SortBy { get; set; }
-        public string SortOrder { get; set; }
+        public byte SortType { get; set; }
+        public byte SortOrder { get; set; }
         public bool IsAllowTxIDColumn { get; set; }
         public bool IsShowIp { get; set; }
         public bool IsShowIpVN { get; set; }

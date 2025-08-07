@@ -19,8 +19,8 @@ export const Content = (props) => {
     const [gridData, setGridData] = useState(null);
     const { pagingOption, setPagingOption, onChangePaging } = usePagingOption();
 
-    const handleSort = (sortBy, sortOrder) => {
-        setRequestParam({ ...requestParam, sortBy: sortBy === 'WinLoss' ? 'WinLost' : sortBy, sortOrder });
+    const handleSort = (sortType, sortOrder) => {
+        setRequestParam({ ...requestParam, sortType, sortOrder });
     }
 
     useEffect(() => {
