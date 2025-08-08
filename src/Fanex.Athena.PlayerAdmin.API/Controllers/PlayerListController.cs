@@ -84,7 +84,7 @@ namespace Fanex.Athena.PlayerAdmin.API.Controllers
 
         private async Task<bool> ValidateParameter(PlayerListBaseMetaModel metaModel)
         {
-            if (string.IsNullOrEmpty(metaModel.CommGroups) || !ValidationHelper.TryParseArray(metaModel.SpecialLevel, out int[] specialLevels))
+            if (!ValidationHelper.TryParseArray(metaModel.SpecialLevel, out int[] specialLevels))
             {
                 return false;
             }
@@ -92,7 +92,7 @@ namespace Fanex.Athena.PlayerAdmin.API.Controllers
             var commGroups = (await _depositSettingService.GetCommGroupList(_contextService.LicenseeId).ConfigureAwait(false))
                 .Select(_ => _.Id);
 
-            if (metaModel.CommGroups.Split(',').Any(_ => !commGroups.Contains(_)))
+            if (!string.IsNullOrEmpty(metaModel.CommGroups) && metaModel.CommGroups.Split(',').Any(_ => !commGroups.Contains(_)))
             {
                 return false;
             }
