@@ -1,15 +1,14 @@
-﻿using Fanex.Athena.PlayerAdmin.Core.Attributes;
-using Fanex.Athena.PlayerAdmin.Core.Services;
-using Fanex.Athena.PlayerAdmin.WebHost.Models;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Hosting;
-using System.Diagnostics;
-
-
-namespace Fanex.Athena.PlayerAdmin.WebHost.Controllers
+﻿namespace Fanex.Athena.PlayerAdmin.WebHost.Controllers
 {
+    using System.Diagnostics;
+    using Core.Attributes;
+    using Core.Services;
+    using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Hosting;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Hosting;
+    using Models;
+
     public class HomeController : Controller
     {
         [CookieAuthorize]
@@ -29,9 +28,9 @@ namespace Fanex.Athena.PlayerAdmin.WebHost.Controllers
         {
             return Json(new
             {
-                UserId = contextService.UserId,
+                contextService.UserId,
                 UserName = contextService.Username,
-                UserLevel = contextService.UserLevel,
+                contextService.UserLevel,
                 IsMaster = contextService.IsMasterLicensee,
                 Whitelabel = contextService.WhiteLabelID
             });

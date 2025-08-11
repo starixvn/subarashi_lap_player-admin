@@ -1,11 +1,9 @@
-using System;
-using System.Globalization;
-using Fanex.Athena.PlayerAdmin.MVC.Controllers;
-using Microsoft.AspNetCore.Mvc;
-using Xunit;
-
 namespace Fanex.Athena.PlayerAdmin.MVC.UnitTests.Controllers
 {
+    using System.Globalization;
+    using Microsoft.AspNetCore.Mvc;
+    using MVC.Controllers;
+
     public class UserGuideControllerTest
     {
         private readonly UserGuideController _controller;

@@ -1,8 +1,7 @@
-﻿using System;
-using System.Diagnostics;
-
-namespace Fanex.Athena.PlayerAdmin.Core.Extensions
+﻿namespace Fanex.Athena.PlayerAdmin.Core.Extensions
 {
+    using System;
+    using System.Diagnostics;
     using System.Globalization;
 
     public static class Converter

@@ -1,8 +1,8 @@
-﻿using Fanex.Data;
-using Fanex.Data.SqlServer;
-
-namespace Fanex.Athena.PlayerAdmin.WebHost
+﻿namespace Fanex.Athena.PlayerAdmin.WebHost
 {
+    using Data;
+    using Data.SqlServer;
+
     public class ShardDbSettingProvider
     {
         private readonly IShardInfoAccessor _shardInfoAccessor;

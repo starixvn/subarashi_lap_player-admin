@@ -1,21 +1,21 @@
-﻿using Fanex.Athena.PlayerAdmin.API.DTO;
-using Fanex.Athena.PlayerAdmin.API.ViewModels;
-using Fanex.Athena.PlayerAdmin.Core.Extensions;
-using Fanex.Athena.PlayerAdmin.Core.Repositories;
-using Fanex.Athena.PlayerAdmin.Core.Resources;
-using Fanex.Athena.PlayerAdmin.Core.Settings;
-using Microsoft.Extensions.Caching.Memory;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Threading.Tasks;
-
-namespace Fanex.Athena.PlayerAdmin.API.Services
+﻿namespace Fanex.Athena.PlayerAdmin.API.Services
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Net.Http;
+    using System.Threading.Tasks;
+    using Core.Extensions;
+    using Core.Repositories;
+    using Core.Resources;
+    using Core.Settings;
+    using DTO;
+    using Microsoft.Extensions.Caching.Memory;
+    using Microsoft.Extensions.Logging;
+    using Microsoft.Extensions.Options;
+    using Newtonsoft.Json;
+    using ViewModels;
+
     public class DepositSettingService : IDepositSettingService
     {
         private static readonly TimeSpan FifteenMinutes = TimeSpan.FromMinutes(15);

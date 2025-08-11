@@ -1,11 +1,11 @@
-﻿using Fanex.Athena.PlayerAdmin.Commission.Repositories;
-using Fanex.Athena.PlayerAdmin.Commission.Repositories.Interfaces;
-using Fanex.Athena.PlayerAdmin.Commission.Services;
-using Fanex.Athena.PlayerAdmin.Commission.Services.Interfaces;
-using Microsoft.Extensions.DependencyInjection;
-
-namespace Fanex.Athena.PlayerAdmin.Commission.Extensions
+﻿namespace Fanex.Athena.PlayerAdmin.Commission.Extensions
 {
+    using Microsoft.Extensions.DependencyInjection;
+    using Repositories;
+    using Repositories.Interfaces;
+    using Services;
+    using Services.Interfaces;
+
     public static class DefendencyInjectionExtension
     {
         public static IServiceCollection AddCommission(this IServiceCollection services)

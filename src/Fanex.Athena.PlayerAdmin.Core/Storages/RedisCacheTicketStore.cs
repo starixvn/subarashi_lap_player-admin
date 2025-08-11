@@ -1,11 +1,11 @@
-﻿using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.Extensions.Caching.Distributed;
-using System;
-using System.Threading.Tasks;
-
-namespace Fanex.Athena.PlayerAdmin.Core.Storages
+﻿namespace Fanex.Athena.PlayerAdmin.Core.Storages
 {
+    using System;
+    using System.Threading.Tasks;
+    using Microsoft.AspNetCore.Authentication;
+    using Microsoft.AspNetCore.Authentication.Cookies;
+    using Microsoft.Extensions.Caching.Distributed;
+
     public class RedisCacheTicketStore : ITicketStore
     {
         private const string KeyPrefix = "Cookies:";
@@ -19,7 +19,7 @@ namespace Fanex.Athena.PlayerAdmin.Core.Storages
         public async Task<string> StoreAsync(AuthenticationTicket ticket)
         {
             var guid = Guid.NewGuid();
-            var key = KeyPrefix + guid.ToString();
+            var key = KeyPrefix + guid;
             await RenewAsync(key, ticket);
             return key;
         }

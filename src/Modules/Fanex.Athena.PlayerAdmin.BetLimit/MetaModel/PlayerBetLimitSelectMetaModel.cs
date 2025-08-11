@@ -1,7 +1,6 @@
-﻿using Fanex.Athena.PlayerAdmin.Core.Models;
-
-namespace Fanex.Athena.PlayerAdmin.BetLimit.MetaModel
+﻿namespace Fanex.Athena.PlayerAdmin.BetLimit.MetaModel
 {
+    using Core.Models;
 
     public class PlayerBetLimitSelectMetaModel : ICustomerIdentityMetaModel, IProductMetaModel, ISiteNameMetaModel
     {

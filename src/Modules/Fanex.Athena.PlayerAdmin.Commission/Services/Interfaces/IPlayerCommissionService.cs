@@ -1,11 +1,11 @@
-﻿using Fanex.Athena.PlayerAdmin.Commission.MetaModels;
-using Fanex.Athena.PlayerAdmin.Commission.ViewModels;
-using Fanex.Athena.PlayerAdmin.Core.Models;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-
-namespace Fanex.Athena.PlayerAdmin.Commission.Services.Interfaces
+﻿namespace Fanex.Athena.PlayerAdmin.Commission.Services.Interfaces
 {
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+    using Core.Models;
+    using MetaModels;
+    using ViewModels;
+
     public interface IPlayerCommissionService
     {
         Task<IEnumerable<PlayerCommissionSettingViewModel>> InitCommValues(ProductAccess productAccess);

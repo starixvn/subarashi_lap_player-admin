@@ -1,9 +1,9 @@
-﻿using Fanex.Athena.PlayerAdmin.Commission.ViewModels;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace Fanex.Athena.PlayerAdmin.Commission.MetaModels
+﻿namespace Fanex.Athena.PlayerAdmin.Commission.MetaModels
 {
+    using System.Collections.Generic;
+    using System.Linq;
+    using ViewModels;
+
     public class MultipleUpdateGroupQuery : BasePlayerCommissionUpdateQuery
     {
         public IEnumerable<PlayerCommissionSettingViewModel> CommValues { get; set; }

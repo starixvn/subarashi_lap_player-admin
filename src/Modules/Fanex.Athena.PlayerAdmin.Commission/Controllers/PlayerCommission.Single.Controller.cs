@@ -1,12 +1,12 @@
-﻿using Fanex.Athena.PlayerAdmin.Commission.MetaModels;
-using Fanex.Athena.PlayerAdmin.Commission.ViewModels;
-using Fanex.Athena.PlayerAdmin.Core.Constants;
-using Fanex.Athena.PlayerAdmin.Core.Attributes;
-using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
-
-namespace Fanex.Athena.PlayerAdmin.Commission.Controllers
+﻿namespace Fanex.Athena.PlayerAdmin.Commission.Controllers
 {
+    using System.Threading.Tasks;
+    using Core.Attributes;
+    using Core.Constants;
+    using MetaModels;
+    using Microsoft.AspNetCore.Mvc;
+    using ViewModels;
+
     public partial class PlayerCommissionController : Controller
     {
         [HttpGet]

@@ -1,10 +1,8 @@
 namespace Fanex.Athena.PlayerAdmin.MVC.UnitTests.Controllers
 {
-    using System.IO;
-    using System.Net.Http;
     using Core.ConsoleClient;
+    using Core.Extensions;
     using Core.Services;
-    using Fanex.Athena.PlayerAdmin.Core.Extensions;
     using MetaModel;
     using Microsoft.AspNetCore.Mvc;
     using Moq;

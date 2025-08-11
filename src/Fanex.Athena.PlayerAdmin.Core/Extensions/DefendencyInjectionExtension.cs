@@ -1,12 +1,12 @@
-﻿using Fanex.Athena.PlayerAdmin.Core.ConsoleClient;
-using Fanex.Athena.PlayerAdmin.Core.Repositories;
-using Fanex.Athena.PlayerAdmin.Core.Services;
-using Fanex.Core.Utils;
-using Fanex.RemotingRef;
-using Microsoft.Extensions.DependencyInjection;
-
-namespace Fanex.Athena.PlayerAdmin.Core.Extensions
+﻿namespace Fanex.Athena.PlayerAdmin.Core.Extensions
 {
+    using ConsoleClient;
+    using Fanex.Core.Utils;
+    using Microsoft.Extensions.DependencyInjection;
+    using RemotingRef;
+    using Repositories;
+    using Services;
+
     public static class DefendencyInjectionExtension
     {
         public static IServiceCollection AddCore(this IServiceCollection services)

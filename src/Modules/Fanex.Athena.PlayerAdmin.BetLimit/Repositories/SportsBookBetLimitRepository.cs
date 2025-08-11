@@ -1,18 +1,18 @@
-﻿using Fanex.Athena.PlayerAdmin.Core.Constants;
-using Fanex.Athena.PlayerAdmin.Core.Extensions;
-using Fanex.Athena.PlayerAdmin.Core.Models;
-using Fanex.Athena.PlayerAdmin.Core.Repositories;
-using Fanex.Athena.PlayerAdmin.BetLimit.DTO;
-using Fanex.Athena.PlayerAdmin.BetLimit.MetaModel;
-using Fanex.Athena.PlayerAdmin.BetLimit.Repositories.Interfaces;
-using Fanex.Data;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace Fanex.Athena.PlayerAdmin.BetLimit.Repositories
+﻿namespace Fanex.Athena.PlayerAdmin.BetLimit.Repositories
 {
+    using System.Collections.Generic;
+    using System.Data;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using Core.Constants;
+    using Core.Extensions;
+    using Core.Models;
+    using Core.Repositories;
+    using Data;
+    using DTO;
+    using Interfaces;
+    using MetaModel;
+
     public class SportsBookBetLimitRepository : ISportsBookBetLimitRepository
     {
         private const string MixedSportId = "99MP";

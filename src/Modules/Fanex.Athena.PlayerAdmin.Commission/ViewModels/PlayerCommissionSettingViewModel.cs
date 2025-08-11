@@ -1,10 +1,10 @@
-﻿using Fanex.Athena.PlayerAdmin.Commission.Helpers;
-using System;
-using System.Collections.Generic;
-using System.Data;
-
-namespace Fanex.Athena.PlayerAdmin.Commission.ViewModels
+﻿namespace Fanex.Athena.PlayerAdmin.Commission.ViewModels
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Data;
+    using Helpers;
+
     public class PlayerCommissionSettingViewModel
     {
         public int GroupCommId { get; set; }

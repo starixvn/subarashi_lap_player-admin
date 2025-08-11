@@ -1,7 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace Fanex.Athena.PlayerAdmin.WebHost.Models
+﻿namespace Fanex.Athena.PlayerAdmin.WebHost.Models
 {
+    using System.ComponentModel.DataAnnotations;
+
     public class LapTokenRequest
     {
         const int MaxLengthToken = 30;

@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-
-namespace Fanex.Athena.PlayerAdmin.Core.Models
+﻿namespace Fanex.Athena.PlayerAdmin.Core.Models
 {
+    using System.Collections.Generic;
+    using System.Collections.ObjectModel;
+    using System.Linq;
+
     public class ProductAccess
     {
         public ProductAccess(IList<Product> productList)

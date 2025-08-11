@@ -1,12 +1,12 @@
-﻿using Fanex.Athena.PlayerAdmin.MVC.Excel;
-using Fanex.Athena.PlayerAdmin.MVC.Repositories;
-using Fanex.Athena.PlayerAdmin.MVC.Repositories.Interfaces;
-using Fanex.Athena.PlayerAdmin.MVC.Services;
-using Fanex.Athena.PlayerAdmin.MVC.Services.Interfaces;
-using Microsoft.Extensions.DependencyInjection;
-
-namespace Fanex.Athena.PlayerAdmin.MVC.Extensions
+﻿namespace Fanex.Athena.PlayerAdmin.MVC.Extensions
 {
+    using Excel;
+    using Microsoft.Extensions.DependencyInjection;
+    using Repositories;
+    using Repositories.Interfaces;
+    using Services;
+    using Services.Interfaces;
+
     public static class DefendencyInjectionExtension
     {
         public static IServiceCollection AddMVC(this IServiceCollection services)

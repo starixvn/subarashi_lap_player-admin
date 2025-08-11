@@ -1,19 +1,19 @@
-﻿using Fanex.Athena.PlayerAdmin.BatchUpdate.Criteria;
-using Fanex.Athena.PlayerAdmin.BatchUpdate.MetaModels;
-using Fanex.Athena.PlayerAdmin.BatchUpdate.Repositories;
-using Fanex.Athena.PlayerAdmin.Core.DataDomains;
-using Fanex.Athena.PlayerAdmin.Core.Mediator;
-using Fanex.Athena.PlayerAdmin.Core.Models;
-using Fanex.Athena.PlayerAdmin.Core.Resources;
-using Fanex.Athena.PlayerAdmin.Core.Services;
-using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace Fanex.Athena.PlayerAdmin.BatchUpdate.Services
+﻿namespace Fanex.Athena.PlayerAdmin.BatchUpdate.Services
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using Core.DataDomains;
+    using Core.Mediator;
+    using Core.Models;
+    using Core.Resources;
+    using Core.Services;
+    using Criteria;
+    using MediatR;
+    using MetaModels;
+    using Repositories;
+
     public class PlayerBatchUpdateService : IPlayerBatchUpdateService
     {
         private readonly IPublisher _publisher;

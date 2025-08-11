@@ -1,8 +1,8 @@
-﻿using Fanex.Athena.PlayerAdmin.BetLimit.DataDomains;
-using MediatR;
-
-namespace Fanex.Athena.PlayerAdmin.BetLimit.Mediator.Events
+﻿namespace Fanex.Athena.PlayerAdmin.BetLimit.Mediator.Events
 {
+    using DataDomains;
+    using MediatR;
+
     public class PlayerUpdatedChargeCommEvent : BasePlayerUpdatedBetSettingEvent<PlayerUpdatedProductDetailedLog>, INotification
     {
     }

@@ -1,13 +1,13 @@
-﻿using Fanex.Athena.PlayerAdmin.Core.Extensions;
-using Fanex.Athena.PlayerAdmin.Core.Repositories;
-using Fanex.Athena.PlayerAdmin.BetLimit.DTO;
-using Fanex.Athena.PlayerAdmin.BetLimit.Repositories.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-
-namespace Fanex.Athena.PlayerAdmin.BetLimit.Repositories
+﻿namespace Fanex.Athena.PlayerAdmin.BetLimit.Repositories
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+    using Core.Extensions;
+    using Core.Repositories;
+    using DTO;
+    using Interfaces;
+
     public class PlayerBetLimitRepository : IPlayerBetLimitRepository
     {
         private readonly IDbFactory _dbFactory;

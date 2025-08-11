@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace Fanex.Athena.PlayerAdmin.API.DTO
+﻿namespace Fanex.Athena.PlayerAdmin.API.DTO
 {
+    using System;
+    using System.Collections.Generic;
+
     public class RiskLevel
     {
         public const string Uncategorized = "Uncategorized";

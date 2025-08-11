@@ -1,8 +1,8 @@
-﻿using System.Net.Http;
-using System.Threading.Tasks;
-
-namespace Fanex.Athena.PlayerAdmin.Core.ConsoleClient
+﻿namespace Fanex.Athena.PlayerAdmin.Core.ConsoleClient
 {
+    using System.Net.Http;
+    using System.Threading.Tasks;
+
     public class CTSApiClient : BaseApiClient, ICTSApiClient
     {
         protected override string ApiName => "CTS API";
@@ -13,7 +13,7 @@ namespace Fanex.Athena.PlayerAdmin.Core.ConsoleClient
 
         public async Task<HttpResponseMessage> PostAsync(string path, object value, string language, int timeOut = 100)
             => await HandleAsync(path, value, language, MediaType.Json,
-                 (response) => Task.FromResult(response)
+                 response => Task.FromResult(response)
                 , false, timeOut);
 
         protected override async Task HandleUnSuccessRequestAsync(HttpResponseMessage response)

@@ -1,16 +1,15 @@
-﻿using Fanex.Athena.PlayerAdmin.Core.Constants;
-using Fanex.Athena.PlayerAdmin.Core.Attributes;
-using Fanex.Athena.PlayerAdmin.MVC.MetaModel;
-using Fanex.Athena.PlayerAdmin.MVC.Services.Interfaces;
-using Fanex.Athena.PlayerAdmin.MVC.ViewModels;
-using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Threading.Tasks;
-using Fanex.Athena.PlayerAdmin.Core.Helpers;
-using Fanex.Athena.PlayerAdmin.Core.Services;
-
-namespace Fanex.Athena.PlayerAdmin.MVC.Controllers
+﻿namespace Fanex.Athena.PlayerAdmin.MVC.Controllers
 {
+    using System.Threading.Tasks;
+    using Core.Attributes;
+    using Core.Constants;
+    using Core.Helpers;
+    using Core.Services;
+    using MetaModel;
+    using Microsoft.AspNetCore.Mvc;
+    using Services.Interfaces;
+    using ViewModels;
+
     [CookieAuthorize(Roles.SuperAdmin, Roles.Statement)]
     public class PlayerStatementController : Controller
     {

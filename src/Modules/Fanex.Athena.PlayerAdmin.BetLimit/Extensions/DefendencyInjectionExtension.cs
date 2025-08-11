@@ -1,11 +1,11 @@
-﻿using Fanex.Athena.PlayerAdmin.BetLimit.Repositories;
-using Fanex.Athena.PlayerAdmin.BetLimit.Repositories.Interfaces;
-using Fanex.Athena.PlayerAdmin.BetLimit.Services;
-using Fanex.Athena.PlayerAdmin.BetLimit.Services.Interfaces;
-using Microsoft.Extensions.DependencyInjection;
-
-namespace Fanex.Athena.PlayerAdmin.BetLimit.Extensions
+﻿namespace Fanex.Athena.PlayerAdmin.BetLimit.Extensions
 {
+    using Microsoft.Extensions.DependencyInjection;
+    using Repositories;
+    using Repositories.Interfaces;
+    using Services;
+    using Services.Interfaces;
+
     public static class DefendencyInjectionExtension
     {
         public static IServiceCollection AddBetLimit(this IServiceCollection services)

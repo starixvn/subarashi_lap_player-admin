@@ -1,11 +1,11 @@
-﻿using Fanex.Athena.PlayerAdmin.API.DTO;
-using Fanex.Athena.PlayerAdmin.API.MetaModel;
-using Fanex.Athena.PlayerAdmin.API.Services.Interfaces;
-using Fanex.Athena.PlayerAdmin.Core.Repositories;
-using System.Threading.Tasks;
-
-namespace Fanex.Athena.PlayerAdmin.API.Services
+﻿namespace Fanex.Athena.PlayerAdmin.API.Services
 {
+    using System.Threading.Tasks;
+    using Core.Repositories;
+    using DTO;
+    using Interfaces;
+    using MetaModel;
+
     public class PlayerActivityRecordService : IPlayerActivityRecordService
     {
         private readonly IDbFactory _dbFactory;

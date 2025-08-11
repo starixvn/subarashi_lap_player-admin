@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-
-namespace Fanex.Athena.PlayerAdmin.Core.Services
+﻿namespace Fanex.Athena.PlayerAdmin.Core.Services
 {
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+
     public interface IContextService
     {
         int LicenseeId { get; }

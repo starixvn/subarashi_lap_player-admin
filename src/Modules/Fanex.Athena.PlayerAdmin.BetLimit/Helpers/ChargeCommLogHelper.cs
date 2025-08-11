@@ -1,9 +1,9 @@
-﻿using Fanex.Athena.PlayerAdmin.BetLimit.DataDomains;
-using Fanex.Athena.PlayerAdmin.BetLimit.Mediator.Events;
-using Fanex.Athena.PlayerAdmin.BetLimit.MetaModel;
-
-namespace Fanex.Athena.PlayerAdmin.BetLimit.Helpers
+﻿namespace Fanex.Athena.PlayerAdmin.BetLimit.Helpers
 {
+    using DataDomains;
+    using Mediator.Events;
+    using MetaModel;
+
     public static class ChargeCommLogHelper
     {
         public const string Success = "Success";

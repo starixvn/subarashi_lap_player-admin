@@ -1,10 +1,10 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using System.Net;
-using System.Threading.Tasks;
-
-namespace Fanex.Athena.PlayerAdmin.Core.Extensions
+﻿namespace Fanex.Athena.PlayerAdmin.Core.Extensions
 {
+    using System.Net;
+    using System.Threading.Tasks;
+    using Microsoft.AspNetCore.Http;
+    using Microsoft.AspNetCore.Mvc;
+
     public static class ControllerExtensions
     {
         public static FromJsonString ToJsonResult(this ControllerBase _, string json)

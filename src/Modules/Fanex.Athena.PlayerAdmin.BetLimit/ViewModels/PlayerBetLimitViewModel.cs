@@ -1,8 +1,7 @@
-﻿using System.Collections.Generic;
-using Fanex.Athena.PlayerAdmin.BetLimit.DTO;
-
-namespace Fanex.Athena.PlayerAdmin.BetLimit.ViewModels
+﻿namespace Fanex.Athena.PlayerAdmin.BetLimit.ViewModels
 {
+    using System.Collections.Generic;
+    using DTO;
 
     public class PlayerBetLimitViewModel
     {

@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-
-namespace Fanex.Athena.PlayerAdmin.Core.Settings
+﻿namespace Fanex.Athena.PlayerAdmin.Core.Settings
 {
+    using System.Collections.Generic;
+
     public enum FunctionUMType : byte
     {
         Commission = 1,

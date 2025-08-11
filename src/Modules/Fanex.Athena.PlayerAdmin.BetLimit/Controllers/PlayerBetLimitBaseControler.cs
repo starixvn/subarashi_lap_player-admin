@@ -1,13 +1,13 @@
-﻿using System.Collections.Generic;
-using Fanex.Athena.PlayerAdmin.BetLimit.DTO;
-using Fanex.Athena.PlayerAdmin.Core.Constants;
-using Fanex.Athena.PlayerAdmin.Core.Helpers;
-using Fanex.Athena.PlayerAdmin.Core.Resources;
-using Fanex.Athena.PlayerAdmin.Core.Services;
-using Microsoft.AspNetCore.Mvc;
-
-namespace Fanex.Athena.PlayerAdmin.BetLimit.Controllers
+﻿namespace Fanex.Athena.PlayerAdmin.BetLimit.Controllers
 {
+    using System.Collections.Generic;
+    using Core.Constants;
+    using Core.Helpers;
+    using Core.Resources;
+    using Core.Services;
+    using DTO;
+    using Microsoft.AspNetCore.Mvc;
+
     public class PlayerBetLimitBaseControler : Controller
     {
         private const string I4DId = "223";

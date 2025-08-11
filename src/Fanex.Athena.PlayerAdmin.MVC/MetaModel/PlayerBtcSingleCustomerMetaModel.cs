@@ -1,9 +1,9 @@
-﻿using System;
-using Fanex.Athena.PlayerAdmin.Core.Models;
-using Fanex.Core.Utils;
-
-namespace Fanex.Athena.PlayerAdmin.MVC.MetaModel
+﻿namespace Fanex.Athena.PlayerAdmin.MVC.MetaModel
 {
+    using System;
+    using Core.Models;
+    using Fanex.Core.Utils;
+
     public class PlayerBtcSingleCustomerMetaModel : IAgentMetaModel, IShowBetFromIPMetaModel, IProductCodeListMetaModel, IFunctionKeyMetaModel, IValidationMetaModel
     {
         private const int DefaultPageSize = 50;

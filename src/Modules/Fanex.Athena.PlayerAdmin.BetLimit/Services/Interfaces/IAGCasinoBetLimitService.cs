@@ -1,11 +1,11 @@
-﻿using Fanex.Athena.PlayerAdmin.Core.Models;
-using Fanex.Athena.PlayerAdmin.BetLimit.DTO;
-using Fanex.Athena.PlayerAdmin.BetLimit.MetaModel;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-
-namespace Fanex.Athena.PlayerAdmin.BetLimit.Services.Interfaces
+﻿namespace Fanex.Athena.PlayerAdmin.BetLimit.Services.Interfaces
 {
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+    using Core.Models;
+    using DTO;
+    using MetaModel;
+
     public interface IAGCasinoBetLimitService
     {
         Task<IList<AgCasinoGame>> GetGroupBettingsAsync(string siteName, int currency);

@@ -1,13 +1,13 @@
-﻿using Fanex.Data;
-using Microsoft.AspNetCore.Http;
-using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-
-namespace Fanex.Athena.PlayerAdmin.Core.Helpers
+﻿namespace Fanex.Athena.PlayerAdmin.Core.Helpers
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Data.SqlClient;
+    using System.Linq;
+    using System.Text;
+    using Data;
+    using Microsoft.AspNetCore.Http;
+
     public static class ErrorMessageHelper
     {
         public static string GenerateMessage(Exception exception, HttpContext context = null)

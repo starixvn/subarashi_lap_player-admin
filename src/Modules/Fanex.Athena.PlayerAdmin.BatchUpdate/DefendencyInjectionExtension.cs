@@ -1,9 +1,9 @@
-﻿using Fanex.Athena.PlayerAdmin.BatchUpdate.Repositories;
-using Fanex.Athena.PlayerAdmin.BatchUpdate.Services;
-using Microsoft.Extensions.DependencyInjection;
-
-namespace Fanex.Athena.PlayerAdmin.BatchUpdate
+﻿namespace Fanex.Athena.PlayerAdmin.BatchUpdate
 {
+    using Microsoft.Extensions.DependencyInjection;
+    using Repositories;
+    using Services;
+
     public static class DefendencyInjectionExtension
     {
         public static IServiceCollection AddBatchUpdate(this IServiceCollection services)

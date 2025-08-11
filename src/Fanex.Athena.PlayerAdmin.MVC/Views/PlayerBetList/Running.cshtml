@@ -1,9 +1,10 @@
 ﻿@{
     ViewData["Title"] = ViewResources.BetListRunning;
 }
-@using  Fanex.Athena.PlayerAdmin.Core.Settings;
-@inject Microsoft.Extensions.Options.IOptions<AppSetting> setting
-@inject Fanex.Athena.PlayerAdmin.Core.Services.IContextService contextService
+@inject IOptions<AppSetting> setting
+@inject IContextService contextService
+@using Fanex.Athena.PlayerAdmin.Core.Settings
+@using Microsoft.Extensions.Options
 @model PlayerRunningBetListViewModel
 @{
     var accessToken = await contextService.AccessToken;

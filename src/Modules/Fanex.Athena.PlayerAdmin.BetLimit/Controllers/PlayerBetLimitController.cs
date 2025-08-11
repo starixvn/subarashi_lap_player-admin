@@ -1,17 +1,17 @@
-﻿using Fanex.Athena.PlayerAdmin.BetLimit.Repositories.Interfaces;
-using Fanex.Athena.PlayerAdmin.BetLimit.ViewModels;
-using Fanex.Athena.PlayerAdmin.Core.Constants;
-using Fanex.Athena.PlayerAdmin.Core.Attributes;
-using Fanex.Athena.PlayerAdmin.Core.Services;
-using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Fanex.Athena.PlayerAdmin.Core.Settings;
-using Microsoft.Extensions.Options;
-
-namespace Fanex.Athena.PlayerAdmin.BetLimit.Controllers
+﻿namespace Fanex.Athena.PlayerAdmin.BetLimit.Controllers
 {
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using Core.Attributes;
+    using Core.Constants;
+    using Core.Services;
+    using Core.Settings;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Options;
+    using Repositories.Interfaces;
+    using ViewModels;
+
     public class PlayerBetLimitController : Controller
     {
         private readonly IPlayerBetLimitRepository _playerBetLimitRepository;

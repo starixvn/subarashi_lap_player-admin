@@ -1,6 +1,7 @@
 ﻿@{
     ViewData["Title"] = ViewResources.BetLimit;
 }
+@using Newtonsoft.Json
 @model PlayerBetLimitProductViewModel
 
 @{
@@ -20,7 +21,7 @@
     requestParam: { CustId: @Model.CustId, ProductId: @Model.ProductId, CurrencyId: @Model.CurrencyId, LicenseeCustId: @Model.LicenseeCustId }
     };
     window._AppData = {
-    productList:  @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(productList))
+    productList:  @Html.Raw(JsonConvert.SerializeObject(productList))
     };
 }
 <div id="app-container">

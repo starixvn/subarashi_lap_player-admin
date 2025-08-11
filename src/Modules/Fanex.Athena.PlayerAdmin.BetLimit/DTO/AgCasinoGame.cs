@@ -1,7 +1,7 @@
 ﻿namespace Fanex.Athena.PlayerAdmin.BetLimit.DTO
 {
     using System.Collections.Generic;
-    using Fanex.Athena.PlayerAdmin.BetLimit.DTO.BetLimits;
+    using BetLimits;
 
     public class AgCasinoGame
     {

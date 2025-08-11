@@ -1,11 +1,11 @@
-﻿using Fanex.Athena.PlayerAdmin.Core.Models;
-using Fanex.Athena.PlayerAdmin.Commission.Criteria;
-using Fanex.Athena.PlayerAdmin.Commission.ViewModels;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-
-namespace Fanex.Athena.PlayerAdmin.Commission.Repositories.Interfaces
+﻿namespace Fanex.Athena.PlayerAdmin.Commission.Repositories.Interfaces
 {
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+    using Core.Models;
+    using Criteria;
+    using ViewModels;
+
     public interface IPlayerCommissionRepository
     {
         Task<IEnumerable<PlayerCommissionSettingViewModel>> GetAllCommSettingAsync(ProductAccess productAccess);

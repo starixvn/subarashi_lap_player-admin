@@ -1,17 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Globalization;
-using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Http;
-using Newtonsoft.Json;
-
-namespace Fanex.Athena.PlayerAdmin.Core.Services
+﻿namespace Fanex.Athena.PlayerAdmin.Core.Services
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Collections.ObjectModel;
+    using System.Globalization;
+    using System.Linq;
+    using System.Security.Claims;
+    using System.Threading.Tasks;
+    using Constants;
+    using Microsoft.AspNetCore.Authentication;
+    using Microsoft.AspNetCore.Authentication.Cookies;
+    using Microsoft.AspNetCore.Http;
+    using Newtonsoft.Json;
+
     public class ContextService : IContextService
     {
         private readonly IHttpContextAccessor _httpContextAccessor;
@@ -57,7 +58,7 @@ namespace Fanex.Athena.PlayerAdmin.Core.Services
         {
             get
             {
-                if (IsEnabledSubsidiary && UserLevel < Constants.UserLevelType.Subsidiary)
+                if (IsEnabledSubsidiary && UserLevel < UserLevelType.Subsidiary)
                 {
                     if (IsMasterLicensee && !WhiteLabelID.HasValue)
                     {
@@ -66,10 +67,8 @@ namespace Fanex.Athena.PlayerAdmin.Core.Services
 
                     return Constants.SubsidiaryViewType.NormalManagement;
                 }
-                else
-                {
-                    return Constants.SubsidiaryViewType.NotManagement;
-                }
+
+                return Constants.SubsidiaryViewType.NotManagement;
             }
         }
 

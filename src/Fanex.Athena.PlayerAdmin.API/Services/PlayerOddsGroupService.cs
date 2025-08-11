@@ -1,15 +1,15 @@
-﻿using Fanex.Athena.PlayerAdmin.API.MetaModel;
-using Fanex.Athena.PlayerAdmin.API.Services.Interfaces;
-using Fanex.Athena.PlayerAdmin.Core.DataDomains;
-using Fanex.Athena.PlayerAdmin.Core.Mediator;
-using Fanex.Athena.PlayerAdmin.Core.Models;
-using Fanex.Athena.PlayerAdmin.Core.Repositories;
-using MediatR;
-using System;
-using System.Threading.Tasks;
-
-namespace Fanex.Athena.PlayerAdmin.API.Services
+﻿namespace Fanex.Athena.PlayerAdmin.API.Services
 {
+    using System;
+    using System.Threading.Tasks;
+    using Core.DataDomains;
+    using Core.Mediator;
+    using Core.Models;
+    using Core.Repositories;
+    using Interfaces;
+    using MediatR;
+    using MetaModel;
+
     public class PlayerOddsGroupService : IPlayerOddsGroupService
     {
         private readonly IDbFactory _dbFactory;

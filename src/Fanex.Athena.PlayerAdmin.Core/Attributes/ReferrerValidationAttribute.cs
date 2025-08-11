@@ -1,17 +1,17 @@
-﻿using Fanex.Athena.PlayerAdmin.Core.Extensions;
-using Fanex.Athena.PlayerAdmin.Core.Settings;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Filters;
-using Microsoft.Extensions.Options;
-using Microsoft.Extensions.Primitives;
-using Microsoft.Net.Http.Headers;
-using System;
-using System.Linq;
-
-namespace Fanex.Athena.PlayerAdmin.Core.Attributes
+﻿namespace Fanex.Athena.PlayerAdmin.Core.Attributes
 {
-    [AttributeUsage(AttributeTargets.Method | AttributeTargets.Class, AllowMultiple = false)]
+    using System;
+    using System.Linq;
+    using Extensions;
+    using Microsoft.AspNetCore.Http;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.Mvc.Filters;
+    using Microsoft.Extensions.Options;
+    using Microsoft.Extensions.Primitives;
+    using Microsoft.Net.Http.Headers;
+    using Settings;
+
+    [AttributeUsage(AttributeTargets.Method | AttributeTargets.Class)]
     public class ReferrerValidationAttribute : TypeFilterAttribute
     {
         public ReferrerValidationAttribute()
@@ -20,7 +20,7 @@ namespace Fanex.Athena.PlayerAdmin.Core.Attributes
         }
     }
 
-    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = false)]
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
     public class ReferrerValidationImplAttribute : ActionFilterAttribute
     {
         private const string ErrorMsg = "Client is invalid";

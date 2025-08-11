@@ -1,15 +1,15 @@
-﻿using Fanex.Athena.PlayerAdmin.BetLimit.MetaModel;
-using Fanex.Athena.PlayerAdmin.BetLimit.Services;
-using Fanex.Athena.PlayerAdmin.BetLimit.ViewModels;
-using Fanex.Athena.PlayerAdmin.Core.Attributes;
-using Fanex.Athena.PlayerAdmin.Core.Constants;
-using Fanex.Athena.PlayerAdmin.Core.Resources;
-using Fanex.Athena.PlayerAdmin.Core.Services;
-using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
-
-namespace Fanex.Athena.PlayerAdmin.BetLimit.Controllers
+﻿namespace Fanex.Athena.PlayerAdmin.BetLimit.Controllers
 {
+    using System.Threading.Tasks;
+    using Core.Attributes;
+    using Core.Constants;
+    using Core.Resources;
+    using Core.Services;
+    using MetaModel;
+    using Microsoft.AspNetCore.Mvc;
+    using Services;
+    using ViewModels;
+
     [RequestValidation(
         validateCustId: true,
         validateProductId: -1,

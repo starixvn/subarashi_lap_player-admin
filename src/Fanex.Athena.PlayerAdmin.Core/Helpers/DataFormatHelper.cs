@@ -1,8 +1,8 @@
-﻿using System;
-using System.Globalization;
-
-namespace Fanex.Athena.PlayerAdmin.Core.Helpers
+﻿namespace Fanex.Athena.PlayerAdmin.Core.Helpers
 {
+    using System;
+    using System.Globalization;
+
     public static class DataFormatHelper
     {
         public const string DECIMALFORMAT20 = "{0:#,##0.00}";

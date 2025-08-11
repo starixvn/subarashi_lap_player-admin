@@ -1,11 +1,11 @@
-﻿using Fanex.Athena.PlayerAdmin.Core.Models;
-using Fanex.Athena.PlayerAdmin.Core.Repositories;
-using MediatR;
-using System.Threading;
-using System.Threading.Tasks;
-
-namespace Fanex.Athena.PlayerAdmin.Core.Mediator
+﻿namespace Fanex.Athena.PlayerAdmin.Core.Mediator
 {
+    using System.Threading;
+    using System.Threading.Tasks;
+    using MediatR;
+    using Models;
+    using Repositories;
+
     public class PlayerUpdatedHandler<TNotification> : INotificationHandler<TNotification>
         where TNotification : PlayerUpdatedEvent, INotification
     {

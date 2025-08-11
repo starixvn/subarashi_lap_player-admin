@@ -1,9 +1,9 @@
-﻿using Fanex.Athena.PlayerAdmin.API.Services;
-using Fanex.Athena.PlayerAdmin.API.Services.Interfaces;
-using Microsoft.Extensions.DependencyInjection;
-
-namespace Fanex.Athena.PlayerAdmin.API
+﻿namespace Fanex.Athena.PlayerAdmin.API
 {
+    using Microsoft.Extensions.DependencyInjection;
+    using Services;
+    using Services.Interfaces;
+
     public static class DefendencyInjectionExtension
     {
         public static IServiceCollection AddAPI(this IServiceCollection services)

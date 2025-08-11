@@ -1,9 +1,8 @@
-﻿using Fanex.Athena.PlayerAdmin.Core.Models;
-using Fanex.Core.Utils;
-
-namespace Fanex.Athena.PlayerAdmin.Commission.MetaModels
+﻿namespace Fanex.Athena.PlayerAdmin.Commission.MetaModels
 {
     using System;
+    using Core.Models;
+    using Fanex.Core.Utils;
 
     public class BasePlayerCommissionUpdateQuery : IValidationMetaModel, IClientIPMetaModel, ILicenseeIdMetaModel, ILanguageMetaModel, IUserIdMetaModel, IUsernameMetaModel
     {

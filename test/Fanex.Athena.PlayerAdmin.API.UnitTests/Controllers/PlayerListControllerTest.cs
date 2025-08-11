@@ -26,9 +26,9 @@ namespace Fanex.Athena.PlayerAdmin.API.UnitTests.Controllers
 
             // Setup default mocks for validation to pass
             _mockDepositSettingService.Setup(x => x.GetCommGroupList(It.IsAny<int>()))
-                .ReturnsAsync(new List<API.ViewModels.CommGroupViewModel>());
+                .ReturnsAsync(new List<CommGroupViewModel>());
             _mockDepositSettingService.Setup(x => x.GetRiskLevelList(It.IsAny<string>()))
-                .ReturnsAsync(new List<API.DTO.RiskLevel>());
+                .ReturnsAsync(new List<RiskLevel>());
             _mockContextService.Setup(x => x.LicenseeId).Returns(123);
             _mockContextService.Setup(x => x.Language).Returns("en");
             _mockContextService.Setup(x => x.OfferedOddsGroupList).Returns(new List<string>());

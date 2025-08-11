@@ -1,9 +1,9 @@
-﻿using Fanex.Athena.PlayerAdmin.Core.Constants;
-using Fanex.Athena.PlayerAdmin.Core.Models;
-using System;
-
-namespace Fanex.Athena.PlayerAdmin.API.MetaModel
+﻿namespace Fanex.Athena.PlayerAdmin.API.MetaModel
 {
+    using System;
+    using Core.Constants;
+    using Core.Models;
+
     public class PlayerBettingStatisticsMetaModel : IBalanceUpAndMoveBetMetaModel, ICustomerIdentityMetaModel, IProductCodeListMetaModel
     {
         public int CustId { get; set; }

@@ -1,8 +1,8 @@
-﻿using Fanex.Data;
-using System.Collections.Generic;
-
-namespace Fanex.Athena.PlayerAdmin.BatchUpdate.Criteria
+﻿namespace Fanex.Athena.PlayerAdmin.BatchUpdate.Criteria
 {
+    using System.Collections.Generic;
+    using Data;
+
     public class GetOldValuesCriteria
     {
         public const int SpecialLevelType = 1;

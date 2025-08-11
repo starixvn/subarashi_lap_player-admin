@@ -1,9 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-
-namespace Fanex.Athena.PlayerAdmin.Commission.MetaModels
+﻿namespace Fanex.Athena.PlayerAdmin.Commission.MetaModels
 {
     using System;
+    using System.Collections.Generic;
+    using System.Linq;
 
     public static class CommValidator
     {

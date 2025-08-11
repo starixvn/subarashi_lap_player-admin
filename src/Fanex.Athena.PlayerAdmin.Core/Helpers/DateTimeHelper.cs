@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace Fanex.Athena.PlayerAdmin.Core.Helpers
+﻿namespace Fanex.Athena.PlayerAdmin.Core.Helpers
 {
+    using System;
+
     public static class DateTimeHelper
     {
         public static DateTimeOffset UtcNow => DateTimeOffset.UtcNow;

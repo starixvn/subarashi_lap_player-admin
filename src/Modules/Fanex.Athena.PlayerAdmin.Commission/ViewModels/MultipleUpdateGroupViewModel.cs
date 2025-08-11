@@ -1,8 +1,8 @@
-﻿using Fanex.Athena.PlayerAdmin.Commission.MetaModels;
-using System.Collections.Generic;
-
-namespace Fanex.Athena.PlayerAdmin.Commission.ViewModels
+﻿namespace Fanex.Athena.PlayerAdmin.Commission.ViewModels
 {
+    using System.Collections.Generic;
+    using MetaModels;
+
     public class MultipleUpdateGroupViewModel : BaseUpdateGroupViewModel
     {
         public MultipleUpdateGroupViewModel(MultipleUpdateGroupQuery query) : base(query)

@@ -1,5 +1,7 @@
 ﻿namespace Fanex.Athena.PlayerAdmin.Core.Models
 {
+    using System;
+
     public class ProductOption
     {
         public string Code { get; set; }
@@ -22,7 +24,7 @@
                 return false;
             }
 
-            return Code.Equals(item.Code, System.StringComparison.OrdinalIgnoreCase);
+            return Code.Equals(item.Code, StringComparison.OrdinalIgnoreCase);
         }
     }
 }

@@ -1,11 +1,11 @@
-﻿using Fanex.Athena.PlayerAdmin.Core.Helpers;
-using Fanex.Athena.PlayerAdmin.Core.Models;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Threading.Tasks;
-
-namespace Fanex.Athena.PlayerAdmin.Core.Repositories
+﻿namespace Fanex.Athena.PlayerAdmin.Core.Repositories
 {
+    using System;
+    using System.Threading.Tasks;
+    using Helpers;
+    using Microsoft.Extensions.Logging;
+    using Models;
+
     public class LogRepository : ILogRepository
     {
         private readonly IDbFactory _dbFactory;

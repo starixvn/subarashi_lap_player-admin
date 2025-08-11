@@ -1,13 +1,13 @@
-﻿using Fanex.Athena.PlayerAdmin.BatchUpdate.Criteria;
-using Fanex.Athena.PlayerAdmin.Core.Extensions;
-using Fanex.Athena.PlayerAdmin.Core.Models;
-using Fanex.Athena.PlayerAdmin.Core.Repositories;
-using Fanex.Data;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-
-namespace Fanex.Athena.PlayerAdmin.BatchUpdate.Repositories
+﻿namespace Fanex.Athena.PlayerAdmin.BatchUpdate.Repositories
 {
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+    using Core.Extensions;
+    using Core.Models;
+    using Core.Repositories;
+    using Criteria;
+    using Data;
+
     public class PlayerBatchUpdateRepository : IPlayerBatchUpdateRepository
     {
         private readonly IDbFactory _dbFactory;

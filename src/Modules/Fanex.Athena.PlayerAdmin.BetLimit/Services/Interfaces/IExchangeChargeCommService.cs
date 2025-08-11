@@ -1,9 +1,9 @@
-﻿using Fanex.Athena.PlayerAdmin.BetLimit.MetaModel;
-using Fanex.Athena.PlayerAdmin.Core.Models;
-using System.Threading.Tasks;
-
-namespace Fanex.Athena.PlayerAdmin.BetLimit.Services.Interfaces
+﻿namespace Fanex.Athena.PlayerAdmin.BetLimit.Services.Interfaces
 {
+    using System.Threading.Tasks;
+    using Core.Models;
+    using MetaModel;
+
     public interface IExchangeChargeCommService
     {
         Task<IResultInfo<double?>> GetChargeCommission(int custId, string language, int groupMode);

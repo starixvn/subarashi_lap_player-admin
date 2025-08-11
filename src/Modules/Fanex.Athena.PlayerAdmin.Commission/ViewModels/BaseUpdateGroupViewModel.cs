@@ -1,7 +1,7 @@
-﻿using Fanex.Athena.PlayerAdmin.Commission.MetaModels;
-
-namespace Fanex.Athena.PlayerAdmin.Commission.ViewModels
+﻿namespace Fanex.Athena.PlayerAdmin.Commission.ViewModels
 {
+    using MetaModels;
+
     public class BaseUpdateGroupViewModel
     {
         public BaseUpdateGroupViewModel(BasePlayerCommissionUpdateQuery query)

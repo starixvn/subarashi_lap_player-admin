@@ -1,14 +1,14 @@
-﻿using Fanex.Athena.PlayerAdmin.API.DTO;
-using Fanex.Athena.PlayerAdmin.API.MetaModel;
-using Fanex.Athena.PlayerAdmin.API.Services.Interfaces;
-using Fanex.Athena.PlayerAdmin.Core.Constants;
-using Fanex.Athena.PlayerAdmin.Core.Attributes;
-using Microsoft.AspNetCore.Cors;
-using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
-
-namespace Fanex.Athena.PlayerAdmin.API.Controllers
+﻿namespace Fanex.Athena.PlayerAdmin.API.Controllers
 {
+    using System.Threading.Tasks;
+    using Core.Attributes;
+    using Core.Constants;
+    using DTO;
+    using MetaModel;
+    using Microsoft.AspNetCore.Cors;
+    using Microsoft.AspNetCore.Mvc;
+    using Services.Interfaces;
+
     [Route("api/[controller]/[action]")]
     [ReferrerValidation]
     [EnableCors(Policy.FromPortalSite)]

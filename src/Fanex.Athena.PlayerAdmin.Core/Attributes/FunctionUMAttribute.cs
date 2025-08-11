@@ -1,17 +1,17 @@
-﻿using Fanex.Athena.PlayerAdmin.Core.Extensions;
-using Fanex.Athena.PlayerAdmin.Core.Models;
-using Fanex.Athena.PlayerAdmin.Core.Resources;
-using Fanex.Athena.PlayerAdmin.Core.Services;
-using Fanex.Athena.PlayerAdmin.Core.Settings;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Filters;
-using System;
-using System.Net;
-using System.Threading.Tasks;
-
-namespace Fanex.Athena.PlayerAdmin.Core.Attributes
+﻿namespace Fanex.Athena.PlayerAdmin.Core.Attributes
 {
-    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = true, Inherited = true)]
+    using System;
+    using System.Net;
+    using System.Threading.Tasks;
+    using Extensions;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.Mvc.Filters;
+    using Models;
+    using Resources;
+    using Services;
+    using Settings;
+
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = true)]
     public class FunctionUMAttribute : TypeFilterAttribute
     {
         public FunctionUMAttribute(FunctionUMType functionUMtype)
@@ -22,7 +22,7 @@ namespace Fanex.Athena.PlayerAdmin.Core.Attributes
         }
     }
 
-    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = true, Inherited = true)]
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = true)]
     public sealed class FunctionUMImplAttribute : ActionFilterAttribute
     {
         private readonly FunctionUMType _functionUMType;

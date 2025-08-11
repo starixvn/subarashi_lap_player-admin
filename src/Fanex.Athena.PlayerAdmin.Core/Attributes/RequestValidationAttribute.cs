@@ -1,16 +1,16 @@
-﻿using Fanex.Athena.PlayerAdmin.Core.Extensions;
-using Fanex.Athena.PlayerAdmin.Core.Models;
-using Fanex.Athena.PlayerAdmin.Core.Services;
-using Fanex.Core.Utils;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Filters;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-
-namespace Fanex.Athena.PlayerAdmin.Core.Attributes
+﻿namespace Fanex.Athena.PlayerAdmin.Core.Attributes
 {
-    [AttributeUsage(AttributeTargets.Method | AttributeTargets.Class, AllowMultiple = false)]
+    using System;
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+    using Extensions;
+    using Fanex.Core.Utils;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.Mvc.Filters;
+    using Models;
+    using Services;
+
+    [AttributeUsage(AttributeTargets.Method | AttributeTargets.Class)]
     public class RequestValidationAttribute : TypeFilterAttribute
     {
         public RequestValidationAttribute(bool validateCustId = false, bool validateClientIP = false, int validateProductId = -99, params int[] limitedProductIds)
@@ -20,7 +20,7 @@ namespace Fanex.Athena.PlayerAdmin.Core.Attributes
         }
     }
 
-    [AttributeUsage(AttributeTargets.Method | AttributeTargets.Class, AllowMultiple = false)]
+    [AttributeUsage(AttributeTargets.Method | AttributeTargets.Class)]
     public class DataValidationImplAttribute : ActionFilterAttribute
     {
         private const int NoValidationProductId = -99;

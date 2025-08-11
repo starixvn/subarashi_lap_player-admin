@@ -1,12 +1,12 @@
-﻿using System.Linq;
-using Fanex.Athena.PlayerAdmin.Core.Excel;
-using Fanex.Athena.PlayerAdmin.MVC.ViewModels;
-using Fanex.Athena.PlayerAdmin.Core.Resources;
-using NPOI.SS.UserModel;
-using Fanex.Athena.PlayerAdmin.Core.Constants;
-
-namespace Fanex.Athena.PlayerAdmin.MVC.Excel
+﻿namespace Fanex.Athena.PlayerAdmin.MVC.Excel
 {
+    using System.Linq;
+    using Core.Constants;
+    using Core.Excel;
+    using Core.Resources;
+    using NPOI.SS.UserModel;
+    using ViewModels;
+
     public class PlayerDetailTransactionExcel : BaseExcel, IPlayerDetailTransactionExcel
     {
         private PlayerDetailTransactionReportViewModel _data;

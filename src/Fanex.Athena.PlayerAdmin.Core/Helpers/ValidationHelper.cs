@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace Fanex.Athena.PlayerAdmin.Core.Helpers
+﻿namespace Fanex.Athena.PlayerAdmin.Core.Helpers
 {
+    using System;
+    using System.Collections.Generic;
+
     public static class ValidationHelper
     {
         public static bool TryParseArray<T>(string input, out T[] result) where T : IParsable<T>

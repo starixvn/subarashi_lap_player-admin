@@ -1,17 +1,17 @@
-﻿using Fanex.Athena.PlayerAdmin.Commission.Criteria;
-using Fanex.Athena.PlayerAdmin.Commission.Helpers;
-using Fanex.Athena.PlayerAdmin.Commission.MetaModels;
-using Fanex.Athena.PlayerAdmin.Commission.Repositories.Interfaces;
-using Fanex.Athena.PlayerAdmin.Commission.Services.Interfaces;
-using Fanex.Athena.PlayerAdmin.Commission.ViewModels;
-using Fanex.Athena.PlayerAdmin.Core.Models;
-using Fanex.Athena.PlayerAdmin.Core.Resources;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace Fanex.Athena.PlayerAdmin.Commission.Services
+﻿namespace Fanex.Athena.PlayerAdmin.Commission.Services
 {
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using Core.Models;
+    using Core.Resources;
+    using Criteria;
+    using Helpers;
+    using Interfaces;
+    using MetaModels;
+    using Repositories.Interfaces;
+    using ViewModels;
+
     public class PlayerCommissionService : IPlayerCommissionService
     {
         private readonly IPlayerCommissionRepository _repository;

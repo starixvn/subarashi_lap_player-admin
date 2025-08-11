@@ -1,10 +1,9 @@
-﻿using System;
-using System.Text.Json;
-using System.Text.Json.Serialization;
-
-namespace Fanex.Athena.PlayerAdmin.Core.JsonConverter
+﻿namespace Fanex.Athena.PlayerAdmin.Core.JsonConverter
 {
+    using System;
     using System.Globalization;
+    using System.Text.Json;
+    using System.Text.Json.Serialization;
 
     public class StringToDateTimeConverter : JsonConverter<DateTime>
     {

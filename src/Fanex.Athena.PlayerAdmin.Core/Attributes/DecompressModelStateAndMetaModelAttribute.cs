@@ -1,14 +1,14 @@
-﻿using LZStringCSharp;
-using Microsoft.AspNetCore.Mvc.Filters;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
-using System;
-using System.Linq;
-using System.Reflection;
-using System.Threading.Tasks;
-
-namespace Fanex.Athena.PlayerAdmin.Core.Attributes
+﻿namespace Fanex.Athena.PlayerAdmin.Core.Attributes
 {
-    [AttributeUsage(AttributeTargets.Method, AllowMultiple = false)]
+    using System;
+    using System.Linq;
+    using System.Reflection;
+    using System.Threading.Tasks;
+    using LZStringCSharp;
+    using Microsoft.AspNetCore.Mvc.Filters;
+    using Microsoft.AspNetCore.Mvc.ModelBinding;
+
+    [AttributeUsage(AttributeTargets.Method)]
     public sealed class DecompressModelStateAndMetaModelAttribute : ActionFilterAttribute
     {
         private readonly string[] _paramArray;

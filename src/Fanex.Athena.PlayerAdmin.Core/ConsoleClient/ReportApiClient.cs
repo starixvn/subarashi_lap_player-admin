@@ -1,10 +1,10 @@
-﻿using Fanex.Athena.PlayerAdmin.Core.Services;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Threading.Tasks;
-
-namespace Fanex.Athena.PlayerAdmin.Core.ConsoleClient
+﻿namespace Fanex.Athena.PlayerAdmin.Core.ConsoleClient
 {
+    using System.Net.Http;
+    using System.Net.Http.Headers;
+    using System.Threading.Tasks;
+    using Services;
+
     public class ReportApiClient : BaseApiClient, IReportApiClient
     {
         private readonly IContextService _contextService;

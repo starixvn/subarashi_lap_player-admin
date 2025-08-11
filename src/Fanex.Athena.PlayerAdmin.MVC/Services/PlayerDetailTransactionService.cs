@@ -1,11 +1,11 @@
-﻿using Fanex.Athena.PlayerAdmin.MVC.MetaModel;
-using Fanex.Athena.PlayerAdmin.MVC.Repositories.Interfaces;
-using Fanex.Athena.PlayerAdmin.MVC.Services.Interfaces;
-using Fanex.Athena.PlayerAdmin.MVC.ViewModels;
-using System.Threading.Tasks;
-
-namespace Fanex.Athena.PlayerAdmin.MVC.Services
+﻿namespace Fanex.Athena.PlayerAdmin.MVC.Services
 {
+    using System.Threading.Tasks;
+    using Interfaces;
+    using MetaModel;
+    using Repositories.Interfaces;
+    using ViewModels;
+
     public class PlayerDetailTransactionService : IPlayerDetailTransactionService
     {
         private readonly IPlayerDetailTransactionRepository _repository;

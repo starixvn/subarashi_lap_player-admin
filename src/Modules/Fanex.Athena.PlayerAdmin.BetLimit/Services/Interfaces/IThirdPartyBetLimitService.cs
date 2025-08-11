@@ -1,10 +1,10 @@
-﻿using Fanex.Athena.PlayerAdmin.BetLimit.DTO;
-using Fanex.Athena.PlayerAdmin.BetLimit.MetaModel;
-using Fanex.Athena.PlayerAdmin.Core.Models;
-using System.Threading.Tasks;
-
-namespace Fanex.Athena.PlayerAdmin.BetLimit.Services
+﻿namespace Fanex.Athena.PlayerAdmin.BetLimit.Services
 {
+    using System.Threading.Tasks;
+    using Core.Models;
+    using DTO;
+    using MetaModel;
+
     public interface IThirdPartyBetLimitService
     {
         Task<ThirdPartyBetSetting> GetSettingAsync(int custId, int productId);

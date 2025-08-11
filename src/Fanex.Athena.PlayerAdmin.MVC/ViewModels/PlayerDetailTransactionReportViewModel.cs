@@ -1,13 +1,13 @@
-﻿using Fanex.Athena.PlayerAdmin.Core.Constants;
-using Fanex.Athena.PlayerAdmin.Core.Helpers;
-using Fanex.Athena.PlayerAdmin.MVC.MetaModel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text.Json.Serialization;
-
-namespace Fanex.Athena.PlayerAdmin.MVC.ViewModels
+﻿namespace Fanex.Athena.PlayerAdmin.MVC.ViewModels
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text.Json.Serialization;
+    using Core.Constants;
+    using Core.Helpers;
+    using MetaModel;
+
     public class PlayerDetailTransactionReportViewModel
     {
         private const int MaximumMonth = 3;

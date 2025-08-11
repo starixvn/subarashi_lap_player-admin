@@ -1,13 +1,13 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Filters;
-using Microsoft.Extensions.Primitives;
-using System;
-using System.Linq;
-using System.Net;
-
-namespace Fanex.Athena.PlayerAdmin.Core.Extensions
+﻿namespace Fanex.Athena.PlayerAdmin.Core.Extensions
 {
+    using System;
+    using System.Linq;
+    using System.Net;
+    using Microsoft.AspNetCore.Http;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.Mvc.Filters;
+    using Microsoft.Extensions.Primitives;
+
     public static class HttpRequestExtensions
     {
         private const string RequestedWithHeader = "X-Requested-With";

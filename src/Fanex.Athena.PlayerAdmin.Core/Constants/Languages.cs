@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace Fanex.Athena.PlayerAdmin.Core.Constants
+﻿namespace Fanex.Athena.PlayerAdmin.Core.Constants
 {
+    using System;
+    using System.Collections.Generic;
+
     public static class Languages
     {
         public static readonly IReadOnlyDictionary<string, string> LanguageCodeMappers = new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase)

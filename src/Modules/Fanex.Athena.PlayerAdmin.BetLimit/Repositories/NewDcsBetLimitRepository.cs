@@ -1,21 +1,21 @@
-﻿using Fanex.Athena.PlayerAdmin.BetLimit.DTO;
-using Fanex.Athena.PlayerAdmin.BetLimit.MetaModel;
-using Fanex.Athena.PlayerAdmin.BetLimit.Repositories.Interfaces;
-using Fanex.Athena.PlayerAdmin.Core.Constants;
-using Fanex.Athena.PlayerAdmin.Core.Extensions;
-using Fanex.Athena.PlayerAdmin.Core.Models;
-using Fanex.Athena.PlayerAdmin.Core.Repositories;
-using Fanex.Data;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-
-namespace Fanex.Athena.PlayerAdmin.BetLimit.Repositories
+﻿namespace Fanex.Athena.PlayerAdmin.BetLimit.Repositories
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using System.Xml.Linq;
+    using Core.Constants;
+    using Core.Extensions;
+    using Core.Models;
+    using Core.Repositories;
+    using Data;
+    using DTO;
+    using Interfaces;
+    using MetaModel;
+    using Microsoft.Extensions.Logging;
+
     public class NewDcsBetLimitRepository : INewDcsBetLimitRepository
     {
         private readonly IDbFactory _db;

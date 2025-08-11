@@ -1,9 +1,8 @@
-﻿using Fanex.Athena.PlayerAdmin.Core.Models;
-using Fanex.Core.Utils;
-
-namespace Fanex.Athena.PlayerAdmin.BatchUpdate.MetaModels
+﻿namespace Fanex.Athena.PlayerAdmin.BatchUpdate.MetaModels
 {
     using System;
+    using Core.Models;
+    using Fanex.Core.Utils;
 
     public class BasePlayerBatchUpdateApiMetaModel : IValidationMetaModel, ISiteNameMetaModel,
         ILicenseeIdMetaModel, ILanguageMetaModel, IClientIPMetaModel, IUserIdMetaModel
