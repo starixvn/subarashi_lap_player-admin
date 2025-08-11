@@ -3,8 +3,10 @@ namespace Fanex.Athena.PlayerAdmin.API.UnitTests.Controllers
     using API.Controllers;
     using API.DTO;
     using API.MetaModel;
+    using API.Services;
     using API.Services.Interfaces;
     using API.ViewModels;
+    using Core.Services;
     using Microsoft.AspNetCore.Mvc;
     using Moq;
     using Xunit;
@@ -12,12 +14,26 @@ namespace Fanex.Athena.PlayerAdmin.API.UnitTests.Controllers
     public class PlayerListControllerTest
     {
         private readonly PlayerListController _controller;
-        private readonly Mock<IPlayerListService> _mockService;
+        private readonly Mock<IPlayerListService> _mockPlayerListService;
+        private readonly Mock<IDepositSettingService> _mockDepositSettingService;
+        private readonly Mock<IContextService> _mockContextService;
 
         public PlayerListControllerTest()
         {
-            _mockService = new Mock<IPlayerListService>();
-            _controller = new PlayerListController(_mockService.Object);
+            _mockPlayerListService = new Mock<IPlayerListService>();
+            _mockDepositSettingService = new Mock<IDepositSettingService>();
+            _mockContextService = new Mock<IContextService>();
+
+            // Setup default mocks for validation to pass
+            _mockDepositSettingService.Setup(x => x.GetCommGroupList(It.IsAny<int>()))
+                .ReturnsAsync(new List<API.ViewModels.CommGroupViewModel>());
+            _mockDepositSettingService.Setup(x => x.GetRiskLevelList(It.IsAny<string>()))
+                .ReturnsAsync(new List<API.DTO.RiskLevel>());
+            _mockContextService.Setup(x => x.LicenseeId).Returns(123);
+            _mockContextService.Setup(x => x.Language).Returns("en");
+            _mockContextService.Setup(x => x.OfferedOddsGroupList).Returns(new List<string>());
+
+            _controller = new PlayerListController(_mockPlayerListService.Object, _mockDepositSettingService.Object, _mockContextService.Object);
         }
 
         [Fact]
@@ -36,7 +52,11 @@ namespace Fanex.Athena.PlayerAdmin.API.UnitTests.Controllers
                 UserName = "testuser",
                 PageIndex = 1,
                 PageSize = 10,
-                SiteName = "TestSite"
+                SiteName = "TestSite",
+                SpecialLevel = "1,2",
+                CommGroups = "",
+                CustomerClass = "",
+                OddsGroup = ""
             };
 
             var expectedResult = new PlayerListResultViewModel
@@ -49,7 +69,7 @@ namespace Fanex.Athena.PlayerAdmin.API.UnitTests.Controllers
                 TotalItem = 2
             };
 
-            _mockService.Setup(x => x.Search(metaModel))
+            _mockPlayerListService.Setup(x => x.Search(metaModel))
                 .ReturnsAsync(expectedResult);
 
             // Act
@@ -59,7 +79,7 @@ namespace Fanex.Athena.PlayerAdmin.API.UnitTests.Controllers
             Assert.NotNull(result);
             var actionResult = Assert.IsType<ActionResult<PlayerListResultViewModel>>(result);
             Assert.Equal(expectedResult, actionResult.Value);
-            _mockService.Verify(x => x.Search(metaModel), Times.Once);
+            _mockPlayerListService.Verify(x => x.Search(metaModel), Times.Once);
         }
 
         [Fact]
@@ -71,7 +91,11 @@ namespace Fanex.Athena.PlayerAdmin.API.UnitTests.Controllers
                 UserName = "nonexistent",
                 PageIndex = 1,
                 PageSize = 10,
-                SiteName = "TestSite"
+                SiteName = "TestSite",
+                SpecialLevel = "1,2",
+                CommGroups = "",
+                CustomerClass = "",
+                OddsGroup = ""
             };
 
             var expectedResult = new PlayerListResultViewModel
@@ -80,7 +104,7 @@ namespace Fanex.Athena.PlayerAdmin.API.UnitTests.Controllers
                 TotalItem = 0
             };
 
-            _mockService.Setup(x => x.Search(metaModel))
+            _mockPlayerListService.Setup(x => x.Search(metaModel))
                 .ReturnsAsync(expectedResult);
 
             // Act
@@ -101,7 +125,11 @@ namespace Fanex.Athena.PlayerAdmin.API.UnitTests.Controllers
             var metaModel = new PlayerListByIdMetaModel
             {
                 IdList = "123",
-                SiteName = "TestSite"
+                SiteName = "TestSite",
+                SpecialLevel = "1,2",
+                CommGroups = "",
+                CustomerClass = "",
+                OddsGroup = ""
             };
 
             var expectedResult = new PlayerListResultViewModel
@@ -113,7 +141,7 @@ namespace Fanex.Athena.PlayerAdmin.API.UnitTests.Controllers
                 TotalItem = 1
             };
 
-            _mockService.Setup(x => x.GetPlayerListById(metaModel))
+            _mockPlayerListService.Setup(x => x.GetPlayerListById(metaModel))
                 .ReturnsAsync(expectedResult);
 
             // Act
@@ -123,7 +151,7 @@ namespace Fanex.Athena.PlayerAdmin.API.UnitTests.Controllers
             Assert.NotNull(result);
             var actionResult = Assert.IsType<ActionResult<PlayerListResultViewModel>>(result);
             Assert.Equal(expectedResult, actionResult.Value);
-            _mockService.Verify(x => x.GetPlayerListById(metaModel), Times.Once);
+            _mockPlayerListService.Verify(x => x.GetPlayerListById(metaModel), Times.Once);
         }
 
         [Fact]
@@ -146,7 +174,7 @@ namespace Fanex.Athena.PlayerAdmin.API.UnitTests.Controllers
                 TotalItem = 1
             };
 
-            _mockService.Setup(x => x.ArchivedSearch(metaModel))
+            _mockPlayerListService.Setup(x => x.ArchivedSearch(metaModel))
                 .ReturnsAsync(expectedResult);
 
             // Act
@@ -156,7 +184,7 @@ namespace Fanex.Athena.PlayerAdmin.API.UnitTests.Controllers
             Assert.NotNull(result);
             var actionResult = Assert.IsType<ActionResult<PlayerListResultViewModel>>(result);
             Assert.Equal(expectedResult, actionResult.Value);
-            _mockService.Verify(x => x.ArchivedSearch(metaModel), Times.Once);
+            _mockPlayerListService.Verify(x => x.ArchivedSearch(metaModel), Times.Once);
         }
 
         [Fact]
@@ -168,15 +196,19 @@ namespace Fanex.Athena.PlayerAdmin.API.UnitTests.Controllers
                 UserName = "testuser",
                 PageIndex = 1,
                 PageSize = 10,
-                SiteName = "TestSite"
+                SiteName = "TestSite",
+                SpecialLevel = "1,2",
+                CommGroups = "",
+                CustomerClass = "",
+                OddsGroup = ""
             };
 
-            _mockService.Setup(x => x.Search(metaModel))
+            _mockPlayerListService.Setup(x => x.Search(metaModel))
                 .ThrowsAsync(new Exception("Database error"));
 
             // Act & Assert
             await Assert.ThrowsAsync<Exception>(() => _controller.Search(metaModel));
-            _mockService.Verify(x => x.Search(metaModel), Times.Once);
+            _mockPlayerListService.Verify(x => x.Search(metaModel), Times.Once);
         }
 
         [Fact]
@@ -186,15 +218,19 @@ namespace Fanex.Athena.PlayerAdmin.API.UnitTests.Controllers
             var metaModel = new PlayerListByIdMetaModel
             {
                 IdList = "123",
-                SiteName = "TestSite"
+                SiteName = "TestSite",
+                SpecialLevel = "1,2",
+                CommGroups = "",
+                CustomerClass = "",
+                OddsGroup = ""
             };
 
-            _mockService.Setup(x => x.GetPlayerListById(metaModel))
+            _mockPlayerListService.Setup(x => x.GetPlayerListById(metaModel))
                 .ThrowsAsync(new Exception("Database error"));
 
             // Act & Assert
             await Assert.ThrowsAsync<Exception>(() => _controller.GetPlayerListById(metaModel));
-            _mockService.Verify(x => x.GetPlayerListById(metaModel), Times.Once);
+            _mockPlayerListService.Verify(x => x.GetPlayerListById(metaModel), Times.Once);
         }
 
         [Fact]
@@ -208,12 +244,12 @@ namespace Fanex.Athena.PlayerAdmin.API.UnitTests.Controllers
                 PageSize = 10
             };
 
-            _mockService.Setup(x => x.ArchivedSearch(metaModel))
+            _mockPlayerListService.Setup(x => x.ArchivedSearch(metaModel))
                 .ThrowsAsync(new Exception("Database error"));
 
             // Act & Assert
             await Assert.ThrowsAsync<Exception>(() => _controller.ArchivedSearch(metaModel));
-            _mockService.Verify(x => x.ArchivedSearch(metaModel), Times.Once);
+            _mockPlayerListService.Verify(x => x.ArchivedSearch(metaModel), Times.Once);
         }
 
         [Fact]
@@ -225,7 +261,11 @@ namespace Fanex.Athena.PlayerAdmin.API.UnitTests.Controllers
                 UserName = "testuser",
                 PageIndex = 1,
                 PageSize = 100,
-                SiteName = "TestSite"
+                SiteName = "TestSite",
+                SpecialLevel = "1,2",
+                CommGroups = "",
+                CustomerClass = "",
+                OddsGroup = ""
             };
 
             var players = new List<Player>();
@@ -240,7 +280,7 @@ namespace Fanex.Athena.PlayerAdmin.API.UnitTests.Controllers
                 TotalItem = 50
             };
 
-            _mockService.Setup(x => x.Search(metaModel))
+            _mockPlayerListService.Setup(x => x.Search(metaModel))
                 .ReturnsAsync(expectedResult);
 
             // Act
@@ -265,7 +305,7 @@ namespace Fanex.Athena.PlayerAdmin.API.UnitTests.Controllers
                 SiteName = "TestSite"
             };
 
-            _mockService.Setup(x => x.Search(metaModel))
+            _mockPlayerListService.Setup(x => x.Search(metaModel))
                 .ReturnsAsync((PlayerListResultViewModel)null);
 
             // Act
