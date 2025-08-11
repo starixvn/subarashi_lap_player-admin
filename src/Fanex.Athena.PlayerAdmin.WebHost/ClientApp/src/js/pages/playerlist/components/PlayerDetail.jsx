@@ -77,8 +77,9 @@ export class PlayerDetail extends PureComponent {
         else {
             omittedHeight = heightSlicing[isAdvancedSearch ? 'withAdvancedSearch' : 'default'];
         }
-
-        return window.innerHeight - omittedHeight;
+        
+        const minHeight = 500;
+        return Math.max(minHeight, window.innerHeight - omittedHeight);
     }
 
     _getActionUrl() {
@@ -116,7 +117,7 @@ export class PlayerDetail extends PureComponent {
                     </div>
                     <div className="tab-panel">
                         <div className="pa-frame-container">
-                            <iframe id="paDetailFrame" style={{ height: frameHeight }} name="paDetailFrame" frameBorder="0" src={src}></iframe>
+                            <iframe id="paDetailFrame" allowFullScreen height={frameHeight} name="paDetailFrame" frameBorder="0" src={src}></iframe>
                         </div>
                     </div>
                 </div>
