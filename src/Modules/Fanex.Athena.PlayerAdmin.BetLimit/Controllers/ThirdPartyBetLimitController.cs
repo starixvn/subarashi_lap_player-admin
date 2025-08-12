@@ -13,7 +13,7 @@
     [RequestValidation(
         validateCustId: true,
         validateProductId: -1,
-        limitedProductIds: new[] { ProductTypes.CashOut })]
+        limitedProductIds: [ProductTypes.CashOut])]
     public class ThirdPartyBetLimitController : PlayerBetLimitBaseControler
     {
         private readonly IThirdPartyBetLimitService _service;

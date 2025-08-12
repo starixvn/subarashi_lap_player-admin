@@ -19,7 +19,9 @@
             foreach (var part in parts)
             {
                 if (!T.TryParse(part.Trim(), null, out var value))
+                {
                     return false;
+                }
 
                 list.Add(value);
             }

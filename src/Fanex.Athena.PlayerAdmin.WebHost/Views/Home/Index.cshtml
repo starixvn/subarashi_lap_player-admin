@@ -6,7 +6,7 @@
 
 <h3>
     Player Admin is running <br />
-    Time: @DateTime.Now.ToString() <br />
+    Time: @DateTimeOffset.Now.ToString(CultureInfo.InvariantCulture) <br />
     UICulture: @CultureInfo.CurrentUICulture.Name <br />
     Culture: @CultureInfo.CurrentCulture.Name <br />
 </h3>

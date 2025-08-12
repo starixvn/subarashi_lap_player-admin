@@ -38,7 +38,6 @@
                 status,
                 description: "Reports degraded status if allocated bytes " +
                     $">= {options.Threshold} mbs.",
-                exception: null,
                 data: data));
         }
     }

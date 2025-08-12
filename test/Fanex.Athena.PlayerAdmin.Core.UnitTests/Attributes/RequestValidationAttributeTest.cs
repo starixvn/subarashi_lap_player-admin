@@ -201,7 +201,7 @@ namespace Fanex.Athena.PlayerAdmin.Core.UnitTests.Attributes
         public void RequestValidationAttribute_Constructor_SetsCorrectArguments()
         {
             // Arrange & Action
-            var attribute = new RequestValidationAttribute(true, true, 5, 1, 2, 3);
+            var attribute = new RequestValidationAttribute(true, true, 5, [1, 2, 3]);
 
             // Assert
             Assert.Equal(typeof(DataValidationImplAttribute), attribute.ImplementationType);

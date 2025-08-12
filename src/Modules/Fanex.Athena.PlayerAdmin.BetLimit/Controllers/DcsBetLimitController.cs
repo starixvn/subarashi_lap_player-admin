@@ -14,8 +14,8 @@
     [RequestValidation(
         true,
         validateProductId: -1,
-        limitedProductIds: new[]
-        {
+        limitedProductIds:
+        [
             ProductTypes.VirtualSports,
             ProductTypes.Lottery,
             ProductTypes.TG,
@@ -73,7 +73,7 @@
             ProductTypes.CPRNG,
             ProductTypes.GPILT,
             ProductTypes.ODG
-        })]
+        ])]
     public class DcsBetLimitController : PlayerBetLimitBaseControler
     {
         private readonly IDcsBetLimitService _service;

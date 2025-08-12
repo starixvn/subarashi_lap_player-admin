@@ -1,5 +1,6 @@
 ﻿namespace Fanex.Athena.PlayerAdmin.API.Controllers
 {
+    using System;
     using System.Linq;
     using System.Net;
     using System.Threading.Tasks;
@@ -91,12 +92,12 @@
             var commGroups = (await _depositSettingService.GetCommGroupList(_contextService.LicenseeId).ConfigureAwait(false))
                 .Select(_ => _.Id);
 
-            if (!string.IsNullOrEmpty(metaModel.CommGroups) && metaModel.CommGroups.Split(',').Any(_ => !commGroups.Contains(_)))
+            if (!string.IsNullOrEmpty(metaModel.CommGroups) && Array.Exists(metaModel.CommGroups.Split(','), group => !commGroups.Contains( group)))
             {
                 return false;
             }
 
-            if (specialLevels.Any(_ => _ < 0 && _ > 10))
+            if (Array.Exists(specialLevels,level => level < 0 || level > 10))
             {
                 return false;
             }
@@ -106,7 +107,7 @@
                 var riskLevels = (await _depositSettingService.GetRiskLevelList(_contextService.Language).ConfigureAwait(false))
                     .SelectMany(_ => _.CustomerClassList);
 
-                if (metaModel.CustomerClass.Split(',').Any(_ => !riskLevels.Contains(_)))
+                if (Array.Exists(metaModel.CustomerClass.Split(','),level => !riskLevels.Contains(level)))
                 {
                     return false;
                 }
@@ -116,7 +117,7 @@
             {
                 var oddsGroups = _contextService.OfferedOddsGroupList;
 
-                if (metaModel.OddsGroup.Split(',').Any(_ => !oddsGroups.Contains(_)))
+                if (Array.Exists(metaModel.OddsGroup.Split(','),group => !oddsGroups.Contains(group)))
                 {
                     return false;
                 }

@@ -13,10 +13,14 @@
     [AttributeUsage(AttributeTargets.Method | AttributeTargets.Class)]
     public class RequestValidationAttribute : TypeFilterAttribute
     {
-        public RequestValidationAttribute(bool validateCustId = false, bool validateClientIP = false, int validateProductId = -99, params int[] limitedProductIds)
+        public RequestValidationAttribute(
+            bool validateCustId = false,
+            bool validateClientIP = false,
+            int validateProductId = -99,
+            int[] limitedProductIds = null)
             : base(typeof(DataValidationImplAttribute))
         {
-            Arguments = new object[] { validateCustId, validateClientIP, validateProductId, limitedProductIds };
+            Arguments = [validateCustId, validateClientIP, validateProductId, limitedProductIds];
         }
     }
 

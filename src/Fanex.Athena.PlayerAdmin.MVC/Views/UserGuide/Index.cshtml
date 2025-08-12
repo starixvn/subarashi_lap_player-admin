@@ -6,10 +6,9 @@
 }
 
 @{
-    var defaultLang = "en-us";
+    const string defaultLang = "en-us";
     var lang = ContextService.Language;
     var partialView = $"{Model}/{lang}.cshtml";
-    var path = ViewContext.View.Path;
     var viewResult = ViewEngineService.FindView(ViewContext, $"{Model}/{lang}", isMainPage: false);
     if (!viewResult.Success)
     {

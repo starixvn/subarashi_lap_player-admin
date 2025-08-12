@@ -1,13 +1,13 @@
 ﻿@{
     ViewData["Title"] = ViewResources.CustomerWinLoss;
 }
-
+@using System.Globalization
 @using Fanex.Athena.PlayerAdmin.Core.Helpers
 @model PlayerFastCrossLinkViewModel
 
 @{
     var now = DateTimeHelper.DatabaseServerNow;
-    var fromDate = new DateTime(now.Year, now.Month, 1).ToString("MM/dd/yyyy");
+    var fromDate = new DateTimeOffset(now.Year, now.Month, 1, 0, 0, 0, TimeSpan.Zero).ToString("MM/dd/yyyy", CultureInfo.InvariantCulture);
     var toDate = now.ToString("MM/dd/yyyy");
 
     const string TitlePattern = "{0}: {1}, {2}→{3}, {4}: {5}, {6}: {7}";
