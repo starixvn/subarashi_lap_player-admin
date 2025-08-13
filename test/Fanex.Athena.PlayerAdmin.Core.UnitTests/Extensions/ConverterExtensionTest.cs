@@ -2,7 +2,6 @@ namespace Fanex.Athena.PlayerAdmin.Core.UnitTests.Extensions
 {
     using System.Globalization;
     using Core.Extensions;
-    using Xunit;
 
     public class ConverterExtensionTest
     {

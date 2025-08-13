@@ -10,6 +10,6 @@
         private const int GroupMode_Other = 1;
 
         public static int GetGroupMode(string siteName)
-            => siteName.Equals(SiteName_12Bet, StringComparison.InvariantCultureIgnoreCase) ? GroupMode_12B : GroupMode_Other;
+            => string.Equals(siteName, SiteName_12Bet, StringComparison.InvariantCultureIgnoreCase) ? GroupMode_12B : GroupMode_Other;
     }
 }

@@ -4,10 +4,6 @@
     <TargetFramework>net8.0</TargetFramework>
     <CodeAnalysisRuleSet>..\..\.sonarlint\lap_playeradmincsharp.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
-
-  <ItemGroup>
-    <AdditionalFiles Include="..\..\.sonarlint\lap_playeradmin\CSharp\SonarLint.xml" Link="SonarLint.xml" />
-  </ItemGroup>
   
   <ItemGroup>
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
@@ -57,7 +53,11 @@
     </None>
   </ItemGroup>
 
-  <ItemGroup>
+	<ItemGroup>
+		<InternalsVisibleTo Include="Fanex.Athena.PlayerAdmin.Core.UnitTests" />
+	</ItemGroup>
+
+	<ItemGroup>
     <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
   </ItemGroup>
 

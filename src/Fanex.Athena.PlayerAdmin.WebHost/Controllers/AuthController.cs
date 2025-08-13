@@ -106,7 +106,7 @@
                     { nameof(token), token },
                     { nameof(scope), scope },
                     { "access_token", currentAccessToken },
-                    { "client_ip", HttpContext.Connection.RemoteIpAddress.ToString() }
+                    { "client_ip", HttpContext.Connection.RemoteIpAddress?.ToString() }
                 })
             };
 

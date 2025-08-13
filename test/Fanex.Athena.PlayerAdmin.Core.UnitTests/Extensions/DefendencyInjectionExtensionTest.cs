@@ -1,12 +1,10 @@
 namespace Fanex.Athena.PlayerAdmin.Core.UnitTests.Extensions
 {
-    using System.Linq;
     using Core.ConsoleClient;
     using Core.Extensions;
+    using Core.Repositories;
     using Core.Services;
     using Microsoft.Extensions.DependencyInjection;
-    using Repositories;
-    using Xunit;
 
     public class DefendencyInjectionExtensionTest
     {

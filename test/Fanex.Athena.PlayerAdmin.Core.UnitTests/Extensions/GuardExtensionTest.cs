@@ -1,9 +1,6 @@
 namespace Fanex.Athena.PlayerAdmin.Core.UnitTests.Extensions
 {
-    using System.Collections.Generic;
-    using System.Linq;
     using Core.Extensions;
-    using Xunit;
 
     public class GuardExtensionTest
     {

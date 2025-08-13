@@ -1,55 +1,55 @@
 namespace Fanex.Athena.PlayerAdmin.API.UnitTests.Services
 {
+    using API.MetaModel;
     using API.Services;
-    using API.Services.Interfaces;
+    using AutoFixture;
+    using Core.DataDomains;
+    using Core.Mediator;
     using Core.Repositories;
+    using Data;
     using MediatR;
     using Moq;
-    using Xunit;
 
     public class PlayerOddsGroupServiceTest
     {
-        private readonly Mock<IDbFactory> _mockDbFactory;
-        private readonly Mock<IPublisher> _mockPublisher;
-        private readonly PlayerOddsGroupService _service;
+        private readonly Fixture _fixture;
+        private readonly Mock<IDbFactory> _dbFactoryMock;
+        private readonly Mock<IPublisher> _publisherMock;
+        private readonly PlayerOddsGroupService _playerOddsGroupService;
 
         public PlayerOddsGroupServiceTest()
         {
-            _mockDbFactory = new Mock<IDbFactory>();
-            _mockPublisher = new Mock<IPublisher>();
-            _service = new PlayerOddsGroupService(_mockDbFactory.Object, _mockPublisher.Object);
+            _fixture = new Fixture();
+            _dbFactoryMock = new Mock<IDbFactory>();
+            _publisherMock = new Mock<IPublisher>();
+            _playerOddsGroupService = new PlayerOddsGroupService(_dbFactoryMock.Object, _publisherMock.Object);
         }
 
-        [Fact]
-        public void Constructor_WithValidDependencies_CreatesService()
+        [Theory]
+        [InlineData(0, true, LogText.Success)]
+        [InlineData(1, false, LogText.False)]
+        public async Task Update_ShouldReturnCorrectResultAndPublishEvent(int errCode, bool expectedSuccess, string expectedStatus)
         {
-            // Act & Assert
-            Assert.NotNull(_service);
-        }
+            var metaModel = _fixture.Create<OddsGroupUpdatingMetaModel>();
 
-        [Fact]
-        public void Constructor_WithNullDependencies_DoesNotThrowException()
-        {
-            // The service constructor doesn't validate null parameters
-            // Act & Assert
-            var service = new PlayerOddsGroupService(null, null);
-            Assert.NotNull(service);
-        }
+            var objectDbMock = new Mock<IObjectDb>();
 
-        [Fact]
-        public void Service_ImplementsInterface()
-        {
-            // Act & Assert
-            Assert.IsAssignableFrom<IPlayerOddsGroupService>(_service);
-        }
+            objectDbMock.Setup(db => db.GetParameterValue("ErrCode")).Returns(errCode);
+            objectDbMock.Setup(db => db.GetParameterValue("ErrMsg")).Returns(_fixture.Create<string>());
 
-        [Fact]
-        public void Service_HasCorrectDependencies()
-        {
-            // Act & Assert
-            Assert.NotNull(_mockDbFactory);
-            Assert.NotNull(_mockPublisher);
-            Assert.NotNull(_service);
+            _dbFactoryMock.Setup(x => x.GetObjectDb(It.IsAny<string>(), It.IsAny<int>())).Returns(objectDbMock.Object);
+            
+            var result = await _playerOddsGroupService.Update(metaModel);
+            
+            Assert.Equal(expectedSuccess, result.Success);
+            Assert.Equal(errCode, result.ErrorCode);
+
+            _publisherMock.Verify(p => p.Publish(It.Is<PlayerUpdatedOddsGroupEvent>(
+                e => e.CustID == metaModel.CustId &&
+                     e.Status == expectedStatus &&
+                     e.NewValue == metaModel.OddsGroup &&
+                     e.OldValue == metaModel.OldValue
+            ), It.IsAny<CancellationToken>()), Times.Once);
         }
     }
 }

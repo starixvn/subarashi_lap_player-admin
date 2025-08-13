@@ -2,7 +2,6 @@ namespace Fanex.Athena.PlayerAdmin.API.UnitTests.MetaModel
 {
     using API.MetaModel;
     using Core.Models;
-    using Xunit;
 
     public class PlayerSearchingMetaModelTest
     {

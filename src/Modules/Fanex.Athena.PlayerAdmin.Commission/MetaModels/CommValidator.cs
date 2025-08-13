@@ -14,8 +14,11 @@
         private static void BuildCommValues()
         {
             var commissions = new List<decimal>();
-            for (var value = MinValue; value <= MaxValue; value += RangValueKey)
+            const int steps = (int)((MaxValue - MinValue) / RangValueKey) + 1;
+            
+            for (int i = 0; i < steps; i++)
             {
+                var value = MinValue + (i * RangValueKey);
                 commissions.Add(value);
             }
 

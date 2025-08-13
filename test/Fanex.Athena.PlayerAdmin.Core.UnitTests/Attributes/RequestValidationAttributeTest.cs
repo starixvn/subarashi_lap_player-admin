@@ -1,7 +1,5 @@
 namespace Fanex.Athena.PlayerAdmin.Core.UnitTests.Attributes
 {
-    using System.Collections.Generic;
-    using System.Threading.Tasks;
     using Core.Attributes;
     using Core.Services;
     using Microsoft.AspNetCore.Http;
@@ -11,7 +9,6 @@ namespace Fanex.Athena.PlayerAdmin.Core.UnitTests.Attributes
     using Microsoft.AspNetCore.Mvc.ModelBinding;
     using Microsoft.AspNetCore.Routing;
     using Moq;
-    using Xunit;
 
     public class RequestValidationAttributeTest
     {

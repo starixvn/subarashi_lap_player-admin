@@ -1,7 +1,5 @@
 ﻿namespace Fanex.Athena.PlayerAdmin.Core.UnitTests.Attributes
 {
-    using System.Collections.Generic;
-    using System.Threading.Tasks;
     using AutoFixture;
     using BatchUpdate.Controllers;
     using BatchUpdate.MetaModels;
@@ -15,7 +13,6 @@
     using Microsoft.AspNetCore.Mvc.ModelBinding;
     using Microsoft.AspNetCore.Routing;
     using Moq;
-    using Xunit;
 
     public class DecompressModelStateAndMetaModelAttributeTest
     {

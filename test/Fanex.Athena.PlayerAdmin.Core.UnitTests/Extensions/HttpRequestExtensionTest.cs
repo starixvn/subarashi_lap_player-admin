@@ -1,6 +1,5 @@
 namespace Fanex.Athena.PlayerAdmin.Core.UnitTests.Extensions
 {
-    using System.Collections.Generic;
     using System.Net;
     using Core.Extensions;
     using Microsoft.AspNetCore.Http;
@@ -9,7 +8,6 @@ namespace Fanex.Athena.PlayerAdmin.Core.UnitTests.Extensions
     using Microsoft.AspNetCore.Mvc.Filters;
     using Microsoft.AspNetCore.Routing;
     using Moq;
-    using Xunit;
 
     public class HttpRequestExtensionTest
     {

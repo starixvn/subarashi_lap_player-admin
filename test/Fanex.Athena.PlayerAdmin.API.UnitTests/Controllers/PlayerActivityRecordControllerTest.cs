@@ -6,7 +6,6 @@ namespace Fanex.Athena.PlayerAdmin.API.UnitTests.Controllers
     using API.Services.Interfaces;
     using Microsoft.AspNetCore.Mvc;
     using Moq;
-    using Xunit;
 
     public class PlayerActivityRecordControllerTest
     {

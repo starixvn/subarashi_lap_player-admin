@@ -1,7 +1,7 @@
 namespace Fanex.Athena.PlayerAdmin.Core.UnitTests.Attributes
 {
-    using System.Collections.Generic;
     using Core.Attributes;
+    using Core.Settings;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.Abstractions;
@@ -10,8 +10,6 @@ namespace Fanex.Athena.PlayerAdmin.Core.UnitTests.Attributes
     using Microsoft.AspNetCore.Routing;
     using Microsoft.Extensions.Options;
     using Moq;
-    using Settings;
-    using Xunit;
 
     public class ReferrerValidationAttributeTest
     {

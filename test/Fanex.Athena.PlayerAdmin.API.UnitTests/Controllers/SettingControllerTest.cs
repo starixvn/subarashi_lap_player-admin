@@ -9,7 +9,6 @@ namespace Fanex.Athena.PlayerAdmin.API.UnitTests.Controllers
     using Core.Services;
     using Microsoft.AspNetCore.Mvc;
     using Moq;
-    using Xunit;
 
     public class SettingControllerTest
     {

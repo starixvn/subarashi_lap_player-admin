@@ -1,7 +1,6 @@
 namespace Fanex.Athena.PlayerAdmin.Core.UnitTests.Attributes
 {
     using Core.Attributes;
-    using Xunit;
 
     public class AuthorizeAttributeTest
     {

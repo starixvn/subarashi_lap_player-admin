@@ -2,7 +2,6 @@ namespace Fanex.Athena.PlayerAdmin.API.UnitTests.ViewModels
 {
     using API.DTO;
     using API.ViewModels;
-    using Xunit;
 
     public class PlayerListResultViewModelTest
     {

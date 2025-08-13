@@ -1,10 +1,9 @@
 namespace Fanex.Athena.PlayerAdmin.Core.UnitTests.Attributes
 {
-    using System.Collections.Generic;
     using System.Net;
-    using System.Threading.Tasks;
     using Core.Attributes;
     using Core.Services;
+    using Core.Settings;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.Abstractions;
@@ -12,8 +11,6 @@ namespace Fanex.Athena.PlayerAdmin.Core.UnitTests.Attributes
     using Microsoft.AspNetCore.Mvc.ModelBinding;
     using Microsoft.AspNetCore.Routing;
     using Moq;
-    using Settings;
-    using Xunit;
 
     public class FunctionUMAttributeTest
     {

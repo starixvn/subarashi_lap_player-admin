@@ -1,18 +1,14 @@
 namespace Fanex.Athena.PlayerAdmin.Core.UnitTests.Services
 {
-    using System;
-    using System.Collections.Generic;
     using System.Globalization;
-    using System.Linq;
     using System.Net;
     using System.Security.Claims;
-    using Constants;
+    using Core.Constants;
     using Core.Services;
     using Microsoft.AspNetCore.Authentication;
     using Microsoft.AspNetCore.Http;
     using Moq;
     using Newtonsoft.Json;
-    using Xunit;
 
     public class ContextServiceTest
     {

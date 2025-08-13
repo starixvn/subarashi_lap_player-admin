@@ -3,7 +3,6 @@ namespace Fanex.Athena.PlayerAdmin.API.UnitTests.Extensions
     using API.Services;
     using API.Services.Interfaces;
     using Microsoft.Extensions.DependencyInjection;
-    using Xunit;
 
     public class DefendencyInjectionExtensionTest
     {

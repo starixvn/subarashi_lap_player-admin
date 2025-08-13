@@ -1,10 +1,8 @@
 namespace Fanex.Athena.PlayerAdmin.Core.UnitTests.Extensions
 {
-    using System;
     using System.Data;
     using Core.Extensions;
     using Moq;
-    using Xunit;
 
     public class DataReaderExtensionTest
     {

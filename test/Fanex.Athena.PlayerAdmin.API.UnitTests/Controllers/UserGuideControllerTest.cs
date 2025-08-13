@@ -5,7 +5,6 @@ namespace Fanex.Athena.PlayerAdmin.API.UnitTests.Controllers
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.FileProviders;
     using Moq;
-    using Xunit;
 
     public class UserGuideControllerTest
     {

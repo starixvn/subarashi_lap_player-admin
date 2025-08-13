@@ -3,7 +3,6 @@ namespace Fanex.Athena.PlayerAdmin.Core.UnitTests.Extensions
     using Core.Extensions;
     using Microsoft.AspNetCore.Mvc;
     using Moq;
-    using Xunit;
 
     public class ControllerExtensionsTest
     {

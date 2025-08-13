@@ -1,8 +1,5 @@
 namespace Fanex.Athena.PlayerAdmin.Core.UnitTests.Attributes
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Threading.Tasks;
     using Core.Attributes;
     using Core.Services;
     using Fanex.Core.Utils;
@@ -14,7 +11,6 @@ namespace Fanex.Athena.PlayerAdmin.Core.UnitTests.Attributes
     using Microsoft.AspNetCore.Routing;
     using Models;
     using Moq;
-    using Xunit;
 
     public class AutoBindingMetaModelAttributeTest
     {

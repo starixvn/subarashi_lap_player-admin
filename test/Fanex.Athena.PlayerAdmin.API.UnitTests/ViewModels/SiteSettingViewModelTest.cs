@@ -1,7 +1,6 @@
 namespace Fanex.Athena.PlayerAdmin.API.UnitTests.ViewModels
 {
     using API.ViewModels;
-    using Xunit;
 
     public class SiteSettingViewModelTest
     {

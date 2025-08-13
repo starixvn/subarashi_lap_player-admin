@@ -23,6 +23,7 @@
         public string CustIdsStr { get; set; }
 
         public virtual bool IsValid
-            => !string.IsNullOrWhiteSpace(CustIds) && Array.TrueForAll(CustIds.Split(','),s => int.TryParse(s, out _));
+            => !string.IsNullOrWhiteSpace(CustIds)
+               && Array.TrueForAll(CustIds.Split(','), s => !string.IsNullOrWhiteSpace(s) && s.Trim() == s && int.TryParse(s, out _));
     }
 }

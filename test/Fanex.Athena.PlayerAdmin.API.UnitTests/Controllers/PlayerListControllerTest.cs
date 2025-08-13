@@ -9,14 +9,13 @@ namespace Fanex.Athena.PlayerAdmin.API.UnitTests.Controllers
     using Core.Services;
     using Microsoft.AspNetCore.Mvc;
     using Moq;
-    using Xunit;
 
     public class PlayerListControllerTest
     {
         private readonly PlayerListController _controller;
-        private readonly Mock<IPlayerListService> _mockPlayerListService;
-        private readonly Mock<IDepositSettingService> _mockDepositSettingService;
         private readonly Mock<IContextService> _mockContextService;
+        private readonly Mock<IDepositSettingService> _mockDepositSettingService;
+        private readonly Mock<IPlayerListService> _mockPlayerListService;
 
         public PlayerListControllerTest()
         {

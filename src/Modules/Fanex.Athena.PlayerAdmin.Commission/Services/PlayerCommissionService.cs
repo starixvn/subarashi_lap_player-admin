@@ -59,6 +59,12 @@
             IEnumerable<PlayerCommissionSettingViewModel> commValues, 
             ProductAccess productAccess)
         {
+            if (commValues == null)
+            {
+                comm.CommValues = null;
+                return comm;
+            }
+
             comm.CommValues = commValues
                 .Where(_ => CommissionGroupHelper.GetProductPermissions(productAccess, _.ProductCode))
                 .OrderBy(_ => _, new GroupCommSettingComparer())

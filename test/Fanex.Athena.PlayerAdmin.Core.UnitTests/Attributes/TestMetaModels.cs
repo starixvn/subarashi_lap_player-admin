@@ -1,6 +1,5 @@
 namespace Fanex.Athena.PlayerAdmin.Core.UnitTests.Attributes
 {
-    using System;
     using Fanex.Core.Utils;
     using Models;
 

@@ -1,11 +1,8 @@
 namespace Fanex.Athena.PlayerAdmin.Core.UnitTests.Extensions
 {
-    using System;
-    using System.Threading.Tasks;
     using Core.Extensions;
     using Microsoft.Extensions.Caching.Memory;
     using Microsoft.Extensions.DependencyInjection;
-    using Xunit;
 
     public class CacheExtensionTest : IDisposable
     {

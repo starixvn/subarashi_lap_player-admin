@@ -1,17 +1,12 @@
 namespace Fanex.Athena.PlayerAdmin.Core.UnitTests.ConsoleClient
 {
-    using System;
     using System.Net;
-    using System.Net.Http;
     using System.Text;
-    using System.Threading;
-    using System.Threading.Tasks;
     using Core.ConsoleClient;
     using Core.Services;
     using Moq;
     using Moq.Protected;
     using Newtonsoft.Json;
-    using Xunit;
 
     public class CommonApiClientTest
     {

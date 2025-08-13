@@ -1,7 +1,6 @@
 namespace Fanex.Athena.PlayerAdmin.API.UnitTests.DTO
 {
     using API.DTO;
-    using Xunit;
 
     public class PlayerBettingStatisticsTest
     {

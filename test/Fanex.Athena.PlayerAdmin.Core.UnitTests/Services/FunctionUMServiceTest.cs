@@ -1,12 +1,9 @@
 namespace Fanex.Athena.PlayerAdmin.Core.UnitTests.Services
 {
-    using System;
-    using System.Collections.Generic;
     using Core.Services;
+    using Core.Settings;
     using Microsoft.Extensions.Options;
     using Moq;
-    using Settings;
-    using Xunit;
 
     public class FunctionUMServiceTest
     {

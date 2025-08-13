@@ -24,7 +24,8 @@
             Sporttype = Convert.ToInt32(reader["Sporttype"]);
             Bettype = Convert.ToInt32(reader["Bettype"]);
             Discount = Convert.ToDecimal(reader["Discount"]);
-            ProductCode = Convert.ToString(reader["ProductCode"]);
+            var productCodeObj = reader["ProductCode"];
+            ProductCode = productCodeObj == null || productCodeObj == DBNull.Value ? null : Convert.ToString(productCodeObj);
             GroupCommId = Convert.ToInt32(reader["GroupDiscountID"]);
         }
 
