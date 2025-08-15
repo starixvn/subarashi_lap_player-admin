@@ -41,7 +41,7 @@
             {
                 ValidComms = ValidComms,
                 Commission = (await commResult).IsSuccessful ? (await commResult).SpecificExtendedData : null,
-                StatusEnable = (await status).GetValueOrDefault(),
+                StatusEnable = (await status).IsDisabled.GetValueOrDefault(),
                 Editable = HasEditPermission()
             };
 
@@ -72,7 +72,7 @@
                 return Json(new ResultInfo { Code = InvalidChargeCommissionError, Message = ViewResources.InvalidChargeCommission });
             }
 
-            if (!(await _dcsService.GetStatusAsync(metaModel.CustId, ProductTypes.Exchange)).GetValueOrDefault())
+            if (!(await _dcsService.GetStatusAsync(metaModel.CustId, ProductTypes.Exchange)).IsDisabled.GetValueOrDefault())
             {
                 return Json(new ResultInfo { Code = 1, Message = ViewResources.FunctionDeniedMsg });
             }

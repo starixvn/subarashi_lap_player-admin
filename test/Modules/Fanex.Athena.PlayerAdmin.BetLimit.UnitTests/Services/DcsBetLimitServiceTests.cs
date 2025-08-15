@@ -96,7 +96,7 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.UnitTests.Services
         {
             // Arrange
             const int custId = 123;
-            const bool expectedStatus = true;
+            var expectedStatus = new PlayerBetLimitProductSetting { IsDisabled = true, SportType = 220, BetType = 1021 };
 
             _repositoryMock.Setup(x => x.GetStatusAsync(custId, productId)).ReturnsAsync(expectedStatus);
 
@@ -110,8 +110,8 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.UnitTests.Services
 
         [Theory]
         [InlineData(ProductTypes.Sportsbook)]
-        [InlineData(ProductTypes.VirtualSports)]
-        public async Task GetStatusAsync_ShouldReturnNull_WhenProductHasNoControlStatus(int productId)
+        [InlineData(ProductTypes.Keno)]
+        public async Task GetStatusAsync_ShouldReturnEmptySetting_WhenProductHasNoControlStatus(int productId)
         {
             // Arrange
             const int custId = 123;
@@ -120,7 +120,11 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.UnitTests.Services
             var result = await _service.GetStatusAsync(custId, productId);
 
             // Assert
-            Assert.Null(result);
+            Assert.NotNull(result);
+            Assert.Equal(0, result.ProductId);
+            Assert.Equal(0, result.SportType);
+            Assert.Equal(0, result.BetType);
+            Assert.Null(result.IsDisabled);
             _repositoryMock.Verify(x => x.GetStatusAsync(It.IsAny<int>(), It.IsAny<int>()), Times.Never);
         }
 

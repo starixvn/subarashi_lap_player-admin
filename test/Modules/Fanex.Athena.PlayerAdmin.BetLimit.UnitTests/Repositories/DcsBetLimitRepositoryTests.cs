@@ -43,18 +43,23 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.UnitTests.Repositories
         }
 
         [Fact]
-        public async Task GetStatusAsync_ReturnsTrueWhenEnabled()
+        public async Task GetStatusAsync_ReturnsEnabledSetting()
         {
             var dbFactory = new Mock<IDbFactory>();
             var db = new Mock<IObjectDb>();
             var reader = new Mock<IDataReader>();
             reader.SetupSequence(r => r.Read()).Returns(true).Returns(false);
+            reader.Setup(r => r["SportType"]).Returns(220);
+            reader.Setup(r => r["BetType"]).Returns(1021);
             reader.Setup(r => r["IsDisabled"]).Returns(0);
             db.Setup(x => x.ExecuteReaderAsync(It.IsAny<object>(), It.IsAny<DbTransaction>(), It.IsAny<CancellationToken>())).ReturnsAsync(reader.Object);
             dbFactory.Setup(x => x.GetObjectDb(It.IsAny<string>(), It.IsAny<int>())).Returns(db.Object);
             var repo = new DcsBetLimitRepository(dbFactory.Object, new Mock<ILogger<DcsBetLimitRepository>>().Object);
             var result = await repo.GetStatusAsync(1, ProductTypes.Lottery);
-            Assert.True(result);
+            Assert.NotNull(result);
+            Assert.Equal(220, result.SportType);
+            Assert.Equal(1021, result.BetType);
+            Assert.True(result.IsDisabled);
         }
 
         [Fact]
@@ -111,22 +116,27 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.UnitTests.Repositories
         }
 
         [Fact]
-        public async Task GetStatusAsync_ReturnsFalseWhenDisabled()
+        public async Task GetStatusAsync_ReturnsDisabledSetting()
         {
             var dbFactory = new Mock<IDbFactory>();
             var db = new Mock<IObjectDb>();
             var reader = new Mock<IDataReader>();
             reader.SetupSequence(r => r.Read()).Returns(true).Returns(false);
+            reader.Setup(r => r["SportType"]).Returns(169);
+            reader.Setup(r => r["BetType"]).Returns(3611);
             reader.Setup(r => r["IsDisabled"]).Returns(1); // Disabled
             db.Setup(x => x.ExecuteReaderAsync(It.IsAny<object>(), It.IsAny<DbTransaction>(), It.IsAny<CancellationToken>())).ReturnsAsync(reader.Object);
             dbFactory.Setup(x => x.GetObjectDb(It.IsAny<string>(), It.IsAny<int>())).Returns(db.Object);
             var repo = new DcsBetLimitRepository(dbFactory.Object, new Mock<ILogger<DcsBetLimitRepository>>().Object);
             var result = await repo.GetStatusAsync(1, ProductTypes.Lottery);
-            Assert.False(result);
+            Assert.NotNull(result);
+            Assert.Equal(169, result.SportType);
+            Assert.Equal(3611, result.BetType);
+            Assert.False(result.IsDisabled);
         }
 
         [Fact]
-        public async Task GetStatusAsync_ReturnsFalseWhenNoDataFound()
+        public async Task GetStatusAsync_ReturnsEmptySettingWhenNoDataFound()
         {
             var dbFactory = new Mock<IDbFactory>();
             var db = new Mock<IObjectDb>();
@@ -136,7 +146,10 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.UnitTests.Repositories
             dbFactory.Setup(x => x.GetObjectDb(It.IsAny<string>(), It.IsAny<int>())).Returns(db.Object);
             var repo = new DcsBetLimitRepository(dbFactory.Object, new Mock<ILogger<DcsBetLimitRepository>>().Object);
             var result = await repo.GetStatusAsync(1, ProductTypes.Lottery);
-            Assert.False(result);
+            Assert.NotNull(result);
+            Assert.Equal(0, result.SportType);
+            Assert.Equal(0, result.BetType);
+            Assert.Null(result.IsDisabled);
         }
 
         [Fact]
@@ -166,13 +179,13 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.UnitTests.Repositories
             db.Setup(x => x.GetParameterValue("ErrMsg")).Returns("");
             dbFactory.Setup(x => x.GetObjectDb(It.IsAny<string>(), It.IsAny<int>())).Returns(db.Object);
             var repo = new DcsBetLimitRepository(dbFactory.Object, new Mock<ILogger<DcsBetLimitRepository>>().Object);
-            var metaModel = new PlayerBetLimitUpdateStatusMetaModel 
-            { 
-                CustId = 123, 
-                UserId = 456, 
-                Ip = "127.0.0.1", 
-                ProductId = ProductTypes.SLT, 
-                Status = false 
+            var metaModel = new PlayerBetLimitUpdateStatusMetaModel
+            {
+                CustId = 123,
+                UserId = 456,
+                Ip = "127.0.0.1",
+                ProductId = ProductTypes.SLT,
+                Status = false
             };
             await repo.UpdateStatusAsync(metaModel);
             db.Verify(x => x.SetParameterValue("custid", 123), Times.Once);

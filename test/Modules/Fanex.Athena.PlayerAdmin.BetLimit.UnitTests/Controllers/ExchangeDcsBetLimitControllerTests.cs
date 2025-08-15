@@ -2,6 +2,7 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.UnitTests.Controllers
 {
     using AutoFixture;
     using BetLimit.Controllers;
+    using BetLimit.DTO;
     using BetLimit.Services.Interfaces;
     using Core.Models;
     using Core.Resources;
@@ -9,6 +10,7 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.UnitTests.Controllers
     using MetaModel;
     using Microsoft.AspNetCore.Mvc;
     using Moq;
+    using System.Threading.Tasks;
     using ViewModels;
 
     public class ExchangeDcsBetLimitControllerTests
@@ -43,12 +45,12 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.UnitTests.Controllers
             metaModel.SiteName = "TestSite";
 
             var commissionResult = new ResultInfo<double?> { Code = 0, Message = string.Empty, SpecificExtendedData = 5.0 };
-            var status = true;
+            var status = new PlayerBetLimitProductSetting { IsDisabled = true, SportType = 221, BetType = 8001 };
 
             _contextService.Setup(x => x.Language).Returns("en");
             _contextService.Setup(x => x.IsInRoles(It.IsAny<string[]>())).Returns(true);
             _chargeCommService.Setup(x => x.GetChargeCommission(It.IsAny<int>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(commissionResult);
-            _dcsService.Setup(x => x.GetStatusAsync(It.IsAny<int>(), It.IsAny<int>())).ReturnsAsync(status);
+            _dcsService.Setup(x => x.GetStatusAsync(It.IsAny<int>(), It.IsAny<int>())).Returns(Task.FromResult(status));
 
             // Act
             var result = await _controller.GetSetting(metaModel);
@@ -60,7 +62,7 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.UnitTests.Controllers
             Assert.NotNull(viewModel);
             Assert.Equal(commissionResult.SpecificExtendedData, viewModel.Commission);
             Assert.True(viewModel.Editable);
-            Assert.Equal(status, viewModel.StatusEnable);
+            Assert.Equal(status.IsDisabled.GetValueOrDefault(), viewModel.StatusEnable);
         }
 
         [Fact]
@@ -71,12 +73,12 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.UnitTests.Controllers
             metaModel.SiteName = "TestSite";
 
             var commissionResult = new ResultInfo<double?> { Code = 1, Message = "Failed" };
-            var status = true;
+            var status = new PlayerBetLimitProductSetting { IsDisabled = true, SportType = 221, BetType = 8001 };
 
             _contextService.Setup(x => x.Language).Returns("en");
             _contextService.Setup(x => x.IsInRoles(It.IsAny<string[]>())).Returns(true);
             _chargeCommService.Setup(x => x.GetChargeCommission(It.IsAny<int>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(commissionResult);
-            _dcsService.Setup(x => x.GetStatusAsync(It.IsAny<int>(), It.IsAny<int>())).ReturnsAsync(status);
+            _dcsService.Setup(x => x.GetStatusAsync(It.IsAny<int>(), It.IsAny<int>())).Returns(Task.FromResult(status));
 
             // Act
             var result = await _controller.GetSetting(metaModel);
@@ -88,7 +90,7 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.UnitTests.Controllers
             Assert.NotNull(viewModel);
             Assert.Null(viewModel.Commission);
             Assert.True(viewModel.Editable);
-            Assert.Equal(status, viewModel.StatusEnable);
+            Assert.Equal(status.IsDisabled.GetValueOrDefault(), viewModel.StatusEnable);
         }
 
         [Theory]
@@ -125,10 +127,10 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.UnitTests.Controllers
             var metaModel = _fixture.Create<PlayerUpdateChargeCommMetaModel>();
             metaModel.Comm = commission;
 
-            var statusResult = true;
+            var statusResult = new PlayerBetLimitProductSetting { IsDisabled = true, SportType = 221, BetType = 8001 };
             var updateResult = new ResultInfo { Code = 0, Message = string.Empty };
 
-            _dcsService.Setup(x => x.GetStatusAsync(It.IsAny<int>(), It.IsAny<int>())).ReturnsAsync(statusResult);
+            _dcsService.Setup(x => x.GetStatusAsync(It.IsAny<int>(), It.IsAny<int>())).Returns(Task.FromResult(statusResult));
             _chargeCommService.Setup(x => x.UpdateChargeCommission(It.IsAny<PlayerUpdateChargeCommMetaModel>())).ReturnsAsync(updateResult);
 
             // Act
@@ -172,9 +174,9 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.UnitTests.Controllers
             var metaModel = _fixture.Create<PlayerUpdateChargeCommMetaModel>();
             metaModel.Comm = 5.0; // Valid commission
 
-            var statusResult = false;
+            var statusResult = new PlayerBetLimitProductSetting { IsDisabled = false, SportType = 221, BetType = 8001 };
 
-            _dcsService.Setup(x => x.GetStatusAsync(It.IsAny<int>(), It.IsAny<int>())).ReturnsAsync(statusResult);
+            _dcsService.Setup(x => x.GetStatusAsync(It.IsAny<int>(), It.IsAny<int>())).Returns(Task.FromResult(statusResult));
 
             // Act
             var result = await _controller.UpdateChargeComm(metaModel);

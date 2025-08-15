@@ -10,6 +10,7 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.UnitTests.Controllers
     using MetaModel;
     using Microsoft.AspNetCore.Mvc;
     using Moq;
+    using System.Threading.Tasks;
     using ViewModels;
 
     public class DcsBetLimitControllerTests
@@ -37,12 +38,12 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.UnitTests.Controllers
             // Arrange
             var metaModel = _fixture.Create<PlayerBetLimitSelectMetaModel>();
             var betLimitData = _fixture.CreateMany<PlayerBetLimit>();
-            var status = true;
+            var status = new PlayerBetLimitProductSetting { IsDisabled = null, SportType = 221, BetType = 8001 };
 
 
             _contextService.Setup(x => x.IsInRoles(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
             _service.Setup(x => x.GetSettingAsync(It.IsAny<int>(), It.IsAny<int>())).ReturnsAsync(betLimitData);
-            _service.Setup(x => x.GetStatusAsync(It.IsAny<int>(), It.IsAny<int>())).ReturnsAsync(status);
+            _service.Setup(x => x.GetStatusAsync(It.IsAny<int>(), It.IsAny<int>())).Returns(Task.FromResult(status));
 
             // Act
             var result = await _controller.GetSetting(metaModel);
@@ -52,7 +53,7 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.UnitTests.Controllers
             var jsonResult = result;
             var viewModel = jsonResult.Value as PlayerBetLimitViewModel;
             Assert.Equal(betLimitData, viewModel.Data);
-            Assert.Equal(status, viewModel.IsStatusEnable);
+            Assert.False(viewModel.IsStatusEnable); // status.IsDisabled.HasValue && isEditable = false && true = false
             Assert.True(viewModel.Editable);
         }
 
@@ -62,11 +63,11 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.UnitTests.Controllers
             // Arrange
             var metaModel = _fixture.Create<PlayerBetLimitSelectMetaModel>();
             var betLimitData = _fixture.CreateMany<PlayerBetLimit>();
-            var status = false;
+            var status = new PlayerBetLimitProductSetting { IsDisabled = true, SportType = 221, BetType = 8001 };
 
             _contextService.Setup(x => x.IsInRoles(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
             _service.Setup(x => x.GetSettingAsync(It.IsAny<int>(), It.IsAny<int>())).ReturnsAsync(betLimitData);
-            _service.Setup(x => x.GetStatusAsync(It.IsAny<int>(), It.IsAny<int>())).ReturnsAsync(status);
+            _service.Setup(x => x.GetStatusAsync(It.IsAny<int>(), It.IsAny<int>())).Returns(Task.FromResult(status));
 
             // Act
             var result = await _controller.GetSetting(metaModel);
@@ -76,8 +77,8 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.UnitTests.Controllers
             var jsonResult = result;
             var viewModel = jsonResult.Value as PlayerBetLimitViewModel;
             Assert.Equal(betLimitData, viewModel.Data);
-            Assert.True(viewModel.IsStatusEnable); // status.HasValue && isEditable = true && true = true
-            Assert.False(viewModel.Editable); // isEditable && (!status.HasValue || status.Value) = true && (false || false) = false
+            Assert.True(viewModel.IsStatusEnable); // status.IsDisabled.HasValue && isEditable = true && true = true
+            Assert.True(viewModel.Editable); // isEditable && (!status.IsDisabled.HasValue || status.IsDisabled.Value) = true && (!true || true) = true
         }
 
         [Fact]
@@ -86,11 +87,11 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.UnitTests.Controllers
             // Arrange
             var metaModel = _fixture.Create<PlayerBetLimitSelectMetaModel>();
             var betLimitData = _fixture.CreateMany<PlayerBetLimit>().ToList();
-            var status = true;
+            var status = new PlayerBetLimitProductSetting { IsDisabled = true, SportType = 220, BetType = 1021 };
 
             _contextService.Setup(x => x.IsInRoles(It.IsAny<string>(), It.IsAny<string>())).Returns(false);
             _service.Setup(x => x.GetSettingAsync(It.IsAny<int>(), It.IsAny<int>())).ReturnsAsync(betLimitData);
-            _service.Setup(x => x.GetStatusAsync(It.IsAny<int>(), It.IsAny<int>())).ReturnsAsync(status);
+            _service.Setup(x => x.GetStatusAsync(It.IsAny<int>(), It.IsAny<int>())).Returns(Task.FromResult(status));
 
             // Act
             var result = await _controller.GetSetting(metaModel);
@@ -99,9 +100,9 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.UnitTests.Controllers
             Assert.IsType<JsonResult>(result);
             var jsonResult = result;
             var viewModel = jsonResult.Value as PlayerBetLimitViewModel;
-            Assert.Equal(betLimitData, viewModel.Data);
-            Assert.False(viewModel.IsStatusEnable); // status.HasValue && isEditable = true && false = false
-            Assert.False(viewModel.Editable); // isEditable && (!status.HasValue || status.Value) = false && (false || true) = false
+            Assert.Equal(betLimitData, viewModel?.Data);
+            Assert.False(viewModel?.IsStatusEnable); // status.HasValue && isEditable = true && false = false
+            Assert.False(viewModel?.Editable); // isEditable && (!status.HasValue || status.Value) = false && (false || true) = false
         }
 
         [Theory]
@@ -235,11 +236,11 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.UnitTests.Controllers
             // Arrange
             var metaModel = _fixture.Create<PlayerBetLimitSelectMetaModel>();
             var betLimitData = _fixture.CreateMany<PlayerBetLimit>();
-            bool? status = null;
+            var status = new PlayerBetLimitProductSetting { IsDisabled = null };
 
             _contextService.Setup(x => x.IsInRoles(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
             _service.Setup(x => x.GetSettingAsync(It.IsAny<int>(), It.IsAny<int>())).ReturnsAsync(betLimitData);
-            _service.Setup(x => x.GetStatusAsync(It.IsAny<int>(), It.IsAny<int>())).ReturnsAsync(status);
+            _service.Setup(x => x.GetStatusAsync(It.IsAny<int>(), It.IsAny<int>())).Returns(Task.FromResult(status));
 
             // Act
             var result = await _controller.GetSetting(metaModel);
@@ -260,11 +261,11 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.UnitTests.Controllers
             // Arrange
             var metaModel = _fixture.Create<PlayerBetLimitSelectMetaModel>();
             var betLimitData = _fixture.CreateMany<PlayerBetLimit>();
-            bool? status = null;
+            var status = new PlayerBetLimitProductSetting { IsDisabled = null };
 
             _contextService.Setup(x => x.IsInRoles(It.IsAny<string>(), It.IsAny<string>())).Returns(false);
             _service.Setup(x => x.GetSettingAsync(It.IsAny<int>(), It.IsAny<int>())).ReturnsAsync(betLimitData);
-            _service.Setup(x => x.GetStatusAsync(It.IsAny<int>(), It.IsAny<int>())).ReturnsAsync(status);
+            _service.Setup(x => x.GetStatusAsync(It.IsAny<int>(), It.IsAny<int>())).Returns(Task.FromResult(status));
 
             // Act
             var result = await _controller.GetSetting(metaModel);
@@ -301,11 +302,11 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.UnitTests.Controllers
             // Arrange
             var metaModel = _fixture.Create<PlayerBetLimitSelectMetaModel>();
             var betLimitData = _fixture.CreateMany<PlayerBetLimit>();
-            var status = true;
+            var status = new PlayerBetLimitProductSetting { IsDisabled = true };
 
             _contextService.Setup(x => x.IsInRoles(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
             _service.Setup(x => x.GetSettingAsync(It.IsAny<int>(), It.IsAny<int>())).ReturnsAsync(betLimitData);
-            _service.Setup(x => x.GetStatusAsync(It.IsAny<int>(), It.IsAny<int>())).ReturnsAsync(status);
+            _service.Setup(x => x.GetStatusAsync(It.IsAny<int>(), It.IsAny<int>())).Returns(Task.FromResult(status));
 
             // Act
             var result = await _controller.GetSetting(metaModel);

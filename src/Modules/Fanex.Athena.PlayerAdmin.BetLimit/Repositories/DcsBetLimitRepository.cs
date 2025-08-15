@@ -180,7 +180,7 @@
             return await ExecuteUpdateSettingQuery(UspName, metaModel);
         }
 
-        public async Task<bool> GetStatusAsync(int custId, int productId)
+        public async Task<PlayerBetLimitProductSetting> GetStatusAsync(int custId, int productId)
         {
             const string UspName = "Acc_Dep_CustSetting_StatusSettingSelect";
 
@@ -191,16 +191,20 @@
                 db.SetParameterValue("SettingType", ProductStatusSettingType);
                 db.SetParameterValue("RoleID", MemberRoleId);
 
-                using (var reader = await db.ExecuteReaderAsync())
+                using var reader = await db.ExecuteReaderAsync();
+
+                if (reader.Read())
                 {
-                    if (reader.Read())
+                    return new PlayerBetLimitProductSetting
                     {
-                        return reader.ToInt("IsDisabled") == 0;
-                    }
+                        SportType = reader.ToInt("SportType"),
+                        BetType = reader.ToInt("BetType"),
+                        IsDisabled = reader.ToInt("IsDisabled") == 0,
+                    };
                 }
             }
 
-            return false;
+            return new PlayerBetLimitProductSetting();
         }
 
         public async Task<IResultInfo> UpdateStatusAsync(PlayerBetLimitUpdateStatusMetaModel metaModel)
@@ -211,7 +215,8 @@
             {
                 db.SetParameterValue("custid", metaModel.CustId);
                 db.SetParameterValue("userid", metaModel.UserId);
-                db.SetParameterValue("IsDisabled", BuildProductStatusXml(metaModel.ProductId, metaModel.Status));
+                db.SetParameterValue("IsDisabled",
+                    BuildProductStatusXml(metaModel.ProductId, metaModel.Status, metaModel.SportType, metaModel.BetType));
                 db.SetParameterValue("ip", metaModel.Ip);
                 db.SetParameterValue("ErrCode", null);
                 db.SetParameterValue("ErrMsg", null);
@@ -241,7 +246,17 @@
             return XmlParameterBuilder.BuildRootXml(XmlParameterBuilder.CombineElements(elements));
         }
 
-        private static string BuildProductStatusXml(int productId, bool status)
-            => string.Format(UpdateStatusXmlFormat, ProductSportTypeMap[productId], ProductBetTypeMap[productId], status ? 0 : 1);
+        private static string BuildProductStatusXml(int productId, bool status, int sportType, int betType)
+        {
+            var finalSportType = ProductSportTypeMap.TryGetValue(productId, out var mappedSportType)
+                ? mappedSportType
+                : sportType;
+
+            var finalBetType = ProductBetTypeMap.TryGetValue(productId, out var mappedBetType)
+                ? mappedBetType
+                : betType;
+
+            return string.Format(UpdateStatusXmlFormat, finalSportType, finalBetType, status ? 0 : 1);
+        }
     }
 }

@@ -22,6 +22,10 @@
 
         public int ProductId { get; set; }
 
+        public int SportType { get; set; }
+
+        public int BetType { get; set; }
+
         public int LicenseeCustId { get; set; }
 
         public bool Status { get; set; }

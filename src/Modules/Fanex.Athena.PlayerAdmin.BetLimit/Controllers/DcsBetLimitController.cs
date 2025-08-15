@@ -11,68 +11,6 @@
     using Services.Interfaces;
     using ViewModels;
 
-    [RequestValidation(
-        validateCustId: true,
-        validateClientIP: false,
-        validateProductId: -1,
-        ProductTypes.VirtualSports,
-        ProductTypes.Lottery,
-        ProductTypes.TG,
-        ProductTypes.I4D,
-        ProductTypes.SLT,
-        ProductTypes.I4D,
-        ProductTypes.SLT,
-        ProductTypes.AllBet,
-        ProductTypes.Voidbridge,
-        ProductTypes.CashOut,
-        ProductTypes.PP,
-        ProductTypes.SXG,
-        ProductTypes.HB,
-        ProductTypes.JK,
-        ProductTypes.SAG,
-        ProductTypes.PGS,
-        ProductTypes.SBC,
-        ProductTypes.WM,
-        ProductTypes.SG,
-        ProductTypes.VRG,
-        ProductTypes.CC,
-        ProductTypes.CG,
-        ProductTypes.VGA,
-        ProductTypes.AP,
-        ProductTypes.APM,
-        ProductTypes.SabaCasino,
-        ProductTypes.BTC,
-        ProductTypes.FGGL,
-        ProductTypes.MXG,
-        ProductTypes.Keno,
-        ProductTypes.NumberGame,
-        ProductTypes.JIG,
-        ProductTypes.YB,
-        ProductTypes.MGRNG,
-        ProductTypes.SEA,
-        ProductTypes.WE,
-        ProductTypes.L22,
-        ProductTypes.UUSL,
-        ProductTypes.FS,
-        ProductTypes.FAC,
-        ProductTypes.NS,
-        ProductTypes.ON,
-        ProductTypes.PTRNG,
-        ProductTypes.GPIRNG,
-        ProductTypes.GPILC,
-        ProductTypes.PS,
-        ProductTypes.ASK,
-        ProductTypes.FG,
-        ProductTypes.HOT,
-        ProductTypes.MGLC,
-        ProductTypes.PTLC,
-        ProductTypes.RGRNG,
-        ProductTypes.WLC,
-        ProductTypes.AIG,
-        ProductTypes.CPRNG,
-        ProductTypes.GPILT,
-        ProductTypes.ODG
-    )]
     public class DcsBetLimitController : PlayerBetLimitBaseControler
     {
         private readonly IDcsBetLimitService _service;
@@ -91,18 +29,17 @@
         public async Task<JsonResult> GetSetting([FromBody] PlayerBetLimitSelectMetaModel metaModel)
         {
             var isEditable = HasEditPermission();
-            var dataTask = _service.GetSettingAsync(metaModel.CustId, metaModel.ProductId);
-            var statusTask = _service.GetStatusAsync(metaModel.CustId, metaModel.ProductId);
-
-            var data = await dataTask;
-            var status = await statusTask;
+            var data = await _service.GetSettingAsync(metaModel.CustId, metaModel.ProductId);
+            var status = await _service.GetStatusAsync(metaModel.CustId, metaModel.ProductId);
 
             var viewModel = new PlayerBetLimitViewModel
             {
                 Data = AddSettingTypeName(data),
-                Editable = isEditable && (!status.HasValue || status.Value),
-                IsStatusEnable = status.HasValue && isEditable,
-                StatusEnable = status.GetValueOrDefault()
+                Editable = isEditable && (!status.IsDisabled.HasValue || status.IsDisabled.Value),
+                IsStatusEnable = status.IsDisabled.HasValue && isEditable,
+                StatusEnable = status.IsDisabled.GetValueOrDefault(),
+                StatusBetType = status.BetType,
+                StatusSportType = status.SportType
             };
 
             return Json(viewModel);
