@@ -8,7 +8,7 @@ namespace Fanex.Athena.PlayerAdmin.Commission.UnitTests.Extensions
     using Core.Repositories;
     using Microsoft.Extensions.DependencyInjection;
 
-    public class DefendencyInjectionExtensionTests
+    public class DependencyInjectionExtensionTests
     {
         [Fact]
         public void AddCommission_ShouldRegisterAllServices_WhenCalled()

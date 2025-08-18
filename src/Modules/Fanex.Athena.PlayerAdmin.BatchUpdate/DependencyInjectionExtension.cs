@@ -4,7 +4,7 @@
     using Repositories;
     using Services;
 
-    public static class DefendencyInjectionExtension
+    public static class DependencyInjectionExtension
     {
         public static IServiceCollection AddBatchUpdate(this IServiceCollection services)
         {

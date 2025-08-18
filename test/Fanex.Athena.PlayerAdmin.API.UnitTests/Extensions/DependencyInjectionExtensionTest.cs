@@ -4,7 +4,7 @@ namespace Fanex.Athena.PlayerAdmin.API.UnitTests.Extensions
     using API.Services.Interfaces;
     using Microsoft.Extensions.DependencyInjection;
 
-    public class DefendencyInjectionExtensionTest
+    public class DependencyInjectionExtensionTest
     {
         [Fact]
         public void AddAPI_RegistersAllRequiredServices()

@@ -4,7 +4,7 @@ namespace Fanex.Athena.PlayerAdmin.BatchUpdate.UnitTests.Extensions
     using BatchUpdate.Services;
     using Microsoft.Extensions.DependencyInjection;
 
-    public class DefendencyInjectionExtensionTest
+    public class DependencyInjectionExtensionTest
     {
         [Fact]
         public void AddBatchUpdate_RegistersAllRequiredServices()

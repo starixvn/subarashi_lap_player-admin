@@ -7,7 +7,7 @@
     using Services;
     using Services.Interfaces;
 
-    public static class DefendencyInjectionExtension
+    public static class DependencyInjectionExtension
     {
         public static IServiceCollection AddMVC(this IServiceCollection services)
         {

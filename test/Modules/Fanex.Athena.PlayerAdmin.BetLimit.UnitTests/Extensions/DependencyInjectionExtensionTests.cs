@@ -13,7 +13,7 @@ namespace Fanex.Athena.PlayerAdmin.BetLimit.UnitTests.Extensions
     using Microsoft.Extensions.Options;
     using Moq;
 
-    public class DefendencyInjectionExtensionTests
+    public class DependencyInjectionExtensionTests
     {
         [Fact]
         public void AddBetLimit_ShouldRegisterAllServices_WhenCalled()

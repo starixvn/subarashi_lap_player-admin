@@ -8,7 +8,7 @@ namespace Fanex.Athena.PlayerAdmin.MVC.UnitTests.Extensions
     using MVC.Services;
     using MVC.Services.Interfaces;
 
-    public class DefendencyInjectionExtensionTest
+    public class DependencyInjectionExtensionTest
     {
         [Fact]
         public void AddMVC_RegistersAllRequiredServices()
