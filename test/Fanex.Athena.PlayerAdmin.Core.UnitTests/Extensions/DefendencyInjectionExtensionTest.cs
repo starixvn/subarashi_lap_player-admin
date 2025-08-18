@@ -32,9 +32,9 @@ namespace Fanex.Athena.PlayerAdmin.Core.UnitTests.Extensions
             services.AddCore();
 
             // Assert
-            Assert.Contains(services, s => s.ServiceType == typeof(IReportApiClient) && s.Lifetime == ServiceLifetime.Transient);
-            Assert.Contains(services, s => s.ServiceType == typeof(IBetListApiClient) && s.Lifetime == ServiceLifetime.Transient);
-            Assert.Contains(services, s => s.ServiceType == typeof(ICommonApiClient) && s.Lifetime == ServiceLifetime.Transient);
+            Assert.Contains(services, s => s.ServiceType == typeof(IReportApiClient) && s.Lifetime == ServiceLifetime.Scoped);
+            Assert.Contains(services, s => s.ServiceType == typeof(IBetListApiClient) && s.Lifetime == ServiceLifetime.Scoped);
+            Assert.Contains(services, s => s.ServiceType == typeof(ICommonApiClient) && s.Lifetime == ServiceLifetime.Scoped);
         }
 
         [Fact]
@@ -48,19 +48,7 @@ namespace Fanex.Athena.PlayerAdmin.Core.UnitTests.Extensions
 
             // Assert
             Assert.Contains(services, s => s.ServiceType == typeof(IContextService) && s.Lifetime == ServiceLifetime.Scoped);
-        }
-
-        [Fact]
-        public void AddCore_RegistersSingletonServices()
-        {
-            // Arrange
-            var services = new ServiceCollection();
-
-            // Act
-            services.AddCore();
-
-            // Assert
-            Assert.Contains(services, s => s.ServiceType == typeof(ILicenseeService) && s.Lifetime == ServiceLifetime.Singleton);
+            Assert.Contains(services, s => s.ServiceType == typeof(ILicenseeService) && s.Lifetime == ServiceLifetime.Scoped);
             Assert.Contains(services, s => s.ServiceType == typeof(ISubsidiaryService) && s.Lifetime == ServiceLifetime.Singleton);
             Assert.Contains(services, s => s.ServiceType == typeof(IResourceService) && s.Lifetime == ServiceLifetime.Singleton);
             Assert.Contains(services, s => s.ServiceType == typeof(IFunctionUMService) && s.Lifetime == ServiceLifetime.Singleton);
@@ -77,7 +65,7 @@ namespace Fanex.Athena.PlayerAdmin.Core.UnitTests.Extensions
 
             // Assert
             Assert.Contains(services, s => s.ServiceType == typeof(IDbFactory) && s.Lifetime == ServiceLifetime.Singleton);
-            Assert.Contains(services, s => s.ServiceType == typeof(ILogRepository) && s.Lifetime == ServiceLifetime.Transient);
+            Assert.Contains(services, s => s.ServiceType == typeof(ILogRepository) && s.Lifetime == ServiceLifetime.Scoped);
         }
 
         [Fact]

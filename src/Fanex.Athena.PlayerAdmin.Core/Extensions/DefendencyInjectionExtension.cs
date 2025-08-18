@@ -18,13 +18,15 @@
 
         private static IServiceCollection AddServices(this IServiceCollection services)
         {
-            services.AddTransient<IReportApiClient, ReportApiClient>();
-            services.AddTransient<IBetListApiClient, BetListApiClient>();
-            services.AddTransient<ICommonApiClient, CommonApiClient>();
+            // Register the API clients as scoped services using IHttpClientFactory
+            services.AddScoped<IReportApiClient, ReportApiClient>();
+            services.AddScoped<IBetListApiClient, BetListApiClient>();
+            services.AddScoped<ICommonApiClient, CommonApiClient>();
+            services.AddScoped<ILgApiClient, LgApiClient>();
 
             services.AddScoped<IContextService, ContextService>();
+            services.AddScoped<ILicenseeService, LicenseeService>();
 
-            services.AddSingleton<ILicenseeService, LicenseeService>();
             services.AddSingleton<ISubsidiaryService, SubsidiaryService>();
             services.AddSingleton<IResourceService, ResourceService>();
             services.AddSingleton<IRemotingRefService, RemotingRefService>();
@@ -37,7 +39,7 @@
         private static IServiceCollection AddRepositories(this IServiceCollection services)
         {
             services.AddSingleton<IDbFactory, DbFactory>();
-            services.AddTransient<ILogRepository, LogRepository>();
+            services.AddScoped<ILogRepository, LogRepository>();
 
             return services;
         }

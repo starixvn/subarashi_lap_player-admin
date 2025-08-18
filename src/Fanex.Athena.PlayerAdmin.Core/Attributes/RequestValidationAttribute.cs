@@ -17,10 +17,10 @@
             bool validateCustId = false,
             bool validateClientIP = false,
             int validateProductId = -99,
-            int[] limitedProductIds = null)
+            params int[] limitedProductIds)
             : base(typeof(DataValidationImplAttribute))
         {
-            Arguments = [validateCustId, validateClientIP, validateProductId, limitedProductIds];
+            Arguments = new object[] { validateCustId, validateClientIP, validateProductId, limitedProductIds };
         }
     }
 
@@ -32,18 +32,19 @@
 
         private readonly IContextService _contextService;
         private readonly ILicenseeService _licenseeService;
+        private readonly int[] _limitedProductIds;
+        private readonly bool _validateClientIP;
 
         private readonly bool _validateCustId;
-        private readonly bool _validateClientIP;
         private readonly int _validateProductId;
-        private readonly int[] _limitedProductIds;
 
-        public DataValidationImplAttribute(IContextService contextService, ILicenseeService licenseeService,
+        public DataValidationImplAttribute(
+            IContextService contextService,
+            ILicenseeService licenseeService,
             bool validateCustId,
             bool validateClientIP,
             int validateProductId,
-            int[] limitedProductIds
-            )
+            int[] limitedProductIds)
         {
             _contextService = contextService;
             _licenseeService = licenseeService;
@@ -72,12 +73,15 @@
             var result = !MetaModelHelper.IsMetaModel(actionArguments, out IValidationMetaModel validationMetaModel) || validationMetaModel.IsValid;
 
             result &= !_validateCustId || (MetaModelHelper.IsMetaModel(actionArguments, out ICustomerIdentityMetaModel customerIdentityMetaModel)
-                && await _licenseeService.CheckCustomerBelongTo(_contextService.AgentList, customerIdentityMetaModel.CustId, customerIdentityMetaModel.CurrencyId));
+                                           && await _licenseeService.CheckCustomerBelongTo(_contextService.AgentList, customerIdentityMetaModel.CustId,
+                                               customerIdentityMetaModel.CurrencyId));
 
-            result &= !_validateClientIP || string.Equals(_contextService.CurrentRequestClientIP, _contextService.OwnerClientIP, StringComparison.InvariantCultureIgnoreCase);
+            result &= !_validateClientIP || string.Equals(_contextService.CurrentRequestClientIP, _contextService.OwnerClientIP,
+                StringComparison.InvariantCultureIgnoreCase);
 
             result &= _validateProductId == NoValidationProductId
-                || await _licenseeService.CheckProductBelongsTo(_contextService.SiteName, GetProductId(actionArguments, _validateProductId), _limitedProductIds);
+                      || await _licenseeService.CheckProductBelongsTo(_contextService.SiteName, GetProductId(actionArguments, _validateProductId),
+                          _limitedProductIds);
 
             return result;
         }
@@ -88,6 +92,7 @@
             {
                 return validateProductId;
             }
+
             return MetaModelHelper.IsMetaModel(actionArguments, out IProductMetaModel productMetaModel) ? productMetaModel.ProductId : validateProductId;
         }
     }

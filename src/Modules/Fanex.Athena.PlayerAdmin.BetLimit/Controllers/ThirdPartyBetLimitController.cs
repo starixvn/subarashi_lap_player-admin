@@ -12,8 +12,9 @@
 
     [RequestValidation(
         validateCustId: true,
+        validateClientIP: false,
         validateProductId: -1,
-        limitedProductIds: [ProductTypes.CashOut])]
+        ProductTypes.CashOut)]
     public class ThirdPartyBetLimitController : PlayerBetLimitBaseControler
     {
         private readonly IThirdPartyBetLimitService _service;
