@@ -59,12 +59,12 @@ namespace Fanex.Athena.PlayerAdmin.Commission.UnitTests.Helpers
         }
 
         [Theory]
-        [InlineData(0.1234, 1, 123)]
-        [InlineData(0.1234, 2, 4)]
-        [InlineData(0.1234, 3, 0)]
-        [InlineData(0.0567, 1, 56)]
-        [InlineData(0.0567, 2, 7)]
-        [InlineData(0.0567, 3, 0)]
+        [InlineData(0.1234, 1, 12)]
+        [InlineData(0.1234, 2, 3)]
+        [InlineData(0.1234, 3, 4)]
+        [InlineData(0.0567, 1, 5)]
+        [InlineData(0.0567, 2, 6)]
+        [InlineData(0.0567, 3, 7)]
         public void GetCommPart_ShouldReturnCorrectPart_WhenValidPositionProvided(decimal comm, int position, int expectedResult)
         {
             // Act
@@ -104,7 +104,7 @@ namespace Fanex.Athena.PlayerAdmin.Commission.UnitTests.Helpers
         }
 
         [Theory]
-        [InlineData(0.1500, 1, 150)]
+        [InlineData(0.1500, 1, 15)]
         [InlineData(0.1500, 2, 0)]
         [InlineData(0.1500, 3, 0)]
         public void GetCommPart_ShouldHandleMaxValue_WhenCommissionIsMaximum(decimal comm, int position, int expectedResult)
