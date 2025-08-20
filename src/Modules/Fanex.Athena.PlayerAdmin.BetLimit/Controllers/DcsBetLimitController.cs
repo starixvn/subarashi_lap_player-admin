@@ -11,6 +11,7 @@
     using Services.Interfaces;
     using ViewModels;
 
+    [RequestValidation(validateCustId: true, validateClientIP: false, validateProductId: -1)]
     public class DcsBetLimitController : PlayerBetLimitBaseControler
     {
         private readonly IDcsBetLimitService _service;
