@@ -1,9 +1,8 @@
-﻿using Fanex.Athena.PlayerAdmin.Core.Models;
-using Fanex.Core.Utils;
-using System;
-
-namespace Fanex.Athena.PlayerAdmin.MVC.MetaModel
+﻿namespace Fanex.Athena.PlayerAdmin.MVC.MetaModel
 {
+    using Core.Models;
+    using Fanex.Core.Utils;
+
     public class PlayerRunningBetListMetaModel : ICustomerIdentityMetaModel, IAgentMetaModel, IShowBetFromIPMetaModel
     {
         private const int PageSizeMaximum = 2000;

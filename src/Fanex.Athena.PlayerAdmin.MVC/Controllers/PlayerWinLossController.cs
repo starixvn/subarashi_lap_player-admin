@@ -1,18 +1,17 @@
-﻿using Fanex.Athena.PlayerAdmin.Core.ConsoleClient;
-using Fanex.Athena.PlayerAdmin.Core.Constants;
-using Fanex.Athena.PlayerAdmin.Core.Attributes;
-using Fanex.Athena.PlayerAdmin.Core.Services;
-using Fanex.Athena.PlayerAdmin.MVC.MetaModel;
-using Fanex.Athena.PlayerAdmin.MVC.ViewModels;
-using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Threading.Tasks;
-using Fanex.Athena.PlayerAdmin.Core.Helpers;
-using Fanex.Athena.PlayerAdmin.Core.Extensions;
-using Fanex.Athena.PlayerAdmin.Core.DataDomains;
-
-namespace Fanex.Athena.PlayerAdmin.MVC.Controllers
+﻿namespace Fanex.Athena.PlayerAdmin.MVC.Controllers
 {
+    using System.Threading.Tasks;
+    using Core.Attributes;
+    using Core.ConsoleClient;
+    using Core.Constants;
+    using Core.DataDomains;
+    using Core.Extensions;
+    using Core.Helpers;
+    using Core.Services;
+    using MetaModel;
+    using Microsoft.AspNetCore.Mvc;
+    using ViewModels;
+
     [CookieAuthorize(Roles.SuperAdmin, Roles.AccountInfo)]
     public class PlayerWinLossController : Controller
     {
@@ -59,7 +58,7 @@ namespace Fanex.Athena.PlayerAdmin.MVC.Controllers
             const string AllOption = "All";
             var now = DateTimeHelper.DatabaseServerNow;
             var productAccess = await _licenseeService.GetSingleWalletProductAccess(_contextService.LicenseeId, FunctionName);
-            metaModel.FromDate = new DateTime(now.Year, now.Month, 1);
+            metaModel.FromDate = DateTimeHelper.CreateDateTime(now.Year, now.Month, 1);
             metaModel.ToDate = now.Date;
             metaModel.CurrencyIdList = string.Join(",", _contextService.CurrencyList.Keys);
             metaModel.ProductCodes = productAccess.ProductCodeListString;

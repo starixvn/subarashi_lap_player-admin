@@ -1,8 +1,8 @@
 ﻿namespace Fanex.Athena.PlayerAdmin.MVC.Repositories.Interfaces
 {
-    using Fanex.Athena.PlayerAdmin.MVC.MetaModel;
-    using Fanex.Athena.PlayerAdmin.MVC.ViewModels;
     using System.Threading.Tasks;
+    using MetaModel;
+    using ViewModels;
 
     public interface IPlayerDetailTransactionRepository
     {

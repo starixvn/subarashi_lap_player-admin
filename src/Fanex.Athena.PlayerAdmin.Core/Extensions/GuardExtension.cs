@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-
-namespace Fanex.Athena.PlayerAdmin.Core.Extensions
+﻿namespace Fanex.Athena.PlayerAdmin.Core.Extensions
 {
+    using System.Collections.Generic;
+    using System.Linq;
+
     public static class GuardExtension
     {
         public static bool IsPresent<T>(this IEnumerable<T> source)

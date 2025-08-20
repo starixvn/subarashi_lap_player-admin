@@ -1,8 +1,8 @@
-﻿using Fanex.Athena.PlayerAdmin.Core.Services;
-using System;
-
-namespace Fanex.Athena.PlayerAdmin.WebHost
+﻿namespace Fanex.Athena.PlayerAdmin.WebHost
 {
+    using System;
+    using Core.Services;
+
     public interface IShardInfoAccessor
     {
         bool TryUseShardDB(string key, out string dbServer);

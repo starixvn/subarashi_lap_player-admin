@@ -1,20 +1,20 @@
-﻿using Fanex.Athena.PlayerAdmin.API.MetaModel;
-using Fanex.Athena.PlayerAdmin.API.Services.Interfaces;
-using Fanex.Athena.PlayerAdmin.API.Utilities;
-using Fanex.Athena.PlayerAdmin.Core.Constants;
-using Fanex.Athena.PlayerAdmin.Core.Attributes;
-using Fanex.Athena.PlayerAdmin.Core.Helpers;
-using Fanex.Athena.PlayerAdmin.Core.Models;
-using Fanex.Athena.PlayerAdmin.Core.Services;
-using Microsoft.AspNetCore.Cors;
-using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Threading.Tasks;
-using Microsoft.Extensions.Logging;
-using System.Linq;
-
-namespace Fanex.Athena.PlayerAdmin.API.Controllers
+﻿namespace Fanex.Athena.PlayerAdmin.API.Controllers
 {
+    using System;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using Core.Attributes;
+    using Core.Constants;
+    using Core.Helpers;
+    using Core.Models;
+    using Core.Services;
+    using MetaModel;
+    using Microsoft.AspNetCore.Cors;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Logging;
+    using Services.Interfaces;
+    using Utilities;
+
     [Route("api/[controller]/[action]")]
     [ReferrerValidation]
     [EnableCors(Policy.FromPortalSite)]
@@ -22,18 +22,15 @@ namespace Fanex.Athena.PlayerAdmin.API.Controllers
     public class PlayerOddsGroupController : ControllerBase
     {
         private readonly IPlayerOddsGroupService _playerOddsGroupService;
-        private readonly ILicenseeService _licenseeService;
         private readonly IContextService _contextService;
         private readonly ILogger<PlayerOddsGroupController> _logger;
 
         public PlayerOddsGroupController(
             IPlayerOddsGroupService playerOddsGroupService,
-            ILicenseeService licenseeService,
             IContextService contextService,
             ILogger<PlayerOddsGroupController> logger)
         {
             _playerOddsGroupService = playerOddsGroupService;
-            _licenseeService = licenseeService;
             _contextService = contextService;
             _logger = logger;
         }

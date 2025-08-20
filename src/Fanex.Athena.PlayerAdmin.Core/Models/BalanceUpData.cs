@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace Fanex.Athena.PlayerAdmin.Core.Models
+﻿namespace Fanex.Athena.PlayerAdmin.Core.Models
 {
+    using System;
+
     public class BalanceUpData
     {
         public DateTime MoveBetsDay { get; set; }

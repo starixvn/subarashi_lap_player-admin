@@ -1,14 +1,14 @@
-﻿using Fanex.Athena.PlayerAdmin.Core.Constants;
-using Fanex.Athena.PlayerAdmin.BetLimit.DataDomains;
-using Fanex.Athena.PlayerAdmin.BetLimit.Mediator;
-using Fanex.Athena.PlayerAdmin.BetLimit.MetaModel;
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-
-namespace Fanex.Athena.PlayerAdmin.BetLimit.Helpers
+﻿namespace Fanex.Athena.PlayerAdmin.BetLimit.Helpers
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Globalization;
+    using System.Linq;
+    using Core.Constants;
+    using DataDomains;
+    using Mediator;
+    using MetaModel;
+
     public static class BetLimitLogHelper
     {
         public const string Success = "Success";

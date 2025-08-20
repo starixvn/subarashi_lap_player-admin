@@ -1,11 +1,11 @@
-﻿using NPOI.HSSF.UserModel;
-using NPOI.SS.UserModel;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-
-namespace Fanex.Athena.PlayerAdmin.Core.Excel
+﻿namespace Fanex.Athena.PlayerAdmin.Core.Excel
 {
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Linq;
+    using NPOI.HSSF.UserModel;
+    using NPOI.SS.UserModel;
+
     public abstract class BaseExcel
     {
         public const int RowHeaderTemplate = 1;
@@ -139,7 +139,7 @@ namespace Fanex.Athena.PlayerAdmin.Core.Excel
             {
                 for (int i = 0; i < NumberOfSheets; i++)
                 {
-                    sheet = CloneSheet(Workbook, TemplateSheetName, "Data" + (i + 1).ToString());
+                    sheet = CloneSheet(Workbook, TemplateSheetName, "Data" + (i + 1));
                     AssignTitle(sheet);
                     AssignHeader(sheet);
                     AssignSheetData(sheet, i);

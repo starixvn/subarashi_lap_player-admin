@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Fanex.Athena.PlayerAdmin.Commission.MetaModels;
-using Fanex.Athena.PlayerAdmin.Core.Resources;
-
-namespace Fanex.Athena.PlayerAdmin.Commission.ViewModels
+﻿namespace Fanex.Athena.PlayerAdmin.Commission.ViewModels
 {
+    using System.Collections.Generic;
+    using System.Linq;
+    using Core.Resources;
+    using MetaModels;
+
     public class SingleMoveGroupViewModel
     {
         public SingleMoveGroupViewModel(

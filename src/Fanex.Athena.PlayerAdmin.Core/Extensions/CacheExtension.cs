@@ -1,9 +1,9 @@
-﻿using Microsoft.Extensions.Caching.Memory;
-using System;
-using System.Threading.Tasks;
-
-namespace Fanex.Athena.PlayerAdmin.Core.Extensions
+﻿namespace Fanex.Athena.PlayerAdmin.Core.Extensions
 {
+    using System;
+    using System.Threading.Tasks;
+    using Microsoft.Extensions.Caching.Memory;
+
     public static class CacheExtension
     {
         public static async Task<T> TryGetOrAddFromCache<T>(this IMemoryCache cache, string cacheKey, TimeSpan cacheTime, Func<Task<T>> func)

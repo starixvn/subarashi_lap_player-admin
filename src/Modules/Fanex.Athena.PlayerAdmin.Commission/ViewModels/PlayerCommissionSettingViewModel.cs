@@ -1,10 +1,10 @@
-﻿using Fanex.Athena.PlayerAdmin.Commission.Helpers;
-using System;
-using System.Collections.Generic;
-using System.Data;
-
-namespace Fanex.Athena.PlayerAdmin.Commission.ViewModels
+﻿namespace Fanex.Athena.PlayerAdmin.Commission.ViewModels
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Data;
+    using Helpers;
+
     public class PlayerCommissionSettingViewModel
     {
         public int GroupCommId { get; set; }
@@ -24,7 +24,8 @@ namespace Fanex.Athena.PlayerAdmin.Commission.ViewModels
             Sporttype = Convert.ToInt32(reader["Sporttype"]);
             Bettype = Convert.ToInt32(reader["Bettype"]);
             Discount = Convert.ToDecimal(reader["Discount"]);
-            ProductCode = Convert.ToString(reader["ProductCode"]);
+            var productCodeObj = reader["ProductCode"];
+            ProductCode = productCodeObj == null || productCodeObj == DBNull.Value ? null : Convert.ToString(productCodeObj);
             GroupCommId = Convert.ToInt32(reader["GroupDiscountID"]);
         }
 

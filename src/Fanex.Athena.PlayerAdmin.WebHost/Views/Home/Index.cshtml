@@ -1,11 +1,12 @@
-﻿@{
+﻿@using System.Globalization
+@{
     ViewData["Title"] = "Home Page";
     Layout = null;
 }
 
 <h3>
     Player Admin is running <br />
-    Time: @DateTime.Now.ToString() <br />
-    UICulture: @System.Globalization.CultureInfo.CurrentUICulture.Name <br />
-    Culture: @System.Globalization.CultureInfo.CurrentCulture.Name <br />
+    Time: @DateTimeOffset.Now.ToString(CultureInfo.InvariantCulture) <br />
+    UICulture: @CultureInfo.CurrentUICulture.Name <br />
+    Culture: @CultureInfo.CurrentCulture.Name <br />
 </h3>

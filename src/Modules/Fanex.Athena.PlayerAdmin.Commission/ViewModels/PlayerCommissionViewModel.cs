@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-
-namespace Fanex.Athena.PlayerAdmin.Commission.ViewModels
+﻿namespace Fanex.Athena.PlayerAdmin.Commission.ViewModels
 {
+    using System.Collections.Generic;
+
     public class PlayerCommissionViewModel
     {
         public int LicenseeId { get; set; }

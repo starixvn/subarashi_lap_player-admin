@@ -1,10 +1,10 @@
-﻿using Fanex.Athena.PlayerAdmin.Core.Constants;
-using Fanex.Athena.PlayerAdmin.Core.Mediator;
-using MediatR;
-using Newtonsoft.Json;
-
-namespace Fanex.Athena.PlayerAdmin.BetLimit.Mediator
+﻿namespace Fanex.Athena.PlayerAdmin.BetLimit.Mediator
 {
+    using Core.Constants;
+    using Core.Mediator;
+    using MediatR;
+    using Newtonsoft.Json;
+
     public class BasePlayerUpdatedBetSettingEvent<T> : PlayerUpdatedEvent, INotification
     {
         protected BasePlayerUpdatedBetSettingEvent() { }

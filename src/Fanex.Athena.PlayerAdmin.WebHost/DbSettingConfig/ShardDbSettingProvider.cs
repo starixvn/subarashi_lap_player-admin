@@ -1,8 +1,8 @@
-﻿using Fanex.Data;
-using Fanex.Data.SqlServer;
-
-namespace Fanex.Athena.PlayerAdmin.WebHost
+﻿namespace Fanex.Athena.PlayerAdmin.WebHost
 {
+    using Data;
+    using Data.SqlServer;
+
     public class ShardDbSettingProvider
     {
         private readonly IShardInfoAccessor _shardInfoAccessor;
@@ -18,8 +18,7 @@ namespace Fanex.Athena.PlayerAdmin.WebHost
         {
             if (_shardInfoAccessor.TryUseShardDB(settingKey, out var dbServer))
             {
-                serverIp = dbServer;
-                settingKey = _shardInfoAccessor.GetShardSPKey(settingKey);
+                return new SqlObjectDb(_shardInfoAccessor.GetShardSPKey(settingKey), commandTimeout, dbServer);
             }
 
             return new SqlObjectDb(settingKey, commandTimeout, serverIp);

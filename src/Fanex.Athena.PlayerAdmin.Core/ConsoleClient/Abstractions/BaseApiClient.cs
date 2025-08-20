@@ -1,16 +1,16 @@
-﻿using MessagePack;
-using Newtonsoft.Json;
-using System;
-using System.IO;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Runtime.Serialization;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-
-namespace Fanex.Athena.PlayerAdmin.Core.ConsoleClient
+﻿namespace Fanex.Athena.PlayerAdmin.Core.ConsoleClient
 {
+    using System;
+    using System.IO;
+    using System.Net.Http;
+    using System.Net.Http.Headers;
+    using System.Runtime.Serialization;
+    using System.Text;
+    using System.Threading;
+    using System.Threading.Tasks;
+    using MessagePack;
+    using Newtonsoft.Json;
+
     public enum MediaType : byte
     {
         Json = 0,
@@ -160,7 +160,7 @@ namespace Fanex.Athena.PlayerAdmin.Core.ConsoleClient
                 value,
                 language,
                 MediaType.Json,
-                 async (response) =>
+                 async response =>
                  {
                      using (response)
                      {
@@ -182,7 +182,7 @@ namespace Fanex.Athena.PlayerAdmin.Core.ConsoleClient
         public virtual async Task<string> PostStringAsync(string path, object value, string language, int timeOut = 100)
         {
             return await HandleAsync(path, value, language, MediaType.Json,
-                async (response) =>
+                async response =>
                 {
                     using (response)
                     {

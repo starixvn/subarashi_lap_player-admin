@@ -1,16 +1,16 @@
-﻿using Fanex.Athena.PlayerAdmin.Core.ConsoleClient;
-using Fanex.Athena.PlayerAdmin.Core.Constants;
-using Fanex.Athena.PlayerAdmin.Core.Extensions;
-using Fanex.Athena.PlayerAdmin.Core.Models;
-using Fanex.Athena.PlayerAdmin.Core.Repositories;
-using Microsoft.Extensions.Caching.Memory;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace Fanex.Athena.PlayerAdmin.Core.Services
+﻿namespace Fanex.Athena.PlayerAdmin.Core.Services
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using ConsoleClient;
+    using Constants;
+    using Extensions;
+    using Microsoft.Extensions.Caching.Memory;
+    using Models;
+    using Repositories;
+
     public class LicenseeService : ILicenseeService
     {
         private readonly IMemoryCache _cache;
@@ -129,7 +129,7 @@ namespace Fanex.Athena.PlayerAdmin.Core.Services
 
         public string GetAllowedSubProductCodeList(IEnumerable<string> offeredSubProductList, string productCodes)
         {
-            if (!offeredSubProductList.IsPresent() || !productCodes.Split(',').Any(_ => _ == ProductCode.SB))
+            if (!offeredSubProductList.IsPresent() || !Array.Exists(productCodes.Split(','),code => code == ProductCode.SB))
             {
                 return productCodes;
             }

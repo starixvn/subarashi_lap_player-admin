@@ -1,9 +1,9 @@
-﻿using Fanex.Athena.PlayerAdmin.Core.Settings;
-using Microsoft.Extensions.Options;
-using System.Linq;
-
-namespace Fanex.Athena.PlayerAdmin.Core.Services
+﻿namespace Fanex.Athena.PlayerAdmin.Core.Services
 {
+    using System.Linq;
+    using Microsoft.Extensions.Options;
+    using Settings;
+
     public class FunctionUMService : IFunctionUMService
     {
         private readonly FunctionUMSetting _setting;

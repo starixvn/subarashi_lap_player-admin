@@ -1,8 +1,8 @@
-﻿using NPOI.SS.UserModel;
-using NPOI.SS.Util;
-
-namespace Fanex.Athena.PlayerAdmin.Core.Excel
+﻿namespace Fanex.Athena.PlayerAdmin.Core.Excel
 {
+    using NPOI.SS.UserModel;
+    using NPOI.SS.Util;
+
     public static class ExcelExtension
     {
         public static IRow CopyRow(this ISheet sheet, ISheet sourceSheet, int rowIndex)

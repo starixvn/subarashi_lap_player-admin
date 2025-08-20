@@ -1,23 +1,21 @@
-﻿using Fanex.Athena.PlayerAdmin.BatchUpdate.Criteria;
-using Fanex.Athena.PlayerAdmin.BatchUpdate.MetaModels;
-using Fanex.Athena.PlayerAdmin.BatchUpdate.Repositories;
-using Fanex.Athena.PlayerAdmin.Core.DataDomains;
-using Fanex.Athena.PlayerAdmin.Core.Mediator;
-using Fanex.Athena.PlayerAdmin.Core.Models;
-using Fanex.Athena.PlayerAdmin.Core.Resources;
-using Fanex.Athena.PlayerAdmin.Core.Services;
-using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace Fanex.Athena.PlayerAdmin.BatchUpdate.Services
+﻿namespace Fanex.Athena.PlayerAdmin.BatchUpdate.Services
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using Core.DataDomains;
+    using Core.Mediator;
+    using Core.Models;
+    using Core.Resources;
+    using Core.Services;
+    using Criteria;
+    using MediatR;
+    using MetaModels;
+    using Repositories;
+
     public class PlayerBatchUpdateService : IPlayerBatchUpdateService
     {
-        private const int TurnOffVIPErrorCode = 105;
-
         private readonly IPublisher _publisher;
         private readonly IPlayerBatchUpdateRepository _repository;
         private readonly ILicenseeService _licenseeService;
@@ -31,18 +29,6 @@ namespace Fanex.Athena.PlayerAdmin.BatchUpdate.Services
             _contextService = contextService;
             _licenseeService = licenseeService;
             _repository = repository;
-        }
-
-        private async Task PublishCTSBAEvent(string listCust, string statusId)
-        {
-            if (!string.IsNullOrEmpty(listCust))
-            {
-                await _publisher.Publish(new PlayerUpdatedMultipleBAToCTSEvent
-                {
-                    CustIDList = listCust,
-                    NewValue = statusId
-                });
-            }
         }
 
         public async Task<IResultInfo> UpdateOddsGroup(UpdateOddsGroupApiMetaModel metaModel)
@@ -163,8 +149,8 @@ namespace Fanex.Athena.PlayerAdmin.BatchUpdate.Services
         private static IEnumerable<Customer> ToCustomerList(string custIds, string custNames)
         {
             var result = new List<Customer>();
-            var ids = custIds.Split(new[] { ',' });
-            var names = custNames.Split(new[] { ',' });
+            var ids = custIds.Split(',');
+            var names = custNames.Split(',');
             for (var i = 0; i < ids.Length; i++)
             {
                 var id = ids[i];

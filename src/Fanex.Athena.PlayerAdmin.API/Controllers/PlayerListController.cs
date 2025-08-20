@@ -1,20 +1,20 @@
-﻿using Fanex.Athena.PlayerAdmin.API.MetaModel;
-using Fanex.Athena.PlayerAdmin.API.Services;
-using Fanex.Athena.PlayerAdmin.API.Services.Interfaces;
-using Fanex.Athena.PlayerAdmin.API.ViewModels;
-using Fanex.Athena.PlayerAdmin.Core.Attributes;
-using Fanex.Athena.PlayerAdmin.Core.Constants;
-using Fanex.Athena.PlayerAdmin.Core.Helpers;
-using Fanex.Athena.PlayerAdmin.Core.Services;
-using Microsoft.AspNetCore.Cors;
-using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Linq;
-using System.Net;
-using System.Threading.Tasks;
-
-namespace Fanex.Athena.PlayerAdmin.API.Controllers
+﻿namespace Fanex.Athena.PlayerAdmin.API.Controllers
 {
+    using System;
+    using System.Linq;
+    using System.Net;
+    using System.Threading.Tasks;
+    using Core.Attributes;
+    using Core.Constants;
+    using Core.Helpers;
+    using Core.Services;
+    using MetaModel;
+    using Microsoft.AspNetCore.Cors;
+    using Microsoft.AspNetCore.Mvc;
+    using Services;
+    using Services.Interfaces;
+    using ViewModels;
+
     [Route("api/[controller]/[action]")]
     [ReferrerValidation]
     [EnableCors(Policy.FromPortalSite)]
@@ -92,12 +92,12 @@ namespace Fanex.Athena.PlayerAdmin.API.Controllers
             var commGroups = (await _depositSettingService.GetCommGroupList(_contextService.LicenseeId).ConfigureAwait(false))
                 .Select(_ => _.Id);
 
-            if (!string.IsNullOrEmpty(metaModel.CommGroups) && metaModel.CommGroups.Split(',').Any(_ => !commGroups.Contains(_)))
+            if (!string.IsNullOrEmpty(metaModel.CommGroups) && Array.Exists(metaModel.CommGroups.Split(','), group => !commGroups.Contains( group)))
             {
                 return false;
             }
 
-            if (specialLevels.Any(_ => _ < 0 && _ > 10))
+            if (Array.Exists(specialLevels,level => level < 0 || level > 10))
             {
                 return false;
             }
@@ -107,7 +107,7 @@ namespace Fanex.Athena.PlayerAdmin.API.Controllers
                 var riskLevels = (await _depositSettingService.GetRiskLevelList(_contextService.Language).ConfigureAwait(false))
                     .SelectMany(_ => _.CustomerClassList);
 
-                if (metaModel.CustomerClass.Split(',').Any(_ => !riskLevels.Contains(_)))
+                if (Array.Exists(metaModel.CustomerClass.Split(','),level => !riskLevels.Contains(level)))
                 {
                     return false;
                 }
@@ -117,7 +117,7 @@ namespace Fanex.Athena.PlayerAdmin.API.Controllers
             {
                 var oddsGroups = _contextService.OfferedOddsGroupList;
 
-                if (metaModel.OddsGroup.Split(',').Any(_ => !oddsGroups.Contains(_)))
+                if (Array.Exists(metaModel.OddsGroup.Split(','),group => !oddsGroups.Contains(group)))
                 {
                     return false;
                 }

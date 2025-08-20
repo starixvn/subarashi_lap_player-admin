@@ -1,9 +1,9 @@
-﻿using Fanex.Athena.PlayerAdmin.Core.Constants;
-using Fanex.Athena.PlayerAdmin.Core.DataDomains;
-using MediatR;
-
-namespace Fanex.Athena.PlayerAdmin.Core.Mediator
+﻿namespace Fanex.Athena.PlayerAdmin.Core.Mediator
 {
+    using Constants;
+    using DataDomains;
+    using MediatR;
+
     public class PlayerUpdatedSpecialLevelEvent : PlayerUpdatedEvent, INotification
     {
         public string Status { get; set; }

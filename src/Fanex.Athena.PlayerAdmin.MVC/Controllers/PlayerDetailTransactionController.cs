@@ -1,17 +1,17 @@
-﻿using Fanex.Athena.PlayerAdmin.Core.Attributes;
-using Fanex.Athena.PlayerAdmin.Core.Constants;
-using Fanex.Athena.PlayerAdmin.Core.Services;
-using Fanex.Athena.PlayerAdmin.MVC.Excel;
-using Fanex.Athena.PlayerAdmin.MVC.MetaModel;
-using Fanex.Athena.PlayerAdmin.MVC.Services.Interfaces;
-using Fanex.Athena.PlayerAdmin.MVC.ViewModels;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.FileProviders;
-using System.IO;
-using System.Threading.Tasks;
-
-namespace Fanex.Athena.PlayerAdmin.MVC.Controllers
+﻿namespace Fanex.Athena.PlayerAdmin.MVC.Controllers
 {
+    using System.IO;
+    using System.Threading.Tasks;
+    using Core.Attributes;
+    using Core.Constants;
+    using Core.Services;
+    using Excel;
+    using MetaModel;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.FileProviders;
+    using Services.Interfaces;
+    using ViewModels;
+
     [CookieAuthorize(Roles.SuperAdmin, Roles.DetailTransaction)]
     public class PlayerDetailTransactionController : Controller
     {

@@ -1,14 +1,14 @@
-﻿using Fanex.Athena.PlayerAdmin.Core.Extensions;
-using Fanex.Athena.PlayerAdmin.Core.Repositories;
-using Fanex.Athena.PlayerAdmin.Core.Services;
-using Fanex.Athena.PlayerAdmin.MVC.MetaModel;
-using Fanex.Athena.PlayerAdmin.MVC.Repositories.Interfaces;
-using Fanex.Athena.PlayerAdmin.MVC.ViewModels;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-
-namespace Fanex.Athena.PlayerAdmin.MVC.Repositories
+﻿namespace Fanex.Athena.PlayerAdmin.MVC.Repositories
 {
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+    using Core.Extensions;
+    using Core.Repositories;
+    using Core.Services;
+    using Interfaces;
+    using MetaModel;
+    using ViewModels;
+
     public class PlayerDetailTransactionRepository : IPlayerDetailTransactionRepository
     {
         private readonly IDbFactory _dbFactory;

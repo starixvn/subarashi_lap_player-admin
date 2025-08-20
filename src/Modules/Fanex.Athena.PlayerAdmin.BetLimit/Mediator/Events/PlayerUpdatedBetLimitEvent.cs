@@ -1,9 +1,9 @@
-﻿using Fanex.Athena.PlayerAdmin.BetLimit.DataDomains;
-using MediatR;
-using System.Collections.Generic;
-
-namespace Fanex.Athena.PlayerAdmin.BetLimit.Mediator
+﻿namespace Fanex.Athena.PlayerAdmin.BetLimit.Mediator
 {
+    using System.Collections.Generic;
+    using DataDomains;
+    using MediatR;
+
     public class PlayerUpdatedBetLimitEvent : BasePlayerUpdatedBetSettingEvent<IEnumerable<PlayerBetLimitDetailedLog>>, INotification
     {
     }

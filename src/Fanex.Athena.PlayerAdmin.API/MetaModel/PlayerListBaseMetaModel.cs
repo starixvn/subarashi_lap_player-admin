@@ -1,8 +1,8 @@
-﻿using Fanex.Athena.PlayerAdmin.Core.Models;
-using Fanex.Core.Utils;
-
-namespace Fanex.Athena.PlayerAdmin.API.MetaModel
+﻿namespace Fanex.Athena.PlayerAdmin.API.MetaModel
 {
+    using Core.Models;
+    using Fanex.Core.Utils;
+
     public class PlayerListBaseMetaModel : ICurrencyIdListMetaModel, IAgentMetaModel, ISiteNameMetaModel
     {
         public string SiteName { get; set; }

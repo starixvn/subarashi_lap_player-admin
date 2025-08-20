@@ -1,15 +1,14 @@
-﻿using Fanex.Athena.PlayerAdmin.API.MetaModel;
-using Fanex.Athena.PlayerAdmin.API.Services.Interfaces;
-using Fanex.Athena.PlayerAdmin.Core.Constants;
-using Fanex.Athena.PlayerAdmin.Core.Attributes;
-using Microsoft.AspNetCore.Cors;
-using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Threading.Tasks;
-using Fanex.Athena.PlayerAdmin.Core.Helpers;
-
-namespace Fanex.Athena.PlayerAdmin.API.Controllers
+﻿namespace Fanex.Athena.PlayerAdmin.API.Controllers
 {
+    using System.Threading.Tasks;
+    using Core.Attributes;
+    using Core.Constants;
+    using Core.Helpers;
+    using MetaModel;
+    using Microsoft.AspNetCore.Cors;
+    using Microsoft.AspNetCore.Mvc;
+    using Services.Interfaces;
+
     [Route("api/[controller]/[action]")]
     [EnableCors(Policy.FromPortalSite)]
     [ApiController]
@@ -29,7 +28,7 @@ namespace Fanex.Athena.PlayerAdmin.API.Controllers
         public async Task<IActionResult> GetData(PlayerBettingStatisticsMetaModel metaModel)
         {
             var now = DateTimeHelper.DatabaseServerNow;
-            metaModel.FromDate = new DateTime(now.Year, now.Month, 1);
+            metaModel.FromDate = DateTimeHelper.CreateDateTime(now.Year, now.Month, 1);
             metaModel.ToDate = now;
 
             return Ok(await _playerBettingStatisticsService.GetPlayerBettingStatistics(metaModel));

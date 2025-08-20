@@ -1,8 +1,8 @@
-﻿using Fanex.RemotingRef;
-using System.Globalization;
-
-namespace Fanex.Athena.PlayerAdmin.Core.Services
+﻿namespace Fanex.Athena.PlayerAdmin.Core.Services
 {
+    using System.Globalization;
+    using RemotingRef;
+
     public class ResourceService : IResourceService
     {
         private readonly IRemotingRefService _remotingRefService;

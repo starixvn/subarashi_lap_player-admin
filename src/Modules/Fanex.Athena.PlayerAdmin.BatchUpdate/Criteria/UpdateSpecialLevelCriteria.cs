@@ -1,8 +1,8 @@
-﻿using Fanex.Athena.PlayerAdmin.BatchUpdate.MetaModels;
-using Fanex.Data;
-
-namespace Fanex.Athena.PlayerAdmin.BatchUpdate.Criteria
+﻿namespace Fanex.Athena.PlayerAdmin.BatchUpdate.Criteria
 {
+    using Data;
+    using MetaModels;
+
     public class UpdateSpecialLevelCriteria : BasePlayerBatchUpdateCriteria
     {
         public UpdateSpecialLevelCriteria(UpdateSpecialLevelApiMetaModel metaModel, string custId)

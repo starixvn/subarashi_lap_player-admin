@@ -1,16 +1,17 @@
 ﻿@{
     ViewData["Title"] = ViewResources.BettingTicketCenter + " - " + ViewResources.SingleCustomer;
 }
-
-@using Fanex.Athena.PlayerAdmin.Core.Settings;
-@using Fanex.Athena.PlayerAdmin.Core.Helpers;
-@inject Microsoft.Extensions.Options.IOptions<AppSetting> setting
-@inject Fanex.Athena.PlayerAdmin.Core.Services.IContextService contextService
+@inject IOptions<AppSetting> setting
+@inject IContextService contextService
+@using System.Globalization
+@using Fanex.Athena.PlayerAdmin.Core.Helpers
+@using Fanex.Athena.PlayerAdmin.Core.Settings
+@using Microsoft.Extensions.Options
 @model PlayerBtcSingleCustomerViewModel
 
 @{
     var now = DateTimeHelper.DatabaseServerNow;
-    var fromDate = new DateTime(now.Year, now.Month, 1).ToString("MM/dd/yyyy");
+    var fromDate = new DateTimeOffset(now.Year, now.Month, 1, 0, 0, 0, TimeSpan.Zero).ToString("MM/dd/yyyy", CultureInfo.InvariantCulture);
     var toDate = now.ToString("MM/dd/yyyy");
 
     const string TitlePattern = "{0}, {1}→{2}, {3}: {4}";
@@ -57,7 +58,7 @@
 
     window._AppData = {
     access_token: '@accessToken',
-    isAllowedCustomerComm: @Model.IsAllowedCustomerComm.ToString().ToLower(),
+    isAllowedCustomerComm: @Model.IsAllowedCustomerComm.ToString(CultureInfo.InvariantCulture).ToLower(CultureInfo.InvariantCulture),
     reportTitle: '@Html.Raw(reportTitle)',
     isAllowTxIDColumn: @ViewBag.IsAllowTxIDColumn.ToString().ToLower()
     };

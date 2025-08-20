@@ -1,11 +1,11 @@
-﻿using Fanex.Athena.PlayerAdmin.Commission.Services.Interfaces;
-using Fanex.Athena.PlayerAdmin.Core.Services;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Caching.Memory;
-using System;
-
-namespace Fanex.Athena.PlayerAdmin.Commission.Controllers
+﻿namespace Fanex.Athena.PlayerAdmin.Commission.Controllers
 {
+    using System;
+    using Core.Services;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Caching.Memory;
+    using Services.Interfaces;
+
     public partial class PlayerCommissionController : Controller
     {
         private readonly IContextService _contextService;

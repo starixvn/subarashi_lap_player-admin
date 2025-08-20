@@ -6,27 +6,25 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <AdditionalFiles Include="..\..\.sonarlint\lap_playeradmin\CSharp\SonarLint.xml" Link="SonarLint.xml" />
-  </ItemGroup>
-  
-  <ItemGroup>
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
   </ItemGroup>
-  
+
   <ItemGroup>
     <PackageReference Include="AspNetCore.HealthChecks.Redis" Version="5.0.2" />
     <PackageReference Include="AspNetCore.HealthChecks.Uris" Version="5.0.1" />
-    <PackageReference Include="Fanex.Core.Utils" Version="1.0.2" />
-    <PackageReference Include="Fanex.Data" Version="4.3.2.1" />
-    <PackageReference Include="Fanex.RemotingRef" Version="1.5.3-indo-01" />
+    <PackageReference Include="Fanex.Core.Utils" Version="1.0.3" />
+    <PackageReference Include="Fanex.Data" Version="4.3.4.5" />
+    <PackageReference Include="Fanex.RemotingRef" Version="1.5.5.1" />
     <PackageReference Include="LZStringCSharp" Version="1.4.0" />
     <PackageReference Include="MediatR" Version="9.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="NPOI" Version="2.5.3" />
-    <PackageReference Include="ONEbook.UM.AspNetCore" Version="3.1.0-beta05" />
-    <PackageReference Include="ONEbook.UM.Transport" Version="3.1.1" />
-    <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
+    <PackageReference Include="ONEbook.UM.AspNetCore" Version="3.1.1.1" />
+    <PackageReference Include="ONEbook.UM.Transport" Version="3.1.2" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.6" />
+    <PackageReference Include="System.Drawing.Common" Version="6.0.0" />
+    <PackageReference Include="System.Text.Encodings.Web" Version="8.0.0" />
     <PackageReference Include="T4.FileManager.VisualStudio" Version="4.0.0" />
   </ItemGroup>
 
@@ -57,7 +55,11 @@
     </None>
   </ItemGroup>
 
-  <ItemGroup>
+	<ItemGroup>
+		<InternalsVisibleTo Include="Fanex.Athena.PlayerAdmin.Core.UnitTests" />
+	</ItemGroup>
+
+	<ItemGroup>
     <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
   </ItemGroup>
 

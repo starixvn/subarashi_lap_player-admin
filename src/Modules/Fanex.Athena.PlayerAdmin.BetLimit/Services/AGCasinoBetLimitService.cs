@@ -1,23 +1,23 @@
-﻿using Fanex.Athena.PlayerAdmin.BetLimit.DTO;
-using Fanex.Athena.PlayerAdmin.BetLimit.DTO.BetLimits;
-using Fanex.Athena.PlayerAdmin.BetLimit.Helpers;
-using Fanex.Athena.PlayerAdmin.BetLimit.MetaModel;
-using Fanex.Athena.PlayerAdmin.BetLimit.Repositories.Interfaces;
-using Fanex.Athena.PlayerAdmin.BetLimit.Services.Interfaces;
-using Fanex.Athena.PlayerAdmin.Core.Helpers;
-using Fanex.Athena.PlayerAdmin.Core.Models;
-using Fanex.Athena.PlayerAdmin.Core.Settings;
-using MediatR;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using System;
-using System.Collections.Generic;
-using System.Net.Http;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-
-namespace Fanex.Athena.PlayerAdmin.BetLimit.Services
+﻿namespace Fanex.Athena.PlayerAdmin.BetLimit.Services
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Net.Http;
+    using System.Threading.Tasks;
+    using System.Xml.Linq;
+    using Core.Helpers;
+    using Core.Models;
+    using Core.Settings;
+    using DTO;
+    using DTO.BetLimits;
+    using Helpers;
+    using Interfaces;
+    using MediatR;
+    using MetaModel;
+    using Microsoft.Extensions.Logging;
+    using Microsoft.Extensions.Options;
+    using Repositories.Interfaces;
+
     public class AGCasinoBetLimitService : IAGCasinoBetLimitService
     {
         private readonly ILogger<AGCasinoBetLimitService> _logger;

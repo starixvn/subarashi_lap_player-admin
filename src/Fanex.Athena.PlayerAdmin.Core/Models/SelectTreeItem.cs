@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-
-namespace Fanex.Athena.PlayerAdmin.Core.Models
+﻿namespace Fanex.Athena.PlayerAdmin.Core.Models
 {
+    using System.Collections.Generic;
+
     public class SelectTreeItem
     {
         public string Name { get; set; }

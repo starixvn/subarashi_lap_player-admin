@@ -1,12 +1,13 @@
-﻿using Fanex.Athena.PlayerAdmin.Core.Attributes;
-using Fanex.Athena.PlayerAdmin.Core.Constants;
-using Fanex.Athena.PlayerAdmin.Core.Services;
-using Microsoft.AspNetCore.Cors;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.FileProviders;
-
-namespace Fanex.Athena.PlayerAdmin.API.Controllers
+﻿namespace Fanex.Athena.PlayerAdmin.API.Controllers
 {
+    using System.Net.Mime;
+    using Core.Attributes;
+    using Core.Constants;
+    using Core.Services;
+    using Microsoft.AspNetCore.Cors;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.FileProviders;
+
     [Route("api/[controller]/[action]")]
     [EnableCors(Policy.FromPortalSite)]
     [BearerAuthorize(Roles.SuperAdmin, Roles.PlayerAdmin)]
@@ -27,7 +28,7 @@ namespace Fanex.Athena.PlayerAdmin.API.Controllers
             var language = _contextService.Language;
             var fileInfo = GetDefaultFilePathIfNotExist(file, language, fileName);
 
-            return File(fileInfo.CreateReadStream(), System.Net.Mime.MediaTypeNames.Application.Pdf, fileName);
+            return File(fileInfo.CreateReadStream(), MediaTypeNames.Application.Pdf, fileName);
         }
 
         private static IFileInfo GetDefaultFilePathIfNotExist(IFileProvider file, string language, string fileName)

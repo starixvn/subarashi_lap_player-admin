@@ -1,8 +1,8 @@
 ﻿namespace Fanex.Athena.PlayerAdmin.MVC.Services.Interfaces
 {
     using System.Threading.Tasks;
-    using Fanex.Athena.PlayerAdmin.MVC.MetaModel;
-    using Fanex.Athena.PlayerAdmin.MVC.ViewModels;
+    using MetaModel;
+    using ViewModels;
 
     public interface IPlayerDetailTransactionService
     {

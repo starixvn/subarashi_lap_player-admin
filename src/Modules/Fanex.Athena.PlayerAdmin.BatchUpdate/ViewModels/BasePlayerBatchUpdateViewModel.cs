@@ -1,7 +1,7 @@
-﻿using Fanex.Athena.PlayerAdmin.BatchUpdate.MetaModels;
-
-namespace Fanex.Athena.PlayerAdmin.BatchUpdate.ViewModels
+﻿namespace Fanex.Athena.PlayerAdmin.BatchUpdate.ViewModels
 {
+    using MetaModels;
+
     public class BasePlayerBatchUpdateViewModel
     {
         public BasePlayerBatchUpdateViewModel(PlayerBatchUpdateMetaModel metaModel)

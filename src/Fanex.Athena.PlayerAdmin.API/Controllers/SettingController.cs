@@ -1,16 +1,16 @@
-﻿using Fanex.Athena.PlayerAdmin.API.Services;
-using Fanex.Athena.PlayerAdmin.API.ViewModels;
-using Fanex.Athena.PlayerAdmin.Core.Attributes;
-using Fanex.Athena.PlayerAdmin.Core.Constants;
-using Fanex.Athena.PlayerAdmin.Core.Services;
-using Microsoft.AspNetCore.Cors;
-using Microsoft.AspNetCore.Mvc;
-using System.Linq;
-using System.Text.Json;
-using System.Threading.Tasks;
-
-namespace Fanex.Athena.PlayerAdmin.API.Controllers
+﻿namespace Fanex.Athena.PlayerAdmin.API.Controllers
 {
+    using System.Linq;
+    using System.Text.Json;
+    using System.Threading.Tasks;
+    using Core.Attributes;
+    using Core.Constants;
+    using Core.Services;
+    using Microsoft.AspNetCore.Cors;
+    using Microsoft.AspNetCore.Mvc;
+    using Services;
+    using ViewModels;
+
     [Route("api/[controller]/[action]")]
     [EnableCors(Policy.FromPortalSite)]
     [BearerAuthorize(Roles.SuperAdmin, Roles.PlayerAdmin)]

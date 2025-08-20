@@ -1,18 +1,18 @@
-﻿using Fanex.Athena.PlayerAdmin.BatchUpdate.MetaModels;
-using Fanex.Athena.PlayerAdmin.BatchUpdate.ViewModels;
-using Fanex.Athena.PlayerAdmin.Core.Constants;
-using Fanex.Athena.PlayerAdmin.Core.Attributes;
-using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
-
-namespace Fanex.Athena.PlayerAdmin.BatchUpdate.Controllers
+﻿namespace Fanex.Athena.PlayerAdmin.BatchUpdate.Controllers
 {
+    using System.Threading.Tasks;
+    using Core.Attributes;
+    using Core.Constants;
+    using MetaModels;
+    using Microsoft.AspNetCore.Mvc;
+    using ViewModels;
+
     public partial class PlayerBatchUpdateController
     {
         [HttpGet]
         [ReferrerValidation]
         [CookieAuthorize(Roles.SuperAdmin, Roles.UpdateSpecialLevel)]
-        [DecompressModelStateAndMetaModel("metaModel", new[] { "CustIds", "CustNames" })]
+        [DecompressModelStateAndMetaModel("metaModel", "CustIds", "CustNames")]
         public ViewResult UpdateSpecialLevel(PlayerBatchUpdateMetaModel metaModel)
         {
             var viewModel = new BasePlayerBatchUpdateViewModel(metaModel);

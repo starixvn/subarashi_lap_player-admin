@@ -1,8 +1,8 @@
-﻿using System;
-using Newtonsoft.Json;
-
-namespace Fanex.Athena.PlayerAdmin.API.DTO
+﻿namespace Fanex.Athena.PlayerAdmin.API.DTO
 {
+    using System;
+    using Newtonsoft.Json;
+
     public class PlayerActivityRecord
     {
         private const string DateTimeFormat = "MM/dd/yyyy hh:mm:ss tt";

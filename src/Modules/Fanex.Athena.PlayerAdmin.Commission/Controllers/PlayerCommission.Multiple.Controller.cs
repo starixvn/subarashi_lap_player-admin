@@ -1,20 +1,20 @@
-﻿using Fanex.Athena.PlayerAdmin.Commission.MetaModels;
-using Fanex.Athena.PlayerAdmin.Commission.ViewModels;
-using Fanex.Athena.PlayerAdmin.Core.Constants;
-using Fanex.Athena.PlayerAdmin.Core.Attributes;
-using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
-using Fanex.Athena.PlayerAdmin.Core.Extensions;
-
-namespace Fanex.Athena.PlayerAdmin.Commission.Controllers
+﻿namespace Fanex.Athena.PlayerAdmin.Commission.Controllers
 {
+    using System.Threading.Tasks;
+    using Core.Attributes;
+    using Core.Constants;
+    using Core.Extensions;
+    using MetaModels;
+    using Microsoft.AspNetCore.Mvc;
+    using ViewModels;
+
     public partial class PlayerCommissionController : Controller
     {
         [HttpGet]
         [ReferrerValidation]
         [CookieAuthorize(Roles.SuperAdmin, Roles.CommissionGroup_Write, Policy = Policy.NotAllowSubsidiary)]
         [AutoBindingMetaModel(bindLicenseeId: true, bindUsername: true, bindClientIP: true, bindLanguage: true, bindUserId: true)]
-        [DecompressModelStateAndMetaModel("query", new[] { "CustIds", "CustNames" })]
+        [DecompressModelStateAndMetaModel("query", "CustIds", "CustNames")]
         public async Task<ViewResult> MultipleMoveGroup([FromQuery] MultipleMoveGroupQuery query)
         {
             var productAccess = await _licenseeService.GetProductAccess(_contextService.LicenseeId, "CommissionGroups");
@@ -29,7 +29,7 @@ namespace Fanex.Athena.PlayerAdmin.Commission.Controllers
         [ReferrerValidation]
         [CookieAuthorize(Roles.SuperAdmin, Roles.CommissionGroup_Write, Policy = Policy.NotAllowSubsidiary)]
         [AutoBindingMetaModel(bindLicenseeId: true, bindUsername: true, bindClientIP: true, bindLanguage: true, bindUserId: true)]
-        [DecompressModelStateAndMetaModel("query", new[] { "CustIds", "CustNames" })]
+        [DecompressModelStateAndMetaModel("query", "CustIds", "CustNames")]
         public ViewResult MultipleRemoveFromGroup([FromQuery] MultipleRemoveFromGroupQuery query)
         {
             var viewModel = new MultipleRemoveFromGroupViewModel(query);
@@ -41,7 +41,7 @@ namespace Fanex.Athena.PlayerAdmin.Commission.Controllers
         [ReferrerValidation]
         [CookieAuthorize(Roles.SuperAdmin, Roles.CommissionGroup_Write, Policy = Policy.NotAllowSubsidiary)]
         [AutoBindingMetaModel(bindLicenseeId: true, bindUsername: true, bindClientIP: true, bindLanguage: true, bindUserId: true)]
-        [DecompressModelStateAndMetaModel("query", new[] { "CustIds", "CustNames" })]
+        [DecompressModelStateAndMetaModel("query", "CustIds", "CustNames")]
         public async Task<ViewResult> MultipleUpdateGroup([FromQuery] MultipleUpdateGroupQuery query)
         {
             var productAccess = await _licenseeService.GetProductAccess(_contextService.LicenseeId, "CommissionGroups");

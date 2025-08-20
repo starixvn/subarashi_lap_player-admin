@@ -1,8 +1,9 @@
-﻿using System;
-using System.Diagnostics;
-
-namespace Fanex.Athena.PlayerAdmin.Core.Extensions
+﻿namespace Fanex.Athena.PlayerAdmin.Core.Extensions
 {
+    using System;
+    using System.Diagnostics;
+    using System.Globalization;
+
     public static class Converter
     {
         [DebuggerStepThrough]
@@ -23,6 +24,6 @@ namespace Fanex.Athena.PlayerAdmin.Core.Extensions
 
         [DebuggerStepThrough]
         public static DateTime ToDateTime(object value)
-            => DateTime.TryParse(ToString(value), out DateTime _value) ? _value : default;
+            => DateTime.TryParse(ToString(value), CultureInfo.InvariantCulture, out DateTime _value) ? _value : default;
     }
 }

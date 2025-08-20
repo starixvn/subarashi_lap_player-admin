@@ -1,10 +1,10 @@
-﻿using Fanex.Athena.PlayerAdmin.BetLimit.DataDomains;
-using Fanex.Athena.PlayerAdmin.BetLimit.Mediator;
-using Fanex.Athena.PlayerAdmin.BetLimit.MetaModel;
-using System.Globalization;
-
-namespace Fanex.Athena.PlayerAdmin.BetLimit.Helpers
+﻿namespace Fanex.Athena.PlayerAdmin.BetLimit.Helpers
 {
+    using System.Globalization;
+    using DataDomains;
+    using Mediator;
+    using MetaModel;
+
     public static class ProductStatusLogHelper
     {
         public const string Success = "Success";

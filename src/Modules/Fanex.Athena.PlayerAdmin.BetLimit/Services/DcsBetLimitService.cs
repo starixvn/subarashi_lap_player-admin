@@ -15,61 +15,10 @@
 
     public class DcsBetLimitService : IDcsBetLimitService
     {
-        public static readonly IEnumerable<int> ProductsHasControlStatus = new[]
+        public static readonly IEnumerable<int> ProductsDontHaceControlStatus = new[]
         {
-            ProductTypes.Lottery,
-            ProductTypes.I4D,
-            ProductTypes.SLT,
-            ProductTypes.AllBet,
-            ProductTypes.Voidbridge,
-            ProductTypes.CashOut,
-            ProductTypes.Exchange,
-            ProductTypes.PP,
-            ProductTypes.SXG,
-            ProductTypes.HB,
-            ProductTypes.JK,
-            ProductTypes.SAG,
-            ProductTypes.PGS,
-            ProductTypes.SBC,
-            ProductTypes.WM,
-            ProductTypes.SG,
-            ProductTypes.VRG,
-            ProductTypes.CC,
-            ProductTypes.CG,
-            ProductTypes.VGA,
-            ProductTypes.TG,
-            ProductTypes.AP,
-            ProductTypes.APM,
-            ProductTypes.SabaCasino,
-            ProductTypes.BTC,
-            ProductTypes.FGGL,
-            ProductTypes.MXG,
-            ProductTypes.JIG,
-            ProductTypes.YB,
-            ProductTypes.MGRNG,
-            ProductTypes.SEA,
-            ProductTypes.WE,
-            ProductTypes.L22,
-            ProductTypes.UUSL,
-            ProductTypes.FS,
-            ProductTypes.FAC,
-            ProductTypes.NS,
-            ProductTypes.ON,
-            ProductTypes.PTRNG,
-            ProductTypes.GPIRNG,
-            ProductTypes.GPILC,
-            ProductTypes.PS,
-            ProductTypes.ASK,
-            ProductTypes.FG,
-            ProductTypes.HOT,
-            ProductTypes.MGLC,
-            ProductTypes.PTLC,
-            ProductTypes.RGRNG,
-            ProductTypes.WLC,
-            ProductTypes.AIG,
-            ProductTypes.CPRNG,
-            ProductTypes.GPILT,
-            ProductTypes.ODG
+            ProductTypes.Sportsbook,
+            ProductTypes.Keno
         };
 
         private readonly IDcsGameBetLimitRepository _gameBetLimitRepository;
@@ -100,11 +49,11 @@
             };
         }
 
-        public async Task<bool?> GetStatusAsync(int custId, int productId)
+        public async Task<PlayerBetLimitProductSetting> GetStatusAsync(int custId, int productId)
         {
-            if (!ProductsHasControlStatus.Contains(productId))
+            if (ProductsDontHaceControlStatus.Contains(productId))
             {
-                return null;
+                return new PlayerBetLimitProductSetting();
             }
 
             return await _repository.GetStatusAsync(custId, productId);

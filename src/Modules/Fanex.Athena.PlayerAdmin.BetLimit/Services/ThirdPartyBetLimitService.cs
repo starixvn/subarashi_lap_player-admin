@@ -1,13 +1,13 @@
-﻿using Fanex.Athena.PlayerAdmin.BetLimit.DTO;
-using Fanex.Athena.PlayerAdmin.BetLimit.Helpers;
-using Fanex.Athena.PlayerAdmin.BetLimit.MetaModel;
-using Fanex.Athena.PlayerAdmin.BetLimit.Repositories;
-using Fanex.Athena.PlayerAdmin.Core.Models;
-using MediatR;
-using System.Threading.Tasks;
-
-namespace Fanex.Athena.PlayerAdmin.BetLimit.Services
+﻿namespace Fanex.Athena.PlayerAdmin.BetLimit.Services
 {
+    using System.Threading.Tasks;
+    using Core.Models;
+    using DTO;
+    using Helpers;
+    using MediatR;
+    using MetaModel;
+    using Repositories;
+
     public class ThirdPartyBetLimitService : IThirdPartyBetLimitService
     {
         private readonly IThirdPartyBetLimitRepository _repository;

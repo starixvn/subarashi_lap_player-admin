@@ -1,18 +1,18 @@
-﻿using Fanex.Athena.PlayerAdmin.Core.Settings;
-using Fanex.Athena.PlayerAdmin.MVC.DTO;
-using Fanex.Athena.PlayerAdmin.MVC.MetaModel;
-using Fanex.Athena.PlayerAdmin.MVC.Services.Interfaces;
-using Microsoft.Extensions.Options;
-using Newtonsoft.Json;
-using System;
-using System.Net;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Fanex.Athena.PlayerAdmin.MVC.Services
+﻿namespace Fanex.Athena.PlayerAdmin.MVC.Services
 {
+    using System;
+    using System.Net;
+    using System.Net.Http;
+    using System.Net.Http.Headers;
+    using System.Text;
+    using System.Threading.Tasks;
+    using Core.Settings;
+    using DTO;
+    using Interfaces;
+    using MetaModel;
+    using Microsoft.Extensions.Options;
+    using Newtonsoft.Json;
+
     public class PlayerStatementService : IPlayerStatementService
     {
         private const string FormatDate = "MM-dd-yyyy";
@@ -66,7 +66,7 @@ namespace Fanex.Athena.PlayerAdmin.MVC.Services
             return JsonConvert.SerializeObject(new
             {
                 UserName = $"{metaModel.SiteName}@{_setting.User}",
-                Password = _setting.Password,
+                _setting.Password,
                 IsShowIpvn = metaModel.IsShowIpVN
             });
         }

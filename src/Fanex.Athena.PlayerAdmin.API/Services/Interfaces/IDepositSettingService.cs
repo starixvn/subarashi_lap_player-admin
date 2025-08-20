@@ -1,10 +1,10 @@
-﻿using Fanex.Athena.PlayerAdmin.API.DTO;
-using Fanex.Athena.PlayerAdmin.API.ViewModels;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-
-namespace Fanex.Athena.PlayerAdmin.API.Services
+﻿namespace Fanex.Athena.PlayerAdmin.API.Services
 {
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+    using DTO;
+    using ViewModels;
+
     public interface IDepositSettingService
     {
         Task<IEnumerable<RiskLevel>> GetRiskLevelList(string language);

@@ -1,7 +1,7 @@
-﻿using Fanex.Athena.PlayerAdmin.Core.DataDomains;
-
-namespace Fanex.Athena.PlayerAdmin.Core.Helpers
+﻿namespace Fanex.Athena.PlayerAdmin.Core.Helpers
 {
+    using DataDomains;
+
     public static class SabaHelper
     {
         public static bool IsHideSaba(int specialPlatform)

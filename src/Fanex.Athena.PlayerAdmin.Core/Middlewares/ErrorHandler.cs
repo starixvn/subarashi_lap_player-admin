@@ -1,12 +1,12 @@
-﻿using Fanex.Athena.PlayerAdmin.Core.Helpers;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Net;
-using System.Threading.Tasks;
-
-namespace Fanex.Athena.PlayerAdmin.Core.Middlewares
+﻿namespace Fanex.Athena.PlayerAdmin.Core.Middlewares
 {
+    using System;
+    using System.Net;
+    using System.Threading.Tasks;
+    using Helpers;
+    using Microsoft.AspNetCore.Http;
+    using Microsoft.Extensions.Logging;
+
     public class ErrorHandler
     {
         private readonly RequestDelegate _next;

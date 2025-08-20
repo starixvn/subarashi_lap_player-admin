@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace Fanex.Athena.PlayerAdmin.Core.Models
+﻿namespace Fanex.Athena.PlayerAdmin.Core.Models
 {
+    using System;
+
     public interface IBalanceUpAndMoveBetMetaModel
     {
         DateTime MoveBetsDay { get; set; }

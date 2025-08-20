@@ -19,7 +19,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<AdditionalFiles Include="..\..\.sonarlint\lap_playeradmin\CSharp\SonarLint.xml" Link="SonarLint.xml" />
 		<Content Include="App_Data\ExcelTemplate\DetailTransaction.xls">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</Content>
@@ -66,5 +65,11 @@
 	<ItemGroup>
 		<AdditionalFiles Include="..\..\Dockerfile" Link="Dockerfile" />
 		<AdditionalFiles Include="..\..\.dockerignore" Link=".dockerignore" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<SonarQubeSetting Include="sonar.coverage.exclusions">
+			<Value>**/Program.cs, **/Startup.cs, App_Data/*.*</Value>
+		</SonarQubeSetting>
 	</ItemGroup>
 </Project>

@@ -115,8 +115,10 @@ const SettingContent = (Grid, DataHandling) => {
             if (!this.state.showError) {
                 const oldStatus = this.state.setting.StatusEnable;
                 const newStatus = !this.state.setting.StatusEnable;
+                const sportType = this.state.setting.StatusSportType;
+                const betType = this.state.setting.StatusBetType;
 
-                this._showUpdateStatusConfirmation(() => this._updateStatus(oldStatus, newStatus));
+                this._showUpdateStatusConfirmation(() => this._updateStatus(oldStatus, newStatus, sportType, betType));
             }
         }
 
@@ -169,11 +171,10 @@ const SettingContent = (Grid, DataHandling) => {
             DataTransfer.updateData(param, this._showSubmitResult.bind(this));
         }
 
-        _updateStatus(OldStatus, Status) {
+        _updateStatus(OldStatus, Status, SportType, BetType) {
             this.props.toggleLoader(true);
-            var productName = this.props.productLabel;
 
-            const param = { ...this.props.requestParam, Status, OldStatus, productName };
+            const param = { ...this.props.requestParam, Status, OldStatus, SportType, BetType };
 
             DataTransfer.updateStatus(param, this._showSubmitResult.bind(this));
         }

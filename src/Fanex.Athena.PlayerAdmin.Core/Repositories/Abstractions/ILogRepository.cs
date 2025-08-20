@@ -1,8 +1,8 @@
-﻿using Fanex.Athena.PlayerAdmin.Core.Models;
-using System.Threading.Tasks;
-
-namespace Fanex.Athena.PlayerAdmin.Core.Repositories
+﻿namespace Fanex.Athena.PlayerAdmin.Core.Repositories
 {
+    using System.Threading.Tasks;
+    using Models;
+
     public interface ILogRepository
     {
         Task Write(LogData logData);

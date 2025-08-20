@@ -1,11 +1,11 @@
-﻿using Fanex.Athena.PlayerAdmin.Commission.MetaModels;
-using Fanex.Athena.PlayerAdmin.Commission.ViewModels;
-using Fanex.Data;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Fanex.Athena.PlayerAdmin.Commission.Criteria
+﻿namespace Fanex.Athena.PlayerAdmin.Commission.Criteria
 {
+    using System.Collections.Generic;
+    using System.Text;
+    using Data;
+    using MetaModels;
+    using ViewModels;
+
     public class MultipleUpdateGroupCriteria : BasePlayerCommissionUpdateCriteria
     {
         public MultipleUpdateGroupCriteria(MultipleUpdateGroupQuery query) : base(query)

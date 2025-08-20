@@ -1,15 +1,15 @@
-﻿using Fanex.Athena.PlayerAdmin.Core.Models;
-using Fanex.Athena.PlayerAdmin.Core.Services;
-using Fanex.Core.Utils;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Filters;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-
-namespace Fanex.Athena.PlayerAdmin.Core.Attributes
+﻿namespace Fanex.Athena.PlayerAdmin.Core.Attributes
 {
-    [AttributeUsage(AttributeTargets.Method, AllowMultiple = false)]
+    using System;
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+    using Fanex.Core.Utils;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.Mvc.Filters;
+    using Models;
+    using Services;
+
+    [AttributeUsage(AttributeTargets.Method)]
     public class AutoBindingMetaModelAttribute : TypeFilterAttribute
     {
 #pragma warning disable S107 // Methods should not have too many parameters
@@ -32,7 +32,7 @@ namespace Fanex.Athena.PlayerAdmin.Core.Attributes
         }
     }
 
-    [AttributeUsage(AttributeTargets.Method, AllowMultiple = false)]
+    [AttributeUsage(AttributeTargets.Method)]
     public class AutoBindingMetaModelImplAttribute : ActionFilterAttribute
     {
         private readonly IMetaModelBindingService _bindingService;
@@ -161,10 +161,7 @@ namespace Fanex.Athena.PlayerAdmin.Core.Attributes
             {
                 await BindProductCodeList(productCodeListMetaModel, functionKey);
             }
-            else
-            {
-                //nothing
-            }
+            //nothing
         }
 
         private async Task BindProductCodeList(IProductCodeListMetaModel productCodeListMetaModel, string functionKey)

@@ -1,7 +1,7 @@
-﻿using Fanex.Athena.PlayerAdmin.Core.Models;
-
-namespace Fanex.Athena.PlayerAdmin.API.MetaModel
+﻿namespace Fanex.Athena.PlayerAdmin.API.MetaModel
 {
+    using Core.Models;
+
     public class PlayerUpdatingBaseMetaModel : ICustomerIdentityMetaModel, IClientIPMetaModel, IUserIdMetaModel, ILanguageMetaModel, ISiteNameMetaModel
     {
         public int UserId { get; set; }

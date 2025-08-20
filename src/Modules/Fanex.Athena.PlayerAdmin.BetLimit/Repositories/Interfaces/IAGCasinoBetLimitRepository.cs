@@ -1,10 +1,10 @@
-﻿using Fanex.Athena.PlayerAdmin.BetLimit.DTO;
-using Fanex.Athena.PlayerAdmin.BetLimit.MetaModel;
-using Fanex.Athena.PlayerAdmin.Core.Models;
-using System.Threading.Tasks;
-
-namespace Fanex.Athena.PlayerAdmin.BetLimit.Repositories.Interfaces
+﻿namespace Fanex.Athena.PlayerAdmin.BetLimit.Repositories.Interfaces
 {
+    using System.Threading.Tasks;
+    using Core.Models;
+    using DTO;
+    using MetaModel;
+
     public interface IAGCasinoBetLimitRepository
     {
         Task<AgCasinoBetSetting> GetBetSettingAsync(int custId);

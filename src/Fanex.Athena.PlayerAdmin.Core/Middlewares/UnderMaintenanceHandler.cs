@@ -1,11 +1,11 @@
-﻿using Fanex.Athena.PlayerAdmin.Core.Extensions;
-using Microsoft.AspNetCore.Http;
-using Newtonsoft.Json;
-using ONEbook.UM.Services;
-using System.Threading.Tasks;
-
-namespace Fanex.Athena.PlayerAdmin.Core.Middlewares
+﻿namespace Fanex.Athena.PlayerAdmin.Core.Middlewares
 {
+    using System.Threading.Tasks;
+    using Extensions;
+    using Microsoft.AspNetCore.Http;
+    using Newtonsoft.Json;
+    using ONEbook.UM.Services;
+
     public class UnderMaintenanceHandler
     {
         private const string AjaxRequestMsgFormat = "System is currently unavailable due to scheduled maintenance. This downtime will last from {0} to {1} (HK Time GMT +8)";

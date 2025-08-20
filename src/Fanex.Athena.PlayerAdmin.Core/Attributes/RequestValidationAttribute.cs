@@ -1,26 +1,30 @@
-﻿using Fanex.Athena.PlayerAdmin.Core.Extensions;
-using Fanex.Athena.PlayerAdmin.Core.Models;
-using Fanex.Athena.PlayerAdmin.Core.Services;
-using Fanex.Core.Utils;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Filters;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-
-namespace Fanex.Athena.PlayerAdmin.Core.Attributes
+﻿namespace Fanex.Athena.PlayerAdmin.Core.Attributes
 {
-    [AttributeUsage(AttributeTargets.Method | AttributeTargets.Class, AllowMultiple = false)]
+    using System;
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+    using Extensions;
+    using Fanex.Core.Utils;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.Mvc.Filters;
+    using Models;
+    using Services;
+
+    [AttributeUsage(AttributeTargets.Method | AttributeTargets.Class)]
     public class RequestValidationAttribute : TypeFilterAttribute
     {
-        public RequestValidationAttribute(bool validateCustId = false, bool validateClientIP = false, int validateProductId = -99, params int[] limitedProductIds)
+        public RequestValidationAttribute(
+            bool validateCustId = false,
+            bool validateClientIP = false,
+            int validateProductId = -99,
+            params int[] limitedProductIds)
             : base(typeof(DataValidationImplAttribute))
         {
             Arguments = new object[] { validateCustId, validateClientIP, validateProductId, limitedProductIds };
         }
     }
 
-    [AttributeUsage(AttributeTargets.Method | AttributeTargets.Class, AllowMultiple = false)]
+    [AttributeUsage(AttributeTargets.Method | AttributeTargets.Class)]
     public class DataValidationImplAttribute : ActionFilterAttribute
     {
         private const int NoValidationProductId = -99;
@@ -28,18 +32,19 @@ namespace Fanex.Athena.PlayerAdmin.Core.Attributes
 
         private readonly IContextService _contextService;
         private readonly ILicenseeService _licenseeService;
+        private readonly int[] _limitedProductIds;
+        private readonly bool _validateClientIP;
 
         private readonly bool _validateCustId;
-        private readonly bool _validateClientIP;
         private readonly int _validateProductId;
-        private readonly int[] _limitedProductIds;
 
-        public DataValidationImplAttribute(IContextService contextService, ILicenseeService licenseeService,
+        public DataValidationImplAttribute(
+            IContextService contextService,
+            ILicenseeService licenseeService,
             bool validateCustId,
             bool validateClientIP,
             int validateProductId,
-            int[] limitedProductIds
-            )
+            int[] limitedProductIds)
         {
             _contextService = contextService;
             _licenseeService = licenseeService;
@@ -68,12 +73,15 @@ namespace Fanex.Athena.PlayerAdmin.Core.Attributes
             var result = !MetaModelHelper.IsMetaModel(actionArguments, out IValidationMetaModel validationMetaModel) || validationMetaModel.IsValid;
 
             result &= !_validateCustId || (MetaModelHelper.IsMetaModel(actionArguments, out ICustomerIdentityMetaModel customerIdentityMetaModel)
-                && await _licenseeService.CheckCustomerBelongTo(_contextService.AgentList, customerIdentityMetaModel.CustId, customerIdentityMetaModel.CurrencyId));
+                                           && await _licenseeService.CheckCustomerBelongTo(_contextService.AgentList, customerIdentityMetaModel.CustId,
+                                               customerIdentityMetaModel.CurrencyId));
 
-            result &= !_validateClientIP || string.Equals(_contextService.CurrentRequestClientIP, _contextService.OwnerClientIP, StringComparison.InvariantCultureIgnoreCase);
+            result &= !_validateClientIP || string.Equals(_contextService.CurrentRequestClientIP, _contextService.OwnerClientIP,
+                StringComparison.InvariantCultureIgnoreCase);
 
             result &= _validateProductId == NoValidationProductId
-                || await _licenseeService.CheckProductBelongsTo(_contextService.SiteName, GetProductId(actionArguments, _validateProductId), _limitedProductIds);
+                      || await _licenseeService.CheckProductBelongsTo(_contextService.SiteName, GetProductId(actionArguments, _validateProductId),
+                          _limitedProductIds);
 
             return result;
         }
@@ -84,6 +92,7 @@ namespace Fanex.Athena.PlayerAdmin.Core.Attributes
             {
                 return validateProductId;
             }
+
             return MetaModelHelper.IsMetaModel(actionArguments, out IProductMetaModel productMetaModel) ? productMetaModel.ProductId : validateProductId;
         }
     }

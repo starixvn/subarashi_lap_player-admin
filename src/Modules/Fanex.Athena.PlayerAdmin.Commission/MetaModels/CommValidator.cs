@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-
-namespace Fanex.Athena.PlayerAdmin.Commission.MetaModels
+﻿namespace Fanex.Athena.PlayerAdmin.Commission.MetaModels
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+
     public static class CommValidator
     {
         private const decimal MinValue = 0;
@@ -13,8 +14,11 @@ namespace Fanex.Athena.PlayerAdmin.Commission.MetaModels
         private static void BuildCommValues()
         {
             var commissions = new List<decimal>();
-            for (var value = MinValue; value <= MaxValue; value += RangValueKey)
+            const int steps = (int)((MaxValue - MinValue) / RangValueKey) + 1;
+            
+            for (int i = 0; i < steps; i++)
             {
+                var value = MinValue + (i * RangValueKey);
                 commissions.Add(value);
             }
 
@@ -28,7 +32,7 @@ namespace Fanex.Athena.PlayerAdmin.Commission.MetaModels
                 BuildCommValues();
             }
 
-            return !checkValues.Any(val => !_commissions.Any(x => x == val));
+            return Array.TrueForAll(checkValues,val => _commissions.Contains(val));
         }
     }
 }

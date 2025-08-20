@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
-
-namespace Fanex.Athena.PlayerAdmin.Core.Settings
+﻿namespace Fanex.Athena.PlayerAdmin.Core.Settings
 {
+    using Microsoft.AspNetCore.Http;
+
     public class CookieSetting
     {
         public string Name { get; set; }

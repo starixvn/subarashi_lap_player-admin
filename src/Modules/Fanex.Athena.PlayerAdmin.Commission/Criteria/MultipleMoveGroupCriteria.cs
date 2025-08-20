@@ -1,8 +1,8 @@
-﻿using Fanex.Athena.PlayerAdmin.Commission.MetaModels;
-using Fanex.Data;
-
-namespace Fanex.Athena.PlayerAdmin.Commission.Criteria
+﻿namespace Fanex.Athena.PlayerAdmin.Commission.Criteria
 {
+    using Data;
+    using MetaModels;
+
     public class MultipleMoveGroupCriteria : BasePlayerCommissionUpdateCriteria
     {
         public MultipleMoveGroupCriteria(MultipleMoveGroupQuery query) : base(query)

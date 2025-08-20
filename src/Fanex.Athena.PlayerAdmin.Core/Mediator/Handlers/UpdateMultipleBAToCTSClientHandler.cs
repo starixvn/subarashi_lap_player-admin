@@ -1,12 +1,12 @@
-﻿using Fanex.Athena.PlayerAdmin.Core.ConsoleClient;
-using Fanex.Athena.PlayerAdmin.Core.Settings;
-using MediatR;
-using Microsoft.Extensions.Options;
-using System.Threading;
-using System.Threading.Tasks;
-
-namespace Fanex.Athena.PlayerAdmin.Core.Mediator.Handlers
+﻿namespace Fanex.Athena.PlayerAdmin.Core.Mediator.Handlers
 {
+    using System.Threading;
+    using System.Threading.Tasks;
+    using ConsoleClient;
+    using MediatR;
+    using Microsoft.Extensions.Options;
+    using Settings;
+
     public class UpdateMultipleBAToCTSClientHandler : INotificationHandler<PlayerUpdatedMultipleBAToCTSEvent>
     {
         private ICTSApiClient CTSApiClient { get; }

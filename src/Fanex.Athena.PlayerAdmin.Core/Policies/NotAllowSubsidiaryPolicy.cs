@@ -1,10 +1,10 @@
-﻿using Fanex.Athena.PlayerAdmin.Core.Constants;
-using Microsoft.AspNetCore.Authorization;
-using System;
-using System.Linq;
-
-namespace Fanex.Athena.PlayerAdmin.Core.Policies
+﻿namespace Fanex.Athena.PlayerAdmin.Core.Policies
 {
+    using System;
+    using System.Linq;
+    using Constants;
+    using Microsoft.AspNetCore.Authorization;
+
     public static class SubsidiaryPolicy
     {
         public static void NotAllowSubsidiaryPolicy(this AuthorizationOptions options)

@@ -1,18 +1,18 @@
-﻿using Fanex.Athena.PlayerAdmin.BetLimit.DTO;
-using Fanex.Athena.PlayerAdmin.BetLimit.Helpers;
-using Fanex.Athena.PlayerAdmin.BetLimit.MetaModel;
-using Fanex.Athena.PlayerAdmin.BetLimit.Services.Interfaces;
-using Fanex.Athena.PlayerAdmin.Core.ConsoleClient;
-using Fanex.Athena.PlayerAdmin.Core.Constants;
-using Fanex.Athena.PlayerAdmin.Core.Models;
-using Fanex.Athena.PlayerAdmin.Core.Resources;
-using Fanex.Athena.PlayerAdmin.Core.Settings;
-using MediatR;
-using Microsoft.Extensions.Options;
-using System.Threading.Tasks;
-
-namespace Fanex.Athena.PlayerAdmin.BetLimit.Services
+﻿namespace Fanex.Athena.PlayerAdmin.BetLimit.Services
 {
+    using System.Threading.Tasks;
+    using Core.ConsoleClient;
+    using Core.Constants;
+    using Core.Models;
+    using Core.Resources;
+    using Core.Settings;
+    using DTO;
+    using Helpers;
+    using Interfaces;
+    using MediatR;
+    using MetaModel;
+    using Microsoft.Extensions.Options;
+
     public class ExchangeChargeCommService : IExchangeChargeCommService
     {
         private const int ApiProcessingErrorCode = 102;

@@ -1,8 +1,8 @@
-﻿using Fanex.Athena.PlayerAdmin.Core.Models;
-using Fanex.Core.Utils;
-
-namespace Fanex.Athena.PlayerAdmin.BetLimit.MetaModel
+﻿namespace Fanex.Athena.PlayerAdmin.BetLimit.MetaModel
 {
+    using Core.Models;
+    using Fanex.Core.Utils;
+
     public class PlayerUpdateChargeCommMetaModel : ICustomerIdentityMetaModel, IValidationMetaModel,
         IUserIdMetaModel, ISiteNameMetaModel, IClientIPMetaModel, ILanguageMetaModel
     {

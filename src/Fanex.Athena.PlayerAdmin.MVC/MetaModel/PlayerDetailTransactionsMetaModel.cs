@@ -1,11 +1,11 @@
-﻿using Fanex.Athena.PlayerAdmin.Core.Helpers;
-using Fanex.Athena.PlayerAdmin.Core.Models;
-using Fanex.Core.Utils;
-using Fanex.Data;
-using System;
-
-namespace Fanex.Athena.PlayerAdmin.MVC.MetaModel
+﻿namespace Fanex.Athena.PlayerAdmin.MVC.MetaModel
 {
+    using System;
+    using Core.Helpers;
+    using Core.Models;
+    using Data;
+    using Fanex.Core.Utils;
+
     public class PlayerDetailTransactionsMetaModel : ICustomerIdentityMetaModel, IValidationMetaModel
     {
         public string SPName => "LAP_Rpt_DetailTransaction_Mem";

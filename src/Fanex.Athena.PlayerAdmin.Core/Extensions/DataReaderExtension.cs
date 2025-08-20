@@ -1,9 +1,9 @@
-﻿using System;
-using System.Data;
-using System.Diagnostics;
-
-namespace Fanex.Athena.PlayerAdmin.Core.Extensions
+﻿namespace Fanex.Athena.PlayerAdmin.Core.Extensions
 {
+    using System;
+    using System.Data;
+    using System.Diagnostics;
+
     public static class DataReaderExtension
     {
         [DebuggerStepThrough]

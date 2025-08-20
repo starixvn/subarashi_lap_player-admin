@@ -1,23 +1,23 @@
-﻿using Fanex.Athena.PlayerAdmin.Core.Constants;
-using Fanex.Athena.PlayerAdmin.Core.Attributes;
-using Fanex.Athena.PlayerAdmin.Core.Settings;
-using Fanex.Athena.PlayerAdmin.WebHost.Models;
-using IdentityModel.Client;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Cors;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Options;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Security.Claims;
-using System.Threading.Tasks;
-
-namespace Fanex.Athena.PlayerAdmin.WebHost.Controllers
+﻿namespace Fanex.Athena.PlayerAdmin.WebHost.Controllers
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Net.Http;
+    using System.Security.Claims;
+    using System.Threading.Tasks;
+    using Core.Attributes;
+    using Core.Constants;
+    using Core.Settings;
+    using IdentityModel.Client;
+    using Microsoft.AspNetCore.Authentication;
+    using Microsoft.AspNetCore.Authentication.Cookies;
+    using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Cors;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Options;
+    using Models;
+
     public class AuthController : Controller
     {
         private readonly IdentityServerSetting _setting;
@@ -42,7 +42,7 @@ namespace Fanex.Athena.PlayerAdmin.WebHost.Controllers
             {
                 IsSuccess = !tokenResponse.IsError,
                 Msg = tokenResponse.ErrorDescription,
-                AccessToken = tokenResponse.AccessToken
+                tokenResponse.AccessToken
             });
         }
 
@@ -92,7 +92,7 @@ namespace Fanex.Athena.PlayerAdmin.WebHost.Controllers
         {
             if (string.IsNullOrWhiteSpace(token))
             {
-                return ProtocolResponse.FromException<TokenResponse>(new ArgumentException($"token is not present"));
+                return ProtocolResponse.FromException<TokenResponse>(new ArgumentException("token is not present"));
             }
 
             using var request = new TokenRequest
@@ -106,7 +106,7 @@ namespace Fanex.Athena.PlayerAdmin.WebHost.Controllers
                     { nameof(token), token },
                     { nameof(scope), scope },
                     { "access_token", currentAccessToken },
-                    { "client_ip", HttpContext.Connection.RemoteIpAddress.ToString() }
+                    { "client_ip", HttpContext.Connection.RemoteIpAddress?.ToString() }
                 })
             };
 

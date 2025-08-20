@@ -1,12 +1,12 @@
-﻿using Microsoft.Extensions.Diagnostics.HealthChecks;
-using Microsoft.Extensions.Options;
-using System;
-using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
-
-namespace Fanex.Athena.PlayerAdmin.Core.HealthCheck
+﻿namespace Fanex.Athena.PlayerAdmin.Core.HealthCheck
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Threading;
+    using System.Threading.Tasks;
+    using Microsoft.Extensions.Diagnostics.HealthChecks;
+    using Microsoft.Extensions.Options;
+
     public class MemoryHealthCheck : IHealthCheck
     {
         private readonly IOptionsMonitor<MemoryCheckOptions> _options;
@@ -38,7 +38,6 @@ namespace Fanex.Athena.PlayerAdmin.Core.HealthCheck
                 status,
                 description: "Reports degraded status if allocated bytes " +
                     $">= {options.Threshold} mbs.",
-                exception: null,
                 data: data));
         }
     }

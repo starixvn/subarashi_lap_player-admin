@@ -1,8 +1,8 @@
-﻿using Fanex.Athena.PlayerAdmin.Core.Helpers;
-using System;
-
-namespace Fanex.Athena.PlayerAdmin.MVC.ViewModels
+﻿namespace Fanex.Athena.PlayerAdmin.MVC.ViewModels
 {
+    using System;
+    using Core.Helpers;
+
     public class PlayerDetailTransactionViewModel
     {
         public string TransactionId { get; set; }

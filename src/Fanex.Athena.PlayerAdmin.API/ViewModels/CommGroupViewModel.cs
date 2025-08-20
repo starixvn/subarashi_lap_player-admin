@@ -1,7 +1,7 @@
-﻿using Fanex.Athena.PlayerAdmin.Core.Resources;
-
-namespace Fanex.Athena.PlayerAdmin.API.ViewModels
+﻿namespace Fanex.Athena.PlayerAdmin.API.ViewModels
 {
+    using Core.Resources;
+
     public class CommGroupViewModel
     {
         public CommGroupViewModel()

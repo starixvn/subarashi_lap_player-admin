@@ -1,19 +1,19 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Fanex.Athena.PlayerAdmin.BetLimit.DataDomains;
-using Fanex.Athena.PlayerAdmin.BetLimit.DTO;
-using Fanex.Athena.PlayerAdmin.BetLimit.Helpers;
-using Fanex.Athena.PlayerAdmin.BetLimit.Mediator;
-using Fanex.Athena.PlayerAdmin.BetLimit.MetaModel;
-using Fanex.Athena.PlayerAdmin.BetLimit.Repositories.Interfaces;
-using Fanex.Athena.PlayerAdmin.BetLimit.Services.Interfaces;
-using Fanex.Athena.PlayerAdmin.Core.Constants;
-using Fanex.Athena.PlayerAdmin.Core.Models;
-using MediatR;
-
-namespace Fanex.Athena.PlayerAdmin.BetLimit.Services
+﻿namespace Fanex.Athena.PlayerAdmin.BetLimit.Services
 {
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using Core.Constants;
+    using Core.Models;
+    using DataDomains;
+    using DTO;
+    using Helpers;
+    using Interfaces;
+    using Mediator;
+    using MediatR;
+    using MetaModel;
+    using Repositories.Interfaces;
+
     public class SportsBookBetLimitService : ISportsBookBetLimitService
     {
         private readonly IDcsGameBetLimitRepository _betSetting;

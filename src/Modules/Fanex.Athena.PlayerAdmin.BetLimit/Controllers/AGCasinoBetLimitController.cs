@@ -1,16 +1,16 @@
-﻿using Fanex.Athena.PlayerAdmin.BetLimit.MetaModel;
-using Fanex.Athena.PlayerAdmin.BetLimit.Services.Interfaces;
-using Fanex.Athena.PlayerAdmin.Core.Constants;
-using Fanex.Athena.PlayerAdmin.Core.Attributes;
-using Fanex.Athena.PlayerAdmin.Core.Models;
-using Fanex.Athena.PlayerAdmin.Core.Resources;
-using Fanex.Athena.PlayerAdmin.Core.Services;
-using Microsoft.AspNetCore.Mvc;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace Fanex.Athena.PlayerAdmin.BetLimit.Controllers
+﻿namespace Fanex.Athena.PlayerAdmin.BetLimit.Controllers
 {
+    using System.Linq;
+    using System.Threading.Tasks;
+    using Core.Attributes;
+    using Core.Constants;
+    using Core.Models;
+    using Core.Resources;
+    using Core.Services;
+    using MetaModel;
+    using Microsoft.AspNetCore.Mvc;
+    using Services.Interfaces;
+
     [RequestValidation(validateProductId: ProductTypes.AgCasino, validateCustId: true)]
     public class AGCasinoBetLimitController : PlayerBetLimitBaseControler
     {

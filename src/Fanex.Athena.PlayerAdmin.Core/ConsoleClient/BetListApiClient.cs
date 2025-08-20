@@ -1,10 +1,10 @@
-﻿using Fanex.Athena.PlayerAdmin.Core.Services;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Threading.Tasks;
-
-namespace Fanex.Athena.PlayerAdmin.Core.ConsoleClient
+﻿namespace Fanex.Athena.PlayerAdmin.Core.ConsoleClient
 {
+    using System.Net.Http;
+    using System.Net.Http.Headers;
+    using System.Threading.Tasks;
+    using Services;
+
     public class BetListApiClient : BaseApiClient, IBetListApiClient
     {
         private readonly IContextService _contextService;
@@ -25,7 +25,7 @@ namespace Fanex.Athena.PlayerAdmin.Core.ConsoleClient
         public async Task<HttpResponseMessage> PostAsync(string path, object value, string language, int timeOut = 100)
         {
             return await HandleAsync(path, value, language, MediaType.Json,
-                 (response) => Task.FromResult(response)
+                 response => Task.FromResult(response)
                 , false, timeOut);
         }
     }

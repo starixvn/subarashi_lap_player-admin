@@ -1,8 +1,8 @@
-﻿using Fanex.Athena.PlayerAdmin.Core.DataDomains;
-using System;
-
-namespace Fanex.Athena.PlayerAdmin.MVC.MetaModel
+﻿namespace Fanex.Athena.PlayerAdmin.MVC.MetaModel
 {
+    using System;
+    using Core.DataDomains;
+
     public class PlayerWinLossMetaModel
     {
         private const int MinimumPageSize = 100;

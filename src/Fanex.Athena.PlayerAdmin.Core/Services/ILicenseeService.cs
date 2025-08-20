@@ -1,9 +1,9 @@
-﻿using Fanex.Athena.PlayerAdmin.Core.Models;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-
-namespace Fanex.Athena.PlayerAdmin.Core.Services
+﻿namespace Fanex.Athena.PlayerAdmin.Core.Services
 {
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+    using Models;
+
     public interface ILicenseeService
     {
         Task<bool> IsAllowUpdateBA(int licenseeId, string userName, IEnumerable<string> specicalBAAdmins);

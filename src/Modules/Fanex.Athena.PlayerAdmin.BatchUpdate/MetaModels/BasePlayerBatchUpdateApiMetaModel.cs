@@ -1,9 +1,9 @@
-﻿using Fanex.Athena.PlayerAdmin.Core.Models;
-using Fanex.Core.Utils;
-using System.Linq;
-
-namespace Fanex.Athena.PlayerAdmin.BatchUpdate.MetaModels
+﻿namespace Fanex.Athena.PlayerAdmin.BatchUpdate.MetaModels
 {
+    using System;
+    using Core.Models;
+    using Fanex.Core.Utils;
+
     public class BasePlayerBatchUpdateApiMetaModel : IValidationMetaModel, ISiteNameMetaModel,
         ILicenseeIdMetaModel, ILanguageMetaModel, IClientIPMetaModel, IUserIdMetaModel
     {
@@ -22,7 +22,6 @@ namespace Fanex.Athena.PlayerAdmin.BatchUpdate.MetaModels
         public string Language { get; set; }
 
         public virtual bool IsValid
-            => !string.IsNullOrWhiteSpace(CustIds) &&
-            !CustIds.Split(new[] { ',' }).Any(s => !int.TryParse(s, out _));
+            => !string.IsNullOrWhiteSpace(CustIds) && Array.TrueForAll(CustIds.Split(','),s => int.TryParse(s, out _));
     }
 }

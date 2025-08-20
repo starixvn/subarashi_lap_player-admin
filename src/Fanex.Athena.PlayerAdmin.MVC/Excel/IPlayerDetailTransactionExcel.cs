@@ -1,8 +1,8 @@
-﻿using Fanex.Athena.PlayerAdmin.MVC.ViewModels;
-using NPOI.SS.UserModel;
-
-namespace Fanex.Athena.PlayerAdmin.MVC.Excel
+﻿namespace Fanex.Athena.PlayerAdmin.MVC.Excel
 {
+    using NPOI.SS.UserModel;
+    using ViewModels;
+
     public interface IPlayerDetailTransactionExcel
     {
         IWorkbook Workbook { get; set; }

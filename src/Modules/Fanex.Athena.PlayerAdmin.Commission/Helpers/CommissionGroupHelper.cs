@@ -86,21 +86,14 @@
         [SuppressMessage("Major Code Smell", "S109:Magic numbers should not be used", Justification = "Howard")]
         public static int GetCommPart(decimal comm, int position)
         {
-            var actualComm = comm * 10000;
-            switch (position)
+            var scaled = comm * 10000m;
+            return position switch
             {
-                case 1:
-                    return (int)(actualComm / 100);
-
-                case 2:
-                    return (int)(actualComm % 100) / 10;
-
-                case 3:
-                    return (int)actualComm % 10;
-
-                default:
-                    return 0;
-            }
+                1 => (int)(scaled / 100m),
+                2 => (int)(scaled % 100m) / 10,
+                3 => (int)(scaled % 10m),
+                _ => 0,
+            };
         }
     }
 }

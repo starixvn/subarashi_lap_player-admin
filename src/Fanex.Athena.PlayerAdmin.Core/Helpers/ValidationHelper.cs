@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace Fanex.Athena.PlayerAdmin.Core.Helpers
+﻿namespace Fanex.Athena.PlayerAdmin.Core.Helpers
 {
+    using System;
+    using System.Collections.Generic;
+
     public static class ValidationHelper
     {
         public static bool TryParseArray<T>(string input, out T[] result) where T : IParsable<T>
@@ -19,7 +19,9 @@ namespace Fanex.Athena.PlayerAdmin.Core.Helpers
             foreach (var part in parts)
             {
                 if (!T.TryParse(part.Trim(), null, out var value))
+                {
                     return false;
+                }
 
                 list.Add(value);
             }

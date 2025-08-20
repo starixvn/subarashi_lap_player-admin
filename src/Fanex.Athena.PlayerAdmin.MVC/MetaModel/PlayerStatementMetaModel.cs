@@ -1,10 +1,10 @@
-﻿using Fanex.Athena.PlayerAdmin.Core.Helpers;
-using Fanex.Athena.PlayerAdmin.Core.Models;
-using Fanex.Core.Utils;
-using System;
-
-namespace Fanex.Athena.PlayerAdmin.MVC.MetaModel
+﻿namespace Fanex.Athena.PlayerAdmin.MVC.MetaModel
 {
+    using System;
+    using Core.Helpers;
+    using Core.Models;
+    using Fanex.Core.Utils;
+
     public class PlayerStatementMetaModel : ICustomerIdentityMetaModel, IValidationMetaModel, ISiteNameMetaModel, ILanguageMetaModel, IShowBetFromIPMetaModel
     {
         private const int MaximumYear = 2;

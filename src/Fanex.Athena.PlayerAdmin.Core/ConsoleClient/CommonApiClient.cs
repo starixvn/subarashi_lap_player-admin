@@ -1,13 +1,14 @@
-﻿using Fanex.Athena.PlayerAdmin.Core.Services;
-using Newtonsoft.Json;
-using System;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Threading.Tasks;
-using System.Web;
-
-namespace Fanex.Athena.PlayerAdmin.Core.ConsoleClient
+﻿namespace Fanex.Athena.PlayerAdmin.Core.ConsoleClient
 {
+    using System;
+    using System.Collections.Specialized;
+    using System.Net.Http;
+    using System.Net.Http.Headers;
+    using System.Threading.Tasks;
+    using System.Web;
+    using Newtonsoft.Json;
+    using Services;
+
     public class ApiResponse<T>
     {
         public int ErrorCode { get; set; }
@@ -43,7 +44,7 @@ namespace Fanex.Athena.PlayerAdmin.Core.ConsoleClient
         private static string BuildQueryString(object value)
         {
             var properties = value.GetType().GetProperties();
-            var queryParams = new System.Collections.Specialized.NameValueCollection();
+            var queryParams = new NameValueCollection();
 
             foreach (var prop in properties)
             {

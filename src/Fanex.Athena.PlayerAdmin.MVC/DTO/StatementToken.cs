@@ -1,7 +1,7 @@
-﻿using Newtonsoft.Json;
-
-namespace Fanex.Athena.PlayerAdmin.MVC.DTO
+﻿namespace Fanex.Athena.PlayerAdmin.MVC.DTO
 {
+    using Newtonsoft.Json;
+
     [JsonObject("token")]
     public class StatementToken
     {

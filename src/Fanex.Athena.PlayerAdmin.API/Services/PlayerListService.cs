@@ -1,19 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Fanex.Athena.PlayerAdmin.API.DTO;
-using Fanex.Athena.PlayerAdmin.API.MetaModel;
-using Fanex.Athena.PlayerAdmin.API.Services.Interfaces;
-using Fanex.Athena.PlayerAdmin.API.ViewModels;
-using Fanex.Athena.PlayerAdmin.Core.Extensions;
-using Fanex.Athena.PlayerAdmin.Core.Repositories;
-using Fanex.Athena.PlayerAdmin.Core.Resources;
-using Fanex.Athena.PlayerAdmin.Core.Services;
-using Fanex.Data;
-
-namespace Fanex.Athena.PlayerAdmin.API.Services
+﻿namespace Fanex.Athena.PlayerAdmin.API.Services
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using Core.Extensions;
+    using Core.Repositories;
+    using Core.Resources;
+    using Core.Services;
+    using Data;
+    using DTO;
+    using Interfaces;
+    using MetaModel;
+    using ViewModels;
+
     public class PlayerListService : IPlayerListService
     {
         private readonly IDbFactory _dbFactory;

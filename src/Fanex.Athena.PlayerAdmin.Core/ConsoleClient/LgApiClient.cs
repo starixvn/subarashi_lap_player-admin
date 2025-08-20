@@ -1,7 +1,7 @@
-﻿using System.Net.Http;
-
-namespace Fanex.Athena.PlayerAdmin.Core.ConsoleClient
+﻿namespace Fanex.Athena.PlayerAdmin.Core.ConsoleClient
 {
+    using System.Net.Http;
+
     public class LgApiClient : BaseApiClient, ILgApiClient
     {
         public LgApiClient(HttpClient httpClient) : base(httpClient)

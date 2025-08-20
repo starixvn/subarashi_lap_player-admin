@@ -1,7 +1,7 @@
-﻿using MediatR;
-
-namespace Fanex.Athena.PlayerAdmin.Core.Mediator
+﻿namespace Fanex.Athena.PlayerAdmin.Core.Mediator
 {
+    using MediatR;
+
     public class PlayerUpdatedMultipleBAToCTSEvent : INotification
     {
         public string NewValue { get; set; }
