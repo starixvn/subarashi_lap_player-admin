@@ -62,6 +62,6 @@ function mapDispatchToProps(dispatch) {
 function mapStateToProps(state) {
     const { licenseeCustId, licenseeType } = state;
     return Object.assign({}, { licenseeCustId, licenseeType });
-};
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(BankInformation);

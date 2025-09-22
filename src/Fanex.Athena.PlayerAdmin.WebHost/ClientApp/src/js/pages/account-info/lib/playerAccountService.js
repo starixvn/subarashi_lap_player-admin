@@ -1,5 +1,15 @@
 import FactoryCommonService from '../../../lib/factoryCommonService';
-import { lapAccountProfile, lapBankInfo, lrfActivityRecord, lrfSubsidiaryViewType, custBettingStatus, playerInfoSettings, lapAccountKYC, lapDeleteKYCImage } from './apiInfo';
+import {
+    lapAccountProfile,
+    lapBankInfo,
+    lapTaxInfo,
+    lrfActivityRecord,
+    lrfSubsidiaryViewType,
+    custBettingStatus,
+    playerInfoSettings,
+    lapAccountKYC,
+    lapDeleteKYCImage
+} from './apiInfo';
 
 export default class PlayerAccountService {
     constructor() {
@@ -20,6 +30,10 @@ export default class PlayerAccountService {
 
     getBankInfo(param) {
         return this._getData(lapBankInfo.type, lapBankInfo.action, param);
+    }
+
+    getTaxInfo(param) {
+        return this._getData(lapTaxInfo.type, lapTaxInfo.action, param);
     }
 
     getActivityRecord(param) {

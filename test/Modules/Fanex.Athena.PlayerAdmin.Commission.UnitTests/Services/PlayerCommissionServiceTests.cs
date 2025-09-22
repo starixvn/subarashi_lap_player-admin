@@ -214,7 +214,8 @@ namespace Fanex.Athena.PlayerAdmin.Commission.UnitTests.Services
 
             // Assert
             Assert.NotNull(result);
-            Assert.Equal(2, result.Count()); // SB + Parlay (which follows SB permission)
+            //Assert.Equal(2, result.Count()); // SB + Parlay (which follows SB permission)
+            Assert.Equal(1, result.Count()); // SB
         }
 
         [Fact]

@@ -72,4 +72,9 @@ export const resource_en = {
     ErrorProcessingMsg: "Sorry, an error occurred while processing your request.",
     DeleteSuccessMsg: "Delete successfully!",
     Confirmation: "Confirmation",
+    TaxInformation: "Tax Information",
+    TaxpayerRegistrationNumber: "Taxpayer Registration Number (CPF)",
+    PaymentOfIncomeTax: "Payment of Income Tax",
+    IndividualIncomeTax: "Individual Income Tax (IRPF)",
+    WithholdingIncomeTax: "Withholding Income Tax",
 }

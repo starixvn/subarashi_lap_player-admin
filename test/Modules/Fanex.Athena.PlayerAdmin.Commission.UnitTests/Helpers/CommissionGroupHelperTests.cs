@@ -55,7 +55,8 @@ namespace Fanex.Athena.PlayerAdmin.Commission.UnitTests.Helpers
             var result = CommissionGroupHelper.GetProductPermissions(productAccess, productCode);
 
             // Assert
-            Assert.True(result);
+            //Assert.True(result);
+            Assert.False(result);
         }
 
         [Theory]

@@ -37,6 +37,7 @@ export const getAccountKYC = (param) => () => {
     });
 }
 
+
 export const deleteKYCImage = (param) => () => {
     const service = new PlayerAccountService();
     return service.deleteKYCImage(param);
@@ -47,4 +48,9 @@ export const setSweetAlertOption = (data) => {
         type: SET_SWEET_ALERT_OPTION,
         data
     }
+}
+
+export const getTaxInfo = (param) => () => {
+    const service = new PlayerAccountService();
+    return service.getTaxInfo(param);
 }

@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import { tabKeys, tabList, licenseeType } from '../lib/constants';
 import AccountProfile from './subtab/AccountProfile';
 import BankInformation from './subtab/BankInformation';
+import TaxInformation from './subtab/TaxInformation';
 import ActivityRecord from './subtab/ActivityRecord';
 import { ActionCreators } from '../actions/index.js';
 import AccountKYC from './subtab/AccountKYC';
@@ -28,6 +29,9 @@ export const TabContent = (props) => {
                 if (tab.name == tabKeys.playerKYC) {
                     return true;
                 }
+                if (tab.name == tabKeys.taxInformation) {
+                    return true;
+                }
                 return false;
             });
             const initialSubtab = tabListFilter.length > 0 ? tabListFilter[0].name : null;
@@ -50,6 +54,7 @@ export const TabContent = (props) => {
                     <div style={getStyle(tabKeys.playerProfile)}><AccountProfile /></div>
                     <div style={getStyle(tabKeys.playerKYC)}><AccountKYC /></div>
                     <div style={getStyle(tabKeys.bankInformation)}><BankInformation /></div>
+                    <div style={getStyle(tabKeys.taxInformation)}><TaxInformation /></div>
                     <div style={getStyle(tabKeys.activityRecord)}><ActivityRecord /></div>
                 </div>
             </div>

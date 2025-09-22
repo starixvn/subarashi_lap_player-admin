@@ -64,9 +64,7 @@
             ProductCode.WLC
         };
 
-        private static readonly Dictionary<string, string> FollowPermissions = new()
-        {
-        };
+        private static readonly Dictionary<string, string> FollowPermissions = new();
 
         public static int ProductListComparer(string productCode)
         {
