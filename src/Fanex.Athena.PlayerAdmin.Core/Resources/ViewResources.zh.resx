@@ -2818,4 +2818,7 @@
   <data name="QuickBetWidget" xml:space="preserve">
     <value>快捷投注元件</value>
   </data>
+  <data name="CasinoRoyale" xml:space="preserve">
+    <value>皇家娱乐城</value>
+  </data>
 </root>

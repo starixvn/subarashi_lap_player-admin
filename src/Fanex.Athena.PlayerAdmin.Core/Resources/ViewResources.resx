@@ -2983,4 +2983,7 @@
   <data name="QuickBetWidget" xml:space="preserve">
     <value>Quick Bet Widget</value>
   </data>
+  <data name="CasinoRoyale" xml:space="preserve">
+    <value>Casino Royale</value>
+  </data>
 </root>
